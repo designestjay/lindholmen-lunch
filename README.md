@@ -21,7 +21,7 @@
 ├── utils.py                 # Utility functions (e.g., date helpers)
 ├── scrapers/                # Individual restaurant scrapers (one per restaurant)
 ├── data/                    # Cached JSON data and generated HTML summaries
-├── output/                  # Generated HTML files for each weekday and index
+├── docs/                  # Generated HTML files for each weekday and index
 ├── templates/               # Jinja2 HTML templates for rendering summaries
 ├── tests/                   # Test scripts and sample HTML files for development
 ├── requirements.txt         # Python dependencies
@@ -65,7 +65,7 @@
      ```
 
 3. **View results:**
-   - Open the generated HTML files in your browser (e.g., `output/index.html`, `output/lunch_monday.html`).
+   - Open the generated HTML files in your browser (e.g., `docs/index.html`, `docs/lunch_monday.html`).
 
 ## Adding a New Restaurant
 

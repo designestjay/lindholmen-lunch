@@ -24,8 +24,8 @@ def generate_lunch_summary(day: str):
         last_updated=datetime.now().strftime("%Y-%m-%d %H:%M")
     )
 
-    os.makedirs("output", exist_ok=True)
-    output_path = f"output/lunch_{day}.html"
+    os.makedirs("docs", exist_ok=True)
+    output_path = f"docs/lunch_{day}.html"
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output_html)
 
@@ -33,7 +33,7 @@ def generate_lunch_summary(day: str):
 
 
 def generate_index_page():
-    output_dir = Path("output")
+    output_dir = Path("docs")
     output_dir.mkdir(exist_ok=True)
 
     # Map lowercase filenames to proper weekday labels

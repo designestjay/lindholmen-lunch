@@ -24,6 +24,9 @@ from generate_html import generate_lunch_summary, generate_index_page
 
 logging.basicConfig(level=logging.INFO)
 
+OUTPUT_DIR = "docs"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 SCRAPERS = [
     KooperativetScraper,
     DistrictOneScraper,
