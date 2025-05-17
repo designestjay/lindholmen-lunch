@@ -1,0 +1,1781 @@
+<style>
+h2:hover {
+    background: #006080;
+}
+h3 {
+    color: #004d66;
+    margin-top: 1em;
+}
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+li {
+    margin-bottom: 5px;
+}
+.restaurant {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.menu-content {
+    display: none;
+    margin-top: 10px;
+}
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.weekday-button {
+    display: block;
+    text-align: center;
+    background: #004d66;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+.weekday-button:hover {
+    background: #006080;
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Dagens lunch – Tuesday</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
+        h1 { color: #004d66; }
+        h2 {
+            background: #004d66; color: white; padding: 10px; border-radius: 4px;
+            cursor: pointer; user-select: none;
+            text-align: center; margin-top: 20px;
+        }
+        h2:hover { background: #006080; }
+        h3 { color: #004d66; margin-top: 1em; }
+        ul { list-style-type: disc; padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        .restaurant {
+            margin-bottom: 40px; padding: 20px; background: white;
+            border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .menu-content { display: none; margin-top: 10px; }
+    </style>
+    <script>
+        function toggleVisibility(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const current = window.getComputedStyle(el).display;
+            el.style.display = (current === 'none') ? 'block' : 'none';
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const hash = window.location.hash;
+            if (hash) {
+                const readableId = hash.slice(1);  // e.g. "Kooperativet"
+                const contentId = readableId + "_menu";
+
+                const menuContent = document.getElementById(contentId);
+                const targetSection = document.getElementById(readableId);
+
+                if (menuContent) {
+                    // Expand first
+                    menuContent.style.display = "block";
+
+                    // Scroll after layout updates
+                    requestAnimationFrame(() => {
+                        targetSection?.scrollIntoView({ behavior: "smooth" });
+                    });
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Dagens lunch på Lindholmen – Tuesday</h1>
+
+    <div style="margin-top: 40px; font-size: 14px; color: #666;">
+        <p>Last updated: 2025-05-17 21:05</p>
+    </div>
+    <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
+    <hr>
+
+    <div class="toc">
+        <h2>Restauranger</h2>
+        <div class="button-container">
+            
+                
+                <a class="weekday-button" href="#BennePastabar">BennePastabar</a>
+            
+                
+                <a class="weekday-button" href="#Bistrot">Bistrot</a>
+            
+                
+                <a class="weekday-button" href="#BombayBistro">BombayBistro</a>
+            
+                
+                <a class="weekday-button" href="#CuckoosNest">CuckoosNest</a>
+            
+                
+                <a class="weekday-button" href="#DistrictOne">DistrictOne</a>
+            
+                
+                <a class="weekday-button" href="#EncounterAsian">EncounterAsian</a>
+            
+                
+                <a class="weekday-button" href="#Kooperativet">Kooperativet</a>
+            
+                
+                <a class="weekday-button" href="#LsKitchen">LsKitchen</a>
+            
+                
+                <a class="weekday-button" href="#MatMinnen">MatMinnen</a>
+            
+                
+                <a class="weekday-button" href="#Mimolett">Mimolett</a>
+            
+                
+                <a class="weekday-button" href="#MissF">MissF</a>
+            
+                
+                <a class="weekday-button" href="#Oishii">Oishii</a>
+            
+        </div>
+    </div>
+    <hr>
+        
+            
+            
+            <div class="restaurant" id="BennePastabar">
+                <h2 onclick="toggleVisibility('BennePastabar_menu')">BennePastabar</h2>
+                <div class="menu-content" id="BennePastabar_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Benne Pasta</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>SLOW TOMATO - Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Double Cheese - Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>SMOKED PIG - Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>GREEN RAGU - Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Silky Bird - Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>THE SHROOMS - Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>The Visitor</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Swedish Pesto - En härligt grön och crunchy pesto gjord på Västerbottenost, vitlök, grönkål och solrosfrön. Toppad med buffelmozzarella, lagrad hårdost, olivolja, svartpeppar och basilika.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Benne Bites</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Garlic Bread - Två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Tiramisu - Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="Bistrot">
+                <h2 onclick="toggleVisibility('Bistrot_menu')">Bistrot</h2>
+                <div class="menu-content" id="Bistrot_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Veckans</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Veckans: Kyckling pasta</strong>
+                             – Ost sås – Paprika – Zucchini – Tagliatelle – Granapadano – ruccola
+                        </li>
+                    
+                        <li>
+                            <strong>Vegetarisk Måndag–Tis: Tortellini</strong>
+                             – Spenat – Ricotta – Tomatsås – Ruccola – Granapadano
+                        </li>
+                    
+                        <li>
+                            <strong>Vegetarisk Ons- Tors: Korean fried Blomkål</strong>
+                             – Srirachamajonnäs – Rödkålssallad – Jasminris – Koriander
+                        </li>
+                    
+                        <li>
+                            <strong>Vegetarisk Tors-Fre: Pannoumiburgare</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Caesarsallad</strong>
+                             – Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Lunch</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Nattbakat högrev</strong>
+                             – Potatis gratäng – Rödvinsås – Honungs rostade morrötter – Persilja
+                        </li>
+                    
+                        <li>
+                            <strong>Pocherad fångst</strong>
+                             – Beurre blanc – Kokt potatis – Konfiterad Fänkål – Dill & Gräslök
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="BombayBistro">
+                <h2 onclick="toggleVisibility('BombayBistro_menu')">BombayBistro</h2>
+                <div class="menu-content" id="BombayBistro_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Dagens</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>LEMON PEPPER CHICKEN - Kycklingfile tillagad med citron, svartpepper, koriander och kokos.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>BHURANI BEEF CURRY - Oxkött i en kryddig currysås som består av roasted vitlök, tomat, lök, ingefära och grön chili.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>ANDRA ALTERNATIV</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>TIKKA MASALA 134KR - Grillad kycklingfilé med rostad paprika och tomater i en krämig sås.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>TANDOORI CHICKEN 132KR - Grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. Serveras med tandoori sås.</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>JINGHA HARA</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>145KR - Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="CuckoosNest">
+                <h2 onclick="toggleVisibility('CuckoosNest_menu')">CuckoosNest</h2>
+                <div class="menu-content" id="CuckoosNest_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>FISK</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Torskrygg serveras med kokt potatis, bakad lök, friterad svartkål och vitvinssås med ansjovis</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>KÖTT</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Hjortfilé serveras med örtmos, grillad fänkål och rödvinssås</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>VEG</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Rostad blomkål serveras med sötpotatispuré, beluga linser, rostad morot och örtolja</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>CEASARSALLAD</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>grillad majskycklingfilé, prosciutto, pecorino, romansallad, caesardressing & krutonger</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>RÄKMACKA</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron & dill</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>DOUBLE SMASHED CHEESEBURGER</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="DistrictOne">
+                <h2 onclick="toggleVisibility('DistrictOne_menu')">DistrictOne</h2>
+                <div class="menu-content" id="DistrictOne_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>Ramen</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Fisk</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Färskostbakad torskfile med räkröra och kokt broccoli, serveras med potatismos.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Kött</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Stekt fläsk med raggmunk alternativt kokt potatis med löksås, serveras med rårörda lingon.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Sallad</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Asiatisk</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bao buns med sidfläsk, inlagd morot och rättika, hoisinsås, jordnötter, chili, koriander och chili mayo, serveras med pommes frites samt koriander och jalapenomajo.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Vegetarisk</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bao buns med tofu, inlagd morot och rättika, hoisinsås, jordnötter, chili, koriander och chili mayo, serveras med pommes frites samt koriander och jalapenomajo.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Vegetarisk Poke bowl</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Pho</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="EncounterAsian">
+                <h2 onclick="toggleVisibility('EncounterAsian_menu')">EncounterAsian</h2>
+                <div class="menu-content" id="EncounterAsian_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>SUSHI</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>vanlig 10 bitar</strong>
+                             – 3 lax, 1 räka, 1 crabfish, 1 omelett & 4 maki
+                        </li>
+                    
+                        <li>
+                            <strong>vegetarisk 10 bitar</strong>
+                             – 2 avocado, 2 tofu, 2 omelett & 4 maki
+                        </li>
+                    
+                        <li>
+                            <strong>Mammasushi 10 bitar</strong>
+                             – 2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki
+                        </li>
+                    
+                        <li>
+                            <strong>Mix 12 bitar</strong>
+                             – 4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado
+                        </li>
+                    
+                        <li>
+                            <strong>Mix 15 bitar</strong>
+                             – 5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado
+                        </li>
+                    
+                        <li>
+                            <strong>Nigiri mix 10 bitar</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>VARMRÄTT</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Yakitori</strong>
+                             – 5 kycklingspett med ris, teriyakisås och sallad
+                        </li>
+                    
+                        <li>
+                            <strong>Yakiniku</strong>
+                             – Skivad entrecote, grönsaker, ris, yakinikusås & sallad
+                        </li>
+                    
+                        <li>
+                            <strong>Wokade äggnudlar</strong>
+                             – Äggnudlar med kycklingfilé & grönsaker
+                        </li>
+                    
+                        <li>
+                            <strong>Dumpling (kött)</strong>
+                             – 8 bitar dumplings, sallad & ris
+                        </li>
+                    
+                        <li>
+                            <strong>Dumpling (Veg)</strong>
+                             – 8 bitar dumplings, sallad & ris
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>KOREANSK</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bibibamp (biff)</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Bibibamp (Kyckling)</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Bibibamp (Veg)</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>NUDELSOPPA</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>(Biff)</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>(Kyckling)</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>(Veg)</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>BENTOLÅDA</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>BENTOLÅDA</strong>
+                             – Yakiniku, yakitori, sushi, sallad & ris
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>LÄSK</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>LÄSK</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="Kooperativet">
+                <h2 onclick="toggleVisibility('Kooperativet_menu')">Kooperativet</h2>
+                <div class="menu-content" id="Kooperativet_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>SALLADER</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>VECKANS SPECIAL</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>”Nordic Bi Bim Bap” med kallrökt lax på toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>”Nordic Bi Bim Bap” med falafel på gråärta toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>KÖTT</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Kooperativet Schnitzel på gårdsgris toppad med stuvad svamp smaksatt med ramslöks serveras med nyrostade färskpotatisar samt smarriga örter</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>FISK</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Lättrimmad kolja serveras med skaldjurssås , potatispuré och gröna ärtor</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>THAI</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Chicken karaage– kryddig Friterad kyckling toppad med smash cucumber och böngroddar serveras med chilimajonnäs samt jasminris & koriander chili 2/5</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>INDISK</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Fried rice ”Biryani” på vårt vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>VÄRLDEN</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Louisana Texas chili Sub toppad med picklad kål och rostad lök serveras med frasiga waffle fries och chipotlemajonnäs</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>VEGETARISKT</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Fried rice ”Biryani” på vårt vis stekt basmatiris med massa goa grönsaker & kryddor toppat med rostad oumph serveras med limeyoghurt & garlic Naan</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="LsKitchen">
+                <h2 onclick="toggleVisibility('LsKitchen_menu')">LsKitchen</h2>
+                <div class="menu-content" id="LsKitchen_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Dagens</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Helstekt kotlettrad, bearnaise, klyftpotatis och örtbakad tomat</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Tortellini,  rökt lax, grädde & citron</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Caesarsallad; kyckling, grana padano, bacon, krutonger</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Vegan lasagne, linser och bönfärs, rostad zuccini & ruccola</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="MatMinnen">
+                <h2 onclick="toggleVisibility('MatMinnen_menu')">MatMinnen</h2>
+                <div class="menu-content" id="MatMinnen_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>Dagens</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Pasta pesto</strong>
+                             – ratatouille, grana padano, ruccolasallad
+                        </li>
+                    
+                        <li>
+                            <strong>Bakad sejfilé</strong>
+                             – tomat,tzatziki, oliver, rostad potatis
+                        </li>
+                    
+                        <li>
+                            <strong>Rimmad fläsklägg</strong>
+                             – syrlig dragonsky, sirapskål, persilja, potatismos
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Veckans sallad</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Gravlaxsallad</strong>
+                             – senapssås, sparris, ägg, tomat, krutonger
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="Mimolett">
+                <h2 onclick="toggleVisibility('Mimolett_menu')">Mimolett</h2>
+                <div class="menu-content" id="Mimolett_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Kött & Fisk</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Grillad Entrecóte (200g)</strong>
+                             – Grillad Entrecóte med friterad klyftpotatis och veckans sås.
+                        </li>
+                    
+                        <li>
+                            <strong>Black Angus Burger (200g)</strong>
+                             – Högrevsburgare med senap majonnäs sås, sallad, rostad lök, pepparjack ost, grillad bacon, BBQ-sås
+                        </li>
+                    
+                        <li>
+                            <strong>Husets Fiskgratäng (Tisdagar & Torsdagar)</strong>
+                             – Flundrafilé, potatismos, mozzarellaost, tomat, dillsås och citron.
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Risotto</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bacon Risotto</strong>
+                             – Bacon, grillade grönsaker, granapadano, smör , ruccola
+                        </li>
+                    
+                        <li>
+                            <strong>Scampi Risotto</strong>
+                             – Tigerräkor, röd chilli, vitlök, granapadano, smör , ruccola
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Pastarätter</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Penne Aglio</strong>
+                             – Oxfilé, champinjoner, crème fraiche vitlök, grädde toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Afrikana</strong>
+                             – Kyckling, paprika, ananas, jordnötter, grädde, curry toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Patrone</strong>
+                             – Oxfilé, soltorkad tomat, vitlök, tomatsås, grädde toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Tagliatelle Salmone</strong>
+                             – Laxfilé, purjolök, crème fraiche, vitlök, grädde toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Spagetti Modo Nostro</strong>
+                             – Köttfärssås, gorgonzola, champinjoner, grädde, piri piri toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Tagliatelle con Scampi</strong>
+                             – Tigerräkor, tomatsås, vitlök, basilika toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Romana</strong>
+                             – Kyckling, champinjoner, vitlök, grädde toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Diavolo (Stark)</strong>
+                             – Köttfärssås, grädde, piri-piri toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Spagetti Carbonara</strong>
+                             – Rostad bacon, persilja, vitlök, grädde toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Vegetale</strong>
+                             – Grönsaksmix, champinjoner, tomatsås, vitlök toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Penne Pesto</strong>
+                             – Soltorkad tomat. pesto, vitlök, grädde, mozzarella toppas med grana padano.
+                        </li>
+                    
+                        <li>
+                            <strong>Lasagne Al Forno</strong>
+                             – Hemlagat lasagne med bechamelsås.
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="MissF">
+                <h2 onclick="toggleVisibility('MissF_menu')">MissF</h2>
+                <div class="menu-content" id="MissF_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Grillad ciabatta</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Lufttorkad skinka/mozzarella/pesto</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Kyckling/bacon/dijoncreme – Serveras med pommes & sallad & dressing</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Mindre ciabbata av ovan</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Grillad tortilla</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>kyckling/ mozzarella/ ruccola / mangoraja – Serveras med pommes & sallad & dressing</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Pajer & Lasagne</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Lax/Spenat</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Fetaost/Spenat</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Lasagne – Serveras med sallad & dressing</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Caesarsallad</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Kyckling</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Räkor</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Sallader</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Kyckling</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Räkor</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Grekisk</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Lufttorkad skinka/mozzarella/pesto</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Chévre/rödbetor/honung/valnötter/granatäpple</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Tillval – Bulgur/marinerad pasta</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Pokebowl – sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, räkor, lax, srirachamayo</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Asiatisk</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bibimbap – ris med skivade entrecote/kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Panang Curry</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Sushi Tempura 10 bit – Friterad räkor/avokado/gurka/krispsallad/rostad lök</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Sushi Speciell California 10bit – Friterad krabbröra, avokado, gurka, krispsallad</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+            
+            
+            <div class="restaurant" id="Oishii">
+                <h2 onclick="toggleVisibility('Oishii_menu')">Oishii</h2>
+                <div class="menu-content" id="Oishii_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+
+                
+                    <h3>Sushi</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>9 bitar</strong>
+                             – 5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo
+                        </li>
+                    
+                        <li>
+                            <strong>9 bitar nigri</strong>
+                             – 5 Lax, 4 avokado
+                        </li>
+                    
+                        <li>
+                            <strong>11 bitar</strong>
+                             – 6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo
+                        </li>
+                    
+                        <li>
+                            <strong>13 bitar</strong>
+                             – 7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo
+                        </li>
+                    
+                        <li>
+                            <strong>15 bitar</strong>
+                             – 8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo
+                        </li>
+                    
+                        <li>
+                            <strong>11 bitar vegetarisk</strong>
+                             – 2avokado 1ägg 1sparris 1tofu 6rullar
+                        </li>
+                    
+                        <li>
+                            <strong>13 bitar vegetarisk</strong>
+                             – 3avokado 1sparris 1ägg 1tofu 7rullar
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Varmrätter</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Stekt kyckling med grönsaker</strong>
+                             – kyckling, grönsaker
+                        </li>
+                    
+                        <li>
+                            <strong>Bento</strong>
+                             – 3 maki, 2 nigri, 2 kycklingspett
+                        </li>
+                    
+                        <li>
+                            <strong>Yakitori</strong>
+                             – kycklingspett med teriyakisås
+                        </li>
+                    
+                        <li>
+                            <strong>Yakiniku</strong>
+                             – strimlad entrecote
+                        </li>
+                    
+                        <li>
+                            <strong>Nudelsoppa med Biff</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Wonton nudlar</strong>
+                            
+                        </li>
+                    
+                        <li>
+                            <strong>Dumplings 9 st</strong>
+                             – fläskkött eller vegetariansk
+                        </li>
+                    
+                        <li>
+                            <strong>Dumplings 12 st</strong>
+                             – fläskkött eller vegetariansk
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
+    <hr>
+    <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
+
+</body>
+</html>
