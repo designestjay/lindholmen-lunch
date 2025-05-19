@@ -49,7 +49,3 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Trigger GitHub Pages deployment
-      uses: actions/deploy-pages@v4
-      id: deployment
