@@ -4,6 +4,8 @@ import argparse
 import json
 import logging
 import os
+import time
+import traceback
 
 from scrapers.kooperativet import KooperativetScraper
 from scrapers.district_one import DistrictOneScraper
@@ -46,34 +48,47 @@ SCRAPERS = [
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 
 def scrape_for_day(day: str, refresh: bool = False):
-    filepath = f"data/lunch_data_{day}.json"
+    logging.info(f"Scraping lunch menus for {day.capitalize()}")
 
+    filepath = f"data/lunch_data_{day}.json"
     if os.path.exists(filepath) and not refresh:
         logging.info(f"Skipping scraping for {day} (cached file exists).")
         generate_lunch_summary(day)
         return
 
-    logging.info(f"Scraping lunch menus for {day.capitalize()}")
     results = {}
 
     for scraper_cls in SCRAPERS:
-        scraper = scraper_cls()
-        menu = scraper.get_menu_for_day(day)
-        if not menu:
-            logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
-            continue
+        max_retries = 2
+        for attempt in range(max_retries + 1):
+            try:
+                scraper = scraper_cls()
+                menu = scraper.get_menu_for_day(day)
 
-        results[scraper_cls.__name__] = {
-            "day": menu.day,
-            "items": [
-                {
-                    "name": item.name,
-                    "category": item.category or "",
-                    "description": item.description or "",
-                }
-                for item in menu.items
-            ]
-        }
+                if menu:
+                    results[scraper_cls.__name__] = {
+                        "day": menu.day,
+                        "items": [
+                            {
+                                "name": item.name,
+                                "category": item.category or "",
+                                "description": item.description or "",
+                            }
+                            for item in menu.items
+                        ]
+                    }
+                    break  # success
+                else:
+                    logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
+            except Exception as e:
+                logging.error(f"[{scraper_cls.__name__}] Error on attempt {attempt+1}/{max_retries} for {day}: {e}")
+                traceback.print_exc()
+
+            if attempt < max_retries:
+                time.sleep(2)
+            else:
+                logging.warning(f"[{scraper_cls.__name__}] Gave up after {max_retries + 1} attempts.")
+
 
     os.makedirs("data", exist_ok=True)
     with open(filepath, "w", encoding="utf-8") as f:
