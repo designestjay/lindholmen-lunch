@@ -143,17 +143,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "Torskrygg serveras med kokt potatis, bakad lök, friterad svartkål och vitvinssås med ansjovis",
+        "name": "Panerad rödspätta serveras med dillpotatispuré, smörstekta betor, kapris och brynt citronsmör",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Hjortfilé serveras med örtmos, grillad fänkål och rödvinssås",
+        "name": "Kalvpicahna serveras med rotselleripuré, salsa verde, grillad salladslök och dijonsenapsolja",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Rostad blomkål serveras med sötpotatispuré, beluga linser, rostad morot och örtolja",
+        "name": "Örtrisotto serveras med sparris, soltorkad tomat och rostade pumpafrön",
         "category": "VEG",
         "description": ""
       },
@@ -170,6 +170,31 @@
       {
         "name": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
         "category": "DOUBLE SMASHED CHEESEBURGER",
+        "description": ""
+      }
+    ]
+  },
+  "Uni3WorldOfFoodScraper": {
+    "day": "monday",
+    "items": [
+      {
+        "name": "Kokos- & halloumicurry, basmatiris, koriander, mynta, gurka & kryddyoghurt",
+        "category": "Earth",
+        "description": ""
+      },
+      {
+        "name": "Mexican pulled pork taco, pico de gallo, chipotlemayo, picklad chili, strimlad sallad & salsa macha (jordnöt)",
+        "category": "Metal",
+        "description": ""
+      },
+      {
+        "name": "Fisk à la Lidström, syrad morotskräm, pärlcouscous, dragon, körvel, morotssallad, vitvinssås & rostad mandel",
+        "category": "Water",
+        "description": ""
+      },
+      {
+        "name": "Sticky korean fried chicken, koreanskt ris, kimchi, gochujangmajonnäs, salladslök, koriander & sesam",
+        "category": "Fire",
         "description": ""
       }
     ]

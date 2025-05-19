@@ -1,50 +1,96 @@
 <style>
-h2:hover {
-    background: #006080;
-}
-h3 {
-    color: #004d66;
-    margin-top: 1em;
-}
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-li {
-    margin-bottom: 5px;
-}
-.restaurant {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-.menu-content {
-    display: none;
-    margin-top: 10px;
-}
-.button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.weekday-button {
-    display: block;
-    text-align: center;
-    background: #004d66;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-.weekday-button:hover {
-    background: #006080;
-}
+    h1 { 
+        color: #004d66;
+    }
+    h2 {
+        background: #004d66; color: white; padding: 10px; border-radius: 4px;
+        cursor: pointer; user-select: none;
+        text-align: center; margin-top: 20px;
+    }
+    h2:hover {
+        background: #006080;
+    }
+    h3 {
+        color: #004d66;
+        margin-top: 1em;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        padding: 20px;
+    }
+    .restaurant {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .restaurant-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-content {
+        display: none;
+        margin-top: 10px;
+    }
+    .button-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .weekday-button {
+        display: block;
+        text-align: center;
+        background: #004d66;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.2s ease;
+    }
+    .weekday-button:hover {
+        background: #006080;
+    }
+    .menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .menu-header h2 {
+        flex-grow: 1;
+        margin: 0;
+    }
+    .menu-links {
+        display: flex;
+        gap: 10px;
+        font-size: 1.2em;
+    }
+    .menu-links a {
+        color: #004d66;
+        text-decoration: none;
+    }
+    .menu-links a:hover {
+        text-decoration: underline;
+        color: #004d66;
+    }
+    .icon-links a {
+        margin-left: 10px;
+        font-size: 18px;
+        text-decoration: none;
+    }
 </style>
 
 <!DOCTYPE html>
@@ -52,24 +98,6 @@ li {
 <head>
     <meta charset="UTF-8">
     <title>Dagens lunch – {{ day.capitalize() }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
-        h1 { color: #004d66; }
-        h2 {
-            background: #004d66; color: white; padding: 10px; border-radius: 4px;
-            cursor: pointer; user-select: none;
-            text-align: center; margin-top: 20px;
-        }
-        h2:hover { background: #006080; }
-        h3 { color: #004d66; margin-top: 1em; }
-        ul { list-style-type: disc; padding-left: 20px; }
-        li { margin-bottom: 5px; }
-        .restaurant {
-            margin-bottom: 40px; padding: 20px; background: white;
-            border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        .menu-content { display: none; margin-top: 10px; }
-    </style>
     <script>
         function toggleVisibility(id) {
             const el = document.getElementById(id);
@@ -81,20 +109,12 @@ li {
         window.addEventListener("DOMContentLoaded", function () {
             const hash = window.location.hash;
             if (hash) {
-                const readableId = hash.slice(1);  // e.g. "Kooperativet"
+                const readableId = hash.slice(1);
                 const contentId = readableId + "_menu";
-
                 const menuContent = document.getElementById(contentId);
-                const targetSection = document.getElementById(readableId);
-
                 if (menuContent) {
-                    // Expand first
                     menuContent.style.display = "block";
-
-                    // Scroll after layout updates
-                    requestAnimationFrame(() => {
-                        targetSection?.scrollIntoView({ behavior: "smooth" });
-                    });
+                    document.getElementById(readableId)?.scrollIntoView({ behavior: "smooth" });
                 }
             }
         });
@@ -119,12 +139,24 @@ li {
         </div>
     </div>
     <hr>
-        {% for restaurant, data in lunch_data.items() | sort %}
-            {% set readable = restaurant.replace('Scraper', '') %}
-            {% set div_id = readable ~ '_menu' %}
-            <div class="restaurant" id="{{ readable }}">
+    {% for restaurant, data in lunch_data.items() | sort %}
+        {% set readable = restaurant.replace('Scraper', '') %}
+        {% set div_id = readable ~ '_menu' %}
+        <div class="restaurant" id="{{ readable }}">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('{{ div_id }}')">{{ readable }}</h2>
-                <div class="menu-content" id="{{ div_id }}">
+                <div class="menu-links">
+                    {% if readable in restaurant_links %}
+                        {% if restaurant_links[readable].url %}
+                            <a href="{{ restaurant_links[readable].url }}" target="_blank" title="Hemsida">🔗</a>
+                        {% endif %}
+                        {% if restaurant_links[readable].map %}
+                            <a href="{{ restaurant_links[readable].map }}" target="_blank" title="Google Maps">🗺️</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="menu-content" id="{{ div_id }}">
                 {% set categories = {} %}
                 {% for item in data["items"] %}
                     {% set category = item.category or 'Dagens' %}
@@ -150,6 +182,5 @@ li {
     {% endfor %}
     <hr>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
-
 </body>
 </html>

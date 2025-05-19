@@ -138,17 +138,17 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Torskrygg serveras med kokt potatis, bakad lök, friterad svartkål och vitvinssås med ansjovis",
+        "name": "Panerad rödspätta serveras med dillpotatispuré, smörstekta betor, kapris och brynt citronsmör",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Hjortfilé serveras med örtmos, grillad fänkål och rödvinssås",
+        "name": "Kalvpicahna serveras med rotselleripuré, salsa verde, grillad salladslök och dijonsenapsolja",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Rostad blomkål serveras med sötpotatispuré, beluga linser, rostad morot och örtolja",
+        "name": "Örtrisotto serveras med sparris, soltorkad tomat och rostade pumpafrön",
         "category": "VEG",
         "description": ""
       },
@@ -165,6 +165,31 @@
       {
         "name": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
         "category": "DOUBLE SMASHED CHEESEBURGER",
+        "description": ""
+      }
+    ]
+  },
+  "Uni3WorldOfFoodScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Matvete “risotto”, ramslök, spenat, getost, friterad rotselleri, solrosfrön, syrad silverlök & krasse",
+        "category": "Earth",
+        "description": ""
+      },
+      {
+        "name": "Piri piri chicken; grillad kycklingklubba, rostad potatis, piri pirisås, grillad citron, majonnäs & sallad",
+        "category": "Metal",
+        "description": ""
+      },
+      {
+        "name": "Fish taco, koriander- och limemajonnäs, mango & sotad majs-salsa, rödkål- och jalapenoslaw & koriander",
+        "category": "Water",
+        "description": ""
+      },
+      {
+        "name": "Bibimbap, koreanskt ris, gochujangglaserad fläsksida, pak choy, stekt ägg, sojamajonnäs, picklad daikon, morot & koriander",
+        "category": "Fire",
         "description": ""
       }
     ]

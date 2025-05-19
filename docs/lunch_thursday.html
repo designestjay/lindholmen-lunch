@@ -1,50 +1,96 @@
 <style>
-h2:hover {
-    background: #006080;
-}
-h3 {
-    color: #004d66;
-    margin-top: 1em;
-}
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-li {
-    margin-bottom: 5px;
-}
-.restaurant {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-.menu-content {
-    display: none;
-    margin-top: 10px;
-}
-.button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.weekday-button {
-    display: block;
-    text-align: center;
-    background: #004d66;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-.weekday-button:hover {
-    background: #006080;
-}
+    h1 { 
+        color: #004d66;
+    }
+    h2 {
+        background: #004d66; color: white; padding: 10px; border-radius: 4px;
+        cursor: pointer; user-select: none;
+        text-align: center; margin-top: 20px;
+    }
+    h2:hover {
+        background: #006080;
+    }
+    h3 {
+        color: #004d66;
+        margin-top: 1em;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        padding: 20px;
+    }
+    .restaurant {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .restaurant-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-content {
+        display: none;
+        margin-top: 10px;
+    }
+    .button-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .weekday-button {
+        display: block;
+        text-align: center;
+        background: #004d66;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.2s ease;
+    }
+    .weekday-button:hover {
+        background: #006080;
+    }
+    .menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .menu-header h2 {
+        flex-grow: 1;
+        margin: 0;
+    }
+    .menu-links {
+        display: flex;
+        gap: 10px;
+        font-size: 1.2em;
+    }
+    .menu-links a {
+        color: #004d66;
+        text-decoration: none;
+    }
+    .menu-links a:hover {
+        text-decoration: underline;
+        color: #004d66;
+    }
+    .icon-links a {
+        margin-left: 10px;
+        font-size: 18px;
+        text-decoration: none;
+    }
 </style>
 
 <!DOCTYPE html>
@@ -52,24 +98,6 @@ li {
 <head>
     <meta charset="UTF-8">
     <title>Dagens lunch – Thursday</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
-        h1 { color: #004d66; }
-        h2 {
-            background: #004d66; color: white; padding: 10px; border-radius: 4px;
-            cursor: pointer; user-select: none;
-            text-align: center; margin-top: 20px;
-        }
-        h2:hover { background: #006080; }
-        h3 { color: #004d66; margin-top: 1em; }
-        ul { list-style-type: disc; padding-left: 20px; }
-        li { margin-bottom: 5px; }
-        .restaurant {
-            margin-bottom: 40px; padding: 20px; background: white;
-            border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        .menu-content { display: none; margin-top: 10px; }
-    </style>
     <script>
         function toggleVisibility(id) {
             const el = document.getElementById(id);
@@ -81,20 +109,12 @@ li {
         window.addEventListener("DOMContentLoaded", function () {
             const hash = window.location.hash;
             if (hash) {
-                const readableId = hash.slice(1);  // e.g. "Kooperativet"
+                const readableId = hash.slice(1);
                 const contentId = readableId + "_menu";
-
                 const menuContent = document.getElementById(contentId);
-                const targetSection = document.getElementById(readableId);
-
                 if (menuContent) {
-                    // Expand first
                     menuContent.style.display = "block";
-
-                    // Scroll after layout updates
-                    requestAnimationFrame(() => {
-                        targetSection?.scrollIntoView({ behavior: "smooth" });
-                    });
+                    document.getElementById(readableId)?.scrollIntoView({ behavior: "smooth" });
                 }
             }
         });
@@ -104,7 +124,7 @@ li {
     <h1>Dagens lunch på Lindholmen – Thursday</h1>
 
     <div style="margin-top: 40px; font-size: 14px; color: #666;">
-        <p>Last updated: 2025-05-19 10:11</p>
+        <p>Last updated: 2025-05-19 23:17</p>
     </div>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
     <hr>
@@ -149,15 +169,30 @@ li {
                 
                 <a class="weekday-button" href="#Oishii">Oishii</a>
             
+                
+                <a class="weekday-button" href="#Uni3WorldOfFood">Uni3WorldOfFood</a>
+            
         </div>
     </div>
     <hr>
+    
         
-            
-            
-            <div class="restaurant" id="BennePastabar">
+        
+        <div class="restaurant" id="BennePastabar">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('BennePastabar_menu')">BennePastabar</h2>
-                <div class="menu-content" id="BennePastabar_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://bennepastabar.se/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Benne+Pastabar+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="BennePastabar_menu">
                 
                 
                     
@@ -267,11 +302,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="Bistrot">
+        
+        
+        <div class="restaurant" id="Bistrot">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('Bistrot_menu')">Bistrot</h2>
-                <div class="menu-content" id="Bistrot_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://bistrot.se/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Bistrot+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="Bistrot_menu">
                 
                 
                     
@@ -365,11 +412,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="BombayBistro">
+        
+        
+        <div class="restaurant" id="BombayBistro">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('BombayBistro_menu')">BombayBistro</h2>
-                <div class="menu-content" id="BombayBistro_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.bombaybistro.se/lunch/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Bombay+Bistro+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="BombayBistro_menu">
                 
                 
                     
@@ -445,11 +504,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="CuckoosNest">
+        
+        
+        <div class="restaurant" id="CuckoosNest">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('CuckoosNest_menu')">CuckoosNest</h2>
-                <div class="menu-content" id="CuckoosNest_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.cuckoosnest.se/menyer/lunch" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="CuckoosNest_menu">
                 
                 
                     
@@ -494,7 +565,7 @@ li {
                     <ul>
                     
                         <li>
-                            <strong>Torskrygg serveras med kokt potatis, bakad lök, friterad svartkål och vitvinssås med ansjovis</strong>
+                            <strong>Panerad rödspätta serveras med dillpotatispuré, smörstekta betor, kapris och brynt citronsmör</strong>
                             
                         </li>
                     
@@ -504,7 +575,7 @@ li {
                     <ul>
                     
                         <li>
-                            <strong>Hjortfilé serveras med örtmos, grillad fänkål och rödvinssås</strong>
+                            <strong>Kalvpicahna serveras med rotselleripuré, salsa verde, grillad salladslök och dijonsenapsolja</strong>
                             
                         </li>
                     
@@ -514,7 +585,7 @@ li {
                     <ul>
                     
                         <li>
-                            <strong>Rostad blomkål serveras med sötpotatispuré, beluga linser, rostad morot och örtolja</strong>
+                            <strong>Örtrisotto serveras med sparris, soltorkad tomat och rostade pumpafrön</strong>
                             
                         </li>
                     
@@ -553,11 +624,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="DistrictOne">
+        
+        
+        <div class="restaurant" id="DistrictOne">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('DistrictOne_menu')">DistrictOne</h2>
-                <div class="menu-content" id="DistrictOne_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.districtone.se/lunch.html" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=District+One+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="DistrictOne_menu">
                 
                 
                     
@@ -693,11 +776,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="EncounterAsian">
+        
+        
+        <div class="restaurant" id="EncounterAsian">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('EncounterAsian_menu')">EncounterAsian</h2>
-                <div class="menu-content" id="EncounterAsian_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://tamed.se/take-away-meny/encounter-sushi" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Encounter+Asian+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="EncounterAsian_menu">
                 
                 
                     
@@ -918,11 +1013,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="Kooperativet">
+        
+        
+        <div class="restaurant" id="Kooperativet">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('Kooperativet_menu')">Kooperativet</h2>
-                <div class="menu-content" id="Kooperativet_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.kooperativet.se/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Kooperativet+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="Kooperativet_menu">
                 
                 
                     
@@ -1076,11 +1183,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="LsKitchen">
+        
+        
+        <div class="restaurant" id="LsKitchen">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('LsKitchen_menu')">LsKitchen</h2>
-                <div class="menu-content" id="LsKitchen_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=LS+Kitchen+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="LsKitchen_menu">
                 
                 
                     
@@ -1140,11 +1259,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="MatMinnen">
+        
+        
+        <div class="restaurant" id="MatMinnen">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('MatMinnen_menu')">MatMinnen</h2>
-                <div class="menu-content" id="MatMinnen_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://matminnen.se/lunchmeny" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Mat+Minnen+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="MatMinnen_menu">
                 
                 
                     
@@ -1202,11 +1333,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="Mimolett">
+        
+        
+        <div class="restaurant" id="Mimolett">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('Mimolett_menu')">Mimolett</h2>
-                <div class="menu-content" id="Mimolett_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.mimolett.se/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Mimolett+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="Mimolett_menu">
                 
                 
                     
@@ -1388,11 +1531,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="MissF">
+        
+        
+        <div class="restaurant" id="MissF">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('MissF_menu')">MissF</h2>
-                <div class="menu-content" id="MissF_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.lindholmenfoodpark.se/aktorer/miss-f" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Miss+F+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="MissF_menu">
                 
                 
                     
@@ -1622,11 +1777,23 @@ li {
             </div>
         </div>
     
-            
-            
-            <div class="restaurant" id="Oishii">
+        
+        
+        <div class="restaurant" id="Oishii">
+            <div class="menu-header">
                 <h2 onclick="toggleVisibility('Oishii_menu')">Oishii</h2>
-                <div class="menu-content" id="Oishii_menu">
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://oishii.se/lunchmeny/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Oishii+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="Oishii_menu">
                 
                 
                     
@@ -1783,8 +1950,95 @@ li {
             </div>
         </div>
     
+        
+        
+        <div class="restaurant" id="Uni3WorldOfFood">
+            <div class="menu-header">
+                <h2 onclick="toggleVisibility('Uni3WorldOfFood_menu')">Uni3WorldOfFood</h2>
+                <div class="menu-links">
+                    
+                        
+                            <a href="https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/" target="_blank" title="Hemsida">🔗</a>
+                        
+                        
+                            <a href="https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen" target="_blank" title="Google Maps">🗺️</a>
+                        
+                    
+                </div>
+            </div>
+            <div class="menu-content" id="Uni3WorldOfFood_menu">
+                
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+                    
+                    
+                        
+                    
+                    
+                
+
+                
+                    <h3>Earth</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Matvete “risotto”, ramslök, spenat, getost, friterad rotselleri, solrosfrön, syrad silverlök & krasse</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Metal</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Piri piri chicken; grillad kycklingklubba, rostad potatis, piri pirisås, grillad citron, majonnäs & sallad</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Water</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Fish taco, koriander- och limemajonnäs, mango & sotad majs-salsa, rödkål- och jalapenoslaw & koriander</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+                    <h3>Fire</h3>
+                    <ul>
+                    
+                        <li>
+                            <strong>Bibimbap, koreanskt ris, gochujangglaserad fläsksida, pak choy, stekt ägg, sojamajonnäs, picklad daikon, morot & koriander</strong>
+                            
+                        </li>
+                    
+                    </ul>
+                
+            </div>
+        </div>
+    
     <hr>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
-
 </body>
 </html>

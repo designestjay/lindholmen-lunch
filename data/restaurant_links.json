@@ -1,0 +1,54 @@
+{
+    "Kooperativet": {
+        "url": "https://www.kooperativet.se/",
+        "map": "https://maps.google.com/?q=Kooperativet+Lindholmen"
+    },
+    "DistrictOne": {
+        "url": "https://www.districtone.se/lunch.html",
+        "map": "https://maps.google.com/?q=District+One+Lindholmen"
+    },
+    "BombayBistro": {
+        "url": "https://www.bombaybistro.se/lunch/",
+        "map": "https://maps.google.com/?q=Bombay+Bistro+Lindholmen"
+    },
+    "CuckoosNest": {
+        "url": "https://www.cuckoosnest.se/menyer/lunch",
+        "map": "https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen"
+    },
+    "MissF": {
+        "url": "https://www.lindholmenfoodpark.se/aktorer/miss-f",
+        "map": "https://maps.google.com/?q=Miss+F+Lindholmen"
+    },
+    "BennePastabar": {
+        "url": "https://bennepastabar.se/",
+        "map": "https://maps.google.com/?q=Benne+Pastabar+Lindholmen"
+    },
+    "LsKitchen": {
+        "url": "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen",
+        "map": "https://maps.google.com/?q=LS+Kitchen+Lindholmen"
+    },
+    "Bistrot": {
+        "url": "https://bistrot.se/",
+        "map": "https://maps.google.com/?q=Bistrot+Lindholmen"
+    },
+    "Mimolett": {
+        "url": "https://www.mimolett.se/",
+        "map": "https://maps.google.com/?q=Mimolett+Lindholmen"
+    },
+    "Oishii": {
+        "url": "https://oishii.se/lunchmeny/",
+        "map": "https://maps.google.com/?q=Oishii+Lindholmen"
+    },
+    "MatMinnen": {
+        "url": "https://matminnen.se/lunchmeny",
+        "map": "https://maps.google.com/?q=Mat+Minnen+Lindholmen"
+    },
+    "EncounterAsian": {
+        "url": "https://tamed.se/take-away-meny/encounter-sushi",
+        "map": "https://maps.google.com/?q=Encounter+Asian+Lindholmen"
+    },
+    "Uni3WorldOfFood": {
+        "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
+        "map": "https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen"
+    }
+}

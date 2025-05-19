@@ -6,6 +6,14 @@ from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
 from pathlib import Path
 
+def load_restaurant_links() -> dict:
+    try:
+        with open("data/restaurant_links.json", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("[WARN] restaurant_links.json missing or malformed, skipping links.")
+        return {}
+
 def generate_lunch_summary(day: str):
     data_path = f"data/lunch_data_{day}.json"
     if not os.path.exists(data_path):
@@ -15,12 +23,15 @@ def generate_lunch_summary(day: str):
     with open(data_path, encoding="utf-8") as f:
         lunch_data = json.load(f)
 
+    restaurant_links = load_restaurant_links()
+
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("summary_template.html")
 
     output_html = template.render(
         day=day.capitalize(),
         lunch_data=lunch_data,
+        restaurant_links=restaurant_links,
         last_updated=datetime.now().strftime("%Y-%m-%d %H:%M")
     )
 
@@ -36,7 +47,6 @@ def generate_index_page():
     output_dir = Path("docs")
     output_dir.mkdir(exist_ok=True)
 
-    # Map lowercase filenames to proper weekday labels
     weekday_order = ["monday", "tuesday", "wednesday", "thursday", "friday"]
     weekday_labels = {
         "monday": "Måndag",
@@ -46,13 +56,9 @@ def generate_index_page():
         "friday": "Fredag"
     }
 
-    # Collect available files and sort by weekday order
     lunch_files = {f.stem.replace("lunch_", ""): f for f in output_dir.glob("lunch_*.html")}
-    ordered_links = [
-        (day, lunch_files[day]) for day in weekday_order if day in lunch_files
-    ]
+    ordered_links = [(day, lunch_files[day]) for day in weekday_order if day in lunch_files]
 
-    # Build HTML
     html = """<html><head><meta charset='utf-8'>
     <style>
     body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }

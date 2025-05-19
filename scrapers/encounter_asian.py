@@ -36,7 +36,7 @@ class EncounterAsianScraper(LunchScraper):
                 )
 
                 html = driver.page_source
-                logger.info("Fetched rendered HTML (first 500 chars):\n%s", html[:500])
+                logger.debug("Fetched rendered HTML (first 500 chars):\n%s", html[:500])
                 self.soup = BeautifulSoup(html, "html.parser")
 
         except WebDriverException as e:

@@ -11,7 +11,7 @@ from scrapers.kooperativet import KooperativetScraper
 from scrapers.district_one import DistrictOneScraper
 from scrapers.bombay_bistro import BombayBistroScraper
 from scrapers.cuckoos_nest import CuckoosNestScraper
-#from scrapers.uni3_world_of_food import Uni3WorldOfFoodScraper
+from scrapers.uni3_world_of_food import Uni3WorldOfFoodScraper
 from scrapers.miss_f import MissFScraper
 from scrapers.benne_pastabar import BennePastabarScraper
 from scrapers.ls_kitchen import LsKitchenScraper
@@ -34,7 +34,7 @@ SCRAPERS = [
     DistrictOneScraper,
     BombayBistroScraper,
     CuckoosNestScraper,
-    #Uni3WorldOfFoodScraper,
+    Uni3WorldOfFoodScraper,
     MissFScraper,
     BennePastabarScraper,
     LsKitchenScraper,
