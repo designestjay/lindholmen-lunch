@@ -31,9 +31,7 @@ Thumbs.db
 # Local config
 *.local
 
-# Generated files
-data/*.json
-data/*.html
+# Generated files during testing
 output/
 
 # Sample web pages

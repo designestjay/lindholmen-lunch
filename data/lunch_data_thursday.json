@@ -1,0 +1,697 @@
+{
+  "KooperativetScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
+        "description": ""
+      },
+      {
+        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
+        "description": ""
+      },
+      {
+        "name": "”Nordic Bi Bim Bap” med kallrökt lax på toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
+        "category": "VECKANS SPECIAL",
+        "description": ""
+      },
+      {
+        "name": "”Nordic Bi Bim Bap” med falafel på gråärta toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
+        "category": "VECKANS SPECIAL",
+        "description": ""
+      },
+      {
+        "name": "Kolgrillad Fläskfilé med rostade vårprimörer, potatispuré samt persiljeveloute och grillad citron",
+        "category": "KÖTT",
+        "description": ""
+      },
+      {
+        "name": "Grillad lax serveras med dillkokt färskpotatis, räkhollandaise , citron och ärtskott",
+        "category": "FISK",
+        "description": ""
+      },
+      {
+        "name": "Asian dirty rice – Pankofriterade räkor med stekt ris med grönsaker smaksatt med soja & brynt smör toppat med kimchimajonnäs, rostad lök, koriander",
+        "category": "THAI",
+        "description": ""
+      },
+      {
+        "name": "Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+        "category": "VEGETARISK",
+        "description": ""
+      },
+      {
+        "name": "Kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
+        "category": "INDISK",
+        "description": ""
+      },
+      {
+        "name": "(Burgaren går att få med haloumi)BLT Burger – Högrevburgare toppad med cheddarost i briochebröd med baconmajonnäs, krispigsallad, rostad tomatkompott & friterade lökringar samt parmesanrostade klyftpotatisar",
+        "category": "VÄRLDEN",
+        "description": ""
+      }
+    ]
+  },
+  "DistrictOneScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).",
+        "category": "Ramen",
+        "description": ""
+      },
+      {
+        "name": "Pocherad koljafile med brynt smör och äpple, serveras med potatismos samt nyriven pepparrot.",
+        "category": "Fisk",
+        "description": ""
+      },
+      {
+        "name": "Pannbiff med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
+        "category": "Kött",
+        "description": ""
+      },
+      {
+        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
+        "category": "Sallad",
+        "description": ""
+      },
+      {
+        "name": "Kyckling med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
+        "category": "Asiatisk",
+        "description": ""
+      },
+      {
+        "name": "Tofu med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
+        "category": "Vegetarisk",
+        "description": ""
+      },
+      {
+        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+        "category": "Vegetarisk Poke bowl",
+        "description": ""
+      },
+      {
+        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
+        "category": "Pho",
+        "description": ""
+      }
+    ]
+  },
+  "BombayBistroScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "CHILI CHICKEN - Kycklingfilé tillagad med chili, masala, rödlök, paprika, vinäger, ingefära och vitlök.",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "BEEF MALAI KORMA - Oxköttgryta tillagad en gräddsås med tomat, kardemumma, rosvatten och smör.",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "TIKKA MASALA 134KR - Grillad kycklingfilé med rostad paprika och tomater i en krämig sås.",
+        "category": "ANDRA ALTERNATIV",
+        "description": ""
+      },
+      {
+        "name": "TANDOORI CHICKEN 132KR - Grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. Serveras med tandoori sås.",
+        "category": "ANDRA ALTERNATIV",
+        "description": ""
+      },
+      {
+        "name": "JINGHA HARA",
+        "category": "ANDRA ALTERNATIV",
+        "description": ""
+      },
+      {
+        "name": "145KR - Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
+        "category": "ANDRA ALTERNATIV",
+        "description": ""
+      }
+    ]
+  },
+  "CuckoosNestScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Torskrygg serveras med kokt potatis, bakad lök, friterad svartkål och vitvinssås med ansjovis",
+        "category": "FISK",
+        "description": ""
+      },
+      {
+        "name": "Hjortfilé serveras med örtmos, grillad fänkål och rödvinssås",
+        "category": "KÖTT",
+        "description": ""
+      },
+      {
+        "name": "Rostad blomkål serveras med sötpotatispuré, beluga linser, rostad morot och örtolja",
+        "category": "VEG",
+        "description": ""
+      },
+      {
+        "name": "grillad majskycklingfilé, prosciutto, pecorino, romansallad, caesardressing & krutonger",
+        "category": "CEASARSALLAD",
+        "description": ""
+      },
+      {
+        "name": "räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron & dill",
+        "category": "RÄKMACKA",
+        "description": ""
+      },
+      {
+        "name": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
+        "category": "DOUBLE SMASHED CHEESEBURGER",
+        "description": ""
+      }
+    ]
+  },
+  "MissFScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Lufttorkad skinka/mozzarella/pesto",
+        "category": "Grillad ciabatta",
+        "description": ""
+      },
+      {
+        "name": "Kyckling/bacon/dijoncreme – Serveras med pommes & sallad & dressing",
+        "category": "Grillad ciabatta",
+        "description": ""
+      },
+      {
+        "name": "Mindre ciabbata av ovan",
+        "category": "Grillad ciabatta",
+        "description": ""
+      },
+      {
+        "name": "kyckling/ mozzarella/ ruccola / mangoraja – Serveras med pommes & sallad & dressing",
+        "category": "Grillad tortilla",
+        "description": ""
+      },
+      {
+        "name": "Lax/Spenat",
+        "category": "Pajer & Lasagne",
+        "description": ""
+      },
+      {
+        "name": "Fetaost/Spenat",
+        "category": "Pajer & Lasagne",
+        "description": ""
+      },
+      {
+        "name": "Lasagne – Serveras med sallad & dressing",
+        "category": "Pajer & Lasagne",
+        "description": ""
+      },
+      {
+        "name": "Kyckling",
+        "category": "Caesarsallad",
+        "description": ""
+      },
+      {
+        "name": "Räkor",
+        "category": "Caesarsallad",
+        "description": ""
+      },
+      {
+        "name": "Kyckling",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Räkor",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Grekisk",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Lufttorkad skinka/mozzarella/pesto",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Chévre/rödbetor/honung/valnötter/granatäpple",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Tillval – Bulgur/marinerad pasta",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Pokebowl – sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, räkor, lax, srirachamayo",
+        "category": "Sallader",
+        "description": ""
+      },
+      {
+        "name": "Bibimbap – ris med skivade entrecote/kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing",
+        "category": "Asiatisk",
+        "description": ""
+      },
+      {
+        "name": "Panang Curry",
+        "category": "Asiatisk",
+        "description": ""
+      },
+      {
+        "name": "Sushi Tempura 10 bit – Friterad räkor/avokado/gurka/krispsallad/rostad lök",
+        "category": "Asiatisk",
+        "description": ""
+      },
+      {
+        "name": "Sushi Speciell California 10bit – Friterad krabbröra, avokado, gurka, krispsallad",
+        "category": "Asiatisk",
+        "description": ""
+      }
+    ]
+  },
+  "BennePastabarScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "SLOW TOMATO - Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "Double Cheese - Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "SMOKED PIG - Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "GREEN RAGU - Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "Silky Bird - Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "THE SHROOMS - Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.",
+        "category": "Benne Pasta",
+        "description": ""
+      },
+      {
+        "name": "Swedish Pesto - En härligt grön och crunchy pesto gjord på Västerbottenost, vitlök, grönkål och solrosfrön. Toppad med buffelmozzarella, lagrad hårdost, olivolja, svartpeppar och basilika.",
+        "category": "The Visitor",
+        "description": ""
+      },
+      {
+        "name": "Garlic Bread - Två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak.",
+        "category": "Benne Bites",
+        "description": ""
+      },
+      {
+        "name": "Tiramisu - Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
+        "category": "Benne Bites",
+        "description": ""
+      }
+    ]
+  },
+  "LsKitchenScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Chili och ingefärsglacerad fläsksida (SE), basmati ris, kål sallad och misokräm",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Fiskgryta, saffran & musslor velouté, fänkål, selleri, kokt färskpotatis",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Tortellini, krämig svampsås, rostad portabello &  vitkål",
+        "category": "",
+        "description": ""
+      }
+    ]
+  },
+  "BistrotScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Veckans: Kyckling pasta",
+        "category": "Veckans",
+        "description": "Ost sås – Paprika – Zucchini – Tagliatelle – Granapadano – ruccola"
+      },
+      {
+        "name": "Vegetarisk Måndag–Tis: Tortellini",
+        "category": "Veckans",
+        "description": "Spenat – Ricotta – Tomatsås – Ruccola – Granapadano"
+      },
+      {
+        "name": "Vegetarisk Ons- Tors: Korean fried Blomkål",
+        "category": "Veckans",
+        "description": "Srirachamajonnäs – Rödkålssallad – Jasminris – Koriander"
+      },
+      {
+        "name": "Vegetarisk Tors-Fre: Pannoumiburgare",
+        "category": "Veckans",
+        "description": ""
+      },
+      {
+        "name": "Caesarsallad",
+        "category": "Veckans",
+        "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
+      },
+      {
+        "name": "Korean fried Chicken",
+        "category": "Lunch",
+        "description": "Srirachamajonnäs – Kålsallad – Jasminris – Koriander"
+      },
+      {
+        "name": "Pocherad fångst",
+        "category": "Lunch",
+        "description": "Sandefjordsås – Blomkål – Bacon – Färsk potatis – Ärtskott"
+      },
+      {
+        "name": "Dessert",
+        "category": "Lunch",
+        "description": ""
+      }
+    ]
+  },
+  "MimolettScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Grillad Entrecóte (200g)",
+        "category": "Kött & Fisk",
+        "description": "Grillad Entrecóte med friterad klyftpotatis och veckans sås."
+      },
+      {
+        "name": "Black Angus Burger (200g)",
+        "category": "Kött & Fisk",
+        "description": "Högrevsburgare med senap majonnäs sås, sallad, rostad lök, pepparjack ost, grillad bacon, BBQ-sås"
+      },
+      {
+        "name": "Husets Fiskgratäng (Tisdagar & Torsdagar)",
+        "category": "Kött & Fisk",
+        "description": "Flundrafilé, potatismos, mozzarellaost, tomat, dillsås och citron."
+      },
+      {
+        "name": "Bacon Risotto",
+        "category": "Risotto",
+        "description": "Bacon, grillade grönsaker, granapadano, smör , ruccola"
+      },
+      {
+        "name": "Scampi Risotto",
+        "category": "Risotto",
+        "description": "Tigerräkor, röd chilli, vitlök, granapadano, smör , ruccola"
+      },
+      {
+        "name": "Penne Aglio",
+        "category": "Pastarätter",
+        "description": "Oxfilé, champinjoner, crème fraiche vitlök, grädde toppas med grana padano."
+      },
+      {
+        "name": "Penne Afrikana",
+        "category": "Pastarätter",
+        "description": "Kyckling, paprika, ananas, jordnötter, grädde, curry toppas med grana padano."
+      },
+      {
+        "name": "Penne Patrone",
+        "category": "Pastarätter",
+        "description": "Oxfilé, soltorkad tomat, vitlök, tomatsås, grädde toppas med grana padano."
+      },
+      {
+        "name": "Tagliatelle Salmone",
+        "category": "Pastarätter",
+        "description": "Laxfilé, purjolök, crème fraiche, vitlök, grädde toppas med grana padano."
+      },
+      {
+        "name": "Spagetti Modo Nostro",
+        "category": "Pastarätter",
+        "description": "Köttfärssås, gorgonzola, champinjoner, grädde, piri piri toppas med grana padano."
+      },
+      {
+        "name": "Tagliatelle con Scampi",
+        "category": "Pastarätter",
+        "description": "Tigerräkor, tomatsås, vitlök, basilika toppas med grana padano."
+      },
+      {
+        "name": "Penne Romana",
+        "category": "Pastarätter",
+        "description": "Kyckling, champinjoner, vitlök, grädde toppas med grana padano."
+      },
+      {
+        "name": "Penne Diavolo (Stark)",
+        "category": "Pastarätter",
+        "description": "Köttfärssås, grädde, piri-piri toppas med grana padano."
+      },
+      {
+        "name": "Spagetti Carbonara",
+        "category": "Pastarätter",
+        "description": "Rostad bacon, persilja, vitlök, grädde toppas med grana padano."
+      },
+      {
+        "name": "Penne Vegetale",
+        "category": "Pastarätter",
+        "description": "Grönsaksmix, champinjoner, tomatsås, vitlök toppas med grana padano."
+      },
+      {
+        "name": "Penne Pesto",
+        "category": "Pastarätter",
+        "description": "Soltorkad tomat. pesto, vitlök, grädde, mozzarella toppas med grana padano."
+      },
+      {
+        "name": "Lasagne Al Forno",
+        "category": "Pastarätter",
+        "description": "Hemlagat lasagne med bechamelsås."
+      }
+    ]
+  },
+  "OishiiScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "9 bitar",
+        "category": "Sushi",
+        "description": "5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo"
+      },
+      {
+        "name": "9 bitar nigri",
+        "category": "Sushi",
+        "description": "5 Lax, 4 avokado"
+      },
+      {
+        "name": "11 bitar",
+        "category": "Sushi",
+        "description": "6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo"
+      },
+      {
+        "name": "13 bitar",
+        "category": "Sushi",
+        "description": "7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo"
+      },
+      {
+        "name": "15 bitar",
+        "category": "Sushi",
+        "description": "8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo"
+      },
+      {
+        "name": "11 bitar vegetarisk",
+        "category": "Sushi",
+        "description": "2avokado 1ägg 1sparris 1tofu 6rullar"
+      },
+      {
+        "name": "13 bitar vegetarisk",
+        "category": "Sushi",
+        "description": "3avokado 1sparris 1ägg 1tofu 7rullar"
+      },
+      {
+        "name": "Stekt kyckling med grönsaker",
+        "category": "Varmrätter",
+        "description": "kyckling, grönsaker"
+      },
+      {
+        "name": "Bento",
+        "category": "Varmrätter",
+        "description": "3 maki, 2 nigri, 2 kycklingspett"
+      },
+      {
+        "name": "Yakitori",
+        "category": "Varmrätter",
+        "description": "kycklingspett med teriyakisås"
+      },
+      {
+        "name": "Yakiniku",
+        "category": "Varmrätter",
+        "description": "strimlad entrecote"
+      },
+      {
+        "name": "Nudelsoppa med Biff",
+        "category": "Varmrätter",
+        "description": ""
+      },
+      {
+        "name": "Wonton nudlar",
+        "category": "Varmrätter",
+        "description": ""
+      },
+      {
+        "name": "Dumplings 9 st",
+        "category": "Varmrätter",
+        "description": "fläskkött eller vegetariansk"
+      },
+      {
+        "name": "Dumplings 12 st",
+        "category": "Varmrätter",
+        "description": "fläskkött eller vegetariansk"
+      }
+    ]
+  },
+  "MatMinnenScraper": {
+    "day": "torsdag",
+    "items": [
+      {
+        "name": "Växtbaserad",
+        "category": "",
+        "description": "krämig sparrissoppa, marinerad tofu, krutonger"
+      },
+      {
+        "name": "Ångad kolja",
+        "category": "",
+        "description": "beurre noisette, gröna ärtor, potatismos"
+      },
+      {
+        "name": "Pannbiff",
+        "category": "",
+        "description": "pepparsås, gelé, persilja, rostad potatis"
+      },
+      {
+        "name": "Gravlaxsallad",
+        "category": "Veckans sallad",
+        "description": "senapssås, sparris, ägg, tomat, krutonger"
+      }
+    ]
+  },
+  "EncounterAsianScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "vanlig 10 bitar",
+        "category": "SUSHI",
+        "description": "3 lax, 1 räka, 1 crabfish, 1 omelett & 4 maki"
+      },
+      {
+        "name": "vegetarisk 10 bitar",
+        "category": "SUSHI",
+        "description": "2 avocado, 2 tofu, 2 omelett & 4 maki"
+      },
+      {
+        "name": "Mammasushi 10 bitar",
+        "category": "SUSHI",
+        "description": "2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki"
+      },
+      {
+        "name": "Mix 12 bitar",
+        "category": "SUSHI",
+        "description": "4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado"
+      },
+      {
+        "name": "Mix 15 bitar",
+        "category": "SUSHI",
+        "description": "5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado"
+      },
+      {
+        "name": "Nigiri mix 10 bitar",
+        "category": "SUSHI",
+        "description": ""
+      },
+      {
+        "name": "Yakitori",
+        "category": "VARMRÄTT",
+        "description": "5 kycklingspett med ris, teriyakisås och sallad"
+      },
+      {
+        "name": "Yakiniku",
+        "category": "VARMRÄTT",
+        "description": "Skivad entrecote, grönsaker, ris, yakinikusås & sallad"
+      },
+      {
+        "name": "Wokade äggnudlar",
+        "category": "VARMRÄTT",
+        "description": "Äggnudlar med kycklingfilé & grönsaker"
+      },
+      {
+        "name": "Dumpling (kött)",
+        "category": "VARMRÄTT",
+        "description": "8 bitar dumplings, sallad & ris"
+      },
+      {
+        "name": "Dumpling (Veg)",
+        "category": "VARMRÄTT",
+        "description": "8 bitar dumplings, sallad & ris"
+      },
+      {
+        "name": "Bibibamp (biff)",
+        "category": "KOREANSK",
+        "description": ""
+      },
+      {
+        "name": "Bibibamp (Kyckling)",
+        "category": "KOREANSK",
+        "description": ""
+      },
+      {
+        "name": "Bibibamp (Veg)",
+        "category": "KOREANSK",
+        "description": ""
+      },
+      {
+        "name": "(Biff)",
+        "category": "NUDELSOPPA",
+        "description": ""
+      },
+      {
+        "name": "(Kyckling)",
+        "category": "NUDELSOPPA",
+        "description": ""
+      },
+      {
+        "name": "(Veg)",
+        "category": "NUDELSOPPA",
+        "description": ""
+      },
+      {
+        "name": "BENTOLÅDA",
+        "category": "BENTOLÅDA",
+        "description": "Yakiniku, yakitori, sushi, sallad & ris"
+      },
+      {
+        "name": "LÄSK",
+        "category": "LÄSK",
+        "description": ""
+      }
+    ]
+  }
+}
