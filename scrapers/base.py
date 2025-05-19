@@ -42,7 +42,8 @@ class LunchScraper(ABC):
         """Return the menu for the given day (e.g., 'monday')."""
         pass
 
-    @abstractmethod
+    # Optional override – not abstract
     def get_all_menus(self) -> Dict[str, DailyMenu]:
-        """Return a dictionary of all parsed menus by day."""
-        pass
+        """Return a dictionary of all parsed menus by day (default: empty)."""
+        return {}
+

@@ -108,12 +108,12 @@
     "day": "friday",
     "items": [
       {
-        "name": "GARLIC CHICKEN - Kycklingfilé marinerad i vitlök, grönchili, spiskummin serveras med tandoori sås.",
+        "name": "CHICKEN TIKKA - Grillad kycklingfilé marinerad i lime, yoghurt och tandoori masala, serveras med tandoori sås.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BAINGAN GHOST - Lammkött tillagad med aubergine, lök, garam masala och grön chili. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
+        "name": "HYDRABADI GHOST - Lammköttgryta med senap, lök, tomat, vitlök, sesamfrön, mynta, grön chili och kokos. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
         "category": "",
         "description": ""
       },
@@ -333,17 +333,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Biff Stroganoff (SE) , dijonsenap, hackad saltgurka, syrad lök & ris",
+        "name": "Fläskschnitzel (DE) , rödkålssallad, rostad färskpotatis & tartarsås",
         "category": "",
         "description": ""
       },
       {
-        "name": "pocherad fisk, vitvin och dragonsås, grön primör, dill och färskpotatis",
+        "name": "Laxbiff, potatismos, gröna ärtor, musselvelouté & dill",
         "category": "",
         "description": ""
       },
       {
-        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
         "category": "",
         "description": ""
       },
@@ -353,7 +353,7 @@
         "description": ""
       },
       {
-        "name": "Gnocchi, paprika och tomatsås, friterade sojabollar & örtkräm.",
+        "name": "Taco på sojafärs, lök, paprika, avokadokräm, salsa, tortilla & ris",
         "category": "",
         "description": ""
       }
@@ -570,27 +570,27 @@
     ]
   },
   "MatMinnenScraper": {
-    "day": "fredag",
+    "day": "friday",
     "items": [
       {
         "name": "Växtbaserad",
         "category": "",
-        "description": "krämig sparrissoppa, marinerad tofu, krutonger"
+        "description": "sötpotatissoppa, rostad blomkål, couscous"
       },
       {
-        "name": "Gräddig pasta",
+        "name": "Fiskgryta",
         "category": "",
-        "description": "lax, räkor, champinjoner, dill, purjolök"
+        "description": "rimmad fisk, räkor, grönsaker, potatis"
       },
       {
-        "name": "Helstekt fläskfilé",
+        "name": "Kalvfärsbiff",
         "category": "",
-        "description": "rödvinssky, dragondipp, råstekt potatis"
+        "description": "lökmarmelad, vitlöksdipp, stekt potatis"
       },
       {
-        "name": "Gravlaxsallad",
+        "name": "Fetaostsallad",
         "category": "Veckans sallad",
-        "description": "senapssås, sparris, ägg, tomat, krutonger"
+        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
     ]
   },

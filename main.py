@@ -11,7 +11,7 @@ from scrapers.kooperativet import KooperativetScraper
 from scrapers.district_one import DistrictOneScraper
 from scrapers.bombay_bistro import BombayBistroScraper
 from scrapers.cuckoos_nest import CuckoosNestScraper
-from scrapers.uni3_world_of_food import Uni3WorldOfFoodScraper
+#from scrapers.uni3_world_of_food import Uni3WorldOfFoodScraper
 from scrapers.miss_f import MissFScraper
 from scrapers.benne_pastabar import BennePastabarScraper
 from scrapers.ls_kitchen import LsKitchenScraper
@@ -34,7 +34,7 @@ SCRAPERS = [
     DistrictOneScraper,
     BombayBistroScraper,
     CuckoosNestScraper,
-    Uni3WorldOfFoodScraper,
+    #Uni3WorldOfFoodScraper,
     MissFScraper,
     BennePastabarScraper,
     LsKitchenScraper,
@@ -59,13 +59,34 @@ def scrape_for_day(day: str, refresh: bool = False):
     results = {}
 
     for scraper_cls in SCRAPERS:
+        attempts = 0
         max_retries = 2
-        for attempt in range(max_retries + 1):
+        while attempts <= max_retries:
             try:
                 scraper = scraper_cls()
-                menu = scraper.get_menu_for_day(day)
 
-                if menu:
+                # If the scraper supports get_all_menus(), use that instead
+                all_menus = scraper.get_all_menus()
+                if all_menus:
+                    menu = all_menus.get(day.lower())
+                    if not menu:
+                        logging.warning(f"No menu found in get_all_menus() for {scraper_cls.__name__} on {day}")
+                        break
+                    results[scraper_cls.__name__] = {
+                        "day": menu.day,
+                        "items": [
+                            {"name": item.name, "category": item.category or "", "description": item.description or ""}
+                            for item in menu.items
+                        ]
+                    }
+                    break
+
+                else:
+                    # Fallback to per-day
+                    menu = scraper.get_menu_for_day(day)
+                    if not menu:
+                        logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
+                        break  # no point retrying if no data for this day
                     results[scraper_cls.__name__] = {
                         "day": menu.day,
                         "items": [
@@ -77,24 +98,29 @@ def scrape_for_day(day: str, refresh: bool = False):
                             for item in menu.items
                         ]
                     }
-                    break  # success
-                else:
-                    logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
+                    break
             except Exception as e:
-                logging.error(f"[{scraper_cls.__name__}] Error on attempt {attempt+1}/{max_retries} for {day}: {e}")
+                attempts += 1
+                logging.error(f"[{scraper_cls.__name__}] Error on attempt {attempts} for {day}: {e}")
                 traceback.print_exc()
+                if attempts > max_retries:
+                    logging.warning(f"[{scraper_cls.__name__}] Gave up after {max_retries} retries.")
+                else:
+                    delay = 2 + attempts  # increase delay slightly each retry
+                    logging.info(f"[{scraper_cls.__name__}] Retrying in {delay} seconds...")
+                    time.sleep(delay)
 
-            if attempt < max_retries:
-                time.sleep(2)
-            else:
-                logging.warning(f"[{scraper_cls.__name__}] Gave up after {max_retries + 1} attempts.")
 
 
-    os.makedirs("data", exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
 
-    logging.info(f"Wrote lunch data to {filepath}")
+    if results:
+        os.makedirs("data", exist_ok=True)
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        logging.info(f"Wrote lunch data to {filepath}")
+    else:
+        logging.warning(f"No results to write for {day}. Skipping JSON and HTML.")
+        return
     generate_lunch_summary(day)
 
 def main():

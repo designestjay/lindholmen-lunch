@@ -90,7 +90,7 @@ def generate_index_page():
         html += f"""
         <a class="weekday-button" href="{file.name}">
             <span>{label}</span>
-            <span class="timestamp">{ts}</span>
+            <span class="timestamp">Last updated: {ts}</span>
         </a>
         """
 

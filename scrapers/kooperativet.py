@@ -9,7 +9,14 @@ class KooperativetScraper(LunchScraper):
     URL = "https://www.kooperativet.se/"
 
     def __init__(self):
-        response = requests.get(self.URL)
+        headers = {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            )
+        }
+        response = requests.get(self.URL, headers=headers)
         response.raise_for_status()
         self.soup = BeautifulSoup(response.text, "html.parser")
         self._menus: Dict[str, DailyMenu] = {}

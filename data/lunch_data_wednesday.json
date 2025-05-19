@@ -108,12 +108,12 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "BUTTER CHICKEN - Mild kycklinggryta med nötter, smör i en krämig sås.",
+        "name": "CHICKEN KADHAI - Nordindisk Kycklinggryta med rödlök, paprika, fänkål, citron, svartpeppar och koriander.",
         "category": "",
         "description": ""
       },
       {
-        "name": "ACHARI GHOST - Lamm tillagad i fänkål, grön, chili, vitlök, senapsfrön och curryblad.",
+        "name": "BENGALI KOFTA CURRY - Lammfärsbullar tillagad med mango, senapsfrön, curryblad, chilli och kokos.",
         "category": "",
         "description": ""
       },
@@ -333,17 +333,17 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "köttfärslimpa, äpple, rostad palsternacka, kokt potatis, gräddsås och gelé",
+        "name": "Helstekt fläskkarré (SE) , rostade rotfrukter, potatis, tzatziki & baby spenat",
         "category": "",
         "description": ""
       },
       {
-        "name": "Pankobakad fisk,currymajo, picklad blomkål, dill och färsk kokt potatis,",
+        "name": "Panko- & dillbakad fisk, dansk remoulad, gröna ärtor & kokt färskpotatis",
         "category": "",
         "description": ""
       },
       {
-        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
         "category": "",
         "description": ""
       },
@@ -353,7 +353,7 @@
         "description": ""
       },
       {
-        "name": "Bönstroganoff,  ris, saltgurka, persilja och rostad frön",
+        "name": "Tofu, grönsaker, röd curry, kokos, lime, basmati rice & coriander",
         "category": "",
         "description": ""
       }
@@ -570,27 +570,27 @@
     ]
   },
   "MatMinnenScraper": {
-    "day": "onsdag",
+    "day": "wednesday",
     "items": [
       {
-        "name": "Pasta pesto",
+        "name": "Panerad aubergin",
         "category": "",
-        "description": "ratatouille, grana padano, ruccolasallad"
+        "description": "tartarsås,fransk potatissallad"
       },
       {
-        "name": "Dubbelpanerad spättafilé",
+        "name": "Brödbakad koljafilé",
         "category": "",
-        "description": "tartarsås, citron, kokt potatis"
+        "description": "nobisdipp, dill, pepparrotsgurka, kokt nypotatis"
       },
       {
-        "name": "Kycklingcurry",
+        "name": "Stekt kycklingbröst",
         "category": "",
-        "description": "mangosalsa, jordnötter, persilja, ris"
+        "description": "salviasky, basilikakräm, oliver, rostad potatis"
       },
       {
-        "name": "Gravlaxsallad",
+        "name": "Fetaostsallad",
         "category": "Veckans sallad",
-        "description": "senapssås, sparris, ägg, tomat, krutonger"
+        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
     ]
   },

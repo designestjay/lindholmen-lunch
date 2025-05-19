@@ -103,12 +103,12 @@
     "day": "thursday",
     "items": [
       {
-        "name": "CHILI CHICKEN - Kycklingfilé tillagad med chili, masala, rödlök, paprika, vinäger, ingefära och vitlök.",
+        "name": "BUTTER CHICKEN - Kycklinggryta i en aromatisk gräddsås som består av tomat, ost, cashewnötter och.smör.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BEEF MALAI KORMA - Oxköttgryta tillagad en gräddsås med tomat, kardemumma, rosvatten och smör.",
+        "name": "BEEF SHARABI - Oxköttgryta tillagad med en kryddstark cognacsås gjord på vitlök, ingefära, linser och grön chili.",
         "category": "",
         "description": ""
       },
@@ -328,17 +328,17 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Chili och ingefärsglacerad fläsksida (SE), basmati ris, kål sallad och misokräm",
+        "name": "Porchetta (SE) , rostad aubergine & tomatröra, färskpotatis & aioli",
         "category": "",
         "description": ""
       },
       {
-        "name": "Fiskgryta, saffran & musslor velouté, fänkål, selleri, kokt färskpotatis",
+        "name": "Örtbakad fisk, krämig risoni, tomat, ruccola & grana padano",
         "category": "",
         "description": ""
       },
       {
-        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
         "category": "",
         "description": ""
       },
@@ -348,7 +348,7 @@
         "description": ""
       },
       {
-        "name": "Tortellini, krämig svampsås, rostad portabello &  vitkål",
+        "name": "Krämig risoni, tomat, ruccola, marinerad tempeh & baby spenat",
         "category": "",
         "description": ""
       }
@@ -570,27 +570,27 @@
     ]
   },
   "MatMinnenScraper": {
-    "day": "torsdag",
+    "day": "thursday",
     "items": [
       {
         "name": "Växtbaserad",
         "category": "",
-        "description": "krämig sparrissoppa, marinerad tofu, krutonger"
+        "description": "sötpotatissoppa, rostad blomkål, couscous"
       },
       {
-        "name": "Ångad kolja",
+        "name": "Fiskfärsbiff",
         "category": "",
-        "description": "beurre noisette, gröna ärtor, potatismos"
+        "description": "misomajonnäs, sweetchilli, kål, jasminris"
       },
       {
-        "name": "Pannbiff",
+        "name": "Långbakad fläskkarré",
         "category": "",
-        "description": "pepparsås, gelé, persilja, rostad potatis"
+        "description": "bbqsås, persilja, rostad potatis"
       },
       {
-        "name": "Gravlaxsallad",
+        "name": "Fetaostsallad",
         "category": "Veckans sallad",
-        "description": "senapssås, sparris, ägg, tomat, krutonger"
+        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
     ]
   },

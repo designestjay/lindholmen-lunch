@@ -63,12 +63,12 @@
         "description": ""
       },
       {
-        "name": "Pocherad torskfile med ägg och persiljesås, serveras med rostade rotfrukter och kokt potatis.",
+        "name": "Pocherad torskfile med rödbetor, kapris och skirat smör serveras med färsk pepparrot och potatismos.",
         "category": "Fisk",
         "description": ""
       },
       {
-        "name": "Ostfylld schnitzel med timjansky och gröna ärtor, rostad potatis samt klassiska tillbehör.",
+        "name": "Cauq au vin på kyckling med bacon, champinjoner och grönsaker, serveras med potatismos.",
         "category": "Kött",
         "description": ""
       },
@@ -103,12 +103,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "METHI MALAI - Kycklinggryta tillagad med bockhornsklöver, fänkålsfrön, korianderfrön, tomat och grädde.",
+        "name": "MÅNDAG",
         "category": "",
         "description": ""
       },
       {
-        "name": "LAMM VINDALOO - Lammköttgryta gjord av ingefära, kanel, röd chili, brun socker, curryblad och rödvin.",
+        "name": "PALAK MURGH - Kycklinggryta tillagad med spent, bockhornsklöver och vitlök.",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "LAMM TIKKA MASALA - Lammkött bräserad i kokos, grädde, paprika, tomat och spiskummin.",
         "category": "",
         "description": ""
       },
@@ -328,17 +333,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "taco på kyckling (SE), tortilla, salsa, ris  och gräddfil",
+        "name": "Köttbullar, cognacsås (blandfärs SE), rårörda lingon, pepparrotsgurka & kokt färskpotatis",
         "category": "",
         "description": ""
       },
       {
-        "name": "basilikabakad fisk, krämig risoni, spenat och grana panado",
+        "name": "Sojabakad fisk, basmatiris, pak shoy, morot, vitkål, chili, ingefära- & limekräm",
         "category": "",
         "description": ""
       },
       {
-        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
         "category": "",
         "description": ""
       },
@@ -348,7 +353,7 @@
         "description": ""
       },
       {
-        "name": "Taco på sojafärs, tortilla, ris, salsa, avokadokräm",
+        "name": "Sojafärsbullar, cognacsås, rårörda lingon, pepparrotsgurka & kokt potatis",
         "category": "",
         "description": ""
       }
@@ -565,27 +570,27 @@
     ]
   },
   "MatMinnenScraper": {
-    "day": "måndag",
+    "day": "monday",
     "items": [
       {
-        "name": "Pasta pesto",
+        "name": "Dubbelpanerad aubergin",
         "category": "",
-        "description": "ratatouille, grana padano, ruccolasallad"
+        "description": "tartarsås, fransk potatissallad"
       },
       {
-        "name": "Gratinerad kummelfilé",
+        "name": "Överbakad kummelfilé",
         "category": "",
-        "description": "spenat,lingonvinägrette, dill, potatis"
+        "description": "bacon, rödvinskokt smålök, potatismos"
       },
       {
-        "name": "Pytt Bellman",
+        "name": "Koftas köttbullar",
         "category": "",
-        "description": "grädde, senap, bakat ägg, picklad gurka"
+        "description": "kryddig tomatsås, raita, persilja, ris"
       },
       {
-        "name": "Gravlaxsallad",
+        "name": "Fetaostsallad",
         "category": "Veckans sallad",
-        "description": "senapssås, sparris, ägg, tomat, krutonger"
+        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
     ]
   },

@@ -63,12 +63,12 @@
         "description": ""
       },
       {
-        "name": "Färskostbakad torskfile med räkröra och kokt broccoli, serveras med potatismos.",
+        "name": "Parmesan och basilika bakad torskfile med rostad morot och vitvinssås, serveras med potatispure.",
         "category": "Fisk",
         "description": ""
       },
       {
-        "name": "Stekt fläsk med raggmunk alternativt kokt potatis med löksås, serveras med rårörda lingon.",
+        "name": "Wallenbergare med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
         "category": "Kött",
         "description": ""
       },
@@ -103,12 +103,12 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "LEMON PEPPER CHICKEN - Kycklingfile tillagad med citron, svartpepper, koriander och kokos.",
+        "name": "CHICKEN BHUNA - Kryddig kycklinggryta med rödlok, chill, tomat, kryddnejlika, koriander och curryblad.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BHURANI BEEF CURRY - Oxkött i en kryddig currysås som består av roasted vitlök, tomat, lök, ingefära och grön chili.",
+        "name": "BEEF ROGAN JOSH - Oxköttgryta tillagad med lök, tomat, kardemumma, rosvatten och yoghurt.",
         "category": "",
         "description": ""
       },
@@ -328,17 +328,17 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Helstekt kotlettrad, bearnaise, klyftpotatis och örtbakad tomat",
+        "name": "Rostat kycklinglår (SE) , skysås, chimichurry, rostade tomater & klyftpotatis",
         "category": "",
         "description": ""
       },
       {
-        "name": "Tortellini,  rökt lax, grädde & citron",
+        "name": "Fiskgryta, selleri, fänkål, gräddig skaldjurssås & kokt färskpotatis",
         "category": "",
         "description": ""
       },
       {
-        "name": "Rostad sötpotatis, fänkål, cashewnötter, grillad paprika & pulled oumph",
+        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
         "category": "",
         "description": ""
       },
@@ -348,7 +348,7 @@
         "description": ""
       },
       {
-        "name": "Vegan lasagne, linser och bönfärs, rostad zuccini & ruccola",
+        "name": "Tortellini, krämig tomatsås, örtbakad aubergine & ruccola",
         "category": "",
         "description": ""
       }
@@ -565,27 +565,27 @@
     ]
   },
   "MatMinnenScraper": {
-    "day": "tisdag",
+    "day": "tuesday",
     "items": [
       {
-        "name": "Pasta pesto",
+        "name": "Panerad aubergin",
         "category": "",
-        "description": "ratatouille, grana padano, ruccolasallad"
+        "description": "tartarsås,fransk potatissallad"
       },
       {
-        "name": "Bakad sejfilé",
+        "name": "Vinångad sejfilé",
         "category": "",
-        "description": "tomat,tzatziki, oliver, rostad potatis"
+        "description": "brynt smör, rödbetor, kapris, pepparrot, kokt potatis"
       },
       {
-        "name": "Rimmad fläsklägg",
+        "name": "Glaserad kassler",
         "category": "",
-        "description": "syrlig dragonsky, sirapskål, persilja, potatismos"
+        "description": "honung, portvinstuvade champinjoner, potatismos"
       },
       {
-        "name": "Gravlaxsallad",
+        "name": "Fetaostsallad",
         "category": "Veckans sallad",
-        "description": "senapssås, sparris, ägg, tomat, krutonger"
+        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
     ]
   },

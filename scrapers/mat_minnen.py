@@ -63,9 +63,18 @@ class MatMinnenScraper(LunchScraper):
 
         logging.debug("Items by day: %s", items_by_day)
         # Save daily menus
-        for day, items in items_by_day.items():
+        day_map = {
+            "måndag": "monday",
+            "tisdag": "tuesday",
+            "onsdag": "wednesday",
+            "torsdag": "thursday",
+            "fredag": "friday",
+        }
+
+        for swe_day, items in items_by_day.items():
+            eng_day = day_map[swe_day]
             if items:
-                self._menus[day] = DailyMenu(day=day, items=items)
+                self._menus[eng_day] = DailyMenu(day=eng_day, items=items)
 
         # Add weekly items to all days
         if weekly_items:
@@ -74,17 +83,9 @@ class MatMinnenScraper(LunchScraper):
 
         logging.debug("Final menus: %s", self._menus)
 
+
     def get_menu_for_day(self, day: str) -> Optional[DailyMenu]:
-        day = day.lower()
-        day_map = {
-            "monday": "måndag",
-            "tuesday": "tisdag",
-            "wednesday": "onsdag",
-            "thursday": "torsdag",
-            "friday": "fredag",
-        }
-        swedish_day = day_map.get(day, day)
-        return self._menus.get(swedish_day)
+        return self._menus.get(day.lower())
 
 
     def get_all_menus(self) -> Dict[str, DailyMenu]:
