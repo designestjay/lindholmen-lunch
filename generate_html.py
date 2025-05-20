@@ -5,6 +5,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
 from pathlib import Path
+from utils.annotate_food_types import annotate_file
 
 def load_restaurant_links() -> dict:
     try:
@@ -19,6 +20,9 @@ def generate_lunch_summary(day: str):
     if not os.path.exists(data_path):
         print(f"[WARN] No data file for {day}: {data_path}")
         return
+    
+    # Annotate food types in the data file
+    annotate_file(data_path)
 
     with open(data_path, encoding="utf-8") as f:
         lunch_data = json.load(f)

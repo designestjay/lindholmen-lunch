@@ -52,6 +52,19 @@
         "category": "VÄRLDEN",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🇰🇷",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🍔",
+      "🥣"
     ]
   },
   "DistrictOneScraper": {
@@ -97,6 +110,18 @@
         "category": "Pho",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🍣",
+      "🥣"
     ]
   },
   "BombayBistroScraper": {
@@ -132,6 +157,12 @@
         "category": "ANDRA ALTERNATIV",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🐄",
+      "🐔",
+      "🥣"
     ]
   },
   "CuckoosNestScraper": {
@@ -167,6 +198,15 @@
         "category": "DOUBLE SMASHED CHEESEBURGER",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇲🇽",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐟",
+      "🥗",
+      "🍔"
     ]
   },
   "Uni3WorldOfFoodScraper": {
@@ -192,6 +232,15 @@
         "category": "Fire",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇰🇷",
+      "🇲🇽",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🥗",
+      "🌮"
     ]
   },
   "MissFScraper": {
@@ -297,6 +346,22 @@
         "category": "Asiatisk",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🇰🇷",
+      "🇲🇽",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🍣",
+      "🍝",
+      "🌮",
+      "🍰"
     ]
   },
   "BennePastabarScraper": {
@@ -347,6 +412,13 @@
         "category": "Benne Bites",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐄",
+      "🐔",
+      "🍝",
+      "🍰"
     ]
   },
   "LsKitchenScraper": {
@@ -377,6 +449,11 @@
         "category": "",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🐔",
+      "🐟",
+      "🥗"
     ]
   },
   "BistrotScraper": {
@@ -422,6 +499,14 @@
         "category": "Lunch",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐔",
+      "🥗",
+      "🍔",
+      "🍝",
+      "🍰"
     ]
   },
   "MimolettScraper": {
@@ -512,6 +597,15 @@
         "category": "Pastarätter",
         "description": "Hemlagat lasagne med bechamelsås."
       }
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐟",
+      "🥗",
+      "🍔",
+      "🍝"
     ]
   },
   "OishiiScraper": {
@@ -592,6 +686,17 @@
         "category": "Varmrätter",
         "description": "fläskkött eller vegetariansk"
       }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🍣",
+      "🥟",
+      "🥣"
     ]
   },
   "MatMinnenScraper": {
@@ -617,6 +722,14 @@
         "category": "Veckans sallad",
         "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
       }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🐄",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🥣"
     ]
   },
   "EncounterAsianScraper": {
@@ -717,6 +830,18 @@
         "category": "LÄSK",
         "description": ""
       }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🇰🇷",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐟",
+      "🥗",
+      "🍣",
+      "🥟",
+      "🥣"
     ]
   }
 }

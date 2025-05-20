@@ -20,7 +20,7 @@ from scrapers.mimolett import MimolettScraper
 from scrapers.oishii import OishiiScraper
 from scrapers.mat_minnen import MatMinnenScraper
 from scrapers.encounter_asian import EncounterAsianScraper
-from utils import get_today_english
+from utils.utils import get_today_english
 from generate_html import generate_lunch_summary, generate_index_page
 
 

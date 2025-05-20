@@ -65,13 +65,34 @@
     }
     .menu-header {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: nowrap;
         gap: 10px;
+        min-height: 60px;
     }
     .menu-header h2 {
-        flex-grow: 1;
+        flex: 1;
         margin: 0;
+        padding-top: 2px;
+    }
+    .menu-header-grid {
+        display: grid;
+        grid-template-areas:
+        "name emojis1 link1"
+        "name emojis2 link2"
+        "name emojis3 link3";
+        grid-template-columns: 1fr auto auto;
+        gap: 4px 10px;
+        align-items: center;
+        margin-bottom: 10px;
+        border-collapse: separate;
+    }
+    .menu-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        min-width: 90px;
     }
     .menu-links {
         display: flex;
@@ -86,10 +107,76 @@
         text-decoration: underline;
         color: #004d66;
     }
-    .icon-links a {
-        margin-left: 10px;
-        font-size: 18px;
+    .icon-links {
+        display: flex;
+        gap: 6px;
+        font-size: 1.2em;
+        margin-top: 2px;
+    }
+    .icon-link {
+        font-size: 1.3em;
+        text-align: right;
+        padding-left: 6px;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        margin-left: 6px;
+    }
+    .icon-link a {
+        color: #004d66;
         text-decoration: none;
+    }
+    
+    .icon-link a:hover {
+        text-decoration: underline;
+        color: #004d66;
+    }
+    .emoji-tags {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        font-size: 1.2em;
+        line-height: 1.4;
+    }
+    .emoji-row {
+        font-size: 1.3em;
+        white-space: nowrap;
+        text-align: left;
+        padding-right: 1px;
+        margin-right: 1px;
+    }
+    .restaurant-name {
+        grid-area: name;
+        font-size: 1.5em;
+        font-weight: bold;
+        background: #004d66;
+        color: white;
+        padding: 10px 14px;
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.2s ease;
+    }
+    .restaurant-name:hover {
+        background: #006080;
+    }
+    .emoji-row:nth-child(2) {
+        grid-area: emojis1;
+    }
+    .emoji-row:nth-child(3) {
+        grid-area: emojis2;
+    }
+    .emoji-row:nth-child(4) {
+        grid-area: emojis3;
+    }
+    
+    .icon-link:nth-of-type(1) {
+        grid-area: link1;
+    }
+    .icon-link:nth-of-type(2) {
+        grid-area: link2;
+    }
+    .icon-link:nth-of-type(3) {
+        grid-area: link3;
     }
 </style>
 
@@ -105,7 +192,7 @@
             const current = window.getComputedStyle(el).display;
             el.style.display = (current === 'none') ? 'block' : 'none';
         }
-
+        
         window.addEventListener("DOMContentLoaded", function () {
             const hash = window.location.hash;
             if (hash) {
@@ -122,63 +209,68 @@
 </head>
 <body>
     <h1>Dagens lunch på Lindholmen – {{ day.capitalize() }}</h1>
-
+    
     <div style="margin-top: 40px; font-size: 14px; color: #666;">
         <p>Last updated: {{ last_updated }}</p>
     </div>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
     <hr>
-
+    
     <div class="toc">
         <h2>Restauranger</h2>
         <div class="button-container">
             {% for scraper_name in lunch_data.keys()|sort %}
-                {% set readable = scraper_name.replace('Scraper', '') %}
-                <a class="weekday-button" href="#{{ readable }}">{{ readable }}</a>
+            {% set readable = scraper_name.replace('Scraper', '') %}
+            <a class="weekday-button" href="#{{ readable }}">{{ readable }}</a>
             {% endfor %}
         </div>
     </div>
     <hr>
     {% for restaurant, data in lunch_data.items() | sort %}
-        {% set readable = restaurant.replace('Scraper', '') %}
-        {% set div_id = readable ~ '_menu' %}
-        <div class="restaurant" id="{{ readable }}">
-            <div class="menu-header">
-                <h2 onclick="toggleVisibility('{{ div_id }}')">{{ readable }}</h2>
-                <div class="menu-links">
-                    {% if readable in restaurant_links %}
-                        {% if restaurant_links[readable].url %}
-                            <a href="{{ restaurant_links[readable].url }}" target="_blank" title="Hemsida">🔗</a>
-                        {% endif %}
-                        {% if restaurant_links[readable].map %}
-                            <a href="{{ restaurant_links[readable].map }}" target="_blank" title="Google Maps">🗺️</a>
-                        {% endif %}
-                    {% endif %}
-                </div>
+    {% set readable = restaurant.replace('Scraper', '') %}
+    {% set div_id = readable ~ '_menu' %}
+    <div class="restaurant" id="{{ readable }}">
+        <div class="menu-header-grid">
+            <div class="restaurant-name" onclick="toggleVisibility('{{ div_id }}')">{{ readable }}</div>
+            {% set total = data["emoji_tags"] | length %}
+            {% set size = (total + 2) // 3 %}
+            <div class="emoji-row">{{ data["emoji_tags"][:size] | join(' ') }}</div>
+            <div class="emoji-row">{{ data["emoji_tags"][size:2*size] | join(' ') }}</div>
+            <div class="emoji-row">{{ data["emoji_tags"][2*size:] | join(' ') }}</div>
+            <div class="icon-link">
+                {% if readable in restaurant_links and restaurant_links[readable].url %}
+                <a href="{{ restaurant_links[readable].url }}" target="_blank" title="Hemsida">🔗</a>
+                {% endif %}
             </div>
-            <div class="menu-content" id="{{ div_id }}">
-                {% set categories = {} %}
-                {% for item in data["items"] %}
-                    {% set category = item.category or 'Dagens' %}
-                    {% if category not in categories %}
-                        {% set _ = categories.update({category: []}) %}
-                    {% endif %}
-                    {% set _ = categories[category].append(item) %}
-                {% endfor %}
-
-                {% for cat, items in categories.items() %}
-                    <h3>{{ cat }}</h3>
-                    <ul>
-                    {% for item in items %}
-                        <li>
-                            <strong>{{ item.name }}</strong>
-                            {% if item.description %} – {{ item.description }}{% endif %}
-                        </li>
-                    {% endfor %}
-                    </ul>
-                {% endfor %}
+            <div class="icon-link">
+                {% if readable in restaurant_links and restaurant_links[readable].map %}
+                <a href="{{ restaurant_links[readable].map }}" target="_blank" title="Google Maps">🗺️</a>
+                {% endif %}
             </div>
         </div>
+        <div class="menu-content" id="{{ div_id }}">
+            {% set categories = {} %}
+            {% for item in data["items"] %}
+            {% set category = item.category or 'Dagens' %}
+            {% if category not in categories %}
+            {% set _ = categories.update({category: []}) %}
+            {% endif %}
+            {% set _ = categories[category].append(item) %}
+            {% endfor %}
+            
+            {% for cat, items in categories.items() %}
+            <h3>{{ cat }}</h3>
+            <ul>
+                {% for item in items %}
+                <li>
+                    <strong>{{ item.name }}</strong>
+                    {% if item.description %} – {{ item.description }}{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
     {% endfor %}
     <hr>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>

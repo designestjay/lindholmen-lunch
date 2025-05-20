@@ -1,0 +1,104 @@
+{
+    "fish": {
+        "keywords": ["lax", "torsk", "räka", "fisk", "tonfisk", "kolja", "sej", "scampi", "hälleflundra", "gädda", "sill", "abborre", "makrill", "sardiner", "skaldjur", "fiskgratäng", "fiskpudding", "fiskgryta", "fiskbullar", "fiskpasta"],
+        "emoji": "🐟",
+        "priority": 4
+    },
+    "korean": {
+        "keywords": ["kimchi", "bibimbap", "gochujang", "koreansk", "bulgogi", "banchan", "kimbap", "japchae", "tteokbokki", "sundubu", "galbi", "jigae"],
+        "emoji": "🇰🇷",
+        "priority": 1
+    },
+    "indian": {
+        "keywords": ["tikka", "masala", "naan", "biryani", "rogan", "vindaloo", "dal", "tandoori", "pakora", "korma", "paneer", "chutney", "samosa", "biryani", "vindaloo"],
+        "emoji": "🇮🇳",
+        "priority": 1
+    },
+    "thai": {
+        "keywords": ["panang", "thai", "red curry", "grön curry", "pad thai", "tom kha", "nam prik", "massaman", "som tam", "larb", "pad see ew", "pad krapow"],
+        "emoji": "🇹🇭",
+        "priority": 1
+    },
+    "japanese": {
+        "keywords": ["yakitori", "tempura", "bento", "teriyaki", "ramen", "udon", "soba", "onigiri", "okonomiyaki", "takoyaki", "miso"],
+        "emoji": "🇯🇵",
+        "priority": 1
+    },
+    "sushi": {
+        "keywords": ["sushi", "nigiri", "maki", "sashimi", "temaki", "chirashi", "sushibowl", "sushirulle"],
+        "emoji": "🍣",
+        "priority": 6
+    },
+    "vegan": {
+        "keywords": ["oumph", "vegansk", "tofu", "sojabönor", "vegofärs", "seitan", "veg", "quorn", "grönsaksbiff"],
+        "emoji": "🌱",
+        "priority": 3
+    },
+    "salad": {
+        "keywords": ["sallad", "ceasar", "caesar", "coleslaw", "pokebowl", "grönsallad", "potatissallad", "pastasallad", "bönsallad", "quinoasallad", "sallader", "salladsdressing"],
+        "emoji": "🥗",
+        "priority": 5
+    },
+    "pasta": {
+        "keywords": ["pasta", "spaghetti", "tagliatelle", "fettuccine", "penne", "lasagne", "ravioli", "carbonara", "alfredo"],
+        "emoji": "🍝",
+        "priority": 7
+    },
+    "burger": {
+        "keywords": ["hamburgare", "burger", "cheeseburger", "brioche", "smash", "burgare"],
+        "emoji": "🍔",
+        "priority": 7
+    },
+    "pizza": {
+        "keywords": ["pizza", "margherita", "pepperoni", "pizzaslice", "pizzabot", "pizzabuffalo", "pizzastyle"],
+        "emoji": "🍕",
+        "priority": 7
+    },
+    "soup": {
+        "keywords": ["soppa", "pho", "nudelsoppa", "misosoppa", "gryta", "soppor", "buljong", "chowder", "bisque", "broth"],
+        "emoji": "🥣",
+        "priority": 9
+    },
+    "dumplings": {
+        "keywords": ["dumpling", "gyoza", "bao", "wonton", "dumplings", "potstickers", "dim sum", "knödel"],
+        "emoji": "🥟",
+        "priority": 8
+    },
+    "mexican": {
+        "keywords": ["taco", "burrito", "nacho", "tortilla", "quesadilla", "fajita", "salsa", "guacamole", "mexikansk"],
+        "emoji": "🇲🇽",
+        "priority": 1
+    },
+    "taco": {
+        "keywords": ["taco", "burrito", "nacho", "tortilla", "quesadilla", "fajita"],
+        "emoji": "🌮",
+        "priority": 8
+    },
+    "dessert": {
+        "keywords": ["tiramisu", "paj", "cheesecake", "choklad", "glass", "brownie", "bakelse", "kaka", "muffin", "dessert", "pudding", "kladdkaka", "bakverk"],
+        "emoji": "🍰",
+        "priority": 20
+    },
+    "chicken": {
+        "keywords": [
+            "kyckling", "kycklinglår", "kycklingfilé", "kycklingvinge",
+            "kycklingbröst", "chicken", "kycklingkött", "kycklingklubba", "kycklingfärs"
+        ],
+        "emoji": "🐔",
+        "priority": 4
+    },
+    "pork": {
+        "keywords": [
+            "fläsk", "gris", "kassler", "ribs", "sidfläsk", "fläskfilé", "fläsklägg", "skinka", "kotlett"
+        ],
+        "emoji": "🐖",
+        "priority": 4
+    },
+    "beef": {
+        "keywords": [
+            "högrev", "entrecôte", "nöt", "oxfilé", "rostbiff", "biff", "stek", "köttfärs", "oxkind"
+        ],
+        "emoji": "🐄",
+        "priority": 4
+    }
+}
