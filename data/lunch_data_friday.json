@@ -700,37 +700,6 @@
       "🥣"
     ]
   },
-  "MatMinnenScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Växtbaserad",
-        "category": "",
-        "description": "sötpotatissoppa, rostad blomkål, couscous"
-      },
-      {
-        "name": "Fiskgryta",
-        "category": "",
-        "description": "rimmad fisk, räkor, grönsaker, potatis"
-      },
-      {
-        "name": "Kalvfärsbiff",
-        "category": "",
-        "description": "lökmarmelad, vitlöksdipp, stekt potatis"
-      },
-      {
-        "name": "Fetaostsallad",
-        "category": "Veckans sallad",
-        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
-      }
-    ],
-    "emoji_tags": [
-      "🐄",
-      "🐟",
-      "🥗",
-      "🥣"
-    ]
-  },
   "EncounterAsianScraper": {
     "day": "friday",
     "items": [
