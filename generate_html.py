@@ -3,7 +3,7 @@
 import json
 import os
 from jinja2 import Environment, FileSystemLoader
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from utils.annotate_food_types import annotate_file
 
@@ -32,11 +32,14 @@ def generate_lunch_summary(day: str):
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("summary_template.html")
 
+    # CEST / Sweden local time (UTC+2)
+    sweden_tz = timezone(timedelta(hours=2))
+
     output_html = template.render(
         day=day.capitalize(),
         lunch_data=lunch_data,
         restaurant_links=restaurant_links,
-        last_updated=datetime.now().strftime("%Y-%m-%d %H:%M")
+        last_updated=datetime.now(sweden_tz).strftime("%Y-%m-%d %H:%M")
     )
 
     os.makedirs("docs", exist_ok=True)
@@ -88,6 +91,52 @@ def generate_index_page():
         font-weight: normal;
         color: #ccc;
     }
+    .restaurant-list {
+        margin-top: 50px;
+        max-width: 600px;
+    }
+    .restaurant-list h2 {
+        font-size: 20px;
+        color: #004d66;
+        margin-bottom: 15px;
+    }
+    .restaurant-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .restaurant-name {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+    }
+    .restaurant-links a {
+        text-decoration: none;
+        font-size: 1.2em;
+        margin-left: 10px;
+        color: #004d66;
+    }
+    .restaurant-links a:hover {
+        text-decoration: underline;
+        color: #006080;
+    }
+    footer.footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #ccc;
+        font-size: 14px;
+        color: #666;
+        max-width: 600px;
+    }
+    footer.footer a {
+        color: #004d66;
+        text-decoration: none;
+    }
+    footer.footer a:hover {
+        text-decoration: underline;
+    }
     </style>
     </head><body>
     <h1>Lunchmeny för veckan i Lindholmen</h1>
@@ -96,7 +145,7 @@ def generate_index_page():
 
     for day, file in ordered_links:
         label = weekday_labels[day]
-        ts = datetime.fromtimestamp(file.stat().st_mtime).strftime("%Y-%m-%d %H:%M")
+        ts = datetime.fromtimestamp(file.stat().st_mtime, tz=timezone(timedelta(hours=2))).strftime("%Y-%m-%d %H:%M")
         html += f"""
         <a class="weekday-button" href="{file.name}">
             <span>{label}</span>
@@ -106,8 +155,38 @@ def generate_index_page():
 
     html += """
     </div>
+    <div class="restaurant-list">
+        <h2>Restauranger</h2>
+    """
+
+    restaurant_links = load_restaurant_links()
+    if not restaurant_links:
+        print("[WARN] No restaurant links found.")
+        return
+
+    for name in sorted(restaurant_links.keys()):
+        links = restaurant_links[name]
+        html += f"""
+        <div class="restaurant-entry">
+            <span class="restaurant-name">{name}</span>
+            <span class="restaurant-links">"""
+        if links.get("url"):
+            html += f'<a href="{links["url"]}" target="_blank" title="Hemsida">🔗</a>'
+        if links.get("map"):
+            html += f'<a href="{links["map"]}" target="_blank" title="Google Maps">🗺️</a>'
+        html += "</span></div>"
+
+    html += """
+    </div>
+    """
+    html += """
+    <footer class="footer">
+        <p>Denna lunchsammanställning är öppen källkod – <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a></p>
+        <p>Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, eller kontakta mig via GitHub <a href="https://github.com/Fawenah/lindholmen_lunch/issues">GitHub - Lindholmen Lunch</a></p>
+    </footer>
     </body></html>
     """
+
 
     index_path = output_dir / "index.html"
     index_path.write_text(html, encoding="utf-8")

@@ -23,6 +23,52 @@
         font-weight: normal;
         color: #ccc;
     }
+    .restaurant-list {
+        margin-top: 50px;
+        max-width: 600px;
+    }
+    .restaurant-list h2 {
+        font-size: 20px;
+        color: #004d66;
+        margin-bottom: 15px;
+    }
+    .restaurant-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .restaurant-name {
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+    }
+    .restaurant-links a {
+        text-decoration: none;
+        font-size: 1.2em;
+        margin-left: 10px;
+        color: #004d66;
+    }
+    .restaurant-links a:hover {
+        text-decoration: underline;
+        color: #006080;
+    }
+    footer.footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #ccc;
+        font-size: 14px;
+        color: #666;
+        max-width: 600px;
+    }
+    footer.footer a {
+        color: #004d66;
+        text-decoration: none;
+    }
+    footer.footer a:hover {
+        text-decoration: underline;
+    }
     </style>
     </head><body>
     <h1>Lunchmeny för veckan i Lindholmen</h1>
@@ -30,29 +76,77 @@
     
         <a class="weekday-button" href="lunch_monday.html">
             <span>Måndag</span>
-            <span class="timestamp">Last updated: 2025-05-20 21:00</span>
+            <span class="timestamp">Last updated: 2025-05-20 23:35</span>
         </a>
         
         <a class="weekday-button" href="lunch_tuesday.html">
             <span>Tisdag</span>
-            <span class="timestamp">Last updated: 2025-05-20 21:00</span>
+            <span class="timestamp">Last updated: 2025-05-20 23:35</span>
         </a>
         
         <a class="weekday-button" href="lunch_wednesday.html">
             <span>Onsdag</span>
-            <span class="timestamp">Last updated: 2025-05-20 21:00</span>
+            <span class="timestamp">Last updated: 2025-05-20 23:35</span>
         </a>
         
         <a class="weekday-button" href="lunch_thursday.html">
             <span>Torsdag</span>
-            <span class="timestamp">Last updated: 2025-05-20 21:01</span>
+            <span class="timestamp">Last updated: 2025-05-20 23:35</span>
         </a>
         
         <a class="weekday-button" href="lunch_friday.html">
             <span>Fredag</span>
-            <span class="timestamp">Last updated: 2025-05-20 21:01</span>
+            <span class="timestamp">Last updated: 2025-05-20 23:35</span>
         </a>
         
     </div>
+    <div class="restaurant-list">
+        <h2>Restauranger</h2>
+    
+        <div class="restaurant-entry">
+            <span class="restaurant-name">BennePastabar</span>
+            <span class="restaurant-links"><a href="https://bennepastabar.se/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Benne+Pastabar+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">Bistrot</span>
+            <span class="restaurant-links"><a href="https://bistrot.se/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Bistrot+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">BombayBistro</span>
+            <span class="restaurant-links"><a href="https://www.bombaybistro.se/lunch/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Bombay+Bistro+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">CuckoosNest</span>
+            <span class="restaurant-links"><a href="https://www.cuckoosnest.se/menyer/lunch" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">DistrictOne</span>
+            <span class="restaurant-links"><a href="https://www.districtone.se/lunch.html" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=District+One+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">EncounterAsian</span>
+            <span class="restaurant-links"><a href="https://tamed.se/take-away-meny/encounter-sushi" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Encounter+Asian+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">Kooperativet</span>
+            <span class="restaurant-links"><a href="https://www.kooperativet.se/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Kooperativet+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">LsKitchen</span>
+            <span class="restaurant-links"><a href="https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=LS+Kitchen+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">MatMinnen</span>
+            <span class="restaurant-links"><a href="https://matminnen.se/lunchmeny" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Mat+Minnen+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">Mimolett</span>
+            <span class="restaurant-links"><a href="https://www.mimolett.se/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Mimolett+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">MissF</span>
+            <span class="restaurant-links"><a href="https://www.lindholmenfoodpark.se/aktorer/miss-f" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Miss+F+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">Oishii</span>
+            <span class="restaurant-links"><a href="https://oishii.se/lunchmeny/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Oishii+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+        <div class="restaurant-entry">
+            <span class="restaurant-name">Uni3WorldOfFood</span>
+            <span class="restaurant-links"><a href="https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/" target="_blank" title="Hemsida">🔗</a><a href="https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen" target="_blank" title="Google Maps">🗺️</a></span></div>
+    </div>
+    
+    <footer class="footer">
+        <p>Denna lunchsammanställning är öppen källkod – <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a></p>
+        <p>Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, eller kontakta mig via GitHub <a href="https://github.com/Fawenah/lindholmen_lunch/issues">GitHub - Lindholmen Lunch</a></p>
+    </footer>
     </body></html>
     
