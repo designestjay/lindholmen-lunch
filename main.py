@@ -20,9 +20,9 @@ from scrapers.mimolett import MimolettScraper
 from scrapers.oishii import OishiiScraper
 from scrapers.mat_minnen import MatMinnenScraper
 from scrapers.encounter_asian import EncounterAsianScraper
+from scrapers.masala import MasalaScraper
 from utils.utils import get_today_english
 from generate_html import generate_lunch_summary, generate_index_page
-
 
 logging.basicConfig(level=logging.INFO)
 
@@ -43,11 +43,12 @@ SCRAPERS = [
     OishiiScraper,
     MatMinnenScraper,
     EncounterAsianScraper,
+    MasalaScraper,
 ]
 
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 
-def scrape_for_day(day: str, refresh: bool = False):
+def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
     logging.info(f"Scraping lunch menus for {day.capitalize()}")
 
     filepath = f"data/lunch_data_{day}.json"
@@ -61,11 +62,21 @@ def scrape_for_day(day: str, refresh: bool = False):
     for scraper_cls in SCRAPERS:
         attempts = 0
         max_retries = 2
+
         while attempts <= max_retries:
             try:
-                scraper = scraper_cls()
+                # Try to use cached instance if available
+                if cache is not None and scraper_cls.__name__ in cache:
+                    scraper = cache[scraper_cls.__name__]
+                else:
+                    scraper = scraper_cls()
+                    # Cache weekly scraper if it has get_all_menus()
+                    if cache is not None and hasattr(scraper, "get_all_menus"):
+                        all_menus = scraper.get_all_menus()
+                        if all_menus:
+                            cache[scraper_cls.__name__] = scraper
 
-                # If the scraper supports get_all_menus(), use that instead
+                # Reuse get_all_menus if possible
                 all_menus = scraper.get_all_menus()
                 if all_menus:
                     menu = all_menus.get(day.lower())
@@ -80,21 +91,16 @@ def scrape_for_day(day: str, refresh: bool = False):
                         ]
                     }
                     break
-
                 else:
-                    # Fallback to per-day
+                    # Fallback to per-day method
                     menu = scraper.get_menu_for_day(day)
                     if not menu:
                         logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
-                        break  # no point retrying if no data for this day
+                        break
                     results[scraper_cls.__name__] = {
                         "day": menu.day,
                         "items": [
-                            {
-                                "name": item.name,
-                                "category": item.category or "",
-                                "description": item.description or "",
-                            }
+                            {"name": item.name, "category": item.category or "", "description": item.description or ""}
                             for item in menu.items
                         ]
                     }
@@ -106,12 +112,9 @@ def scrape_for_day(day: str, refresh: bool = False):
                 if attempts > max_retries:
                     logging.warning(f"[{scraper_cls.__name__}] Gave up after {max_retries} retries.")
                 else:
-                    delay = 2 + attempts  # increase delay slightly each retry
+                    delay = 2 + attempts
                     logging.info(f"[{scraper_cls.__name__}] Retrying in {delay} seconds...")
                     time.sleep(delay)
-
-
-
 
     if results:
         os.makedirs("data", exist_ok=True)
@@ -121,6 +124,7 @@ def scrape_for_day(day: str, refresh: bool = False):
     else:
         logging.warning(f"No results to write for {day}. Skipping JSON and HTML.")
         return
+
     generate_lunch_summary(day)
 
 def main():
@@ -132,8 +136,9 @@ def main():
     args = parser.parse_args()
 
     if args.all:
+        weekly_scraper_cache = {}
         for day in WEEKDAYS:
-            scrape_for_day(day, refresh=args.refresh)
+            scrape_for_day(day, refresh=args.refresh, cache=weekly_scraper_cache)
     else:
         day = args.day or get_today_english()
         scrape_for_day(day, refresh=args.refresh)

@@ -835,5 +835,143 @@
       "🥟",
       "🥣"
     ]
+  },
+  "MasalaScraper": {
+    "day": "monday",
+    "items": [
+      {
+        "name": "MURG LUCKNOWI",
+        "category": "",
+        "description": "Kycklingfilé tlagad med lök, tomat, ingefära, CN, kewra, rosenvatten och koriander"
+      },
+      {
+        "name": "ADRAKI LAMB DO PYAZA",
+        "category": "",
+        "description": "Lammrostbift, lagas med rödlök, ingefära, chili, citron och indiska \"Panch phoron\" (fem kryddor)."
+      },
+      {
+        "name": "PUDINA CHANA MASALA",
+        "category": "",
+        "description": "Kikärtsgryta med mynta. och currysås, garnerad med friterad lök."
+      },
+      {
+        "name": "SUBZI THALI",
+        "category": "Stående meny",
+        "description": "Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita."
+      },
+      {
+        "name": "PALAK PANEER",
+        "category": "Stående meny",
+        "description": "Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök"
+      },
+      {
+        "name": "CHICKEN TANDOORI",
+        "category": "Stående meny",
+        "description": "Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås."
+      },
+      {
+        "name": "CHICKEN TIKKA MASALA",
+        "category": "Stående meny",
+        "description": "Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås."
+      },
+      {
+        "name": "ROGAN JOSH",
+        "category": "Stående meny",
+        "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel."
+      },
+      {
+        "name": "JHINGA KORMA",
+        "category": "Stående meny",
+        "description": "Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma."
+      },
+      {
+        "name": "EXTRA SALLAD",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "EXTRA LUNCH NAAN",
+        "category": "Tillbehör",
+        "description": "Nybakat indiskt bröd."
+      },
+      {
+        "name": "PLAIN NAAN (*)",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "BUTTER NAAN (*)",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "VITLÖK & KORIANDER NAAN (*)",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "OST & KORIANDER NAAN (*)",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "CHILI NAAN (*)",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "(*)",
+        "category": "Tillbehör",
+        "description": "GLUTENFRITT ROTI +10 KR"
+      },
+      {
+        "name": "MYNTASÅS",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "MANGO CHUTNEY",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "CHILI PICKLES",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "PAPADOM",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "RAITA",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "MANGOLASSI",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "LÄSK / LÄTTÖL",
+        "category": "Tillbehör",
+        "description": ""
+      },
+      {
+        "name": "MINERALVATTEN",
+        "category": "Tillbehör",
+        "description": ""
+      }
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🥗",
+      "🥣"
+    ]
   }
 }

@@ -1,0 +1,384 @@
+{
+  "standing": [
+    {
+      "name": "SUBZI THALI",
+      "description": "Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita."
+    },
+    {
+      "name": "PALAK PANEER",
+      "description": "Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök"
+    },
+    {
+      "name": "CHICKEN TANDOORI",
+      "description": "Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås."
+    },
+    {
+      "name": "CHICKEN TIKKA MASALA",
+      "description": "Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås."
+    },
+    {
+      "name": "ROGAN JOSH",
+      "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel."
+    },
+    {
+      "name": "JHINGA KORMA",
+      "description": "Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma."
+    }
+  ],
+  "sides": [
+    {
+      "name": "EXTRA SALLAD",
+      "description": ""
+    },
+    {
+      "name": "EXTRA LUNCH NAAN",
+      "description": "Nybakat indiskt bröd."
+    },
+    {
+      "name": "PLAIN NAAN (*)",
+      "description": ""
+    },
+    {
+      "name": "BUTTER NAAN (*)",
+      "description": ""
+    },
+    {
+      "name": "VITLÖK & KORIANDER NAAN (*)",
+      "description": ""
+    },
+    {
+      "name": "OST & KORIANDER NAAN (*)",
+      "description": ""
+    },
+    {
+      "name": "CHILI NAAN (*)",
+      "description": ""
+    },
+    {
+      "name": "(*)",
+      "description": "GLUTENFRITT ROTI +10 KR"
+    },
+    {
+      "name": "MYNTASÅS",
+      "description": ""
+    },
+    {
+      "name": "MANGO CHUTNEY",
+      "description": ""
+    },
+    {
+      "name": "CHILI PICKLES",
+      "description": ""
+    },
+    {
+      "name": "PAPADOM",
+      "description": ""
+    },
+    {
+      "name": "RAITA",
+      "description": ""
+    },
+    {
+      "name": "MANGOLASSI",
+      "description": ""
+    },
+    {
+      "name": "LÄSK / LÄTTÖL",
+      "description": ""
+    },
+    {
+      "name": "MINERALVATTEN",
+      "description": ""
+    }
+  ],
+  "weeks": {
+    "week1": {
+      "Friday": [
+        {
+          "name": "PALAK CHICKEN",
+          "description": "Kycklingfilé med spenat, paprika, grön chili, ingeföra och vitlök."
+        },
+        {
+          "name": "MEEN MOILEE",
+          "description": "Marinerad och Grillad laxflé med senapsfrö, lök, kumminpulver och kokosmjölk."
+        },
+        {
+          "name": "TOFU KADHAI",
+          "description": "Tofu tillagad med tomat, paprika och champinjoner, smaksatt med ingefära, koriander Och on."
+        }
+      ],
+      "Monday": [
+        {
+          "name": "MURG LUCKNOWI",
+          "description": "Kycklingfilé tlagad med lök, tomat, ingefära, CN, kewra, rosenvatten och koriander"
+        },
+        {
+          "name": "ADRAKI LAMB DO PYAZA",
+          "description": "Lammrostbift, lagas med rödlök, ingefära, chili, citron och indiska \"Panch phoron\" (fem kryddor)."
+        },
+        {
+          "name": "PUDINA CHANA MASALA",
+          "description": "Kikärtsgryta med mynta. och currysås, garnerad med friterad lök."
+        }
+      ],
+      "Thursday": [
+        {
+          "name": "GARLIC TIKKA",
+          "description": "Kycklingfilé marinerad i vitlök, ingefära, grön chili, yoghurt och lime. Serveras med tandoorisås."
+        },
+        {
+          "name": "LAMB HYDERABAD",
+          "description": "Lamm med färsk koriander, mynta och grön chili i kokosmjölk."
+        },
+        {
+          "name": "DAL TADKA",
+          "description": "Flamberade linser (Toor Dal ellr Arhar Dal) med traditionella indiska kryddor och koriander."
+        }
+      ],
+      "Tuesday": [
+        {
+          "name": "MURG HARA MASALA",
+          "description": "Örtkryddad kyckingfilégryta med färsk koriander, bockhornsklöver, basilika och grön chili kokosmjölk."
+        },
+        {
+          "name": "GOAN FISH CURRY",
+          "description": "Laxfilé i en väldoftande kokosmjölkagryta med vitlök, svarta senapsfrön, koriander, tamarind och curryblad."
+        },
+        {
+          "name": "PANEER MAKHANI",
+          "description": "Krämig tomatgryta, indisk färskost, smaksatt med ingefära, vitlök och garam masala."
+        }
+      ],
+      "Wednesday": [
+        {
+          "name": "MURG VINDALOO",
+          "description": "Eldig kycklingrätt från Goa med palmvinäger, nejlkor och piri-piri masala"
+        },
+        {
+          "name": "SHAHI GOSHT",
+          "description": "Mild och krämig lammrätt med kardemumma, malda cashewnötter och pistagenötter"
+        },
+        {
+          "name": "BAINGAN BHARTA",
+          "description": "Långstekt aubergine, lök, tomat, ingefära, chili, koriander."
+        }
+      ]
+    },
+    "week2": {
+      "Friday": [
+        {
+          "name": "MURG METHI MALAI",
+          "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås."
+        },
+        {
+          "name": "MACHILI BENGALI",
+          "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)"
+        },
+        {
+          "name": "ALOO GHOBI MASALA",
+          "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära."
+        }
+      ],
+      "Monday": [
+        {
+          "name": "MURG MAKHNI",
+          "description": "Tandoorimarinerade kyckingfiébita i krämig tomatsås med kardemumma"
+        },
+        {
+          "name": "ACHARI MIRCH",
+          "description": "Lammrostbitf med röd chili, limeblad, färsk ingefära, pickles, mynta och kokosmjölk"
+        },
+        {
+          "name": "DAL MAKHANI",
+          "description": "Flamberade linser i krämig tomatgryta, smaksatt med ingefära, vitök, garam masala och kryddat indiskt smör."
+        }
+      ],
+      "Thursday": [
+        {
+          "name": "HYBERBADI MURG",
+          "description": "Örtkryddad kyckingfilégryta med färsk koriander, mynta och grön chili i kokosmjölk."
+        },
+        {
+          "name": "LAMB BADAMI",
+          "description": "Mild och krämig lammgryta med kardemumma och mandel."
+        },
+        {
+          "name": "MUTTER MUSHROOM",
+          "description": "Champinjoner, gröna ärtor, majs, paprika, tillagade med tomat och lök"
+        }
+      ],
+      "Tuesday": [
+        {
+          "name": "MURG KALI MIRCH",
+          "description": "Marinerat kycklingfilé med lök och tomat i svartpeppar- och ingeärasås. "
+        },
+        {
+          "name": "SEEKH KABAB",
+          "description": "Lammfärsrytar smaksatta med ingefära, Vitlök, ägg, koriander och garam masala Serveras med tandoorisis."
+        },
+        {
+          "name": "PANEER JODHPURI",
+          "description": "Indisk färskost i en mild currysås med cashewnötskräm toppad med papadom."
+        }
+      ],
+      "Wednesday": [
+        {
+          "name": "CHICKEN KADHAI",
+          "description": "Kyckilngflé med tomat, paprika och champinjoner, smaksatt med ingefära, koriander och chili. "
+        },
+        {
+          "name": "KASHMIRI LAMB",
+          "description": "Lammrostbitf med tomat, lök, saffran, ingefära, koriander och röd chili."
+        },
+        {
+          "name": "AUBERGINE MADRASI",
+          "description": "Aubergine tilagad i en krydlig tamarind- och kokossås, smaksatt med färska curryblad och koriander."
+        }
+      ]
+    },
+    "week3": {
+      "Friday": [
+        {
+          "name": "MURG DO PYAZA",
+          "description": "Kycklingrätt från Hyderabad smaksatt med lök, tomat och husets egen kryddblandning."
+        },
+        {
+          "name": "LAMB LAAL MAAS",
+          "description": "Traditionell lammcurry med smak av paprika, spiskummin och ingefära."
+        },
+        {
+          "name": "PALAK CHANA MASALA",
+          "description": "Spenat med kikärtor, lök, tomat, garam masala, chili och ingefära. "
+        }
+      ],
+      "Monday": [
+        {
+          "name": "CHICKEN PATIALA",
+          "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås."
+        },
+        {
+          "name": "LAMB VINDALOO",
+          "description": "Eldig lammrätt från Goa med palmviniger, nejlikor och piri-piri masala."
+        },
+        {
+          "name": "VEG KADHAI",
+          "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander."
+        }
+      ],
+      "Thursday": [
+        {
+          "name": "CHICKEN CHAMBA",
+          "description": "Klassisk kycklingrätt från Himalaya med smak av lök och tomat i en yoghurt-masalasås."
+        },
+        {
+          "name": "LAMB COCONUT CURRY",
+          "description": "Lammrostbiff med lök, tomat, senap, fänkål, curryblad, lime, chili, koriander."
+        },
+        {
+          "name": "PANEER ACHARI",
+          "description": "Indisk färskost med röd chili, färsk ingefära, pickles, mynta och kokosmjölk. "
+        }
+      ],
+      "Tuesday": [
+        {
+          "name": "CHICKEN SHAHI KORMA",
+          "description": "Krämig kyckingfilégryta med malda pistage och cashewnötter."
+        },
+        {
+          "name": "LAMB CHANA BOTI",
+          "description": "Lämmrätt med kikärtor, tomat, färsk koriander, mynta och lime"
+        },
+        {
+          "name": "RAMA ALOO",
+          "description": "Kidneybönor och potatis i indisk currysås. Garnerad med friterad lök."
+        }
+      ],
+      "Wednesday": [
+        {
+          "name": "MURG ZAFFRANI",
+          "description": "Saffransmarinerad grillad kycking, garam masala i en krämig cashewnötsås."
+        },
+        {
+          "name": "LAHSUNI MACHILI NIMBU",
+          "description": "Laxfilé, tillagad i en krämig masalasås med smak öv lime."
+        },
+        {
+          "name": "AVIAL CURRY",
+          "description": "Blandade grönsaker med senaps, kummin, koriander och fänkål i kokossås "
+        }
+      ]
+    },
+    "week4": {
+      "Friday": [
+        {
+          "name": "MALVANI CHICKEN",
+          "description": "Kycklingfilé i en sås av kokoskräm, röd chili och Malvani masala."
+        },
+        {
+          "name": "FISH TIKKA",
+          "description": "Marinerad, Grillad lax i husets kryddor. Serveras med tandoorisås."
+        },
+        {
+          "name": "CHANA PUMPA CURRY",
+          "description": "Kikärtsgsyta med pumpa tillagad med senap, kokos, curry, fänkål och chili"
+        }
+      ],
+      "Monday": [
+        {
+          "name": "CHICKEN MURG MANGO",
+          "description": "Kycklingfilé med färsk koriander, mynta, grön Chil, kokosmjölk och mangopuré."
+        },
+        {
+          "name": "LAMB PUNJABI CURRY",
+          "description": "En populär lammrätt i en sås av lök, tomat, paprika, ingefära, koriander och grön chili."
+        },
+        {
+          "name": "BAINGAN MIRCH MASALA",
+          "description": "En traditionell maträtt med aubergine, paprika, tomat, kryddor, örter och koriander."
+        }
+      ],
+      "Thursday": [
+        {
+          "name": "TANDOORI CHICKEN TIKKA",
+          "description": "Kyckingfilé marinerad i lime, yoghurt och tandoori masala. Serveras med tandoorsås."
+        },
+        {
+          "name": "KOLHAPURI GOSHT",
+          "description": "Het lammrätt med svartpeppar, kokosmjölk och koriander."
+        },
+        {
+          "name": "PANCHRATNA DAL",
+          "description": "Linsgryta med fem sorters linser. Ordet \"panchratna\" betyder fem juveler."
+        }
+      ],
+      "Tuesday": [
+        {
+          "name": "JARDALO MURG",
+          "description": "Kycklingfilé med aprikos, kanel, chili, lök, ingefära och currysås."
+        },
+        {
+          "name": "LAMB KADHAI",
+          "description": "Lammrostbiff lagad med lök, ingefära, peppar, chili och koriander. "
+        },
+        {
+          "name": "MUTTER PANEER",
+          "description": "Hemlagad indisk färskost i krämig sås av lök, tomat och gröna ärtor."
+        }
+      ],
+      "Wednesday": [
+        {
+          "name": "CHICKEN CHETTINAD",
+          "description": "En populär sydindisk kycklinggryta, tillagad i en pepprig kryddblandning från Chettinad, Spetsad med kokos."
+        },
+        {
+          "name": "CHUTNEY SEEKH KEBAB",
+          "description": "Lammfärskebab med mango chutney, mynta, vitlök, garam masala och rödvinsås."
+        },
+        {
+          "name": "SAMOSA CURRY",
+          "description": "Friterade små piroger med vegetarisk fyllning, serveras i yoghurt- och currysås."
+        }
+      ]
+    }
+  }
+}

@@ -50,5 +50,9 @@
     "Uni3WorldOfFood": {
         "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
         "map": "https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen"
+    },
+    "Masala": {
+        "url": "https://masalakitchen.se/lunch/",
+        "map": "https://maps.google.com/?q=Masala+Kitchen+Lindholmen"
     }
 }
