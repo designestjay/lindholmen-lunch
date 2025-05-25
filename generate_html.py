@@ -70,6 +70,9 @@ def generate_index_page():
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
      crossorigin="anonymous"></script>
     <meta charset='utf-8'>
+    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
+    <title>Dagens lunch på Lindholmen</title>
+    <meta name="description" content="Lunchmenyer från restauranger i Lindholmen – uppdateras dagligen." />
     <style>
     body {
         font-family: Arial, sans-serif;
