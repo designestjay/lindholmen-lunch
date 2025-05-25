@@ -635,33 +635,23 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Växtbaserad",
+        "name": "Stängt!",
         "category": "",
-        "description": "sötpotatissoppa, rostad blomkål, couscous"
+        "description": ""
       },
       {
-        "name": "Fiskfärsbiff",
+        "name": "Kristi himmelsfärd",
         "category": "",
-        "description": "misomajonnäs, sweetchilli, kål, jasminris"
+        "description": ""
       },
       {
-        "name": "Långbakad fläskkarré",
-        "category": "",
-        "description": "bbqsås, persilja, rostad potatis"
-      },
-      {
-        "name": "Fetaostsallad",
+        "name": "Ceasarsallad",
         "category": "Veckans sallad",
-        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
+        "description": "friterad haloumi, krämig dressing, tomat, lök, grana padano"
       }
     ],
     "emoji_tags": [
-      "🇯🇵",
-      "🐄",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🥣"
+      "🥗"
     ]
   },
   "EncounterAsianScraper": {

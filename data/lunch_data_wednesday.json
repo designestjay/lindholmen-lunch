@@ -697,29 +697,29 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "Panerad aubergin",
+        "name": "Zucchiniplätt",
         "category": "",
-        "description": "tartarsås,fransk potatissallad"
+        "description": "oliver,sallads ost, marinerad tomat, kronärtskocka"
       },
       {
-        "name": "Brödbakad koljafilé",
+        "name": "Stekt makrill",
         "category": "",
-        "description": "nobisdipp, dill, pepparrotsgurka, kokt nypotatis"
+        "description": "rågmjöl, stuvad spenat, lingon, koktpotatis"
       },
       {
-        "name": "Stekt kycklingbröst",
+        "name": "Helstekt fläskkarré",
         "category": "",
-        "description": "salviasky, basilikakräm, oliver, rostad potatis"
+        "description": "steksky, vitlökssmör, persilja, rostad potatis"
       },
       {
-        "name": "Fetaostsallad",
+        "name": "Ceasarsallad",
         "category": "Veckans sallad",
-        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
+        "description": "friterad haloumi, krämig dressing, tomat, lök, grana padano"
       }
     ],
     "emoji_tags": [
       "🐄",
-      "🐔",
+      "🐖",
       "🐟",
       "🥗"
     ]

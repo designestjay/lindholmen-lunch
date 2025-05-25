@@ -25,6 +25,7 @@
         font-family: Arial, sans-serif;
         background: #f8f8f8;
         padding: 20px;
+        max-width: 80%
     }
     .restaurant {
         margin-bottom: 40px;
@@ -183,6 +184,8 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
+     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Dagens lunch – {{ day.capitalize() }}</title>
     <script>
@@ -272,7 +275,10 @@
         </div>
     </div>
     {% endfor %}
-    <hr>
     <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
+    <hr>
+    <footer style="text-align:center; font-size:13px; color:#888; margin-top:40px;">
+        Lindholmen Lunch – <a href="privacy.html" style="color:#004d66;">Integritetspolicy</a>
+    </footer>
 </body>
 </html>

@@ -66,11 +66,24 @@ def generate_index_page():
     lunch_files = {f.stem.replace("lunch_", ""): f for f in output_dir.glob("lunch_*.html")}
     ordered_links = [(day, lunch_files[day]) for day in weekday_order if day in lunch_files]
 
-    html = """<html><head><meta charset='utf-8'>
+    html = """<html><head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
+     crossorigin="anonymous"></script>
+    <meta charset='utf-8'>
     <style>
-    body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        padding: 20px;
+        max-width: 80%;
+    }
     h1 { color: #004d66; }
-    .button-container { margin-top: 30px; display: flex; flex-direction: column; gap: 15px; max-width: 400px; }
+    .button-container {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
     .weekday-button {
         display: flex;
         justify-content: space-between;
@@ -93,7 +106,6 @@ def generate_index_page():
     }
     .restaurant-list {
         margin-top: 50px;
-        max-width: 600px;
     }
     .restaurant-list h2 {
         font-size: 20px;
@@ -128,7 +140,6 @@ def generate_index_page():
         border-top: 1px solid #ccc;
         font-size: 14px;
         color: #666;
-        max-width: 600px;
     }
     footer.footer a {
         color: #004d66;
@@ -139,7 +150,7 @@ def generate_index_page():
     }
     </style>
     </head><body>
-    <h1>Lunchmeny för veckan i Lindholmen</h1>
+    <h1>Lunchmenyer på Lindholmen</h1>
     <div class="button-container">
     """
 
@@ -155,6 +166,7 @@ def generate_index_page():
 
     html += """
     </div>
+    <hr>
     <div class="restaurant-list">
         <h2>Restauranger</h2>
     """
@@ -180,9 +192,13 @@ def generate_index_page():
     </div>
     """
     html += """
+    <hr>
     <footer class="footer">
         <p>Denna lunchsammanställning är öppen källkod – <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a></p>
-        <p>Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, eller kontakta mig via GitHub <a href="https://github.com/Fawenah/lindholmen_lunch/issues">GitHub - Lindholmen Lunch</a></p>
+        <p>Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, kontakta mig via GitHub eller via <a href="mailto:fawenah@gmail.com">fawenah@gmail.com</a>.</p>
+    </footer>
+    <footer style="text-align:center; font-size:13px; color:#888; margin-top:40px;">
+        Lindholmen Lunch – <a href="privacy.html" style="color:#004d66;">Integritetspolicy</a>
     </footer>
     </body></html>
     """

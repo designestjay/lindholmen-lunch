@@ -644,31 +644,18 @@
     "day": "friday",
     "items": [
       {
-        "name": "Växtbaserad",
+        "name": "Stängt!",
         "category": "",
-        "description": "sötpotatissoppa, rostad blomkål, couscous"
+        "description": ""
       },
       {
-        "name": "Fiskgryta",
-        "category": "",
-        "description": "rimmad fisk, räkor, grönsaker, potatis"
-      },
-      {
-        "name": "Kalvfärsbiff",
-        "category": "",
-        "description": "lökmarmelad, vitlöksdipp, stekt potatis"
-      },
-      {
-        "name": "Fetaostsallad",
+        "name": "Ceasarsallad",
         "category": "Veckans sallad",
-        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
+        "description": "friterad haloumi, krämig dressing, tomat, lök, grana padano"
       }
     ],
     "emoji_tags": [
-      "🐄",
-      "🐟",
-      "🥗",
-      "🥣"
+      "🥗"
     ]
   },
   "EncounterAsianScraper": {

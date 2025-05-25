@@ -694,27 +694,28 @@
     "day": "monday",
     "items": [
       {
-        "name": "Dubbelpanerad aubergin",
+        "name": "Zucchiniplätt",
         "category": "",
-        "description": "tartarsås, fransk potatissallad"
+        "description": "oliver,sallads ost, marinerad tomat, kronärtskocka"
       },
       {
-        "name": "Överbakad kummelfilé",
+        "name": "Panko bakad koljafilé",
         "category": "",
-        "description": "bacon, rödvinskokt smålök, potatismos"
+        "description": "Dansk remouladsås, citronklyfta, kokt potatis"
       },
       {
-        "name": "Koftas köttbullar",
+        "name": "Isterband",
         "category": "",
-        "description": "kryddig tomatsås, raita, persilja, ris"
+        "description": "rödbetor, skånsk senap, dill, stuvad potatis"
       },
       {
-        "name": "Fetaostsallad",
+        "name": "Ceasarsallad",
         "category": "Veckans sallad",
-        "description": "vattenmelon, mynta, tomat, oliver, basilikakräm"
+        "description": "friterad haloumi, krämig dressing, tomat, lök, grana padano"
       }
     ],
     "emoji_tags": [
+      "🐟",
       "🥗"
     ]
   },
