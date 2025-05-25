@@ -3,69 +3,17 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
+        "name": "kristihimmelfärd",
+        "category": "",
         "description": ""
       },
       {
-        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
-        "description": ""
-      },
-      {
-        "name": "”Nordic Bi Bim Bap” med kallrökt lax på toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
-        "category": "VECKANS SPECIAL",
-        "description": ""
-      },
-      {
-        "name": "”Nordic Bi Bim Bap” med falafel på gråärta toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
-        "category": "VECKANS SPECIAL",
-        "description": ""
-      },
-      {
-        "name": "Kolgrillad Fläskfilé med rostade vårprimörer, potatispuré samt persiljeveloute och grillad citron",
-        "category": "KÖTT",
-        "description": ""
-      },
-      {
-        "name": "Grillad lax serveras med dillkokt färskpotatis, räkhollandaise , citron och ärtskott",
-        "category": "FISK",
-        "description": ""
-      },
-      {
-        "name": "Asian dirty rice – Pankofriterade räkor med stekt ris med grönsaker smaksatt med soja & brynt smör toppat med kimchimajonnäs, rostad lök, koriander",
-        "category": "THAI",
-        "description": ""
-      },
-      {
-        "name": "Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
-        "category": "VEGETARISK",
-        "description": ""
-      },
-      {
-        "name": "Kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
-        "category": "INDISK",
-        "description": ""
-      },
-      {
-        "name": "(Burgaren går att få med haloumi)BLT Burger – Högrevburgare toppad med cheddarost i briochebröd med baconmajonnäs, krispigsallad, rostad tomatkompott & friterade lökringar samt parmesanrostade klyftpotatisar",
-        "category": "VÄRLDEN",
+        "name": "stängt 29/5",
+        "category": "",
         "description": ""
       }
     ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🇰🇷",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🥣"
-    ]
+    "emoji_tags": []
   },
   "DistrictOneScraper": {
     "day": "thursday",
@@ -460,22 +408,17 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Veckans: Kyckling pasta",
+        "name": "Veckans: Fläsklägg",
         "category": "Veckans",
-        "description": "Ost sås – Paprika – Zucchini – Tagliatelle – Granapadano – ruccola"
+        "description": "Pepparrotssås – Rotmos – Senapskräm – Persilja"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Tortellini",
+        "name": "Vegetarisk Måndag–Tis: Friterad Fetaost",
         "category": "Veckans",
-        "description": "Spenat – Ricotta – Tomatsås – Ruccola – Granapadano"
+        "description": "Mynta yoghurt – Succotash – Rostad potatis – Persilja"
       },
       {
-        "name": "Vegetarisk Ons- Tors: Korean fried Blomkål",
-        "category": "Veckans",
-        "description": "Srirachamajonnäs – Rödkålssallad – Jasminris – Koriander"
-      },
-      {
-        "name": "Vegetarisk Tors-Fre: Pannoumiburgare",
+        "name": "Vegetarisk Ons: Pannoumiburgare",
         "category": "Veckans",
         "description": ""
       },
@@ -485,17 +428,7 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Korean fried Chicken",
-        "category": "Lunch",
-        "description": "Srirachamajonnäs – Kålsallad – Jasminris – Koriander"
-      },
-      {
-        "name": "Pocherad fångst",
-        "category": "Lunch",
-        "description": "Sandefjordsås – Blomkål – Bacon – Färsk potatis – Ärtskott"
-      },
-      {
-        "name": "Dessert",
+        "name": "Stängt",
         "category": "Lunch",
         "description": ""
       }
@@ -503,10 +436,9 @@
     "emoji_tags": [
       "🌱",
       "🐔",
+      "🐖",
       "🥗",
-      "🍔",
-      "🍝",
-      "🍰"
+      "🍔"
     ]
   },
   "MimolettScraper": {

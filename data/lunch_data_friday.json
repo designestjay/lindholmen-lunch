@@ -3,67 +3,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
+        "name": "STÄNGT",
+        "category": "",
         "description": ""
       },
       {
-        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
-        "description": ""
-      },
-      {
-        "name": "”Nordic Bi Bim Bap” med lax toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
-        "category": "VECKANS SPECIAL",
-        "description": ""
-      },
-      {
-        "name": "”Nordic Bi Bim Bap” med falafel på gråärta toppad med sojasås serveras på bulgur, kimchi gurka, sojabönor, sesammorötter och böngroddar serveras med chilimajonnäs & bakat ägg",
-        "category": "VECKANS SPECIAL",
-        "description": ""
-      },
-      {
-        "name": "Fredags Grillen – Berra levererar grillad karré, salsiccia, majskolv, lökringar, göttig majjo, rödvinsås & pommes",
-        "category": "KÖTT",
-        "description": ""
-      },
-      {
-        "name": "Havets Wallenbergare serveras med potatismos smaksatt med västerbottenost , sandefjordsås med stenbitsrom och gräslök toppas med örter",
-        "category": "FISK",
-        "description": ""
-      },
-      {
-        "name": "Chicken and Broccoli – Kolgrillad kycklingfilé med terriakiglace serveras med sesam rostad broccoli samt jasminris toppat med rostad lök & koriander",
-        "category": "THAI",
-        "description": ""
-      },
-      {
-        "name": "Pizza ala GBG – Surdegspizza toppad med crèmefraiche och västerbottenost, tångkaviar samt dillmajonnäs & picklad rödlök samt spenat",
-        "category": "VEGETARISK",
-        "description": ""
-      },
-      {
-        "name": "Chicken Tika marsala – Indisk currygryta med kyckling serveras basmatiris serveras med mangochutney & rostad mandel samt smörat naanbröd",
-        "category": "INDISK",
-        "description": ""
-      },
-      {
-        "name": "Pizza ala GBG – Surdegspizza toppad med crèmefraiche och västerbottenost, gravad lax & räkor samt dillmajonnäs & picklad rödlök samt spenat",
-        "category": "VÄRLDEN",
+        "name": "..",
+        "category": "",
         "description": ""
       }
     ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🇰🇷",
-      "🇹🇭",
-      "🌱",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍕",
-      "🥣"
-    ]
+    "emoji_tags": []
   },
   "DistrictOneScraper": {
     "day": "friday",
@@ -448,7 +398,7 @@
         "description": ""
       },
       {
-        "name": "Taco på sojafärs, lök, paprika, avokadokräm, salsa, tortilla & ris",
+        "name": "Taco på sojafärs, avokadokräm, salsa, tortilla & ris",
         "category": "",
         "description": ""
       }
@@ -467,22 +417,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Veckans: Kyckling pasta",
+        "name": "Veckans: Fläsklägg",
         "category": "Veckans",
-        "description": "Ost sås – Paprika – Zucchini – Tagliatelle – Granapadano – ruccola"
+        "description": "Pepparrotssås – Rotmos – Senapskräm – Persilja"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Tortellini",
+        "name": "Vegetarisk Måndag–Tis: Friterad Fetaost",
         "category": "Veckans",
-        "description": "Spenat – Ricotta – Tomatsås – Ruccola – Granapadano"
+        "description": "Mynta yoghurt – Succotash – Rostad potatis – Persilja"
       },
       {
-        "name": "Vegetarisk Ons- Tors: Korean fried Blomkål",
-        "category": "Veckans",
-        "description": "Srirachamajonnäs – Rödkålssallad – Jasminris – Koriander"
-      },
-      {
-        "name": "Vegetarisk Tors-Fre: Pannoumiburgare",
+        "name": "Vegetarisk Ons: Pannoumiburgare",
         "category": "Veckans",
         "description": ""
       },
@@ -492,22 +437,17 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Harissa bakad kyckling",
+        "name": "Stängt",
         "category": "Lunch",
-        "description": "Rostade grönsaker – Rostad potatis – Tzatziki – Persilja"
-      },
-      {
-        "name": "Citron halstrad fångst",
-        "category": "Lunch",
-        "description": "Rostad potatis – Vitvinssås – Blomkål – Dill sallad"
+        "description": ""
       }
     ],
     "emoji_tags": [
       "🌱",
       "🐔",
+      "🐖",
       "🥗",
-      "🍔",
-      "🍝"
+      "🍔"
     ]
   },
   "MimolettScraper": {
