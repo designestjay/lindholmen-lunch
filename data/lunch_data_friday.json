@@ -24,12 +24,12 @@
         "description": ""
       },
       {
-        "name": "Smörstekt torskfile med skagensås och marinerad fänkål, serveras med potatispure.",
+        "name": "Smörstekt torskfile med skagensås och kokt broccoli, serveras med potatismos.",
         "category": "Fisk",
         "description": ""
       },
       {
-        "name": "Flankstek med grönpepparsås och bakad tomat, serveras med rostad potatis.",
+        "name": "Ostfylld schnitzel med timjansky och gröna ärtor, rostad potatis samt klassiska tillbehör.",
         "category": "Kött",
         "description": ""
       },
@@ -44,7 +44,7 @@
         "description": ""
       },
       {
-        "name": "Tofu med panang curry i kokosmjölk med paprika, lök, bambuskott och",
+        "name": "Tofu med röd curry i kokosmjölk med paprika, lök, bambuskott och",
         "category": "Vegetarisk",
         "description": ""
       },
@@ -81,12 +81,12 @@
     "day": "friday",
     "items": [
       {
-        "name": "CHICKEN TIKKA - Grillad kycklingfilé marinerad i lime, yoghurt och tandoori masala, serveras med tandoori sås.",
+        "name": "PAHADI GRILL CHICKEN - Grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.",
         "category": "",
         "description": ""
       },
       {
-        "name": "HYDRABADI GHOST - Lammköttgryta med senap, lök, tomat, vitlök, sesamfrön, mynta, grön chili och kokos. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
+        "name": "DALCHA GHOST - Lammgryta med linser, lök, tomat, chili och limejuice. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
         "category": "",
         "description": ""
       },
@@ -166,34 +166,20 @@
     "day": "friday",
     "items": [
       {
-        "name": "Matvete “risotto”, ramslök, spenat, getost, friterad rotselleri, solrosfrön, syrad silverlök & krasse",
-        "category": "Earth",
-        "description": ""
-      },
-      {
-        "name": "Piri piri chicken; grillad kycklingklubba, rostad potatis, piri pirisås, grillad citron, majonnäs & sallad",
+        "name": "Steak frites, grillad flapsteak, tomatsallad, pommes frites, sauce bearneise (veg alternativ: rostad blomkål)",
         "category": "Metal",
         "description": ""
       },
       {
-        "name": "Fish taco, koriander- och limemajonnäs, mango & sotad majs-salsa, rödkål- och jalapenoslaw & koriander",
+        "name": "Bakad fisk, räkor, brynt smörsås, pepparrot, kokt färskpotatis, dill & gurka",
         "category": "Water",
-        "description": ""
-      },
-      {
-        "name": "Bibimbap, koreanskt ris, gochujangglaserad fläsksida, pak choy, stekt ägg, sojamajonnäs, picklad daikon, morot & koriander",
-        "category": "Fire",
         "description": ""
       }
     ],
     "emoji_tags": [
-      "🇰🇷",
-      "🇲🇽",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🥗",
-      "🌮"
+      "🌱",
+      "🐟",
+      "🥗"
     ]
   },
   "MissFScraper": {
@@ -372,45 +358,6 @@
       "🐔",
       "🍝",
       "🍰"
-    ]
-  },
-  "LsKitchenScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Fläskschnitzel (DE) , rödkålssallad, rostad färskpotatis & tartarsås",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Laxbiff, potatismos, gröna ärtor, musselvelouté & dill",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Taco på sojafärs, avokadokräm, salsa, tortilla & ris",
-        "category": "",
-        "description": ""
-      }
-    ],
-    "emoji_tags": [
-      "🇲🇽",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🌮"
     ]
   },
   "BistrotScraper": {
@@ -774,19 +721,19 @@
     "day": "friday",
     "items": [
       {
-        "name": "PALAK CHICKEN",
+        "name": "MURG METHI MALAI",
         "category": "",
-        "description": "Kycklingfilé med spenat, paprika, grön chili, ingeföra och vitlök."
+        "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås."
       },
       {
-        "name": "MEEN MOILEE",
+        "name": "MACHILI BENGALI",
         "category": "",
-        "description": "Marinerad och Grillad laxflé med senapsfrö, lök, kumminpulver och kokosmjölk."
+        "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)"
       },
       {
-        "name": "TOFU KADHAI",
+        "name": "ALOO GHOBI MASALA",
         "category": "",
-        "description": "Tofu tillagad med tomat, paprika och champinjoner, smaksatt med ingefära, koriander Och on."
+        "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära."
       },
       {
         "name": "SUBZI THALI",

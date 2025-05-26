@@ -75,12 +75,12 @@
         "description": ""
       },
       {
-        "name": "Parmesan och basilika bakad torskfile med rostad morot och vitvinssås, serveras med potatispure.",
+        "name": "Färskostbakad torskfile med kokt broccoli och räkröra, serveras med potatispure .",
         "category": "Fisk",
         "description": ""
       },
       {
-        "name": "Wallenbergare med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
+        "name": "Stekt fläsk med raggmunk alternativt löksås och kokt potatis samt rårörda lingon.",
         "category": "Kött",
         "description": ""
       },
@@ -128,12 +128,12 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "CHICKEN BHUNA - Kryddig kycklinggryta med rödlok, chill, tomat, kryddnejlika, koriander och curryblad.",
+        "name": "HARIYALI CHICKEN - Kycklingfile i en örtsås som består av basilika, mynta, koriander, lök, grön chili och kokos.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BEEF ROGAN JOSH - Oxköttgryta tillagad med lök, tomat, kardemumma, rosvatten och yoghurt.",
+        "name": "MASALEDAR BEEF - Kryddig oxköttgryta med lök, tomat, chili, nejlika, lime och koriander.",
         "category": "",
         "description": ""
       },
@@ -212,34 +212,37 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Kokos- & halloumicurry, basmatiris, koriander, mynta, gurka & kryddyoghurt",
-        "category": "Earth",
-        "description": ""
-      },
-      {
-        "name": "Mexican pulled pork taco, pico de gallo, chipotlemayo, picklad chili, strimlad sallad & salsa macha (jordnöt)",
+        "name": "Fläskpannkaka, rökt sidfläsk, lingon, persilja, rå grädde, brynt smör & kålsallad",
         "category": "Metal",
         "description": ""
       },
       {
-        "name": "Fisk à la Lidström, syrad morotskräm, pärlcouscous, dragon, körvel, morotssallad, vitvinssås & rostad mandel",
+        "name": "Saffransdoftande fisksoppa, lax & vit fisk, sockerärta, inkokt fänkål, tomat, färskpotatis & chilismör",
         "category": "Water",
         "description": ""
       },
       {
-        "name": "Sticky korean fried chicken, koreanskt ris, kimchi, gochujangmajonnäs, salladslök, koriander & sesam",
+        "name": "Larb, kycklingfärs, fisksås, jordnöt, chili, mynta, koriander, salladslök. sallad & lime",
         "category": "Fire",
+        "description": ""
+      },
+      {
+        "name": "Pokebowl, sushiris, avokadokräm, friterad tofu, marinerad rödkål, böngroddar & chilimajonnäs",
+        "category": "Wood",
         "description": ""
       }
     ],
     "emoji_tags": [
-      "🇰🇷",
-      "🇲🇽",
+      "🇹🇭",
+      "🌱",
       "🐄",
       "🐔",
+      "🐖",
       "🐟",
       "🥗",
-      "🌮"
+      "🍣",
+      "🥣",
+      "🍰"
     ]
   },
   "MissFScraper": {
@@ -424,17 +427,12 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Rostat kycklinglår (SE) , skysås, chimichurry, rostade tomater & klyftpotatis",
+        "name": "Pasta, kycklinglår, basilika, soltorkad tomat, grana padano, tomat & ruccola",
         "category": "",
         "description": ""
       },
       {
-        "name": "Fiskgryta, selleri, fänkål, gräddig skaldjurssås & kokt färskpotatis",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Gravad lax, krämig potatis, senap, pepparrot, gurka & rädisa",
+        "name": "Bakad fisk, rostad mandel, smör, citron, dill, gröna ärtor & kokt färskpotatis",
         "category": "",
         "description": ""
       },
@@ -444,16 +442,17 @@
         "description": ""
       },
       {
-        "name": "Tortellini, krämig tomatsås, örtbakad aubergine & ruccola",
+        "name": "Pasta, sojaprotein, soltorkad tomat, basilika, tomat, ruccola & vegansk ost",
         "category": "",
         "description": ""
       }
     ],
     "emoji_tags": [
+      "🌱",
       "🐔",
       "🐟",
       "🥗",
-      "🥣"
+      "🍝"
     ]
   },
   "BistrotScraper": {
@@ -836,19 +835,19 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "MURG HARA MASALA",
+        "name": "MURG KALI MIRCH",
         "category": "",
-        "description": "Örtkryddad kyckingfilégryta med färsk koriander, bockhornsklöver, basilika och grön chili kokosmjölk."
+        "description": "Marinerat kycklingfilé med lök och tomat i svartpeppar- och ingeärasås."
       },
       {
-        "name": "GOAN FISH CURRY",
+        "name": "SEEKH KABAB",
         "category": "",
-        "description": "Laxfilé i en väldoftande kokosmjölkagryta med vitlök, svarta senapsfrön, koriander, tamarind och curryblad."
+        "description": "Lammfärsrytar smaksatta med ingefära, Vitlök, ägg, koriander och garam masala Serveras med tandoorisis."
       },
       {
-        "name": "PANEER MAKHANI",
+        "name": "PANEER JODHPURI",
         "category": "",
-        "description": "Krämig tomatgryta, indisk färskost, smaksatt med ingefära, vitlök och garam masala."
+        "description": "Indisk färskost i en mild currysås med cashewnötskräm toppad med papadom."
       },
       {
         "name": "SUBZI THALI",
@@ -966,7 +965,6 @@
       "🌱",
       "🐄",
       "🐔",
-      "🐟",
       "🥗",
       "🥣"
     ]
