@@ -13,17 +13,17 @@
         "description": ""
       },
       {
-        "name": "” Mexican Bowl” Pankofriterade räkor med sötpotatis och quinoa som serveras med marinerade svarta bönor, rostad majs, avokadoröra, lime & koriander",
+        "name": "” Mexican Bowl” Pankofriterade räkor med sötpotatis, rostad majs, picklad rödkål, marinerad ananas och mango, lime & koriander",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Mexican Bowl” Vegetarisk bowl med sötpotatis och quinoa som serveras med marinerade svarta bönor, rostad majs, avokadoröra, lime & koriander",
+        "name": "” Mexican Bowl” Vegetarisk bowl med sötpotatis, rostad majs, picklad rödkål, marinerad ananas och mango, lime & koriander",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Kooperativets klassiska Köttbullemåndag på vildsvin med potatispuré, svampgräddsås, rårörda lingon & saltgurka",
+        "name": "Kooperativets klassiska Köttbullemåndag på vildsvin med potatispuré, svamp doftande gräddsås, rårörda lingon & inlagd gurka",
         "category": "KÖTT",
         "description": ""
       },
@@ -43,12 +43,12 @@
         "description": ""
       },
       {
-        "name": "Vedeldad kycklingfile med smashed parmesanpotatis, örtaioli & rödvinssås",
+        "name": "Grillad kycklingfile med smörstekt gnocchi  & gräddig tomatsås",
         "category": "VÄRLDEN",
         "description": ""
       },
       {
-        "name": "Tofu cashew – wokad tofu med grönsaker i vegetarisk soyasås med cashewnötter & jordnötter serveras med jasminris & koriander",
+        "name": "VEG Alomonds and coriander – Indisk gryta med halloumi, mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5",
         "category": "VEGETARISKT",
         "description": ""
       }
@@ -61,7 +61,6 @@
       "🐔",
       "🐟",
       "🥗",
-      "🍔",
       "🥣"
     ]
   },
@@ -166,17 +165,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "Panerad rödspätta serveras med dillpotatispuré, smörstekta betor, kapris och brynt citronsmör",
+        "name": "Kummelfilé serveras med gräslökspotatis, grillad sparris och fänkålsmajonnäs",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Kalvpicahna serveras med rotselleripuré, salsa verde, grillad salladslök och dijonsenapsolja",
+        "name": "Majskycklingfilé serveras med örtpotatis, haricotverts, rostade morötter och dragonsky",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Örtrisotto serveras med sparris, soltorkad tomat och rostade pumpafrön",
+        "name": "Gnocchi serveras med rostad butternutpumpa, friterad grönkål och hasselnötssmör",
         "category": "VEG",
         "description": ""
       },
@@ -197,7 +196,6 @@
       }
     ],
     "emoji_tags": [
-      "🇲🇽",
       "🌱",
       "🐄",
       "🐔",
@@ -425,7 +423,7 @@
     "day": "monday",
     "items": [
       {
-        "name": "Ramen med bakat sidfläsk, svampbuljong, spetskål, äggnudlar, böngroddar & koriander",
+        "name": "Ramen med bakat sidfläsk (SE) , svampbuljong, spetskål, äggnudlar, böngroddar & koriander",
         "category": "",
         "description": ""
       },
@@ -445,7 +443,7 @@
         "description": ""
       },
       {
-        "name": "\"Bobotie\" afrikansk grönsaksgryta, ris",
+        "name": "\"Bobotie\" afrikansk gryta, ris",
         "category": "",
         "description": ""
       }
