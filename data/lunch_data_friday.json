@@ -3,7 +3,7 @@
     "day": "friday",
     "items": [
       {
-        "name": "STÄNGT",
+        "name": "Sveriges Nationaldag, stängt.",
         "category": "",
         "description": ""
       },
@@ -19,74 +19,23 @@
     "day": "friday",
     "items": [
       {
-        "name": "Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).",
-        "category": "Ramen",
-        "description": ""
-      },
-      {
-        "name": "Smörstekt torskfile med skagensås och kokt broccoli, serveras med potatismos.",
-        "category": "Fisk",
-        "description": ""
-      },
-      {
-        "name": "Ostfylld schnitzel med timjansky och gröna ärtor, rostad potatis samt klassiska tillbehör.",
-        "category": "Kött",
-        "description": ""
-      },
-      {
-        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
-        "category": "Sallad",
-        "description": ""
-      },
-      {
-        "name": "-(Pad Thai) Wokade risnudlar med kyckling, grönsaker, chilli, lime, nötter och ägg.",
-        "category": "Asiatisk",
-        "description": ""
-      },
-      {
-        "name": "Tofu med röd curry i kokosmjölk med paprika, lök, bambuskott och",
-        "category": "Vegetarisk",
-        "description": ""
-      },
-      {
-        "name": "limeblad serveras med jasminris.",
-        "category": "Vegetarisk",
-        "description": ""
-      },
-      {
-        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "category": "Vegetarisk Poke bowl",
-        "description": ""
-      },
-      {
-        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
-        "category": "Pho",
+        "name": "STÄNGT",
+        "category": "",
         "description": ""
       }
     ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥣"
-    ]
+    "emoji_tags": []
   },
   "BombayBistroScraper": {
     "day": "friday",
     "items": [
       {
-        "name": "PAHADI GRILL CHICKEN - Grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.",
+        "name": "KESARI MURGH TIKKA - Grillad kycklingfilé som är marinerad i saffran, yoghurt och ost. Serveras med tandoori sås.",
         "category": "",
         "description": ""
       },
       {
-        "name": "DALCHA GHOST - Lammgryta med linser, lök, tomat, chili och limejuice. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
+        "name": "SAAG GHOST) - Lammkött med spenat, bockhornsklöver, ingefära, vitlök och grönchili. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
         "category": "",
         "description": ""
       },
@@ -114,8 +63,7 @@
     "emoji_tags": [
       "🇮🇳",
       "🌱",
-      "🐔",
-      "🥣"
+      "🐔"
     ]
   },
   "CuckoosNestScraper": {
@@ -159,26 +107,6 @@
       "🐟",
       "🥗",
       "🍔"
-    ]
-  },
-  "Uni3WorldOfFoodScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Steak frites, grillad flapsteak, tomatsallad, pommes frites, sauce bearneise (veg alternativ: rostad blomkål)",
-        "category": "Metal",
-        "description": ""
-      },
-      {
-        "name": "Bakad fisk, räkor, brynt smörsås, pepparrot, kokt färskpotatis, dill & gurka",
-        "category": "Water",
-        "description": ""
-      }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐟",
-      "🥗"
     ]
   },
   "MissFScraper": {
@@ -363,17 +291,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Veckans: Fläsklägg",
+        "name": "Veckans: Isterband",
         "category": "Veckans",
-        "description": "Pepparrotssås – Rotmos – Senapskräm – Persilja"
+        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Friterad Fetaost",
+        "name": "Vegetarisk Mån–Tis: Gnocchi",
         "category": "Veckans",
-        "description": "Mynta yoghurt – Succotash – Rostad potatis – Persilja"
+        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
       },
       {
-        "name": "Vegetarisk Ons: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
         "category": "Veckans",
         "description": ""
       },
@@ -391,7 +319,6 @@
     "emoji_tags": [
       "🌱",
       "🐔",
-      "🐖",
       "🥗",
       "🍔"
     ]
@@ -720,19 +647,19 @@
     "day": "friday",
     "items": [
       {
-        "name": "MURG METHI MALAI",
+        "name": "MURG DO PYAZA",
         "category": "",
-        "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås."
+        "description": "Kycklingrätt från Hyderabad smaksatt med lök, tomat och husets egen kryddblandning."
       },
       {
-        "name": "MACHILI BENGALI",
+        "name": "LAMB LAAL MAAS",
         "category": "",
-        "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)"
+        "description": "Traditionell lammcurry med smak av paprika, spiskummin och ingefära."
       },
       {
-        "name": "ALOO GHOBI MASALA",
+        "name": "PALAK CHANA MASALA",
         "category": "",
-        "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära."
+        "description": "Spenat med kikärtor, lök, tomat, garam masala, chili och ingefära."
       },
       {
         "name": "SUBZI THALI",
@@ -850,7 +777,6 @@
       "🌱",
       "🐄",
       "🐔",
-      "🐟",
       "🥗",
       "🥣"
     ]

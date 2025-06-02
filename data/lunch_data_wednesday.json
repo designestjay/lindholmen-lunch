@@ -8,60 +8,57 @@
         "description": ""
       },
       {
-        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
-        "description": ""
-      },
-      {
-        "name": "” Mexican Bowl” Pankofriterade räkor med sötpotatis och quinoa som serveras med marinerade svarta bönor, rostad majs, avokadoröra, lime & koriander",
+        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger” Caribbean Bowl” Grillad kycklingfile toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Mexican Bowl” Vegetarisk bowl med sötpotatis och quinoa som serveras med marinerade svarta bönor, rostad majs, avokadoröra, lime & koriander",
+        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs,  samt koriander",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Kooperativet Schnitzel på gårdsgris toppad med rökt vispat smör smaksatt med lingon och gröna enbär serveras med nyrostade färskpotatisar samt smarriga örter",
+        "name": "Nystekt Noisette med rostade vårprimörer, krossad färskpotatis smaksatt med citron & yoghurt samt ramslöksveloute",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Stekt panerad sejfile serveras med skagenröra, gräslöksstompad potatis samt citron och örtsallad",
+        "name": "Grillad lax serveras med dillkokt potatis, hollandaisesås och pressgurka",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Kung Pao Chicken – Wokad Kyckling & paprika i kung pao sås serveras med jasmineris & koriander",
+        "name": "Korean Fride Chicken Burger– frasigt friterad kyckling i briochebröd toppad med gochujang & honungsglace och krämig kålsallad serveras med krispiga pommes",
         "category": "THAI",
         "description": ""
       },
       {
-        "name": "Kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
+        "name": "Lamb Rogan Josh -Indisk gryta med lamm serveras med yoghurt, Naan, basmatiris & koriander",
         "category": "INDISK",
         "description": ""
       },
       {
-        "name": "Oklassisk Onsdagsgrill i Världenköket…. Det bjuds på GÖTT kött, pommes och bea så klart",
+        "name": "Marstrands stolthet, Afrikana. Kolgrillad kyckling, krämig currysås, friterad banan, mandariner, jordnötter samt mangochutney",
         "category": "VÄRLDEN",
         "description": ""
       },
       {
-        "name": "Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+        "name": "Marstrands vegetariska stolthet, Afrikana. Grillad quorn , krämig currysås, friterad banan, mandariner, jordnötter samt mangochutney",
         "category": "VEGETARISK",
         "description": ""
       }
     ],
     "emoji_tags": [
       "🇮🇳",
+      "🇰🇷",
+      "🇲🇽",
       "🇹🇭",
       "🌱",
       "🐄",
       "🐔",
-      "🐖",
       "🐟",
       "🥗",
+      "🍔",
       "🥣"
     ]
   },
@@ -79,7 +76,7 @@
         "description": ""
       },
       {
-        "name": "Boeuf bourguignon fransk köttgryta med rödvin, bacon och syltlök, serveras med potatismos.",
+        "name": "Flygande Jakob på kycklingfile, bananer, bacon och jordnötter, serveras med ris och ruccolasallad.",
         "category": "Kött",
         "description": ""
       },
@@ -99,7 +96,7 @@
         "description": ""
       },
       {
-        "name": "Wokade risnudlar med tofu, grönsaker, chilli, lime och jordnötter.",
+        "name": "Tofu med grön curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
         "category": "Vegetarisk",
         "description": ""
       },
@@ -131,12 +128,12 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "BUTTER CHICKEN - Kycklinggryta i en aromatisk gräddsås som består av tomat, ost, cashewnötter och smör.",
+        "name": "CHICKEN BALTI - Kycklingfilé marinerad i vitlök och grön chili tillagad med lök, paprika och champinjoner i en rödvinssås.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BALTI GHOST - Lammkött marinerad i vitlök och grön chilli tillagad i en kryddstark rödvinsås, lök, paprika och champinjoner.",
+        "name": "KASHMIRI LAMM KOFTA - Lammfärsbullar i en sås som består av lök, tomat, kardemumma, rosvatten, bockhornsklöver och grädde.",
         "category": "",
         "description": ""
       },
@@ -163,9 +160,7 @@
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🐄",
-      "🐔",
-      "🥣"
+      "🐔"
     ]
   },
   "CuckoosNestScraper": {
@@ -209,41 +204,6 @@
       "🐟",
       "🥗",
       "🍔"
-    ]
-  },
-  "Uni3WorldOfFoodScraper": {
-    "day": "wednesday",
-    "items": [
-      {
-        "name": "Fläskpannkaka, rökt sidfläsk, lingon, persilja, rå grädde, brynt smör & kålsallad",
-        "category": "Metal",
-        "description": ""
-      },
-      {
-        "name": "Bakad fisk, räkor, brynt smörsås, pepparrot, kokt färskpotatis, dill & gurka",
-        "category": "Water",
-        "description": ""
-      },
-      {
-        "name": "Tom kha gai, kycklinglår, champinjon, zucchini, galangal, koriander, salladslök & jasminris",
-        "category": "Fire",
-        "description": ""
-      },
-      {
-        "name": "Pokebowl, sushiris, avokadokräm, friterad tofu, marinerad rödkål, böngroddar & chilimajonnäs",
-        "category": "Wood",
-        "description": ""
-      }
-    ],
-    "emoji_tags": [
-      "🇹🇭",
-      "🌱",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍰"
     ]
   },
   "MissFScraper": {
@@ -428,17 +388,12 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "Fläskfärsbiff, citrongräs, ingefära, nudlar, chili, pak choi, morot, soja & koriander",
+        "name": "Fläskschnitzel tonkatsu, kålsallad, basmatiris, koriander & böngroddar",
         "category": "",
         "description": ""
       },
       {
-        "name": "Fish n chips, tartarsås, citron & dill",
-        "category": "",
-        "description": ""
-      },
-      {
-        "name": "Tabbouleh, chilimarinerade räkor, yoghurt, honung, lime & koriander",
+        "name": "Ångad fisk, rödbetor, pepparrot, brynt smör, citron, dill & färskpotatis",
         "category": "",
         "description": ""
       },
@@ -448,16 +403,15 @@
         "description": ""
       },
       {
-        "name": "Bowl med orange tofu, basmatiris, sojabönor, kål & chilikräm",
+        "name": "Falafel, libabröd, sallad, tomat, gurka, picklad lök, sesam- & vitlöksdressing, koriander",
         "category": "",
         "description": ""
       }
     ],
     "emoji_tags": [
-      "🌱",
-      "🐄",
       "🐔",
       "🐖",
+      "🐟",
       "🥗"
     ]
   },
@@ -465,17 +419,17 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "Veckans: Fläsklägg",
+        "name": "Veckans: Isterband",
         "category": "Veckans",
-        "description": "Pepparrotssås – Rotmos – Senapskräm – Persilja"
+        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Friterad Fetaost",
+        "name": "Vegetarisk Mån–Tis: Gnocchi",
         "category": "Veckans",
-        "description": "Mynta yoghurt – Succotash – Rostad potatis – Persilja"
+        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
       },
       {
-        "name": "Vegetarisk Ons: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
         "category": "Veckans",
         "description": ""
       },
@@ -485,20 +439,19 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Mix Grill",
+        "name": "Schnitzel Cordon bleu",
         "category": "Lunch",
-        "description": "Lamkorv – Karré – Kycklingspett – Fransk Potatissallad – Tzatsiki"
+        "description": "Klyftpotatis – Rödvinssås – Ärtor – Persilja"
       },
       {
-        "name": "Fish n Chips",
+        "name": "Lime & Chili halstrad fångst",
         "category": "Lunch",
-        "description": "Tartar sås – Pommes – Citron – Ärtor – Fänkålscrudité"
+        "description": "Jasminris – Haricotsverts & Broccoli – Sesamfrön – Sojamajonnäs – Koriander"
       }
     ],
     "emoji_tags": [
       "🌱",
       "🐔",
-      "🐖",
       "🥗",
       "🍔"
     ]
@@ -840,19 +793,19 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "CHICKEN KADHAI",
+        "name": "MURG ZAFFRANI",
         "category": "",
-        "description": "Kyckilngflé med tomat, paprika och champinjoner, smaksatt med ingefära, koriander och chili."
+        "description": "Saffransmarinerad grillad kycking, garam masala i en krämig cashewnötsås."
       },
       {
-        "name": "KASHMIRI LAMB",
+        "name": "LAHSUNI MACHILI NIMBU",
         "category": "",
-        "description": "Lammrostbitf med tomat, lök, saffran, ingefära, koriander och röd chili."
+        "description": "Laxfilé, tillagad i en krämig masalasås med smak öv lime."
       },
       {
-        "name": "AUBERGINE MADRASI",
+        "name": "AVIAL CURRY",
         "category": "",
-        "description": "Aubergine tilagad i en krydlig tamarind- och kokossås, smaksatt med färska curryblad och koriander."
+        "description": "Blandade grönsaker med senaps, kummin, koriander och fänkål i kokossås"
       },
       {
         "name": "SUBZI THALI",
@@ -970,6 +923,7 @@
       "🌱",
       "🐄",
       "🐔",
+      "🐟",
       "🥗",
       "🥣"
     ]

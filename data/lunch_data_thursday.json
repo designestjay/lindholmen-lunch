@@ -3,28 +3,137 @@
     "day": "thursday",
     "items": [
       {
-        "name": "kristihimmelfärd",
-        "category": "",
+        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
         "description": ""
       },
       {
-        "name": "stängt 29/5",
-        "category": "",
+        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
+        "description": ""
+      },
+      {
+        "name": "” Caribbean Bowl” Grillad kycklingfile toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "category": "VECKANS SPECIAL",
+        "description": ""
+      },
+      {
+        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "category": "VECKANS SPECIAL",
+        "description": ""
+      },
+      {
+        "name": "Fredags Grillen – Berra levererar hoppningsvis gött käk",
+        "category": "KÖTT",
+        "description": ""
+      },
+      {
+        "name": "Havets Wallenbergare serveras med potatis & ramslökspure Samt sandefjordsås och örter",
+        "category": "FISK",
+        "description": ""
+      },
+      {
+        "name": "Friterade kyckling Dumplings i krämig rödcurry med grillad pak chuy, serveras med jasminris & koriander",
+        "category": "THAI",
+        "description": ""
+      },
+      {
+        "name": "Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+        "category": "VEGETARISK",
+        "description": ""
+      },
+      {
+        "name": "Kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
+        "category": "INDISK",
+        "description": ""
+      },
+      {
+        "name": "(Går att få med halloumi)”QP and Bacon”  – Högrevburgare toppad med dubbel cheddarost i briochebröd med bacon & rödlöksmarmelad, krispigsallad, & frasiga country fries",
+        "category": "VÄRLDEN",
         "description": ""
       }
     ],
-    "emoji_tags": []
+    "emoji_tags": [
+      "🇮🇳",
+      "🇲🇽",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐟",
+      "🥗",
+      "🍔",
+      "🥟",
+      "🥣"
+    ]
+  },
+  "DistrictOneScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).",
+        "category": "Ramen",
+        "description": ""
+      },
+      {
+        "name": "Husets fiskgratäng smaksatt med bladspenat och vitvinssås, toppad med skaldjur serveras med potatispure.",
+        "category": "Fisk",
+        "description": ""
+      },
+      {
+        "name": "Flankstek med pepparsås och bakad tomat, serveras med rostad potatis.",
+        "category": "Kött",
+        "description": ""
+      },
+      {
+        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
+        "category": "Sallad",
+        "description": ""
+      },
+      {
+        "name": "Crispy duck med tamarindsås och grönsaker, serveras med jasminris.",
+        "category": "Asiatisk",
+        "description": ""
+      },
+      {
+        "name": "Tofu med tamarindsås och grönsaker, serveras med jasminris.",
+        "category": "Vegetarisk",
+        "description": ""
+      },
+      {
+        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+        "category": "Vegetarisk Poke bowl",
+        "description": ""
+      },
+      {
+        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
+        "category": "Pho",
+        "description": ""
+      }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🍣",
+      "🥣"
+    ]
   },
   "BombayBistroScraper": {
     "day": "thursday",
     "items": [
       {
-        "name": "MURGH JHALFREZI - Kycklingfilé tillagad i söt och syrlig sås av tomat, rödlök, zucchini, paprika, fänkål och chili.",
+        "name": "BUTTER CHICKEN - Kycklinggryta i en aromatisk gräddsås som består av tomat, ost, cashewnötter och smör.",
         "category": "",
         "description": ""
       },
       {
-        "name": "BEEF BOMBAY SPECIAL - Oxköttgryta med en kryddstark gräddsås.",
+        "name": "LAL MIRCH KA GOSHT - Stark oxköttgryta gjord av vitlök, ingefära, röd chili och koriander.",
         "category": "",
         "description": ""
       },
@@ -51,6 +160,7 @@
     ],
     "emoji_tags": [
       "🇮🇳",
+      "🐄",
       "🐔",
       "🥣"
     ]
@@ -276,21 +386,52 @@
       "🍰"
     ]
   },
+  "LsKitchenScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Örtstekt kycklinglår, varm potatissallad, primörer & soltorkad tomatkräm",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "L´s kitchens Boullaibaise, aioli & krutonger",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Cellentani, tomatsås, oliver, linser, vegansk ost & baby spenat",
+        "category": "",
+        "description": ""
+      }
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐄",
+      "🐔",
+      "🥗"
+    ]
+  },
   "BistrotScraper": {
     "day": "thursday",
     "items": [
       {
-        "name": "Veckans: Fläsklägg",
+        "name": "Veckans: Isterband",
         "category": "Veckans",
-        "description": "Pepparrotssås – Rotmos – Senapskräm – Persilja"
+        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Friterad Fetaost",
+        "name": "Vegetarisk Mån–Tis: Gnocchi",
         "category": "Veckans",
-        "description": "Mynta yoghurt – Succotash – Rostad potatis – Persilja"
+        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
       },
       {
-        "name": "Vegetarisk Ons: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
         "category": "Veckans",
         "description": ""
       },
@@ -300,15 +441,21 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Stängt",
+        "name": "Nötfärsbiff",
         "category": "Lunch",
-        "description": ""
+        "description": "Majs kräm – BBQ sås – Rostad potatis – Kålsallad – Persilja"
+      },
+      {
+        "name": "Halstrad kolja",
+        "category": "Lunch",
+        "description": "Tomatrisotto – Bakad spetskål – Skaldjurssås – Dillsallad"
       }
     ],
     "emoji_tags": [
       "🌱",
+      "🐄",
       "🐔",
-      "🐖",
+      "🐟",
       "🥗",
       "🍔"
     ]
@@ -642,19 +789,19 @@
     "day": "thursday",
     "items": [
       {
-        "name": "HYBERBADI MURG",
+        "name": "CHICKEN CHAMBA",
         "category": "",
-        "description": "Örtkryddad kyckingfilégryta med färsk koriander, mynta och grön chili i kokosmjölk."
+        "description": "Klassisk kycklingrätt från Himalaya med smak av lök och tomat i en yoghurt-masalasås."
       },
       {
-        "name": "LAMB BADAMI",
+        "name": "LAMB COCONUT CURRY",
         "category": "",
-        "description": "Mild och krämig lammgryta med kardemumma och mandel."
+        "description": "Lammrostbiff med lök, tomat, senap, fänkål, curryblad, lime, chili, koriander."
       },
       {
-        "name": "MUTTER MUSHROOM",
+        "name": "PANEER ACHARI",
         "category": "",
-        "description": "Champinjoner, gröna ärtor, majs, paprika, tillagade med tomat och lök"
+        "description": "Indisk färskost med röd chili, färsk ingefära, pickles, mynta och kokosmjölk."
       },
       {
         "name": "SUBZI THALI",
