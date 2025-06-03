@@ -169,17 +169,17 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Kummelfilé serveras med gräslökspotatis, grillad sparris och fänkålsmajonnäs",
+        "name": "Laxfilé serveras med potatis, bellaverde broccoli, kräftstjärtar och hummersås",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Majskycklingfilé serveras med örtpotatis, haricotverts, rostade morötter och dragonsky",
+        "name": "Flankstek serveras med råstekt potatis, rostade morötter och rödvinssås",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Gnocchi serveras med rostad butternutpumpa, friterad grönkål och hasselnötssmör",
+        "name": "Krispig tofu serveras med risnudlar, spenat, gurka, mango, koriander, chili och sesammajonnäs",
         "category": "VEG",
         "description": ""
       },
@@ -206,6 +206,40 @@
       "🐟",
       "🥗",
       "🍔"
+    ]
+  },
+  "Uni3WorldOfFoodScraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Pannbiff – karamelliserad löksky - stekt potatis – saltgurka – broccoli – persilja",
+        "category": "Metal",
+        "description": ""
+      },
+      {
+        "name": "Bakad sej med färskpotatis - grillad jalapenosmörsås - inlagd gurka – dill – bakad purjolök - pommes alumettes",
+        "category": "Water",
+        "description": ""
+      },
+      {
+        "name": "WoF Fried chicken - grön salsa – svart vitlökssirap - vindaloomajonnäs - ris – strimlad kål – koriander",
+        "category": "Fire",
+        "description": ""
+      },
+      {
+        "name": "Risnudelsallad – citrusvinnaigrette – inlagd morot - böngroddar - friterad glaserad tofu – sesam - salladslök - koriander – chilimajo",
+        "category": "Wood",
+        "description": ""
+      }
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🇲🇽",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐟",
+      "🥗"
     ]
   },
   "MissFScraper": {
@@ -400,6 +434,11 @@
         "description": ""
       },
       {
+        "name": "Sallad med blåmögelost, valnötter, päron, havreris & lufftorkad skinka",
+        "category": "",
+        "description": ""
+      },
+      {
         "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
         "category": "",
         "description": ""
@@ -414,6 +453,7 @@
       "🌱",
       "🐄",
       "🐔",
+      "🐖",
       "🥗"
     ]
   },

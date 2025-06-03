@@ -70,17 +70,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Kummelfilé serveras med gräslökspotatis, grillad sparris och fänkålsmajonnäs",
+        "name": "Laxfilé serveras med potatis, bellaverde broccoli, kräftstjärtar och hummersås",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Majskycklingfilé serveras med örtpotatis, haricotverts, rostade morötter och dragonsky",
+        "name": "Flankstek serveras med råstekt potatis, rostade morötter och rödvinssås",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Gnocchi serveras med rostad butternutpumpa, friterad grönkål och hasselnötssmör",
+        "name": "Krispig tofu serveras med risnudlar, spenat, gurka, mango, koriander, chili och sesammajonnäs",
         "category": "VEG",
         "description": ""
       },

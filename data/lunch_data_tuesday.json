@@ -167,17 +167,17 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Kummelfilé serveras med gräslökspotatis, grillad sparris och fänkålsmajonnäs",
+        "name": "Laxfilé serveras med potatis, bellaverde broccoli, kräftstjärtar och hummersås",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Majskycklingfilé serveras med örtpotatis, haricotverts, rostade morötter och dragonsky",
+        "name": "Flankstek serveras med råstekt potatis, rostade morötter och rödvinssås",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Gnocchi serveras med rostad butternutpumpa, friterad grönkål och hasselnötssmör",
+        "name": "Krispig tofu serveras med risnudlar, spenat, gurka, mango, koriander, chili och sesammajonnäs",
         "category": "VEG",
         "description": ""
       },
@@ -204,6 +204,37 @@
       "🐟",
       "🥗",
       "🍔"
+    ]
+  },
+  "Uni3WorldOfFoodScraper": {
+    "day": "tuesday",
+    "items": [
+      {
+        "name": "Grillad fläskhöft - gremolata – rostad potatis – rostad vitlöksmajonnäs - gröna bönor – körvel",
+        "category": "Metal",
+        "description": ""
+      },
+      {
+        "name": "Bakad uer - curryvelouté - gröna ärtor - potatispuré - råhyvlad zucchini - ramslöksolja – dill",
+        "category": "Water",
+        "description": ""
+      },
+      {
+        "name": "Kebabkryddad kycklinglårfilé - basmatiris - röd och vit sås - sallad – tomat – rödlök - feferoni",
+        "category": "Fire",
+        "description": ""
+      },
+      {
+        "name": "Risnudelsallad – citrusvinnaigrette – inlagd morot - böngroddar - friterad glaserad tofu – sesam - salladslök - koriander – chilimajo",
+        "category": "Wood",
+        "description": ""
+      }
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐔",
+      "🐖",
+      "🥗"
     ]
   },
   "MissFScraper": {
@@ -398,6 +429,11 @@
         "description": ""
       },
       {
+        "name": "Sallad med blåmögelost, valnötter, päron, havreris & lufftorkad skinka",
+        "category": "",
+        "description": ""
+      },
+      {
         "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
         "category": "",
         "description": ""
@@ -411,6 +447,7 @@
     "emoji_tags": [
       "🇲🇽",
       "🌱",
+      "🐄",
       "🐔",
       "🐖",
       "🐟",
