@@ -28,7 +28,7 @@
         "description": ""
       },
       {
-        "name": "Lättrimmad kolja serveras med dillkrossad potatis, skaldjurssås och gröna ärtor",
+        "name": "Lättrimmad kolja serveras med dillkrossad potatis och skaldjurssås",
         "category": "FISK",
         "description": ""
       },
@@ -43,7 +43,7 @@
         "description": ""
       },
       {
-        "name": "Kooperativets club sandwich på kolgrillad kycklingfilé i rostat surdegsbröd, tomatsallad, picklad rödlök, bacon, avokadokräm & stekt ägg samt frasiga pommes",
+        "name": "Kooperativets club sandwich på kolgrillad kycklingfile i rostat surdegsbröd,  picklad rödlök &  tomatsallad, bacon, avokadokräm, stekt ägg &  frasiga pommes",
         "category": "VÄRLDEN",
         "description": ""
       },
@@ -419,7 +419,7 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Pasta, rökt kalkon, pesto, svamp, sparris & ruccolasallad",
+        "name": "Pasta, rökt kalkon, svamp, sparris & ruccolasallad",
         "category": "",
         "description": ""
       },
