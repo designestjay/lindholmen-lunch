@@ -23,7 +23,7 @@
         "description": ""
       },
       {
-        "name": "Grillad lax serveras med dillkokt potatis, hollandaisesås och pressgurka",
+        "name": "Bakad lax serveras med dillkokt potatis, romsås och pressgurka",
         "category": "FISK",
         "description": ""
       },
@@ -33,7 +33,7 @@
         "description": ""
       },
       {
-        "name": "Lamb Rogan Josh -Indisk gryta med lamm serveras med yoghurt, Naan, basmatiris & koriander",
+        "name": "Chicken Rogan Josh -Indisk gryta med kyckling serveras med yoghurt, Naan, basmatiris & koriander",
         "category": "INDISK",
         "description": ""
       },
@@ -210,7 +210,7 @@
     "day": "wednesday",
     "items": [
       {
-        "name": "Pannbiff – karamelliserad löksky - stekt potatis – saltgurka – broccoli – persilja",
+        "name": "Viltköttbullar på nöt & hjort- potatispuré - pressgurka - rårörda lingon - gräddsås med svamp, gin och enbär - persilja",
         "category": "Metal",
         "description": ""
       },
@@ -427,7 +427,7 @@
         "description": ""
       },
       {
-        "name": "Ångad fisk, rödbetor, pepparrot, brynt smör, citron, dill & färskpotatis",
+        "name": "Ångad fisk, rödbetor, pepparrot, brynt smör, dill & färskpotatis",
         "category": "",
         "description": ""
       },
@@ -442,7 +442,7 @@
         "description": ""
       },
       {
-        "name": "Falafel, libabröd, sallad, tomat, gurka, picklad lök, sesam- & vitlöksdressing, koriander",
+        "name": "Falafel, libabröd, sallad, tomat, gurka, sumac lök, sesam- & vitlöksdressing",
         "category": "",
         "description": ""
       }
