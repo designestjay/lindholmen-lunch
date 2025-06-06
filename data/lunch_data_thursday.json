@@ -23,7 +23,7 @@
         "description": ""
       },
       {
-        "name": "Fredags Grillen – Berra levererar hoppningsvis gött käk",
+        "name": "Fredags Grillen – Berra levererar karrémed goa pommes och grym bea!",
         "category": "KÖTT",
         "description": ""
       },
@@ -48,7 +48,7 @@
         "description": ""
       },
       {
-        "name": "(Går att få med halloumi)”QP and Bacon”  – Högrevburgare toppad med dubbel cheddarost i briochebröd med bacon & rödlöksmarmelad, krispigsallad, & frasiga country fries",
+        "name": "(Går att få med halloumi)”QP and Bacon”  – Högrevburgare toppad med dubbel cheddarost i briochebröd med bacon & rödlöksmarmelad, krispigsallad, hamburgardressing & frasiga country fries",
         "category": "VÄRLDEN",
         "description": ""
       }
@@ -377,7 +377,7 @@
         "description": ""
       },
       {
-        "name": "SMOKED PIG - Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
+        "name": "SMOKED PIG - Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
         "category": "Benne Pasta",
         "description": ""
       },
@@ -424,12 +424,12 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Örtstekt kycklinglår, varm potatissallad, primörer & soltorkad tomatkräm",
+        "name": "Örtstekt kycklinglår (SE) , potatissallad med primörer & soltorkad tomatkräm",
         "category": "",
         "description": ""
       },
       {
-        "name": "L´s kitchens Boullaibaise, aioli & krutonger",
+        "name": "L´s kitchens Bouillabaisse, kokt amandine potatis, aioli & krutonger",
         "category": "",
         "description": ""
       },
@@ -461,17 +461,22 @@
     "day": "thursday",
     "items": [
       {
-        "name": "Veckans: Isterband",
+        "name": "Veckans: Carbonara",
         "category": "Veckans",
-        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
+        "description": "Linguini – Bacon – Ägg gula – Granapadano – Persilja"
       },
       {
-        "name": "Vegetarisk Mån–Tis: Gnocchi",
+        "name": "Vegetarisk Måndag–Tis: Gratinerad zucchini",
         "category": "Veckans",
-        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
+        "description": "Fetaost – Tomat – Jasminris – Basilika"
       },
       {
-        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Enchiladas",
+        "category": "Veckans",
+        "description": "Bönragu – Avokado röra – Kålsallad"
+      },
+      {
+        "name": "Vegetarisk Fre: Pannoumi Burgare",
         "category": "Veckans",
         "description": ""
       },
@@ -481,23 +486,24 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Nötfärsbiff",
+        "name": "Boeuf bourguignon",
         "category": "Lunch",
-        "description": "Majs kräm – BBQ sås – Rostad potatis – Kålsallad – Persilja"
+        "description": "Champinjoner – Sidfläsk – Syltlök – Potatispuré"
       },
       {
-        "name": "Halstrad kolja",
+        "name": "Västerbottenbakad kolja",
         "category": "Lunch",
-        "description": "Tomatrisotto – Bakad spetskål – Skaldjurssås – Dillsallad"
+        "description": "Vitvinssås – Sockerärtor – Morot – Vårlök – Örtslungad potatis"
       }
     ],
     "emoji_tags": [
       "🌱",
-      "🐄",
       "🐔",
+      "🐖",
       "🐟",
       "🥗",
-      "🍔"
+      "🍔",
+      "🍝"
     ]
   },
   "MimolettScraper": {

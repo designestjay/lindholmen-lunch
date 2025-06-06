@@ -372,7 +372,7 @@
         "description": ""
       },
       {
-        "name": "SMOKED PIG - Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
+        "name": "SMOKED PIG - Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
         "category": "Benne Pasta",
         "description": ""
       },
@@ -459,17 +459,22 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Veckans: Isterband",
+        "name": "Veckans: Carbonara",
         "category": "Veckans",
-        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
+        "description": "Linguini – Bacon – Ägg gula – Granapadano – Persilja"
       },
       {
-        "name": "Vegetarisk Mån–Tis: Gnocchi",
+        "name": "Vegetarisk Måndag–Tis: Gratinerad zucchini",
         "category": "Veckans",
-        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
+        "description": "Fetaost – Tomat – Jasminris – Basilika"
       },
       {
-        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Enchiladas",
+        "category": "Veckans",
+        "description": "Bönragu – Avokado röra – Kålsallad"
+      },
+      {
+        "name": "Vegetarisk Fre: Pannoumi Burgare",
         "category": "Veckans",
         "description": ""
       },
@@ -479,22 +484,24 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Pankostekt fångst",
+        "name": "Stekt fläsk",
         "category": "Lunch",
-        "description": "Potatispuré – Gubbröra – Rågbröd – Brynt smör – Dill & Gräslök"
+        "description": "Raggmunk & Lingon eller Kokt potatis & Löksås"
       },
       {
-        "name": "Korean fried Chicken",
+        "name": "Panko stekt fångst",
         "category": "Lunch",
-        "description": "Srirachamajonnäs – Kålsallad – Jasminris – Koriander"
+        "description": "Potatis & Blomkåls puré – Räkröra – Citron – Ärtor – Gräslök"
       }
     ],
     "emoji_tags": [
       "🌱",
       "🐄",
       "🐔",
+      "🐖",
       "🥗",
-      "🍔"
+      "🍔",
+      "🍝"
     ]
   },
   "MimolettScraper": {

@@ -373,7 +373,7 @@
         "description": ""
       },
       {
-        "name": "SMOKED PIG - Nystekt bacon i en krämig sås gjord på svenska mejerier som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
+        "name": "SMOKED PIG - Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
         "category": "Benne Pasta",
         "description": ""
       },
@@ -457,17 +457,22 @@
     "day": "monday",
     "items": [
       {
-        "name": "Veckans: Isterband",
+        "name": "Veckans: Carbonara",
         "category": "Veckans",
-        "description": "Dill stuvad potatis – Rödbetor – Senap – Äpple & kålsallad"
+        "description": "Linguini – Bacon – Ägg gula – Granapadano – Persilja"
       },
       {
-        "name": "Vegetarisk Mån–Tis: Gnocchi",
+        "name": "Vegetarisk Måndag–Tis: Gratinerad zucchini",
         "category": "Veckans",
-        "description": "Brynt smör – Tomat – Vitlök – Spenat – Citron – Granapadano – Ruccola"
+        "description": "Fetaost – Tomat – Jasminris – Basilika"
       },
       {
-        "name": "Vegetarisk Ons-Tors: Pannoumiburgare",
+        "name": "Vegetarisk Ons-Tors: Enchiladas",
+        "category": "Veckans",
+        "description": "Bönragu – Avokado röra – Kålsallad"
+      },
+      {
+        "name": "Vegetarisk Fre: Pannoumi Burgare",
         "category": "Veckans",
         "description": ""
       },
@@ -477,14 +482,14 @@
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing"
       },
       {
-        "name": "Kalvfärsbiff",
+        "name": "Pannbiff",
         "category": "Lunch",
-        "description": "Rostade rotfrukter & Potatis – Västerbottenkräm – Rödvinssky – Persilja"
+        "description": "Grönpeppar sås – Stekt potatis – Salt gurka – Persilja"
       },
       {
-        "name": "Ört bakad fångst",
+        "name": "Pocherad fångst",
         "category": "Lunch",
-        "description": "Kokt potatis – Gräslöksås – Vaxbönor – Dill"
+        "description": "Färsk potatis – Vitvinssås – Smör kokta morötter – Dill"
       }
     ],
     "emoji_tags": [
@@ -492,7 +497,8 @@
       "🐄",
       "🐔",
       "🥗",
-      "🍔"
+      "🍔",
+      "🍝"
     ]
   },
   "MimolettScraper": {
