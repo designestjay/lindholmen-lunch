@@ -67,12 +67,20 @@ def generate_index_page():
     ordered_links = [(day, lunch_files[day]) for day in weekday_order if day in lunch_files]
 
     html = """<html><head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMDT71XZ0C');
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
      crossorigin="anonymous"></script>
     <meta charset='utf-8'>
     <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
     <title>Dagens lunch på Lindholmen</title>
-    <meta name="description" content="Lunchmenyer från restauranger i Lindholmen – uppdateras dagligen." />
+    <meta name="description" content="Dagens lunch från restauranger på Lindholmen – uppdateras dagligen." />
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -153,7 +161,8 @@ def generate_index_page():
     }
     </style>
     </head><body>
-    <h1>Lunchmenyer på Lindholmen</h1>
+    <h1>Dagens lunch på Lindholmen</h1>
+    <p>Här hittar du dagens lunchmenyer från restauranger på Lindholmen – uppdateras varje vardag med aktuella menyer från lokala favoriter som Kooperativet, District One, Bombay Bistro, Masala Kitchen och många fler.</p>
     <div class="button-container">
     """
 
