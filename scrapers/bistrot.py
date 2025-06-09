@@ -7,6 +7,7 @@ import requests
 
 class BistrotScraper(LunchScraper):
     URL = "https://bistrot.se/"
+    _PRICE = "130 kr"
 
     SWEDISH_TO_ENGLISH = {
         "Måndag": "monday",
@@ -63,7 +64,7 @@ class BistrotScraper(LunchScraper):
             elif normalized in swe_to_eng:
                 eng_day = swe_to_eng[normalized]
                 for name, desc in groups:
-                    daily_items[eng_day].append(MenuItem(name=name, description=desc, category="Lunch"))
+                    daily_items[eng_day].append(MenuItem(name=name, description=desc, price=self._PRICE, category="Lunch"))
             elif normalize_day_name(header) == "caesarsallad":
                 self._add_to_all_days(shared_items_by_day, groups, category="Caesarsallad")
 
@@ -103,7 +104,7 @@ class BistrotScraper(LunchScraper):
     def _add_to_all_days(self, target: Dict[str, List[MenuItem]], groups: List[tuple[str, Optional[str]]], category: Optional[str]):
         for day in target:
             for name, desc in groups:
-                target[day].append(MenuItem(name=name, description=desc, category=category))
+                target[day].append(MenuItem(name=name, description=desc, category=category, price=self._PRICE))
 
     def _add_to_matching_days(self, target: Dict[str, List[MenuItem]], groups: List[tuple[str, Optional[str]]], header: str, category: Optional[str]):
         matched_days = []
@@ -113,7 +114,7 @@ class BistrotScraper(LunchScraper):
 
         for day in matched_days:
             for name, desc in groups:
-                target[day].append(MenuItem(name=name, description=desc, category=category))
+                target[day].append(MenuItem(name=name, description=desc, category=category, price=self._PRICE))
 
     def get_menu_for_day(self, day: str) -> Optional[DailyMenu]:
         return self._menus.get(day.lower())

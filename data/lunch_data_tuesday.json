@@ -523,43 +523,43 @@
         "name": "Veckans: Carbonara",
         "category": "Veckans",
         "description": "Linguini – Bacon – Ägg gula – Granapadano – Persilja",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Vegetarisk Måndag–Tis: Gratinerad zucchini",
         "category": "Veckans",
         "description": "Fetaost – Tomat – Jasminris – Basilika",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Vegetarisk Ons-Tors: Enchiladas",
         "category": "Veckans",
         "description": "Bönragu – Avokado röra – Kålsallad",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Vegetarisk Fre: Pannoumi Burgare",
         "category": "Veckans",
         "description": "",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Caesarsallad",
         "category": "Veckans",
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Stekt fläsk",
         "category": "Lunch",
         "description": "Raggmunk & Lingon eller Kokt potatis & Löksås",
-        "price": ""
+        "price": "130 kr"
       },
       {
         "name": "Panko stekt fångst",
         "category": "Lunch",
         "description": "Potatis & Blomkåls puré – Räkröra – Citron – Ärtor – Gräslök",
-        "price": ""
+        "price": "130 kr"
       }
     ],
     "emoji_tags": [
