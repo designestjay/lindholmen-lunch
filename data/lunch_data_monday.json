@@ -13,57 +13,55 @@
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Grillad kycklingfilé toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "Asiatisk Glasnudelsallad – med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "VEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Kooperativets klassiska Köttbullemåndag på nötfärs med potatispuré, gräddsås, rårörda lingon & pressgurka",
+        "name": "Kooperativets klassiska Köttbullemåndag gjorda på kalvfärs med potatispuré, svampsås serveras med rårörda lingon & saltgurka",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Västerbottenbakad torsk serveras med potatispuré, blåmusselsås samt citron och örter",
+        "name": "Pocherad torsk serveras med potatispuré och vitvinssås samt citron och örter",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Crispy char Siu Pork – Wokade äggnudlar med krispig fläsksida med kinesisk ”BBQ-sås” och wokade grönsaker toppad med böngroddar, koriander & rostade sesamfrön",
+        "name": "Lemon Grass chicken – Wokad kyckling med grönsaker i gulcurry med kokosmjölk smaksatt med citrongräs serveras med jasminris & koriander 2/5 chili",
         "category": "THAI",
         "description": ""
       },
       {
-        "name": "Murgh Masala indisk gryta med kyckling serveras med basmatiris, mangochutney, smörat Naan och koriander",
+        "name": "Chicken Almonds and coriander – Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5",
         "category": "INDISK",
         "description": ""
       },
       {
-        "name": "Vedeldad kycklingfilé med smashed parmesanpotatis, örtaioli & rödvinssås",
+        "name": "Carbonara Tartufo – Spagetti i Krämig tryffelcarbonarasås med äggula toppad med massa bacon & parmesan samt ruccola",
         "category": "VÄRLDEN",
         "description": ""
       },
       {
-        "name": "Crispy char Siu Oumph – Wokade äggnudlar med krispig oumph med kinesisk ”BBQ-sås” och wokade grönsaker toppad med böngroddar, koriander & rostade sesamfrön",
+        "name": "Lemon Grass Quorn– Wokad Quorn med grönsaker i gulcurry med kokosmjölk smaksatt med citrongräs serveras med jasminris & koriander 2/5 chili",
         "category": "VEGETARISK",
         "description": ""
       }
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🇲🇽",
       "🇹🇭",
       "🌱",
       "🐄",
       "🐔",
-      "🐖",
       "🐟",
       "🥗",
-      "🍔",
+      "🍝",
       "🥣"
     ]
   },
@@ -212,11 +210,6 @@
     "day": "monday",
     "items": [
       {
-        "name": "Marinerad kallskuren fläskkotlett - färskpotatissallad - dragoncréme - rädisor - citron",
-        "category": "Metal",
-        "description": ""
-      },
-      {
         "name": "Bakad fisk - smörad tomatsky – marinerade tomater – matveteragu - fänkålscrudité - basilika",
         "category": "Water",
         "description": ""
@@ -234,7 +227,6 @@
     ],
     "emoji_tags": [
       "🇲🇽",
-      "🐖",
       "🐟",
       "🥗",
       "🌮"
@@ -432,7 +424,7 @@
         "description": ""
       },
       {
-        "name": "Kalkonpastarami, melon, fetaost, tigersås, linser, salladslök, rostad lök",
+        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
         "category": "",
         "description": ""
       },

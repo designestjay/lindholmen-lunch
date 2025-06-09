@@ -3,66 +3,61 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutongerVästkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
         "category": "SALLADER",
         "description": ""
       },
       {
-        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "category": "SALLADER",
-        "description": ""
-      },
-      {
-        "name": "” Caribbean Bowl” Grillad kycklingfilé toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "Asiatisk Glasnudelsallad – med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "VEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Kooperativets Schnitzel på gårdsgris toppad med rödbetor kapris & brynt lök serveras med persiljerostad färsk potatis & rödvinssås",
+        "name": "Kooperativet ”Västkust” Schnitzel på gårdsgris toppat med krämig skagenröra serveras med nyrostade färskpotatisar smaksatt med dill & citronklyfta",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Lättrimmad kolja serveras med dillkrossad potatis och skaldjurssås",
+        "name": "Bakad kolja serveras med en krämig svamprisotto, tryffelaioli, färskriven grana padano och ruccola",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Orange Chicken i sötsyrlig apelsinsås serveras med jasminris toppad med böngroddar & koriander",
+        "name": "Spice asian BBQ fried Chicken – friterad kyckling i het BBQ-sås toppat med sticklök och rostade sesamfrön serveras med jasminris & koriander",
         "category": "THAI",
         "description": ""
       },
       {
-        "name": "Fried rice ”Biryani” på vårt vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan",
+        "name": "Chicken Korma – Indisk gryta med kyckling med cashewnötter & pistagenötter serveras med gurkraita koriander & smörat garlic naan",
         "category": "INDISK",
         "description": ""
       },
       {
-        "name": "Kooperativets club sandwich på kolgrillad kycklingfile i rostat surdegsbröd,  picklad rödlök &  tomatsallad, bacon, avokadokräm, stekt ägg &  frasiga pommes",
+        "name": "Kooperativets Kebabtallrik på grillad Kyckling med smarrig kebabsås, frasiga pommes & goa kebab grönsaker",
         "category": "VÄRLDEN",
         "description": ""
       },
       {
-        "name": "Fried rice ”Biryani” på vårt vis stekt basmatiris med massa goa grönsaker & kryddor toppat med rostad oumph serveas med limeyoghurt & garlic Naan",
+        "name": "Kooperativets falafeltallrik på gråärta med smarrig kebabsås, frasiga pommes & goa kebab grönsaker",
         "category": "VEGETARISKT",
         "description": ""
       }
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🇲🇽",
       "🇹🇭",
       "🌱",
       "🐄",
       "🐔",
       "🐖",
       "🐟",
-      "🥗"
+      "🥗",
+      "🥣"
     ]
   },
   "DistrictOneScraper": {
@@ -426,6 +421,11 @@
       },
       {
         "name": "Panko- & dillbakad fisk, dansk remoulad, kokt färskpotatis & broccoli",
+        "category": "",
+        "description": ""
+      },
+      {
+        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
         "category": "",
         "description": ""
       },

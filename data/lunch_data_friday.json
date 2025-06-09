@@ -3,17 +3,60 @@
     "day": "friday",
     "items": [
       {
-        "name": "Sveriges Nationaldag, stängt.",
-        "category": "",
+        "name": "Caesarsallad – romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutongerVästkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
         "description": ""
       },
       {
-        "name": "..",
-        "category": "",
+        "name": "Asiatisk Glasnudelsallad – med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötterVEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+        "category": "VECKANS SPECIAL",
+        "description": ""
+      },
+      {
+        "name": "Fredags Grillen – kolgrillad gårdsgris med chili cheese fries & Pico de Gallo",
+        "category": "KÖTT",
+        "description": ""
+      },
+      {
+        "name": "Bakad lax serveras med färskpotatis pepparrotshollandaise och örtsallad",
+        "category": "FISK",
+        "description": ""
+      },
+      {
+        "name": "Bao Buns fyllda med hoisinglaserat fläsk toppas med ”kimchigurka” sesammajonnäs & rostad lök serveras med frasiga pommes & krossade räkchips",
+        "category": "THAI",
+        "description": ""
+      },
+      {
+        "name": "Bao Buns fyllda med hoisinglaserat pea cake toppas med ”kimchigurka” sesammajonnäs & rostad lök serveras med frasiga pommes",
+        "category": "VEGETARISKT",
+        "description": ""
+      },
+      {
+        "name": "Chicken Vindaloo – kryddstark indisk currygryta med kyckling serveras med yoghurt, basmatiris & koriander och smörat Naan CHILI 5/5",
+        "category": "INDISK",
+        "description": ""
+      },
+      {
+        "name": "Kooperativets Surdegs pizza med tomatsås & mozzarella toppad med Kolgrillad fläskfilé & krämig Bea",
+        "category": "VÄRLDEN",
         "description": ""
       }
     ],
-    "emoji_tags": []
+    "emoji_tags": [
+      "🇮🇳",
+      "🇰🇷",
+      "🇹🇭",
+      "🌱",
+      "🐄",
+      "🐔",
+      "🐖",
+      "🐟",
+      "🥗",
+      "🍕",
+      "🥟",
+      "🥣"
+    ]
   },
   "DistrictOneScraper": {
     "day": "friday",
@@ -390,6 +433,11 @@
         "description": ""
       },
       {
+        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
+        "category": "",
+        "description": ""
+      },
+      {
         "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
         "category": "",
         "description": ""
@@ -406,6 +454,7 @@
       "🐔",
       "🐟",
       "🥗",
+      "🍝",
       "🥣"
     ]
   },

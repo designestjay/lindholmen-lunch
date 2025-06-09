@@ -8,58 +8,60 @@
         "description": ""
       },
       {
-        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger” Caribbean Bowl” Grillad kycklingfile toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "Västkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
+        "category": "SALLADER",
+        "description": ""
+      },
+      {
+        "name": "Asiatisk Glasnudelsallad – med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs,  samt koriander",
+        "name": "VEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Nystekt Noisette med rostade vårprimörer, krossad färskpotatis smaksatt med citron & yoghurt samt ramslöksveloute",
+        "name": "Viltskav med krämigt mos, gräddsås smaksatt ramslök, persiljestekta champinjoner & lingon",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Bakad lax serveras med dillkokt potatis, romsås och pressgurka",
+        "name": "Stekt panerad sej serveras med dillkokt färskpotatis, brynt smör, kapris & rödbetor samt citron och örter",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Korean Fride Chicken Burger– frasigt friterad kyckling i briochebröd toppad med gochujang & honungsglace och krämig kålsallad serveras med krispiga pommes",
+        "name": "Kooperativets klassiska Pad Thai – Wokade risnudlar med på kyckling, ägg med vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander",
         "category": "THAI",
         "description": ""
       },
       {
-        "name": "Chicken Rogan Josh -Indisk gryta med kyckling serveras med yoghurt, Naan, basmatiris & koriander",
+        "name": "Kolgrillad Tandoori kycklingbröst serveras masalasås, myntayoghurt och sallad på spenat & rödlök samt smörat Naan",
         "category": "INDISK",
         "description": ""
       },
       {
-        "name": "Marstrands stolthet, Afrikana. Kolgrillad kyckling, krämig currysås, friterad banan, mandariner, jordnötter samt mangochutney",
+        "name": "Kooperativets lasagne på nötfärs serveras med tomatsallad toppad med parmesan och ruccola",
         "category": "VÄRLDEN",
         "description": ""
       },
       {
-        "name": "Marstrands vegetariska stolthet, Afrikana. Grillad quorn , krämig currysås, friterad banan, mandariner, jordnötter samt mangochutney",
-        "category": "VEGETARISK",
+        "name": "Kooperativets lasagne på svamp, spenat & keso serveras med tomatsallad toppad med parmesan och ruccola",
+        "category": "VEGETARISKT",
         "description": ""
       }
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🇰🇷",
-      "🇲🇽",
       "🇹🇭",
       "🌱",
       "🐄",
       "🐔",
       "🐟",
       "🥗",
-      "🍔",
-      "🥣"
+      "🍝"
     ]
   },
   "DistrictOneScraper": {
@@ -433,6 +435,11 @@
         "description": ""
       },
       {
+        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
+        "category": "",
+        "description": ""
+      },
+      {
         "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
         "category": "",
         "description": ""
@@ -448,7 +455,8 @@
       "🐔",
       "🐖",
       "🐟",
-      "🥗"
+      "🥗",
+      "🍝"
     ]
   },
   "BistrotScraper": {

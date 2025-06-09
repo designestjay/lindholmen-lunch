@@ -13,57 +13,56 @@
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Grillad kycklingfile toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "Asiatisk Glasnudelsallad – med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "” Caribbean Bowl” Helgrillad blomkål toppas på dirty Kokosris, blackbean salsa, rostad ananas & majs samt koriander",
+        "name": "VEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "category": "VECKANS SPECIAL",
         "description": ""
       },
       {
-        "name": "Fredags Grillen – Berra levererar karrémed goa pommes och grym bea!",
+        "name": "Kalv Wallenbergare med krämig potatispuré smaksatt med västerbottenost, rödvinssås smaksatt med brynt smör, enbär & lingon",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Havets Wallenbergare serveras med potatis & ramslökspure Samt sandefjordsås och örter",
+        "name": "Parmesanbakad kolja serveras med gräslöksstompad potatis och skaldjursröra samt citron och örter",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Friterade kyckling Dumplings i krämig rödcurry med grillad pak chuy, serveras med jasminris & koriander",
+        "name": "Smoked Korean BBQ Pork – 16h rökt gårdsgris toppad med asiatisk chimichurri serveras med krämig kålsallad och jasminris",
         "category": "THAI",
         "description": ""
       },
       {
         "name": "Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
-        "category": "VEGETARISK",
+        "category": "VEGETARISKT",
         "description": ""
       },
       {
-        "name": "Kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
+        "name": "kooperativets klassiska Butter Chicken – indisk gryta med majskyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5",
         "category": "INDISK",
         "description": ""
       },
       {
-        "name": "(Går att få med halloumi)”QP and Bacon”  – Högrevburgare toppad med dubbel cheddarost i briochebröd med bacon & rödlöksmarmelad, krispigsallad, hamburgardressing & frasiga country fries",
+        "name": "(Burgaren går att få med haloumi)Kooperativets ”BIG MAC” Burger högrevsburgare toppad med cheddarost i lyxigt briochebröd, burgardressing, finstrimlad isbergssallad & tärnad lök serveras med frasiga pommes & svartpepparketchup",
         "category": "VÄRLDEN",
         "description": ""
       }
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🇲🇽",
       "🇹🇭",
       "🌱",
       "🐄",
       "🐔",
+      "🐖",
       "🐟",
       "🥗",
       "🍔",
-      "🥟",
       "🥣"
     ]
   },
@@ -442,6 +441,11 @@
         "description": ""
       },
       {
+        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
+        "category": "",
+        "description": ""
+      },
+      {
         "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
         "category": "",
         "description": ""
@@ -458,6 +462,7 @@
       "🐖",
       "🐟",
       "🥗",
+      "🍝",
       "🥣"
     ]
   },

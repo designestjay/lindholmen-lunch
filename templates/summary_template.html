@@ -261,7 +261,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="menu-content" id="{{ div_id }}">
+        <div class="menu-content" id="{{ div_id }}" style="display: block;">
             {% set categories = {} %}
             {% for item in data["items"] %}
             {% set category = item.category or 'Dagens' %}

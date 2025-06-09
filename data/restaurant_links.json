@@ -16,7 +16,7 @@
         "map": "https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen"
     },
     "MissF": {
-        "url": "https://www.lindholmenfoodpark.se/aktorer/miss-f",
+        "url": "https://www.missf.se/",
         "map": "https://maps.google.com/?q=Miss+F+Lindholmen"
     },
     "BennePastabar": {
@@ -24,7 +24,7 @@
         "map": "https://maps.google.com/?q=Benne+Pastabar+Lindholmen"
     },
     "LsKitchen": {
-        "url": "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen",
+        "url": "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1",
         "map": "https://maps.google.com/?q=LS+Kitchen+Lindholmen"
     },
     "Bistrot": {
@@ -32,7 +32,7 @@
         "map": "https://maps.google.com/?q=Bistrot+Lindholmen"
     },
     "Mimolett": {
-        "url": "https://www.mimolett.se/",
+        "url": "https://restaurangmimolett.se/lunch/",
         "map": "https://maps.google.com/?q=Mimolett+Lindholmen"
     },
     "Oishii": {
