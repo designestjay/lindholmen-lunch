@@ -76,12 +76,12 @@
         "description": ""
       },
       {
-        "name": "Champinjongratinerad torskfile med bacon, vitlök och vitvinssås, serveras med kokt potatis.",
+        "name": "Pocherad torskfile med ägg och persiljesås, serveras med rostad morot och kokt potatis.",
         "category": "Fisk",
         "description": ""
       },
       {
-        "name": "Ostfylld schnitzel med timjansky och gröna ärtor, rostad potatis samt klassiska tillbehör.",
+        "name": "Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
         "category": "Kött",
         "description": ""
       },
@@ -128,12 +128,12 @@
     "day": "monday",
     "items": [
       {
-        "name": "MURGH PAPADOM - Kycklingfilé tillagad i en mild och krämig så som består av papadom lök, tomat, vitlök och bockhornsklöver.",
+        "name": "METHI MALAI - Kycklinggryta tillagad med bockhornsklöver, fänkålsfrön, korianderfrön, tomat och grädde.",
         "category": "",
         "description": ""
       },
       {
-        "name": "LAMM PUNJABI - Lammköttgryta med smakrik sås med tomat, koriander och grönsaker.",
+        "name": "LAMM VINDALOO - Lammköttgryta gjord av ingefära, kanel, röd chili, brun socker, curryblad och rödvin.",
         "category": "",
         "description": ""
       },
@@ -168,17 +168,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "Laxfilé serveras med potatis, bellaverde broccoli, kräftstjärtar och hummersås",
+        "name": "Kummelfilé serveras med potatis, sparris, citron och romsås",
         "category": "FISK",
         "description": ""
       },
       {
-        "name": "Flankstek serveras med råstekt potatis, rostade morötter och rödvinssås",
+        "name": "Fläskschnitzel serveras med ört- & ostslungad potatis, chilibearnase och rödvinssås",
         "category": "KÖTT",
         "description": ""
       },
       {
-        "name": "Krispig tofu serveras med risnudlar, spenat, gurka, mango, koriander, chili och sesammajonnäs",
+        "name": "Grillad spetskål serveras med matvetesallad och ramslöksdressing",
         "category": "VEG",
         "description": ""
       },
@@ -202,6 +202,7 @@
       "🌱",
       "🐄",
       "🐔",
+      "🐖",
       "🐟",
       "🥗",
       "🍔"
@@ -211,31 +212,32 @@
     "day": "monday",
     "items": [
       {
-        "name": "Grillad fläskhöft - gremolata – rostad potatis – rostad vitlöksmajonnäs - gröna bönor – körvel",
+        "name": "Marinerad kallskuren fläskkotlett - färskpotatissallad - dragoncréme - rädisor - citron",
         "category": "Metal",
         "description": ""
       },
       {
-        "name": "Bakad uer - curryvelouté - gröna ärtor - potatispuré - råhyvlad zucchini - ramslöksolja – dill",
+        "name": "Bakad fisk - smörad tomatsky – marinerade tomater – matveteragu - fänkålscrudité - basilika",
         "category": "Water",
         "description": ""
       },
       {
-        "name": "Kebabkryddad kycklinglårfilé - basmatiris - röd och vit sås - sallad – tomat – rödlök - feferoni",
+        "name": "Tacobowl – basmatiris – tacokryddad pulled pork – chipotlemajonnäs - sallad – syrad lök - krispig lök - creme fraiches – jalapeno",
         "category": "Fire",
         "description": ""
       },
       {
-        "name": "Risnudelsallad – citrusvinnaigrette – inlagd morot - böngroddar - friterad glaserad tofu – sesam - salladslök - koriander – chilimajo",
+        "name": "Bulgur – friterad grillost – tzatsiki – tomatsallad - gröna blad – rostade frön",
         "category": "Wood",
         "description": ""
       }
     ],
     "emoji_tags": [
-      "🌱",
-      "🐔",
+      "🇲🇽",
       "🐖",
-      "🥗"
+      "🐟",
+      "🥗",
+      "🌮"
     ]
   },
   "MissFScraper": {
@@ -420,17 +422,17 @@
     "day": "monday",
     "items": [
       {
-        "name": "Biff Lindström, rostad färskpotatis, färsk vitkål & äpple, skysås",
+        "name": "Köttbullar, gräddsås, lingon, pressgurka & potatismos",
         "category": "",
         "description": ""
       },
       {
-        "name": "Tortellini, ricotta, spenat, lax, citron & ruccola",
+        "name": "Friterad fisk, tartarsås, kokt färskpotatis, gröna ärtor, citron & dill",
         "category": "",
         "description": ""
       },
       {
-        "name": "Sallad med blåmögelost, valnötter, päron, havreris & lufftorkad skinka",
+        "name": "Kalkonpastarami, melon, fetaost, tigersås, linser, salladslök, rostad lök",
         "category": "",
         "description": ""
       },
@@ -440,17 +442,16 @@
         "description": ""
       },
       {
-        "name": "Sojafärsbiff, rostad färskpotatis, färsk vitkål, äpple & örtkräm",
+        "name": "Sojafärsbullar, gräddsås, kokt potatis, lingon, pressgurka",
         "category": "",
         "description": ""
       }
     ],
     "emoji_tags": [
-      "🐄",
       "🐔",
-      "🐖",
       "🐟",
-      "🥗"
+      "🥗",
+      "🍝"
     ]
   },
   "BistrotScraper": {
@@ -695,24 +696,24 @@
     "day": "monday",
     "items": [
       {
-        "name": "Zucchiniplätt",
+        "name": "Champinjonplätt",
         "category": "",
-        "description": "oliver,sallads ost, marinerad tomat, kronärtskocka"
+        "description": "morotstzatziki, spenat"
       },
       {
-        "name": "Panko bakad koljafilé",
+        "name": "Bakad kummelfilé",
         "category": "",
-        "description": "Dansk remouladsås, citronklyfta, kokt potatis"
+        "description": "senap, äppelsky, gräslök, kantareller, potatismos"
       },
       {
-        "name": "Isterband",
+        "name": "Nasigoreng",
         "category": "",
-        "description": "rödbetor, skånsk senap, dill, stuvad potatis"
+        "description": "kött, ägg, grönsaker, curry, sweet chilidipp"
       },
       {
-        "name": "Ceasarsallad",
+        "name": "Krämig tonfisksallad",
         "category": "Veckans sallad",
-        "description": "friterad haloumi, krämig dressing, tomat, lök, grana padano"
+        "description": "ägg, tomat, gurka, gröna ärtor, rödlök, krutonger"
       }
     ],
     "emoji_tags": [
@@ -836,19 +837,19 @@
     "day": "monday",
     "items": [
       {
-        "name": "CHICKEN PATIALA",
+        "name": "CHICKEN MURG MANGO",
         "category": "",
-        "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås."
+        "description": "Kycklingfilé med färsk koriander, mynta, grön Chil, kokosmjölk och mangopuré."
       },
       {
-        "name": "LAMB VINDALOO",
+        "name": "LAMB PUNJABI CURRY",
         "category": "",
-        "description": "Eldig lammrätt från Goa med palmviniger, nejlikor och piri-piri masala."
+        "description": "En populär lammrätt i en sås av lök, tomat, paprika, ingefära, koriander och grön chili."
       },
       {
-        "name": "VEG KADHAI",
+        "name": "BAINGAN MIRCH MASALA",
         "category": "",
-        "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander."
+        "description": "En traditionell maträtt med aubergine, paprika, tomat, kryddor, örter och koriander."
       },
       {
         "name": "SUBZI THALI",
