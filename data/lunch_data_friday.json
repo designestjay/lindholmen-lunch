@@ -1129,5 +1129,28 @@
       "🥗",
       "🥣"
     ]
+  },
+  "RestaurantPier11Scraper": {
+    "day": "friday",
+    "items": [
+      {
+        "name": "Halloumiburgare",
+        "category": "Dagens",
+        "description": "Tryffelmajonnäs, Inlagd lök, Krispig sallad, Pommes frites",
+        "price": "110 kr"
+      },
+      {
+        "name": "Yakisoba (nötkött)",
+        "category": "Dagens",
+        "description": "inlagd ingefära, srirachamajonnäs, sesamfrön",
+        "price": "110 kr"
+      }
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🐄",
+      "🥗",
+      "🍔"
+    ]
   }
 }

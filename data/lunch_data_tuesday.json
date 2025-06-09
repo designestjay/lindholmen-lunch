@@ -1122,5 +1122,34 @@
       "🥗",
       "🥣"
     ]
+  },
+  "RestaurantPier11Scraper": {
+    "day": "tuesday",
+    "items": [
+      {
+        "name": "Kryddad broccoli",
+        "category": "Dagens",
+        "description": "paneer, ärtor, garam masala, cashewnötter, basmatiris",
+        "price": "110 kr"
+      },
+      {
+        "name": "Ugnsbakad kolja",
+        "category": "Dagens",
+        "description": "färsk rödbetssalsa, rostade grönsaker i grekisk stil, tryffelgrönt smör",
+        "price": "110 kr"
+      },
+      {
+        "name": "Biff alá Lindström",
+        "category": "Dagens",
+        "description": "klyftpotatis, örtsmör, rött vin, fina bönor",
+        "price": "110 kr"
+      }
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🇲🇽",
+      "🐄",
+      "🐟"
+    ]
   }
 }

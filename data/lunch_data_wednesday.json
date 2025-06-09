@@ -1125,5 +1125,33 @@
       "🥗",
       "🥣"
     ]
+  },
+  "RestaurantPier11Scraper": {
+    "day": "wednesday",
+    "items": [
+      {
+        "name": "Honungsbakad chèvreost",
+        "category": "Dagens",
+        "description": "somrig potatissallad, rostade rödbetor och valnötter",
+        "price": "110 kr"
+      },
+      {
+        "name": "Fiskbiff",
+        "category": "Dagens",
+        "description": "kronärtskockor och grönkål, krossad potatis, konfiterade tomater, vitvinssås",
+        "price": "110 kr"
+      },
+      {
+        "name": "Cordon bleu",
+        "category": "Dagens",
+        "description": "potatismos, vitvinssås, smörstekt sparris",
+        "price": "110 kr"
+      }
+    ],
+    "emoji_tags": [
+      "🐄",
+      "🐟",
+      "🥗"
+    ]
   }
 }

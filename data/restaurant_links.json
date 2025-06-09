@@ -54,5 +54,9 @@
     "Masala": {
         "url": "https://masalakitchen.se/lunch/",
         "map": "https://maps.google.com/?q=Masala+Kitchen+Lindholmen"
+    },
+    "Pier11": {
+        "url": "https://ericssonbynordrest.se/restaurang/restaurant-pier-11/#lunch-menu",
+        "map": "https://maps.google.com/?q=Restaurant+Pier+11+Lindholmen"
     }
 }

@@ -1116,5 +1116,31 @@
       "🥗",
       "🥣"
     ]
+  },
+  "RestaurantPier11Scraper": {
+    "day": "monday",
+    "items": [
+      {
+        "name": "Aloo gobi",
+        "category": "Dagens",
+        "description": "kikärter, blomkål, spenat, aromatiskt ris, chili",
+        "price": "110 kr"
+      },
+      {
+        "name": "Bakad kolja",
+        "category": "Dagens",
+        "description": "morötter, krämig spenat, dillrostade potatisar, beurre blanc-sås",
+        "price": "110 kr"
+      },
+      {
+        "name": "Beouf bourguignon",
+        "category": "Dagens",
+        "description": "krämig potatismos, rostade morötter",
+        "price": "110 kr"
+      }
+    ],
+    "emoji_tags": [
+      "🐟"
+    ]
   }
 }

@@ -1142,5 +1142,33 @@
       "🥗",
       "🥣"
     ]
+  },
+  "RestaurantPier11Scraper": {
+    "day": "thursday",
+    "items": [
+      {
+        "name": "Rostad gnocchi",
+        "category": "Dagens",
+        "description": "salvia, vitlök, blåmögelostsås, linser",
+        "price": "110 kr"
+      },
+      {
+        "name": "Fish & Chips",
+        "category": "Dagens",
+        "description": "curryinlagd broccoli och blomkål, citron, dansk remouladsås",
+        "price": "110 kr"
+      },
+      {
+        "name": "Indisk butter chicken",
+        "category": "Dagens",
+        "description": "cashewnötter, russin, libabröd, ris, koriandersallad",
+        "price": "110 kr"
+      }
+    ],
+    "emoji_tags": [
+      "🐄",
+      "🐔",
+      "🥗"
+    ]
   }
 }
