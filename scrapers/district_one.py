@@ -67,7 +67,7 @@ class DistrictOneScraper(LunchScraper):
 
             # Add menu item
             if text and not text.startswith("..."):
-                item = MenuItem(name=text.strip(), category=current_category)
+                item = MenuItem(name="", price="129 kr", description=text.strip(), category=current_category)
                 day_text_blocks[current_day].append(item)
 
         for day, items in day_text_blocks.items():

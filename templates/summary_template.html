@@ -222,6 +222,7 @@
 <body>
     <h1>Dagens lunch på Lindholmen – {{ day.capitalize() }}</h1>
     <p>Lunchmenyer för {{ day.capitalize() }} från restauranger på Lindholmen. Uppdateras dagligen med aktuella rätter från över 10 lokala restauranger.</p>
+    <p>Priser kan vara inaktuella, för senaste informationen, se respektive hemsida.</p>
 
     <div style="margin-top: 40px; font-size: 14px; color: #666;">
         <p>Last updated: {{ last_updated }}</p>
@@ -275,10 +276,11 @@
             <h3>{{ cat }}</h3>
             <ul>
                 {% for item in items %}
-                <li>
-                    <strong>{{ item.name }}</strong>
-                    {% if item.description %} – {{ item.description }}{% endif %}
-                </li>
+                    <li>
+                        {% if item.price %}<em>{{ item.price }}</em>{% endif %}
+                        <strong>{{ item.name }}</strong>
+                        {% if item.description %} – {{ item.description }}{% endif %}
+                    </li>
                 {% endfor %}
             </ul>
             {% endfor %}

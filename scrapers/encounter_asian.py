@@ -60,18 +60,26 @@ class EncounterAsianScraper(LunchScraper):
             logger.warning("Menu list container not found.")
             return
 
-        blocks = menu_list.select("div[class*='MuiListItemText-root']")
-        logger.debug("Found %d menu blocks", len(blocks))
+        containers = menu_list.select("div[class*='MuiGrid-container']")
 
-        for block in blocks:
-            title_elem = block.select_one("span[class*='MuiListItemText-primary']")
-            desc_elem = block.select_one("p[class*='MuiListItemText-secondary']")
+        for container in containers:
+            children = container.select("div[class*='MuiGrid-item']")
+            if len(children) < 2:
+                continue
+
+            text_block = children[0]
+            price_block = children[1]
+
+            title_elem = text_block.select_one("span[class*='MuiListItemText-primary']")
+            desc_elem = text_block.select_one("p[class*='MuiListItemText-secondary']")
+            price_elem = price_block.select_one("p")
 
             if not title_elem:
                 continue
 
             full_name = title_elem.get_text(strip=True)
             description = desc_elem.get_text(strip=True) if desc_elem else ""
+            price = price_elem.get_text(strip=True) if price_elem else ""
 
             # Extract category from prefix (e.g., SUSHI - Mix 12 bitar → SUSHI)
             if " - " in full_name:
@@ -82,7 +90,12 @@ class EncounterAsianScraper(LunchScraper):
                 category = full_name
                 name = full_name
 
-            item = MenuItem(name=name.strip(), category=category.strip(), description=description.strip())
+            item = MenuItem(
+                name=name.strip(),
+                category=category.strip(),
+                description=description.strip(),
+                price=price.strip()
+            )
             logger.debug("Parsed item: %s", item)
             items.append(item)
 

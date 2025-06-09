@@ -43,13 +43,17 @@ class MissFScraper(LunchScraper):
 
                 # Optional description in <ul><li>
                 desc_tag = item_div.find("ul", class_="menu_feature_list")
-                description = ""
                 if desc_tag and desc_tag.find("li"):
                     desc_text = desc_tag.find("li").get_text(strip=True)
-                    if desc_text:
-                        title += f" – {desc_text}"
 
-                menu_items.append(MenuItem(name=title, category=category))
+                # Price if available
+                price_tag = item_div.find("span", class_="seasidetms_menu_price")
+                if price_tag:
+                    price = price_tag.get_text(strip=True) + " kr"
+                else:
+                    price = ""
+
+                menu_items.append(MenuItem(name=title, description=desc_text, category=category, price=price))
 
         # Apply the same menu to all weekdays
         for day in ["monday", "tuesday", "wednesday", "thursday", "friday"]:

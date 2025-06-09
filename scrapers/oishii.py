@@ -24,12 +24,23 @@ class OishiiScraper(LunchScraper):
                 continue
 
             for row in menu_block.find_all("div", class_="menurow"):
-                name_tag = row.find("span", class_="endsofdots")
+                dot_line = row.find("div", class_="dotconnected")
+                spans = dot_line.find_all("span", class_="endsofdots") if dot_line else []
+
+                if len(spans) >= 2:
+                    name = spans[0].get_text(strip=True)
+                    price = spans[-1].get_text(strip=True)
+                elif len(spans) == 1:
+                    name = spans[0].get_text(strip=True)
+                    price = None
+                else:
+                    continue
+
                 description_tag = row.find("div", class_="description")
-                if name_tag:
-                    name = name_tag.get_text(strip=True)
-                    description = description_tag.get_text(strip=True) if description_tag else None
-                    items.append(MenuItem(name=name, description=description, category=category))
+                description = description_tag.get_text(strip=True) if description_tag else None
+
+                items.append(MenuItem(name=name, description=description, price=price, category=category))
+
 
         # Oishii's menu appears the same for all weekdays
         for day in ["monday", "tuesday", "wednesday", "thursday", "friday"]:

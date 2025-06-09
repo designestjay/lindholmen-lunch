@@ -7,6 +7,7 @@ from scrapers.base import LunchScraper, DailyMenu, MenuItem
 
 class KooperativetScraper(LunchScraper):
     URL = "https://www.kooperativet.se/"
+    _PRICE = "130 kr"
 
     def __init__(self):
         headers = {
@@ -42,11 +43,14 @@ class KooperativetScraper(LunchScraper):
                 text = p.get_text(strip=True)
                 if text:
                     # Try to split into name + description if a separator exists
-                    if " - " in text:
-                        name, desc = map(str.strip, text.split(" - ", 1))
-                        items.append(MenuItem(name=name, description=desc, category=current_category))
+                    if "-" in text:
+                        name, desc = map(str.strip, text.split("-", 1))
+                        items.append(MenuItem(name=name, description=desc, price=self._PRICE, category=current_category))
+                    elif "–" in text:
+                        name, desc = map(str.strip, text.split("–", 1))
+                        items.append(MenuItem(name=name, description=desc, price=self._PRICE, category=current_category))
                     else:
-                        items.append(MenuItem(name=text, category=current_category))
+                        items.append(MenuItem(name=text, price=self._PRICE, category=current_category))
 
             if items:
                 self._menus[day] = DailyMenu(day=day, items=items)

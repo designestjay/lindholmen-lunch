@@ -2,24 +2,39 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
 
 class MenuItem:
-    def __init__(self, name: str, category: Optional[str] = None, description: Optional[str] = None):
+    def __init__(
+        self,
+        name: str,
+        category: Optional[str] = None,
+        description: Optional[str] = None,
+        price: Optional[str] = None
+    ):
         self.name = name.strip()
         self.category = category.strip() if category else None
         self.description = description.strip() if description else None
+        self.price = price.strip() if price else None
 
     def __repr__(self):
-        return f"MenuItem(name={self.name!r}, category={self.category!r}, description={self.description!r})"
+        return (
+            f"MenuItem(name={self.name!r}, category={self.category!r}, "
+            f"description={self.description!r}, price={self.price!r})"
+        )
+
 
     def __str__(self):
-        if self.description:
+        if self.price:
+            return f"{self.name} – {self.price} - {self.description}"
+        elif self.description:
             return f"{self.name} - {self.description}"
         return self.name
-    
+
+
     def to_dict(self):
         return {
             "name": self.name,
             "category": self.category,
-            "description": self.description
+            "description": self.description,
+            "price": self.price
         }
 
 

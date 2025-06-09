@@ -27,7 +27,7 @@ class CuckoosNestScraper(LunchScraper):
 
         items = []
         current_category = None
-
+        current_price = None
         for tag in left_column.find_all(["h3", "h4", "p"]):
             text = tag.get_text(strip=True)
             if not text:
@@ -36,18 +36,24 @@ class CuckoosNestScraper(LunchScraper):
             tag_text = text.upper()
             if "FISK" in tag_text:
                 current_category = "FISK"
+                current_price = "195 kr"
             elif "KÖTT" in tag_text:
                 current_category = "KÖTT"
+                current_price = "195 kr"
             elif "VEG" in tag_text:
                 current_category = "VEG"
+                current_price = "195 kr"
             elif "CAESARSALLAD" in tag_text:
                 current_category = "CEASARSALLAD"
+                current_price = "215 kr"
             elif "RÄKMACKA" in tag_text:
                 current_category = "RÄKMACKA"
+                current_price = "295 kr"
             elif "DOUBLE SMASHED CHEESEBURGER" in tag_text:
                 current_category = "DOUBLE SMASHED CHEESEBURGER"
+                current_price = "235 kr"
             elif tag.name == "p":
-                items.append(MenuItem(name=text, category=current_category))
+                items.append(MenuItem(name="", description=text, category=current_category, price=current_price))
 
         if items:
             # The menu is weekly and valid Mon–Fri

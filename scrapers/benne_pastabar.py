@@ -3,6 +3,7 @@ from scrapers.base import LunchScraper, MenuItem, DailyMenu
 from typing import Dict, Optional
 import requests
 from datetime import date
+import re
 
 class BennePastabarScraper(LunchScraper):
     URL = "https://bennepastabar.se/#menu"
@@ -31,24 +32,38 @@ class BennePastabarScraper(LunchScraper):
         for article in soup.find_all("article"):
             name_tag = article.find("h4")
             desc_tag = article.find("p")
+            price_tag = article.find("p", class_="price")
+
             if name_tag and desc_tag:
                 name = name_tag.get_text(strip=True)
                 desc = desc_tag.get_text(strip=True)
-                full = f"{name} - {desc}"
+                price = price_tag.get_text(strip=True) if price_tag else None
+                category = "The Visitor" if article.find(class_="thevisitor-lable") else "Benne Pasta"
 
-                if article.find(class_="thevisitor-lable"):
-                    categorized_items["The Visitor"].append(MenuItem(name=full, category="The Visitor"))
-                else:
-                    categorized_items["Benne Pasta"].append(MenuItem(name=full, category="Benne Pasta"))
+                categorized_items[category].append(MenuItem(
+                    name=name,
+                    description=desc,
+                    category=category,
+                    price=price
+                ))
 
         # Benne Bites
         for figure in soup.select("div.bites-wrapper .figure"):
             name_tag = figure.find("h4")
             desc_tag = figure.find("p")
+            price_tag = figure.find("p", class_="price")
+
             if name_tag and desc_tag:
                 name = name_tag.get_text(strip=True)
                 desc = desc_tag.get_text(strip=True)
-                categorized_items["Benne Bites"].append(MenuItem(name=f"{name} - {desc}", category="Benne Bites"))
+                price = price_tag.get_text(strip=True) if price_tag else None
+
+                categorized_items["Benne Bites"].append(MenuItem(
+                    name=name,
+                    description=desc,
+                    category="Benne Bites",
+                    price=price
+                ))
 
         # Apply menu to all weekdays
         all_items = []

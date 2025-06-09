@@ -99,16 +99,16 @@ class BombayBistroScraper(LunchScraper):
                     continue
 
                 if is_all_caps(line):
-                    dish = line
                     description_lines = []
                     i += 1
                     while i < len(lines) and not is_all_caps(lines[i].strip()):
                         description_lines.append(lines[i].strip())
                         i += 1
-                    full = f"{dish} - {' '.join(description_lines)}" if description_lines else dish
-                    items.append(MenuItem(name=full))
+                    description_line = f"{' '.join(description_lines)}" if description_lines else line
+                    clean_name, _ = extract_price(line)
+                    items.append(MenuItem(name=clean_name, description=description_line, price="129 kr"))
                 else:
-                    items.append(MenuItem(name=line))
+                    items.append(MenuItem(name=line, price="129 kr"))
                     i += 1
             self._menus[day] = DailyMenu(day=day, items=items)
 
@@ -143,28 +143,23 @@ class BombayBistroScraper(LunchScraper):
             i = 0
             while i < len(alt_lines):
                 line = alt_lines[i]
+                clean_name, price = extract_price(line)
                 if is_all_caps(line):
-                    dish = line
                     description_lines = []
                     i += 1
                     while i < len(alt_lines) and not is_all_caps(alt_lines[i]):
                         description_lines.append(alt_lines[i])
                         i += 1
-                    full = f"{dish} - {' '.join(description_lines)}" if description_lines else dish
-                    merged_items.append(MenuItem(name=full, category="ANDRA ALTERNATIV"))
+                    description_line = f"{' '.join(description_lines)}" if description_lines else None
+                    merged_items.append(MenuItem(name=clean_name, description=description_line, price=price, category="ANDRA ALTERNATIV"))
                 else:
-                    merged_items.append(MenuItem(name=line, category="ANDRA ALTERNATIV"))
+                    merged_items.append(MenuItem(name=clean_name, price=price, category="ANDRA ALTERNATIV"))
                     i += 1
 
             if day in self._menus:
                 self._menus[day].items.extend(merged_items)
             else:
                 self._menus[day] = DailyMenu(day=day, items=merged_items)
-
-
-
-
-
 
 
     def get_menu_for_day(self, day: str) -> Optional[DailyMenu]:
@@ -177,3 +172,13 @@ class BombayBistroScraper(LunchScraper):
 def is_all_caps(line: str) -> bool:
     normalized = unicodedata.normalize("NFKD", line).encode("ASCII", "ignore").decode()
     return normalized.isupper()
+
+
+def extract_price(text: str) -> tuple[str, Optional[str]]:
+    match = re.search(r"\b(\d{2,3})\s*kr\b", text, re.IGNORECASE)
+    if match:
+        price = f"{match.group(1)} kr"
+        # Remove the price part from the original text
+        cleaned = re.sub(r"\b(\d{2,3})\s*kr\b", "", text, flags=re.IGNORECASE).strip(" –-")
+        return cleaned, price
+    return text.strip(), None

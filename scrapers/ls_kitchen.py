@@ -10,6 +10,7 @@ import time
 
 class LsKitchenScraper(LunchScraper):
     URL = "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1"
+    _PRICE = "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
 
     SWEDISH_TO_ENGLISH = {
         "Måndag": "monday",
@@ -51,7 +52,7 @@ class LsKitchenScraper(LunchScraper):
                 if h3:
                     name = h3.get_text(strip=True)
                     if name:
-                        items.append(MenuItem(name=name))
+                        items.append(MenuItem(name=name, price=self._PRICE))
 
             if items:
                 self._menus[eng_day] = DailyMenu(day=eng_day, items=items)

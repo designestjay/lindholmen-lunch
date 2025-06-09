@@ -7,6 +7,7 @@ import requests
 
 class MimolettScraper(LunchScraper):
     URL = "https://restaurangmimolett.se/lunch/"
+    _PRICE = "129 kr"
 
     def __init__(self):
         self._menus: Dict[str, DailyMenu] = {}
@@ -34,11 +35,13 @@ class MimolettScraper(LunchScraper):
             for li in container.select("li.menu-list__item"):
                 name = li.select_one(".item_title")
                 desc = li.select_one(".desc__content")
+                price = li.select_one(".menu-list__item-price")
                 if name:
                     items.append(MenuItem(
                         name=name.get_text(strip=True),
                         description=desc.get_text(strip=True) if desc else None,
-                        category=category
+                        category=category,
+                        price=price.get_text(strip=True).replace(":-"," kr") if price else self._PRICE
                     ))
 
         # Mimolett serves same menu Mon–Fri

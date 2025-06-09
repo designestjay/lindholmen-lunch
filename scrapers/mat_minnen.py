@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 class MatMinnenScraper(LunchScraper):
     URL = "https://matminnen.se/lunchmeny"
+    _PRICE = "125 kr"
 
     def __init__(self):
         response = requests.get(self.URL)
@@ -52,7 +53,7 @@ class MatMinnenScraper(LunchScraper):
             name = parts[0].strip()
             description = parts[1].strip() if len(parts) > 1 else ""
 
-            item = MenuItem(name=name, description=description)
+            item = MenuItem(name=name, description=description, price=self._PRICE)
             logging.debug("Item: %s", item)
 
             if current_day in weekdays:

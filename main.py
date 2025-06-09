@@ -86,7 +86,10 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
                     results[scraper_cls.__name__] = {
                         "day": menu.day,
                         "items": [
-                            {"name": item.name, "category": item.category or "", "description": item.description or ""}
+                            {"name": item.name,
+                             "category": item.category or "",
+                             "description": item.description or "",
+                             "price": item.price or ""}
                             for item in menu.items
                         ]
                     }
@@ -100,7 +103,10 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
                     results[scraper_cls.__name__] = {
                         "day": menu.day,
                         "items": [
-                            {"name": item.name, "category": item.category or "", "description": item.description or ""}
+                            {"name": item.name,
+                             "category": item.category or "",
+                             "description": item.description or "",
+                             "price": item.price or ""}
                             for item in menu.items
                         ]
                     }

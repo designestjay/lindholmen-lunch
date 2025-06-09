@@ -2,57 +2,70 @@
   "standing": [
     {
       "name": "SUBZI THALI",
-      "description": "Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita."
+      "description": "Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita.",
+      "price": "134 kr"
     },
     {
       "name": "PALAK PANEER",
-      "description": "Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök"
+      "description": "Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök",
+      "price": "132 kr"
     },
     {
       "name": "CHICKEN TANDOORI",
-      "description": "Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås."
+      "description": "Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås.",
+      "price": "132 kr"
     },
     {
       "name": "CHICKEN TIKKA MASALA",
-      "description": "Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås."
+      "description": "Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås.",
+      "price": "142 kr"
     },
     {
       "name": "ROGAN JOSH",
-      "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel."
+      "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.",
+      "price": "152 kr"
     },
     {
       "name": "JHINGA KORMA",
-      "description": "Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma."
+      "description": "Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma.",
+      "price": "157 kr"
     }
   ],
   "sides": [
     {
       "name": "EXTRA SALLAD",
-      "description": ""
+      "description": "",
+      "price": "15 kr"
     },
     {
       "name": "EXTRA LUNCH NAAN",
-      "description": "Nybakat indiskt bröd."
+      "description": "Nybakat indiskt bröd.",
+      "price": "15 kr"
     },
     {
       "name": "PLAIN NAAN (*)",
-      "description": ""
+      "description": "",
+      "price": "29 kr"
     },
     {
       "name": "BUTTER NAAN (*)",
-      "description": ""
+      "description": "",
+      "price": "35 kr"
     },
     {
       "name": "VITLÖK & KORIANDER NAAN (*)",
-      "description": ""
+      "description": "",
+      "price": "395 kr"
     },
     {
       "name": "OST & KORIANDER NAAN (*)",
-      "description": ""
+      "description": "",
+      "price": "39 kr"
     },
     {
       "name": "CHILI NAAN (*)",
-      "description": ""
+      "description": "",
+      "price": "39 kr"
     },
     {
       "name": "(*)",
@@ -60,35 +73,43 @@
     },
     {
       "name": "MYNTASÅS",
-      "description": ""
+      "description": "",
+      "price": "15 kr"
     },
     {
       "name": "MANGO CHUTNEY",
-      "description": ""
+      "description": "",
+      "price": "15 kr"
     },
     {
       "name": "CHILI PICKLES",
-      "description": ""
+      "description": "",
+      "price": "15 kr"
     },
     {
       "name": "PAPADOM",
-      "description": ""
+      "description": "",
+      "price": "15 kr"
     },
     {
       "name": "RAITA",
-      "description": ""
+      "description": "",
+      "price": "29 kr"
     },
     {
       "name": "MANGOLASSI",
-      "description": ""
+      "description": "",
+      "price": "39 kr"
     },
     {
       "name": "LÄSK / LÄTTÖL",
-      "description": ""
+      "description": "",
+      "price": "25 kr"
     },
     {
       "name": "MINERALVATTEN",
-      "description": ""
+      "description": "",
+      "price": "25 kr"
     }
   ],
   "weeks": {
@@ -96,71 +117,86 @@
       "Friday": [
         {
           "name": "PALAK CHICKEN",
-          "description": "Kycklingfilé med spenat, paprika, grön chili, ingeföra och vitlök."
+          "description": "Kycklingfilé med spenat, paprika, grön chili, ingeföra och vitlök.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "MEEN MOILEE",
-          "description": "Marinerad och Grillad laxflé med senapsfrö, lök, kumminpulver och kokosmjölk."
+          "description": "Marinerad och Grillad laxflé med senapsfrö, lök, kumminpulver och kokosmjölk.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "TOFU KADHAI",
-          "description": "Tofu tillagad med tomat, paprika och champinjoner, smaksatt med ingefära, koriander Och on."
+          "description": "Tofu tillagad med tomat, paprika och champinjoner, smaksatt med ingefära, koriander Och on.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Monday": [
         {
           "name": "MURG LUCKNOWI",
-          "description": "Kycklingfilé tlagad med lök, tomat, ingefära, CN, kewra, rosenvatten och koriander"
+          "description": "Kycklingfilé tlagad med lök, tomat, ingefära, CN, kewra, rosenvatten och koriander",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "ADRAKI LAMB DO PYAZA",
-          "description": "Lammrostbift, lagas med rödlök, ingefära, chili, citron och indiska \"Panch phoron\" (fem kryddor)."
+          "description": "Lammrostbift, lagas med rödlök, ingefära, chili, citron och indiska \"Panch phoron\" (fem kryddor).",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PUDINA CHANA MASALA",
-          "description": "Kikärtsgryta med mynta. och currysås, garnerad med friterad lök."
+          "description": "Kikärtsgryta med mynta. och currysås, garnerad med friterad lök.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Thursday": [
         {
           "name": "GARLIC TIKKA",
-          "description": "Kycklingfilé marinerad i vitlök, ingefära, grön chili, yoghurt och lime. Serveras med tandoorisås."
+          "description": "Kycklingfilé marinerad i vitlök, ingefära, grön chili, yoghurt och lime. Serveras med tandoorisås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB HYDERABAD",
-          "description": "Lamm med färsk koriander, mynta och grön chili i kokosmjölk."
+          "description": "Lamm med färsk koriander, mynta och grön chili i kokosmjölk.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "DAL TADKA",
-          "description": "Flamberade linser (Toor Dal ellr Arhar Dal) med traditionella indiska kryddor och koriander."
+          "description": "Flamberade linser (Toor Dal ellr Arhar Dal) med traditionella indiska kryddor och koriander.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Tuesday": [
         {
           "name": "MURG HARA MASALA",
-          "description": "Örtkryddad kyckingfilégryta med färsk koriander, bockhornsklöver, basilika och grön chili kokosmjölk."
+          "description": "Örtkryddad kyckingfilégryta med färsk koriander, bockhornsklöver, basilika och grön chili kokosmjölk.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "GOAN FISH CURRY",
-          "description": "Laxfilé i en väldoftande kokosmjölkagryta med vitlök, svarta senapsfrön, koriander, tamarind och curryblad."
+          "description": "Laxfilé i en väldoftande kokosmjölkagryta med vitlök, svarta senapsfrön, koriander, tamarind och curryblad.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PANEER MAKHANI",
-          "description": "Krämig tomatgryta, indisk färskost, smaksatt med ingefära, vitlök och garam masala."
+          "description": "Krämig tomatgryta, indisk färskost, smaksatt med ingefära, vitlök och garam masala.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Wednesday": [
         {
           "name": "MURG VINDALOO",
-          "description": "Eldig kycklingrätt från Goa med palmvinäger, nejlkor och piri-piri masala"
+          "description": "Eldig kycklingrätt från Goa med palmvinäger, nejlkor och piri-piri masala",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "SHAHI GOSHT",
-          "description": "Mild och krämig lammrätt med kardemumma, malda cashewnötter och pistagenötter"
+          "description": "Mild och krämig lammrätt med kardemumma, malda cashewnötter och pistagenötter",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "BAINGAN BHARTA",
-          "description": "Långstekt aubergine, lök, tomat, ingefära, chili, koriander."
+          "description": "Långstekt aubergine, lök, tomat, ingefära, chili, koriander.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ]
     },
@@ -168,71 +204,86 @@
       "Friday": [
         {
           "name": "MURG METHI MALAI",
-          "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås."
+          "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "MACHILI BENGALI",
-          "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)"
+          "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "ALOO GHOBI MASALA",
-          "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära."
+          "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Monday": [
         {
           "name": "MURG MAKHNI",
-          "description": "Tandoorimarinerade kyckingfiébita i krämig tomatsås med kardemumma"
+          "description": "Tandoorimarinerade kyckingfiébita i krämig tomatsås med kardemumma",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "ACHARI MIRCH",
-          "description": "Lammrostbitf med röd chili, limeblad, färsk ingefära, pickles, mynta och kokosmjölk"
+          "description": "Lammrostbitf med röd chili, limeblad, färsk ingefära, pickles, mynta och kokosmjölk",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "DAL MAKHANI",
-          "description": "Flamberade linser i krämig tomatgryta, smaksatt med ingefära, vitök, garam masala och kryddat indiskt smör."
+          "description": "Flamberade linser i krämig tomatgryta, smaksatt med ingefära, vitök, garam masala och kryddat indiskt smör.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Thursday": [
         {
           "name": "HYBERBADI MURG",
-          "description": "Örtkryddad kyckingfilégryta med färsk koriander, mynta och grön chili i kokosmjölk."
+          "description": "Örtkryddad kyckingfilégryta med färsk koriander, mynta och grön chili i kokosmjölk.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB BADAMI",
-          "description": "Mild och krämig lammgryta med kardemumma och mandel."
+          "description": "Mild och krämig lammgryta med kardemumma och mandel.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "MUTTER MUSHROOM",
-          "description": "Champinjoner, gröna ärtor, majs, paprika, tillagade med tomat och lök"
+          "description": "Champinjoner, gröna ärtor, majs, paprika, tillagade med tomat och lök",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Tuesday": [
         {
           "name": "MURG KALI MIRCH",
-          "description": "Marinerat kycklingfilé med lök och tomat i svartpeppar- och ingeärasås. "
+          "description": "Marinerat kycklingfilé med lök och tomat i svartpeppar- och ingeärasås. ",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "SEEKH KABAB",
-          "description": "Lammfärsrytar smaksatta med ingefära, Vitlök, ägg, koriander och garam masala Serveras med tandoorisis."
+          "description": "Lammfärsrytar smaksatta med ingefära, Vitlök, ägg, koriander och garam masala Serveras med tandoorisis.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PANEER JODHPURI",
-          "description": "Indisk färskost i en mild currysås med cashewnötskräm toppad med papadom."
+          "description": "Indisk färskost i en mild currysås med cashewnötskräm toppad med papadom.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Wednesday": [
         {
           "name": "CHICKEN KADHAI",
-          "description": "Kyckilngflé med tomat, paprika och champinjoner, smaksatt med ingefära, koriander och chili. "
+          "description": "Kyckilngflé med tomat, paprika och champinjoner, smaksatt med ingefära, koriander och chili. ",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "KASHMIRI LAMB",
-          "description": "Lammrostbitf med tomat, lök, saffran, ingefära, koriander och röd chili."
+          "description": "Lammrostbitf med tomat, lök, saffran, ingefära, koriander och röd chili.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "AUBERGINE MADRASI",
-          "description": "Aubergine tilagad i en krydlig tamarind- och kokossås, smaksatt med färska curryblad och koriander."
+          "description": "Aubergine tilagad i en krydlig tamarind- och kokossås, smaksatt med färska curryblad och koriander.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ]
     },
@@ -240,71 +291,86 @@
       "Friday": [
         {
           "name": "MURG DO PYAZA",
-          "description": "Kycklingrätt från Hyderabad smaksatt med lök, tomat och husets egen kryddblandning."
+          "description": "Kycklingrätt från Hyderabad smaksatt med lök, tomat och husets egen kryddblandning.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB LAAL MAAS",
-          "description": "Traditionell lammcurry med smak av paprika, spiskummin och ingefära."
+          "description": "Traditionell lammcurry med smak av paprika, spiskummin och ingefära.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PALAK CHANA MASALA",
-          "description": "Spenat med kikärtor, lök, tomat, garam masala, chili och ingefära. "
+          "description": "Spenat med kikärtor, lök, tomat, garam masala, chili och ingefära.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Monday": [
         {
           "name": "CHICKEN PATIALA",
-          "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås."
+          "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB VINDALOO",
-          "description": "Eldig lammrätt från Goa med palmviniger, nejlikor och piri-piri masala."
+          "description": "Eldig lammrätt från Goa med palmviniger, nejlikor och piri-piri masala.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "VEG KADHAI",
-          "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander."
+          "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Thursday": [
         {
           "name": "CHICKEN CHAMBA",
-          "description": "Klassisk kycklingrätt från Himalaya med smak av lök och tomat i en yoghurt-masalasås."
+          "description": "Klassisk kycklingrätt från Himalaya med smak av lök och tomat i en yoghurt-masalasås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB COCONUT CURRY",
-          "description": "Lammrostbiff med lök, tomat, senap, fänkål, curryblad, lime, chili, koriander."
+          "description": "Lammrostbiff med lök, tomat, senap, fänkål, curryblad, lime, chili, koriander.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PANEER ACHARI",
-          "description": "Indisk färskost med röd chili, färsk ingefära, pickles, mynta och kokosmjölk. "
+          "description": "Indisk färskost med röd chili, färsk ingefära, pickles, mynta och kokosmjölk. ",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Tuesday": [
         {
           "name": "CHICKEN SHAHI KORMA",
-          "description": "Krämig kyckingfilégryta med malda pistage och cashewnötter."
+          "description": "Krämig kyckingfilégryta med malda pistage och cashewnötter.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB CHANA BOTI",
-          "description": "Lämmrätt med kikärtor, tomat, färsk koriander, mynta och lime"
+          "description": "Lämmrätt med kikärtor, tomat, färsk koriander, mynta och lime",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "RAMA ALOO",
-          "description": "Kidneybönor och potatis i indisk currysås. Garnerad med friterad lök."
+          "description": "Kidneybönor och potatis i indisk currysås. Garnerad med friterad lök.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Wednesday": [
         {
           "name": "MURG ZAFFRANI",
-          "description": "Saffransmarinerad grillad kycking, garam masala i en krämig cashewnötsås."
+          "description": "Saffransmarinerad grillad kycking, garam masala i en krämig cashewnötsås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAHSUNI MACHILI NIMBU",
-          "description": "Laxfilé, tillagad i en krämig masalasås med smak öv lime."
+          "description": "Laxfilé, tillagad i en krämig masalasås med smak öv lime.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "AVIAL CURRY",
-          "description": "Blandade grönsaker med senaps, kummin, koriander och fänkål i kokossås "
+          "description": "Blandade grönsaker med senaps, kummin, koriander och fänkål i kokossås",
+          "price": "119 kr, takeaway 114 kr"
         }
       ]
     },
@@ -312,71 +378,86 @@
       "Friday": [
         {
           "name": "MALVANI CHICKEN",
-          "description": "Kycklingfilé i en sås av kokoskräm, röd chili och Malvani masala."
+          "description": "Kycklingfilé i en sås av kokoskräm, röd chili och Malvani masala.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "FISH TIKKA",
-          "description": "Marinerad, Grillad lax i husets kryddor. Serveras med tandoorisås."
+          "description": "Marinerad, Grillad lax i husets kryddor. Serveras med tandoorisås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "CHANA PUMPA CURRY",
-          "description": "Kikärtsgsyta med pumpa tillagad med senap, kokos, curry, fänkål och chili"
+          "description": "Kikärtsgsyta med pumpa tillagad med senap, kokos, curry, fänkål och chili",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Monday": [
         {
           "name": "CHICKEN MURG MANGO",
-          "description": "Kycklingfilé med färsk koriander, mynta, grön Chil, kokosmjölk och mangopuré."
+          "description": "Kycklingfilé med färsk koriander, mynta, grön Chil, kokosmjölk och mangopuré.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB PUNJABI CURRY",
-          "description": "En populär lammrätt i en sås av lök, tomat, paprika, ingefära, koriander och grön chili."
+          "description": "En populär lammrätt i en sås av lök, tomat, paprika, ingefära, koriander och grön chili.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "BAINGAN MIRCH MASALA",
-          "description": "En traditionell maträtt med aubergine, paprika, tomat, kryddor, örter och koriander."
+          "description": "En traditionell maträtt med aubergine, paprika, tomat, kryddor, örter och koriander.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Thursday": [
         {
           "name": "TANDOORI CHICKEN TIKKA",
-          "description": "Kyckingfilé marinerad i lime, yoghurt och tandoori masala. Serveras med tandoorsås."
+          "description": "Kyckingfilé marinerad i lime, yoghurt och tandoori masala. Serveras med tandoorsås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "KOLHAPURI GOSHT",
-          "description": "Het lammrätt med svartpeppar, kokosmjölk och koriander."
+          "description": "Het lammrätt med svartpeppar, kokosmjölk och koriander.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "PANCHRATNA DAL",
-          "description": "Linsgryta med fem sorters linser. Ordet \"panchratna\" betyder fem juveler."
+          "description": "Linsgryta med fem sorters linser. Ordet \"panchratna\" betyder fem juveler.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Tuesday": [
         {
           "name": "JARDALO MURG",
-          "description": "Kycklingfilé med aprikos, kanel, chili, lök, ingefära och currysås."
+          "description": "Kycklingfilé med aprikos, kanel, chili, lök, ingefära och currysås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "LAMB KADHAI",
-          "description": "Lammrostbiff lagad med lök, ingefära, peppar, chili och koriander. "
+          "description": "Lammrostbiff lagad med lök, ingefära, peppar, chili och koriander. ",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "MUTTER PANEER",
-          "description": "Hemlagad indisk färskost i krämig sås av lök, tomat och gröna ärtor."
+          "description": "Hemlagad indisk färskost i krämig sås av lök, tomat och gröna ärtor.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ],
       "Wednesday": [
         {
           "name": "CHICKEN CHETTINAD",
-          "description": "En populär sydindisk kycklinggryta, tillagad i en pepprig kryddblandning från Chettinad, Spetsad med kokos."
+          "description": "En populär sydindisk kycklinggryta, tillagad i en pepprig kryddblandning från Chettinad, Spetsad med kokos.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "CHUTNEY SEEKH KEBAB",
-          "description": "Lammfärskebab med mango chutney, mynta, vitlök, garam masala och rödvinsås."
+          "description": "Lammfärskebab med mango chutney, mynta, vitlök, garam masala och rödvinsås.",
+          "price": "119 kr, takeaway 114 kr"
         },
         {
           "name": "SAMOSA CURRY",
-          "description": "Friterade små piroger med vegetarisk fyllning, serveras i yoghurt- och currysås."
+          "description": "Friterade små piroger med vegetarisk fyllning, serveras i yoghurt- och currysås.",
+          "price": "119 kr, takeaway 114 kr"
         }
       ]
     }

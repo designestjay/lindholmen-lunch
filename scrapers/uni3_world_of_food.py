@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 class Uni3WorldOfFoodScraper(LunchScraper):
     RSS_URL = "https://www.compass-group.se/menuapi/feed/rss/current-week?costNumber=448305&language=sv"
+    _PRICE = "132 kr"
 
     def __init__(self):
         self._menus: Dict[str, DailyMenu] = {}
@@ -57,8 +58,14 @@ class Uni3WorldOfFoodScraper(LunchScraper):
                     em = p.find("em")
                     if em:
                         em.extract()
-                    name = p.get_text(strip=True, separator=" ")
-                    items.append(MenuItem(name=name, category=category))
+                        full_text = p.get_text(strip=True, separator=" ")
+                        # Split on both hyphen types: " - " and " – "
+                        parts = re.split(r"\s+[–-]\s+", full_text)
+
+                        if parts:
+                            name = parts[0]
+                            description = ", ".join(parts[1:]) if len(parts) > 1 else None
+                            items.append(MenuItem(name=name, description=description, category=category, price=self._PRICE))
 
             if items:
                 self._menus[day] = DailyMenu(day=day, items=items)
