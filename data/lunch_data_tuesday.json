@@ -477,7 +477,7 @@
     "day": "tuesday",
     "items": [
       {
-        "name": "Kyckling tikka masala, basmatiris, salladslök, koriander & böngroddar",
+        "name": "Kyckling (SE) tikka masala, basmatiris, salladslök & böngroddar",
         "category": "",
         "description": "",
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
@@ -501,7 +501,7 @@
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
       },
       {
-        "name": "Pasta bolognese på linser, morot, selleri, linguine, baby spenat & vegansk ost",
+        "name": "Pasta bolognese på linser, morot, selleri, linguine, baby spenat",
         "category": "",
         "description": "",
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
@@ -509,7 +509,6 @@
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🌱",
       "🐔",
       "🐟",
       "🥗",
