@@ -1,186 +1,3 @@
-<style>
-    h1 { 
-        color: #004d66;
-    }
-    h2 {
-        background: #004d66; color: white; padding: 10px; border-radius: 4px;
-        cursor: pointer; user-select: none;
-        text-align: center; margin-top: 20px;
-    }
-    h2:hover {
-        background: #006080;
-    }
-    h3 {
-        color: #004d66;
-        margin-top: 1em;
-    }
-    ul {
-        list-style-type: disc;
-        padding-left: 20px;
-    }
-    li {
-        margin-bottom: 5px;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        background: #f8f8f8;
-        padding: 20px;
-        max-width: 80%
-    }
-    .restaurant {
-        margin-bottom: 40px;
-        padding: 20px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .restaurant-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .menu-content {
-        display: none;
-        margin-top: 10px;
-    }
-    .button-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .weekday-button {
-        display: block;
-        text-align: center;
-        background: #004d66;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 14px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background 0.2s ease;
-    }
-    .weekday-button:hover {
-        background: #006080;
-    }
-    .menu-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: nowrap;
-        gap: 10px;
-        min-height: 60px;
-    }
-    .menu-header h2 {
-        flex: 1;
-        margin: 0;
-        padding-top: 2px;
-    }
-    .menu-header-grid {
-        display: grid;
-        grid-template-areas:
-        "name emojis1 link1"
-        "name emojis2 link2"
-        "name emojis3 link3";
-        grid-template-columns: 1fr auto auto;
-        gap: 4px 10px;
-        align-items: center;
-        margin-bottom: 10px;
-        border-collapse: separate;
-    }
-    .menu-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        min-width: 90px;
-    }
-    .menu-links {
-        display: flex;
-        gap: 10px;
-        font-size: 1.2em;
-    }
-    .menu-links a {
-        color: #004d66;
-        text-decoration: none;
-    }
-    .menu-links a:hover {
-        text-decoration: underline;
-        color: #004d66;
-    }
-    .icon-links {
-        display: flex;
-        gap: 6px;
-        font-size: 1.2em;
-        margin-top: 2px;
-    }
-    .icon-link {
-        font-size: 1.3em;
-        text-align: right;
-        padding-left: 6px;
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-        margin-left: 6px;
-    }
-    .icon-link a {
-        color: #004d66;
-        text-decoration: none;
-    }
-    
-    .icon-link a:hover {
-        text-decoration: underline;
-        color: #004d66;
-    }
-    .emoji-tags {
-        display: flex;
-        flex-direction: column;
-        text-align: right;
-        font-size: 1.2em;
-        line-height: 1.4;
-    }
-    .emoji-row {
-        font-size: 1.3em;
-        white-space: nowrap;
-        text-align: left;
-        padding-right: 1px;
-        margin-right: 1px;
-    }
-    .restaurant-name {
-        grid-area: name;
-        font-size: 1.5em;
-        font-weight: bold;
-        background: #004d66;
-        color: white;
-        padding: 10px 14px;
-        border-radius: 6px;
-        text-align: center;
-        cursor: pointer;
-        user-select: none;
-        transition: background 0.2s ease;
-    }
-    .restaurant-name:hover {
-        background: #006080;
-    }
-    .emoji-row:nth-child(2) {
-        grid-area: emojis1;
-    }
-    .emoji-row:nth-child(3) {
-        grid-area: emojis2;
-    }
-    .emoji-row:nth-child(4) {
-        grid-area: emojis3;
-    }
-    
-    .icon-link:nth-of-type(1) {
-        grid-area: link1;
-    }
-    .icon-link:nth-of-type(2) {
-        grid-area: link2;
-    }
-    .icon-link:nth-of-type(3) {
-        grid-area: link3;
-    }
-</style>
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -195,102 +12,765 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dagens lunch – {{ day.capitalize() }}</title>
     <meta name="description" content="Dagens lunch från restauranger på Lindholmen – {{ day.capitalize() }}" />
-    <script>
-        function toggleVisibility(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const current = window.getComputedStyle(el).display;
-            el.style.display = (current === 'none') ? 'block' : 'none';
+    
+    <style>
+        /* Modern CSS Reset and Variables */
+        :root {
+            --background: #ffffff;
+            --foreground: #020617;
+            --card: #ffffff;
+            --card-foreground: #020617;
+            --primary: #1e40af;
+            --primary-foreground: #ffffff;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --muted: #f8fafc;
+            --muted-foreground: #64748b;
+            --accent: #f1f5f9;
+            --accent-foreground: #0f172a;
+            --border: rgba(0, 0, 0, 0.1);
+            --radius: 0.5rem;
+            --orange: #ea580c;
+            --orange-hover: #dc2626;
+            --green: #16a34a;
+            --green-light: #dcfce7;
         }
-        
-        window.addEventListener("DOMContentLoaded", function () {
-            const hash = window.location.hash;
-            if (hash) {
-                const readableId = hash.slice(1);
-                const contentId = readableId + "_menu";
-                const menuContent = document.getElementById(contentId);
-                if (menuContent) {
-                    menuContent.style.display = "block";
-                    document.getElementById(readableId)?.scrollIntoView({ behavior: "smooth" });
-                }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #dbeafe, #e0e7ff);
+            min-height: 100vh;
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-icon {
+            width: 2rem;
+            height: 2rem;
+            color: var(--primary);
+        }
+
+        .header-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin: 0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .header-title:hover {
+            color: var(--primary);
+        }
+
+        .header-subtitle {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin: 0;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .badge-icon {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 0;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .nav-button {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .nav-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .nav-button.active {
+            background: var(--orange);
+        }
+
+        .nav-button.active:hover {
+            background: var(--orange-hover);
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+
+        .page-title p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        /* Restaurant Grid */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* Responsive Grid for wider screens */
+        @media (min-width: 1200px) {
+            .restaurant-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .restaurant-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        .restaurant-card {
+            background: var(--card);
+            border-radius: calc(var(--radius) + 4px);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .restaurant-card.highlighted {
+            border: 2px solid var(--orange);
+            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .restaurant-header {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 1.25rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .restaurant-header:hover {
+            background: #1d4ed8;
+        }
+
+        .restaurant-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .restaurant-links {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .restaurant-links a {
+            color: var(--primary-foreground);
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+
+        .restaurant-links a:hover {
+            opacity: 1;
+        }
+
+        .restaurant-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-section {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .menu-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--muted);
+            border-radius: var(--radius);
+            transition: background 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background: var(--accent);
+        }
+
+        .menu-item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
+        }
+
+        .menu-item-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
+        }
+
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--primary);
+            align-self: flex-start;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+            max-width: 180px;
+            text-align: right;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .emoji-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .emoji-tag {
+            font-size: 1.1rem;
+        }
+
+        /* Separator */
+        .separator {
+            height: 1px;
+            background: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* Special Offer */
+        .special-offer {
+            background: var(--green-light);
+            color: var(--green);
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            margin-top: auto;
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted-foreground);
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Icons using CSS */
+        .icon-utensils::before { content: "🍽️"; }
+        .icon-clock::before { content: "🕐"; }
+        .icon-map::before { content: "📍"; }
+        .icon-menu::before { content: "📋"; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .menu-item-details {
+                width: 100%;
+            }
+            
+            .menu-item-name {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-price {
+                align-self: flex-end;
+                margin-left: 0;
+                margin-top: 0.25rem;
+                max-width: 100%; /* Allow full width on mobile */
+                text-align: left; /* Left align on mobile */
+            }
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary-foreground);
+            transition: all 0.2s ease;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+        }
+
+        /* Random Selection */
+        .random-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .random-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, var(--orange), var(--orange-hover));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+        }
+
+        .random-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <span class="header-icon icon-utensils"></span>
+                <div>
+                    <h1 class="header-title" onclick="goToTop()">Lindholmen Lunch</h1>
+                    <p class="header-subtitle">
+                        <span class="en">Today's lunch in Lindholmen, Gothenburg</span>
+                        <span class="sv hidden">Dagens lunch i Lindholmen, Göteborg</span>
+                    </p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <span class="icon-language">🌐</span>
+                    <span class="en">Svenska</span>
+                    <span class="sv hidden">English</span>
+                </button>
+                <div class="badge">
+                    <span class="badge-icon icon-clock"></span>
+                    <span class="en">Today: {{ day.capitalize() }}</span>
+                    <span class="sv hidden">Idag: {{ day.capitalize().replace('monday', 'Måndag').replace('tuesday', 'Tisdag').replace('wednesday', 'Onsdag').replace('thursday', 'Torsdag').replace('friday', 'Fredag') }}</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-title">
+            <h1>
+                <span class="en">{{ day.capitalize() }}'s lunch</span>
+                <span class="sv hidden">{{ day.capitalize().replace('monday', 'Måndag').replace('tuesday', 'Tisdag').replace('wednesday', 'Onsdag').replace('thursday', 'Torsdag').replace('friday', 'Fredag') }}s lunch</span>
+            </h1>
+            <p>
+                <span class="en">Discover today's lunch offers from Lindholmen's best restaurants</span>
+                <span class="sv hidden">Upptäck dagens luncherbjudanden från Lindholmens bästa restauranger</span>
+            </p>
+        </div>
+
+        <!-- Random Selection -->
+        <div class="random-section">
+            <button class="random-button" onclick="selectRandomRestaurant()">
+                <span class="icon-shuffle">🎲</span>
+                <span class="en">I'm feeling hungry!</span>
+                <span class="sv hidden">Jag är hungrig!</span>
+            </button>
+        </div>
+
+        <div class="restaurant-grid">
+            {% for restaurant_name, restaurant_data in lunch_data.items() %}
+            <div class="restaurant-card">
+                <div class="restaurant-header">
+                    <h2 class="restaurant-name">{{ restaurant_name.replace('Scraper', '').replace('_', ' ') }}</h2>
+                    <div class="restaurant-links">
+                        {% if restaurant_links.get(restaurant_name.replace('Scraper', '')) %}
+                            {% set links = restaurant_links[restaurant_name.replace('Scraper', '')] %}
+                            {% if links.get('url') %}
+                                <a href="{{ links.url }}" target="_blank" title="Hemsida">🔗</a>
+                            {% endif %}
+                            {% if links.get('map') %}
+                                <a href="{{ links.map }}" target="_blank" title="Google Maps">🗺️</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="restaurant-content">
+                    {% if restaurant_data["items"] %}
+                    <div class="menu-section">
+                        <h3><span class="icon-menu"></span>Dagens lunch</h3>
+                        <div class="menu-items">
+                            {% for item in restaurant_data["items"] %}
+                            {% set item_name = item["name"] %}
+                            {% set item_description = item["description"] %}
+                            {% set is_long_name = item_name|length > 50 and not item_description %}
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    {% if is_long_name %}
+                                        <div class="menu-item-name">
+                                            <span class="en">Today's Special</span>
+                                            <span class="sv hidden">Dagens Special</span>
+                                        </div>
+                                        <div class="menu-item-description">{{ item_name }}</div>
+                                    {% else %}
+                                        <div class="menu-item-name">{{ item_name }}</div>
+                                        {% if item_description %}
+                                        <div class="menu-item-description">{{ item_description }}</div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if item["category"] %}
+                                    <div class="emoji-tags">
+                                        <span class="emoji-tag">{{ item["category"] }}</span>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                {% if item["price"] %}
+                                <div class="menu-item-price">{{ item["price"] }}</div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    
+                    <div class="special-offer">
+                        ✨ Senast uppdaterad: {{ last_updated }}
+                    </div>
+                    {% else %}
+                    <div class="menu-section">
+                        <p style="color: var(--muted-foreground); font-style: italic;">Ingen meny tillgänglig idag</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <span class="icon-map"></span> 
+            <span class="en">Lindholmen, Gothenburg</span>
+            <span class="sv hidden">Lindholmen, Göteborg</span>
+        </p>
+        <p>
+            <span class="en">Discover the best lunch options in the Lindholmen area</span>
+            <span class="sv hidden">Upptäck de bästa lunchalternativen i Lindholmen området</span>
+        </p>
+        <p>
+            <span class="en">This lunch compilation is open source –</span>
+            <span class="sv hidden">Denna lunchsammanställning är öppen källkod –</span>
+            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a>
+        </p>
+        <p>
+            <span class="en">Questions, feedback or missing your favorite restaurant? Open an issue, pull request, contact me via GitHub or via</span>
+            <span class="sv hidden">Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, kontakta mig via GitHub eller via</span>
+            <a href="mailto:fawenah@gmail.com">fawenah@gmail.com</a>.
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">
+            <a href="privacy.html">
+                <span class="en">Privacy Policy</span>
+                <span class="sv hidden">Integritetspolicy</span>
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Get restaurant names for random selection
+        const restaurantCards = document.querySelectorAll('.restaurant-card');
+
+        // Language switching
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const svElements = document.querySelectorAll('.sv');
+            
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            svElements.forEach(el => el.classList.toggle('hidden'));
+            
+            // Update page language attribute
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            document.documentElement.lang = isSwedish ? 'sv' : 'en';
+            
+            // Save language preference
+            localStorage.setItem('language', isSwedish ? 'sv' : 'en');
+        }
+
+        // Random restaurant selection
+        function selectRandomRestaurant() {
+            const cards = document.querySelectorAll('.restaurant-card');
+            if (cards.length === 0) return;
+            
+            // Clear previous highlights
+            cards.forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Add some animation
+            const button = document.querySelector('.random-button');
+            button.style.transform = 'scale(0.95)';
+            
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            button.innerHTML = isSwedish ? 
+                '<span class="icon-shuffle">🎲</span> Väljer...' : 
+                '<span class="icon-shuffle">🎲</span> Choosing...';
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * cards.length);
+                const randomCard = cards[randomIndex];
+                
+                randomCard.classList.add('highlighted');
+                randomCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Reset button
+                button.style.transform = '';
+                button.innerHTML = isSwedish ? 
+                    '<span class="icon-shuffle">🎲</span> Jag är hungrig!' : 
+                    '<span class="icon-shuffle">🎲</span> I am feeling hungry!';
+            }, 1000);
+        }
+
+        // Go to top and reset random selection
+        function goToTop() {
+            // Clear any highlighted restaurants
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'sv') {
+                // Switch to Swedish if saved
+                const enElements = document.querySelectorAll('.en');
+                const svElements = document.querySelectorAll('.sv');
+                
+                enElements.forEach(el => el.classList.add('hidden'));
+                svElements.forEach(el => el.classList.remove('hidden'));
+                
+                document.documentElement.lang = 'sv';
             }
         });
     </script>
-</head>
-<body>
-    <h1>Dagens lunch på Lindholmen – {{ day.capitalize() }}</h1>
-    <p>Lunchmenyer för {{ day.capitalize() }} från restauranger på Lindholmen. Uppdateras dagligen med aktuella rätter från över 10 lokala restauranger.</p>
-    <p>Priser kan vara inaktuella, för senaste informationen, se respektive hemsida.</p>
-
-    <div style="margin-top: 40px; font-size: 14px; color: #666;">
-        <p>Last updated: {{ last_updated }}</p>
-    </div>
-    <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
-    <hr>
-    
-    <div class="toc">
-        <h2>Restauranger</h2>
-        <div class="button-container">
-            {% for scraper_name in lunch_data.keys()|sort %}
-            {% set readable = scraper_name.replace('Scraper', '') %}
-            <a class="weekday-button" href="#{{ readable }}">{{ readable }}</a>
-            {% endfor %}
-        </div>
-    </div>
-    <hr>
-    {% for restaurant, data in lunch_data.items() | sort %}
-    {% set readable = restaurant.replace('Scraper', '') %}
-    {% set div_id = readable ~ '_menu' %}
-    <div class="restaurant" id="{{ readable }}">
-        <div class="menu-header-grid">
-            <div class="restaurant-name" onclick="toggleVisibility('{{ div_id }}')">{{ readable }}</div>
-            {% set total = data["emoji_tags"] | length %}
-            {% set size = (total + 2) // 3 %}
-            <div class="emoji-row">{{ data["emoji_tags"][:size] | join(' ') }}</div>
-            <div class="emoji-row">{{ data["emoji_tags"][size:2*size] | join(' ') }}</div>
-            <div class="emoji-row">{{ data["emoji_tags"][2*size:] | join(' ') }}</div>
-            <div class="icon-link">
-                {% if readable in restaurant_links and restaurant_links[readable].url %}
-                <a href="{{ restaurant_links[readable].url }}" target="_blank" title="Hemsida">🔗</a>
-                {% endif %}
-            </div>
-            <div class="icon-link">
-                {% if readable in restaurant_links and restaurant_links[readable].map %}
-                <a href="{{ restaurant_links[readable].map }}" target="_blank" title="Google Maps">🗺️</a>
-                {% endif %}
-            </div>
-        </div>
-        <div class="menu-content" id="{{ div_id }}" style="display: block;">
-            {% set categories = {} %}
-            {% for item in data["items"] %}
-            {% set category = item.category or 'Dagens' %}
-            {% if category not in categories %}
-            {% set _ = categories.update({category: []}) %}
-            {% endif %}
-            {% set _ = categories[category].append(item) %}
-            {% endfor %}
-            
-            {% for cat, items in categories.items() %}
-            <h3>{{ cat }}</h3>
-            <ul>
-                {% for item in items %}
-                    <li>
-                        {% if item.price %}<em>{{ item.price }}</em>{% endif %}
-                        <strong>{{ item.name }}</strong>
-                        {% if item.description %} – {{ item.description }}{% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-            {% endfor %}
-        </div>
-    </div>
-    {% endfor %}
-    <a class="weekday-button" href="index.html">← Tillbaka till veckomeny</a>
-    <hr>
-    <footer style="text-align:center; font-size:13px; color:#888; margin-top:40px;">
-        Lindholmen Lunch – <a href="privacy.html" style="color:#004d66;">Integritetspolicy</a>
-    </footer>
 </body>
 </html>

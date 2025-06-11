@@ -27,13 +27,13 @@
         "price": "130 kr"
       },
       {
-        "name": "Viltskav med krämigt mos, gräddsås smaksatt ramslök, persiljestekta champinjoner & lingon",
+        "name": "Viltskav med krämigt mos, ramslöksveloute, persiljestekta champinjoner & lingon",
         "category": "KÖTT",
         "description": "",
         "price": "130 kr"
       },
       {
-        "name": "Stekt panerad sej serveras med dillkokt färskpotatis, brynt smör, kapris & rödbetor samt citron och örter",
+        "name": "Stekt panerad sej serveras med dillkokt färskpotatis, skaldjursröra, citron och örter",
         "category": "FISK",
         "description": "",
         "price": "130 kr"
@@ -41,11 +41,11 @@
       {
         "name": "Kooperativets klassiska Pad Thai",
         "category": "THAI",
-        "description": "Wokade risnudlar med på kyckling, ägg med vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander",
+        "description": "Wokade risnudlar med kyckling, ägg, vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander",
         "price": "130 kr"
       },
       {
-        "name": "Kolgrillad Tandoori kycklingbröst serveras masalasås, myntayoghurt och sallad på spenat & rödlök samt smörat Naan",
+        "name": "Kolgrillad Tandoori kycklingbröst serveras masalasås, basmatiris och sallad på spenat & rödlök samt smörat Naan",
         "category": "INDISK",
         "description": "",
         "price": "130 kr"
@@ -57,7 +57,7 @@
         "price": "130 kr"
       },
       {
-        "name": "Kooperativets lasagne på svamp, spenat & keso serveras med tomatsallad toppad med parmesan och ruccola",
+        "name": "Kooperativets lasagne på svamp, spenat, pumpa & kål serveras med tomatsallad toppad med parmesan och ruccola",
         "category": "VEGETARISKT",
         "description": "",
         "price": "130 kr"

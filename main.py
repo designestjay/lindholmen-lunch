@@ -23,7 +23,7 @@ from scrapers.encounter_asian import EncounterAsianScraper
 from scrapers.masala import MasalaScraper
 from scrapers.restaurant_pier_11 import RestaurantPier11Scraper
 from utils.utils import get_today_english
-from generate_html import generate_lunch_summary, generate_index_page
+from generate_html import generate_index_page
 
 logging.basicConfig(level=logging.INFO)
 
@@ -56,7 +56,6 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
     filepath = f"data/lunch_data_{day}.json"
     if os.path.exists(filepath) and not refresh:
         logging.info(f"Skipping scraping for {day} (cached file exists).")
-        generate_lunch_summary(day)
         return
 
     results = {}
@@ -132,8 +131,6 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
     else:
         logging.warning(f"No results to write for {day}. Skipping JSON and HTML.")
         return
-
-    generate_lunch_summary(day)
 
 def main():
     parser = argparse.ArgumentParser(description="Run Lindholmen lunch scrapers.")
