@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMDT71XZ0C');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
+    <title>Today's lunch in Lindholmen</title>
+    <meta name="description" content="Today's lunch from restaurants in Lindholmen – updated daily." />
+    
+    <style>
+        /* Modern CSS Reset and Variables */
+        :root {
+            --background: #ffffff;
+            --foreground: #020617;
+            --card: #ffffff;
+            --card-foreground: #020617;
+            --primary: #1e40af;
+            --primary-foreground: #ffffff;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --muted: #f8fafc;
+            --muted-foreground: #64748b;
+            --accent: #f1f5f9;
+            --accent-foreground: #0f172a;
+            --border: rgba(0, 0, 0, 0.1);
+            --radius: 0.5rem;
+            --orange: #ea580c;
+            --orange-hover: #dc2626;
+            --green: #16a34a;
+            --green-light: #dcfce7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #dbeafe, #e0e7ff);
+            min-height: 100vh;
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin: 0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .header-title:hover {
+            color: var(--primary);
+        }
+
+        .header-subtitle {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin: 0;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .language-toggle {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary-foreground);
+            transition: all 0.2s ease;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 42rem;
+            margin: 0 auto 2rem;
+        }
+
+        /* Random Selection */
+        .random-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .random-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, var(--orange), var(--orange-hover));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-size: 1.125rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+        }
+
+        .random-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+        }
+
+        /* Restaurant Grid */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            align-items: start; /* Allow cards to have their natural height */
+        }
+
+        .restaurant-card {
+            background: var(--card);
+            border-radius: calc(var(--radius) + 4px);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column; /* Stack header and content vertically */
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .restaurant-card.highlighted {
+            border: 2px solid var(--orange);
+            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .restaurant-header {
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .restaurant-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .restaurant-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.25rem 0;
+            color: var(--foreground);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .restaurant-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .restaurant-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cuisine-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .restaurant-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        .restaurant-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .restaurant-links a:hover {
+            opacity: 1;
+        }
+
+        .restaurant-content {
+            padding: 0 1.25rem 1.25rem;
+            flex-grow: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-section h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--muted);
+            border-radius: var(--radius);
+            transition: background 0.2s ease;
+            min-height: fit-content;
+        }
+
+        .menu-item:hover {
+            background: var(--accent);
+        }
+
+        .menu-item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.25rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
+        }
+
+        .menu-item-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
+        }
+
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--primary);
+            align-self: flex-start;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+            max-width: 180px; /* Set maximum width */
+            text-align: right;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .emoji-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .emoji-tag {
+            font-size: 1.1rem;
+        }
+
+        /* Separator */
+        .separator {
+            height: 1px;
+            background: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* Special Offer */
+        .special-offer {
+            background: var(--green-light);
+            color: var(--green);
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            margin-top: auto; /* Push to bottom of card */
+        }
+
+
+
+        /* Footer */
+        .footer {
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted-foreground);
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Icons using CSS */
+        .icon-utensils::before { content: "🍽️"; }
+        .icon-clock::before { content: "🕐"; }
+        .icon-map::before { content: "📍"; }
+        .icon-menu::before { content: "📋"; }
+        .icon-shuffle::before { content: "🎲"; }
+        .icon-language::before { content: "🌐"; }
+
+        /* No Data Message */
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted-foreground);
+        }
+
+        .no-data h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .restaurant-links {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .menu-item-details {
+                width: 100%;
+            }
+            
+            .menu-item-name {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-price {
+                align-self: flex-end;
+                margin-left: 0;
+                margin-top: 0.25rem;
+                max-width: 100%; /* Allow full width on mobile */
+                text-align: left; /* Left align on mobile */
+            }
+
+            .restaurant-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .restaurant-links {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <span class="icon-utensils" style="font-size: 2rem; color: var(--primary);"></span>
+                <div>
+                    <h1 class="header-title" onclick="goToTop()">Lindholmen Lunch</h1>
+                    <p class="header-subtitle">
+                        <span class="en">Today's lunch in Lindholmen, Gothenburg</span>
+                        <span class="sv hidden">Dagens lunch i Lindholmen, Göteborg</span>
+                    </p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <span class="icon-language"></span>
+                    <span class="en">Svenska</span>
+                    <span class="sv hidden">English</span>
+                </button>
+                <div class="badge">
+                    <span class="icon-clock"></span>
+                    <span class="en">Today: Wednesday</span>
+                    <span class="sv hidden">Idag: Onsdag</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="hero-section">
+            <h1>
+                <span class="en">What should you eat today?</span>
+                <span class="sv hidden">Vad ska du äta idag?</span>
+            </h1>
+            <p>
+                <span class="en">Explore today's lunch offers in Lindholmen or let us choose for you!</span>
+                <span class="sv hidden">Upptäck dagens luncherbjudanden i Lindholmen eller låt oss välja åt dig!</span>
+            </p>
+        </div>
+
+        <!-- Random Selection -->
+        <div class="random-section">
+            <button class="random-button" onclick="selectRandomRestaurant()">
+                <span class="icon-shuffle"></span>
+                <span class="en">I'm feeling hungry!</span>
+                <span class="sv hidden">Jag är hungrig!</span>
+            </button>
+        </div>
+    <div class="restaurant-grid">
+            <div class="restaurant-card" id="restaurant-KooperativetScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Kooperativet</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.kooperativet.se/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Kooperativet+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Caesarsallad</div><div class="menu-item-description">romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutonger</div><div class="emoji-tags"><span class="emoji-tag">SALLADER</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Västkust Caesarsallad</div><div class="menu-item-description">romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger</div><div class="emoji-tags"><span class="emoji-tag">SALLADER</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Asiatisk Glasnudelsallad</div><div class="menu-item-description">med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter</div><div class="emoji-tags"><span class="emoji-tag">VECKANS SPECIAL</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">VEG Asiatisk Glasnudelsallad</div><div class="menu-item-description">med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter</div><div class="emoji-tags"><span class="emoji-tag">VECKANS SPECIAL</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Viltskav med krämigt mos, ramslöksveloute, persiljestekta champinjoner & lingon</div><div class="emoji-tags"><span class="emoji-tag">KÖTT</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Stekt panerad sej serveras med dillkokt färskpotatis, skaldjursröra, citron och örter</div><div class="emoji-tags"><span class="emoji-tag">FISK</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Kooperativets klassiska Pad Thai</div><div class="menu-item-description">Wokade risnudlar med kyckling, ägg, vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander</div><div class="emoji-tags"><span class="emoji-tag">THAI</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Kolgrillad Tandoori kycklingbröst serveras masalasås, basmatiris och sallad på spenat & rödlök samt smörat Naan</div><div class="emoji-tags"><span class="emoji-tag">INDISK</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Kooperativets lasagne på nötfärs serveras med tomatsallad toppad med parmesan och ruccola</div><div class="emoji-tags"><span class="emoji-tag">VÄRLDEN</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Kooperativets lasagne på svamp, spenat, pumpa & kål serveras med tomatsallad toppad med parmesan och ruccola</div><div class="emoji-tags"><span class="emoji-tag">VEGETARISKT</span></div></div><div class="menu-item-price">130 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-DistrictOneScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">DistrictOne</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.districtone.se/lunch.html" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=District+One+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).</div><div class="emoji-tags"><span class="emoji-tag">Ramen</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Husets Fish and chips med tartarsås, serveras med rödlök, riven grana padano och ärtskott.</div><div class="emoji-tags"><span class="emoji-tag">Fisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Cauq au vin på kyckling med bacon, champinjoner och grönsaker, serveras med ris.</div><div class="emoji-tags"><span class="emoji-tag">Kött</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.</div><div class="emoji-tags"><span class="emoji-tag">Sallad</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">-(Pad Thai) Wokade risnudlar med kyckling, grönsaker, chilli, lime, nötter</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">och ägg.</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Tofu med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.</div><div class="emoji-tags"><span class="emoji-tag">Vegetarisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.</div><div class="emoji-tags"><span class="emoji-tag">Vegetarisk Poke bowl</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.</div><div class="emoji-tags"><span class="emoji-tag">Pho</span></div></div><div class="menu-item-price">129 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-BombayBistroScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">BombayBistro</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.bombaybistro.se/lunch/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Bombay+Bistro+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">BUTTER CHICKEN</div><div class="menu-item-description">Mild kycklinggryta med nötter, smör i en krämig sås.</div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">ACHARI GHOST</div><div class="menu-item-description">Lamm tillagad i fänkål, grön, chili, vitlök, senapsfrön och curryblad.</div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">TIKKA MASALA</div><div class="menu-item-description">Grillad kycklingfilé med rostad paprika och tomater i en krämig sås.</div><div class="emoji-tags"><span class="emoji-tag">ANDRA ALTERNATIV</span></div></div><div class="menu-item-price">134 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">TANDOORI CHICKEN</div><div class="menu-item-description">Grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. Serveras med tandoori sås.</div><div class="emoji-tags"><span class="emoji-tag">ANDRA ALTERNATIV</span></div></div><div class="menu-item-price">132 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">JINGHA HARA</div><div class="emoji-tags"><span class="emoji-tag">ANDRA ALTERNATIV</span></div></div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.</div><div class="emoji-tags"><span class="emoji-tag">ANDRA ALTERNATIV</span></div></div><div class="menu-item-price">145 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-CuckoosNestScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">CuckoosNest</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.cuckoosnest.se/menyer/lunch" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Kummelfilé serveras med potatis, sparris, citron och romsås</div><div class="emoji-tags"><span class="emoji-tag">FISK</span></div></div><div class="menu-item-price">195 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Fläskschnitzel serveras med ört- & ostslungad potatis, chilibearnase och rödvinssås</div><div class="emoji-tags"><span class="emoji-tag">KÖTT</span></div></div><div class="menu-item-price">195 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">Grillad spetskål serveras med matvetesallad och ramslöksdressing</div><div class="emoji-tags"><span class="emoji-tag">VEG</span></div></div><div class="menu-item-price">195 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">grillad majskycklingfilé, prosciutto, pecorino, romansallad, caesardressing & krutonger</div><div class="emoji-tags"><span class="emoji-tag">CEASARSALLAD</span></div></div><div class="menu-item-price">215 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron & dill</div><div class="emoji-tags"><span class="emoji-tag">RÄKMACKA</span></div></div><div class="menu-item-price">295 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name"></div><div class="menu-item-description">grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites</div><div class="emoji-tags"><span class="emoji-tag">DOUBLE SMASHED CHEESEBURGER</span></div></div><div class="menu-item-price">235 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-Uni3WorldOfFoodScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Uni3WorldOfFood</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bakad fisk</div><div class="menu-item-description">smörad tomatsky, marinerade tomater, matveteragu, fänkålscrudité, basilika</div><div class="emoji-tags"><span class="emoji-tag">Water</span></div></div><div class="menu-item-price">132 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Grillat five-spice kryddat kycklinglår</div><div class="menu-item-description">basmatiris, smashed cucumber, gariremoulad, wokad vitlöksbroccoli</div><div class="emoji-tags"><span class="emoji-tag">Fire</span></div></div><div class="menu-item-price">132 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bulgur</div><div class="menu-item-description">friterad grillost, tzatsiki, tomatsallad, gröna blad</div><div class="emoji-tags"><span class="emoji-tag">Wood</span></div></div><div class="menu-item-price">132 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-MissFScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">MissF</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://www.missf.se/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Miss+F+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Lufttorkad skinka/mozzarella/pesto</div><div class="emoji-tags"><span class="emoji-tag">Grillad ciabatta</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Kyckling/bacon/dijoncreme</div><div class="menu-item-description">Serveras med pommes & sallad & dressing</div><div class="emoji-tags"><span class="emoji-tag">Grillad ciabatta</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Mindre ciabbata av ovan</div><div class="emoji-tags"><span class="emoji-tag">Grillad ciabatta</span></div></div><div class="menu-item-price">90 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">kyckling/ mozzarella/ ruccola / mangoraja</div><div class="menu-item-description">Serveras med pommes & sallad & dressing</div><div class="emoji-tags"><span class="emoji-tag">Grillad tortilla</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Lax/Spenat</div><div class="emoji-tags"><span class="emoji-tag">Pajer & Lasagne</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Fetaost/Spenat</div><div class="emoji-tags"><span class="emoji-tag">Pajer & Lasagne</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Lasagne</div><div class="menu-item-description">Serveras med sallad & dressing</div><div class="emoji-tags"><span class="emoji-tag">Pajer & Lasagne</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Kyckling</div><div class="emoji-tags"><span class="emoji-tag">Caesarsallad</span></div></div><div class="menu-item-price">100 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Räkor</div><div class="emoji-tags"><span class="emoji-tag">Caesarsallad</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Kyckling</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Räkor</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">119 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Grekisk</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">109 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Lufttorkad skinka/mozzarella/pesto</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">109 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Chévre/rödbetor/honung/valnötter/granatäpple</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">109 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Tillval</div><div class="menu-item-description">Bulgur/marinerad pasta</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">5 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Pokebowl</div><div class="menu-item-description">sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, räkor, lax, srirachamayo</div><div class="emoji-tags"><span class="emoji-tag">Sallader</span></div></div><div class="menu-item-price">122 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bibimbap</div><div class="menu-item-description">ris med skivade entrecote/kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">120 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Panang Curry</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">115 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Sushi Tempura 10 bit</div><div class="menu-item-description">Friterad räkor/avokado/gurka/krispsallad/rostad lök</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">125 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Sushi Speciell California 10bit</div><div class="menu-item-description">Friterad krabbröra, avokado, gurka, krispsallad</div><div class="emoji-tags"><span class="emoji-tag">Asiatisk</span></div></div><div class="menu-item-price">115 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-BennePastabarScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">BennePastabar</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://bennepastabar.se/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Benne+Pastabar+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">SLOW TOMATO</div><div class="menu-item-description">Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">59 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Double Cheese</div><div class="menu-item-description">Vår himmelskt krämiga ostsås gjord på taleggio och lagrad hårdost, smaksatt med en generös mängd svartpeppar. Toppad med lagrad hårdost, hackad persilja och nymalen svartpeppar.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">75 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">SMOKED PIG</div><div class="menu-item-description">Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">85 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">GREEN RAGU</div><div class="menu-item-description">Vegofärs från Anamma i vår mustiga ragusås smaksatt med färsk rosmarin och lagerblad. Toppad med lagrad hårdost, en vegansk vitlöks-créme fraiche, hackad persilja, nymalen svartpeppar och extra virgin olivolja.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">85 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Silky Bird</div><div class="menu-item-description">Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">THE SHROOMS</div><div class="menu-item-description">Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.</div><div class="emoji-tags"><span class="emoji-tag">Benne Pasta</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Swedish Pesto</div><div class="menu-item-description">En härligt grön och crunchy pesto gjord på Västerbottenost, vitlök, grönkål och solrosfrön. Toppad med buffelmozzarella, lagrad hårdost, olivolja, svartpeppar och basilika.</div><div class="emoji-tags"><span class="emoji-tag">The Visitor</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Garlic Bread</div><div class="menu-item-description">Två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak.</div><div class="emoji-tags"><span class="emoji-tag">Benne Bites</span></div></div><div class="menu-item-price">20 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Tiramisu</div><div class="menu-item-description">Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)</div><div class="emoji-tags"><span class="emoji-tag">Benne Bites</span></div></div><div class="menu-item-price">35 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-LsKitchenScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">LsKitchen</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=LS+Kitchen+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Fläskschnitzel, tartarsås, rostade rotfrukter & rostad potatis</div></div><div class="menu-item-price">122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Pocherad fisk, saffrans- & tomatsås, gräslök, persilja & färskpotatis</div></div><div class="menu-item-price">122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök</div></div><div class="menu-item-price">122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Caesarsallad; kyckling, grana padano, bacon, krutonger</div></div><div class="menu-item-price">122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">
+                                        <span class="en">Today's Special</span>
+                                        <span class="sv hidden">Dagens Special</span>
+                                    </div>
+                                    <div class="menu-item-description">Vegansk schnitzel, tartarsås, rostade rotfrukter & potatis</div></div><div class="menu-item-price">122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-BistrotScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Bistrot</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://bistrot.se/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Bistrot+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Veckans: Carbonara</div><div class="menu-item-description">Linguini – Bacon – Ägg gula – Granapadano – Persilja</div><div class="emoji-tags"><span class="emoji-tag">Veckans</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Vegetarisk Måndag–Tis: Gratinerad zucchini</div><div class="menu-item-description">Fetaost – Tomat – Jasminris – Basilika</div><div class="emoji-tags"><span class="emoji-tag">Veckans</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Vegetarisk Ons-Tors: Enchiladas</div><div class="menu-item-description">Bönragu – Avokado röra – Kålsallad</div><div class="emoji-tags"><span class="emoji-tag">Veckans</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Vegetarisk Fre: Pannoumi Burgare</div><div class="emoji-tags"><span class="emoji-tag">Veckans</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Caesarsallad</div><div class="menu-item-description">Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing</div><div class="emoji-tags"><span class="emoji-tag">Veckans</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Schnitzel</div><div class="menu-item-description">Råstekt potatis – Rödvinssås – Kryddsmör – Kapris – Zuchinni & Rödlök – Persilja</div><div class="emoji-tags"><span class="emoji-tag">Lunch</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Halstrad fångst</div><div class="menu-item-description">Gräslöks hollandaise – Färsk potatis – Fänkål & Rädissor – Dill</div><div class="emoji-tags"><span class="emoji-tag">Lunch</span></div></div><div class="menu-item-price">130 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-MimolettScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Mimolett</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://restaurangmimolett.se/lunch/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Mimolett+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Grillad Entrecóte (200g)</div><div class="menu-item-description">Grillad Entrecóte med friterad klyftpotatis och veckans sås.</div><div class="emoji-tags"><span class="emoji-tag">Kött & Fisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Black Angus Burger (200g)</div><div class="menu-item-description">Högrevsburgare med senap majonnäs sås, sallad, rostad lök, pepparjack ost, grillad bacon, BBQ-sås</div><div class="emoji-tags"><span class="emoji-tag">Kött & Fisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Husets Fiskgratäng (Tisdagar & Torsdagar)</div><div class="menu-item-description">Flundrafilé, potatismos, mozzarellaost, tomat, dillsås och citron.</div><div class="emoji-tags"><span class="emoji-tag">Kött & Fisk</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bacon Risotto</div><div class="menu-item-description">Bacon, grillade grönsaker, granapadano, smör , ruccola</div><div class="emoji-tags"><span class="emoji-tag">Risotto</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Scampi Risotto</div><div class="menu-item-description">Tigerräkor, röd chilli, vitlök, granapadano, smör , ruccola</div><div class="emoji-tags"><span class="emoji-tag">Risotto</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Aglio</div><div class="menu-item-description">Oxfilé, champinjoner, crème fraiche vitlök, grädde toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Afrikana</div><div class="menu-item-description">Kyckling, paprika, ananas, jordnötter, grädde, curry toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Patrone</div><div class="menu-item-description">Oxfilé, soltorkad tomat, vitlök, tomatsås, grädde toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Tagliatelle Salmone</div><div class="menu-item-description">Laxfilé, purjolök, crème fraiche, vitlök, grädde toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Spagetti Modo Nostro</div><div class="menu-item-description">Köttfärssås, gorgonzola, champinjoner, grädde, piri piri toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Tagliatelle con Scampi</div><div class="menu-item-description">Tigerräkor, tomatsås, vitlök, basilika toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Romana</div><div class="menu-item-description">Kyckling, champinjoner, vitlök, grädde toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Diavolo (Stark)</div><div class="menu-item-description">Köttfärssås, grädde, piri-piri toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Spagetti Carbonara</div><div class="menu-item-description">Rostad bacon, persilja, vitlök, grädde toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Vegetale</div><div class="menu-item-description">Grönsaksmix, champinjoner, tomatsås, vitlök toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Penne Pesto</div><div class="menu-item-description">Soltorkad tomat. pesto, vitlök, grädde, mozzarella toppas med grana padano.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Lasagne Al Forno</div><div class="menu-item-description">Hemlagat lasagne med bechamelsås.</div><div class="emoji-tags"><span class="emoji-tag">Pastarätter</span></div></div><div class="menu-item-price">129 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-OishiiScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Oishii</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://oishii.se/lunchmeny/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Oishii+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">9 bitar</div><div class="menu-item-description">5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">100 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">9 bitar nigri</div><div class="menu-item-description">5 Lax, 4 avokado</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">115 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">11 bitar</div><div class="menu-item-description">6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">13 bitar</div><div class="menu-item-description">7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">120 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">15 bitar</div><div class="menu-item-description">8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">130 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">11 bitar vegetarisk</div><div class="menu-item-description">2avokado 1ägg 1sparris 1tofu 6rullar</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">13 bitar vegetarisk</div><div class="menu-item-description">3avokado 1sparris 1ägg 1tofu 7rullar</div><div class="emoji-tags"><span class="emoji-tag">Sushi</span></div></div><div class="menu-item-price">120 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Stekt kyckling med grönsaker</div><div class="menu-item-description">kyckling, grönsaker</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bento</div><div class="menu-item-description">3 maki, 2 nigri, 2 kycklingspett</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Yakitori</div><div class="menu-item-description">kycklingspett med teriyakisås</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Yakiniku</div><div class="menu-item-description">strimlad entrecote</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">125 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Nudelsoppa med Biff</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">119 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Wonton nudlar</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">115 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Dumplings 9 st</div><div class="menu-item-description">fläskkött eller vegetariansk</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Dumplings 12 st</div><div class="menu-item-description">fläskkött eller vegetariansk</div><div class="emoji-tags"><span class="emoji-tag">Varmrätter</span></div></div><div class="menu-item-price">125 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-MatMinnenScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">MatMinnen</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://matminnen.se/lunchmeny" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Mat+Minnen+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Champinjonplätt</div><div class="menu-item-description">morotstzatziki, spenat</div></div><div class="menu-item-price">125 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Panerad spättafilé</div><div class="menu-item-description">skarpsås, citron, kokt potatis</div></div><div class="menu-item-price">125 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Kyckling Balti</div><div class="menu-item-description">tomat, spiskummin, paprika, gurkmeja, raita, basmatiris</div></div><div class="menu-item-price">125 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Krämig tonfisksallad</div><div class="menu-item-description">ägg, tomat, gurka, gröna ärtor, rödlök, krutonger</div><div class="emoji-tags"><span class="emoji-tag">Veckans sallad</span></div></div><div class="menu-item-price">125 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-EncounterAsianScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">EncounterAsian</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://tamed.se/take-away-meny/encounter-sushi" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Encounter+Asian+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">vanlig 10 bitar</div><div class="menu-item-description">3 lax, 1 räka, 1 crabfish, 1 omelett & 4 maki</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">vegetarisk 10 bitar</div><div class="menu-item-description">2 avocado, 2 tofu, 2 omelett & 4 maki</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Mammasushi 10 bitar</div><div class="menu-item-description">2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Mix 12 bitar</div><div class="menu-item-description">4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Mix 15 bitar</div><div class="menu-item-description">5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">135 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Nigiri mix 10 bitar</div><div class="emoji-tags"><span class="emoji-tag">SUSHI</span></div></div><div class="menu-item-price">115 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Yakitori</div><div class="menu-item-description">5 kycklingspett med ris, teriyakisås och sallad</div><div class="emoji-tags"><span class="emoji-tag">VARMRÄTT</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Yakiniku</div><div class="menu-item-description">Skivad entrecote, grönsaker, ris, yakinikusås & sallad</div><div class="emoji-tags"><span class="emoji-tag">VARMRÄTT</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Wokade äggnudlar</div><div class="menu-item-description">Äggnudlar med kycklingfilé & grönsaker</div><div class="emoji-tags"><span class="emoji-tag">VARMRÄTT</span></div></div><div class="menu-item-price">95 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Dumpling (kött)</div><div class="menu-item-description">8 bitar dumplings, sallad & ris</div><div class="emoji-tags"><span class="emoji-tag">VARMRÄTT</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Dumpling (Veg)</div><div class="menu-item-description">8 bitar dumplings, sallad & ris</div><div class="emoji-tags"><span class="emoji-tag">VARMRÄTT</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bibibamp (biff)</div><div class="emoji-tags"><span class="emoji-tag">KOREANSK</span></div></div><div class="menu-item-price">119 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bibibamp (Kyckling)</div><div class="emoji-tags"><span class="emoji-tag">KOREANSK</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Bibibamp (Veg)</div><div class="emoji-tags"><span class="emoji-tag">KOREANSK</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">(Biff)</div><div class="emoji-tags"><span class="emoji-tag">NUDELSOPPA</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">(Kyckling)</div><div class="emoji-tags"><span class="emoji-tag">NUDELSOPPA</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">(Veg)</div><div class="emoji-tags"><span class="emoji-tag">NUDELSOPPA</span></div></div><div class="menu-item-price">99 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">BENTOLÅDA</div><div class="menu-item-description">Yakiniku, yakitori, sushi, sallad & ris</div><div class="emoji-tags"><span class="emoji-tag">BENTOLÅDA</span></div></div><div class="menu-item-price">105 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">LÄSK</div><div class="emoji-tags"><span class="emoji-tag">LÄSK</span></div></div><div class="menu-item-price">15 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-MasalaScraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">Masala</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"><a href="https://masalakitchen.se/lunch/" target="_blank" title="Website">🔗</a><a href="https://maps.google.com/?q=Masala+Kitchen+Lindholmen" target="_blank" title="Google Maps">🗺️</a></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHICKEN CHETTINAD</div><div class="menu-item-description">En populär sydindisk kycklinggryta, tillagad i en pepprig kryddblandning från Chettinad, Spetsad med kokos.</div></div><div class="menu-item-price">119 kr, takeaway 114 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHUTNEY SEEKH KEBAB</div><div class="menu-item-description">Lammfärskebab med mango chutney, mynta, vitlök, garam masala och rödvinsås.</div></div><div class="menu-item-price">119 kr, takeaway 114 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">SAMOSA CURRY</div><div class="menu-item-description">Friterade små piroger med vegetarisk fyllning, serveras i yoghurt- och currysås.</div></div><div class="menu-item-price">119 kr, takeaway 114 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">SUBZI THALI</div><div class="menu-item-description">Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita.</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">134 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">PALAK PANEER</div><div class="menu-item-description">Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">132 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHICKEN TANDOORI</div><div class="menu-item-description">Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås.</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">132 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHICKEN TIKKA MASALA</div><div class="menu-item-description">Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås.</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">142 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">ROGAN JOSH</div><div class="menu-item-description">Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">152 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">JHINGA KORMA</div><div class="menu-item-description">Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma.</div><div class="emoji-tags"><span class="emoji-tag">Stående meny</span></div></div><div class="menu-item-price">157 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">EXTRA SALLAD</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">EXTRA LUNCH NAAN</div><div class="menu-item-description">Nybakat indiskt bröd.</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">PLAIN NAAN (*)</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">29 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">BUTTER NAAN (*)</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">35 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">VITLÖK & KORIANDER NAAN (*)</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">395 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">OST & KORIANDER NAAN (*)</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">39 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHILI NAAN (*)</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">39 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">(*)</div><div class="menu-item-description">GLUTENFRITT ROTI +10 KR</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">MYNTASÅS</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">MANGO CHUTNEY</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">CHILI PICKLES</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">PAPADOM</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">15 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">RAITA</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">29 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">MANGOLASSI</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">39 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">LÄSK / LÄTTÖL</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">25 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">MINERALVATTEN</div><div class="emoji-tags"><span class="emoji-tag">Tillbehör</span></div></div><div class="menu-item-price">25 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="restaurant-card" id="restaurant-RestaurantPier11Scraper">
+                <div class="restaurant-header">
+                    <div class="restaurant-info">
+                        <h2 class="restaurant-name">RestaurantPier11</h2>
+                        <div class="restaurant-meta">
+                            <div class="restaurant-meta-item">
+                                <span class="icon-map"></span>
+                                <span class="en">Lindholmen</span>
+                                <span class="sv hidden">Lindholmen</span>
+                            </div>
+                            <div class="restaurant-meta-item">
+                                <span class="icon-clock"></span>
+                                <span class="en">11:00 - 14:00</span>
+                                <span class="sv hidden">11:00 - 14:00</span>
+                            </div>
+                        </div>
+                        <div class="cuisine-badge">
+                            <span class="en">Restaurant</span>
+                            <span class="sv hidden">Restaurang</span>
+                        </div>
+                    </div>
+                    <div class="restaurant-links"></div>
+                </div>
+                
+                <div class="restaurant-content">
+                    <div class="menu-section">
+                        <h3>
+                            <span class="icon-menu"></span>
+                            <span class="en">Today's lunch</span>
+                            <span class="sv hidden">Dagens lunch</span>
+                        </h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Honungsbakad chèvreost</div><div class="menu-item-description">somrig potatissallad, rostade rödbetor och valnötter</div><div class="emoji-tags"><span class="emoji-tag">Dagens</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Fiskbiff</div><div class="menu-item-description">kronärtskockor och grönkål, krossad potatis, konfiterade tomater, vitvinssås</div><div class="emoji-tags"><span class="emoji-tag">Dagens</span></div></div><div class="menu-item-price">110 kr</div></div>
+                            <div class="menu-item">
+                                <div class="menu-item-details"><div class="menu-item-name">Cordon bleu</div><div class="menu-item-description">potatismos, vitvinssås, smörstekt sparris</div><div class="emoji-tags"><span class="emoji-tag">Dagens</span></div></div><div class="menu-item-price">110 kr</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="separator"></div>
+                    <div class="special-offer">
+                        ✨ <span class="en">Last updated: 2025-06-11 13:24</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-11 13:24</span>
+                    </div>
+                </div>
+            </div></div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <span class="icon-map"></span> 
+            <span class="en">Lindholmen, Gothenburg</span>
+            <span class="sv hidden">Lindholmen, Göteborg</span>
+        </p>
+        <p>
+            <span class="en">Discover the best lunch options in the Lindholmen area</span>
+            <span class="sv hidden">Upptäck de bästa lunchalternativen i Lindholmen området</span>
+        </p>
+        <p>
+            <span class="en">This lunch compilation is open source –</span>
+            <span class="sv hidden">Denna lunchsammanställning är öppen källkod –</span>
+            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a>
+        </p>
+        <p>
+            <span class="en">Questions, feedback or missing your favorite restaurant? Open an issue, pull request, contact me via GitHub or via</span>
+            <span class="sv hidden">Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, kontakta mig via GitHub eller via</span>
+            <a href="mailto:fawenah@gmail.com">fawenah@gmail.com</a>.
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">
+            <a href="privacy.html">
+                <span class="en">Privacy Policy</span>
+                <span class="sv hidden">Integritetspolicy</span>
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        // Language switching
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const svElements = document.querySelectorAll('.sv');
+            
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            svElements.forEach(el => el.classList.toggle('hidden'));
+            
+            // Update page language attribute
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            document.documentElement.lang = isSwedish ? 'sv' : 'en';
+            
+            // Save language preference
+            localStorage.setItem('language', isSwedish ? 'sv' : 'en');
+        }
+
+
+
+        // Random restaurant selection
+        function selectRandomRestaurant() {
+            const restaurants = ['KooperativetScraper', 'DistrictOneScraper', 'BombayBistroScraper', 'CuckoosNestScraper', 'Uni3WorldOfFoodScraper', 'MissFScraper', 'BennePastabarScraper', 'LsKitchenScraper', 'BistrotScraper', 'MimolettScraper', 'OishiiScraper', 'MatMinnenScraper', 'EncounterAsianScraper', 'MasalaScraper', 'RestaurantPier11Scraper'];
+            if (restaurants.length === 0) return;
+            
+            // Clear previous highlights
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Add some animation
+            const button = document.querySelector('.random-button');
+            button.style.transform = 'scale(0.95)';
+            
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            button.innerHTML = isSwedish ? 
+                '<span class="icon-shuffle"></span> Väljer...' : 
+                '<span class="icon-shuffle"></span> Choosing...';
+            
+            setTimeout(() => {
+                const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
+                const restaurantCard = document.getElementById('restaurant-' + randomRestaurant);
+                
+                if (restaurantCard) {
+                    restaurantCard.classList.add('highlighted');
+                    restaurantCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                // Reset button
+                button.style.transform = '';
+                button.innerHTML = isSwedish ? 
+                    '<span class="icon-shuffle"></span> Jag är hungrig!' : 
+                    '<span class="icon-shuffle"></span> I am feeling hungry!';
+            }, 1000);
+        }
+
+        // Go to top and reset random selection
+        function goToTop() {
+            // Clear any highlighted restaurants
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'sv') {
+                // Switch to Swedish if saved
+                const enElements = document.querySelectorAll('.en');
+                const svElements = document.querySelectorAll('.sv');
+                
+                enElements.forEach(el => el.classList.add('hidden'));
+                svElements.forEach(el => el.classList.remove('hidden'));
+                
+                document.documentElement.lang = 'sv';
+            }
+        });
+    </script>
+</body>
+</html>
+    
