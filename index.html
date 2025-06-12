@@ -18,29 +18,26 @@
     <meta name="description" content="Today's lunch from restaurants in Lindholmen – updated daily." />
     
     <style>
-        /* CSS Variables matching reference design */
+        /* Modern CSS Reset and Variables */
         :root {
             --background: #ffffff;
-            --foreground: #0a0a0a;
+            --foreground: #020617;
             --card: #ffffff;
-            --card-foreground: #0a0a0a;
-            --primary: #030213;
+            --card-foreground: #020617;
+            --primary: #1e40af;
             --primary-foreground: #ffffff;
-            --secondary: #f3f4f6;
-            --secondary-foreground: #030213;
-            --muted: #f9fafb;
-            --muted-foreground: #6b7280;
-            --accent: #f3f4f6;
-            --accent-foreground: #030213;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --muted: #f8fafc;
+            --muted-foreground: #64748b;
+            --accent: #f1f5f9;
+            --accent-foreground: #0f172a;
             --border: rgba(0, 0, 0, 0.1);
-            --radius: 0.625rem;
-            --blue-50: #eff6ff;
-            --indigo-100: #e0e7ff;
-            --blue-600: #2563eb;
-            --orange-500: #f97316;
-            --red-500: #ef4444;
-            --green-50: #f0fdf4;
-            --green-700: #15803d;
+            --radius: 0.5rem;
+            --orange: #ea580c;
+            --orange-hover: #dc2626;
+            --green: #16a34a;
+            --green-light: #dcfce7;
         }
 
         * {
@@ -50,30 +47,32 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(to bottom right, var(--blue-50), var(--indigo-100));
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #dbeafe, #e0e7ff);
             min-height: 100vh;
             color: var(--foreground);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Header */
         .header {
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 50;
         }
 
         .header-container {
-            max-width: 1792px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .header-left {
@@ -82,17 +81,17 @@
             gap: 0.75rem;
         }
 
-        .icon-utensils {
-            width: 2rem;
-            height: 2rem;
-            color: var(--blue-600);
-        }
-
         .header-title {
-            font-size: 1.5rem;
+            font-size: 1.875rem;
             font-weight: 700;
             color: var(--foreground);
             margin: 0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .header-title:hover {
+            color: var(--primary);
         }
 
         .header-subtitle {
@@ -108,18 +107,15 @@
         }
 
         .language-toggle {
-            background: transparent;
+            background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 0.5rem 0.75rem;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--foreground);
+            color: var(--secondary-foreground);
             transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .language-toggle:hover {
@@ -130,10 +126,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            padding: 0.5rem 0.75rem;
-            background: transparent;
-            color: var(--foreground);
-            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: var(--primary-foreground);
             border-radius: var(--radius);
             font-size: 0.875rem;
             font-weight: 500;
@@ -141,7 +136,7 @@
 
         /* Main Content */
         .main-container {
-            max-width: 1792px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -149,13 +144,10 @@
         .hero-section {
             text-align: center;
             margin-bottom: 3rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero-section h1 {
-            font-size: 1.875rem;
+            font-size: 3rem;
             font-weight: 700;
             color: var(--foreground);
             margin-bottom: 1rem;
@@ -164,7 +156,8 @@
         .hero-section p {
             font-size: 1.125rem;
             color: var(--muted-foreground);
-            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin: 0 auto 2rem;
         }
 
         /* Random Selection */
@@ -173,95 +166,65 @@
             margin-bottom: 3rem;
         }
 
-        /* Floating Random Button */
-        .floating-random-button {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
+        .random-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(to right, var(--orange-500), var(--red-500));
+            background: linear-gradient(to right, var(--orange), var(--orange-hover));
             color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-size: 1.125rem;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 8px 32px rgba(249, 115, 22, 0.4);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
         }
 
-        .floating-random-button:hover {
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
+        .random-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
         }
 
-
-
-        .icon-shuffle {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        /* Restaurant Grid - Simple Masonry Layout */
+        /* Restaurant Grid */
         .restaurant-grid {
-            column-count: 1;
-            column-gap: 1.5rem;
-            width: 100%;
-        }
-
-        /* Responsive Columns */
-        @media (min-width: 768px) {
-            .restaurant-grid {
-                column-count: 2;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .restaurant-grid {
-                column-count: 3;
-            }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            align-items: start; /* Allow cards to have their natural height */
         }
 
         .restaurant-card {
             background: var(--card);
-            border-radius: 0.75rem;
+            border-radius: calc(var(--radius) + 4px);
             border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
-            width: 100%;
+            flex-direction: column; /* Stack header and content vertically */
         }
 
         .restaurant-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .restaurant-card.highlighted {
-            border: 2px solid var(--orange-500);
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
-            transform: translateY(-1px);
+            border: 2px solid var(--orange);
+            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+            transform: translateY(-4px) scale(1.02);
         }
 
         .restaurant-header {
-            padding: 1.5rem 1.5rem 0;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto;
-            gap: 1rem 1.5rem;
-            align-items: start;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
         }
 
         .restaurant-info {
@@ -324,8 +287,8 @@
         }
 
         .restaurant-content {
-            padding: 0 1.5rem 1.5rem;
-            flex-grow: 1;
+            padding: 0 1.25rem 1.25rem;
+            flex-grow: 1; /* Take up remaining space */
             display: flex;
             flex-direction: column;
         }
@@ -420,13 +383,13 @@
 
         /* Special Offer */
         .special-offer {
-            background: var(--green-50);
-            color: var(--green-700);
-            padding: 0.75rem;
+            background: var(--green-light);
+            color: var(--green);
+            padding: 1rem;
             border-radius: var(--radius);
             font-weight: 500;
-            font-size: 0.875rem;
-            margin-top: auto;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+            margin-top: auto; /* Push to bottom of card */
         }
 
 
@@ -595,7 +558,14 @@
             </p>
         </div>
 
-
+        <!-- Random Selection -->
+        <div class="random-section">
+            <button class="random-button" onclick="selectRandomRestaurant()">
+                <span class="icon-shuffle"></span>
+                <span class="en">I'm feeling hungry!</span>
+                <span class="sv hidden">Jag är hungrig!</span>
+            </button>
+        </div>
     <div class="restaurant-grid">
             <div class="restaurant-card" id="restaurant-KooperativetScraper">
                 <div class="restaurant-header">
@@ -669,8 +639,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -729,8 +699,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -783,8 +753,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -837,8 +807,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -887,8 +857,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -969,8 +939,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1029,8 +999,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1106,8 +1076,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1162,8 +1132,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1238,8 +1208,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1310,8 +1280,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1360,8 +1330,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1440,8 +1410,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1532,8 +1502,8 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div>
@@ -1580,19 +1550,12 @@
                     
                     <div class="separator"></div>
                     <div class="special-offer">
-                        ✨ <span class="en">Last updated: 2025-06-12 11:14</span>
-                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 11:14</span>
+                        ✨ <span class="en">Last updated: 2025-06-12 09:53</span>
+                        <span class="sv hidden">Senast uppdaterad: 2025-06-12 09:53</span>
                     </div>
                 </div>
             </div></div>
     </main>
-    
-    <!-- Floating Random Button -->
-    <button class="floating-random-button" onclick="selectRandomRestaurant()">
-        🎲
-        <span class="en">I am feeling hungry!</span>
-        <span class="sv hidden">Jag är hungrig!</span>
-    </button>
     
     <!-- Footer -->
     <footer class="footer">
@@ -1652,17 +1615,14 @@
                 card.classList.remove('highlighted');
             });
             
-            // Update floating button
-            const floatingButton = document.querySelector('.floating-random-button');
+            // Add some animation
+            const button = document.querySelector('.random-button');
+            button.style.transform = 'scale(0.95)';
             
             const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
-            const choosingText = isSwedish ? 
-                '🎲 <span class="sv">Väljer...</span><span class="en hidden">Choosing...</span>' : 
-                '🎲 <span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
-            
-            if (floatingButton) {
-                floatingButton.innerHTML = choosingText;
-            }
+            button.innerHTML = isSwedish ? 
+                '<span class="icon-shuffle"></span> Väljer...' : 
+                '<span class="icon-shuffle"></span> Choosing...';
             
             setTimeout(() => {
                 const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
@@ -1674,13 +1634,10 @@
                 }
                 
                 // Reset button
-                const finalText = isSwedish ? 
-                    '🎲 <span class="sv">Jag är hungrig!</span><span class="en hidden">I am feeling hungry!</span>' : 
-                    '🎲 <span class="en">I am feeling hungry!</span><span class="sv hidden">Jag är hungrig!</span>';
-                
-                if (floatingButton) {
-                    floatingButton.innerHTML = finalText;
-                }
+                button.style.transform = '';
+                button.innerHTML = isSwedish ? 
+                    '<span class="icon-shuffle"></span> Jag är hungrig!' : 
+                    '<span class="icon-shuffle"></span> I am feeling hungry!';
             }, 1000);
         }
 

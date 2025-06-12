@@ -198,26 +198,30 @@
             margin: 0 auto;
         }
 
-        /* Restaurant Grid */
+        /* Restaurant Grid - CSS Grid Masonry */
         .restaurant-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(1, 1fr);
+            grid-auto-rows: 10px;
             gap: 1.5rem;
-            align-items: start;
         }
 
-        /* Responsive Grid for wider screens */
+        /* Responsive Grid */
+        @media (min-width: 768px) {
+            .restaurant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (min-width: 1200px) {
             .restaurant-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                gap: 1.5rem;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (min-width: 1600px) {
             .restaurant-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 1.5rem;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -228,8 +232,8 @@
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
+            display: block;
+            width: 100%;
         }
 
         .restaurant-card:hover {
@@ -290,14 +294,11 @@
 
         .restaurant-content {
             padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            display: block;
         }
 
         .menu-section {
             margin-bottom: 1.5rem;
-            flex-grow: 1;
         }
 
         .menu-section h3 {
@@ -395,7 +396,7 @@
             border-radius: var(--radius);
             font-weight: 500;
             border: 1px solid rgba(22, 163, 74, 0.2);
-            margin-top: auto;
+            margin-top: 1rem;
         }
 
         /* Footer */
@@ -710,6 +711,9 @@
             
             // Save language preference
             localStorage.setItem('language', isSwedish ? 'sv' : 'en');
+            
+            // Recalculate masonry after language change
+            setTimeout(resizeAllMasonryItems, 100);
         }
 
         // Random restaurant selection
@@ -757,7 +761,37 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Load saved language preference
+
+
+        // Masonry Grid Layout - based on https://dev.to/hungle00/build-a-masonry-layout-pinterest-layout-3glp
+        function resizeMasonryItem(item) {
+            const grid = document.querySelector('.restaurant-grid');
+            if (!grid) return;
+            
+            const gridComputedStyle = window.getComputedStyle(grid);
+            const gridAutoRows = parseInt(gridComputedStyle.getPropertyValue('grid-auto-rows')); // R = 10px
+            const gridGap = parseInt(gridComputedStyle.getPropertyValue('gap')); // G = 24px (1.5rem)
+            
+            const itemHeight = item.getBoundingClientRect().height; // H
+            
+            // Formula: S = H / (G + R) 
+            const rowSpan = Math.ceil(itemHeight / (gridAutoRows + gridGap));
+            
+            item.style.gridRowEnd = 'span ' + rowSpan;
+        }
+
+        function resizeAllMasonryItems() {
+            const allItems = document.querySelectorAll('.restaurant-card');
+            allItems.forEach(resizeMasonryItem);
+        }
+
+        function initMasonry() {
+            resizeAllMasonryItems();
+            // Recalculate after a short delay to ensure all content is loaded
+            setTimeout(resizeAllMasonryItems, 100);
+        }
+
+        // Load saved language preference and initialize masonry
         document.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('language');
             if (savedLanguage === 'sv') {
@@ -770,6 +804,14 @@
                 
                 document.documentElement.lang = 'sv';
             }
+            
+            // Initialize masonry layout
+            initMasonry();
+        });
+
+        // Recalculate on window resize
+        window.addEventListener('resize', function() {
+            resizeAllMasonryItems();
         });
     </script>
 </body>
