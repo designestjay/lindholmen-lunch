@@ -832,14 +832,20 @@ def generate_index_page():
             <span class="sv hidden">Upptäck de bästa lunchalternativen i Lindholmen området</span>
         </p>
         <p>
-            <span class="en">This lunch compilation is open source –</span>
-            <span class="sv hidden">Denna lunchsammanställning är öppen källkod –</span>
-            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a>
+            <span class="en">Enhanced version with modern UI/UX improvements –</span>
+            <span class="sv hidden">Förbättrad version med modern UI/UX –</span>
+            <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank">GitHub - Lindholmen Lunch</a>
         </p>
         <p>
-            <span class="en">Questions, feedback or missing your favorite restaurant? Open an issue, pull request, contact me via GitHub or via</span>
-            <span class="sv hidden">Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, kontakta mig via GitHub eller via</span>
-            <a href="mailto:fawenah@gmail.com">fawenah@gmail.com</a>.
+            <span class="en">Based on original work by</span>
+            <span class="sv hidden">Baserat på ursprungligt arbete av</span>
+            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">Fawenah</a>
+            <span class="en">with design overhaul and UX enhancements</span>
+            <span class="sv hidden">med designomarbetning och UX-förbättringar</span>
+        </p>
+        <p>
+            <span class="en">Questions, feedback or suggestions? Feel free to open an issue or contact via GitHub</span>
+            <span class="sv hidden">Frågor, feedback eller förslag? Öppna gärna ett issue eller kontakta via GitHub</span>
         </p>
         <p style="margin-top: 1rem; font-size: 0.8rem;">
             <a href="privacy.html">
