@@ -102,7 +102,7 @@ The app currently scrapes lunch menus from 15+ restaurants in Lindholmen:
    python -m http.server 8000
    ```
 
-6. **Visit** [http://localhost:8000](http://iamjaydesign.com/lindholmen-lunch/)
+6. **Visit** http://iamjaydesign.com/lindholmen-lunch/
 
 ## 📝 Contributing
 
