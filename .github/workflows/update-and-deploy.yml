@@ -9,7 +9,7 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -63,34 +63,40 @@ jobs:
       run: |
         python main.py --day ${{ steps.get-day.outputs.day }} --refresh
         
-    - name: Commit updated data
+    - name: Commit updated data to main branch
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data/ docs/
         if git diff --staged --quiet; then
-          echo "No changes to commit"
+          echo "No changes to commit to main"
         else
           git commit -m "Update lunch data for $(date +'%Y-%m-%d')"
-          git push
+          git push origin main
         fi
         
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-      
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: './docs'
+    - name: Deploy to gh-pages branch
+      run: |
+        # Save the updated files
+        cp docs/index.html /tmp/index_updated.html
+        cp docs/privacy.html /tmp/privacy_updated.html
+        cp -r data/ /tmp/data_updated/
         
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: scrape-and-build
-    
-    steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2 
+        # Switch to gh-pages branch
+        git fetch origin gh-pages
+        git checkout gh-pages
+        
+        # Copy updated files to gh-pages
+        cp /tmp/index_updated.html index.html
+        cp /tmp/index_updated.html docs/index.html
+        cp /tmp/privacy_updated.html docs/privacy.html
+        cp -r /tmp/data_updated/* data/
+        
+        # Commit and push to gh-pages
+        git add .
+        if git diff --staged --quiet; then
+          echo "No changes to commit to gh-pages"
+        else
+          git commit -m "Deploy lunch data for $(date +'%Y-%m-%d')"
+          git push origin gh-pages
+        fi 
