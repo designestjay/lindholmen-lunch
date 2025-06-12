@@ -258,12 +258,13 @@ def generate_index_page():
             z-index: 100;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: linear-gradient(to right, var(--orange-500), var(--red-500));
             color: white;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.875rem;
             text-decoration: none;
             font-weight: 500;
             border: none;
@@ -271,11 +272,28 @@ def generate_index_page():
             transition: all 0.2s ease;
             box-shadow: 0 8px 32px rgba(249, 115, 22, 0.4);
             backdrop-filter: blur(8px);
+            white-space: nowrap;
+            min-width: 200px;
+            max-width: 280px;
+            height: 48px;
+            line-height: 1;
         }
 
         .floating-random-button:hover {
             transform: translateX(-50%) translateY(-2px);
             box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .floating-random-button {
+                bottom: 1.5rem;
+                font-size: 0.8rem;
+                padding: 0.625rem 1.25rem;
+                min-width: 180px;
+                max-width: 250px;
+                height: 44px;
+            }
         }
 
 
@@ -869,6 +887,11 @@ def generate_index_page():
                 '🎲 <span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
             
             if (floatingButton) {{
+                // Store original dimensions to prevent size changes
+                const originalWidth = floatingButton.offsetWidth;
+                const originalHeight = floatingButton.offsetHeight;
+                floatingButton.style.width = originalWidth + 'px';
+                floatingButton.style.height = originalHeight + 'px';
                 floatingButton.innerHTML = choosingText;
             }}
             
@@ -888,6 +911,9 @@ def generate_index_page():
                 
                 if (floatingButton) {{
                     floatingButton.innerHTML = finalText;
+                    // Remove fixed dimensions to allow natural sizing again
+                    floatingButton.style.width = '';
+                    floatingButton.style.height = '';
                 }}
             }}, 1000);
         }}
@@ -922,9 +948,15 @@ def generate_index_page():
 </html>
     """
 
+    # Write to docs directory
     index_path = output_dir / "index.html"
     index_path.write_text(html, encoding="utf-8")
     print(f"[INFO] Generated weekly index page: {index_path}")
+    
+    # Also write to root directory for GitHub Pages
+    root_index_path = Path("index.html")
+    root_index_path.write_text(html, encoding="utf-8")
+    print(f"[INFO] Generated root index page: {root_index_path}")
 
 if __name__ == "__main__":
     generate_index_page()
