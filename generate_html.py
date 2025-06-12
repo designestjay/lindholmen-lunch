@@ -922,9 +922,15 @@ def generate_index_page():
 </html>
     """
 
+    # Write to docs directory
     index_path = output_dir / "index.html"
     index_path.write_text(html, encoding="utf-8")
     print(f"[INFO] Generated weekly index page: {index_path}")
+    
+    # Also write to root directory for GitHub Pages
+    root_index_path = Path("index.html")
+    root_index_path.write_text(html, encoding="utf-8")
+    print(f"[INFO] Generated root index page: {root_index_path}")
 
 if __name__ == "__main__":
     generate_index_page()
