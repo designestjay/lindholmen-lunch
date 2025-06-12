@@ -62,18 +62,6 @@
         "description": "",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🥣"
     ]
   },
   "DistrictOneScraper": {
@@ -133,18 +121,6 @@
         "description": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
         "price": "129 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥣"
     ]
   },
   "BombayBistroScraper": {
@@ -186,11 +162,6 @@
         "description": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
         "price": "145 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🐔",
-      "🥣"
     ]
   },
   "CuckoosNestScraper": {
@@ -232,15 +203,6 @@
         "description": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
         "price": "235 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔"
     ]
   },
   "Uni3WorldOfFoodScraper": {
@@ -266,22 +228,10 @@
       },
       {
         "name": "Bao med krispig glaserad tofu",
-        "category": "Wood",
+        "category": "Earth",
         "description": "chiligurka, jordnöt, picklad kålrabbi, chilimajonnäs",
         "price": "132 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍔",
-      "🥟",
-      "🍰"
     ]
   },
   "MissFScraper": {
@@ -407,22 +357,6 @@
         "description": "Friterad krabbröra, avokado, gurka, krispsallad",
         "price": "115 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🇲🇽",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍝",
-      "🌮",
-      "🍰"
     ]
   },
   "BennePastabarScraper": {
@@ -482,20 +416,13 @@
         "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
         "price": "35 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🍝",
-      "🍰"
     ]
   },
   "LsKitchenScraper": {
     "day": "thursday",
     "items": [
       {
-        "name": "Teriyakiglaccerad fläskkarré, nudelwok, svamp, morot, kål & chilikräm",
+        "name": "Teriyakiglaccerad fläskkarré (SE) , nudelwok, svamp, morot, kål & chilikräm",
         "category": "",
         "description": "",
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
@@ -524,15 +451,6 @@
         "description": "",
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍝",
-      "🥣"
     ]
   },
   "BistrotScraper": {
@@ -580,15 +498,6 @@
         "description": "Vitvinssås – Sockerärtor – Morot – Vårlök – Örtslungad potatis",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🍝"
     ]
   },
   "MimolettScraper": {
@@ -696,15 +605,6 @@
         "description": "Hemlagat lasagne med bechamelsås.",
         "price": "129 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🍝"
     ]
   },
   "OishiiScraper": {
@@ -800,17 +700,6 @@
         "description": "fläskkött eller vegetariansk",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MatMinnenScraper": {
@@ -840,13 +729,6 @@
         "description": "ägg, tomat, gurka, gröna ärtor, rödlök, krutonger",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🐄",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🥣"
     ]
   },
   "EncounterAsianScraper": {
@@ -966,18 +848,6 @@
         "description": "",
         "price": "15 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MasalaScraper": {
@@ -1133,14 +1003,6 @@
         "description": "",
         "price": "25 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🥗",
-      "🥣"
     ]
   },
   "RestaurantPier11Scraper": {
@@ -1164,11 +1026,6 @@
         "description": "cashewnötter, russin, libabröd, ris, koriandersallad",
         "price": "110 kr"
       }
-    ],
-    "emoji_tags": [
-      "🐄",
-      "🐔",
-      "🥗"
     ]
   }
 }
