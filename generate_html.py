@@ -94,26 +94,29 @@ def generate_index_page():
     <meta name="description" content="Today's lunch from restaurants in Lindholmen – updated daily." />
     
     <style>
-        /* Modern CSS Reset and Variables */
+        /* CSS Variables matching reference design */
         :root {
             --background: #ffffff;
-            --foreground: #020617;
+            --foreground: #0a0a0a;
             --card: #ffffff;
-            --card-foreground: #020617;
-            --primary: #1e40af;
+            --card-foreground: #0a0a0a;
+            --primary: #030213;
             --primary-foreground: #ffffff;
-            --secondary: #f1f5f9;
-            --secondary-foreground: #0f172a;
-            --muted: #f8fafc;
-            --muted-foreground: #64748b;
-            --accent: #f1f5f9;
-            --accent-foreground: #0f172a;
+            --secondary: #f3f4f6;
+            --secondary-foreground: #030213;
+            --muted: #f9fafb;
+            --muted-foreground: #6b7280;
+            --accent: #f3f4f6;
+            --accent-foreground: #030213;
             --border: rgba(0, 0, 0, 0.1);
-            --radius: 0.5rem;
-            --orange: #ea580c;
-            --orange-hover: #dc2626;
-            --green: #16a34a;
-            --green-light: #dcfce7;
+            --radius: 0.625rem;
+            --blue-50: #eff6ff;
+            --indigo-100: #e0e7ff;
+            --blue-600: #2563eb;
+            --orange-500: #f97316;
+            --red-500: #ef4444;
+            --green-50: #f0fdf4;
+            --green-700: #15803d;
         }
 
         * {
@@ -123,32 +126,30 @@ def generate_index_page():
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: linear-gradient(to bottom right, #dbeafe, #e0e7ff);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(to bottom right, var(--blue-50), var(--indigo-100));
             min-height: 100vh;
             color: var(--foreground);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* Header */
         .header {
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 10;
         }
 
         .header-container {
-            max-width: 1280px;
+            max-width: 1792px;
             margin: 0 auto;
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .header-left {
@@ -157,17 +158,17 @@ def generate_index_page():
             gap: 0.75rem;
         }
 
+        .icon-utensils {
+            width: 2rem;
+            height: 2rem;
+            color: var(--blue-600);
+        }
+
         .header-title {
-            font-size: 1.875rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--foreground);
             margin: 0;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .header-title:hover {
-            color: var(--primary);
         }
 
         .header-subtitle {
@@ -183,15 +184,18 @@ def generate_index_page():
         }
 
         .language-toggle {
-            background: var(--secondary);
+            background: transparent;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.75rem;
             cursor: pointer;
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--secondary-foreground);
+            color: var(--foreground);
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .language-toggle:hover {
@@ -202,9 +206,10 @@ def generate_index_page():
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            color: var(--primary-foreground);
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             font-size: 0.875rem;
             font-weight: 500;
@@ -212,7 +217,7 @@ def generate_index_page():
 
         /* Main Content */
         .main-container {
-            max-width: 1280px;
+            max-width: 1792px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
@@ -220,10 +225,13 @@ def generate_index_page():
         .hero-section {
             text-align: center;
             margin-bottom: 3rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-section h1 {
-            font-size: 3rem;
+            font-size: 1.875rem;
             font-weight: 700;
             color: var(--foreground);
             margin-bottom: 1rem;
@@ -232,8 +240,7 @@ def generate_index_page():
         .hero-section p {
             font-size: 1.125rem;
             color: var(--muted-foreground);
-            max-width: 42rem;
-            margin: 0 auto 2rem;
+            margin-bottom: 2rem;
         }
 
         /* Random Selection */
@@ -242,65 +249,95 @@ def generate_index_page():
             margin-bottom: 3rem;
         }
 
-        .random-button {
+        /* Floating Random Button */
+        .floating-random-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: linear-gradient(to right, var(--orange), var(--orange-hover));
+            background: linear-gradient(to right, var(--orange-500), var(--red-500));
             color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            font-size: 1.125rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             border: none;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+            box-shadow: 0 8px 32px rgba(249, 115, 22, 0.4);
+            backdrop-filter: blur(8px);
         }
 
-        .random-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+        .floating-random-button:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
         }
 
-        /* Restaurant Grid */
+
+
+        .icon-shuffle {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        /* Restaurant Grid - Simple Masonry Layout */
         .restaurant-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-            align-items: start; /* Allow cards to have their natural height */
+            column-count: 1;
+            column-gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* Responsive Columns */
+        @media (min-width: 768px) {
+            .restaurant-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .restaurant-grid {
+                column-count: 3;
+            }
         }
 
         .restaurant-card {
             background: var(--card);
-            border-radius: calc(var(--radius) + 4px);
+            border-radius: 0.75rem;
             border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: relative;
             display: flex;
-            flex-direction: column; /* Stack header and content vertically */
+            flex-direction: column;
+            gap: 1.5rem;
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         .restaurant-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .restaurant-card.highlighted {
-            border: 2px solid var(--orange);
-            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
-            transform: translateY(-4px) scale(1.02);
+            border: 2px solid var(--orange-500);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+            transform: translateY(-1px);
         }
 
         .restaurant-header {
-            padding: 1.25rem;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
+            padding: 1.5rem 1.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            gap: 1rem 1.5rem;
+            align-items: start;
         }
 
         .restaurant-info {
@@ -363,8 +400,8 @@ def generate_index_page():
         }
 
         .restaurant-content {
-            padding: 0 1.25rem 1.25rem;
-            flex-grow: 1; /* Take up remaining space */
+            padding: 0 1.5rem 1.5rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
@@ -459,13 +496,13 @@ def generate_index_page():
 
         /* Special Offer */
         .special-offer {
-            background: var(--green-light);
-            color: var(--green);
-            padding: 1rem;
+            background: var(--green-50);
+            color: var(--green-700);
+            padding: 0.75rem;
             border-radius: var(--radius);
             font-weight: 500;
-            border: 1px solid rgba(22, 163, 74, 0.2);
-            margin-top: auto; /* Push to bottom of card */
+            font-size: 0.875rem;
+            margin-top: auto;
         }
 
 
@@ -634,14 +671,7 @@ def generate_index_page():
             </p>
         </div>
 
-        <!-- Random Selection -->
-        <div class="random-section">
-            <button class="random-button" onclick="selectRandomRestaurant()">
-                <span class="icon-shuffle"></span>
-                <span class="en">I'm feeling hungry!</span>
-                <span class="sv hidden">Jag är hungrig!</span>
-            </button>
-        </div>
+
     """
 
     if lunch_data:
@@ -765,6 +795,13 @@ def generate_index_page():
     html += f"""
     </main>
     
+    <!-- Floating Random Button -->
+    <button class="floating-random-button" onclick="selectRandomRestaurant()">
+        🎲
+        <span class="en">I am feeling hungry!</span>
+        <span class="sv hidden">Jag är hungrig!</span>
+    </button>
+    
     <!-- Footer -->
     <footer class="footer">
         <p>
@@ -823,14 +860,17 @@ def generate_index_page():
                 card.classList.remove('highlighted');
             }});
             
-            // Add some animation
-            const button = document.querySelector('.random-button');
-            button.style.transform = 'scale(0.95)';
+            // Update floating button
+            const floatingButton = document.querySelector('.floating-random-button');
             
             const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
-            button.innerHTML = isSwedish ? 
-                '<span class="icon-shuffle"></span> Väljer...' : 
-                '<span class="icon-shuffle"></span> Choosing...';
+            const choosingText = isSwedish ? 
+                '🎲 <span class="sv">Väljer...</span><span class="en hidden">Choosing...</span>' : 
+                '🎲 <span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
+            
+            if (floatingButton) {{
+                floatingButton.innerHTML = choosingText;
+            }}
             
             setTimeout(() => {{
                 const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
@@ -842,10 +882,13 @@ def generate_index_page():
                 }}
                 
                 // Reset button
-                button.style.transform = '';
-                button.innerHTML = isSwedish ? 
-                    '<span class="icon-shuffle"></span> Jag är hungrig!' : 
-                    '<span class="icon-shuffle"></span> I am feeling hungry!';
+                const finalText = isSwedish ? 
+                    '🎲 <span class="sv">Jag är hungrig!</span><span class="en hidden">I am feeling hungry!</span>' : 
+                    '🎲 <span class="en">I am feeling hungry!</span><span class="sv hidden">Jag är hungrig!</span>';
+                
+                if (floatingButton) {{
+                    floatingButton.innerHTML = finalText;
+                }}
             }}, 1000);
         }}
 
@@ -882,3 +925,6 @@ def generate_index_page():
     index_path = output_dir / "index.html"
     index_path.write_text(html, encoding="utf-8")
     print(f"[INFO] Generated weekly index page: {index_path}")
+
+if __name__ == "__main__":
+    generate_index_page()
