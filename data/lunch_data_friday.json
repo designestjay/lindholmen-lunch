@@ -11,7 +11,7 @@
       {
         "name": "Asiatisk Glasnudelsallad",
         "category": "VECKANS SPECIAL",
-        "description": "med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötterVEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+        "description": "med pankofriterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötterVEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
         "price": "130 kr"
       },
       {
@@ -21,7 +21,7 @@
         "price": "130 kr"
       },
       {
-        "name": "Bakad lax serveras med färskpotatis pepparrotshollandaise och örtsallad",
+        "name": "Bakad lax serveras med ört & västerbottenpuré, pepparrotshollandaise och örtsallad",
         "category": "FISK",
         "description": "",
         "price": "130 kr"
@@ -41,7 +41,7 @@
       {
         "name": "Chicken Vindaloo",
         "category": "INDISK",
-        "description": "kryddstark indisk currygryta med kyckling serveras med yoghurt, basmatiris & koriander och smörat Naan CHILI 5/5",
+        "description": "kryddstark indisk currygryta med kyckling serveras med yoghurt, basmatiris, koriander & papadums CHILI 5/5",
         "price": "130 kr"
       },
       {
@@ -50,20 +50,6 @@
         "description": "",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🇰🇷",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍕",
-      "🥟",
-      "🥣"
     ]
   },
   "DistrictOneScraper": {
@@ -123,18 +109,6 @@
         "description": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
         "price": "129 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥣"
     ]
   },
   "BombayBistroScraper": {
@@ -176,11 +150,6 @@
         "description": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
         "price": "145 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🌱",
-      "🐔"
     ]
   },
   "CuckoosNestScraper": {
@@ -222,15 +191,6 @@
         "description": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
         "price": "235 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔"
     ]
   },
   "Uni3WorldOfFoodScraper": {
@@ -256,22 +216,10 @@
       },
       {
         "name": "Bao med krispig glaserad tofu",
-        "category": "Wood",
+        "category": "Earth",
         "description": "chiligurka, jordnöt, picklad kålrabbi, chilimajonnäs",
         "price": "132 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍔",
-      "🥟",
-      "🍰"
     ]
   },
   "MissFScraper": {
@@ -397,22 +345,6 @@
         "description": "Friterad krabbröra, avokado, gurka, krispsallad",
         "price": "115 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🇲🇽",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍝",
-      "🌮",
-      "🍰"
     ]
   },
   "BennePastabarScraper": {
@@ -472,13 +404,6 @@
         "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
         "price": "35 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🍝",
-      "🍰"
     ]
   },
   "LsKitchenScraper": {
@@ -514,15 +439,6 @@
         "description": "",
         "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍝",
-      "🥣"
     ]
   },
   "BistrotScraper": {
@@ -570,129 +486,6 @@
         "description": "Fänkåls risotto – Broccoli – Blomkål– Grana padano – Rucola",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐔",
-      "🥗",
-      "🍔",
-      "🍝"
-    ]
-  },
-  "MimolettScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Grillad Entrecóte (200g)",
-        "category": "Kött & Fisk",
-        "description": "Grillad Entrecóte med friterad klyftpotatis och veckans sås.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Black Angus Burger (200g)",
-        "category": "Kött & Fisk",
-        "description": "Högrevsburgare med senap majonnäs sås, sallad, rostad lök, pepparjack ost, grillad bacon, BBQ-sås",
-        "price": "129 kr"
-      },
-      {
-        "name": "Husets Fiskgratäng (Tisdagar & Torsdagar)",
-        "category": "Kött & Fisk",
-        "description": "Flundrafilé, potatismos, mozzarellaost, tomat, dillsås och citron.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Bacon Risotto",
-        "category": "Risotto",
-        "description": "Bacon, grillade grönsaker, granapadano, smör , ruccola",
-        "price": "129 kr"
-      },
-      {
-        "name": "Scampi Risotto",
-        "category": "Risotto",
-        "description": "Tigerräkor, röd chilli, vitlök, granapadano, smör , ruccola",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Aglio",
-        "category": "Pastarätter",
-        "description": "Oxfilé, champinjoner, crème fraiche vitlök, grädde toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Afrikana",
-        "category": "Pastarätter",
-        "description": "Kyckling, paprika, ananas, jordnötter, grädde, curry toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Patrone",
-        "category": "Pastarätter",
-        "description": "Oxfilé, soltorkad tomat, vitlök, tomatsås, grädde toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Tagliatelle Salmone",
-        "category": "Pastarätter",
-        "description": "Laxfilé, purjolök, crème fraiche, vitlök, grädde toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Spagetti Modo Nostro",
-        "category": "Pastarätter",
-        "description": "Köttfärssås, gorgonzola, champinjoner, grädde, piri piri toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Tagliatelle con Scampi",
-        "category": "Pastarätter",
-        "description": "Tigerräkor, tomatsås, vitlök, basilika toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Romana",
-        "category": "Pastarätter",
-        "description": "Kyckling, champinjoner, vitlök, grädde toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Diavolo (Stark)",
-        "category": "Pastarätter",
-        "description": "Köttfärssås, grädde, piri-piri toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Spagetti Carbonara",
-        "category": "Pastarätter",
-        "description": "Rostad bacon, persilja, vitlök, grädde toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Vegetale",
-        "category": "Pastarätter",
-        "description": "Grönsaksmix, champinjoner, tomatsås, vitlök toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Penne Pesto",
-        "category": "Pastarätter",
-        "description": "Soltorkad tomat. pesto, vitlök, grädde, mozzarella toppas med grana padano.",
-        "price": "129 kr"
-      },
-      {
-        "name": "Lasagne Al Forno",
-        "category": "Pastarätter",
-        "description": "Hemlagat lasagne med bechamelsås.",
-        "price": "129 kr"
-      }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🍝"
     ]
   },
   "OishiiScraper": {
@@ -788,17 +581,6 @@
         "description": "fläskkött eller vegetariansk",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MatMinnenScraper": {
@@ -828,11 +610,6 @@
         "description": "ägg, tomat, gurka, gröna ärtor, rödlök, krutonger",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🐟",
-      "🥗",
-      "🥣"
     ]
   },
   "EncounterAsianScraper": {
@@ -952,18 +729,6 @@
         "description": "",
         "price": "15 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MasalaScraper": {
@@ -1119,15 +884,6 @@
         "description": "",
         "price": "25 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🥣"
     ]
   },
   "RestaurantPier11Scraper": {
@@ -1145,12 +901,6 @@
         "description": "inlagd ingefära, srirachamajonnäs, sesamfrön",
         "price": "110 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🐄",
-      "🥗",
-      "🍔"
     ]
   }
 }
