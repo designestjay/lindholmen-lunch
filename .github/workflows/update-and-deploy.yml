@@ -61,9 +61,15 @@ jobs:
         echo "day=$DAY" >> $GITHUB_OUTPUT
         echo "Current day: $DAY"
         
-    - name: Scrape lunch data
+    - name: Scrape lunch data for current day
       run: |
+        echo "Scraping data for: ${{ steps.get-day.outputs.day }}"
         python main.py --day ${{ steps.get-day.outputs.day }} --refresh
+        
+    - name: Generate fresh HTML page
+      run: |
+        echo "Generating fresh HTML page for the current day"
+        python generate_html.py
         
     - name: Copy files to deployment directory
       run: |
@@ -84,7 +90,7 @@ jobs:
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
-          git commit -m "Update lunch data for $(date +'%Y-%m-%d')"
+          git commit -m "Auto-update: ${{ steps.get-day.outputs.day }} lunch data $(date +'%Y-%m-%d %H:%M')"
           git push origin gh-pages
         fi
 
