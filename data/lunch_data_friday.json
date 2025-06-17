@@ -3,67 +3,17 @@
     "day": "friday",
     "items": [
       {
-        "name": "Caesarsallad",
-        "category": "SALLADER",
-        "description": "romansallad toppad med kyckling & bacon, serveras med caesardressing, riven grana padano, sardeller samt krutongerVästkust Caesarsallad – romansallad toppad med räkor & rökt lax serveras med caesardressing, riven grana padano, sardeller samt krutonger",
-        "price": "130 kr"
-      },
-      {
-        "name": "Asiatisk Glasnudelsallad",
-        "category": "VECKANS SPECIAL",
-        "description": "med sesam wokade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötterVEG Asiatisk Glasnudelsallad – med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
-        "price": "130 kr"
-      },
-      {
-        "name": "Fredags Grillen",
-        "category": "KÖTT",
-        "description": "kolgrillad gårdsgris med chili cheese fries & Pico de Gallo",
-        "price": "130 kr"
-      },
-      {
-        "name": "Bakad lax serveras med färskpotatis pepparrotshollandaise och örtsallad",
-        "category": "FISK",
+        "name": "Glad Midsommar!",
+        "category": "",
         "description": "",
         "price": "130 kr"
       },
       {
-        "name": "Bao Buns fyllda med hoisinglaserat fläsk toppas med ”kimchigurka” sesammajonnäs & rostad lök serveras med frasiga pommes & krossade räkchips",
-        "category": "THAI",
-        "description": "",
-        "price": "130 kr"
-      },
-      {
-        "name": "Bao Buns fyllda med hoisinglaserat pea cake toppas med ”kimchigurka” sesammajonnäs & rostad lök serveras med frasiga pommes",
-        "category": "VEGETARISKT",
-        "description": "",
-        "price": "130 kr"
-      },
-      {
-        "name": "Chicken Vindaloo",
-        "category": "INDISK",
-        "description": "kryddstark indisk currygryta med kyckling serveras med yoghurt, basmatiris & koriander och smörat Naan CHILI 5/5",
-        "price": "130 kr"
-      },
-      {
-        "name": "Kooperativets Surdegs pizza med tomatsås & mozzarella toppad med Kolgrillad fläskfilé & krämig Bea",
-        "category": "VÄRLDEN",
+        "name": "Stängt",
+        "category": "",
         "description": "",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🇰🇷",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍕",
-      "🥟",
-      "🥣"
     ]
   },
   "DistrictOneScraper": {
@@ -71,85 +21,31 @@
     "items": [
       {
         "name": "",
-        "category": "Ramen",
-        "description": "Sidfläsk, kyckling ELLER tofu med ägg, böngroddar, nori, purjolök och menma (sojakokt bambuskott).",
+        "category": "",
+        "description": "Stängt",
         "price": "129 kr"
       },
       {
         "name": "",
-        "category": "Fisk",
-        "description": "Pocherad torskfile med sanderfjordssås och rostade rotfrukter, serveras med potatismos.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Kött",
-        "description": "Nattbakad flankstek med stekt lök, bacon och rödvinssky, serveras med potatispure.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Sallad",
-        "description": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Asiatisk",
-        "description": "-(Pad Thai) Wokade risnudlar med kyckling, grönsaker, chilli, lime, nötter",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Asiatisk",
-        "description": "och ägg.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Vegetarisk",
-        "description": "Tofu med panang curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Vegetarisk Poke bowl",
-        "description": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "price": "129 kr"
-      },
-      {
-        "name": "",
-        "category": "Pho",
-        "description": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
+        "category": "",
+        "description": "Glad midsommar!",
         "price": "129 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥣"
     ]
   },
   "BombayBistroScraper": {
     "day": "friday",
     "items": [
       {
-        "name": "GARLIC CHICKEN",
+        "name": "CHICKEN TIKKA",
         "category": "",
-        "description": "Kycklingfilé marinerad i vitlök, grönchili, spiskummin serveras med tandoori sås.",
+        "description": "Grillad kycklingfilé marinerad i lime, yoghurt och tandoori masala, serveras med tandoori sås.",
         "price": "129 kr"
       },
       {
-        "name": "BAINGAN GHOST",
+        "name": "HYDRABADI GHOST",
         "category": "",
-        "description": "Lammkött tillagad med aubergine, lök, garam masala och grön chili. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
+        "description": "Lammköttgryta med senap, lök, tomat, vitlök, sesamfrön, mynta, grön chili och kokos. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
         "price": "129 kr"
       },
       {
@@ -176,11 +72,6 @@
         "description": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
         "price": "145 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🌱",
-      "🐔"
     ]
   },
   "CuckoosNestScraper": {
@@ -189,19 +80,19 @@
       {
         "name": "",
         "category": "FISK",
-        "description": "Kummelfilé serveras med potatis, sparris, citron och romsås",
+        "description": "Grillad lax serveras med potatissallad, grillad sparris, ramslökskräm och kaprisbär",
         "price": "195 kr"
       },
       {
         "name": "",
         "category": "KÖTT",
-        "description": "Fläskschnitzel serveras med ört- & ostslungad potatis, chilibearnase och rödvinssås",
+        "description": "Lammfärsbiffar med fetaost serveras med spiskumminkryddad potatis och tzatziki",
         "price": "195 kr"
       },
       {
         "name": "",
         "category": "VEG",
-        "description": "Grillad spetskål serveras med matvetesallad och ramslöksdressing",
+        "description": "Tempura blomkål serveras med wokat grönsaksris, picklad lök och srirachamajonnäs",
         "price": "195 kr"
       },
       {
@@ -222,56 +113,6 @@
         "description": "grillad brioche, högrev, äppelrökt cheddar, tryffelmajonnäs, karameliserad lök, picklad gurka & pommes frites",
         "price": "235 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍔"
-    ]
-  },
-  "Uni3WorldOfFoodScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Kålpudding",
-        "category": "Metal",
-        "description": "gräddsås, rårörda lingon, kokt färskpotatis, syrad gurka, persilja",
-        "price": "132 kr"
-      },
-      {
-        "name": "Bakad sej",
-        "category": "Water",
-        "description": "misomajonnäs, salladslök, yamitsuki kål, sesam, sushiris",
-        "price": "132 kr"
-      },
-      {
-        "name": "Grillat five-spice kryddat kycklinglår",
-        "category": "Fire",
-        "description": "basmatiris, smashed cucumber, gariremoulad, wokad vitlöksbroccoli",
-        "price": "132 kr"
-      },
-      {
-        "name": "Bao med krispig glaserad tofu",
-        "category": "Wood",
-        "description": "chiligurka, jordnöt, picklad kålrabbi, chilimajonnäs",
-        "price": "132 kr"
-      }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍔",
-      "🥟",
-      "🍰"
     ]
   },
   "MissFScraper": {
@@ -397,22 +238,6 @@
         "description": "Friterad krabbröra, avokado, gurka, krispsallad",
         "price": "115 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🇲🇽",
-      "🇹🇭",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🍝",
-      "🌮",
-      "🍰"
     ]
   },
   "BennePastabarScraper": {
@@ -472,84 +297,27 @@
         "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
         "price": "35 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🍝",
-      "🍰"
-    ]
-  },
-  "LsKitchenScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Pannbiff, stekt lök, skysås, lingon, rostad potatis & saltgurka",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "Tomat- & spenatbakad fisk, prästost, vitvinsås & färskpotatis",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "Kalkonpastarami, melon, fetaost, chilidressing, linser, salladslök, rostad lök",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "Tofu \"Cape malay\" sydafrikansk grönsaksgryta med ris",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍝",
-      "🥣"
     ]
   },
   "BistrotScraper": {
     "day": "friday",
     "items": [
       {
-        "name": "Veckans: Carbonara",
+        "name": "Veckans: Matjessill",
         "category": "Veckans",
-        "description": "Linguini – Bacon – Ägg gula – Granapadano – Persilja",
+        "description": "Kokt Färskpotatis – Bryntsmör – Citroncreme – Ägg – Gräslök & Rödlök",
         "price": "130 kr"
       },
       {
-        "name": "Vegetarisk Måndag–Tis: Gratinerad zucchini",
+        "name": "Vegetarisk Måndag–Tis: Papardelle med Tomatsås",
         "category": "Veckans",
-        "description": "Fetaost – Tomat – Jasminris – Basilika",
+        "description": "Vispad ricotta – Rostade mandlar – Citron – Rucola",
         "price": "130 kr"
       },
       {
-        "name": "Vegetarisk Ons-Tors: Enchiladas",
+        "name": "Vegetarisk Ons-Tors:Gratinerad Chevré sallad",
         "category": "Veckans",
-        "description": "Bönragu – Avokado röra – Kålsallad",
-        "price": "130 kr"
-      },
-      {
-        "name": "Vegetarisk Fre: Pannoumi Burgare",
-        "category": "Veckans",
-        "description": "",
+        "description": "Rostade primörer – Valnötter – Jordgubbar – Vinegrette",
         "price": "130 kr"
       },
       {
@@ -559,24 +327,11 @@
         "price": "130 kr"
       },
       {
-        "name": "Nattbakad karré",
+        "name": "Stängt.",
         "category": "Lunch",
-        "description": "Rostad potatis – Chimichurri – Majskräm – Bakade tomater",
-        "price": "130 kr"
-      },
-      {
-        "name": "Pestobakad fångst",
-        "category": "Lunch",
-        "description": "Fänkåls risotto – Broccoli – Blomkål– Grana padano – Rucola",
+        "description": "GLAD MIDSOMMAR!",
         "price": "130 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐔",
-      "🥗",
-      "🍔",
-      "🍝"
     ]
   },
   "MimolettScraper": {
@@ -684,15 +439,6 @@
         "description": "Hemlagat lasagne med bechamelsås.",
         "price": "129 kr"
       }
-    ],
-    "emoji_tags": [
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍔",
-      "🍝"
     ]
   },
   "OishiiScraper": {
@@ -788,51 +534,23 @@
         "description": "fläskkött eller vegetariansk",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐖",
-      "🐟",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MatMinnenScraper": {
     "day": "friday",
     "items": [
       {
-        "name": "Växtbaserad",
+        "name": "Stängt! midsommarafton",
         "category": "",
-        "description": "pumpasoppa, paprika, linser, rödlök",
+        "description": "",
         "price": "125 kr"
       },
       {
-        "name": "Ångad kolja",
-        "category": "",
-        "description": "gräslökshollandaise, fänkålssallad, kokt potatis",
-        "price": "125 kr"
-      },
-      {
-        "name": "Wallenbergare",
-        "category": "",
-        "description": "brynt smör, gröna ärtor, lingon, potatismos",
-        "price": "125 kr"
-      },
-      {
-        "name": "Krämig tonfisksallad",
+        "name": "Haloumisallad",
         "category": "Veckans sallad",
-        "description": "ägg, tomat, gurka, gröna ärtor, rödlök, krutonger",
+        "description": "haloumi, oliver, tomat, lök, aijvardressing",
         "price": "125 kr"
       }
-    ],
-    "emoji_tags": [
-      "🐟",
-      "🥗",
-      "🥣"
     ]
   },
   "EncounterAsianScraper": {
@@ -952,39 +670,27 @@
         "description": "",
         "price": "15 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🇰🇷",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🍣",
-      "🥟",
-      "🥣"
     ]
   },
   "MasalaScraper": {
     "day": "friday",
     "items": [
       {
-        "name": "MALVANI CHICKEN",
+        "name": "PALAK CHICKEN",
         "category": "",
-        "description": "Kycklingfilé i en sås av kokoskräm, röd chili och Malvani masala.",
+        "description": "Kycklingfilé med spenat, paprika, grön chili, ingeföra och vitlök.",
         "price": "119 kr, takeaway 114 kr"
       },
       {
-        "name": "FISH TIKKA",
+        "name": "MEEN MOILEE",
         "category": "",
-        "description": "Marinerad, Grillad lax i husets kryddor. Serveras med tandoorisås.",
+        "description": "Marinerad och Grillad laxflé med senapsfrö, lök, kumminpulver och kokosmjölk.",
         "price": "119 kr, takeaway 114 kr"
       },
       {
-        "name": "CHANA PUMPA CURRY",
+        "name": "TOFU KADHAI",
         "category": "",
-        "description": "Kikärtsgsyta med pumpa tillagad med senap, kokos, curry, fänkål och chili",
+        "description": "Tofu tillagad med tomat, paprika och champinjoner, smaksatt med ingefära, koriander Och on.",
         "price": "119 kr, takeaway 114 kr"
       },
       {
@@ -1119,38 +825,6 @@
         "description": "",
         "price": "25 kr"
       }
-    ],
-    "emoji_tags": [
-      "🇮🇳",
-      "🌱",
-      "🐄",
-      "🐔",
-      "🐟",
-      "🥗",
-      "🥣"
-    ]
-  },
-  "RestaurantPier11Scraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Halloumiburgare",
-        "category": "Dagens",
-        "description": "Tryffelmajonnäs, Inlagd lök, Krispig sallad, Pommes frites",
-        "price": "110 kr"
-      },
-      {
-        "name": "Yakisoba (nötkött)",
-        "category": "Dagens",
-        "description": "inlagd ingefära, srirachamajonnäs, sesamfrön",
-        "price": "110 kr"
-      }
-    ],
-    "emoji_tags": [
-      "🇯🇵",
-      "🐄",
-      "🥗",
-      "🍔"
     ]
   }
 }
