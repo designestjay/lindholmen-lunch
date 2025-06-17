@@ -65,11 +65,22 @@ jobs:
       run: |
         python main.py --day ${{ steps.get-day.outputs.day }} --refresh
         
+    - name: Copy files to deployment directory
+      run: |
+        # Copy the main index.html to docs if it doesn't exist there
+        if [ ! -f docs/index.html ]; then
+          cp index.html docs/
+        fi
+        # Ensure CNAME is in docs directory for custom domain
+        if [ -f CNAME ]; then
+          cp CNAME docs/
+        fi
+        
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/ docs/
+        git add data/ docs/ index.html
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
