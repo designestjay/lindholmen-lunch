@@ -1,219 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMDT71XZ0C');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
+     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LunchFinder - What's for lunch?</title>
+    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
+    <title>Today's lunch near you</title>
+    <meta name="description" content="Today's lunch from restaurants near you – updated automatically." />
+    
     <style>
+        /* CSS Variables matching reference design */
+        :root {
+            --background: #ffffff;
+            --foreground: #0a0a0a;
+            --card: #ffffff;
+            --card-foreground: #0a0a0a;
+            --primary: #030213;
+            --primary-foreground: #ffffff;
+            --secondary: #f3f4f6;
+            --secondary-foreground: #030213;
+            --muted: #f9fafb;
+            --muted-foreground: #6b7280;
+            --accent: #f3f4f6;
+            --accent-foreground: #030213;
+            --border: rgba(0, 0, 0, 0.1);
+            --radius: 0.625rem;
+            --blue-50: #eff6ff;
+            --indigo-100: #e0e7ff;
+            --blue-600: #2563eb;
+            --orange-500: #f97316;
+            --red-500: #ef4444;
+            --green-50: #f0fdf4;
+            --green-700: #15803d;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            color: #333;
-            line-height: 1.6;
+            color: var(--foreground);
+            line-height: 1.5;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        /* Header */
         .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: white;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .header h1 {
-            font-size: 2.5rem;
+        .header-container {
+            max-width: 1792px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon-utensils {
+            width: 2rem;
+            height: 2rem;
+            color: var(--blue-600);
+        }
+
+        .header-title {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            color: #1d1d1f;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .header-subtitle {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            margin: 0;
         }
 
-        .location-status {
-            background: rgba(255,255,255,0.1);
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .language-toggle {
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: white;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-toggle:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border: 0.5px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #1d1d1f;
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-size: 0.875rem;
             font-weight: 500;
         }
 
-        .randomize-section {
-            text-align: center;
-            margin-bottom: 3rem;
+        /* Main Content */
+        .main-container {
+            max-width: 1792px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
-        .randomize-btn {
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.125rem;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Floating Random Button */
+        .floating-random-button {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
             border: none;
-            border-radius: 50px;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: 700;
+            border-radius: 2rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            white-space: nowrap;
             min-width: 200px;
-            justify-content: center;
+            max-width: 280px;
+            height: 48px;
         }
 
-        .randomize-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.5);
+        .floating-random-button:hover {
+            transform: translateX(-50%) translateY(-2px);
+            background: linear-gradient(135deg, #ff8a5b 0%, #ffa726 100%);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
         }
 
-        .randomize-btn:active {
-            transform: translateY(0);
+        .floating-random-button:active {
+            transform: translateX(-50%) translateY(0px) scale(0.98);
+            transition: all 0.1s ease;
         }
 
-        .randomize-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .floating-random-button {
+                bottom: 1.5rem;
+                font-size: 0.8rem;
+                padding: 0.625rem 1.25rem;
+                min-width: 180px;
+                max-width: 250px;
+                height: 44px;
+            }
         }
 
-        .restaurants-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        /* Restaurant Grid - Simple Masonry Layout */
+        .restaurant-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* Responsive Columns */
+        @media (min-width: 768px) {
+            .restaurant-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .restaurant-grid {
+                column-count: 3;
+            }
         }
 
         .restaurant-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            border: 0.5px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         .restaurant-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.12),
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.85);
+            border: 0.5px solid rgba(255, 255, 255, 1);
         }
 
         .restaurant-card.highlighted {
-            border-color: #ff6b35;
-            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.3);
-            transform: translateY(-4px) scale(1.02);
+            border: 2px solid var(--orange-500);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+            transform: translateY(-1px);
         }
 
         .restaurant-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .restaurant-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 0.25rem;
-        }
-
-        .restaurant-type {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .restaurant-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .status-open {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-
-        .status-closed {
-            background: #fee2e2;
-            color: #dc2626;
+            padding: 1.5rem 1.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            gap: 1rem 1.5rem;
+            align-items: start;
         }
 
         .restaurant-info {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #666;
+            flex: 1;
+            min-width: 0;
         }
 
-        .info-item {
+        .restaurant-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.25rem 0;
+            color: #1d1d1f;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .restaurant-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: #6e6e73;
+        }
+
+        .restaurant-meta-item {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.5rem;
         }
 
-        .menu-preview {
-            border-top: 1px solid #f1f5f9;
-            padding-top: 1rem;
+        .cuisine-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
         }
 
-        .menu-preview h4 {
-            font-size: 0.9rem;
+        .restaurant-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        .restaurant-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .restaurant-links a:hover {
+            opacity: 1;
+        }
+
+        .restaurant-content {
+            padding: 0 1.5rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-section h3 {
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
         .menu-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f8fafc;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            border: 0.5px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
+            min-height: fit-content;
         }
 
-        .menu-item:last-child {
-            border-bottom: none;
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.6);
+            border: 0.5px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-item-details {
+            flex: 1;
+            min-width: 0;
         }
 
         .menu-item-name {
-            font-weight: 500;
-            color: #333;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.25rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
+        }
+
+        .menu-item-description {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            line-height: 1.4;
         }
 
         .menu-item-price {
-            color: #2563eb;
             font-weight: 600;
+            color: #1d1d1f;
+            align-self: flex-start;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+            max-width: 180px;
+            text-align: right;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
+        .emoji-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .emoji-tag {
+            font-size: 1.1rem;
+        }
+
+        /* Separator */
+        .separator {
+            height: 1px;
+            background: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* Special Offer */
+        .special-offer {
+            background: var(--green-50);
+            color: var(--green-700);
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.875rem;
+            margin-top: auto;
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #6e6e73;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer a {
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Icons using CSS */
+        .icon-utensils::before { content: "🍽️"; }
+        .icon-clock::before { content: "🕐"; }
+        .icon-map::before { content: "📍"; }
+        .icon-menu::before { content: "📋"; }
+        .icon-language::before { content: "🌐"; }
+
+        /* No Data Message */
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted-foreground);
+        }
+
+        .no-data h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none;
+        }
+
+        /* Loading */
         .loading {
             text-align: center;
             padding: 3rem;
-            color: white;
+            color: #6e6e73;
         }
 
         .spinner {
             display: inline-block;
             width: 2rem;
             height: 2rem;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid white;
+            border: 3px solid rgba(110, 110, 115, 0.3);
+            border-top: 3px solid #6e6e73;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 1rem;
@@ -224,65 +531,171 @@
             100% { transform: rotate(360deg); }
         }
 
-        .no-restaurants {
-            text-align: center;
-            padding: 3rem;
-            color: white;
-            font-size: 1.1rem;
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
             }
-
-            .header h1 {
+            
+            .hero-section h1 {
                 font-size: 2rem;
             }
+            
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .restaurant-links {
+                align-self: flex-end;
+            }
+        }
 
-            .restaurants-grid {
+        @media (max-width: 480px) {
+            .restaurant-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-
-            .randomize-btn {
+            
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .menu-item-details {
                 width: 100%;
-                max-width: 300px;
+            }
+            
+            .menu-item-name {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            
+            .menu-item-price {
+                align-self: flex-end;
+                margin-left: 0;
+                margin-top: 0.25rem;
+                max-width: 100%;
+                text-align: left;
+            }
+
+            .restaurant-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .restaurant-links {
+                align-self: flex-start;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🍽️ What's for lunch?</h1>
-            <p>We'll find great restaurants near you</p>
-        </header>
-
-        <div class="location-status" id="locationStatus">
-            📍 Detecting your location...
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <span class="icon-utensils" style="font-size: 2rem; color: var(--primary);"></span>
+                <div>
+                    <h1 class="header-title" onclick="goToTop()">Lunch Finder</h1>
+                    <p class="header-subtitle">
+                        <span class="en">Today's lunch near you</span>
+                        <span class="sv hidden">Dagens lunch nära dig</span>
+                    </p>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <span class="icon-language"></span>
+                    <span class="en">Svenska</span>
+                    <span class="sv hidden">English</span>
+                </button>
+                <div class="badge" id="locationBadge">
+                    <span class="icon-clock"></span>
+                    <span class="en">Detecting location...</span>
+                    <span class="sv hidden">Hittar plats...</span>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <div class="randomize-section">
-            <button class="randomize-btn" id="randomizeBtn" disabled>
-                🎲 Pick something for me!
-            </button>
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="hero-section">
+            <h1>
+                <span class="en">What should you eat today?</span>
+                <span class="sv hidden">Vad ska du äta idag?</span>
+            </h1>
+            <p>
+                <span class="en">Discover lunch options within 2km of your location</span>
+                <span class="sv hidden">Upptäck lunchalternativ inom 2km från din plats</span>
+            </p>
         </div>
 
         <div id="restaurantsContainer">
             <div class="loading">
                 <div class="spinner"></div>
-                <div>Finding restaurants near you...</div>
+                <div>
+                    <span class="en">Finding restaurants near you...</span>
+                    <span class="sv hidden">Hittar restauranger nära dig...</span>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+    
+    <!-- Floating Random Button -->
+    <button class="floating-random-button" onclick="selectRandomRestaurant()" id="randomButton" style="display: none;">
+        <span class="en">Pick something for me</span>
+        <span class="sv hidden">Välj något åt mig</span>
+    </button>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <span class="icon-map"></span> 
+            <span class="en">Location-based lunch discovery</span>
+            <span class="sv hidden">Platsbaserad lunchupptäckt</span>
+        </p>
+        <p>
+            <span class="en">Automatically finds restaurants within 2km of your location</span>
+            <span class="sv hidden">Hittar automatiskt restauranger inom 2km från din plats</span>
+        </p>
+        <p>
+            <span class="en">Enhanced version with location services –</span>
+            <span class="sv hidden">Förbättrad version med platstjänster –</span>
+            <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank">GitHub - Lunch Finder</a>
+        </p>
+        <p>
+            <span class="en">Questions, feedback or suggestions? Feel free to open an issue or contact via GitHub</span>
+            <span class="sv hidden">Frågor, feedback eller förslag? Öppna gärna ett issue eller kontakta via GitHub</span>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">
+            <a href="privacy.html">
+                <span class="en">Privacy Policy</span>
+                <span class="sv hidden">Integritetspolicy</span>
+            </a>
+        </p>
+    </footer>
 
     <script>
-        class SimpleLunchFinder {
+        class LocationLunchFinder {
             constructor() {
                 this.currentLocation = null;
                 this.restaurants = [];
-                this.isLoading = true;
                 this.init();
             }
 
@@ -293,11 +706,11 @@
             }
 
             setupEventListeners() {
-                document.getElementById('randomizeBtn').addEventListener('click', () => this.randomPick());
+                // Random button will be set up after restaurants load
             }
 
             async detectLocation() {
-                const statusEl = document.getElementById('locationStatus');
+                const badge = document.getElementById('locationBadge');
                 
                 try {
                     const position = await new Promise((resolve, reject) => {
@@ -313,15 +726,23 @@
                         lng: position.coords.longitude
                     };
 
-                    statusEl.innerHTML = '✅ Found your location - searching within 2km';
-                    statusEl.style.background = 'rgba(34, 197, 94, 0.2)';
+                    badge.innerHTML = `
+                        <span class="icon-map"></span>
+                        <span class="en">Location found</span>
+                        <span class="sv hidden">Plats hittad</span>
+                    `;
+                    badge.style.background = 'rgba(34, 197, 94, 0.2)';
 
                 } catch (error) {
                     console.error('Location error:', error);
-                    statusEl.innerHTML = '📍 Using default area (Gothenburg) - 2km radius';
-                    statusEl.style.background = 'rgba(249, 115, 22, 0.2)';
+                    badge.innerHTML = `
+                        <span class="icon-map"></span>
+                        <span class="en">Using default area</span>
+                        <span class="sv hidden">Använder standardområde</span>
+                    `;
+                    badge.style.background = 'rgba(249, 115, 22, 0.2)';
                     
-                    // Use default location
+                    // Use default location (Gothenburg)
                     this.currentLocation = { lat: 57.7089, lng: 11.9746 };
                 }
             }
@@ -334,15 +755,23 @@
                     this.restaurants = this.generateRestaurants();
                     this.displayRestaurants();
                     
-                    // Enable randomize button
-                    const btn = document.getElementById('randomizeBtn');
-                    btn.disabled = false;
-                    btn.innerHTML = '🎲 Pick something for me!';
+                    // Show random button
+                    document.getElementById('randomButton').style.display = 'inline-flex';
 
                 } catch (error) {
                     console.error('Error loading restaurants:', error);
-                    document.getElementById('restaurantsContainer').innerHTML = 
-                        '<div class="no-restaurants">Sorry, couldn\'t find restaurants. Please try again.</div>';
+                    document.getElementById('restaurantsContainer').innerHTML = `
+                        <div class="no-data">
+                            <h2>
+                                <span class="en">No restaurants found</span>
+                                <span class="sv hidden">Inga restauranger hittades</span>
+                            </h2>
+                            <p>
+                                <span class="en">We couldn't find any restaurants in your area. Please try again later.</span>
+                                <span class="sv hidden">Vi kunde inte hitta några restauranger i ditt område. Försök igen senare.</span>
+                            </p>
+                        </div>
+                    `;
                 }
             }
 
@@ -390,39 +819,39 @@
             generateMenu(cuisine) {
                 const menus = {
                     italian: [
-                        { name: 'Margherita Pizza', price: '$16' },
-                        { name: 'Spaghetti Carbonara', price: '$18' },
-                        { name: 'Caesar Salad', price: '$14' }
+                        { name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, basil', price: '$16' },
+                        { name: 'Spaghetti Carbonara', description: 'Eggs, pancetta, parmesan, black pepper', price: '$18' },
+                        { name: 'Caesar Salad', description: 'Romaine lettuce, croutons, parmesan', price: '$14' }
                     ],
                     asian: [
-                        { name: 'Chicken Teriyaki Bowl', price: '$15' },
-                        { name: 'Vegetable Fried Rice', price: '$13' },
-                        { name: 'Miso Soup', price: '$6' }
+                        { name: 'Chicken Teriyaki Bowl', description: 'Grilled chicken, rice, vegetables', price: '$15' },
+                        { name: 'Vegetable Fried Rice', description: 'Wok-fried rice with mixed vegetables', price: '$13' },
+                        { name: 'Miso Soup', description: 'Traditional Japanese soup', price: '$6' }
                     ],
                     american: [
-                        { name: 'Classic Cheeseburger', price: '$17' },
-                        { name: 'BBQ Ribs', price: '$22' },
-                        { name: 'Buffalo Wings', price: '$14' }
+                        { name: 'Classic Cheeseburger', description: 'Beef patty, cheese, lettuce, tomato', price: '$17' },
+                        { name: 'BBQ Ribs', description: 'Slow-cooked ribs with BBQ sauce', price: '$22' },
+                        { name: 'Buffalo Wings', description: 'Spicy chicken wings with blue cheese', price: '$14' }
                     ],
                     mexican: [
-                        { name: 'Chicken Burrito', price: '$14' },
-                        { name: 'Fish Tacos', price: '$16' },
-                        { name: 'Guacamole & Chips', price: '$9' }
+                        { name: 'Chicken Burrito', description: 'Grilled chicken, rice, beans, salsa', price: '$14' },
+                        { name: 'Fish Tacos', description: 'Grilled fish, cabbage, lime crema', price: '$16' },
+                        { name: 'Guacamole & Chips', description: 'Fresh avocado dip with tortilla chips', price: '$9' }
                     ],
                     indian: [
-                        { name: 'Chicken Tikka Masala', price: '$18' },
-                        { name: 'Vegetable Biryani', price: '$16' },
-                        { name: 'Naan Bread', price: '$5' }
+                        { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with chicken', price: '$18' },
+                        { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables', price: '$16' },
+                        { name: 'Naan Bread', description: 'Traditional Indian flatbread', price: '$5' }
                     ],
                     mediterranean: [
-                        { name: 'Greek Salad', price: '$15' },
-                        { name: 'Lamb Gyros', price: '$17' },
-                        { name: 'Hummus Plate', price: '$12' }
+                        { name: 'Greek Salad', description: 'Tomatoes, olives, feta, cucumber', price: '$15' },
+                        { name: 'Lamb Gyros', description: 'Seasoned lamb with tzatziki', price: '$17' },
+                        { name: 'Hummus Plate', description: 'Chickpea dip with pita bread', price: '$12' }
                     ],
                     french: [
-                        { name: 'Croque Monsieur', price: '$16' },
-                        { name: 'French Onion Soup', price: '$12' },
-                        { name: 'Quiche Lorraine', price: '$14' }
+                        { name: 'Croque Monsieur', description: 'Ham and cheese sandwich', price: '$16' },
+                        { name: 'French Onion Soup', description: 'Classic onion soup with cheese', price: '$12' },
+                        { name: 'Quiche Lorraine', description: 'Bacon and cheese quiche', price: '$14' }
                     ]
                 };
 
@@ -433,12 +862,23 @@
                 const container = document.getElementById('restaurantsContainer');
                 
                 if (this.restaurants.length === 0) {
-                    container.innerHTML = '<div class="no-restaurants">No restaurants found in your area.</div>';
+                    container.innerHTML = `
+                        <div class="no-data">
+                            <h2>
+                                <span class="en">No restaurants found</span>
+                                <span class="sv hidden">Inga restauranger hittades</span>
+                            </h2>
+                            <p>
+                                <span class="en">No restaurants found in your area.</span>
+                                <span class="sv hidden">Inga restauranger hittades i ditt område.</span>
+                            </p>
+                        </div>
+                    `;
                     return;
                 }
 
                 const grid = document.createElement('div');
-                grid.className = 'restaurants-grid';
+                grid.className = 'restaurant-grid';
                 
                 this.restaurants.forEach(restaurant => {
                     const card = this.createRestaurantCard(restaurant);
@@ -454,87 +894,138 @@
                 card.className = 'restaurant-card';
                 card.id = `restaurant-${restaurant.id}`;
                 
-                const stars = '★'.repeat(Math.floor(restaurant.rating));
                 const distanceText = restaurant.distance < 1000 
                     ? `${Math.round(restaurant.distance)}m` 
                     : `${(restaurant.distance / 1000).toFixed(1)}km`;
 
                 card.innerHTML = `
                     <div class="restaurant-header">
-                        <div>
-                            <div class="restaurant-name">${restaurant.name}</div>
-                            <div class="restaurant-type">${restaurant.cuisine.charAt(0).toUpperCase() + restaurant.cuisine.slice(1)} Restaurant</div>
+                        <div class="restaurant-info">
+                            <h2 class="restaurant-name">${restaurant.name}</h2>
+                            <div class="restaurant-meta">
+                                <div class="restaurant-meta-item">
+                                    <span class="icon-map"></span>
+                                    <span>${distanceText} away</span>
+                                </div>
+                                <div class="restaurant-meta-item">
+                                    <span class="icon-clock"></span>
+                                    <span>${restaurant.walkTime} min walk</span>
+                                </div>
+                            </div>
+                            <div class="cuisine-badge">
+                                ${restaurant.cuisine.charAt(0).toUpperCase() + restaurant.cuisine.slice(1)} Restaurant
+                            </div>
                         </div>
-                        <div class="restaurant-status ${restaurant.isOpen ? 'status-open' : 'status-closed'}">
-                            ${restaurant.isOpen ? 'Open' : 'Closed'}
+                        <div class="restaurant-links">
+                            <a href="#" title="Website">🔗</a>
+                            <a href="#" title="Google Maps">🗺️</a>
                         </div>
                     </div>
                     
-                    <div class="restaurant-info">
-                        <div class="info-item">
-                            <span>⭐</span>
-                            <span>${restaurant.rating.toFixed(1)}</span>
-                        </div>
-                        <div class="info-item">
-                            <span>📍</span>
-                            <span>${distanceText}</span>
-                        </div>
-                        <div class="info-item">
-                            <span>🚶</span>
-                            <span>${restaurant.walkTime} min</span>
-                        </div>
-                    </div>
-
-                    <div class="menu-preview">
-                        <h4>Sample Menu</h4>
-                        ${restaurant.menu.map(item => `
-                            <div class="menu-item">
-                                <span class="menu-item-name">${item.name}</span>
-                                <span class="menu-item-price">${item.price}</span>
+                    <div class="restaurant-content">
+                        <div class="menu-section">
+                            <h3>
+                                <span class="icon-menu"></span>
+                                <span class="en">Sample Menu</span>
+                                <span class="sv hidden">Exempelmeny</span>
+                            </h3>
+                            <div class="menu-items">
+                                ${restaurant.menu.map(item => `
+                                    <div class="menu-item">
+                                        <div class="menu-item-details">
+                                            <div class="menu-item-name">${item.name}</div>
+                                            <div class="menu-item-description">${item.description}</div>
+                                        </div>
+                                        <div class="menu-item-price">${item.price}</div>
+                                    </div>
+                                `).join('')}
                             </div>
-                        `).join('')}
+                        </div>
+                        
+                        <div class="separator"></div>
+                        
+                        <div class="special-offer">
+                            ⭐ Rating: ${restaurant.rating.toFixed(1)} • ${restaurant.isOpen ? 'Open now' : 'Closed'}
+                        </div>
                     </div>
                 `;
 
                 return card;
             }
-
-            randomPick() {
-                // Clear previous highlights
-                document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
-                    card.classList.remove('highlighted');
-                });
-
-                // Filter to open restaurants only
-                const openRestaurants = this.restaurants.filter(r => r.isOpen);
-                
-                if (openRestaurants.length === 0) {
-                    alert('Sorry, no restaurants are currently open!');
-                    return;
-                }
-
-                const btn = document.getElementById('randomizeBtn');
-                btn.innerHTML = '🎲 Picking...';
-                btn.disabled = true;
-
-                setTimeout(() => {
-                    const randomRestaurant = openRestaurants[Math.floor(Math.random() * openRestaurants.length)];
-                    const card = document.getElementById(`restaurant-${randomRestaurant.id}`);
-                    
-                    if (card) {
-                        card.classList.add('highlighted');
-                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-
-                    btn.innerHTML = '🎲 Pick something else!';
-                    btn.disabled = false;
-                }, 1500);
-            }
         }
 
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', () => {
-            new SimpleLunchFinder();
+        // Random restaurant selection
+        function selectRandomRestaurant() {
+            const cards = document.querySelectorAll('.restaurant-card');
+            if (cards.length === 0) return;
+            
+            // Clear previous highlights
+            cards.forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            const button = document.getElementById('randomButton');
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            
+            button.innerHTML = isSwedish ? 'Väljer...' : 'Choosing...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * cards.length);
+                const randomCard = cards[randomIndex];
+                
+                randomCard.classList.add('highlighted');
+                randomCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Reset button
+                button.innerHTML = isSwedish ? 'Välj något åt mig' : 'Pick something for me';
+                button.disabled = false;
+            }, 1500);
+        }
+
+        // Language switching
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.en');
+            const svElements = document.querySelectorAll('.sv');
+            
+            enElements.forEach(el => el.classList.toggle('hidden'));
+            svElements.forEach(el => el.classList.toggle('hidden'));
+            
+            // Update page language attribute
+            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
+            document.documentElement.lang = isSwedish ? 'sv' : 'en';
+            
+            // Save language preference
+            localStorage.setItem('language', isSwedish ? 'sv' : 'en');
+        }
+
+        // Go to top and reset random selection
+        function goToTop() {
+            // Clear any highlighted restaurants
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
+                card.classList.remove('highlighted');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load saved language preference and initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage === 'sv') {
+                // Switch to Swedish if saved
+                const enElements = document.querySelectorAll('.en');
+                const svElements = document.querySelectorAll('.sv');
+                
+                enElements.forEach(el => el.classList.add('hidden'));
+                svElements.forEach(el => el.classList.remove('hidden'));
+                
+                document.documentElement.lang = 'sv';
+            }
+            
+            // Initialize the app
+            new LocationLunchFinder();
         });
     </script>
 </body>
