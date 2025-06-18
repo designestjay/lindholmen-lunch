@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LunchFinder Mobile</title>
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="LunchFinder">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary: #f1f5f9;
+            --accent: #f97316;
+            --success: #16a34a;
+            --warning: #eab308;
+            --error: #dc2626;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --background: #ffffff;
+            --card: #ffffff;
+            --radius: 0.75rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Mobile-first design */
+        .app-container {
+            max-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .location-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 1rem;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+            background: #e2e8f0;
+        }
+
+        .action-icon {
+            font-size: 1.5rem;
+        }
+
+        .action-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Search Bar */
+        .search-section {
+            padding: 1rem;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            background: var(--secondary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Filter Pills */
+        .filters {
+            padding: 0 1rem 1rem;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filter-pills::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-pill {
+            flex-shrink: 0;
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-pill.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Restaurant Cards */
+        .restaurants-section {
+            flex: 1;
+            padding: 1rem;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: var(--secondary);
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        .view-btn {
+            padding: 0.25rem 0.5rem;
+            border: none;
+            background: transparent;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .view-btn.active {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .restaurants-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .restaurant-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .restaurant-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .restaurant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .restaurant-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .restaurant-meta {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .restaurant-badge {
+            background: var(--secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-open {
+            background: #dcfce7;
+            color: var(--success);
+        }
+
+        .badge-closed {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        .restaurant-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        .nav-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 2px solid var(--border);
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 5rem;
+            right: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+            transition: all 0.2s ease;
+            z-index: 50;
+        }
+
+        .fab:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 400px;
+                margin: 0 auto;
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="app-title">
+                    🍽️ LunchFinder
+                </div>
+                <div class="location-badge" id="locationBadge">
+                    📍 Detecting...
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="action-buttons">
+                <button class="action-btn" id="nearbyBtn">
+                    <div class="action-icon">📍</div>
+                    <div class="action-text">Nearby</div>
+                </button>
+                <button class="action-btn" id="randomBtn">
+                    <div class="action-icon">🎲</div>
+                    <div class="action-text">Surprise Me</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Search -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    placeholder="Search restaurants, cuisine..."
+                    id="searchInput"
+                >
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filters">
+            <div class="filter-pills" id="filterPills">
+                <div class="filter-pill active" data-filter="all">All</div>
+                <div class="filter-pill" data-filter="open">Open Now</div>
+                <div class="filter-pill" data-filter="nearby">< 500m</div>
+                <div class="filter-pill" data-filter="italian">Italian</div>
+                <div class="filter-pill" data-filter="asian">Asian</div>
+                <div class="filter-pill" data-filter="american">American</div>
+                <div class="filter-pill" data-filter="budget">Budget</div>
+            </div>
+        </section>
+
+        <!-- Restaurants -->
+        <section class="restaurants-section">
+            <div class="section-header">
+                <h2 class="section-title">Restaurants Near You</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active">List</button>
+                    <button class="view-btn">Map</button>
+                </div>
+            </div>
+            
+            <div class="restaurants-grid" id="restaurantsGrid">
+                <!-- Loading state -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="refreshBtn" title="Refresh">
+            🔄
+        </button>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon">🏠</div>
+                <div class="nav-label">Home</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">🔍</div>
+                <div class="nav-label">Search</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">❤️</div>
+                <div class="nav-label">Favorites</div>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">👤</div>
+                <div class="nav-label">Profile</div>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        class MobileLunchFinder {
+            constructor() {
+                this.currentLocation = null;
+                this.restaurants = [];
+                this.activeFilter = 'all';
+                this.init();
+            }
+
+            async init() {
+                this.setupEventListeners();
+                await this.detectLocation();
+                await this.loadRestaurants();
+            }
+
+            setupEventListeners() {
+                // Quick actions
+                document.getElementById('nearbyBtn').addEventListener('click', () => this.findNearby());
+                document.getElementById('randomBtn').addEventListener('click', () => this.randomPick());
+                document.getElementById('refreshBtn').addEventListener('click', () => this.refresh());
+
+                // Search
+                document.getElementById('searchInput').addEventListener('input', (e) => this.search(e.target.value));
+
+                // Filters
+                document.getElementById('filterPills').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('filter-pill')) {
+                        this.setFilter(e.target.dataset.filter);
+                    }
+                });
+
+                // Pull to refresh simulation
+                let startY = 0;
+                document.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    const currentY = e.touches[0].clientY;
+                    if (currentY - startY > 100 && window.scrollY === 0) {
+                        this.refresh();
+                    }
+                });
+            }
+
+            async detectLocation() {
+                const badge = document.getElementById('locationBadge');
+                
+                try {
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, {
+                            enableHighAccuracy: true,
+                            timeout: 10000,
+                            maximumAge: 300000
+                        });
+                    });
+
+                    this.currentLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    badge.textContent = '📍 Current Location';
+                    badge.style.background = 'rgba(34, 197, 94, 0.2)';
+
+                } catch (error) {
+                    console.error('Location error:', error);
+                    badge.textContent = '📍 Location Off';
+                    badge.style.background = 'rgba(239, 68, 68, 0.2)';
+                    
+                    // Use default location (Gothenburg)
+                    this.currentLocation = { lat: 57.7089, lng: 11.9746 };
+                }
+            }
+
+            async loadRestaurants() {
+                const grid = document.getElementById('restaurantsGrid');
+                grid.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    this.restaurants = this.generateMockRestaurants();
+                    this.displayRestaurants(this.restaurants);
+
+                } catch (error) {
+                    console.error('Error loading restaurants:', error);
+                    grid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Failed to load restaurants</div>';
+                }
+            }
+
+            generateMockRestaurants() {
+                const cuisines = ['italian', 'asian', 'american', 'mexican', 'indian'];
+                const restaurants = [];
+
+                for (let i = 0; i < 15; i++) {
+                    const cuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
+                    const distance = Math.random() * 2000;
+                    const isOpen = Math.random() > 0.3;
+                    const rating = 3.5 + Math.random() * 1.5;
+                    const priceLevel = Math.floor(Math.random() * 3) + 1;
+
+                    restaurants.push({
+                        id: `restaurant_${i}`,
+                        name: this.generateRestaurantName(cuisine),
+                        cuisine: cuisine,
+                        rating: rating,
+                        priceLevel: priceLevel,
+                        distance: distance,
+                        isOpen: isOpen,
+                        estimatedTime: Math.floor(distance / 50) + 5, // Walking time in minutes
+                        image: `https://picsum.photos/300/200?random=${i}`,
+                        specialOffer: Math.random() > 0.7 ? '20% off lunch special' : null
+                    });
+                }
+
+                return restaurants.sort((a, b) => a.distance - b.distance);
+            }
+
+            generateRestaurantName(cuisine) {
+                const names = {
+                    italian: ['Bella Vista', 'Mama Mia', 'La Dolce Vita', 'Nonna\'s Kitchen'],
+                    asian: ['Golden Dragon', 'Sakura Sushi', 'Pho Saigon', 'Bamboo Garden'],
+                    american: ['The Burger Joint', 'Liberty Grill', 'Main Street Diner'],
+                    mexican: ['El Sombrero', 'Casa Mexicana', 'Fiesta Cantina'],
+                    indian: ['Spice Palace', 'Taj Mahal', 'Curry House']
+                };
+                
+                const nameList = names[cuisine] || ['Local Eatery'];
+                return nameList[Math.floor(Math.random() * nameList.length)];
+            }
+
+            displayRestaurants(restaurants) {
+                const grid = document.getElementById('restaurantsGrid');
+                
+                if (restaurants.length === 0) {
+                    grid.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">No restaurants found</div>';
+                    return;
+                }
+
+                grid.innerHTML = restaurants.map(restaurant => this.createRestaurantCard(restaurant)).join('');
+            }
+
+            createRestaurantCard(restaurant) {
+                const stars = '★'.repeat(Math.floor(restaurant.rating));
+                const priceSymbols = '$'.repeat(restaurant.priceLevel);
+                const distanceText = restaurant.distance < 1000 
+                    ? `${Math.round(restaurant.distance)}m` 
+                    : `${(restaurant.distance / 1000).toFixed(1)}km`;
+
+                return `
+                    <div class="restaurant-card" onclick="window.openRestaurant('${restaurant.id}')">
+                        <div class="restaurant-header">
+                            <div class="restaurant-info">
+                                <h3>${restaurant.name}</h3>
+                                <div class="restaurant-meta">
+                                    <span>${restaurant.cuisine.charAt(0).toUpperCase() + restaurant.cuisine.slice(1)}</span>
+                                    <span>•</span>
+                                    <span>${priceSymbols}</span>
+                                </div>
+                            </div>
+                            <div class="restaurant-badge ${restaurant.isOpen ? 'badge-open' : 'badge-closed'}">
+                                ${restaurant.isOpen ? 'Open' : 'Closed'}
+                            </div>
+                        </div>
+                        
+                        <div class="restaurant-stats">
+                            <div class="stat">
+                                <span>⭐</span>
+                                <span>${restaurant.rating.toFixed(1)}</span>
+                            </div>
+                            <div class="stat">
+                                <span>📍</span>
+                                <span>${distanceText}</span>
+                            </div>
+                            <div class="stat">
+                                <span>🚶</span>
+                                <span>${restaurant.estimatedTime} min</span>
+                            </div>
+                        </div>
+                        
+                        ${restaurant.specialOffer ? `
+                            <div style="margin-top: 0.75rem; padding: 0.5rem; background: #fef3c7; border-radius: 0.5rem; font-size: 0.875rem; color: #92400e;">
+                                🎉 ${restaurant.specialOffer}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            setFilter(filter) {
+                // Update active filter pill
+                document.querySelectorAll('.filter-pill').forEach(pill => {
+                    pill.classList.remove('active');
+                });
+                document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+
+                this.activeFilter = filter;
+                this.applyFilters();
+            }
+
+            applyFilters() {
+                let filtered = [...this.restaurants];
+
+                switch (this.activeFilter) {
+                    case 'open':
+                        filtered = filtered.filter(r => r.isOpen);
+                        break;
+                    case 'nearby':
+                        filtered = filtered.filter(r => r.distance < 500);
+                        break;
+                    case 'budget':
+                        filtered = filtered.filter(r => r.priceLevel === 1);
+                        break;
+                    case 'italian':
+                    case 'asian':
+                    case 'american':
+                        filtered = filtered.filter(r => r.cuisine === this.activeFilter);
+                        break;
+                }
+
+                this.displayRestaurants(filtered);
+            }
+
+            search(query) {
+                if (!query.trim()) {
+                    this.applyFilters();
+                    return;
+                }
+
+                const filtered = this.restaurants.filter(restaurant => 
+                    restaurant.name.toLowerCase().includes(query.toLowerCase()) ||
+                    restaurant.cuisine.toLowerCase().includes(query.toLowerCase())
+                );
+
+                this.displayRestaurants(filtered);
+            }
+
+            findNearby() {
+                this.setFilter('nearby');
+                this.showToast('Showing restaurants within 500m');
+            }
+
+            randomPick() {
+                const openRestaurants = this.restaurants.filter(r => r.isOpen);
+                if (openRestaurants.length === 0) {
+                    this.showToast('No open restaurants found');
+                    return;
+                }
+
+                const random = openRestaurants[Math.floor(Math.random() * openRestaurants.length)];
+                this.showToast(`How about ${random.name}? 🎯`);
+                
+                // Highlight the selected restaurant
+                setTimeout(() => {
+                    this.displayRestaurants([random]);
+                }, 1000);
+            }
+
+            async refresh() {
+                const fab = document.getElementById('refreshBtn');
+                fab.style.transform = 'rotate(360deg)';
+                
+                await this.loadRestaurants();
+                
+                setTimeout(() => {
+                    fab.style.transform = 'rotate(0deg)';
+                }, 500);
+                
+                this.showToast('Restaurants updated! 🔄');
+            }
+
+            showToast(message) {
+                // Create toast notification
+                const toast = document.createElement('div');
+                toast.style.cssText = `
+                    position: fixed;
+                    top: 5rem;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 0.75rem 1rem;
+                    border-radius: 0.5rem;
+                    font-size: 0.875rem;
+                    z-index: 1000;
+                    animation: slideDown 0.3s ease;
+                `;
+                toast.textContent = message;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+        }
+
+        // Global function for restaurant card clicks
+        window.openRestaurant = function(id) {
+            console.log('Opening restaurant:', id);
+            // In a real app, this would navigate to restaurant details
+            alert(`Opening restaurant details for ${id}`);
+        };
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileLunchFinder();
+        });
+
+        // Add CSS animation for toast
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

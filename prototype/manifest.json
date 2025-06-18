@@ -1,0 +1,60 @@
+{
+  "name": "LunchFinder - Discover Lunch Anywhere",
+  "short_name": "LunchFinder",
+  "description": "Find the best lunch spots near you with real-time menus and location-based discovery",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "categories": ["food", "lifestyle", "travel"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMyNTYzZWIiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CjxwYXRoIGQ9Im0xMiAzLTEuOTEyIDUuNjEzYTIgMiAwIDAgMS0xLjI5OCAxLjI5OEwzIDEybDUuNjEzIDEuOTEyYTIgMiAwIDAgMSAxLjI5OCAxLjI5OEwxMiAyMWwxLjkxMi01LjYxM2EyIDIgMCAwIDEgMS4yOTgtMS4yOThMMjEgMTJsLTUuNjEzLTEuOTEyYTIgMiAwIDAgMS0xLjI5OC0xLjI5OEwxMiAzWiIvPgo8L3N2Zz4KPC9zdmc+",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiMyNTYzZWIiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8cGF0aCBkPSJtMTIgMy0xLjkxMiA1LjYxM2EyIDIgMCAwIDEtMS4yOTggMS4yOThMMyAxMmw1LjYxMyAxLjkxMmEyIDIgMCAwIDEgMS4yOTggMS4yOThMMTIgMjFsMS45MTItNS42MTNhMiAyIDAgMCAxIDEuMjk4LTEuMjk4TDIxIDEybC01LjYxMy0xLjkxMmEyIDIgMCAwIDEtMS4yOTgtMS4yOThMMTIgM1oiLz4KPC9zdmc+Cjwvc3ZnPg==",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjY0MCIgdmlld0JveD0iMCAwIDMyMCA2NDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iNjQwIiBmaWxsPSIjZjhmYWZjIi8+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iODAiIGZpbGw9IiMyNTYzZWIiLz4KPHN2ZyB4PSIyNCIgeT0iMjQiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiPgo8cGF0aCBkPSJtMTIgMy0xLjkxMiA1LjYxM2EyIDIgMCAwIDEtMS4yOTggMS4yOThMMyAxMmw1LjYxMyAxLjkxMmEyIDIgMCAwIDEgMS4yOTggMS4yOThMMTIgMjFsMS45MTItNS42MTNhMiAyIDAgMCAxIDEuMjk4LTEuMjk4TDIxIDEybC01LjYxMy0xLjkxMmEyIDIgMCAwIDEtMS4yOTgtMS4yOThMMTIgM1oiLz4KPC9zdmc+Cjx0ZXh0IHg9IjY0IiB5PSI0NCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9ImJvbGQiPkx1bmNoRmluZGVyPC90ZXh0Pgo8cmVjdCB4PSIyNCIgeT0iMTAwIiB3aWR0aD0iMjcyIiBoZWlnaHQ9IjEyMCIgcng9IjEyIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjZTJlOGYwIi8+Cjx0ZXh0IHg9IjQwIiB5PSIxMzAiIGZpbGw9IiMwZjE3MmEiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPkJlbGxhIFZpc3RhIEl0YWxpYW48L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSIxNTAiIGZpbGw9IiM2NDc0OGIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+SXRhbGlhbiDigKIgJCQ8L3RleHQ+Cjx0ZXh0IHg9IjQwIiB5PSIxNzAiIGZpbGw9IiM2NDc0OGIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiI+4q2QIDQuNSDigKIg8J+TjSA1MDBtIOKAoiDwn5qGIDggbWluPC90ZXh0Pgo8cmVjdCB4PSIyNDAiIHk9IjEyMCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iI2RjZmNlNyIvPgo8dGV4dCB4PSIyNTIiIHk9IjEzNCIgZmlsbD0iIzE2YTM0YSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iYm9sZCI+T3BlbjwvdGV4dD4KPC9zdmc+",
+      "sizes": "320x640",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Find Nearby",
+      "short_name": "Nearby",
+      "description": "Find restaurants near your current location",
+      "url": "/?action=nearby",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIxIDEwYzAgNy0xMCAxMy0xMCAxM3MtMTAtNi0xMC0xM2E5LjkgOS45IDAgMCAxIDEwLTEwIDkuOSA5LjkgMCAwIDEgMTAgMTBaIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iIzI1NjNlYiIvPgo8Y2lyY2xlIGN4PSIxMiIgY3k9IjEwIiByPSIzIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Random Pick",
+      "short_name": "Random",
+      "description": "Get a random restaurant suggestion",
+      "url": "/?action=random",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiIGZpbGw9IiNmOTczMTYiLz4KPHJlY3QgeD0iMTUiIHk9IjMiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZjk3MzE2Ii8+CjxyZWN0IHg9IjMiIHk9IjE1IiB3aWR0aD0iNiIgaGVpZ2h0PSI2IiByeD0iMSIgZmlsbD0iI2Y5NzMxNiIvPgo8cmVjdCB4PSIxNSIgeT0iMTUiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjZjk3MzE2Ii8+CjxjaXJjbGUgY3g9IjYiIGN5PSI2IiByPSIxIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxOCIgY3k9IjYiIHI9IjEiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjYiIGN5PSIxOCIgcj0iMSIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTgiIGN5PSIxOCIgcj0iMSIgZmlsbD0id2hpdGUiLz4KPC9zdmc+",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
