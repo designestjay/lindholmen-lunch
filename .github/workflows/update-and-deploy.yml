@@ -5,7 +5,7 @@ on:
     # Run every day at 6:00 AM UTC (8:00 AM CEST)
     - cron: '0 6 * * 1-5'  # Monday to Friday only
   push:
-    branches: [ main ]
+    branches: [ gh-pages ]
   workflow_dispatch: # Allow manual triggering
 
 permissions:
@@ -24,6 +24,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        ref: gh-pages
       
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -59,44 +61,54 @@ jobs:
         echo "day=$DAY" >> $GITHUB_OUTPUT
         echo "Current day: $DAY"
         
-    - name: Scrape lunch data
+    - name: Scrape lunch data for current day
       run: |
+        echo "Scraping data for: ${{ steps.get-day.outputs.day }}"
         python main.py --day ${{ steps.get-day.outputs.day }} --refresh
         
-    - name: Commit updated data to main branch
+    - name: Generate fresh HTML page
+      run: |
+        echo "Generating fresh HTML page for the current day"
+        python generate_html.py
+        
+    - name: Copy files to deployment directory
+      run: |
+        # Copy the main index.html to docs if it doesn't exist there
+        if [ ! -f docs/index.html ]; then
+          cp index.html docs/
+        fi
+        # Ensure CNAME is in docs directory for custom domain
+        if [ -f CNAME ]; then
+          cp CNAME docs/
+        fi
+        
+    - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/ docs/
+        git add data/ docs/ index.html
         if git diff --staged --quiet; then
-          echo "No changes to commit to main"
+          echo "No changes to commit"
         else
-          git commit -m "Update lunch data for $(date +'%Y-%m-%d')"
-          git push origin main
-        fi
-        
-    - name: Deploy to gh-pages branch
-      run: |
-        # Save the updated files
-        cp docs/index.html /tmp/index_updated.html
-        cp docs/privacy.html /tmp/privacy_updated.html
-        cp -r data/ /tmp/data_updated/
-        
-        # Switch to gh-pages branch
-        git fetch origin gh-pages
-        git checkout gh-pages
-        
-        # Copy updated files to gh-pages
-        cp /tmp/index_updated.html index.html
-        cp /tmp/index_updated.html docs/index.html
-        cp /tmp/privacy_updated.html docs/privacy.html
-        cp -r /tmp/data_updated/* data/
-        
-        # Commit and push to gh-pages
-        git add .
-        if git diff --staged --quiet; then
-          echo "No changes to commit to gh-pages"
-        else
-          git commit -m "Deploy lunch data for $(date +'%Y-%m-%d')"
+          git commit -m "Auto-update: ${{ steps.get-day.outputs.day }} lunch data $(date +'%Y-%m-%d %H:%M')"
           git push origin gh-pages
-        fi 
+        fi
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs/
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: scrape-and-build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 

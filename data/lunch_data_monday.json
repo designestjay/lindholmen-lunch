@@ -33,7 +33,7 @@
         "price": "130 kr"
       },
       {
-        "name": "Murgh Masala indisk gryta med kyckling serveras medbasmatiris, mangochutney, smörat Naan och koriander",
+        "name": "Chicken Alomonds and coriander",
         "category": "INDISK",
         "description": "",
         "price": "130 kr"
@@ -403,41 +403,6 @@
         "category": "Benne Bites",
         "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
         "price": "35 kr"
-      }
-    ]
-  },
-  "LsKitchenScraper": {
-    "day": "monday",
-    "items": [
-      {
-        "name": "Fläskwok,  basmatiris, kål sallad, böngroddar och rostad sesam",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "örtbakad fisk, gnocchi, tomatsky, rostad aubergine & zucchini",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "sallad på varmrökt lax, havreris, rostad paprika, mandel & ärtskott",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "Caesarsallad; kyckling, grana padano, bacon, krutonger",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
-      },
-      {
-        "name": "wok på temphe, nudlar, grönsaker & chilikräm",
-        "category": "",
-        "description": "",
-        "price": "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
       }
     ]
   },

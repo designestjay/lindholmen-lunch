@@ -127,7 +127,7 @@ def generate_index_page():
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(to bottom right, var(--blue-50), var(--indigo-100));
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             color: var(--foreground);
             line-height: 1.5;
@@ -136,11 +136,13 @@ def generate_index_page():
         /* Header */
         .header {
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
             position: sticky;
             top: 0;
             z-index: 10;
+            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
         }
 
         .header-container {
@@ -167,13 +169,14 @@ def generate_index_page():
         .header-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--foreground);
+            color: #1d1d1f;
             margin: 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .header-subtitle {
             font-size: 0.875rem;
-            color: var(--muted-foreground);
+            color: #6e6e73;
             margin: 0;
         }
 
@@ -184,14 +187,16 @@ def generate_index_page():
         }
 
         .language-toggle {
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             padding: 0.5rem 0.75rem;
             cursor: pointer;
             font-size: 0.875rem;
             font-weight: 500;
-            color: var(--foreground);
+            color: #1d1d1f;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
@@ -199,7 +204,8 @@ def generate_index_page():
         }
 
         .language-toggle:hover {
-            background: var(--accent);
+            background: rgba(255, 255, 255, 0.8);
+            border: 0.5px solid rgba(0, 0, 0, 0.15);
         }
 
         .badge {
@@ -207,10 +213,12 @@ def generate_index_page():
             align-items: center;
             gap: 0.25rem;
             padding: 0.5rem 0.75rem;
-            background: transparent;
-            color: var(--foreground);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #1d1d1f;
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             font-size: 0.875rem;
             font-weight: 500;
         }
@@ -233,14 +241,16 @@ def generate_index_page():
         .hero-section h1 {
             font-size: 1.875rem;
             font-weight: 700;
-            color: var(--foreground);
+            color: #1d1d1f;
             margin-bottom: 1rem;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
         }
 
         .hero-section p {
             font-size: 1.125rem;
-            color: var(--muted-foreground);
+            color: #6e6e73;
             margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
         }
 
         /* Random Selection */
@@ -259,29 +269,31 @@ def generate_index_page():
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            background: linear-gradient(to right, var(--orange-500), var(--red-500));
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            text-decoration: none;
-            font-weight: 500;
             border: none;
+            border-radius: 2rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 8px 32px rgba(249, 115, 22, 0.4);
-            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
             white-space: nowrap;
             min-width: 200px;
             max-width: 280px;
             height: 48px;
-            line-height: 1;
         }
 
         .floating-random-button:hover {
             transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
+            background: linear-gradient(135deg, #ff8a5b 0%, #ffa726 100%);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .floating-random-button:active {
+            transform: translateX(-50%) translateY(0px) scale(0.98);
+            transition: all 0.1s ease;
         }
 
         /* Mobile adjustments */
@@ -324,12 +336,17 @@ def generate_index_page():
         }
 
         .restaurant-card {
-            background: var(--card);
-            border-radius: 0.75rem;
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
+            border: 0.5px solid rgba(255, 255, 255, 0.8);
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -339,8 +356,13 @@ def generate_index_page():
         }
 
         .restaurant-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.12),
+                0 4px 12px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.85);
+            border: 0.5px solid rgba(255, 255, 255, 1);
         }
 
         .restaurant-card.highlighted {
@@ -367,10 +389,11 @@ def generate_index_page():
             font-size: 1.25rem;
             font-weight: 600;
             margin: 0 0 0.25rem 0;
-            color: var(--foreground);
+            color: #1d1d1f;
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: auto;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .restaurant-meta {
@@ -378,7 +401,7 @@ def generate_index_page():
             flex-direction: column;
             gap: 0.25rem;
             font-size: 0.875rem;
-            color: var(--muted-foreground);
+            color: #6e6e73;
         }
 
         .restaurant-meta-item {
@@ -427,11 +450,12 @@ def generate_index_page():
         .menu-section h3 {
             font-size: 1rem;
             font-weight: 600;
-            color: var(--foreground);
+            color: #1d1d1f;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .menu-items {
@@ -446,14 +470,16 @@ def generate_index_page():
             align-items: flex-start;
             gap: 1rem;
             padding: 0.75rem;
-            background: var(--muted);
-            border-radius: var(--radius);
-            transition: background 0.2s ease;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            border: 0.5px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
             min-height: fit-content;
         }
 
         .menu-item:hover {
-            background: var(--accent);
+            background: rgba(255, 255, 255, 0.6);
+            border: 0.5px solid rgba(255, 255, 255, 0.8);
         }
 
         .menu-item-details {
@@ -463,7 +489,7 @@ def generate_index_page():
 
         .menu-item-name {
             font-weight: 600;
-            color: var(--foreground);
+            color: #1d1d1f;
             margin-bottom: 0.25rem;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -473,7 +499,7 @@ def generate_index_page():
 
         .menu-item-description {
             font-size: 0.875rem;
-            color: var(--muted-foreground);
+            color: #6e6e73;
             word-wrap: break-word;
             overflow-wrap: break-word;
             hyphens: auto;
@@ -482,7 +508,7 @@ def generate_index_page():
 
         .menu-item-price {
             font-weight: 600;
-            color: var(--primary);
+            color: #1d1d1f;
             align-self: flex-start;
             flex-shrink: 0;
             margin-left: 0.5rem;
@@ -530,9 +556,9 @@ def generate_index_page():
             max-width: 1280px;
             margin: 3rem auto 0;
             padding: 2rem 1.5rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             text-align: center;
-            color: var(--muted-foreground);
+            color: #6e6e73;
         }
 
         .footer p {
@@ -540,7 +566,7 @@ def generate_index_page():
         }
 
         .footer a {
-            color: var(--primary);
+            color: #1d1d1f;
             text-decoration: none;
         }
 
@@ -815,7 +841,6 @@ def generate_index_page():
     
     <!-- Floating Random Button -->
     <button class="floating-random-button" onclick="selectRandomRestaurant()">
-        🎲
         <span class="en">I am feeling hungry!</span>
         <span class="sv hidden">Jag är hungrig!</span>
     </button>
@@ -832,14 +857,20 @@ def generate_index_page():
             <span class="sv hidden">Upptäck de bästa lunchalternativen i Lindholmen området</span>
         </p>
         <p>
-            <span class="en">This lunch compilation is open source –</span>
-            <span class="sv hidden">Denna lunchsammanställning är öppen källkod –</span>
-            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">GitHub - Lindholmen Lunch</a>
+            <span class="en">Enhanced version with modern UI/UX improvements –</span>
+            <span class="sv hidden">Förbättrad version med modern UI/UX –</span>
+            <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank">GitHub - Lindholmen Lunch</a>
         </p>
         <p>
-            <span class="en">Questions, feedback or missing your favorite restaurant? Open an issue, pull request, contact me via GitHub or via</span>
-            <span class="sv hidden">Har du frågor, feedback eller saknar din favoritrestaurang? Öppna ett issue, pull request, kontakta mig via GitHub eller via</span>
-            <a href="mailto:fawenah@gmail.com">fawenah@gmail.com</a>.
+            <span class="en">Based on original work by</span>
+            <span class="sv hidden">Baserat på ursprungligt arbete av</span>
+            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">Fawenah</a>
+            <span class="en">with design overhaul and UX enhancements</span>
+            <span class="sv hidden">med designomarbetning och UX-förbättringar</span>
+        </p>
+        <p>
+            <span class="en">Questions, feedback or suggestions? Feel free to open an issue or contact via GitHub</span>
+            <span class="sv hidden">Frågor, feedback eller förslag? Öppna gärna ett issue eller kontakta via GitHub</span>
         </p>
         <p style="margin-top: 1rem; font-size: 0.8rem;">
             <a href="privacy.html">
@@ -883,8 +914,8 @@ def generate_index_page():
             
             const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
             const choosingText = isSwedish ? 
-                '🎲 <span class="sv">Väljer...</span><span class="en hidden">Choosing...</span>' : 
-                '🎲 <span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
+                '<span class="sv">Väljer...</span><span class="en hidden">Choosing...</span>' : 
+                '<span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
             
             if (floatingButton) {{
                 // Store original dimensions to prevent size changes
@@ -906,8 +937,8 @@ def generate_index_page():
                 
                 // Reset button
                 const finalText = isSwedish ? 
-                    '🎲 <span class="sv">Jag är hungrig!</span><span class="en hidden">I am feeling hungry!</span>' : 
-                    '🎲 <span class="en">I am feeling hungry!</span><span class="sv hidden">Jag är hungrig!</span>';
+                    '<span class="sv">Jag är hungrig!</span><span class="en hidden">I am feeling hungry!</span>' : 
+                    '<span class="en">I am feeling hungry!</span><span class="sv hidden">Jag är hungrig!</span>';
                 
                 if (floatingButton) {{
                     floatingButton.innerHTML = finalText;
