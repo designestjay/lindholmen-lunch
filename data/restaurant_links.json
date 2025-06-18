@@ -1,62 +1,62 @@
 {
     "Kooperativet": {
         "url": "https://www.kooperativet.se/",
-        "map": "https://maps.google.com/?q=Kooperativet+Lindholmen"
+        "map": "https://maps.google.com/?q=Kooperativet+Lindholmen+Göteborg"
     },
     "DistrictOne": {
         "url": "https://www.districtone.se/lunch.html",
-        "map": "https://maps.google.com/?q=District+One+Lindholmen"
+        "map": "https://maps.google.com/?q=District+One+Lindholmen+Göteborg"
     },
     "BombayBistro": {
         "url": "https://www.bombaybistro.se/lunch/",
-        "map": "https://maps.google.com/?q=Bombay+Bistro+Lindholmen"
+        "map": "https://maps.google.com/?q=Bombay+Bistro+Lindholmen+Göteborg"
     },
     "CuckoosNest": {
         "url": "https://www.cuckoosnest.se/menyer/lunch",
-        "map": "https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen"
+        "map": "https://maps.google.com/?q=Cuckoo's+Nest+Lindholmen+Göteborg"
     },
     "MissF": {
         "url": "https://www.missf.se/",
-        "map": "https://maps.google.com/?q=Miss+F+Lindholmen"
+        "map": "https://maps.google.com/?q=Miss+F+Lindholmen+Göteborg"
     },
     "BennePastabar": {
         "url": "https://bennepastabar.se/",
-        "map": "https://maps.google.com/?q=Benne+Pastabar+Lindholmen"
+        "map": "https://maps.google.com/?q=Benne+Pastabar+Lindholmen+Göteborg"
     },
     "LsKitchen": {
         "url": "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1",
-        "map": "https://maps.google.com/?q=LS+Kitchen+Lindholmen"
+        "map": "https://maps.google.com/?q=LS+Kitchen+Lindholmen+Göteborg"
     },
     "Bistrot": {
         "url": "https://bistrot.se/",
-        "map": "https://maps.google.com/?q=Bistrot+Lindholmen"
+        "map": "https://maps.google.com/?q=Bistrot+Lindholmen+Göteborg"
     },
     "Mimolett": {
         "url": "https://restaurangmimolett.se/lunch/",
-        "map": "https://maps.google.com/?q=Mimolett+Lindholmen"
+        "map": "https://maps.google.com/?q=Mimolett+Lindholmen+Göteborg"
     },
     "Oishii": {
         "url": "https://oishii.se/lunchmeny/",
-        "map": "https://maps.google.com/?q=Oishii+Lindholmen"
+        "map": "https://maps.google.com/?q=Oishii+Lindholmen+Göteborg"
     },
     "MatMinnen": {
         "url": "https://matminnen.se/lunchmeny",
-        "map": "https://maps.google.com/?q=Mat+Minnen+Lindholmen"
+        "map": "https://maps.google.com/?q=Mat+Minnen+Lindholmen+Göteborg"
     },
     "EncounterAsian": {
         "url": "https://tamed.se/take-away-meny/encounter-sushi",
-        "map": "https://maps.google.com/?q=Encounter+Asian+Lindholmen"
+        "map": "https://maps.google.com/?q=Encounter+Asian+Lindholmen+Göteborg"
     },
     "Uni3WorldOfFood": {
         "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
-        "map": "https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen"
+        "map": "https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen+Göteborg"
     },
     "Masala": {
         "url": "https://masalakitchen.se/lunch/",
-        "map": "https://maps.google.com/?q=Masala+Kitchen+Lindholmen"
+        "map": "https://maps.google.com/?q=Masala+Kitchen+Lindholmen+Göteborg"
     },
-    "Pier11": {
+    "RestaurantPier11": {
         "url": "https://ericssonbynordrest.se/restaurang/restaurant-pier-11/#lunch-menu",
-        "map": "https://maps.google.com/?q=Restaurant+Pier+11+Lindholmen"
+        "map": "https://maps.google.com/?q=Restaurant+Pier+11+Lindholmen+Göteborg"
     }
 }
