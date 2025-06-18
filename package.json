@@ -1,20 +1,13 @@
 {
-  "name": "lindholmen-lunch",
+  "name": "lunch-scraper-prototype",
   "version": "1.0.0",
-  "description": "Lunch menu scraper for Lindholmen restaurants",
-  "main": "index.js",
+  "description": "Prototype server for lunch scraper project",
+  "main": "server.js",
   "scripts": {
-    "dev": "node generate_html.js && node -e \"const http = require('http'); const fs = require('fs'); const path = require('path'); const server = http.createServer((req, res) => { let filePath = path.join(__dirname, 'docs', req.url === '/' ? 'index.html' : req.url); if (!fs.existsSync(filePath)) filePath = path.join(__dirname, 'docs', 'index.html'); const ext = path.extname(filePath); const contentType = ext === '.html' ? 'text/html' : ext === '.css' ? 'text/css' : ext === '.js' ? 'text/javascript' : 'text/plain'; fs.readFile(filePath, (err, content) => { if (err) { res.writeHead(404); res.end('Not found'); } else { res.writeHead(200, { 'Content-Type': contentType }); res.end(content); } }); }); server.listen(8000, () => console.log('Server running at http://localhost:8000'));\"",
-    "build": "node generate_html.js",
-    "scrape": "python3 main.py",
-    "start": "npm run dev"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
-    "axios": "^1.6.0"
-  },
-  "devDependencies": {},
-  "keywords": ["lunch", "scraper", "lindholmen", "gothenburg"],
-  "author": "",
-  "license": "MIT"
+    "express": "^4.18.2"
+  }
 }
