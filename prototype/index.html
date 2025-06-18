@@ -3,24 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LunchFinder - Discover Lunch Anywhere</title>
+    <title>LunchFinder - What's for lunch?</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --secondary: #f1f5f9;
-            --accent: #f97316;
-            --success: #16a34a;
-            --warning: #eab308;
-            --error: #dc2626;
-            --text: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --background: #ffffff;
-            --card: #ffffff;
-            --radius: 0.5rem;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: var(--text);
+            color: #333;
             line-height: 1.6;
         }
 
@@ -43,140 +27,68 @@
 
         .header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: white;
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
         }
 
         .header p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        .location-section {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .location-controls {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .location-input {
-            flex: 1;
-            min-width: 300px;
-            padding: 0.75rem;
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            font-size: 1rem;
-        }
-
-        .location-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--text);
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .status {
+        .location-status {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
             padding: 1rem;
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
             font-weight: 500;
         }
 
-        .status.loading {
-            background: #dbeafe;
-            color: var(--primary);
-            border: 1px solid #93c5fd;
+        .randomize-section {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .status.success {
-            background: #dcfce7;
-            color: var(--success);
-            border: 1px solid #86efac;
-        }
-
-        .status.error {
-            background: #fee2e2;
-            color: var(--error);
-            border: 1px solid #fca5a5;
-        }
-
-        .filters {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
+        .randomize-btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            display: inline-flex;
+            align-items: center;
             gap: 0.5rem;
+            min-width: 200px;
+            justify-content: center;
         }
 
-        .filter-group label {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.875rem;
+        .randomize-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.5);
         }
 
-        .filter-select {
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: white;
+        .randomize-btn:active {
+            transform: translateY(0);
+        }
+
+        .randomize-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .restaurants-grid {
@@ -187,17 +99,23 @@
         }
 
         .restaurant-card {
-            background: var(--card);
-            border-radius: var(--radius);
+            background: white;
+            border-radius: 16px;
             padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border: 1px solid var(--border);
+            border: 2px solid transparent;
         }
 
         .restaurant-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .restaurant-card.highlighted {
+            border-color: #ff6b35;
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.3);
+            transform: translateY(-4px) scale(1.02);
         }
 
         .restaurant-header {
@@ -208,61 +126,58 @@
         }
 
         .restaurant-name {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--text);
+            color: #333;
             margin-bottom: 0.25rem;
         }
 
         .restaurant-type {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .restaurant-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.875rem;
-            color: var(--warning);
-        }
-
-        .restaurant-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .restaurant-distance {
-            font-weight: 600;
-            color: var(--primary);
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .restaurant-status {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
         .status-open {
             background: #dcfce7;
-            color: var(--success);
+            color: #16a34a;
         }
 
         .status-closed {
             background: #fee2e2;
-            color: var(--error);
+            color: #dc2626;
+        }
+
+        .restaurant-info {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .menu-preview {
-            margin-top: 1rem;
+            border-top: 1px solid #f1f5f9;
             padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        }
+
+        .menu-preview h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
         }
 
         .menu-item {
@@ -270,7 +185,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.5rem 0;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f8fafc;
         }
 
         .menu-item:last-child {
@@ -279,21 +194,29 @@
 
         .menu-item-name {
             font-weight: 500;
+            color: #333;
         }
 
         .menu-item-price {
-            color: var(--primary);
+            color: #2563eb;
             font-weight: 600;
         }
 
-        .loading-spinner {
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+        }
+
+        .spinner {
             display: inline-block;
-            width: 1rem;
-            height: 1rem;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid var(--primary);
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
         }
 
         @keyframes spin {
@@ -301,19 +224,11 @@
             100% { transform: rotate(360deg); }
         }
 
-        .demo-note {
-            background: #fef3c7;
-            border: 1px solid #fbbf24;
-            color: #92400e;
-            padding: 1rem;
-            border-radius: var(--radius);
-            margin-bottom: 2rem;
-            font-size: 0.875rem;
-        }
-
-        .demo-note strong {
-            display: block;
-            margin-bottom: 0.5rem;
+        .no-restaurants {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+            font-size: 1.1rem;
         }
 
         @media (max-width: 768px) {
@@ -325,20 +240,14 @@
                 font-size: 2rem;
             }
 
-            .location-controls {
-                flex-direction: column;
-            }
-
-            .location-input {
-                min-width: auto;
-            }
-
-            .filters {
-                flex-direction: column;
-            }
-
             .restaurants-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .randomize-btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -346,115 +255,50 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>🍽️ LunchFinder</h1>
-            <p>Discover the best lunch spots near you, anywhere in the world</p>
+            <h1>🍽️ What's for lunch?</h1>
+            <p>We'll find great restaurants near you</p>
         </header>
 
-        <div class="demo-note">
-            <strong>🚀 Prototype Demo</strong>
-            This is a working prototype that demonstrates location-based restaurant discovery. 
-            It uses real geolocation and Google Places API simulation to show nearby restaurants.
-            In production, this would include live menu scraping and real-time data.
+        <div class="location-status" id="locationStatus">
+            📍 Detecting your location...
         </div>
 
-        <div class="location-section">
-            <h2>📍 Your Location</h2>
-            <div class="location-controls">
-                <input 
-                    type="text" 
-                    class="location-input" 
-                    id="locationInput" 
-                    placeholder="Enter address or let us detect your location..."
-                >
-                <button class="btn btn-secondary" id="detectLocationBtn">
-                    📍 Detect Location
-                </button>
-                <button class="btn btn-primary" id="searchBtn">
-                    🔍 Find Restaurants
-                </button>
-            </div>
-            
-            <div id="locationStatus"></div>
-        </div>
-
-        <div class="filters">
-            <div class="filter-group">
-                <label>Search Radius</label>
-                <select class="filter-select" id="radiusFilter">
-                    <option value="500">500m</option>
-                    <option value="1000" selected>1km</option>
-                    <option value="2000">2km</option>
-                    <option value="5000">5km</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Cuisine Type</label>
-                <select class="filter-select" id="cuisineFilter">
-                    <option value="">All Cuisines</option>
-                    <option value="italian">Italian</option>
-                    <option value="asian">Asian</option>
-                    <option value="american">American</option>
-                    <option value="mexican">Mexican</option>
-                    <option value="indian">Indian</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Price Range</label>
-                <select class="filter-select" id="priceFilter">
-                    <option value="">Any Price</option>
-                    <option value="1">$ (Budget)</option>
-                    <option value="2">$$ (Moderate)</option>
-                    <option value="3">$$$ (Expensive)</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Open Now</label>
-                <select class="filter-select" id="openFilter">
-                    <option value="">Any Time</option>
-                    <option value="true">Open Now</option>
-                </select>
-            </div>
+        <div class="randomize-section">
+            <button class="randomize-btn" id="randomizeBtn" disabled>
+                🎲 Pick something for me!
+            </button>
         </div>
 
         <div id="restaurantsContainer">
-            <div class="restaurants-grid" id="restaurantsGrid"></div>
+            <div class="loading">
+                <div class="spinner"></div>
+                <div>Finding restaurants near you...</div>
+            </div>
         </div>
     </div>
 
     <script>
-        class LunchFinder {
+        class SimpleLunchFinder {
             constructor() {
                 this.currentLocation = null;
                 this.restaurants = [];
-                this.initializeEventListeners();
+                this.isLoading = true;
+                this.init();
             }
 
-            initializeEventListeners() {
-                document.getElementById('detectLocationBtn').addEventListener('click', () => this.detectLocation());
-                document.getElementById('searchBtn').addEventListener('click', () => this.searchRestaurants());
-                document.getElementById('locationInput').addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') this.searchRestaurants();
-                });
-
-                // Filter event listeners
-                ['radiusFilter', 'cuisineFilter', 'priceFilter', 'openFilter'].forEach(id => {
-                    document.getElementById(id).addEventListener('change', () => this.applyFilters());
-                });
+            async init() {
+                await this.detectLocation();
+                await this.loadRestaurants();
+                this.setupEventListeners();
             }
 
-            showStatus(message, type = 'loading') {
-                const statusDiv = document.getElementById('locationStatus');
-                statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+            setupEventListeners() {
+                document.getElementById('randomizeBtn').addEventListener('click', () => this.randomPick());
             }
 
             async detectLocation() {
-                this.showStatus('🔍 Detecting your location...', 'loading');
+                const statusEl = document.getElementById('locationStatus');
                 
-                if (!navigator.geolocation) {
-                    this.showStatus('❌ Geolocation is not supported by this browser', 'error');
-                    return;
-                }
-
                 try {
                     const position = await new Promise((resolve, reject) => {
                         navigator.geolocation.getCurrentPosition(resolve, reject, {
@@ -469,96 +313,59 @@
                         lng: position.coords.longitude
                     };
 
-                    // Reverse geocode to get address
-                    const address = await this.reverseGeocode(this.currentLocation);
-                    document.getElementById('locationInput').value = address;
-                    
-                    this.showStatus(`✅ Location detected: ${address}`, 'success');
-                    
-                    // Auto-search for restaurants
-                    setTimeout(() => this.searchRestaurants(), 1000);
+                    statusEl.innerHTML = '✅ Found your location - searching within 2km';
+                    statusEl.style.background = 'rgba(34, 197, 94, 0.2)';
 
                 } catch (error) {
-                    console.error('Geolocation error:', error);
-                    this.showStatus('❌ Could not detect location. Please enter manually.', 'error');
+                    console.error('Location error:', error);
+                    statusEl.innerHTML = '📍 Using default area (Gothenburg) - 2km radius';
+                    statusEl.style.background = 'rgba(249, 115, 22, 0.2)';
+                    
+                    // Use default location
+                    this.currentLocation = { lat: 57.7089, lng: 11.9746 };
                 }
             }
 
-            async reverseGeocode(location) {
-                // In a real app, you'd use Google Maps Geocoding API
-                // For demo, we'll simulate this
-                return `${location.lat.toFixed(4)}, ${location.lng.toFixed(4)}`;
-            }
-
-            async searchRestaurants() {
-                const locationInput = document.getElementById('locationInput').value;
-                
-                if (!locationInput && !this.currentLocation) {
-                    this.showStatus('❌ Please enter a location or detect your current location', 'error');
-                    return;
-                }
-
-                this.showStatus('🔍 Searching for restaurants...', 'loading');
-
+            async loadRestaurants() {
                 try {
-                    // If we have text input, geocode it first
-                    if (locationInput && !this.currentLocation) {
-                        this.currentLocation = await this.geocodeAddress(locationInput);
-                    }
-
-                    // Simulate API call to find restaurants
-                    const restaurants = await this.findNearbyRestaurants(this.currentLocation);
-                    this.restaurants = restaurants;
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     
-                    this.showStatus(`✅ Found ${restaurants.length} restaurants nearby`, 'success');
-                    this.displayRestaurants(restaurants);
+                    this.restaurants = this.generateRestaurants();
+                    this.displayRestaurants();
+                    
+                    // Enable randomize button
+                    const btn = document.getElementById('randomizeBtn');
+                    btn.disabled = false;
+                    btn.innerHTML = '🎲 Pick something for me!';
 
                 } catch (error) {
-                    console.error('Search error:', error);
-                    this.showStatus('❌ Error searching for restaurants. Please try again.', 'error');
+                    console.error('Error loading restaurants:', error);
+                    document.getElementById('restaurantsContainer').innerHTML = 
+                        '<div class="no-restaurants">Sorry, couldn\'t find restaurants. Please try again.</div>';
                 }
             }
 
-            async geocodeAddress(address) {
-                // Simulate geocoding - in real app, use Google Maps Geocoding API
-                // For demo, return a location in Gothenburg
-                return {
-                    lat: 57.7089 + (Math.random() - 0.5) * 0.01,
-                    lng: 11.9746 + (Math.random() - 0.5) * 0.01
-                };
-            }
-
-            async findNearbyRestaurants(location) {
-                // Simulate Google Places API call
-                await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API delay
-
-                const restaurantTypes = ['italian', 'asian', 'american', 'mexican', 'indian', 'cafe', 'bistro'];
+            generateRestaurants() {
+                const cuisines = ['italian', 'asian', 'american', 'mexican', 'indian', 'mediterranean', 'french'];
                 const restaurants = [];
 
                 for (let i = 0; i < 12; i++) {
-                    const distance = Math.random() * 2000; // Distance in meters
-                    const isOpen = Math.random() > 0.3; // 70% chance of being open
-                    const rating = 3.5 + Math.random() * 1.5; // Rating between 3.5-5.0
-                    const priceLevel = Math.floor(Math.random() * 3) + 1; // 1-3
-                    const cuisine = restaurantTypes[Math.floor(Math.random() * restaurantTypes.length)];
+                    const cuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
+                    const distance = Math.random() * 2000; // Within 2km
+                    const isOpen = Math.random() > 0.25; // 75% chance of being open
+                    const rating = 3.5 + Math.random() * 1.5;
+                    const walkTime = Math.floor(distance / 80) + 3; // Walking time
 
                     restaurants.push({
                         id: `restaurant_${i}`,
                         name: this.generateRestaurantName(cuisine),
-                        type: cuisine.charAt(0).toUpperCase() + cuisine.slice(1) + ' Restaurant',
                         cuisine: cuisine,
                         rating: rating,
-                        priceLevel: priceLevel,
                         distance: distance,
+                        walkTime: walkTime,
                         isOpen: isOpen,
-                        address: `${Math.floor(Math.random() * 999) + 1} Main Street`,
-                        phone: '+1 (555) 123-4567',
-                        website: `https://${this.generateRestaurantName(cuisine).toLowerCase().replace(/\s+/g, '')}.com`,
-                        menu: this.generateSampleMenu(cuisine),
-                        location: {
-                            lat: location.lat + (Math.random() - 0.5) * 0.02,
-                            lng: location.lng + (Math.random() - 0.5) * 0.02
-                        }
+                        menu: this.generateMenu(cuisine)
                     });
                 }
 
@@ -567,72 +374,87 @@
 
             generateRestaurantName(cuisine) {
                 const names = {
-                    italian: ['Bella Vista', 'Mama Mia', 'La Dolce Vita', 'Nonna\'s Kitchen', 'Amore Italiano'],
+                    italian: ['Bella Vista', 'Mama Mia Trattoria', 'La Dolce Vita', 'Nonna\'s Kitchen', 'Amore Italiano'],
                     asian: ['Golden Dragon', 'Sakura Sushi', 'Pho Saigon', 'Bamboo Garden', 'Zen Kitchen'],
-                    american: ['The Burger Joint', 'Liberty Grill', 'Stars & Stripes', 'Main Street Diner', 'All-American Eats'],
-                    mexican: ['El Sombrero', 'Casa Mexicana', 'Fiesta Cantina', 'Los Amigos', 'Taco Libre'],
+                    american: ['The Burger Joint', 'Liberty Grill', 'Main Street Diner', 'All-American Eats'],
+                    mexican: ['El Sombrero', 'Casa Mexicana', 'Fiesta Cantina', 'Los Amigos Tacos'],
                     indian: ['Spice Palace', 'Taj Mahal', 'Curry House', 'Mumbai Express', 'Saffron Garden'],
-                    cafe: ['Corner Café', 'The Daily Grind', 'Brew & Bite', 'Cozy Corner', 'Steam & Bean'],
-                    bistro: ['Le Petit Bistro', 'Garden Bistro', 'The Local', 'Artisan Kitchen', 'Fresh & Local']
+                    mediterranean: ['Olive Branch', 'Mediterranean Breeze', 'Santorini Grill', 'Cyprus Kitchen'],
+                    french: ['Le Petit Bistro', 'Café de Paris', 'Brasserie Lyon', 'Chez Pierre']
                 };
                 
-                const nameList = names[cuisine] || names.cafe;
+                const nameList = names[cuisine] || ['Local Eatery'];
                 return nameList[Math.floor(Math.random() * nameList.length)];
             }
 
-            generateSampleMenu(cuisine) {
+            generateMenu(cuisine) {
                 const menus = {
                     italian: [
-                        { name: 'Margherita Pizza', price: '$14.99' },
-                        { name: 'Spaghetti Carbonara', price: '$16.99' },
-                        { name: 'Caesar Salad', price: '$12.99' }
+                        { name: 'Margherita Pizza', price: '$16' },
+                        { name: 'Spaghetti Carbonara', price: '$18' },
+                        { name: 'Caesar Salad', price: '$14' }
                     ],
                     asian: [
-                        { name: 'Chicken Teriyaki Bowl', price: '$13.99' },
-                        { name: 'Vegetable Fried Rice', price: '$11.99' },
-                        { name: 'Miso Soup', price: '$4.99' }
+                        { name: 'Chicken Teriyaki Bowl', price: '$15' },
+                        { name: 'Vegetable Fried Rice', price: '$13' },
+                        { name: 'Miso Soup', price: '$6' }
                     ],
                     american: [
-                        { name: 'Classic Cheeseburger', price: '$15.99' },
-                        { name: 'BBQ Ribs', price: '$19.99' },
-                        { name: 'Buffalo Wings', price: '$12.99' }
+                        { name: 'Classic Cheeseburger', price: '$17' },
+                        { name: 'BBQ Ribs', price: '$22' },
+                        { name: 'Buffalo Wings', price: '$14' }
                     ],
                     mexican: [
-                        { name: 'Chicken Burrito', price: '$12.99' },
-                        { name: 'Fish Tacos', price: '$14.99' },
-                        { name: 'Guacamole & Chips', price: '$8.99' }
+                        { name: 'Chicken Burrito', price: '$14' },
+                        { name: 'Fish Tacos', price: '$16' },
+                        { name: 'Guacamole & Chips', price: '$9' }
                     ],
                     indian: [
-                        { name: 'Chicken Tikka Masala', price: '$16.99' },
-                        { name: 'Vegetable Biryani', price: '$14.99' },
-                        { name: 'Naan Bread', price: '$3.99' }
+                        { name: 'Chicken Tikka Masala', price: '$18' },
+                        { name: 'Vegetable Biryani', price: '$16' },
+                        { name: 'Naan Bread', price: '$5' }
+                    ],
+                    mediterranean: [
+                        { name: 'Greek Salad', price: '$15' },
+                        { name: 'Lamb Gyros', price: '$17' },
+                        { name: 'Hummus Plate', price: '$12' }
+                    ],
+                    french: [
+                        { name: 'Croque Monsieur', price: '$16' },
+                        { name: 'French Onion Soup', price: '$12' },
+                        { name: 'Quiche Lorraine', price: '$14' }
                     ]
                 };
 
                 return menus[cuisine] || menus.american;
             }
 
-            displayRestaurants(restaurants) {
-                const grid = document.getElementById('restaurantsGrid');
-                grid.innerHTML = '';
-
-                if (restaurants.length === 0) {
-                    grid.innerHTML = '<p>No restaurants found. Try adjusting your filters or search area.</p>';
+            displayRestaurants() {
+                const container = document.getElementById('restaurantsContainer');
+                
+                if (this.restaurants.length === 0) {
+                    container.innerHTML = '<div class="no-restaurants">No restaurants found in your area.</div>';
                     return;
                 }
 
-                restaurants.forEach(restaurant => {
+                const grid = document.createElement('div');
+                grid.className = 'restaurants-grid';
+                
+                this.restaurants.forEach(restaurant => {
                     const card = this.createRestaurantCard(restaurant);
                     grid.appendChild(card);
                 });
+
+                container.innerHTML = '';
+                container.appendChild(grid);
             }
 
             createRestaurantCard(restaurant) {
                 const card = document.createElement('div');
                 card.className = 'restaurant-card';
+                card.id = `restaurant-${restaurant.id}`;
                 
-                const stars = '★'.repeat(Math.floor(restaurant.rating)) + '☆'.repeat(5 - Math.floor(restaurant.rating));
-                const priceSymbols = '$'.repeat(restaurant.priceLevel);
+                const stars = '★'.repeat(Math.floor(restaurant.rating));
                 const distanceText = restaurant.distance < 1000 
                     ? `${Math.round(restaurant.distance)}m` 
                     : `${(restaurant.distance / 1000).toFixed(1)}km`;
@@ -641,27 +463,30 @@
                     <div class="restaurant-header">
                         <div>
                             <div class="restaurant-name">${restaurant.name}</div>
-                            <div class="restaurant-type">${restaurant.type}</div>
+                            <div class="restaurant-type">${restaurant.cuisine.charAt(0).toUpperCase() + restaurant.cuisine.slice(1)} Restaurant</div>
                         </div>
-                        <div class="restaurant-rating">
-                            <span>${stars}</span>
-                            <span>${restaurant.rating.toFixed(1)}</span>
+                        <div class="restaurant-status ${restaurant.isOpen ? 'status-open' : 'status-closed'}">
+                            ${restaurant.isOpen ? 'Open' : 'Closed'}
                         </div>
                     </div>
                     
                     <div class="restaurant-info">
-                        <div class="restaurant-distance">📍 ${distanceText} away</div>
-                        <div>💰 ${priceSymbols} • ${restaurant.address}</div>
-                        <div>📞 ${restaurant.phone}</div>
-                        <div>
-                            <span class="restaurant-status ${restaurant.isOpen ? 'status-open' : 'status-closed'}">
-                                ${restaurant.isOpen ? '🟢 Open Now' : '🔴 Closed'}
-                            </span>
+                        <div class="info-item">
+                            <span>⭐</span>
+                            <span>${restaurant.rating.toFixed(1)}</span>
+                        </div>
+                        <div class="info-item">
+                            <span>📍</span>
+                            <span>${distanceText}</span>
+                        </div>
+                        <div class="info-item">
+                            <span>🚶</span>
+                            <span>${restaurant.walkTime} min</span>
                         </div>
                     </div>
 
                     <div class="menu-preview">
-                        <strong>Sample Menu:</strong>
+                        <h4>Sample Menu</h4>
                         ${restaurant.menu.map(item => `
                             <div class="menu-item">
                                 <span class="menu-item-name">${item.name}</span>
@@ -674,38 +499,42 @@
                 return card;
             }
 
-            applyFilters() {
-                const radius = parseInt(document.getElementById('radiusFilter').value);
-                const cuisine = document.getElementById('cuisineFilter').value;
-                const priceLevel = document.getElementById('priceFilter').value;
-                const openOnly = document.getElementById('openFilter').value === 'true';
-
-                let filtered = this.restaurants.filter(restaurant => {
-                    // Distance filter
-                    if (restaurant.distance > radius) return false;
-                    
-                    // Cuisine filter
-                    if (cuisine && restaurant.cuisine !== cuisine) return false;
-                    
-                    // Price filter
-                    if (priceLevel && restaurant.priceLevel !== parseInt(priceLevel)) return false;
-                    
-                    // Open filter
-                    if (openOnly && !restaurant.isOpen) return false;
-                    
-                    return true;
+            randomPick() {
+                // Clear previous highlights
+                document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {
+                    card.classList.remove('highlighted');
                 });
 
-                this.displayRestaurants(filtered);
+                // Filter to open restaurants only
+                const openRestaurants = this.restaurants.filter(r => r.isOpen);
                 
-                const statusDiv = document.getElementById('locationStatus');
-                statusDiv.innerHTML = `<div class="status success">✅ Showing ${filtered.length} restaurants matching your filters</div>`;
+                if (openRestaurants.length === 0) {
+                    alert('Sorry, no restaurants are currently open!');
+                    return;
+                }
+
+                const btn = document.getElementById('randomizeBtn');
+                btn.innerHTML = '🎲 Picking...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    const randomRestaurant = openRestaurants[Math.floor(Math.random() * openRestaurants.length)];
+                    const card = document.getElementById(`restaurant-${randomRestaurant.id}`);
+                    
+                    if (card) {
+                        card.classList.add('highlighted');
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+
+                    btn.innerHTML = '🎲 Pick something else!';
+                    btn.disabled = false;
+                }, 1500);
             }
         }
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', () => {
-            new LunchFinder();
+            new SimpleLunchFinder();
         });
     </script>
 </body>
