@@ -147,6 +147,13 @@
             font-weight: 500;
         }
 
+        /* Currency Badge */
+        .currency-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #15803d;
+            border: 0.5px solid rgba(34, 197, 94, 0.3);
+        }
+
         /* Main Content */
         .main-container {
             max-width: 1792px;
@@ -624,6 +631,10 @@
                     <span class="en">Svenska</span>
                     <span class="sv hidden">English</span>
                 </button>
+                <div class="badge currency-badge" id="currencyBadge">
+                    <span>💰</span>
+                    <span id="currencyText">USD</span>
+                </div>
                 <div class="badge" id="locationBadge">
                     <span class="icon-clock"></span>
                     <span class="en">Detecting location...</span>
@@ -692,10 +703,309 @@
     </footer>
 
     <script>
+        class CurrencyService {
+            constructor() {
+                this.exchangeRates = {
+                    USD: 1.0,
+                    EUR: 0.85,
+                    GBP: 0.73,
+                    SEK: 10.50,
+                    NOK: 10.80,
+                    DKK: 6.35,
+                    CHF: 0.88,
+                    CAD: 1.35,
+                    AUD: 1.45,
+                    JPY: 110.0,
+                    CNY: 6.45,
+                    INR: 74.5,
+                    BRL: 5.2,
+                    MXN: 20.1,
+                    RUB: 73.5,
+                    KRW: 1180.0,
+                    SGD: 1.35,
+                    HKD: 7.8,
+                    NZD: 1.42,
+                    ZAR: 14.8,
+                    TRY: 8.5,
+                    PLN: 3.9,
+                    CZK: 21.5,
+                    HUF: 295.0,
+                    RON: 4.2,
+                    BGN: 1.66,
+                    HRK: 6.4,
+                    RSD: 100.0,
+                    UAH: 27.0,
+                    THB: 31.5,
+                    MYR: 4.15,
+                    IDR: 14250.0,
+                    PHP: 50.5,
+                    VND: 23000.0,
+                    AED: 3.67,
+                    SAR: 3.75,
+                    QAR: 3.64,
+                    KWD: 0.30,
+                    BHD: 0.38,
+                    OMR: 0.38,
+                    JOD: 0.71,
+                    LBP: 1507.5,
+                    EGP: 15.7,
+                    MAD: 8.9,
+                    TND: 2.8,
+                    DZD: 134.0,
+                    NGN: 411.0,
+                    GHS: 6.1,
+                    KES: 108.0,
+                    UGX: 3550.0,
+                    TZS: 2320.0,
+                    ZMW: 16.8,
+                    BWP: 11.2,
+                    MUR: 42.5,
+                    SCR: 13.4,
+                    ETB: 44.3,
+                    RWF: 1030.0,
+                    XOF: 558.0,
+                    XAF: 558.0,
+                    CLP: 800.0,
+                    ARS: 98.5,
+                    UYU: 43.8,
+                    PYG: 6850.0,
+                    BOB: 6.9,
+                    PEN: 3.6,
+                    COP: 3750.0,
+                    VES: 4.18,
+                    GYD: 209.0,
+                    SRD: 14.3,
+                    TTD: 6.8,
+                    JMD: 146.0,
+                    BBD: 2.0,
+                    BSD: 1.0,
+                    BZD: 2.0,
+                    XCD: 2.7,
+                    AWG: 1.8,
+                    ANG: 1.8,
+                    CUP: 24.0,
+                    DOP: 56.5,
+                    GTQ: 7.7,
+                    HNL: 24.1,
+                    NIO: 35.2,
+                    CRC: 620.0,
+                    PAB: 1.0,
+                    SVC: 8.75,
+                    HTG: 87.0,
+                    ISK: 129.0,
+                    ALL: 103.0,
+                    MKD: 52.4,
+                    BAM: 1.66,
+                    MDL: 17.8,
+                    GEL: 3.1,
+                    AMD: 523.0,
+                    AZN: 1.7,
+                    BYN: 2.6,
+                    KZT: 425.0,
+                    KGS: 84.7,
+                    TJS: 11.3,
+                    TMT: 3.5,
+                    UZS: 10650.0,
+                    AFN: 87.0,
+                    PKR: 176.0,
+                    LKR: 200.0,
+                    BDT: 85.0,
+                    BTN: 74.5,
+                    MVR: 15.4,
+                    NPR: 119.0,
+                    MMK: 1780.0,
+                    LAK: 9500.0,
+                    KHR: 4080.0,
+                    BND: 1.35,
+                    FJD: 2.1,
+                    PGK: 3.5,
+                    SBD: 8.0,
+                    TOP: 2.3,
+                    VUV: 112.0,
+                    WST: 2.6,
+                    XPF: 101.0
+                };
+
+                this.countryToCurrency = {
+                    // North America
+                    'US': 'USD', 'CA': 'CAD', 'MX': 'MXN',
+                    'GT': 'GTQ', 'BZ': 'BZD', 'SV': 'USD', 'HN': 'HNL',
+                    'NI': 'NIO', 'CR': 'CRC', 'PA': 'PAB',
+                    
+                    // Europe
+                    'AD': 'EUR', 'AT': 'EUR', 'BE': 'EUR', 'CY': 'EUR', 'EE': 'EUR',
+                    'FI': 'EUR', 'FR': 'EUR', 'DE': 'EUR', 'GR': 'EUR', 'IE': 'EUR',
+                    'IT': 'EUR', 'LV': 'EUR', 'LT': 'EUR', 'LU': 'EUR', 'MT': 'EUR',
+                    'MC': 'EUR', 'NL': 'EUR', 'PT': 'EUR', 'SM': 'EUR', 'SK': 'EUR',
+                    'SI': 'EUR', 'ES': 'EUR', 'VA': 'EUR',
+                    'GB': 'GBP', 'SE': 'SEK', 'NO': 'NOK', 'DK': 'DKK', 'CH': 'CHF',
+                    'IS': 'ISK', 'PL': 'PLN', 'CZ': 'CZK', 'HU': 'HUF', 'RO': 'RON',
+                    'BG': 'BGN', 'HR': 'HRK', 'RS': 'RSD', 'BA': 'BAM', 'MK': 'MKD',
+                    'AL': 'ALL', 'ME': 'EUR', 'XK': 'EUR', 'MD': 'MDL', 'UA': 'UAH',
+                    'BY': 'BYN', 'RU': 'RUB', 'GE': 'GEL', 'AM': 'AMD', 'AZ': 'AZN',
+                    'TR': 'TRY',
+                    
+                    // Asia
+                    'CN': 'CNY', 'JP': 'JPY', 'KR': 'KRW', 'IN': 'INR', 'TH': 'THB',
+                    'MY': 'MYR', 'SG': 'SGD', 'ID': 'IDR', 'PH': 'PHP', 'VN': 'VND',
+                    'HK': 'HKD', 'TW': 'TWD', 'MO': 'MOP', 'BN': 'BND', 'KH': 'KHR',
+                    'LA': 'LAK', 'MM': 'MMK', 'AF': 'AFN', 'PK': 'PKR', 'BD': 'BDT',
+                    'LK': 'LKR', 'MV': 'MVR', 'NP': 'NPR', 'BT': 'BTN', 'KZ': 'KZT',
+                    'KG': 'KGS', 'TJ': 'TJS', 'TM': 'TMT', 'UZ': 'UZS', 'MN': 'MNT',
+                    
+                    // Middle East
+                    'AE': 'AED', 'SA': 'SAR', 'QA': 'QAR', 'KW': 'KWD', 'BH': 'BHD',
+                    'OM': 'OMR', 'JO': 'JOD', 'LB': 'LBP', 'SY': 'SYP', 'IQ': 'IQD',
+                    'IR': 'IRR', 'IL': 'ILS', 'PS': 'ILS', 'YE': 'YER',
+                    
+                    // Africa
+                    'EG': 'EGP', 'LY': 'LYD', 'TN': 'TND', 'DZ': 'DZD', 'MA': 'MAD',
+                    'SD': 'SDG', 'SS': 'SSP', 'ET': 'ETB', 'ER': 'ERN', 'DJ': 'DJF',
+                    'SO': 'SOS', 'KE': 'KES', 'UG': 'UGX', 'TZ': 'TZS', 'RW': 'RWF',
+                    'BI': 'BIF', 'CD': 'CDF', 'CF': 'XAF', 'TD': 'XAF', 'CM': 'XAF',
+                    'GQ': 'XAF', 'GA': 'XAF', 'CG': 'XAF', 'AO': 'AOA', 'ZM': 'ZMW',
+                    'ZW': 'ZWL', 'BW': 'BWP', 'NA': 'NAD', 'ZA': 'ZAR', 'LS': 'LSL',
+                    'SZ': 'SZL', 'MZ': 'MZN', 'MW': 'MWK', 'MG': 'MGA', 'MU': 'MUR',
+                    'SC': 'SCR', 'KM': 'KMF', 'YT': 'EUR', 'RE': 'EUR',
+                    'GH': 'GHS', 'NG': 'NGN', 'BJ': 'XOF', 'TG': 'XOF', 'BF': 'XOF',
+                    'ML': 'XOF', 'NE': 'XOF', 'CI': 'XOF', 'LR': 'LRD', 'SL': 'SLL',
+                    'GN': 'GNF', 'GW': 'XOF', 'CV': 'CVE', 'SN': 'XOF', 'GM': 'GMD',
+                    'MR': 'MRU',
+                    
+                    // South America
+                    'BR': 'BRL', 'AR': 'ARS', 'CL': 'CLP', 'PE': 'PEN', 'BO': 'BOB',
+                    'PY': 'PYG', 'UY': 'UYU', 'CO': 'COP', 'VE': 'VES', 'EC': 'USD',
+                    'GY': 'GYD', 'SR': 'SRD', 'GF': 'EUR', 'FK': 'FKP',
+                    
+                    // Caribbean
+                    'CU': 'CUP', 'JM': 'JMD', 'HT': 'HTG', 'DO': 'DOP', 'PR': 'USD',
+                    'VI': 'USD', 'BB': 'BBD', 'TT': 'TTD', 'GD': 'XCD', 'VC': 'XCD',
+                    'LC': 'XCD', 'DM': 'XCD', 'AG': 'XCD', 'KN': 'XCD', 'AI': 'XCD',
+                    'MS': 'XCD', 'VG': 'USD', 'KY': 'KYD', 'TC': 'USD', 'BS': 'BSD',
+                    'BM': 'BMD', 'AW': 'AWG', 'CW': 'ANG', 'SX': 'ANG', 'BQ': 'USD',
+                    
+                    // Oceania
+                    'AU': 'AUD', 'NZ': 'NZD', 'FJ': 'FJD', 'PG': 'PGK', 'SB': 'SBD',
+                    'VU': 'VUV', 'NC': 'XPF', 'PF': 'XPF', 'WF': 'XPF', 'CK': 'NZD',
+                    'NU': 'NZD', 'PN': 'NZD', 'TK': 'NZD', 'TO': 'TOP', 'WS': 'WST',
+                    'KI': 'AUD', 'TV': 'AUD', 'NR': 'AUD', 'PW': 'USD', 'FM': 'USD',
+                    'MH': 'USD', 'MP': 'USD', 'GU': 'USD', 'AS': 'USD'
+                };
+
+                this.currencySymbols = {
+                    'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CNY': '¥',
+                    'KRW': '₩', 'INR': '₹', 'RUB': '₽', 'SEK': 'kr', 'NOK': 'kr',
+                    'DKK': 'kr', 'CHF': 'Fr', 'CAD': 'C$', 'AUD': 'A$', 'NZD': 'NZ$',
+                    'BRL': 'R$', 'MXN': '$', 'ARS': '$', 'CLP': '$', 'COP': '$',
+                    'PEN': 'S/', 'UYU': '$U', 'BOB': 'Bs', 'PYG': '₲', 'VES': 'Bs',
+                    'ZAR': 'R', 'EGP': 'E£', 'NGN': '₦', 'GHS': '₵', 'KES': 'KSh',
+                    'UGX': 'USh', 'TZS': 'TSh', 'ETB': 'Br', 'MAD': 'DH', 'TND': 'DT',
+                    'DZD': 'DA', 'AED': 'د.إ', 'SAR': 'ر.س', 'QAR': 'ر.ق', 'KWD': 'د.ك',
+                    'BHD': '.د.ب', 'OMR': 'ر.ع.', 'JOD': 'د.ا', 'LBP': 'ل.ل',
+                    'THB': '฿', 'MYR': 'RM', 'SGD': 'S$', 'IDR': 'Rp', 'PHP': '₱',
+                    'VND': '₫', 'HKD': 'HK$', 'TWD': 'NT$', 'PKR': '₨', 'BDT': '৳',
+                    'LKR': 'Rs', 'NPR': 'Rs', 'AFN': '؋', 'KZT': '₸', 'UZS': 'soʻm',
+                    'TRY': '₺', 'PLN': 'zł', 'CZK': 'Kč', 'HUF': 'Ft', 'RON': 'lei',
+                    'BGN': 'лв', 'HRK': 'kn', 'RSD': 'дин', 'UAH': '₴', 'BYN': 'Br',
+                    'GEL': '₾', 'AMD': '֏', 'AZN': '₼', 'ISK': 'kr', 'ALL': 'L',
+                    'MKD': 'ден', 'BAM': 'КМ', 'MDL': 'L'
+                };
+
+                this.currentCurrency = 'USD';
+                this.currentCountry = null;
+            }
+
+            async detectCurrencyFromLocation(lat, lng) {
+                try {
+                    // Simulate reverse geocoding API call
+                    const country = await this.reverseGeocode(lat, lng);
+                    this.currentCountry = country;
+                    
+                    const currency = this.countryToCurrency[country] || 'USD';
+                    this.currentCurrency = currency;
+                    
+                    return {
+                        country: country,
+                        currency: currency,
+                        symbol: this.currencySymbols[currency] || currency
+                    };
+                } catch (error) {
+                    console.error('Currency detection failed:', error);
+                    return {
+                        country: 'US',
+                        currency: 'USD',
+                        symbol: '$'
+                    };
+                }
+            }
+
+            async reverseGeocode(lat, lng) {
+                // Simulate reverse geocoding based on coordinates
+                // In production, this would call a real geocoding API
+                
+                // Simple coordinate-based country detection for demo
+                if (lat >= 55 && lat <= 69 && lng >= 10 && lng <= 25) return 'SE'; // Sweden
+                if (lat >= 58 && lat <= 71 && lng >= 4 && lng <= 31) return 'NO'; // Norway
+                if (lat >= 54 && lat <= 58 && lng >= 8 && lng <= 15) return 'DK'; // Denmark
+                if (lat >= 45 && lat <= 55 && lng >= 5 && lng <= 15) return 'DE'; // Germany
+                if (lat >= 41 && lat <= 51 && lng >= -5 && lng <= 10) return 'FR'; // France
+                if (lat >= 50 && lat <= 59 && lng >= -8 && lng <= 2) return 'GB'; // UK
+                if (lat >= 35 && lat <= 47 && lng >= 6 && lng <= 19) return 'IT'; // Italy
+                if (lat >= 35 && lat <= 44 && lng >= -10 && lng <= 5) return 'ES'; // Spain
+                if (lat >= 25 && lat <= 49 && lng >= -125 && lng <= -66) return 'US'; // USA
+                if (lat >= 41 && lat <= 84 && lng >= -141 && lng <= -52) return 'CA'; // Canada
+                if (lat >= 14 && lat <= 33 && lng >= -118 && lng <= -86) return 'MX'; // Mexico
+                if (lat >= -55 && lat <= 12 && lng >= -82 && lng <= -34) return 'BR'; // Brazil
+                if (lat >= -56 && lat <= -21 && lng >= -74 && lng <= -53) return 'AR'; // Argentina
+                if (lat >= 20 && lat <= 54 && lng >= 73 && lng <= 135) return 'CN'; // China
+                if (lat >= 24 && lat <= 46 && lng >= 123 && lng <= 146) return 'JP'; // Japan
+                if (lat >= 33 && lat <= 43 && lng >= 124 && lng <= 132) return 'KR'; // South Korea
+                if (lat >= 6 && lat <= 37 && lng >= 68 && lng <= 97) return 'IN'; // India
+                if (lat >= -44 && lat <= -10 && lng >= 113 && lng <= 154) return 'AU'; // Australia
+                
+                // Default to US if no match
+                return 'US';
+            }
+
+            convertPrice(priceString, fromCurrency = 'USD', toCurrency = null) {
+                if (!toCurrency) toCurrency = this.currentCurrency;
+                if (fromCurrency === toCurrency) return priceString;
+
+                // Extract numeric value from price string
+                const numericValue = parseFloat(priceString.replace(/[^0-9.]/g, ''));
+                if (isNaN(numericValue)) return priceString;
+
+                // Convert to target currency
+                const usdValue = numericValue / this.exchangeRates[fromCurrency];
+                const convertedValue = usdValue * this.exchangeRates[toCurrency];
+
+                // Format with appropriate symbol and decimal places
+                const symbol = this.currencySymbols[toCurrency] || toCurrency;
+                
+                // Different formatting for different currencies
+                if (['JPY', 'KRW', 'VND', 'IDR', 'CLP', 'PYG', 'UGX', 'TZS', 'RWF', 'KHR', 'LAK', 'MMK', 'UZS'].includes(toCurrency)) {
+                    // No decimal places for these currencies
+                    return `${symbol}${Math.round(convertedValue).toLocaleString()}`;
+                } else {
+                    // 2 decimal places for most currencies
+                    return `${symbol}${convertedValue.toFixed(2)}`;
+                }
+            }
+
+            getCurrencyInfo() {
+                return {
+                    currency: this.currentCurrency,
+                    symbol: this.currencySymbols[this.currentCurrency] || this.currentCurrency,
+                    country: this.currentCountry
+                };
+            }
+        }
+
         class LocationLunchFinder {
             constructor() {
                 this.currentLocation = null;
                 this.restaurants = [];
+                this.currencyService = new CurrencyService();
                 this.init();
             }
 
@@ -711,6 +1021,8 @@
 
             async detectLocation() {
                 const badge = document.getElementById('locationBadge');
+                const currencyBadge = document.getElementById('currencyBadge');
+                const currencyText = document.getElementById('currencyText');
                 
                 try {
                     const position = await new Promise((resolve, reject) => {
@@ -726,12 +1038,22 @@
                         lng: position.coords.longitude
                     };
 
+                    // Detect currency based on location
+                    const currencyInfo = await this.currencyService.detectCurrencyFromLocation(
+                        this.currentLocation.lat, 
+                        this.currentLocation.lng
+                    );
+
+                    // Update UI
                     badge.innerHTML = `
                         <span class="icon-map"></span>
                         <span class="en">Location found</span>
                         <span class="sv hidden">Plats hittad</span>
                     `;
                     badge.style.background = 'rgba(34, 197, 94, 0.2)';
+
+                    currencyText.textContent = `${currencyInfo.symbol} ${currencyInfo.currency}`;
+                    currencyBadge.title = `Currency: ${currencyInfo.currency} (${currencyInfo.country})`;
 
                 } catch (error) {
                     console.error('Location error:', error);
@@ -742,8 +1064,10 @@
                     `;
                     badge.style.background = 'rgba(249, 115, 22, 0.2)';
                     
-                    // Use default location (Gothenburg)
+                    // Use default location (Gothenburg) and currency
                     this.currentLocation = { lat: 57.7089, lng: 11.9746 };
+                    const currencyInfo = await this.currencyService.detectCurrencyFromLocation(57.7089, 11.9746);
+                    currencyText.textContent = `${currencyInfo.symbol} ${currencyInfo.currency}`;
                 }
             }
 
@@ -819,66 +1143,66 @@
             generateMenu(cuisine) {
                 const baseMenus = {
                     italian: [
-                        { name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, basil', price: '$16', category: 'Pizza' },
-                        { name: 'Spaghetti Carbonara', description: 'Eggs, pancetta, parmesan, black pepper', price: '$18', category: 'Pasta' },
-                        { name: 'Caesar Salad', description: 'Romaine lettuce, croutons, parmesan', price: '$14', category: 'Salads' },
-                        { name: 'Lasagna Bolognese', description: 'Layers of pasta, meat sauce, bechamel', price: '$20', category: 'Pasta' },
-                        { name: 'Bruschetta', description: 'Toasted bread with tomatoes and basil', price: '$8', category: 'Appetizers' },
-                        { name: 'Tiramisu', description: 'Coffee-flavored Italian dessert', price: '$9', category: 'Desserts' },
-                        { name: 'Risotto Mushroom', description: 'Creamy rice with wild mushrooms', price: '$17', category: 'Risotto' },
-                        { name: 'Prosciutto Pizza', description: 'Tomato sauce, mozzarella, prosciutto, arugula', price: '$19', category: 'Pizza' }
+                        { name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, basil', price: 16, category: 'Pizza' },
+                        { name: 'Spaghetti Carbonara', description: 'Eggs, pancetta, parmesan, black pepper', price: 18, category: 'Pasta' },
+                        { name: 'Caesar Salad', description: 'Romaine lettuce, croutons, parmesan', price: 14, category: 'Salads' },
+                        { name: 'Lasagna Bolognese', description: 'Layers of pasta, meat sauce, bechamel', price: 20, category: 'Pasta' },
+                        { name: 'Bruschetta', description: 'Toasted bread with tomatoes and basil', price: 8, category: 'Appetizers' },
+                        { name: 'Tiramisu', description: 'Coffee-flavored Italian dessert', price: 9, category: 'Desserts' },
+                        { name: 'Risotto Mushroom', description: 'Creamy rice with wild mushrooms', price: 17, category: 'Risotto' },
+                        { name: 'Prosciutto Pizza', description: 'Tomato sauce, mozzarella, prosciutto, arugula', price: 19, category: 'Pizza' }
                     ],
                     asian: [
-                        { name: 'Chicken Teriyaki Bowl', description: 'Grilled chicken, rice, vegetables', price: '$15', category: 'Bowls' },
-                        { name: 'Vegetable Fried Rice', description: 'Wok-fried rice with mixed vegetables', price: '$13', category: 'Rice' },
-                        { name: 'Miso Soup', description: 'Traditional Japanese soup', price: '$6', category: 'Soups' },
-                        { name: 'Pad Thai', description: 'Stir-fried noodles with shrimp and peanuts', price: '$16', category: 'Noodles' },
-                        { name: 'Sushi Combo', description: '8 pieces nigiri and 6 pieces maki', price: '$22', category: 'Sushi' },
-                        { name: 'Beef Ramen', description: 'Rich broth with tender beef and noodles', price: '$18', category: 'Ramen' },
-                        { name: 'Spring Rolls', description: 'Fresh vegetables wrapped in rice paper', price: '$9', category: 'Appetizers' },
-                        { name: 'Green Curry', description: 'Spicy coconut curry with vegetables', price: '$17', category: 'Curry' },
-                        { name: 'Dumplings', description: 'Steamed pork and vegetable dumplings', price: '$12', category: 'Appetizers' }
+                        { name: 'Chicken Teriyaki Bowl', description: 'Grilled chicken, rice, vegetables', price: 15, category: 'Bowls' },
+                        { name: 'Vegetable Fried Rice', description: 'Wok-fried rice with mixed vegetables', price: 13, category: 'Rice' },
+                        { name: 'Miso Soup', description: 'Traditional Japanese soup', price: 6, category: 'Soups' },
+                        { name: 'Pad Thai', description: 'Stir-fried noodles with shrimp and peanuts', price: 16, category: 'Noodles' },
+                        { name: 'Sushi Combo', description: '8 pieces nigiri and 6 pieces maki', price: 22, category: 'Sushi' },
+                        { name: 'Beef Ramen', description: 'Rich broth with tender beef and noodles', price: 18, category: 'Ramen' },
+                        { name: 'Spring Rolls', description: 'Fresh vegetables wrapped in rice paper', price: 9, category: 'Appetizers' },
+                        { name: 'Green Curry', description: 'Spicy coconut curry with vegetables', price: 17, category: 'Curry' },
+                        { name: 'Dumplings', description: 'Steamed pork and vegetable dumplings', price: 12, category: 'Appetizers' }
                     ],
                     american: [
-                        { name: 'Classic Cheeseburger', description: 'Beef patty, cheese, lettuce, tomato', price: '$17', category: 'Burgers' },
-                        { name: 'BBQ Ribs', description: 'Slow-cooked ribs with BBQ sauce', price: '$22', category: 'BBQ' },
-                        { name: 'Buffalo Wings', description: 'Spicy chicken wings with blue cheese', price: '$14', category: 'Wings' },
-                        { name: 'Mac and Cheese', description: 'Creamy macaroni with three cheeses', price: '$13', category: 'Comfort Food' },
-                        { name: 'Philly Cheesesteak', description: 'Sliced beef with peppers and cheese', price: '$16', category: 'Sandwiches' },
-                        { name: 'Loaded Nachos', description: 'Tortilla chips with cheese, jalapeños, sour cream', price: '$12', category: 'Appetizers' }
+                        { name: 'Classic Cheeseburger', description: 'Beef patty, cheese, lettuce, tomato', price: 17, category: 'Burgers' },
+                        { name: 'BBQ Ribs', description: 'Slow-cooked ribs with BBQ sauce', price: 22, category: 'BBQ' },
+                        { name: 'Buffalo Wings', description: 'Spicy chicken wings with blue cheese', price: 14, category: 'Wings' },
+                        { name: 'Mac and Cheese', description: 'Creamy macaroni with three cheeses', price: 13, category: 'Comfort Food' },
+                        { name: 'Philly Cheesesteak', description: 'Sliced beef with peppers and cheese', price: 16, category: 'Sandwiches' },
+                        { name: 'Loaded Nachos', description: 'Tortilla chips with cheese, jalapeños, sour cream', price: 12, category: 'Appetizers' }
                     ],
                     mexican: [
-                        { name: 'Chicken Burrito', description: 'Grilled chicken, rice, beans, salsa', price: '$14', category: 'Burritos' },
-                        { name: 'Fish Tacos', description: 'Grilled fish, cabbage, lime crema', price: '$16', category: 'Tacos' },
-                        { name: 'Guacamole & Chips', description: 'Fresh avocado dip with tortilla chips', price: '$9', category: 'Appetizers' },
-                        { name: 'Quesadilla', description: 'Grilled tortilla with cheese and chicken', price: '$13', category: 'Quesadillas' },
-                        { name: 'Enchiladas', description: 'Rolled tortillas with sauce and cheese', price: '$15', category: 'Enchiladas' },
-                        { name: 'Churros', description: 'Fried dough with cinnamon sugar', price: '$7', category: 'Desserts' }
+                        { name: 'Chicken Burrito', description: 'Grilled chicken, rice, beans, salsa', price: 14, category: 'Burritos' },
+                        { name: 'Fish Tacos', description: 'Grilled fish, cabbage, lime crema', price: 16, category: 'Tacos' },
+                        { name: 'Guacamole & Chips', description: 'Fresh avocado dip with tortilla chips', price: 9, category: 'Appetizers' },
+                        { name: 'Quesadilla', description: 'Grilled tortilla with cheese and chicken', price: 13, category: 'Quesadillas' },
+                        { name: 'Enchiladas', description: 'Rolled tortillas with sauce and cheese', price: 15, category: 'Enchiladas' },
+                        { name: 'Churros', description: 'Fried dough with cinnamon sugar', price: 7, category: 'Desserts' }
                     ],
                     indian: [
-                        { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with chicken', price: '$18', category: 'Curry' },
-                        { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables', price: '$16', category: 'Rice' },
-                        { name: 'Naan Bread', description: 'Traditional Indian flatbread', price: '$5', category: 'Bread' },
-                        { name: 'Samosas', description: 'Fried pastries with spiced filling', price: '$8', category: 'Appetizers' },
-                        { name: 'Butter Chicken', description: 'Mild curry with tender chicken', price: '$17', category: 'Curry' },
-                        { name: 'Dal Lentils', description: 'Spiced lentil curry', price: '$14', category: 'Vegetarian' },
-                        { name: 'Mango Lassi', description: 'Yogurt drink with mango', price: '$6', category: 'Beverages' }
+                        { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with chicken', price: 18, category: 'Curry' },
+                        { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables', price: 16, category: 'Rice' },
+                        { name: 'Naan Bread', description: 'Traditional Indian flatbread', price: 5, category: 'Bread' },
+                        { name: 'Samosas', description: 'Fried pastries with spiced filling', price: 8, category: 'Appetizers' },
+                        { name: 'Butter Chicken', description: 'Mild curry with tender chicken', price: 17, category: 'Curry' },
+                        { name: 'Dal Lentils', description: 'Spiced lentil curry', price: 14, category: 'Vegetarian' },
+                        { name: 'Mango Lassi', description: 'Yogurt drink with mango', price: 6, category: 'Beverages' }
                     ],
                     mediterranean: [
-                        { name: 'Greek Salad', description: 'Tomatoes, olives, feta, cucumber', price: '$15', category: 'Salads' },
-                        { name: 'Lamb Gyros', description: 'Seasoned lamb with tzatziki', price: '$17', category: 'Gyros' },
-                        { name: 'Hummus Plate', description: 'Chickpea dip with pita bread', price: '$12', category: 'Appetizers' },
-                        { name: 'Falafel Wrap', description: 'Fried chickpea balls in pita', price: '$14', category: 'Wraps' },
-                        { name: 'Moussaka', description: 'Layered eggplant and meat casserole', price: '$19', category: 'Casseroles' },
-                        { name: 'Baklava', description: 'Sweet pastry with nuts and honey', price: '$8', category: 'Desserts' }
+                        { name: 'Greek Salad', description: 'Tomatoes, olives, feta, cucumber', price: 15, category: 'Salads' },
+                        { name: 'Lamb Gyros', description: 'Seasoned lamb with tzatziki', price: 17, category: 'Gyros' },
+                        { name: 'Hummus Plate', description: 'Chickpea dip with pita bread', price: 12, category: 'Appetizers' },
+                        { name: 'Falafel Wrap', description: 'Fried chickpea balls in pita', price: 14, category: 'Wraps' },
+                        { name: 'Moussaka', description: 'Layered eggplant and meat casserole', price: 19, category: 'Casseroles' },
+                        { name: 'Baklava', description: 'Sweet pastry with nuts and honey', price: 8, category: 'Desserts' }
                     ],
                     french: [
-                        { name: 'Croque Monsieur', description: 'Ham and cheese sandwich', price: '$16', category: 'Sandwiches' },
-                        { name: 'French Onion Soup', description: 'Classic onion soup with cheese', price: '$12', category: 'Soups' },
-                        { name: 'Quiche Lorraine', description: 'Bacon and cheese quiche', price: '$14', category: 'Quiche' },
-                        { name: 'Coq au Vin', description: 'Chicken braised in wine', price: '$21', category: 'Mains' },
-                        { name: 'Ratatouille', description: 'Stewed vegetables from Provence', price: '$15', category: 'Vegetarian' },
-                        { name: 'Crème Brûlée', description: 'Vanilla custard with caramelized sugar', price: '$9', category: 'Desserts' }
+                        { name: 'Croque Monsieur', description: 'Ham and cheese sandwich', price: 16, category: 'Sandwiches' },
+                        { name: 'French Onion Soup', description: 'Classic onion soup with cheese', price: 12, category: 'Soups' },
+                        { name: 'Quiche Lorraine', description: 'Bacon and cheese quiche', price: 14, category: 'Quiche' },
+                        { name: 'Coq au Vin', description: 'Chicken braised in wine', price: 21, category: 'Mains' },
+                        { name: 'Ratatouille', description: 'Stewed vegetables from Provence', price: 15, category: 'Vegetarian' },
+                        { name: 'Crème Brûlée', description: 'Vanilla custard with caramelized sugar', price: 9, category: 'Desserts' }
                     ]
                 };
 
@@ -890,7 +1214,13 @@
                 
                 // Shuffle and take random items up to target size
                 const shuffled = [...fullMenu].sort(() => 0.5 - Math.random());
-                return shuffled.slice(0, Math.min(targetSize, fullMenu.length));
+                const selectedItems = shuffled.slice(0, Math.min(targetSize, fullMenu.length));
+                
+                // Convert prices to local currency
+                return selectedItems.map(item => ({
+                    ...item,
+                    price: this.currencyService.convertPrice(item.price.toString(), 'USD')
+                }));
             }
 
             displayRestaurants() {
