@@ -26,6 +26,8 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: gh-pages
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -103,12 +105,30 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        
+        # Pull latest changes to avoid conflicts
+        git pull origin gh-pages --no-edit || echo "Pull failed, continuing..."
+        
         git add data/ docs/ index.html
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
           git commit -m "Auto-update: ${{ steps.get-day.outputs.day }} lunch data $(date +'%Y-%m-%d %H:%M')"
-          git push origin gh-pages
+          
+          # Try to push, with retry logic
+          for i in {1..3}; do
+            if git push origin gh-pages; then
+              echo "Push successful on attempt $i"
+              break
+            else
+              echo "Push failed on attempt $i, trying to pull and retry..."
+              git pull origin gh-pages --no-edit --strategy-option=ours || echo "Pull failed"
+              if [ $i -eq 3 ]; then
+                echo "All push attempts failed"
+                exit 1
+              fi
+            fi
+          done
         fi
 
     - name: Setup Pages
