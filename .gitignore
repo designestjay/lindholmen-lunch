@@ -36,3 +36,4 @@ output/
 
 # Sample web pages
 tests/samples/
+.env
