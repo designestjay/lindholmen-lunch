@@ -817,45 +817,80 @@
             }
 
             generateMenu(cuisine) {
-                const menus = {
+                const baseMenus = {
                     italian: [
-                        { name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, basil', price: '$16' },
-                        { name: 'Spaghetti Carbonara', description: 'Eggs, pancetta, parmesan, black pepper', price: '$18' },
-                        { name: 'Caesar Salad', description: 'Romaine lettuce, croutons, parmesan', price: '$14' }
+                        { name: 'Margherita Pizza', description: 'Fresh tomato sauce, mozzarella, basil', price: '$16', category: 'Pizza' },
+                        { name: 'Spaghetti Carbonara', description: 'Eggs, pancetta, parmesan, black pepper', price: '$18', category: 'Pasta' },
+                        { name: 'Caesar Salad', description: 'Romaine lettuce, croutons, parmesan', price: '$14', category: 'Salads' },
+                        { name: 'Lasagna Bolognese', description: 'Layers of pasta, meat sauce, bechamel', price: '$20', category: 'Pasta' },
+                        { name: 'Bruschetta', description: 'Toasted bread with tomatoes and basil', price: '$8', category: 'Appetizers' },
+                        { name: 'Tiramisu', description: 'Coffee-flavored Italian dessert', price: '$9', category: 'Desserts' },
+                        { name: 'Risotto Mushroom', description: 'Creamy rice with wild mushrooms', price: '$17', category: 'Risotto' },
+                        { name: 'Prosciutto Pizza', description: 'Tomato sauce, mozzarella, prosciutto, arugula', price: '$19', category: 'Pizza' }
                     ],
                     asian: [
-                        { name: 'Chicken Teriyaki Bowl', description: 'Grilled chicken, rice, vegetables', price: '$15' },
-                        { name: 'Vegetable Fried Rice', description: 'Wok-fried rice with mixed vegetables', price: '$13' },
-                        { name: 'Miso Soup', description: 'Traditional Japanese soup', price: '$6' }
+                        { name: 'Chicken Teriyaki Bowl', description: 'Grilled chicken, rice, vegetables', price: '$15', category: 'Bowls' },
+                        { name: 'Vegetable Fried Rice', description: 'Wok-fried rice with mixed vegetables', price: '$13', category: 'Rice' },
+                        { name: 'Miso Soup', description: 'Traditional Japanese soup', price: '$6', category: 'Soups' },
+                        { name: 'Pad Thai', description: 'Stir-fried noodles with shrimp and peanuts', price: '$16', category: 'Noodles' },
+                        { name: 'Sushi Combo', description: '8 pieces nigiri and 6 pieces maki', price: '$22', category: 'Sushi' },
+                        { name: 'Beef Ramen', description: 'Rich broth with tender beef and noodles', price: '$18', category: 'Ramen' },
+                        { name: 'Spring Rolls', description: 'Fresh vegetables wrapped in rice paper', price: '$9', category: 'Appetizers' },
+                        { name: 'Green Curry', description: 'Spicy coconut curry with vegetables', price: '$17', category: 'Curry' },
+                        { name: 'Dumplings', description: 'Steamed pork and vegetable dumplings', price: '$12', category: 'Appetizers' }
                     ],
                     american: [
-                        { name: 'Classic Cheeseburger', description: 'Beef patty, cheese, lettuce, tomato', price: '$17' },
-                        { name: 'BBQ Ribs', description: 'Slow-cooked ribs with BBQ sauce', price: '$22' },
-                        { name: 'Buffalo Wings', description: 'Spicy chicken wings with blue cheese', price: '$14' }
+                        { name: 'Classic Cheeseburger', description: 'Beef patty, cheese, lettuce, tomato', price: '$17', category: 'Burgers' },
+                        { name: 'BBQ Ribs', description: 'Slow-cooked ribs with BBQ sauce', price: '$22', category: 'BBQ' },
+                        { name: 'Buffalo Wings', description: 'Spicy chicken wings with blue cheese', price: '$14', category: 'Wings' },
+                        { name: 'Mac and Cheese', description: 'Creamy macaroni with three cheeses', price: '$13', category: 'Comfort Food' },
+                        { name: 'Philly Cheesesteak', description: 'Sliced beef with peppers and cheese', price: '$16', category: 'Sandwiches' },
+                        { name: 'Loaded Nachos', description: 'Tortilla chips with cheese, jalapeños, sour cream', price: '$12', category: 'Appetizers' }
                     ],
                     mexican: [
-                        { name: 'Chicken Burrito', description: 'Grilled chicken, rice, beans, salsa', price: '$14' },
-                        { name: 'Fish Tacos', description: 'Grilled fish, cabbage, lime crema', price: '$16' },
-                        { name: 'Guacamole & Chips', description: 'Fresh avocado dip with tortilla chips', price: '$9' }
+                        { name: 'Chicken Burrito', description: 'Grilled chicken, rice, beans, salsa', price: '$14', category: 'Burritos' },
+                        { name: 'Fish Tacos', description: 'Grilled fish, cabbage, lime crema', price: '$16', category: 'Tacos' },
+                        { name: 'Guacamole & Chips', description: 'Fresh avocado dip with tortilla chips', price: '$9', category: 'Appetizers' },
+                        { name: 'Quesadilla', description: 'Grilled tortilla with cheese and chicken', price: '$13', category: 'Quesadillas' },
+                        { name: 'Enchiladas', description: 'Rolled tortillas with sauce and cheese', price: '$15', category: 'Enchiladas' },
+                        { name: 'Churros', description: 'Fried dough with cinnamon sugar', price: '$7', category: 'Desserts' }
                     ],
                     indian: [
-                        { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with chicken', price: '$18' },
-                        { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables', price: '$16' },
-                        { name: 'Naan Bread', description: 'Traditional Indian flatbread', price: '$5' }
+                        { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with chicken', price: '$18', category: 'Curry' },
+                        { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables', price: '$16', category: 'Rice' },
+                        { name: 'Naan Bread', description: 'Traditional Indian flatbread', price: '$5', category: 'Bread' },
+                        { name: 'Samosas', description: 'Fried pastries with spiced filling', price: '$8', category: 'Appetizers' },
+                        { name: 'Butter Chicken', description: 'Mild curry with tender chicken', price: '$17', category: 'Curry' },
+                        { name: 'Dal Lentils', description: 'Spiced lentil curry', price: '$14', category: 'Vegetarian' },
+                        { name: 'Mango Lassi', description: 'Yogurt drink with mango', price: '$6', category: 'Beverages' }
                     ],
                     mediterranean: [
-                        { name: 'Greek Salad', description: 'Tomatoes, olives, feta, cucumber', price: '$15' },
-                        { name: 'Lamb Gyros', description: 'Seasoned lamb with tzatziki', price: '$17' },
-                        { name: 'Hummus Plate', description: 'Chickpea dip with pita bread', price: '$12' }
+                        { name: 'Greek Salad', description: 'Tomatoes, olives, feta, cucumber', price: '$15', category: 'Salads' },
+                        { name: 'Lamb Gyros', description: 'Seasoned lamb with tzatziki', price: '$17', category: 'Gyros' },
+                        { name: 'Hummus Plate', description: 'Chickpea dip with pita bread', price: '$12', category: 'Appetizers' },
+                        { name: 'Falafel Wrap', description: 'Fried chickpea balls in pita', price: '$14', category: 'Wraps' },
+                        { name: 'Moussaka', description: 'Layered eggplant and meat casserole', price: '$19', category: 'Casseroles' },
+                        { name: 'Baklava', description: 'Sweet pastry with nuts and honey', price: '$8', category: 'Desserts' }
                     ],
                     french: [
-                        { name: 'Croque Monsieur', description: 'Ham and cheese sandwich', price: '$16' },
-                        { name: 'French Onion Soup', description: 'Classic onion soup with cheese', price: '$12' },
-                        { name: 'Quiche Lorraine', description: 'Bacon and cheese quiche', price: '$14' }
+                        { name: 'Croque Monsieur', description: 'Ham and cheese sandwich', price: '$16', category: 'Sandwiches' },
+                        { name: 'French Onion Soup', description: 'Classic onion soup with cheese', price: '$12', category: 'Soups' },
+                        { name: 'Quiche Lorraine', description: 'Bacon and cheese quiche', price: '$14', category: 'Quiche' },
+                        { name: 'Coq au Vin', description: 'Chicken braised in wine', price: '$21', category: 'Mains' },
+                        { name: 'Ratatouille', description: 'Stewed vegetables from Provence', price: '$15', category: 'Vegetarian' },
+                        { name: 'Crème Brûlée', description: 'Vanilla custard with caramelized sugar', price: '$9', category: 'Desserts' }
                     ]
                 };
 
-                return menus[cuisine] || menus.american;
+                const fullMenu = baseMenus[cuisine] || baseMenus.american;
+                
+                // Generate dynamic menu size (like real data: some restaurants have 3 items, others have 15+)
+                const menuSizes = [3, 4, 5, 6, 7, 8, 9, 10, 12, 15]; // Different realistic menu sizes
+                const targetSize = menuSizes[Math.floor(Math.random() * menuSizes.length)];
+                
+                // Shuffle and take random items up to target size
+                const shuffled = [...fullMenu].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, Math.min(targetSize, fullMenu.length));
             }
 
             displayRestaurants() {
@@ -898,6 +933,35 @@
                     ? `${Math.round(restaurant.distance)}m` 
                     : `${(restaurant.distance / 1000).toFixed(1)}km`;
 
+                // Group menu items by category for better display
+                const menuByCategory = {};
+                restaurant.menu.forEach(item => {
+                    const category = item.category || 'Menu Items';
+                    if (!menuByCategory[category]) {
+                        menuByCategory[category] = [];
+                    }
+                    menuByCategory[category].push(item);
+                });
+
+                let menuHTML = '';
+                Object.entries(menuByCategory).forEach(([category, items]) => {
+                    if (Object.keys(menuByCategory).length > 1) {
+                        menuHTML += `<div style="font-weight: 600; margin: 1rem 0 0.5rem 0; color: #6e6e73; font-size: 0.875rem;">${category}</div>`;
+                    }
+                    
+                    items.forEach(item => {
+                        menuHTML += `
+                            <div class="menu-item">
+                                <div class="menu-item-details">
+                                    <div class="menu-item-name">${item.name}</div>
+                                    <div class="menu-item-description">${item.description}</div>
+                                </div>
+                                <div class="menu-item-price">${item.price}</div>
+                            </div>
+                        `;
+                    });
+                });
+
                 card.innerHTML = `
                     <div class="restaurant-header">
                         <div class="restaurant-info">
@@ -926,26 +990,18 @@
                         <div class="menu-section">
                             <h3>
                                 <span class="icon-menu"></span>
-                                <span class="en">Sample Menu</span>
-                                <span class="sv hidden">Exempelmeny</span>
+                                <span class="en">Today's Menu (${restaurant.menu.length} items)</span>
+                                <span class="sv hidden">Dagens Meny (${restaurant.menu.length} rätter)</span>
                             </h3>
                             <div class="menu-items">
-                                ${restaurant.menu.map(item => `
-                                    <div class="menu-item">
-                                        <div class="menu-item-details">
-                                            <div class="menu-item-name">${item.name}</div>
-                                            <div class="menu-item-description">${item.description}</div>
-                                        </div>
-                                        <div class="menu-item-price">${item.price}</div>
-                                    </div>
-                                `).join('')}
+                                ${menuHTML}
                             </div>
                         </div>
                         
                         <div class="separator"></div>
                         
                         <div class="special-offer">
-                            ⭐ Rating: ${restaurant.rating.toFixed(1)} • ${restaurant.isOpen ? 'Open now' : 'Closed'}
+                            ⭐ Rating: ${restaurant.rating.toFixed(1)} • ${restaurant.isOpen ? 'Open now' : 'Closed'} • ${restaurant.menu.length} menu items
                         </div>
                     </div>
                 `;
