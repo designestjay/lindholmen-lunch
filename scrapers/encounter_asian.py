@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
 import traceback
-from scrapers.base import LunchScraper, DailyMenu, MenuItem
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, get_chrome_options
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +20,8 @@ class EncounterAsianScraper(LunchScraper):
     def __init__(self):
         self._menus: Dict[str, DailyMenu] = {}
 
-        # Configure headless Chrome
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--no-sandbox")
+        # Use the optimized Chrome options for CI/headless environments
+        chrome_options = get_chrome_options(enable_javascript=True, load_images=False)
 
         try:
             with webdriver.Chrome(options=chrome_options) as driver:

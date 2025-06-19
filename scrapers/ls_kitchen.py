@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, get_chrome_options
 from typing import Dict, Optional
 import time
 
@@ -25,10 +25,8 @@ class LsKitchenScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        options = Options()
-        options.add_argument("--headless=new")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--no-sandbox")
+        # Use the optimized Chrome options for CI/headless environments
+        options = get_chrome_options(enable_javascript=True, load_images=False)
 
         with webdriver.Chrome(options=options) as driver:
             driver.get(self.URL)

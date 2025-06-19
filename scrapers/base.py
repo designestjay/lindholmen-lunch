@@ -1,5 +1,65 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
+import os
+
+def get_chrome_options(enable_javascript=True, load_images=False):
+    """
+    Get optimal Chrome options for CI/headless environments.
+    This ensures consistent configuration across all scrapers.
+    
+    Args:
+        enable_javascript (bool): Whether to enable JavaScript (default: True)
+        load_images (bool): Whether to load images (default: False for performance)
+    """
+    try:
+        from selenium.webdriver.chrome.options import Options
+        chrome_options = Options()
+        
+        # Essential headless options
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
+        
+        # Additional stability options for CI
+        chrome_options.add_argument("--disable-web-security")
+        chrome_options.add_argument("--disable-features=VizDisplayCompositor")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--disable-plugins")
+        chrome_options.add_argument("--no-first-run")
+        chrome_options.add_argument("--no-default-browser-check")
+        chrome_options.add_argument("--disable-default-apps")
+        chrome_options.add_argument("--disable-background-timer-throttling")
+        chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+        chrome_options.add_argument("--disable-renderer-backgrounding")
+        
+        # Conditional options
+        if not load_images:
+            chrome_options.add_argument("--disable-images")
+        
+        if not enable_javascript:
+            chrome_options.add_argument("--disable-javascript")
+        
+        # Set window size for consistency
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--start-maximized")
+        
+        # User agent to appear more like a real browser
+        chrome_options.add_argument("--user-agent=Mozilla/5.0 (Linux; Ubuntu) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
+        
+        # Memory and performance options
+        chrome_options.add_argument("--memory-pressure-off")
+        chrome_options.add_argument("--max_old_space_size=4096")
+        
+        # Set binary path if available from environment
+        chrome_bin = os.environ.get('CHROME_BIN')
+        if chrome_bin:
+            chrome_options.binary_location = chrome_bin
+            
+        return chrome_options
+    except ImportError:
+        # Return None if selenium is not available
+        return None
 
 class MenuItem:
     def __init__(
@@ -20,14 +80,12 @@ class MenuItem:
             f"description={self.description!r}, price={self.price!r})"
         )
 
-
     def __str__(self):
         if self.price:
             return f"{self.name} – {self.price} - {self.description}"
         elif self.description:
             return f"{self.name} - {self.description}"
         return self.name
-
 
     def to_dict(self):
         return {
@@ -36,7 +94,6 @@ class MenuItem:
             "description": self.description,
             "price": self.price
         }
-
 
 class DailyMenu:
     def __init__(self, day: str, items: List[MenuItem]):

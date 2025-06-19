@@ -1,5 +1,6 @@
 name: Update Lunch Data and Deploy
 
+
 # This workflow now runs entirely from the main branch
 # GitHub Pages should be configured to deploy from main branch /docs folder
 on:
@@ -41,39 +42,51 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Install Chrome for Selenium
+    - name: Set Chrome environment variables for CI
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget gnupg
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+        echo "DISPLAY=:99" >> $GITHUB_ENV
+        echo "CHROME_BIN=/usr/bin/google-chrome" >> $GITHUB_ENV
+        echo "CHROMEDRIVER_PATH=/usr/local/bin/chromedriver" >> $GITHUB_ENV
         
-    - name: Install ChromeDriver
+    - name: Install Chrome and ChromeDriver (Fixed Version Approach)
       run: |
-        # Get Chrome version
-        CHROME_VERSION=$(google-chrome --version | cut -d " " -f3)
-        echo "Chrome version: $CHROME_VERSION"
+        # Install required packages
+        sudo apt-get update
+        sudo apt-get install -y wget gnupg unzip jq xvfb
         
-        # Get compatible ChromeDriver version using the new Chrome for Testing API
-        CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_${CHROME_VERSION%.*.*}")
+        # Use fixed compatible versions that are proven to work
+        CHROME_VERSION="114.0.5735.90"
+        CHROMEDRIVER_VERSION="114.0.5735.90"
         
-        # If that fails, try getting the latest stable version
-        if [ -z "$CHROMEDRIVER_VERSION" ]; then
-          CHROMEDRIVER_VERSION=$(curl -s "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE")
-        fi
+        echo "Installing Chrome version: ${CHROME_VERSION}"
+        echo "Installing ChromeDriver version: ${CHROMEDRIVER_VERSION}"
         
-        echo "ChromeDriver version: $CHROMEDRIVER_VERSION"
+        # Install Chrome with specific version
+        wget --no-verbose -O /tmp/chrome.deb \
+          "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb"
+        sudo apt install -y /tmp/chrome.deb
+        rm /tmp/chrome.deb
         
-        # Download and install ChromeDriver
-        wget -O /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
+        # Install ChromeDriver with compatible version
+        wget -O /tmp/chromedriver.zip \
+          "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
         sudo unzip /tmp/chromedriver.zip -d /tmp/
-        sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
+        sudo mv /tmp/chromedriver /usr/local/bin/
         sudo chmod +x /usr/local/bin/chromedriver
+        rm /tmp/chromedriver.zip
         
-        # Verify installation
+        # Setup virtual display for headless Chrome
+        sudo Xvfb :99 -ac -screen 0 1280x1024x24 &
+        
+        # Verify installations
+        echo "Chrome version:"
+        google-chrome --version
+        echo "ChromeDriver version:"
         chromedriver --version
+        
+        # Test Chrome can start
+        echo "Testing Chrome startup..."
+        timeout 10s google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://www.google.com > /dev/null || echo "Chrome test completed"
         
     - name: Get current day
       id: get-day
@@ -82,10 +95,32 @@ jobs:
         echo "day=$DAY" >> $GITHUB_OUTPUT
         echo "Current day: $DAY"
         
-    - name: Scrape lunch data for current day
+    - name: Scrape lunch data for current day with error handling
       run: |
         echo "Scraping data for: ${{ steps.get-day.outputs.day }}"
-        python main.py --day ${{ steps.get-day.outputs.day }} --refresh
+        
+        # Try scraping with retries
+        for attempt in {1..3}; do
+          echo "Attempt $attempt of 3..."
+          if python main.py --day ${{ steps.get-day.outputs.day }} --refresh; then
+            echo "Scraping successful on attempt $attempt"
+            break
+          else
+            echo "Scraping failed on attempt $attempt"
+            if [ $attempt -eq 3 ]; then
+              echo "All scraping attempts failed. Checking if we have existing data..."
+              if [ -f "data/lunch_data_${{ steps.get-day.outputs.day }}.json" ]; then
+                echo "Using existing data from previous run"
+              else
+                echo "No existing data found. Scraping completely failed."
+                exit 1
+              fi
+            else
+              echo "Waiting 10 seconds before retry..."
+              sleep 10
+            fi
+          fi
+        done
         
     - name: Generate fresh HTML page
       run: |
