@@ -10,6 +10,9 @@ def get_chrome_options(enable_javascript=True, load_images=False):
     Args:
         enable_javascript (bool): Whether to enable JavaScript (default: True)
         load_images (bool): Whether to load images (default: False for performance)
+    
+    Returns:
+        Chrome options object if selenium is available, None otherwise
     """
     try:
         from selenium.webdriver.chrome.options import Options

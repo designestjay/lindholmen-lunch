@@ -42,51 +42,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Set Chrome environment variables for CI
+    - name: Setup Chrome (using pre-installed)
       run: |
-        echo "DISPLAY=:99" >> $GITHUB_ENV
-        echo "CHROME_BIN=/usr/bin/google-chrome" >> $GITHUB_ENV
-        echo "CHROMEDRIVER_PATH=/usr/local/bin/chromedriver" >> $GITHUB_ENV
-        
-    - name: Install Chrome and ChromeDriver (Fixed Version Approach)
-      run: |
-        # Install required packages
-        sudo apt-get update
-        sudo apt-get install -y wget gnupg unzip jq xvfb
-        
-        # Use fixed compatible versions that are proven to work
-        CHROME_VERSION="114.0.5735.90"
-        CHROMEDRIVER_VERSION="114.0.5735.90"
-        
-        echo "Installing Chrome version: ${CHROME_VERSION}"
-        echo "Installing ChromeDriver version: ${CHROMEDRIVER_VERSION}"
-        
-        # Install Chrome with specific version
-        wget --no-verbose -O /tmp/chrome.deb \
-          "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb"
-        sudo apt install -y /tmp/chrome.deb
-        rm /tmp/chrome.deb
-        
-        # Install ChromeDriver with compatible version
-        wget -O /tmp/chromedriver.zip \
-          "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
-        sudo unzip /tmp/chromedriver.zip -d /tmp/
-        sudo mv /tmp/chromedriver /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chromedriver
-        rm /tmp/chromedriver.zip
-        
-        # Setup virtual display for headless Chrome
-        sudo Xvfb :99 -ac -screen 0 1280x1024x24 &
-        
-        # Verify installations
-        echo "Chrome version:"
-        google-chrome --version
-        echo "ChromeDriver version:"
-        chromedriver --version
-        
-        # Test Chrome can start
-        echo "Testing Chrome startup..."
-        timeout 10s google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://www.google.com > /dev/null || echo "Chrome test completed"
+        echo "Using GitHub Actions pre-installed Chrome"
+        google-chrome --version || echo "Chrome not available - some scrapers may fail"
         
     - name: Get current day
       id: get-day

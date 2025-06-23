@@ -20,8 +20,12 @@ class EncounterAsianScraper(LunchScraper):
     def __init__(self):
         self._menus: Dict[str, DailyMenu] = {}
 
-        # Use the optimized Chrome options for CI/headless environments
+        # Check if selenium is available
         chrome_options = get_chrome_options(enable_javascript=True, load_images=False)
+        if chrome_options is None:
+            # Selenium not available, skip this scraper
+            logger.warning(f"Selenium not available, skipping {self.__class__.__name__}")
+            return
 
         try:
             with webdriver.Chrome(options=chrome_options) as driver:
@@ -39,12 +43,12 @@ class EncounterAsianScraper(LunchScraper):
         except WebDriverException as e:
             logger.error("WebDriver error: %s", str(e))
             traceback.print_exc()
-            raise
+            return
 
         except Exception as e:
             logger.error("Error while loading or parsing Encounter Asian menu:")
             traceback.print_exc()
-            raise
+            return
 
         self.fetch()
 

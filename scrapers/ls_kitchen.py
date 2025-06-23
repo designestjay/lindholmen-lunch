@@ -25,14 +25,22 @@ class LsKitchenScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        # Use the optimized Chrome options for CI/headless environments
+        # Check if selenium is available
         options = get_chrome_options(enable_javascript=True, load_images=False)
+        if options is None:
+            # Selenium not available, skip this scraper
+            print(f"Selenium not available, skipping {self.__class__.__name__}")
+            return
 
-        with webdriver.Chrome(options=options) as driver:
-            driver.get(self.URL)
-            time.sleep(5)  # Allow time for JS to load content
+        try:
+            with webdriver.Chrome(options=options) as driver:
+                driver.get(self.URL)
+                time.sleep(5)  # Allow time for JS to load content
 
-            soup = BeautifulSoup(driver.page_source, "html.parser")
+                soup = BeautifulSoup(driver.page_source, "html.parser")
+        except Exception as e:
+            print(f"Chrome/Selenium error in {self.__class__.__name__}: {e}")
+            return
 
         for day_div in soup.select("div.day"):
             heading = day_div.find("h2")
