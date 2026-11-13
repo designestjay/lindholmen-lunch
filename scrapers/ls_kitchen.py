@@ -1,8 +1,5 @@
 # scrapers/ls_kitchen.py
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from scrapers.base import LunchScraper, MenuItem, DailyMenu, get_chrome_options
 from typing import Dict, Optional
@@ -33,6 +30,8 @@ class LsKitchenScraper(LunchScraper):
             return
 
         try:
+            from selenium import webdriver
+
             with webdriver.Chrome(options=options) as driver:
                 driver.get(self.URL)
                 time.sleep(5)  # Allow time for JS to load content
