@@ -30,7 +30,7 @@
         "priority": 6
     },
     "vegan": {
-        "keywords": ["oumph", "vegansk", "tofu", "sojabönor", "vegofärs", "seitan", "veg", "quorn", "grönsaksbiff"],
+        "keywords": ["oumph", "vegansk", "vegan", "vegetarisk", "vegetarian", "tofu", "sojabönor", "vegofärs", "seitan", "veg", "quorn", "grönsaksbiff", "växtbaserad"],
         "emoji": "🌱",
         "priority": 3
     },

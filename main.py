@@ -6,6 +6,8 @@ import logging
 import os
 import time
 import traceback
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from scrapers.kooperativet import KooperativetScraper
 from scrapers.district_one import DistrictOneScraper
@@ -49,88 +51,146 @@ SCRAPERS = [
 ]
 
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
+STOCKHOLM = ZoneInfo("Europe/Stockholm")
+
+
+def _menu_payload(menu) -> dict:
+    return {
+        "day": menu.day,
+        "items": [
+            {
+                "name": item.name,
+                "category": item.category or "",
+                "description": item.description or "",
+                "price": item.price or "",
+            }
+            for item in menu.items
+        ],
+        "stale": False,
+    }
+
+
+def _load_previous(filepath: str) -> dict:
+    if not os.path.exists(filepath):
+        return {}
+    try:
+        with open(filepath, encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except (json.JSONDecodeError, OSError) as exc:
+        logging.warning("Could not read previous data %s: %s", filepath, exc)
+        return {}
+
+
+def _scrape_one(scraper_cls, day: str, cache: dict | None):
+    """Return a menu payload dict, or None if this restaurant has no menu today."""
+    if cache is not None and scraper_cls.__name__ in cache:
+        scraper = cache[scraper_cls.__name__]
+    else:
+        scraper = scraper_cls()
+        if cache is not None and hasattr(scraper, "get_all_menus"):
+            all_menus = scraper.get_all_menus()
+            if all_menus:
+                cache[scraper_cls.__name__] = scraper
+
+    all_menus = scraper.get_all_menus()
+    if all_menus:
+        menu = all_menus.get(day.lower())
+        if not menu or not getattr(menu, "items", None):
+            return None
+        return _menu_payload(menu)
+
+    menu = scraper.get_menu_for_day(day)
+    if not menu or not getattr(menu, "items", None):
+        return None
+    return _menu_payload(menu)
+
 
 def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
-    logging.info(f"Scraping lunch menus for {day.capitalize()}")
+    logging.info("Scraping lunch menus for %s", day.capitalize())
 
     filepath = f"data/lunch_data_{day}.json"
     if os.path.exists(filepath) and not refresh:
-        logging.info(f"Skipping scraping for {day} (cached file exists).")
+        logging.info("Skipping scraping for %s (cached file exists).", day)
         return
 
+    previous = _load_previous(filepath)
     results = {}
+    ok, stale_kept, failed = [], [], []
 
     for scraper_cls in SCRAPERS:
+        name = scraper_cls.__name__
         attempts = 0
         max_retries = 2
+        got = None
 
         while attempts <= max_retries:
             try:
-                # Try to use cached instance if available
-                if cache is not None and scraper_cls.__name__ in cache:
-                    scraper = cache[scraper_cls.__name__]
-                else:
-                    scraper = scraper_cls()
-                    # Cache weekly scraper if it has get_all_menus()
-                    if cache is not None and hasattr(scraper, "get_all_menus"):
-                        all_menus = scraper.get_all_menus()
-                        if all_menus:
-                            cache[scraper_cls.__name__] = scraper
-
-                # Reuse get_all_menus if possible
-                all_menus = scraper.get_all_menus()
-                if all_menus:
-                    menu = all_menus.get(day.lower())
-                    if not menu:
-                        logging.warning(f"No menu found in get_all_menus() for {scraper_cls.__name__} on {day}")
-                        break
-                    results[scraper_cls.__name__] = {
-                        "day": menu.day,
-                        "items": [
-                            {"name": item.name,
-                             "category": item.category or "",
-                             "description": item.description or "",
-                             "price": item.price or ""}
-                            for item in menu.items
-                        ]
-                    }
-                    break
-                else:
-                    # Fallback to per-day method
-                    menu = scraper.get_menu_for_day(day)
-                    if not menu:
-                        logging.warning(f"No menu found for {scraper_cls.__name__} on {day}")
-                        break
-                    results[scraper_cls.__name__] = {
-                        "day": menu.day,
-                        "items": [
-                            {"name": item.name,
-                             "category": item.category or "",
-                             "description": item.description or "",
-                             "price": item.price or ""}
-                            for item in menu.items
-                        ]
-                    }
-                    break
+                got = _scrape_one(scraper_cls, day, cache)
+                break
             except Exception as e:
                 attempts += 1
-                logging.error(f"[{scraper_cls.__name__}] Error on attempt {attempts} for {day}: {e}")
+                logging.error("[%s] Error on attempt %s for %s: %s", name, attempts, day, e)
                 traceback.print_exc()
                 if attempts > max_retries:
-                    logging.warning(f"[{scraper_cls.__name__}] Gave up after {max_retries} retries.")
+                    logging.warning("[%s] Gave up after %s retries.", name, max_retries)
                 else:
                     delay = 2 + attempts
-                    logging.info(f"[{scraper_cls.__name__}] Retrying in {delay} seconds...")
+                    logging.info("[%s] Retrying in %s seconds...", name, delay)
                     time.sleep(delay)
+
+        if got and got.get("items"):
+            results[name] = got
+            ok.append(name)
+            continue
+
+        prev = previous.get(name)
+        if isinstance(prev, dict) and prev.get("items"):
+            carried = dict(prev)
+            carried["stale"] = True
+            carried["day"] = day.lower()
+            # Drop annotation fields; generate_html will re-annotate.
+            carried.pop("tags", None)
+            carried.pop("emoji_tags", None)
+            for item in carried.get("items") or []:
+                if isinstance(item, dict):
+                    item.pop("tags", None)
+                    item.pop("emoji_tags", None)
+            results[name] = carried
+            stale_kept.append(name)
+            logging.warning("[%s] No fresh menu; keeping previous data as stale.", name)
+        else:
+            failed.append(name)
+            logging.warning("[%s] No menu for %s (and no previous data to keep).", name, day)
+
+    logging.info(
+        "Scrape summary for %s: %s fresh, %s stale, %s missing",
+        day,
+        len(ok),
+        len(stale_kept),
+        len(failed),
+    )
+    if failed:
+        logging.info("Missing restaurants: %s", ", ".join(failed))
+
+    meta = {
+        "day": day,
+        "scraped_at": datetime.now(STOCKHOLM).isoformat(timespec="minutes"),
+        "fresh": ok,
+        "stale": stale_kept,
+        "missing": failed,
+    }
 
     if results:
         os.makedirs("data", exist_ok=True)
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
-        logging.info(f"Wrote lunch data to {filepath}")
+        with open(f"data/scrape_meta_{day}.json", "w", encoding="utf-8") as f:
+            json.dump(meta, f, indent=2, ensure_ascii=False)
+        logging.info("Wrote lunch data to %s", filepath)
     else:
-        logging.warning(f"No results to write for {day}. Skipping JSON and HTML.")
-        return
+        logging.warning("No results to write for %s. Leaving existing file untouched.", day)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run Lindholmen lunch scrapers.")
@@ -147,6 +207,7 @@ def main():
     else:
         day = args.day or get_today_english()
         scrape_for_day(day, refresh=args.refresh)
+
 
 if __name__ == "__main__":
     main()

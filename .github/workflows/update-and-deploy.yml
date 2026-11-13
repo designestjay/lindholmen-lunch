@@ -44,6 +44,8 @@ jobs:
         
     - name: Setup Chrome (using pre-installed)
       run: |
+        # Selenium Manager (via the selenium package) pairs with this Chrome binary
+        # for JS-rendered menus such as Encounter Asian.
         echo "Using GitHub Actions pre-installed Chrome"
         google-chrome --version || echo "Chrome not available - some scrapers may fail"
         

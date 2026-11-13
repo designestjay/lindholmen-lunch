@@ -6,38 +6,89 @@
         "name": "PAHADI GRILL CHICKEN",
         "category": "",
         "description": "Grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "indian",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐔"
+        ]
       },
       {
         "name": "DALCHA GHOST",
         "category": "",
         "description": "Lammgryta med linser, lök, tomat, chili och limejuice. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "indian",
+          "vegan",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🌱",
+          "🥣"
+        ]
       },
       {
         "name": "TIKKA MASALA",
         "category": "ANDRA ALTERNATIV",
         "description": "Grillad kycklingfilé med rostad paprika och tomater i en krämig sås.",
-        "price": "134 kr"
+        "price": "134 kr",
+        "tags": [
+          "indian",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐔"
+        ]
       },
       {
         "name": "TANDOORI CHICKEN",
         "category": "ANDRA ALTERNATIV",
         "description": "Grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. Serveras med tandoori sås.",
-        "price": "132 kr"
+        "price": "132 kr",
+        "tags": [
+          "indian",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐔"
+        ]
       },
       {
         "name": "JINGHA HARA",
         "category": "ANDRA ALTERNATIV",
         "description": "",
-        "price": ""
+        "price": "",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "",
         "category": "ANDRA ALTERNATIV",
         "description": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
-        "price": "145 kr"
+        "price": "145 kr",
+        "tags": [],
+        "emoji_tags": []
       }
+    ],
+    "stale": false,
+    "tags": [
+      "indian",
+      "vegan",
+      "chicken",
+      "soup"
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🌱",
+      "🐔",
+      "🥣"
     ]
   },
   "CuckoosNestScraper": {
@@ -47,56 +98,125 @@
         "name": "",
         "category": "",
         "description": "Ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås",
-        "price": ""
+        "price": "",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "",
         "category": "",
         "description": "Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron",
-        "price": ""
+        "price": "",
+        "tags": [
+          "fish"
+        ],
+        "emoji_tags": [
+          "🐟"
+        ]
       },
       {
         "name": "",
         "category": "",
         "description": "Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky",
-        "price": ""
+        "price": "",
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
       },
       {
         "name": "",
         "category": "",
         "description": "torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör",
-        "price": ""
+        "price": "",
+        "tags": [
+          "fish"
+        ],
+        "emoji_tags": [
+          "🐟"
+        ]
       },
       {
         "name": "",
         "category": "",
         "description": "Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
-        "price": ""
+        "price": "",
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐄"
+        ]
       },
       {
         "name": "",
         "category": "VEG",
         "description": "risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao",
-        "price": "195 kr"
+        "price": "195 kr",
+        "tags": [
+          "vegan"
+        ],
+        "emoji_tags": [
+          "🌱"
+        ]
       },
       {
         "name": "",
         "category": "CEASARSALLAD",
         "description": "Grillad kyckling med romansallad, bacon, grana padano, Caesardressing & krutonger",
-        "price": "215 kr"
+        "price": "215 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       },
       {
         "name": "",
         "category": "RÄKMACKA",
         "description": "räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron & dill",
-        "price": "295 kr"
+        "price": "295 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "",
         "category": "DOUBLE SMASHED CHEESEBURGER",
         "description": "Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök & pommes frites",
-        "price": "235 kr"
+        "price": "235 kr",
+        "tags": [
+          "beef",
+          "salad",
+          "burger"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🥗",
+          "🍔"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "vegan",
+      "fish",
+      "chicken",
+      "beef",
+      "salad",
+      "burger"
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐄",
+      "🥗",
+      "🍔"
     ]
   },
   "Uni3WorldOfFoodScraper": {
@@ -106,8 +226,41 @@
         "name": "Pasta pesto",
         "category": "Metal",
         "description": "getost, bakade tomater, vitlöksstekta brödsmulor, pesto Water: Halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill Charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll Fire: “Chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) \"Chicken dopiaza\", baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option)",
-        "price": "132 kr"
+        "price": "132 kr",
+        "tags": [
+          "vegan",
+          "fish",
+          "chicken",
+          "beef",
+          "salad",
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐟",
+          "🐔",
+          "🐄",
+          "🥗",
+          "🍝"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "vegan",
+      "fish",
+      "chicken",
+      "beef",
+      "salad",
+      "pasta"
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐄",
+      "🥗",
+      "🍝"
     ]
   },
   "MissFScraper": {
@@ -117,134 +270,341 @@
         "name": "Lufttorkad skinka/mozzarella/pesto",
         "category": "Grillad ciabatta",
         "description": "",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "pork"
+        ],
+        "emoji_tags": [
+          "🐖"
+        ]
       },
       {
         "name": "Kyckling/bacon/dijoncreme",
         "category": "Grillad ciabatta",
         "description": "Serveras med pommes & sallad & dressing",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       },
       {
         "name": "Mindre ciabbatta av ovan",
         "category": "Grillad ciabatta",
         "description": "",
-        "price": "105 kr"
+        "price": "105 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "kyckling/ mozzarella/ ruccola / mangoraja",
         "category": "Grillad tortilla",
         "description": "Serveras med pommes & sallad & dressing",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "mexican",
+          "chicken",
+          "salad",
+          "taco"
+        ],
+        "emoji_tags": [
+          "🇲🇽",
+          "🐔",
+          "🥗",
+          "🌮"
+        ]
       },
       {
         "name": "Lax/Spenat",
         "category": "Pajer & Lasagne",
         "description": "",
-        "price": "110 kr"
+        "price": "110 kr",
+        "tags": [
+          "fish",
+          "pasta",
+          "dessert"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍝",
+          "🍰"
+        ]
       },
       {
         "name": "Fetaost/Spenat",
         "category": "Pajer & Lasagne",
         "description": "",
-        "price": "110 kr"
+        "price": "110 kr",
+        "tags": [
+          "pasta",
+          "dessert"
+        ],
+        "emoji_tags": [
+          "🍝",
+          "🍰"
+        ]
       },
       {
         "name": "Lasagne",
         "category": "Pajer & Lasagne",
         "description": "Serveras med sallad & dressing",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "salad",
+          "pasta",
+          "dessert"
+        ],
+        "emoji_tags": [
+          "🥗",
+          "🍝",
+          "🍰"
+        ]
       },
       {
         "name": "Dressing",
         "category": "Pajer & Lasagne",
         "description": "Rhode Island, chilimango, italiensk, vinäger, vitlök",
-        "price": "kr"
+        "price": "kr",
+        "tags": [
+          "pasta",
+          "dessert"
+        ],
+        "emoji_tags": [
+          "🍝",
+          "🍰"
+        ]
       },
       {
         "name": "Kyckling",
         "category": "Caesarsallad",
         "description": "",
-        "price": "110 kr"
+        "price": "110 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       },
       {
         "name": "Räkor",
         "category": "Caesarsallad",
         "description": "",
-        "price": "120 kr"
+        "price": "120 kr",
+        "tags": [
+          "salad"
+        ],
+        "emoji_tags": [
+          "🥗"
+        ]
       },
       {
         "name": "Kyckling",
         "category": "Sallader",
         "description": "",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       },
       {
         "name": "Räkor",
         "category": "Sallader",
         "description": "",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "salad"
+        ],
+        "emoji_tags": [
+          "🥗"
+        ]
       },
       {
         "name": "Grekisk",
         "category": "Sallader",
         "description": "",
-        "price": "125 kr"
+        "price": "125 kr",
+        "tags": [
+          "salad"
+        ],
+        "emoji_tags": [
+          "🥗"
+        ]
       },
       {
         "name": "Lufttorkad skinka/mozzarella/pesto",
         "category": "Sallader",
         "description": "",
-        "price": "125 kr"
+        "price": "125 kr",
+        "tags": [
+          "pork",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐖",
+          "🥗"
+        ]
       },
       {
         "name": "Chévre/rödbetor/honung/valnötter/granatäpple",
         "category": "Sallader",
         "description": "",
-        "price": "125 kr"
+        "price": "125 kr",
+        "tags": [
+          "beef",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🥗"
+        ]
       },
       {
         "name": "Tillval",
         "category": "Sallader",
         "description": "Bulgur/marinerad pasta/ svartris",
-        "price": "5 kr"
+        "price": "5 kr",
+        "tags": [
+          "salad",
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🥗",
+          "🍝"
+        ]
       },
       {
         "name": "Pokebowl",
         "category": "Sallader",
         "description": "sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, srirachamayo, räkor och lax",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "mexican",
+          "vegan",
+          "fish",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🇲🇽",
+          "🌱",
+          "🐟",
+          "🥗"
+        ]
       },
       {
         "name": "Bibimbap",
         "category": "Asiatisk",
         "description": "ris med kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing",
-        "price": "135 kr"
+        "price": "135 kr",
+        "tags": [
+          "korean",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🇰🇷",
+          "🥗"
+        ]
       },
       {
         "name": "Panang Curry",
         "category": "Asiatisk",
         "description": "",
-        "price": "128 kr"
+        "price": "128 kr",
+        "tags": [
+          "thai"
+        ],
+        "emoji_tags": [
+          "🇹🇭"
+        ]
       },
       {
         "name": "Sushi Tempura 10 bit",
         "category": "Asiatisk",
         "description": "Friterad räkor/avokado/gurka/krispsallad/rostad lök",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "japanese",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Sushi Speciell California 10bit",
         "category": "Asiatisk",
         "description": "Friterad krabbröra, avokado, gurka, krispsallad",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Krispig kyckling",
         "category": "Asiatisk",
         "description": "Friterade kyckling / gurka / krispsallad / morötter",
-        "price": "125 kr"
+        "price": "125 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "korean",
+      "thai",
+      "japanese",
+      "mexican",
+      "vegan",
+      "fish",
+      "chicken",
+      "pork",
+      "beef",
+      "salad",
+      "sushi",
+      "pasta",
+      "taco",
+      "dessert"
+    ],
+    "emoji_tags": [
+      "🇰🇷",
+      "🇹🇭",
+      "🇯🇵",
+      "🇲🇽",
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐖",
+      "🐄",
+      "🥗",
+      "🍣",
+      "🍝",
+      "🌮",
+      "🍰"
     ]
   },
   "BennePastabarScraper": {
@@ -254,62 +614,137 @@
         "name": "SLOW TOMATO",
         "category": "Benne Pasta",
         "description": "Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.",
-        "price": "59 kr"
+        "price": "59 kr",
+        "tags": [
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🍝"
+        ]
       },
       {
         "name": "SWEDISH CHEESE",
         "category": "Benne Pasta",
         "description": "Vår himmelskt krämiga ostsås gjord på\n\t\t\t\t\t\t\t\t\tVästerbottensost®, smaksatt med en generös mängd svartpeppar. Toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar.",
-        "price": "75 kr"
+        "price": "75 kr",
+        "tags": [
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🍝"
+        ]
       },
       {
         "name": "SMOKED PIG",
         "category": "Benne Pasta",
         "description": "Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
-        "price": "85 kr"
+        "price": "85 kr",
+        "tags": [
+          "beef",
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🍝"
+        ]
       },
       {
         "name": "Silky Bird",
         "category": "Benne Pasta",
         "description": "Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.",
-        "price": "95 kr"
+        "price": "95 kr",
+        "tags": [
+          "chicken",
+          "beef",
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🐄",
+          "🍝"
+        ]
       },
       {
         "name": "THE SHROOMS",
         "category": "Benne Pasta",
         "description": "Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.",
-        "price": "99 kr"
+        "price": "99 kr",
+        "tags": [
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🍝"
+        ]
       },
       {
         "name": "CHILI SHRIMP",
         "category": "Benne Pasta",
         "description": "Vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. Toppad med lagrad hårdost, hackad persilja och vår egen chiliolja.",
-        "price": "105 kr"
+        "price": "105 kr",
+        "tags": [
+          "fish",
+          "pasta"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍝"
+        ]
       },
       {
         "name": "SILKY SALSICCIA",
         "category": "The Visitor",
         "description": "Knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. Toppad med lagrad hårdost och hackad persilja.",
-        "price": "95 kr"
+        "price": "95 kr",
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐄"
+        ]
       },
       {
         "name": "Garlic Bread",
         "category": "Benne Bites",
         "description": "Två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak.",
-        "price": "20 kr"
+        "price": "20 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "CHEEZY GARLIC BREAD",
         "category": "Benne Bites",
         "description": "Två skivor rostat surdegsbröd med vitlök- och persiljesmör, sumak och lagrad hårdost.",
-        "price": "25 kr"
+        "price": "25 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Tiramisu",
         "category": "Benne Bites",
         "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
-        "price": "35 kr"
+        "price": "35 kr",
+        "tags": [
+          "dessert"
+        ],
+        "emoji_tags": [
+          "🍰"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "fish",
+      "chicken",
+      "beef",
+      "pasta",
+      "dessert"
+    ],
+    "emoji_tags": [
+      "🐟",
+      "🐔",
+      "🐄",
+      "🍝",
+      "🍰"
     ]
   },
   "BistrotScraper": {
@@ -319,49 +754,108 @@
         "name": "Veckans: Fläsklägg",
         "category": "Veckans",
         "description": "Rotmos – Pepparrotsås – Senap – Persilja",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "pork"
+        ],
+        "emoji_tags": [
+          "🐖"
+        ]
       },
       {
         "name": "Vegetarisk Mån-tis:Raggmunk",
         "category": "Veckans",
         "description": "Svampragu – Lingon – Persilja",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "vegan"
+        ],
+        "emoji_tags": [
+          "🌱"
+        ]
       },
       {
         "name": "Ons-Tor: Bakad Rödbeta",
         "category": "Veckans",
         "description": "Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Vegetarisk: Fre: Pannoumiburgare",
         "category": "Veckans",
         "description": "",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "vegan",
+          "burger"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🍔"
+        ]
       },
       {
         "name": "Caesarsallad",
         "category": "Veckans",
         "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
       },
       {
         "name": "Högrevsburgare",
         "category": "Lunch",
         "description": "Karamelliserad lök – Krispichilimayo – Pepperjackost – Sallad – Pommes",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "beef",
+          "salad",
+          "burger"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🥗",
+          "🍔"
+        ]
       },
       {
         "name": "Smörstekt Fångst",
         "category": "Lunch",
         "description": "Kronärtskocka – Tomat – Smör – Citron – Krossad potatis – Rucola",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐄"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "vegan",
+      "chicken",
+      "pork",
+      "beef",
+      "salad",
+      "burger"
+    ],
+    "emoji_tags": [
+      "🌱",
+      "🐔",
+      "🐖",
+      "🐄",
+      "🥗",
+      "🍔"
     ]
-  },
-  "MimolettScraper": {
-    "day": "friday",
-    "items": []
   },
   "OishiiScraper": {
     "day": "friday",
@@ -370,134 +864,645 @@
         "name": "9 bitar",
         "category": "Sushi",
         "description": "5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo",
-        "price": "100 kr"
+        "price": "100 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
       },
       {
         "name": "9 bitar nigri",
         "category": "Sushi",
         "description": "5 Lax, 4 avokado",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
       },
       {
         "name": "11 bitar",
         "category": "Sushi",
         "description": "6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo",
-        "price": "110 kr"
+        "price": "110 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
       },
       {
         "name": "13 bitar",
         "category": "Sushi",
         "description": "7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo",
-        "price": "120 kr"
+        "price": "120 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
       },
       {
         "name": "15 bitar",
         "category": "Sushi",
         "description": "8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo",
-        "price": "130 kr"
+        "price": "130 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
       },
       {
         "name": "11 bitar vegetarisk",
         "category": "Sushi",
         "description": "2avokado 1ägg 1sparris 1tofu 6rullar",
-        "price": "110 kr"
+        "price": "110 kr",
+        "tags": [
+          "vegan",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🍣"
+        ]
       },
       {
         "name": "13 bitar vegetarisk",
         "category": "Sushi",
         "description": "3avokado 1sparris 1ägg 1tofu 7rullar",
-        "price": "120 kr"
+        "price": "120 kr",
+        "tags": [
+          "vegan",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🍣"
+        ]
       },
       {
         "name": "Tonkotsu Ramen",
         "category": "Varmrätter",
         "description": "Krämiga fläskbuljong,mört chashu,ägg,skogsöron",
-        "price": "135 kr"
+        "price": "135 kr",
+        "tags": [
+          "japanese",
+          "pork",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🐖",
+          "🥣"
+        ]
       },
       {
         "name": "Tantan Ramen (spicy)",
         "category": "Varmrätter",
         "description": "Kryddigbuljong med smakrik köttfärs.grönsaker,jordnötter,salladslök",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "japanese",
+          "beef",
+          "salad",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🐄",
+          "🥗",
+          "🥣"
+        ]
       },
       {
         "name": "Stekt kyckling med grönsaker",
         "category": "Varmrätter",
         "description": "kyckling, grönsaker",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "chicken",
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🐄"
+        ]
       },
       {
         "name": "Bento",
         "category": "Varmrätter",
         "description": "3 maki, 2 nigri, 2 kycklingspett",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "japanese",
+          "chicken",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🐔",
+          "🍣"
+        ]
       },
       {
         "name": "Yakitori",
         "category": "Varmrätter",
         "description": "kycklingspett med teriyakisås",
-        "price": "115 kr"
+        "price": "115 kr",
+        "tags": [
+          "japanese",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🐔"
+        ]
       },
       {
         "name": "Yakiniku",
         "category": "Varmrätter",
         "description": "strimlad entrecote",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Nudelsoppa med Biff",
         "category": "Varmrätter",
         "description": "",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "beef",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🥣"
+        ]
       },
       {
         "name": "Wonton nudlar",
         "category": "Varmrätter",
         "description": "",
-        "price": "119 kr"
+        "price": "119 kr",
+        "tags": [
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🥟"
+        ]
       },
       {
         "name": "Dumplings 9 st",
         "category": "Varmrätter",
         "description": "fläskkött eller vegetariansk",
-        "price": "109 kr"
+        "price": "109 kr",
+        "tags": [
+          "vegan",
+          "pork",
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐖",
+          "🥟"
+        ]
       },
       {
         "name": "Dumplings 12 st",
         "category": "Varmrätter",
         "description": "fläskkött eller vegetariansk",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "vegan",
+          "pork",
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐖",
+          "🥟"
+        ]
       },
       {
         "name": "Salmon Bowl",
         "category": "Poke Bowl",
         "description": "Marinerad lax med sushiris,,salladsmix,gurka,avokado,edamame,wakame, Mango,morötter,majs,picklad rödlök ,chilimajonös,sesamfrön",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "fish",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Yakiniku Bowl",
         "category": "Poke Bowl",
         "description": "Marinerad entrecote med sushiris salladsmix,gurka,avokado,edamame, Wakame,mango,morötter,majs,picklad rödlök , chilimajonös,teriyakisås, Sesamfrön",
-        "price": "139 kr"
+        "price": "139 kr",
+        "tags": [
+          "japanese",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Kyckling Bowl",
         "category": "Poke Bowl",
         "description": "Friterad kyckling med sushiris,salladsmix,gurka,avokado,edamame,wakame, Mango,morötter,majs,picklad rödlök,chilimajonös,sweetchilisås,sesamfrön",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "chicken",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Tempura Bowl",
         "category": "Poke Bowl",
         "description": "Tempuraräkor med sushiris salladsmix,gurka,avokado,edamame,wakame Mango,morötter,majs,picklad rödlök, ,chilimajonös,teriyakisås,rostadlök.",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "japanese",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥗",
+          "🍣"
+        ]
       },
       {
         "name": "Vegetarisk Bowl",
         "category": "Poke Bowl",
         "description": "Tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  Morötter,majs,picklad rödlök,chilimajonös,,sesamfrön",
-        "price": "129 kr"
+        "price": "129 kr",
+        "tags": [
+          "vegan",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🥗",
+          "🍣"
+        ]
       }
+    ],
+    "stale": false,
+    "tags": [
+      "japanese",
+      "vegan",
+      "fish",
+      "chicken",
+      "pork",
+      "beef",
+      "salad",
+      "sushi",
+      "dumplings",
+      "soup"
+    ],
+    "emoji_tags": [
+      "🇯🇵",
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐖",
+      "🐄",
+      "🥗",
+      "🍣",
+      "🥟",
+      "🥣"
+    ]
+  },
+  "EncounterAsianScraper": {
+    "day": "friday",
+    "items": [
+      {
+        "name": "vanlig 10 bitar",
+        "category": "SUSHI",
+        "description": "3 lax, 1 räka, 1 crabfish, 1 omelett & 4 maki",
+        "price": "95 kr",
+        "tags": [
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🍣"
+        ]
+      },
+      {
+        "name": "vegetarisk 10 bitar",
+        "category": "SUSHI",
+        "description": "2 avocado, 2 tofu, 2 omelett & 4 maki",
+        "price": "95 kr",
+        "tags": [
+          "vegan",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Mammasushi 10 bitar",
+        "category": "SUSHI",
+        "description": "2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki",
+        "price": "95 kr",
+        "tags": [
+          "vegan",
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐟",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Mix 12 bitar",
+        "category": "SUSHI",
+        "description": "4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado",
+        "price": "105 kr",
+        "tags": [
+          "vegan",
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐟",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Mix 15 bitar",
+        "category": "SUSHI",
+        "description": "5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado",
+        "price": "135 kr",
+        "tags": [
+          "vegan",
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🐟",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Nigiri mix 10 bitar",
+        "category": "SUSHI",
+        "description": "",
+        "price": "115 kr",
+        "tags": [
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🍣"
+        ]
+      },
+      {
+        "name": "Yakitori",
+        "category": "VARMRÄTT",
+        "description": "5 kycklingspett med ris, teriyakisås och sallad",
+        "price": "95 kr",
+        "tags": [
+          "japanese",
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🐔",
+          "🥗"
+        ]
+      },
+      {
+        "name": "Yakiniku",
+        "category": "VARMRÄTT",
+        "description": "Skivad entrecote, grönsaker, ris, yakinikusås & sallad",
+        "price": "99 kr",
+        "tags": [
+          "salad"
+        ],
+        "emoji_tags": [
+          "🥗"
+        ]
+      },
+      {
+        "name": "Wokade äggnudlar",
+        "category": "VARMRÄTT",
+        "description": "Äggnudlar med kycklingfilé & grönsaker",
+        "price": "95 kr",
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
+      },
+      {
+        "name": "Dumpling (kött)",
+        "category": "VARMRÄTT",
+        "description": "8 bitar dumplings, sallad & ris",
+        "price": "99 kr",
+        "tags": [
+          "salad",
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🥗",
+          "🥟"
+        ]
+      },
+      {
+        "name": "Dumpling (Veg)",
+        "category": "VARMRÄTT",
+        "description": "8 bitar dumplings, sallad & ris",
+        "price": "99 kr",
+        "tags": [
+          "vegan",
+          "salad",
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🥗",
+          "🥟"
+        ]
+      },
+      {
+        "name": "Bibibamp (biff)",
+        "category": "KOREANSK",
+        "description": "",
+        "price": "119 kr",
+        "tags": [
+          "korean",
+          "beef"
+        ],
+        "emoji_tags": [
+          "🇰🇷",
+          "🐄"
+        ]
+      },
+      {
+        "name": "Bibibamp (Kyckling)",
+        "category": "KOREANSK",
+        "description": "",
+        "price": "99 kr",
+        "tags": [
+          "korean",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇰🇷",
+          "🐔"
+        ]
+      },
+      {
+        "name": "Bibibamp (Veg)",
+        "category": "KOREANSK",
+        "description": "",
+        "price": "99 kr",
+        "tags": [
+          "korean",
+          "vegan"
+        ],
+        "emoji_tags": [
+          "🇰🇷",
+          "🌱"
+        ]
+      },
+      {
+        "name": "(Biff)",
+        "category": "NUDELSOPPA",
+        "description": "",
+        "price": "99 kr",
+        "tags": [
+          "beef",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🐄",
+          "🥣"
+        ]
+      },
+      {
+        "name": "(Kyckling)",
+        "category": "NUDELSOPPA",
+        "description": "",
+        "price": "99 kr",
+        "tags": [
+          "chicken",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥣"
+        ]
+      },
+      {
+        "name": "(Veg)",
+        "category": "NUDELSOPPA",
+        "description": "",
+        "price": "99 kr",
+        "tags": [
+          "vegan",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🌱",
+          "🥣"
+        ]
+      },
+      {
+        "name": "BENTOLÅDA",
+        "category": "BENTOLÅDA",
+        "description": "Yakiniku, yakitori, sushi, sallad & ris",
+        "price": "105 kr",
+        "tags": [
+          "japanese",
+          "salad",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥗",
+          "🍣"
+        ]
+      },
+      {
+        "name": "LÄSK",
+        "category": "LÄSK",
+        "description": "",
+        "price": "15 kr",
+        "tags": [],
+        "emoji_tags": []
+      }
+    ],
+    "stale": false,
+    "tags": [
+      "korean",
+      "japanese",
+      "vegan",
+      "fish",
+      "chicken",
+      "beef",
+      "salad",
+      "sushi",
+      "dumplings",
+      "soup"
+    ],
+    "emoji_tags": [
+      "🇰🇷",
+      "🇯🇵",
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐄",
+      "🥗",
+      "🍣",
+      "🥟",
+      "🥣"
     ]
   },
   "MasalaScraper": {
@@ -507,152 +1512,307 @@
         "name": "MURG METHI MALAI",
         "category": "",
         "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.",
-        "price": "119 kr, takeaway 114 kr"
+        "price": "119 kr, takeaway 114 kr",
+        "tags": [
+          "chicken",
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🐄"
+        ]
       },
       {
         "name": "MACHILI BENGALI",
         "category": "",
         "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)",
-        "price": "119 kr, takeaway 114 kr"
+        "price": "119 kr, takeaway 114 kr",
+        "tags": [
+          "fish",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🐟",
+          "🥣"
+        ]
       },
       {
         "name": "ALOO GHOBI MASALA",
         "category": "",
         "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära.",
-        "price": "119 kr, takeaway 114 kr"
+        "price": "119 kr, takeaway 114 kr",
+        "tags": [
+          "indian",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🥣"
+        ]
       },
       {
         "name": "SUBZI THALI",
         "category": "Stående meny",
         "description": "Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita.",
-        "price": "134 kr"
+        "price": "134 kr",
+        "tags": [
+          "indian",
+          "vegan",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🌱",
+          "🥣"
+        ]
       },
       {
         "name": "PALAK PANEER",
         "category": "Stående meny",
         "description": "Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök",
-        "price": "132 kr"
+        "price": "132 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "CHICKEN TANDOORI",
         "category": "Stående meny",
         "description": "Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås.",
-        "price": "132 kr"
+        "price": "132 kr",
+        "tags": [
+          "indian",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐔"
+        ]
       },
       {
         "name": "CHICKEN TIKKA MASALA",
         "category": "Stående meny",
         "description": "Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås.",
-        "price": "142 kr"
+        "price": "142 kr",
+        "tags": [
+          "indian",
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐔"
+        ]
       },
       {
         "name": "ROGAN JOSH",
         "category": "Stående meny",
         "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.",
-        "price": "152 kr"
+        "price": "152 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "JHINGA KORMA",
         "category": "Stående meny",
         "description": "Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma.",
-        "price": "157 kr"
+        "price": "157 kr",
+        "tags": [
+          "indian",
+          "beef",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇮🇳",
+          "🐄",
+          "🥣"
+        ]
       },
       {
         "name": "EXTRA SALLAD",
         "category": "Tillbehör",
         "description": "",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [
+          "salad"
+        ],
+        "emoji_tags": [
+          "🥗"
+        ]
       },
       {
         "name": "EXTRA LUNCH NAAN",
         "category": "Tillbehör",
         "description": "Nybakat indiskt bröd.",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "PLAIN NAAN (*)",
         "category": "Tillbehör",
         "description": "",
-        "price": "29 kr"
+        "price": "29 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "BUTTER NAAN (*)",
         "category": "Tillbehör",
         "description": "",
-        "price": "35 kr"
+        "price": "35 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "VITLÖK & KORIANDER NAAN (*)",
         "category": "Tillbehör",
         "description": "",
-        "price": "395 kr"
+        "price": "395 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "OST & KORIANDER NAAN (*)",
         "category": "Tillbehör",
         "description": "",
-        "price": "39 kr"
+        "price": "39 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "CHILI NAAN (*)",
         "category": "Tillbehör",
         "description": "",
-        "price": "39 kr"
+        "price": "39 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "(*)",
         "category": "Tillbehör",
         "description": "GLUTENFRITT ROTI +10 KR",
-        "price": ""
+        "price": "",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "MYNTASÅS",
         "category": "Tillbehör",
         "description": "",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "MANGO CHUTNEY",
         "category": "Tillbehör",
         "description": "",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "CHILI PICKLES",
         "category": "Tillbehör",
         "description": "",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "PAPADOM",
         "category": "Tillbehör",
         "description": "",
-        "price": "15 kr"
+        "price": "15 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "RAITA",
         "category": "Tillbehör",
         "description": "",
-        "price": "29 kr"
+        "price": "29 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "MANGOLASSI",
         "category": "Tillbehör",
         "description": "",
-        "price": "39 kr"
+        "price": "39 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "LÄSK / LÄTTÖL",
         "category": "Tillbehör",
         "description": "",
-        "price": "25 kr"
+        "price": "25 kr",
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "MINERALVATTEN",
         "category": "Tillbehör",
         "description": "",
-        "price": "25 kr"
+        "price": "25 kr",
+        "tags": [],
+        "emoji_tags": []
       }
+    ],
+    "stale": false,
+    "tags": [
+      "indian",
+      "vegan",
+      "fish",
+      "chicken",
+      "beef",
+      "salad",
+      "soup"
+    ],
+    "emoji_tags": [
+      "🇮🇳",
+      "🌱",
+      "🐟",
+      "🐔",
+      "🐄",
+      "🥗",
+      "🥣"
     ]
   }
 }
