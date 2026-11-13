@@ -33,6 +33,7 @@ Thumbs.db
 
 # Generated files during testing
 output/
+artifacts/
 
 # Sample web pages
 tests/samples/

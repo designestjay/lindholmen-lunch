@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LMDT71XZ0C');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
+    <title>Lindholmen Lunch – {{ day_label_en }}</title>
+    <meta name="description" content="Today's lunch menus from restaurants in Lindholmen, Gothenburg – updated daily." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #171c22;
+            --muted: #5a6570;
+            --paper: #eef1f3;
+            --paper-deep: #e3e8ec;
+            --surface: #ffffff;
+            --line: #d5dbe2;
+            --harbour: #1b6b73;
+            --harbour-soft: #d8ebee;
+            --signal: #b85a2a;
+            --signal-soft: #f6e7de;
+            --warn: #8a6d1d;
+            --warn-soft: #f5efd8;
+            --radius: 14px;
+            --shadow: 0 1px 2px rgba(23, 28, 34, 0.04), 0 8px 24px rgba(23, 28, 34, 0.05);
+            --font-brand: "Syne", system-ui, sans-serif;
+            --font-body: "DM Sans", system-ui, sans-serif;
+            --pad: clamp(0.75rem, 2.5vw, 1.25rem);
+            --content-max: 1120px;
+            --tap: 44px;
+            --safe-t: env(safe-area-inset-top, 0px);
+            --safe-r: env(safe-area-inset-right, 0px);
+            --safe-b: env(safe-area-inset-bottom, 0px);
+            --safe-l: env(safe-area-inset-left, 0px);
+            --header-offset: calc(var(--safe-t) + 3.75rem);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            overflow-x: clip;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 500px at 10% -10%, #dce8ea 0%, transparent 55%),
+                radial-gradient(900px 400px at 100% 0%, #e8e4dc 0%, transparent 50%),
+                linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+            min-height: 100vh;
+            min-height: 100dvh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding-left: var(--safe-l);
+            padding-right: var(--safe-r);
+        }
+
+        img, svg, video { max-width: 100%; height: auto; }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            z-index: 1000;
+        }
+        .skip-link:focus { left: max(1rem, var(--safe-l)); top: max(1rem, var(--safe-t)); }
+
+        .hidden { display: none !important; }
+
+        a { color: var(--harbour); }
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--harbour);
+            outline-offset: 2px;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(238, 241, 243, 0.92);
+            border-bottom: 1px solid rgba(23, 28, 34, 0.08);
+            padding-top: var(--safe-t);
+        }
+
+        .header-inner,
+        .toolbar-inner,
+        .main,
+        .footer-inner {
+            width: min(var(--content-max), calc(100% - (var(--pad) * 2)));
+            max-width: 100%;
+            margin-inline: auto;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            min-height: 3.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            background: none;
+            border: 0;
+            text-align: left;
+            cursor: pointer;
+            color: inherit;
+            font: inherit;
+            min-width: 0;
+            flex: 1 1 auto;
+            padding: 0.25rem 0;
+            min-height: var(--tap);
+            justify-content: center;
+        }
+
+        .brand-name {
+            font-family: var(--font-brand);
+            font-weight: 800;
+            font-size: clamp(1.1rem, 0.95rem + 1.2vw, 1.55rem);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            overflow-wrap: anywhere;
+        }
+
+        .brand-meta {
+            font-size: clamp(0.72rem, 0.68rem + 0.3vw, 0.82rem);
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .chip-btn {
+            appearance: none;
+            border: 1px solid rgba(23, 28, 34, 0.12);
+            background: var(--surface);
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0 0.95rem;
+            min-height: var(--tap);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .chip-btn:hover { background: #f7f8f9; }
+        .chip-btn[aria-pressed="true"] {
+            background: var(--harbour-soft);
+            border-color: rgba(27, 107, 115, 0.35);
+            color: var(--harbour);
+        }
+
+        .hero {
+            padding: clamp(1rem, 2.5vw, 1.75rem) 0 clamp(0.85rem, 2vw, 1.25rem);
+            animation: rise 0.55s ease both;
+            min-width: 0;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: clamp(0.72rem, 0.68rem + 0.3vw, 0.8rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--harbour);
+            margin-bottom: 0.65rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-brand);
+            font-weight: 800;
+            font-size: clamp(1.75rem, 1.2rem + 3.5vw, 3.1rem);
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            max-width: 16ch;
+            margin: 0 0 0.65rem;
+            overflow-wrap: anywhere;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: clamp(0.95rem, 0.9rem + 0.35vw, 1.08rem);
+            max-width: 36rem;
+            margin: 0;
+        }
+
+        .hero-status {
+            margin-top: 0.85rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem 0.65rem;
+            font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.875rem);
+            color: var(--muted);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(23, 28, 34, 0.08);
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        .toolbar {
+            position: sticky;
+            top: var(--header-offset);
+            z-index: 30;
+            padding: 0.5rem 0 0.65rem;
+            background: linear-gradient(180deg, rgba(238,241,243,0.97) 70%, rgba(238,241,243,0));
+        }
+
+        .toolbar-panel {
+            background: var(--surface);
+            border: 1px solid rgba(23, 28, 34, 0.08);
+            border-radius: calc(var(--radius) + 2px);
+            box-shadow: var(--shadow);
+            padding: 0.65rem;
+            display: grid;
+            gap: 0.55rem;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .search-wrap {
+            position: relative;
+            min-width: 0;
+        }
+
+        .search-wrap svg {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1rem;
+            height: 1rem;
+            color: var(--muted);
+            pointer-events: none;
+        }
+
+        #menu-search {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid rgba(23, 28, 34, 0.12);
+            border-radius: 12px;
+            min-height: var(--tap);
+            padding: 0.65rem 0.9rem 0.65rem 2.4rem;
+            font: inherit;
+            font-size: 1rem;
+            background: #fafbfc;
+            color: var(--ink);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.4rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: thin;
+            padding-bottom: 0.15rem;
+            max-width: 100%;
+        }
+        .filters::-webkit-scrollbar { height: 4px; }
+        .filters::-webkit-scrollbar-thumb {
+            background: rgba(23, 28, 34, 0.2);
+            border-radius: 999px;
+        }
+
+        .filter-chip {
+            appearance: none;
+            border: 1px solid rgba(23, 28, 34, 0.1);
+            background: #f7f8f9;
+            color: var(--ink);
+            border-radius: 999px;
+            padding: 0 0.85rem;
+            min-height: var(--tap);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            flex: 0 0 auto;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+        }
+        .filter-chip:hover { border-color: rgba(27, 107, 115, 0.35); }
+        .filter-chip[aria-pressed="true"] {
+            background: var(--harbour);
+            border-color: var(--harbour);
+            color: #fff;
+        }
+
+        .results-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+            min-height: 1.1em;
+        }
+
+        .restaurant-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+            padding: 0.25rem 0 calc(5.5rem + var(--safe-b));
+            min-width: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .restaurant-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.1rem;
+            }
+        }
+        @media (min-width: 1100px) {
+            .restaurant-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .restaurant-card {
+            background: var(--surface);
+            border: 1px solid rgba(23, 28, 34, 0.08);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: clamp(0.9rem, 2vw, 1.15rem);
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            min-width: 0;
+            max-width: 100%;
+            width: 100%;
+            overflow: hidden;
+            animation: rise 0.5s ease both;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .restaurant-card:nth-child(2) { animation-delay: 0.04s; }
+        .restaurant-card:nth-child(3) { animation-delay: 0.08s; }
+        .restaurant-card:nth-child(4) { animation-delay: 0.12s; }
+
+        @media (hover: hover) {
+            .restaurant-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 4px rgba(23,28,34,0.04), 0 14px 28px rgba(23,28,34,0.08);
+            }
+        }
+
+        .restaurant-card.highlighted {
+            border-color: rgba(184, 90, 42, 0.55);
+            box-shadow: 0 0 0 3px rgba(184, 90, 42, 0.15), var(--shadow);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.65rem;
+            align-items: flex-start;
+            min-width: 0;
+        }
+
+        .card-top > div:first-child {
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+
+        .restaurant-name {
+            font-family: var(--font-brand);
+            font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            margin: 0;
+        }
+
+        .card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.4rem;
+            min-width: 0;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted);
+            background: #f3f5f7;
+            border-radius: 999px;
+            padding: 0.2rem 0.5rem;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        .tag.stale {
+            color: var(--warn);
+            background: var(--warn-soft);
+        }
+
+        .card-links {
+            display: flex;
+            gap: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .icon-link {
+            width: var(--tap);
+            height: var(--tap);
+            border-radius: 999px;
+            border: 1px solid rgba(23, 28, 34, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--ink);
+            background: #fafbfc;
+            font-size: 0.95rem;
+        }
+        .icon-link:hover { background: var(--harbour-soft); color: var(--harbour); }
+
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            min-width: 0;
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.45rem 0.65rem;
+            padding-top: 0.65rem;
+            border-top: 1px solid rgba(23, 28, 34, 0.06);
+            min-width: 0;
+        }
+        .menu-item:first-child {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .menu-item > div:first-child { min-width: 0; }
+
+        .dish-name {
+            font-weight: 600;
+            font-size: clamp(0.9rem, 0.86rem + 0.25vw, 0.98rem);
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .dish-desc {
+            margin-top: 0.15rem;
+            font-size: clamp(0.8rem, 0.76rem + 0.25vw, 0.88rem);
+            color: var(--muted);
+            line-height: 1.4;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .dish-meta {
+            margin-top: 0.35rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            min-width: 0;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            color: var(--ink);
+            justify-self: end;
+        }
+
+        .empty-card,
+        .empty-state {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            color: var(--muted);
+            background: rgba(255,255,255,0.65);
+            border: 1px dashed rgba(23, 28, 34, 0.15);
+            border-radius: var(--radius);
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .empty-state h2 {
+            font-family: var(--font-brand);
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+        }
+
+        .surprise {
+            position: fixed;
+            left: 50%;
+            bottom: calc(1rem + var(--safe-b));
+            transform: translateX(-50%);
+            z-index: 50;
+            border: 0;
+            border-radius: 999px;
+            padding: 0 1.35rem;
+            min-height: var(--tap);
+            font: inherit;
+            font-weight: 700;
+            color: #fff;
+            background: var(--signal);
+            box-shadow: 0 10px 28px rgba(184, 90, 42, 0.28);
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.15s ease;
+            max-width: min(20rem, calc(100% - 2rem - var(--safe-l) - var(--safe-r)));
+            white-space: nowrap;
+        }
+        .surprise:hover { background: #a34e24; transform: translateX(-50%) translateY(-1px); }
+        .surprise:active { transform: translateX(-50%) scale(0.98); }
+
+        .site-footer {
+            border-top: 1px solid rgba(23, 28, 34, 0.08);
+            padding: 2rem 0 calc(5.75rem + var(--safe-b));
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .site-footer p + p { margin-top: 0.4rem; }
+        .site-footer a { overflow-wrap: anywhere; }
+
+        /* Short landscape / short viewports: keep sticky chrome compact */
+        @media (max-height: 500px) {
+            .toolbar {
+                position: static;
+                background: transparent;
+                padding-bottom: 0.35rem;
+            }
+            .hero { padding-top: 0.75rem; padding-bottom: 0.5rem; }
+            .hero h1 { font-size: clamp(1.45rem, 4vw, 2rem); }
+            .hero p { display: none; }
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#menus">
+        <span class="en">Skip to menus</span>
+        <span class="sv hidden">Hoppa till menyer</span>
+    </a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <button type="button" class="brand" onclick="goToTop()" aria-label="Lindholmen Lunch">
+                <span class="brand-name">Lindholmen Lunch</span>
+                <span class="brand-meta">
+                    <span class="en">{{ day_label_en }} · Gothenburg</span>
+                    <span class="sv hidden">{{ day_label_sv }} · Göteborg</span>
+                </span>
+            </button>
+            <div class="header-actions">
+                <button type="button" class="chip-btn" id="lang-toggle" onclick="toggleLanguage()" aria-pressed="false">
+                    <span class="en">Svenska</span>
+                    <span class="sv hidden">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-kicker">
+                <span class="en">Today · {{ day_label_en }}</span>
+                <span class="sv hidden">Idag · {{ day_label_sv }}</span>
+            </div>
+            <h1 id="hero-title">
+                <span class="en">Today's menus</span>
+                <span class="sv hidden">Dagens menyer</span>
+            </h1>
+            <p>
+                <span class="en">Search and filter lunch around Lindholmen — or tap Surprise me when you cannot decide.</span>
+                <span class="sv hidden">Sök och filtrera lunch runt Lindholmen — eller tryck Överraska mig när du inte kan bestämma dig.</span>
+            </p>
+            <div class="hero-status">
+                <span class="status-pill">
+                    <span class="en">Updated {{ last_updated }}</span>
+                    <span class="sv hidden">Uppdaterad {{ last_updated }}</span>
+                </span>
+                {% if stale_count %}
+                <span class="status-pill">
+                    <span class="en">{{ stale_count }} using earlier data</span>
+                    <span class="sv hidden">{{ stale_count }} med tidigare data</span>
+                </span>
+                {% endif %}
+            </div>
+        </section>
+
+        {% if restaurants %}
+        <div class="toolbar" role="search">
+            <div class="toolbar-inner">
+                <div class="toolbar-panel">
+                    <div class="search-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                            <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <label class="hidden" for="menu-search">
+                            <span class="en">Search menus</span>
+                            <span class="sv hidden">Sök menyer</span>
+                        </label>
+                        <input id="menu-search" type="search" autocomplete="off"
+                               placeholder="Search dish or restaurant…"
+                               data-placeholder-en="Search dish or restaurant…"
+                               data-placeholder-sv="Sök rätt eller restaurang…"
+                               oninput="applyFilters()">
+                    </div>
+                    {% if filter_options %}
+                    <div class="filters" id="filter-chips" aria-label="Food filters">
+                        {% for opt in filter_options %}
+                        <button type="button" class="filter-chip" data-tag="{{ opt.key }}" aria-pressed="false" onclick="toggleFilter(this)">
+                            <span aria-hidden="true">{{ opt.emoji }}</span>
+                            <span class="en">{{ opt.label_en }}</span>
+                            <span class="sv hidden">{{ opt.label_sv }}</span>
+                        </button>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="results-meta" id="results-meta" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+
+        <section id="menus" class="restaurant-list" aria-label="Restaurant menus">
+            {% for r in restaurants %}
+            <article class="restaurant-card"
+                     id="restaurant-{{ r.id }}"
+                     data-name="{{ r.name | lower }}"
+                     data-tags="{{ r.tags | join(' ') }}"
+                     data-search="{{ r.search_text }}">
+                <div class="card-top">
+                    <div>
+                        <h2 class="restaurant-name">{{ r.name }}</h2>
+                        <div class="card-badges">
+                            {% if r.stale %}
+                            <span class="tag stale">
+                                <span class="en">Earlier data</span>
+                                <span class="sv hidden">Tidigare data</span>
+                            </span>
+                            {% endif %}
+                            {% for emoji in r.emoji_tags[:4] %}
+                            <span class="tag" aria-hidden="true">{{ emoji }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% if r.links %}
+                    <div class="card-links">
+                        {% if r.links.url %}
+                        <a class="icon-link" href="{{ r.links.url }}" target="_blank" rel="noopener noreferrer"
+                           title="Website" aria-label="{{ r.name }} website">↗</a>
+                        {% endif %}
+                        {% if r.links.map %}
+                        <a class="icon-link" href="{{ r.links.map }}" target="_blank" rel="noopener noreferrer"
+                           title="Map" aria-label="{{ r.name }} on map">⌖</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if r.dishes %}
+                <ul class="menu-list">
+                    {% for item in r.dishes %}
+                    <li class="menu-item" data-item-tags="{{ item.tags | join(' ') }}" data-item-text="{{ item.search_text }}">
+                        <div>
+                            {% if item.name %}
+                            <div class="dish-name">{{ item.name }}</div>
+                            {% if item.description %}
+                            <div class="dish-desc">{{ item.description }}</div>
+                            {% endif %}
+                            {% else %}
+                            <div class="dish-name">
+                                <span class="en">Today's special</span>
+                                <span class="sv hidden">Dagens special</span>
+                            </div>
+                            {% if item.description %}
+                            <div class="dish-desc">{{ item.description }}</div>
+                            {% endif %}
+                            {% endif %}
+                            {% if item.category or item.emoji_tags %}
+                            <div class="dish-meta">
+                                {% if item.category %}<span class="tag">{{ item.category }}</span>{% endif %}
+                                {% for emoji in item.emoji_tags[:3] %}
+                                <span class="tag" aria-hidden="true">{{ emoji }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if item.price %}<div class="price">{{ item.price }}</div>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="empty-card">
+                    <span class="en">No dishes listed for today.</span>
+                    <span class="sv hidden">Inga rätter listade idag.</span>
+                </div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </section>
+
+        <div id="no-match" class="empty-state hidden" role="status">
+            <h2>
+                <span class="en">No matches</span>
+                <span class="sv hidden">Inga träffar</span>
+            </h2>
+            <p>
+                <span class="en">Try another search or clear the filters.</span>
+                <span class="sv hidden">Prova en annan sökning eller rensa filtren.</span>
+            </p>
+        </div>
+        {% else %}
+        <div class="empty-state" role="status">
+            <h2>
+                <span class="en">No menus yet for today</span>
+                <span class="sv hidden">Inga menyer ännu för idag</span>
+            </h2>
+            <p>
+                <span class="en">We could not load lunch data. Check back after the next update, or browse a restaurant site directly.</span>
+                <span class="sv hidden">Vi kunde inte ladda lunchdata. Kom tillbaka efter nästa uppdatering, eller besök en restaurang direkt.</span>
+            </p>
+        </div>
+        {% endif %}
+    </main>
+
+    {% if restaurants %}
+    <button type="button" class="surprise" id="surprise-btn" onclick="selectRandomRestaurant()">
+        <span class="en">Surprise me</span>
+        <span class="sv hidden">Överraska mig</span>
+    </button>
+    {% endif %}
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>
+                <span class="en">Lindholmen, Gothenburg — weekday lunch menus, updated automatically.</span>
+                <span class="sv hidden">Lindholmen, Göteborg — lunchmenyer på vardagar, uppdateras automatiskt.</span>
+            </p>
+            <p>
+                <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank" rel="noopener noreferrer">GitHub</a>
+                ·
+                <span class="en">Based on work by</span>
+                <span class="sv hidden">Baserat på arbete av</span>
+                <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank" rel="noopener noreferrer">Fawenah</a>
+                ·
+                <a href="privacy.html">
+                    <span class="en">Privacy</span>
+                    <span class="sv hidden">Integritet</span>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const restaurantIds = {{ restaurant_ids | tojson }};
+        let activeFilters = new Set();
+
+        function isSwedish() {
+            return document.documentElement.lang === 'sv';
+        }
+
+        function toggleLanguage() {
+            const toSv = !isSwedish();
+            document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', toSv));
+            document.querySelectorAll('.sv').forEach(el => el.classList.toggle('hidden', !toSv));
+            document.documentElement.lang = toSv ? 'sv' : 'en';
+            localStorage.setItem('language', toSv ? 'sv' : 'en');
+            const btn = document.getElementById('lang-toggle');
+            if (btn) btn.setAttribute('aria-pressed', toSv ? 'true' : 'false');
+            const search = document.getElementById('menu-search');
+            if (search) {
+                search.placeholder = toSv ? search.dataset.placeholderSv : search.dataset.placeholderEn;
+            }
+            applyFilters();
+        }
+
+        function toggleFilter(btn) {
+            const tag = btn.dataset.tag;
+            const pressed = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+            if (pressed) activeFilters.delete(tag);
+            else activeFilters.add(tag);
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = (document.getElementById('menu-search')?.value || '').trim().toLowerCase();
+            const cards = [...document.querySelectorAll('.restaurant-card')];
+            let visible = 0;
+
+            cards.forEach(card => {
+                const searchBlob = (card.dataset.search || '') + ' ' + (card.dataset.name || '');
+                const cardTags = new Set((card.dataset.tags || '').split(/\s+/).filter(Boolean));
+                const matchesQuery = !query || searchBlob.includes(query);
+                const matchesFilters = !activeFilters.size || [...activeFilters].every(t => cardTags.has(t));
+                const show = matchesQuery && matchesFilters;
+                card.hidden = !show;
+                if (show) visible += 1;
+            });
+
+            const meta = document.getElementById('results-meta');
+            const noMatch = document.getElementById('no-match');
+            if (meta) {
+                if (!query && !activeFilters.size) {
+                    meta.textContent = '';
+                } else {
+                    meta.textContent = isSwedish()
+                        ? `${visible} av ${cards.length} restauranger`
+                        : `${visible} of ${cards.length} restaurants`;
+                }
+            }
+            if (noMatch) noMatch.classList.toggle('hidden', visible !== 0 || cards.length === 0);
+        }
+
+        function selectRandomRestaurant() {
+            const visible = restaurantIds
+                .map(id => document.getElementById('restaurant-' + id))
+                .filter(el => el && !el.hidden);
+            if (!visible.length) return;
+
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(c => c.classList.remove('highlighted'));
+            const btn = document.getElementById('surprise-btn');
+            const original = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.innerHTML = isSwedish()
+                    ? '<span class="sv">Väljer…</span><span class="en hidden">Choosing…</span>'
+                    : '<span class="en">Choosing…</span><span class="sv hidden">Väljer…</span>';
+            }
+
+            setTimeout(() => {
+                const pick = visible[Math.floor(Math.random() * visible.length)];
+                pick.classList.add('highlighted');
+                pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (btn) btn.innerHTML = original;
+            }, 450);
+        }
+
+        function goToTop() {
+            document.querySelectorAll('.restaurant-card.highlighted').forEach(c => c.classList.remove('highlighted'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function syncStickyOffset() {
+            const header = document.querySelector('.site-header');
+            if (!header) return;
+            document.documentElement.style.setProperty(
+                '--header-offset',
+                `${Math.ceil(header.getBoundingClientRect().height)}px`
+            );
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('language') === 'sv') toggleLanguage();
+            applyFilters();
+            syncStickyOffset();
+        });
+        window.addEventListener('resize', syncStickyOffset);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', syncStickyOffset);
+        }
+    </script>
+</body>
+</html>
