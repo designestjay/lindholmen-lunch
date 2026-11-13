@@ -3,12 +3,6 @@
 import logging
 from typing import Dict, Optional
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import WebDriverException
 import traceback
 from scrapers.base import LunchScraper, DailyMenu, MenuItem, get_chrome_options
 
@@ -28,6 +22,12 @@ class EncounterAsianScraper(LunchScraper):
             return
 
         try:
+            from selenium import webdriver
+            from selenium.webdriver.common.by import By
+            from selenium.webdriver.support.ui import WebDriverWait
+            from selenium.webdriver.support import expected_conditions as EC
+            from selenium.common.exceptions import WebDriverException
+
             with webdriver.Chrome(options=chrome_options) as driver:
                 driver.set_page_load_timeout(15)
                 driver.get(self.URL)
@@ -40,13 +40,9 @@ class EncounterAsianScraper(LunchScraper):
                 logger.debug("Fetched rendered HTML (first 500 chars):\n%s", html[:500])
                 self.soup = BeautifulSoup(html, "html.parser")
 
-        except WebDriverException as e:
-            logger.error("WebDriver error: %s", str(e))
-            traceback.print_exc()
-            return
-
         except Exception as e:
-            logger.error("Error while loading or parsing Encounter Asian menu:")
+            # Includes WebDriverException when selenium is installed
+            logger.error("Error while loading or parsing Encounter Asian menu: %s", e)
             traceback.print_exc()
             return
 
