@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from generate_html import generate_index_page, sentence_case_dish, split_price
+from generate_html import dish_pills, generate_index_page, sentence_case_dish, split_price
 
 
 def test_friday_page_uses_scrape_time_not_render_time():
@@ -38,6 +38,27 @@ def test_friday_page_uses_scrape_time_not_render_time():
     assert 'src="assets/analytics.js" defer' in html
     assert "text-underline-offset: 3px" in html
     assert ".pick { align-items: center; }" in html
+    assert ".menu-item::marker { content: none; }" in html
+    assert "is-plain" in html
+    pesto = html.find('data-dish-name="Pasta pesto"')
+    assert pesto > 0
+    row = html[pesto:html.find("</li>", pesto)]
+    assert ">Fish<" not in row
+    assert ">Chicken<" not in row
+    assert ">Pasta<" in row
+    assert "Halstrad lax" not in row
+    assert "Halstrad lax" in html
+
+
+def test_pills_use_this_dish_only():
+    pills = dish_pills(
+        "Pasta pesto",
+        "getost, bakade tomater, vitlöksstekta brödsmulor, pesto",
+        "Metal",
+    )
+    assert [pill["en"] for pill in pills] == ["Pasta"]
+    sushi = dish_pills("9 bitar nigri", "5 Lax, 4 avokado", "Sushi")
+    assert [pill["en"] for pill in sushi] == ["Fish", "Sushi"]
 
 
 def test_dish_case_and_price_split():

@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
+from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords, tags_for_text
 from utils.restaurants import DISPLAY_NAMES, display_name, link_key
 from utils.dish_category import classify, coverage_line, load_library, load_taxonomy, normalise, update_image_queue
 from utils.dish_svg import PROTEIN_LABELS, protein_for
@@ -166,6 +166,16 @@ def pills_for(tags: list[str] | None) -> list[dict]:
     return pills
 
 
+def dish_pills(name: str, description: str, category: str = "", tag_data: dict | None = None) -> list[dict]:
+    """Pills from this dish's name, description and section. Stored tags are ignored."""
+    text = " ".join(
+        part.strip()
+        for part in (name or "", description or "", category or "")
+        if part and part.strip()
+    )
+    return pills_for(tags_for_text(text, tag_data))
+
+
 def _parse_stamp(value: str | None) -> datetime | None:
     if not value or not isinstance(value, str):
         return None
@@ -200,6 +210,7 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
     taxonomy = load_taxonomy()
     library = (load_library().get("categories") or {})
     sources = load_sources()
+    tag_data = load_keywords()
     for scraper_key, payload in lunch_data.items():
         if not isinstance(payload, dict):
             continue
@@ -213,7 +224,6 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             description = (item.get("description") or "").strip()
             price_raw = (item.get("price") or "").strip()
             price_value = parse_price(price_raw)
-            tags = item.get("tags") or []
             if name:
                 display_item_name = sentence_case_dish(name)
                 visible_description = description
@@ -236,13 +246,19 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             svg_file = Path(f"docs/assets/dishes/{slug}.svg") if slug else None
             has_svg = bool(svg_file and svg_file.is_file())
             confidence = float(decision.get("category_confidence") or 0)
-            protein = protein_for(
-                f"{display_item_name or name} {visible_description or description}",
-                tags,
-                slug,
+            section = (item.get("category") or "").strip()
+            own_text = " ".join(
+                part for part in (display_item_name or name, visible_description or description, section) if part
             )
+            own_tags = tags_for_text(own_text, tag_data)
+            protein = protein_for(own_text, own_tags, slug)
             protein_sv, protein_en = PROTEIN_LABELS.get(protein, ("", ""))
-            pills = pills_for(tags)
+            pills = dish_pills(
+                display_item_name or name,
+                visible_description or description,
+                section,
+                tag_data,
+            )
             if protein_sv and all(pill["sv"] != protein_sv for pill in pills):
                 pills = pills + [{"key": protein, "en": protein_en, "sv": protein_sv}]
             items_out.append(
@@ -252,13 +268,13 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                     "category": (item.get("category") or "").strip(),
                     "price": price_text,
                     "price_note": price_note,
-                    "tags": tags,
+                    "tags": own_tags,
                     "pills": pills,
                     "protein": protein or "",
                     "protein_sv": protein_sv,
                     "protein_en": protein_en,
-                    "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
-                    "search_text": _item_search_text(item),
+                    "filter_tokens": " ".join(dish_filter_tokens(own_tags, price_value)),
+                    "search_text": _item_search_text({**item, "tags": own_tags}),
                     "dish_category": slug,
                     "dish_confidence": confidence,
                     "dish_image": f"assets/dishes/{slug}.svg" if has_svg else "",

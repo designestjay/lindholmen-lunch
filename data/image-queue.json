@@ -797,6 +797,21 @@
       "suggestion": "teriyaki",
       "confidence": 0.72,
       "reason": "low_confidence"
+    },
+    {
+      "key": "“chicken dopiaza”",
+      "name": "“Chicken dopiaza”",
+      "description": "bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ)",
+      "restaurants": [
+        "Uni3 World of Food"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
     }
   ]
 }

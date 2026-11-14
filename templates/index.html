@@ -558,7 +558,8 @@
             border: 0;
         }
         .menu-list { list-style: none; margin: 12px 0 0; padding: 0; min-width: 0; }
-        .menu-item { padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+        .menu-item { list-style: none; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+        .menu-item::marker { content: none; }
         .menu-item:first-child { border-top: 0; padding-top: 4px; }
         .dish-line {
             display: flex;
@@ -669,6 +670,18 @@
         .dish-draft { font-size: 13px; }
         .dish-sheet-top { display: flex; justify-content: space-between; align-items: flex-start; }
         #dish-sheet-ico { width: 160px; height: 160px; }
+        #dish-sheet.is-plain[open] { display: flex; flex-direction: column; }
+        #dish-sheet.is-plain .dish-sheet-top {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+        #dish-sheet.is-plain #dish-sheet-ico,
+        #dish-sheet.is-plain .protein-legend { display: none !important; }
+        #dish-sheet.is-plain h2 { order: -1; margin: 0 52px 8px 0; }
         @media (max-width: 820px) {
             #dish-sheet {
                 margin: auto 0 0 0;
@@ -1928,15 +1941,19 @@
                 if (draft) draft.hidden = (entry.review_status || entry.status) !== "draft";
                 var icon = document.getElementById("dish-sheet-ico");
                 var use = document.getElementById("dish-sheet-use");
+                var hasDrawing = !!dialog.dataset.href;
+                dialog.classList.toggle("is-plain", !hasDrawing);
                 if (icon) {
                     if (dialog.dataset.protein) icon.setAttribute("data-protein", dialog.dataset.protein);
                     else icon.removeAttribute("data-protein");
-                    icon.hidden = !dialog.dataset.href;
+                    icon.hidden = !hasDrawing;
                 }
                 if (use) {
-                    if (dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                    if (hasDrawing) use.setAttribute("href", dialog.dataset.href);
                     else use.removeAttribute("href");
                 }
+                var legend = dialog.querySelector(".protein-legend");
+                if (legend) legend.hidden = !hasDrawing || !dialog.dataset.protein;
                 var proteinLine = document.getElementById("dish-sheet-protein");
                 var proteinNames = {
                     beef: ["Nöt", "Beef"],

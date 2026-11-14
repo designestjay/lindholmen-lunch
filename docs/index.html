@@ -558,7 +558,8 @@
             border: 0;
         }
         .menu-list { list-style: none; margin: 12px 0 0; padding: 0; min-width: 0; }
-        .menu-item { padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+        .menu-item { list-style: none; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+        .menu-item::marker { content: none; }
         .menu-item:first-child { border-top: 0; padding-top: 4px; }
         .dish-line {
             display: flex;
@@ -669,6 +670,18 @@
         .dish-draft { font-size: 13px; }
         .dish-sheet-top { display: flex; justify-content: space-between; align-items: flex-start; }
         #dish-sheet-ico { width: 160px; height: 160px; }
+        #dish-sheet.is-plain[open] { display: flex; flex-direction: column; }
+        #dish-sheet.is-plain .dish-sheet-top {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+        #dish-sheet.is-plain #dish-sheet-ico,
+        #dish-sheet.is-plain .protein-legend { display: none !important; }
+        #dish-sheet.is-plain h2 { order: -1; margin: 0 52px 8px 0; }
         @media (max-width: 820px) {
             #dish-sheet {
                 margin: auto 0 0 0;
@@ -4151,7 +4164,7 @@
                     
                     <ul class="menu-list" id="dishes-Uni3WorldOfFoodScraper" lang="sv">
                         
-                        <li class="menu-item" data-tags="beef chicken fish pasta" data-text="pasta pesto getost, bakade tomater, vitlöksstekta brödsmulor, pesto water: halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll fire: “chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) &#34;chicken dopiaza&#34;, baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option) metal fish chicken beef pasta" data-order="0" data-category="Metal" data-price="132 kr" data-name="Pasta pesto">
+                        <li class="menu-item" data-tags="pasta" data-text="pasta pesto getost, bakade tomater, vitlöksstekta brödsmulor, pesto metal pasta" data-order="0" data-category="Metal" data-price="132 kr" data-name="Pasta pesto">
                             <div class="dish-line">
                                 
                                 <span class="dish-slot" aria-hidden="true"></span>
@@ -4162,15 +4175,55 @@
                                         <button type="button" class="dish-ask" data-dish="pasta-pesto" data-dish-name="Pasta pesto" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Pasta pesto</button>
                                         
                                         
-                                        <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
-                                        
-                                        <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
-                                        
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
                                     </div>
                                     
-                                    <p class="dish-desc">getost, bakade tomater, vitlöksstekta brödsmulor, pesto Water: Halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill Charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll Fire: “Chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) &#34;Chicken dopiaza&#34;, baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option)</p>
+                                    <p class="dish-desc">getost, bakade tomater, vitlöksstekta brödsmulor, pesto</p>
+                                    
+                                    
+                                </div>
+                                <div class="price mono">132 kr</div>
+                            </div>
+                        </li>
+                        
+                        <li class="menu-item" data-tags="fish" data-text="halstrad lax kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill water fish" data-order="1" data-category="Water" data-price="132 kr" data-name="Halstrad lax">
+                            <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
+                                <div class="dish-main">
+                                    <div class="dish-name">
+                                        
+                                        <button type="button" class="dish-ask" data-dish="salmon" data-dish-name="Halstrad lax" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Halstrad lax</button>
+                                        
+                                        
+                                        <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
+                                        
+                                    </div>
+                                    
+                                    <p class="dish-desc">kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill</p>
+                                    
+                                    
+                                </div>
+                                <div class="price mono">132 kr</div>
+                            </div>
+                        </li>
+                        
+                        <li class="menu-item" data-tags="beef chicken" data-text="“chicken dopiaza” bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) fire chicken beef" data-order="2" data-category="Fire" data-price="132 kr" data-name="“Chicken dopiaza”">
+                            <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
+                                <div class="dish-main">
+                                    <div class="dish-name">
+                                        “Chicken dopiaza”
+                                        
+                                        <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
+                                        
+                                    </div>
+                                    
+                                    <p class="dish-desc">bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ)</p>
                                     
                                     
                                 </div>
@@ -4916,15 +4969,19 @@
                 if (draft) draft.hidden = (entry.review_status || entry.status) !== "draft";
                 var icon = document.getElementById("dish-sheet-ico");
                 var use = document.getElementById("dish-sheet-use");
+                var hasDrawing = !!dialog.dataset.href;
+                dialog.classList.toggle("is-plain", !hasDrawing);
                 if (icon) {
                     if (dialog.dataset.protein) icon.setAttribute("data-protein", dialog.dataset.protein);
                     else icon.removeAttribute("data-protein");
-                    icon.hidden = !dialog.dataset.href;
+                    icon.hidden = !hasDrawing;
                 }
                 if (use) {
-                    if (dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                    if (hasDrawing) use.setAttribute("href", dialog.dataset.href);
                     else use.removeAttribute("href");
                 }
+                var legend = dialog.querySelector(".protein-legend");
+                if (legend) legend.hidden = !hasDrawing || !dialog.dataset.protein;
                 var proteinLine = document.getElementById("dish-sheet-protein");
                 var proteinNames = {
                     beef: ["Nöt", "Beef"],
