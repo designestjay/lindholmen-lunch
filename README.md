@@ -1,166 +1,79 @@
-# 🍽️ Lindholmen Lunch
+# Lindholmen Lunch
 
-A modern web application that aggregates and displays daily lunch menus from restaurants in Lindholmen, Gothenburg. Updated automatically every weekday morning.
+Lunch menus from Lindholmen, Gothenburg. The page is static HTML, regenerated on weekday mornings and published from `docs/` with GitHub Pages.
 
-## 🌐 Live Website
+Live site: https://iamjaydesign.com/lindholmen-lunch
 
-Visit the live application: **https://iamjaydesign.com/lindholmen-lunch/**
+Based on work by [Fawenah](https://github.com/Fawenah/lindholmen_lunch).
 
-## ✨ Features
+## What it does
 
-- **🔄 Daily Updates**: Automatically scrapes fresh lunch data every weekday morning
-- **🌍 Bilingual**: Full English/Swedish language support with localStorage persistence
-- **🎲 Random Selection**: "I'm feeling hungry!" button for random restaurant discovery
-- **📱 Responsive Design**: Perfect experience on desktop, tablet, and mobile
-- **🔗 Restaurant Links**: Direct links to restaurant websites and Google Maps
-- **⚡ Fast Loading**: Static site with optimized performance
-- **🎨 Modern UI**: Clean, contemporary design with smooth animations
+- Scrapes the weekday lunch menus and renders one page.
+- Swedish and English, remembered in the browser.
+- Pick a dish from the menus that match the current filters and search.
+- Links to each restaurant's website and map.
 
-## 🏪 Supported Restaurants
+Restaurants: Kooperativet, District One, Bombay Bistro, Cuckoo's Nest, Uni3 World of Food, Miss F, Benne Pastabar, LS Kitchen, Bistrot, Mimolett, Oishii, Mat & Minnen, Encounter Asian, Masala, Pier 11.
 
-The app currently scrapes lunch menus from 15+ restaurants in Lindholmen:
+## Schedule
 
-- Kooperativet
-- District One
-- Bombay Bistro
-- Cuckoo's Nest
-- Uni3 World of Food
-- Miss F
-- Benne Pastabar
-- LS Kitchen
-- Bistrot
-- Mimolett
-- Oishii
-- Mat & Minnen
-- Encounter Asian
-- Masala
-- Restaurant Pier 11
+GitHub Actions runs three times each weekday (Monday–Friday). The times below are Europe/Stockholm.
 
-## 🛠️ Technical Details
+| Cron (UTC) | Winter (CET) | Summer (CEST) |
+|---|---|---|
+| `7 5 * * 1-5` | 06:07 | 07:07 |
+| `37 6 * * 1-5` | 07:37 | 08:37 |
+| `7 8 * * 1-5` | 09:07 | 10:07 |
 
-### Built With
+The workflow is `.github/workflows/update-and-deploy.yml`. It scrapes, renders `docs/`, and pushes the page.
 
-- **Python 3.9+** - Backend scraping and data processing
-- **Selenium** - Web scraping for dynamic content
-- **BeautifulSoup** - HTML parsing
-- **Jinja2** - Template rendering
-- **GitHub Actions** - Automated daily updates
-- **GitHub Pages** - Static site hosting
+## Local setup
 
-### Architecture
+Python 3.12 and Chrome (the two JavaScript menus use Selenium).
 
-1. **Scrapers** (`scrapers/`) - Individual scrapers for each restaurant
-2. **Data Processing** (`utils/`) - Text processing and emoji annotation
-3. **Template Rendering** (`templates/`) - HTML generation with Jinja2
-4. **Static Output** (`docs/`) - Generated HTML files for GitHub Pages
-5. **Automation** (`.github/workflows/`) - Daily scraping and deployment
-
-### Automated Workflow
-
-1. **6:00 AM UTC** (8:00 AM CEST) - GitHub Actions triggers daily
-2. **Scraping** - Fetches fresh lunch data from all restaurants
-3. **Processing** - Handles long text, emoji annotation, and formatting
-4. **Generation** - Creates updated HTML with current data
-5. **Deployment** - Publishes to GitHub Pages automatically
-
-## 🚀 Local Development
-
-### Prerequisites
-
-- Python 3.9+
-- Chrome browser (for Selenium)
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/lindholmen_lunch.git
-   cd lindholmen_lunch
-   ```
-
-2. **Create virtual environment**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the scraper**
-   ```bash
-   python main.py  # Scrapes today's data
-   python main.py --day monday  # Scrape specific day
-   python main.py --all  # Scrape all weekdays
-   ```
-
-5. **Serve locally**
-   ```bash
-   cd docs
-   python -m http.server 8000
-   ```
-
-6. **Visit** https://iamjaydesign.com/lindholmen-lunch/
-
-## 📝 Contributing
-
-Contributions are welcome! Here's how you can help:
-
-### Adding New Restaurants
-
-1. Create a new scraper in `scrapers/` following the existing pattern
-2. Inherit from `LunchScraper` base class
-3. Implement `get_menu_for_day()` and/or `get_all_menus()`
-4. Add to `SCRAPERS` list in `main.py`
-5. Add restaurant links in `restaurant_links.json`
-
-### Improving Existing Features
-
-- Enhance the UI/UX design
-- Add new language support
-- Improve error handling
-- Optimize performance
-
-### Bug Reports
-
-Please open an issue with:
-- Description of the problem
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots if applicable
-
-## 🔧 Configuration
-
-### Restaurant Links
-
-Edit `restaurant_links.json` to add/update restaurant websites and map links:
-
-```json
-{
-  "RestaurantName": {
-    "url": "https://restaurant-website.com",
-    "map": "https://maps.google.com/..."
-  }
-}
+```bash
+git clone https://github.com/designestjay/lindholmen-lunch.git
+cd lindholmen-lunch
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### Scheduling
+Render the page from the saved Friday data:
 
-The scraper runs automatically via GitHub Actions. To modify the schedule, edit `.github/workflows/update-and-deploy.yml`:
-
-```yaml
-schedule:
-  - cron: '0 6 * * 1-5'  # 6 AM UTC, Monday-Friday
+```bash
+python generate_html.py --day friday
 ```
 
-## 💬 Contact
+Serve it:
 
-- **GitHub Issues**: For bug reports and feature requests
-- **Email**: fawenah@gmail.com
-- **Project**: https://github.com/Fawenah/lindholmen_lunch
+```bash
+cd docs
+python -m http.server 8000
+```
 
----
+Then open http://127.0.0.1:8000/
 
-**Made with ❤️ for the Lindholmen community**
+## Tests
+
+Offline tests skip anything that hits a restaurant site:
+
+```bash
+python -m pytest -q
+```
+
+Opt in to the live scraper tests:
+
+```bash
+RUN_NETWORK=1 python -m pytest -q -m network
+```
+
+Headless Chrome checks the pick dock and the weekend state:
+
+```bash
+python -m pytest -q -m browser
+```
+
+## Contact
+
+support@jaydigitalstudio.com
