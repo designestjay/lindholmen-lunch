@@ -18,7 +18,7 @@ from utils.utils import get_today_english
 
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
-SITE = "https://lindholmenlunch.nu"
+SITE = "https://iamjaydesign.com/lindholmen-lunch"
 
 DAY_LABELS = {
     "monday": ("Monday", "Måndag"),
@@ -268,6 +268,28 @@ def write_sitemap(lastmod: str) -> None:
     Path("docs/sitemap.xml").write_text(body, encoding="utf-8")
 
 
+def write_privacy() -> None:
+    """Render the privacy page from SITE so the canonical URL is not hardcoded."""
+    env = Environment(
+        loader=FileSystemLoader("templates"),
+        autoescape=select_autoescape(["html", "xml"]),
+    )
+    template_path = Path("templates/privacy.html")
+    template_bytes = template_path.read_bytes()
+    html = env.get_template("privacy.html").render(site=SITE)
+    # Jinja normalizes newlines and drops the trailing one. Keep the
+    # template's so a regen does not rewrite the whole page.
+    if b"\r\n" in template_bytes:
+        html = html.replace("\r\n", "\n").replace("\n", "\r\n")
+        if template_bytes.endswith(b"\r\n") and not html.endswith("\r\n"):
+            html += "\r\n"
+    elif template_bytes.endswith(b"\n") and not html.endswith("\n"):
+        html += "\n"
+    Path("docs").mkdir(exist_ok=True)
+    Path("docs/privacy.html").write_text(html, encoding="utf-8", newline="")
+    Path("privacy.html").write_text(html, encoding="utf-8", newline="")
+
+
 def generate_lunch_summary(day: str) -> None:
     """Legacy per-day page generator (kept for compatibility)."""
     data_path = f"data/lunch_data_{day}.json"
@@ -374,9 +396,11 @@ def generate_index_page(day: str | None = None) -> None:
         directory=restaurant_directory(restaurant_links),
         filter_options=filters,
         scrape_meta=meta,
+        site=SITE,
     )
 
     (output_dir / "index.html").write_text(html, encoding="utf-8")
+    write_privacy()
     lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
     write_sitemap(lastmod)
     print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
