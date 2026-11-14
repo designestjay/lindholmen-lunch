@@ -1168,6 +1168,7 @@
     <script src="assets/analytics.js" defer data-endpoint="" data-site=""></script>
     <script>
         (function () {
+            window.__lunchClassAtBodyStart = document.documentElement.className;
             window.__lunchBodyStarted = true;
             var active = new Set();
             var lastTrackedQuery = "";
