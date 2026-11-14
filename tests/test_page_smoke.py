@@ -6,6 +6,7 @@ SEVERE CORS errors that are not product bugs.
 
 import shutil
 import threading
+import time
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -16,6 +17,8 @@ pytestmark = pytest.mark.browser
 DOCS = Path(__file__).resolve().parents[1] / "docs"
 WEEKDAY = "/?asof=2026-11-13T11:20"
 WEEKEND = "/?asof=2026-11-14T10:00"
+WEEKEND_NOON = "/?asof=2026-11-14T12:00"
+HOLIDAY_WEEKEND = "/?asof=2026-12-26T12:00"
 
 
 def _chrome_binary():
@@ -102,6 +105,67 @@ def test_weekend_class_is_set_before_the_body_script(page):
         """
     )
     assert hidden == {"menus": "none", "toolbar": "none"}
+    assert _severe(driver) == []
+
+
+def _idea_state(driver):
+    return driver.execute_script(
+        """
+        function shown(sel) {
+            var node = document.querySelector(sel);
+            if (!node) return false;
+            var style = getComputedStyle(node);
+            var box = node.getBoundingClientRect();
+            return style.display !== "none" && box.height > 0;
+        }
+        var fab = document.getElementById("pick-fab");
+        return {
+            ideas: shown("section#weekend-ideas"),
+            menus: shown("#menus"),
+            fab: fab ? fab.innerText.replace(/\\s+/g, " ").trim() : "",
+            idea: document.documentElement.classList.contains("is-idea"),
+            menusTop: document.getElementById("menus").getBoundingClientRect().top
+        };
+        """
+    )
+
+
+def test_showing_friday_menus_hides_ideas_and_restores_pick(page):
+    driver, host = page
+    driver.get(host + WEEKEND_NOON)
+    before = _idea_state(driver)
+    assert before["ideas"] and not before["menus"]
+    assert before["idea"]
+    assert "Suggest a dish" in before["fab"]
+
+    driver.find_element("id", "weekend-reveal").click()
+    after = _idea_state(driver)
+    assert not after["ideas"] and after["menus"]
+    assert not after["idea"]
+    assert "Pick for me" in after["fab"]
+    menus_top = after["menusTop"]
+    for _ in range(40):
+        if menus_top < 160:
+            break
+        time.sleep(0.05)
+        menus_top = driver.execute_script("return document.getElementById('menus').getBoundingClientRect().top")
+    assert menus_top < 160
+
+    driver.find_element("id", "weekend-reveal").click()
+    restored = _idea_state(driver)
+    assert restored["ideas"] and not restored["menus"]
+    assert restored["idea"]
+    assert "Suggest a dish" in restored["fab"]
+
+    driver.get(host + HOLIDAY_WEEKEND)
+    holiday = _idea_state(driver)
+    assert holiday["ideas"] and holiday["idea"]
+    assert "Suggest a dish" in holiday["fab"]
+    driver.find_element("id", "weekend-reveal").click()
+    opened = _idea_state(driver)
+    assert not opened["ideas"] and opened["menus"]
+    assert not opened["idea"]
+    assert "Pick for me" in opened["fab"]
     assert _severe(driver) == []
 
 
