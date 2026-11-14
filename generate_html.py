@@ -15,7 +15,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
 from utils.restaurants import DISPLAY_NAMES, display_name, link_key
 from utils.dish_category import classify, coverage_line, load_library, load_taxonomy, normalise, update_image_queue
-from utils.dish_svg import PROTEIN_LABELS, detect_protein
+from utils.dish_svg import PROTEIN_LABELS, protein_for
 from utils.holidays import holiday_dates
 from utils.sources import is_inactive, is_link_only, is_rotating, load_sources
 from utils.utils import get_today_english
@@ -236,9 +236,10 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             svg_file = Path(f"docs/assets/dishes/{slug}.svg") if slug else None
             has_svg = bool(svg_file and svg_file.is_file())
             confidence = float(decision.get("category_confidence") or 0)
-            protein = detect_protein(
+            protein = protein_for(
                 f"{display_item_name or name} {visible_description or description}",
                 tags,
+                slug,
             )
             protein_sv, protein_en = PROTEIN_LABELS.get(protein, ("", ""))
             pills = pills_for(tags)

@@ -12,6 +12,7 @@ from utils.dish_svg import (
     check_dish_svg,
     contrast_ratio,
     detect_protein,
+    protein_for,
 )
 
 DISHES = Path("docs/assets/dishes")
@@ -61,9 +62,21 @@ def test_protein_strokes_clear_the_page_background():
 
 def test_committed_dish_svgs_pass_the_style_check():
     files = sorted(DISHES.glob("*.svg"))
-    assert [path.name for path in files] == ["placeholder.svg"]
+    assert [path.name for path in files] == [
+        "kottbullar.svg",
+        "pasta-cream.svg",
+        "pho.svg",
+        "placeholder.svg",
+        "salad-bowl.svg",
+        "sushi-mix.svg",
+        "tikka-masala.svg",
+    ]
     for path in files:
-        assert check_dish_svg(path.read_bytes()) == []
+        assert check_dish_svg(path.read_bytes()) == [], path.name
+    sushi = (DISHES / "sushi-mix.svg").read_text(encoding="utf-8")
+    assert sushi.count('fill="currentColor"') == 2
+    for name in ("kottbullar", "pasta-cream", "pho", "salad-bowl", "sushi-mix", "tikka-masala"):
+        assert 'stroke-width="1.75"' in (DISHES / f"{name}.svg").read_text(encoding="utf-8")
 
 
 def test_currentcolor_stroke_passes_and_a_fill_fails():
@@ -112,3 +125,13 @@ def test_protein_comes_from_the_dish_text():
     assert detect_protein("Murg methi malai") is None
     assert detect_protein("Soppa", tags=["fish"]) == "fish"
     assert detect_protein("Kyckling", tags=["veg"]) is None
+    assert protein_for("Pho", category="pho") == "beef"
+    assert protein_for("Pho med kyckling", category="pho") == "chicken"
+    assert protein_for("Köttbullar", category="kottbullar") == "beef"
+    assert protein_for("Vegobullar", category="kottbullar") == "veg"
+    assert protein_for("Kyckling och räkor", category="pho") is None
+    assert protein_for("Tikka masala", category="tikka-masala") == "chicken"
+    assert protein_for("Sallad", category="salad-bowl") == "veg"
+    assert protein_for("Sushi", category="sushi-mix") == "fish"
+    assert protein_for("Krämig pasta", category="pasta-cream") is None
+    assert protein_for("Fläskpasta", category="pasta-cream") == "pork"

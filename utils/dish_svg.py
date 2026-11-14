@@ -85,8 +85,17 @@ def _stroke_width(value: str | None) -> float | None:
         return None
 
 
-def detect_protein(text: str, tags: list[str] | None = None) -> str | None:
-    """Return one protein key, or None when the dish names none or several."""
+CATEGORY_PROTEIN = {
+    "pho": "beef",
+    "kottbullar": "beef",
+    "tikka-masala": "chicken",
+    "salad-bowl": "veg",
+    "sushi-mix": "fish",
+}
+PATH_STROKES = STROKE_COLOURS | {"none", "transparent"}
+
+
+def _protein_mentions(text: str, tags: list[str] | None = None) -> set[str]:
     found = set()
     haystack = text or ""
     for key, pattern in _PROTEIN_PATTERNS:
@@ -96,9 +105,25 @@ def detect_protein(text: str, tags: list[str] | None = None) -> str | None:
         mapped = _TAG_PROTEIN.get((tag or "").lower())
         if mapped:
             found.add(mapped)
+    return found
+
+
+def detect_protein(text: str, tags: list[str] | None = None) -> str | None:
+    """Return one protein key, or None when the dish names none or several."""
+    found = _protein_mentions(text, tags)
     if len(found) == 1:
         return found.pop()
     return None
+
+
+def protein_for(text: str, tags: list[str] | None = None, category: str | None = None) -> str | None:
+    """Text wins. A category default applies only when the text names no protein."""
+    found = _protein_mentions(text, tags)
+    if len(found) == 1:
+        return next(iter(found))
+    if found:
+        return None
+    return CATEGORY_PROTEIN.get(category or "")
 
 
 def _luminance(hex_colour: str) -> float:
@@ -180,7 +205,7 @@ def check_dish_svg(data: bytes) -> list[str]:
             ):
                 problems.append(f"stroke-width must be between {MIN_STROKE} and {MAX_STROKE}")
             stroke = _norm(element.get("stroke") or "")
-            if stroke and stroke not in STROKE_COLOURS:
+            if stroke and stroke not in PATH_STROKES:
                 problems.append(f"stroke {stroke} is outside currentColor")
             fill = _norm(element.get("fill") or "")
             if fill and fill not in FILL_COLOURS:
