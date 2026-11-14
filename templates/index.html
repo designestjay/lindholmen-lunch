@@ -486,6 +486,7 @@
             gap: 12px;
             align-items: start;
             padding-bottom: var(--gap-6);
+            scroll-margin-top: calc(var(--header-block) + var(--toolbar-h, 0px) + 8px);
             animation: list-in var(--t-fast) var(--ease);
         }
         @media (max-width: 820px) {
@@ -817,10 +818,14 @@
         html.is-holiday .day-banner .when-holiday { display: inline; }
         .weekend-reveal { display: none; }
         html.is-weekend .weekend-reveal { display: inline-flex; align-items: center; }
+        .weekend-reveal .when-open { display: none; }
+        .weekend-reveal[aria-expanded="true"] .when-closed { display: none; }
+        .weekend-reveal[aria-expanded="true"] .when-open { display: inline; }
 
-        section#weekend-ideas { display: none; margin: 0 0 var(--gap-6); }
+        section#weekend-ideas { display: none; margin: 0 0 var(--gap-6); scroll-margin-top: calc(var(--header-block) + 8px); }
         html.is-weekend section#weekend-ideas,
         html.is-holiday section#weekend-ideas { display: block; }
+        html.is-weekend-open section#weekend-ideas { display: none; }
         .weekend-ideas-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
         .weekend-ideas h2 { margin: 0; font-size: 22px; letter-spacing: -0.03em; font-weight: 500; }
         .weekend-ideas-intro { margin: 8px 0 0; max-width: var(--measure); }
@@ -1210,7 +1215,8 @@
                     <span class="when-holiday"><span class="sv" lang="sv">Stängt idag.</span><span class="en" lang="en">Closed today.</span></span>
                 </div>
                 <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" aria-expanded="false" aria-controls="menus">
-                    <span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span>
+                    <span class="when-closed"><span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span></span>
+                    <span class="when-open"><span class="sv" lang="sv">Dölj fredagens menyer</span><span class="en" lang="en">Hide Friday's menus</span></span>
                 </button>
             </section>
 
@@ -1831,8 +1837,9 @@
             }
             function inIdeaMode() {
                 var root = document.documentElement;
+                if (root.classList.contains("is-weekend-open")) return false;
                 if (root.classList.contains("is-holiday")) return true;
-                return root.classList.contains("is-weekend") && !root.classList.contains("is-weekend-open");
+                return root.classList.contains("is-weekend");
             }
             function syncDock() {
                 document.documentElement.classList.toggle("is-idea", inIdeaMode());
@@ -2343,11 +2350,18 @@
             });
             var reveal = document.getElementById("weekend-reveal");
             if (reveal) reveal.addEventListener("click", function () {
-                var open = document.documentElement.classList.toggle("is-weekend-open");
+                var root = document.documentElement;
+                var open = root.classList.toggle("is-weekend-open");
                 reveal.setAttribute("aria-expanded", open ? "true" : "false");
-                if (open) closeCard(false);
+                finishReel();
+                closeCard(false);
                 syncDock();
                 updatePickAvailability();
+                syncChrome();
+                var target = open ? document.getElementById("menus") : document.querySelector("section#weekend-ideas");
+                if (!target) return;
+                var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
             });
             var sentinel = document.getElementById("toolbar-sentinel");
             var toolbar = document.getElementById("toolbar");

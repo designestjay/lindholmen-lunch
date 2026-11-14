@@ -66,6 +66,14 @@ def test_idea_slots_are_fixed_and_the_sheet_hides_the_link():
     assert "ideaLink.hidden = true" in html
 
 
+def test_revealed_friday_menus_hide_ideas_and_leave_idea_mode():
+    html = _html()
+    assert "html.is-weekend-open section#weekend-ideas { display: none; }" in html
+    assert 'if (root.classList.contains("is-weekend-open")) return false;' in html
+    assert "Hide Friday's menus" in html
+    assert "Dölj fredagens menyer" in html
+
+
 def test_reel_slot_is_fixed_and_hidden_from_at():
     html = _html()
     assert 'id="pick-reel" aria-hidden="true"' in html
