@@ -15,7 +15,9 @@ MAX_SUBPATHS = 160
 VIEWBOX = "0 0 64 64"
 
 STROKE_COLOURS = {"currentcolor"}
-FILL_COLOURS = {"none", "transparent"}
+FILL_COLOURS = {"none", "transparent", "currentcolor"}
+MIN_STROKE = 1.25
+MAX_STROKE = 3.0
 PROTEIN_STROKES = {
     "beef": "#b4360f",
     "pork": "#b03a5b",
@@ -74,6 +76,15 @@ def _norm(value: str) -> str:
     return (value or "").strip().lower()
 
 
+def _stroke_width(value: str | None) -> float | None:
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except ValueError:
+        return None
+
+
 def detect_protein(text: str, tags: list[str] | None = None) -> str | None:
     """Return one protein key, or None when the dish names none or several."""
     found = set()
@@ -127,7 +138,7 @@ def check_dish_svg(data: bytes) -> list[str]:
         problems.append(f"viewBox must be {VIEWBOX}")
     if _norm(root.get("color")) not in {"#111", "#111111"}:
         problems.append("root color must be #111")
-    if _norm(root.get("fill")) not in FILL_COLOURS:
+    if _norm(root.get("fill")) not in {"none", "transparent"}:
         problems.append("root fill must be none")
     groups = [element for element in root.iter() if _local(element.tag) == "g"]
     if len(groups) != 1 or groups[0].get("id") != "art":
@@ -136,8 +147,9 @@ def check_dish_svg(data: bytes) -> list[str]:
         group = groups[0]
         if _norm(group.get("stroke")) not in STROKE_COLOURS:
             problems.append("art stroke must be currentColor")
-        if group.get("stroke-width") != "1.25":
-            problems.append("art stroke-width must be 1.25")
+        width = _stroke_width(group.get("stroke-width"))
+        if width is None or not MIN_STROKE <= width <= MAX_STROKE:
+            problems.append(f"art stroke-width must be between {MIN_STROKE} and {MAX_STROKE}")
         if group.get("stroke-linecap") != "round" or group.get("stroke-linejoin") != "round":
             problems.append("art caps and joins must be round")
     paths = [element for element in root.iter() if _local(element.tag) == "path"]
@@ -159,14 +171,20 @@ def check_dish_svg(data: bytes) -> list[str]:
             moves += len(_MOVE.findall(data_attr))
             if _PRECISION.search(data_attr):
                 problems.append("path data uses more than one decimal place")
-            if element.get("vector-effect") != "non-scaling-stroke":
-                problems.append("path needs vector-effect non-scaling-stroke")
+            effect = element.get("vector-effect")
+            if effect is not None and effect != "non-scaling-stroke":
+                problems.append("vector-effect must be non-scaling-stroke when set")
+            path_width = _stroke_width(element.get("stroke-width"))
+            if element.get("stroke-width") is not None and (
+                path_width is None or not MIN_STROKE <= path_width <= MAX_STROKE
+            ):
+                problems.append(f"stroke-width must be between {MIN_STROKE} and {MAX_STROKE}")
             stroke = _norm(element.get("stroke") or "")
             if stroke and stroke not in STROKE_COLOURS:
                 problems.append(f"stroke {stroke} is outside currentColor")
             fill = _norm(element.get("fill") or "")
             if fill and fill not in FILL_COLOURS:
-                problems.append(f"fill {fill} is outside none")
+                problems.append(f"fill {fill} is outside currentColor, none or transparent")
     if moves > MAX_SUBPATHS:
         problems.append(f"{moves} subpaths exceeds {MAX_SUBPATHS}")
     return problems

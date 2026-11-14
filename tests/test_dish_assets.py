@@ -18,14 +18,23 @@ DISHES = Path("docs/assets/dishes")
 PAGE = "#f2f2f0"
 
 
-def _svg(paths: int = 5, d: str = "M8 40h48", group_stroke: str = "currentColor") -> bytes:
+def _svg(
+    paths: int = 5,
+    d: str = "M8 40h48",
+    group_stroke: str = "currentColor",
+    width: str = "1.25",
+    vector: bool = True,
+    path_attrs: str = "",
+) -> bytes:
+    effect = ' vector-effect="non-scaling-stroke"' if vector else ""
+    extra = f" {path_attrs}" if path_attrs else ""
     body = "".join(
-        f'<path vector-effect="non-scaling-stroke" d="{d}"/>'
+        f"<path{effect}{extra} d=\"{d}\"/>"
         for _ in range(paths)
     )
     return (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" color="#111" fill="none">'
-        f'<g id="art" stroke="{group_stroke}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">'
+        f'<g id="art" stroke="{group_stroke}" stroke-width="{width}" stroke-linecap="round" stroke-linejoin="round">'
         f"{body}</g></svg>"
     ).encode()
 
@@ -37,7 +46,7 @@ def test_module_contract():
         "The protein colour comes from the page via CSS on the <use> host."
     )
     assert STROKE_COLOURS == {"currentcolor"}
-    assert FILL_COLOURS == {"none", "transparent"}
+    assert FILL_COLOURS == {"none", "transparent", "currentcolor"}
     assert MAX_PATHS == 12
     assert MAX_SUBPATHS == 160
     assert RAW_LIMIT == 7 * 1024
@@ -59,8 +68,15 @@ def test_committed_dish_svgs_pass_the_style_check():
 
 def test_currentcolor_stroke_passes_and_a_fill_fails():
     assert check_dish_svg(_svg()) == []
+    assert check_dish_svg(_svg(vector=False)) == []
+    assert check_dish_svg(_svg(width="3")) == []
+    assert check_dish_svg(_svg(path_attrs='fill="currentColor"')) == []
     filled = _svg().replace(b"<path ", b'<path fill="#c8ff36" ', 1)
     assert any("fill" in problem for problem in check_dish_svg(filled))
+    assert any("stroke-width" in problem for problem in check_dish_svg(_svg(width="1.2")))
+    assert any("stroke-width" in problem for problem in check_dish_svg(_svg(width="3.1")))
+    odd = _svg().replace(b'vector-effect="non-scaling-stroke"', b'vector-effect="fixed-position"', 1)
+    assert any("vector-effect" in problem for problem in check_dish_svg(odd))
     assert "#fff4cc" not in FILL_COLOURS
     assert "#c8ff36" not in FILL_COLOURS
 
