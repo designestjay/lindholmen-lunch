@@ -111,7 +111,7 @@ def test_pick_rolls_without_scrolling_and_respects_vego(page):
     assert driver.current_url.startswith("http://")
     icon = driver.execute_script(
         """
-        var svg = document.querySelector(".dish-ico");
+        var svg = document.querySelector(".dish-thumb .dish-ico");
         var use = svg ? svg.querySelector("use") : null;
         var box = svg ? svg.getBoundingClientRect() : null;
         return {

@@ -71,6 +71,7 @@
             };
             window.lunchDateState = bannerState;
             window.lunchNow = lunchNow;
+            window.lunchDayKey = function () { return ymdStockholm(lunchNow()); };
             var now = lunchNow();
             var state = bannerState(document.documentElement.dataset.menuDate || "", now);
             var root = document.documentElement;
@@ -78,6 +79,9 @@
             else if (state === "soon") root.classList.add("is-soon");
             else if (state === "wrong") root.classList.add("is-wrong-day");
             if (window.lunchIsHoliday(now)) root.classList.add("is-holiday");
+            if (root.classList.contains("is-weekend") || root.classList.contains("is-holiday")) {
+                root.classList.add("is-idea");
+            }
         })();
     </script>
     <meta name="theme-color" content="#f2f2f0">
@@ -786,8 +790,7 @@
         html.is-soon .restaurant-list { opacity: 0.85; }
         html.is-weekend #menus { display: none; }
         html.is-weekend.is-weekend-open #menus { display: grid; }
-        html.is-weekend:not(.is-weekend-open) #toolbar,
-        html.is-weekend:not(.is-weekend-open) #pick-dock { display: none; }
+        html.is-weekend:not(.is-weekend-open) #toolbar { display: none; }
         .when-weekend, .when-otherday, .when-soon, .when-wrong, .when-holiday { display: none; }
         html.is-weekend .when-today { display: none; }
         html.is-weekend .when-weekend { display: inline; }
@@ -814,6 +817,51 @@
         html.is-holiday .day-banner .when-holiday { display: inline; }
         .weekend-reveal { display: none; }
         html.is-weekend .weekend-reveal { display: inline-flex; align-items: center; }
+
+        section#weekend-ideas { display: none; margin: 0 0 var(--gap-6); }
+        html.is-weekend section#weekend-ideas,
+        html.is-holiday section#weekend-ideas { display: block; }
+        .weekend-ideas-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+        .weekend-ideas h2 { margin: 0; font-size: 22px; letter-spacing: -0.03em; font-weight: 500; }
+        .weekend-ideas-intro { margin: 8px 0 0; max-width: var(--measure); }
+        section#weekend-ideas .when-weekend,
+        section#weekend-ideas .when-holiday { display: none; }
+        html.is-weekend section#weekend-ideas .when-weekend { display: inline; }
+        html.is-holiday section#weekend-ideas .when-holiday { display: inline; }
+        html.is-holiday section#weekend-ideas .when-weekend { display: none; }
+        .idea-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+        .idea-card {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px;
+            height: 248px;
+            margin: 0;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--surface);
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .idea-card .dish-ico { width: 100%; height: 160px; flex: 0 0 160px; }
+        .idea-name { font-weight: 500; font-size: 16px; line-height: 20px; height: 20px; overflow: hidden; }
+        .idea-what {
+            color: var(--ink-2);
+            font-size: 13px;
+            line-height: 18px;
+            height: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .weekend-ideas-note { margin: 12px 0 0; color: var(--ink-2); font-size: 13px; }
+        @media (min-width: 1280px) {
+            .idea-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
 
         .site-footer {
             background: var(--dark);
@@ -869,6 +917,9 @@
         .pick-dice.is-rolling { animation: dice-turn 280ms var(--ease); }
         @keyframes dice-turn { to { transform: rotate(180deg); } }
         .pick-fab .label-open { display: none; }
+        .label-idea { display: none; }
+        html.is-idea .label-lunch { display: none; }
+        html.is-idea .label-idea { display: inline; }
         .pick-fab[aria-expanded="true"] .label-idle { display: none; }
         .pick-fab[aria-expanded="true"] .label-open { display: inline; }
         .pick-fab[aria-disabled="true"],
@@ -966,6 +1017,76 @@
             padding: 8px 0;
             margin-right: 10px;
         }
+        .reel, .reel-result, .reel-actions { display: none; }
+        html.is-idea .reel { display: block; }
+        html.is-idea .reel-result, html.is-idea .reel-actions { display: block; }
+        html.is-idea .pick-card-body { display: none; }
+        .reel {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            margin: 4px auto 0;
+            background: #f2f2f0;
+            border: 1px solid rgb(17 17 17 / .12);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .reel-window {
+            height: 100%;
+            -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+        }
+        .reel-tile { display: flex; align-items: center; justify-content: center; }
+        .reel-tile .dish-ico { width: 72%; height: 72%; }
+        .reel-notch {
+            position: absolute;
+            top: 50%;
+            width: 8px;
+            height: 14px;
+            margin-top: -7px;
+            background: #c8ff36;
+            box-shadow: 0 0 0 1px #111;
+            pointer-events: none;
+        }
+        .reel-notch-left { left: 0; border-radius: 0 3px 3px 0; }
+        .reel-notch-right { right: 0; border-radius: 3px 0 0 3px; }
+        .reel-name {
+            height: 20px;
+            margin: 10px 0 0;
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 500;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .reel-what {
+            margin: 4px 0 0;
+            color: var(--ink-2);
+            font-size: 14px;
+            line-height: 1.35;
+            height: calc(1.35em * 2);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .reel-result.is-in .reel-name,
+        .reel-result.is-in .reel-what { opacity: 1; transition: opacity 200ms linear; }
+        .reel-actions { display: none; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 8px; }
+        html.is-idea .reel-actions { display: flex; }
+        .reel-again {
+            min-height: 44px;
+            padding: 0 16px;
+            border-radius: var(--r-pill);
+            border: 1px solid rgb(17 17 17 / .24);
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .reel-again:disabled, .pick-fab:disabled, .pick-lg:disabled { opacity: .5; }
         @media (max-width: 820px) {
             .pick-card.is-compact .pick-card-desc { -webkit-line-clamp: 1; }
             .pick-card.is-compact .pick-history { display: none; }
@@ -1006,6 +1127,8 @@
             .hero { max-height: 40vh; padding-top: var(--gap-5); }
             .pick-lg { display: inline-flex; align-items: center; }
             .pick-fab { display: none; }
+            html.is-idea.is-weekend:not(.is-weekend-open) .pick-fab { display: inline-flex; }
+            .reel { width: 160px; height: 160px; }
             .pick-card {
                 position: fixed;
                 right: var(--gutter);
@@ -1234,6 +1357,7 @@
     <path d="m32.9 39.4.8-.5h.7l.6.5.2.9 1.8.9h1.3l1-.3 1-.8 1.8-.3.9-1.1.5-1.1v-1.3l-.4-1.6m-24.2-2.6.3-.2 2 .9 1.5 1.3M29.4 19h.5l1.7.8L33 21m-5 6.4-1.8-1.2-1.9-.6m5 .2-1.5-1-1.6-.6h-.4M51 19.7l-1.4-.4"/>
     <path d="m41.1 25.1 2.4.1 2.8 1.6 2 .4m-20.5 3.9-.9-.4-3.2-2-2.6-.6m14.6 5.7 2.2.9 2 1.3m5.1-6.8-2.4-1.3-1.4-.4m-1.5 1.4 1 .3 2.7 1.5m-8.6-11-1.5-.9-2.1-.7m5.1-.9-1-.1-.7-.3"/>
   </g></symbol></svg>
+<script>window.dishUseHref=function(slug){return "#dish-"+slug;};</script>
     <a class="skip-link" href="#menus"><span class="sv" lang="sv">Hoppa till menyer</span><span class="en" lang="en">Skip to menus</span></a>
     <header class="site-header">
         <div class="wrap header-inner">
@@ -1342,12 +1466,160 @@
                             </button>
                         </div>
                         <button type="button" class="pick pick-lg" id="pick-lg" aria-controls="pick-card" aria-expanded="false">
-                            <span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span>
+                            <span class="label-lunch"><span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span></span>
+                            <span class="label-idea"><span class="sv" lang="sv">Föreslå en rätt</span><span class="en" lang="en">Suggest a dish</span></span>
                         </button>
                     </div>
                     <p id="results-meta" class="results-meta" aria-live="polite"></p>
                 </div>
             </div>
+
+            <script type="application/json" id="weekend-ideas">[{"idea_protein": "chicken", "name": {"en": "Caesar salad", "sv": "Caesarsallad"}, "slug": "caesar-salad", "what": {"en": "Romaine lettuce with croutons, cheese and a creamy dressing.", "sv": "Romansallad med krutonger, ost och en kr\u00e4mig dressing."}}, {"idea_protein": "other", "name": {"en": "Dumplings", "sv": "Dumplings"}, "slug": "dumplings", "what": {"en": "Small filled dough parcels, steamed, boiled or fried.", "sv": "Sm\u00e5 degknyten med fyllning, \u00e5ngade, kokta eller stekta."}}, {"idea_protein": "other", "name": {"en": "Meatballs", "sv": "K\u00f6ttbullar"}, "slug": "kottbullar", "what": {"en": "Fried mince balls in sauce, classically with mashed potato and lingonberries.", "sv": "Stekta bullar av f\u00e4rs i s\u00e5s, klassiskt med potatismos och lingon."}}, {"idea_protein": "other", "name": {"en": "Lamb", "sv": "Lamm"}, "slug": "lamb", "what": {"en": "Lamb, roasted or stewed, often with potato or rice.", "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris."}}, {"idea_protein": "other", "name": {"en": "Noodle soup", "sv": "Nudelsoppa"}, "slug": "noodle-soup", "what": {"en": "A broth with noodles and vegetables.", "sv": "En buljong med nudlar och gr\u00f6nsaker."}}, {"idea_protein": "other", "name": {"en": "Pasta in cream sauce", "sv": "Pasta med gr\u00e4dds\u00e5s"}, "slug": "pasta-cream", "what": {"en": "Pasta in a smooth cream sauce, often with cheese or mushrooms.", "sv": "Pasta i en len gr\u00e4dds\u00e5s, ofta med ost eller svamp."}}, {"idea_protein": "veg", "name": {"en": "Pasta pesto", "sv": "Pasta pesto"}, "slug": "pasta-pesto", "what": {"en": "Pasta tossed with a green herb sauce of basil and cheese.", "sv": "Pasta v\u00e4nd med en gr\u00f6n \u00f6rts\u00e5s av basilika och ost."}}, {"idea_protein": "other", "name": {"en": "Pho", "sv": "Pho"}, "slug": "pho", "what": {"en": "A noodle soup in a clear broth, often with rice noodles and herbs.", "sv": "En nudelsoppa p\u00e5 klar buljong, ofta med risnudlar och \u00f6rter."}}, {"idea_protein": "veg", "name": {"en": "Salad bowl", "sv": "Salladsbowl"}, "slug": "salad-bowl", "what": {"en": "A cold bowl of leaves and vegetables, often with a protein.", "sv": "En kall sk\u00e5l med blad, gr\u00f6nsaker och ofta ett protein."}}, {"idea_protein": "fish", "name": {"en": "Salmon", "sv": "Lax"}, "slug": "salmon", "what": {"en": "A salmon fillet, fried, baked or poached, with a side.", "sv": "En laxfil\u00e9, stekt, ugnsbakad eller kokt, med ett tillbeh\u00f6r."}}, {"idea_protein": "fish", "name": {"en": "Shrimp", "sv": "R\u00e4kor"}, "slug": "shrimp", "what": {"en": "Shrimp, fried or in a sauce, often with bread, rice or pasta.", "sv": "R\u00e4kor, stekta eller i s\u00e5s, ofta med br\u00f6d, ris eller pasta."}}, {"idea_protein": "beef", "name": {"en": "Steak", "sv": "Stek"}, "slug": "steak", "what": {"en": "A whole or sliced cut of meat, fried or grilled, with sides.", "sv": "En skivad eller hel k\u00f6ttbit, stekt eller grillad, med tillbeh\u00f6r."}}, {"idea_protein": "fish", "name": {"en": "Sushi", "sv": "Sushi"}, "slug": "sushi-mix", "what": {"en": "Vinegared rice shaped with fish, shellfish or vegetables.", "sv": "Ris med vin\u00e4ger, formad med fisk, skaldjur eller gr\u00f6nsaker."}}, {"idea_protein": "chicken", "name": {"en": "Tandoori", "sv": "Tandoori"}, "slug": "tandoori", "what": {"en": "Marinated pieces grilled hot, often with bread or rice.", "sv": "Marinerade bitar grillade hett, ofta med br\u00f6d eller ris."}}, {"idea_protein": "other", "name": {"en": "Tempura", "sv": "Tempura"}, "slug": "tempura", "what": {"en": "Lightly fried pieces in a thin, crisp batter.", "sv": "L\u00e4ttfriterade bitar i ett tunt frasigt smet."}}, {"idea_protein": "other", "name": {"en": "Tikka masala", "sv": "Tikka masala"}, "slug": "tikka-masala", "what": {"en": "Grilled pieces in a creamy, tomato curry, usually with rice.", "sv": "Grillade bitar i en kr\u00e4mig, tomatig curry, oftast med ris."}}, {"idea_protein": "fish", "name": {"en": "White fish", "sv": "Vit fisk"}, "slug": "white-fish", "what": {"en": "A mild fish fillet, often cod or pollock, served with potato and a sauce.", "sv": "En mild fiskfil\u00e9, ofta torsk eller sej, serverad med potatis och en s\u00e5s."}}, {"idea_protein": "other", "name": {"en": "Wok", "sv": "Wok"}, "slug": "wok", "what": {"en": "Vegetables and noodles or rice stir-fried quickly in a hot pan.", "sv": "Snabbstekta gr\u00f6nsaker och nudlar eller ris i en het panna."}}, {"idea_protein": "chicken", "name": {"en": "Yakitori", "sv": "Yakitori"}, "slug": "yakitori", "what": {"en": "Grilled skewers, usually chicken, with a sweet soy sauce.", "sv": "Grillade spett, oftast kyckling, med en s\u00f6t sojas\u00e5s."}}]</script>
+            <section id="weekend-ideas" class="weekend-ideas" aria-labelledby="weekend-ideas-title">
+                <div class="weekend-ideas-head">
+                    <h2 id="weekend-ideas-title"><span class="sv" lang="sv">Matidéer för helgen</span><span class="en" lang="en">Weekend meal ideas</span></h2>
+                    <button type="button" class="text-btn" id="ideas-reroll"><span class="sv" lang="sv">Nya förslag</span><span class="en" lang="en">New ideas</span></button>
+                </div>
+                <p class="weekend-ideas-intro">
+                    <span class="when-weekend"><span class="sv" lang="sv">Vi visar inga lunchmenyer på helgen. Här är några rätter att laga eller äta ute.</span><span class="en" lang="en">No lunch menus at the weekend. Here are a few dishes to cook or eat out.</span></span>
+                    <span class="when-holiday"><span class="sv" lang="sv">Röd dag – inga lunchmenyer idag. Här är några idéer.</span><span class="en" lang="en">Public holiday – no lunch menus today. Here are a few ideas.</span></span>
+                </p>
+                <div class="idea-grid">
+                    
+                    <button type="button" class="idea-card" data-slot="0" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                    <button type="button" class="idea-card" data-slot="1" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                    <button type="button" class="idea-card" data-slot="2" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                    <button type="button" class="idea-card" data-slot="3" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                    <button type="button" class="idea-card" data-slot="4" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                    <button type="button" class="idea-card" data-slot="5" data-source="idea" aria-haspopup="dialog">
+                        <svg class="dish-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use href=""></use></svg>
+                        <span class="idea-name"></span>
+                        <span class="idea-what"></span>
+                    </button>
+                    
+                </div>
+                <p class="weekend-ideas-note"><span class="sv" lang="sv">Allmänna rätter, inte en restaurangs meny.</span><span class="en" lang="en">General dishes, not a restaurant's menu.</span></p>
+            </section>
+            <script>
+                (function () {
+                    function dishHref(slug) {
+                        if (typeof window.dishUseHref === "function") return window.dishUseHref(slug);
+                        return "assets/dishes/" + slug + ".svg#art";
+                    }
+                    function mulberry32(a) {
+                        return function () {
+                            a |= 0;
+                            a = a + 0x6D2B79F5 | 0;
+                            var t = Math.imul(a ^ a >>> 15, 1 | a);
+                            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+                        };
+                    }
+                    function hashString(str) {
+                        var h = 2166136261;
+                        for (var i = 0; i < str.length; i++) {
+                            h ^= str.charCodeAt(i);
+                            h = Math.imul(h, 16777619);
+                        }
+                        return h >>> 0;
+                    }
+                    function shuffleWith(items, rand) {
+                        var arr = items.slice();
+                        for (var i = arr.length - 1; i > 0; i--) {
+                            var j = Math.floor(rand() * (i + 1));
+                            var tmp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = tmp;
+                        }
+                        return arr;
+                    }
+                    var order = ["fish", "chicken", "beef", "veg", "pork", "other"];
+                    function ideaList() {
+                        try {
+                            return JSON.parse((document.querySelector("script#weekend-ideas") || {}).textContent || "[]");
+                        } catch (e) { return []; }
+                    }
+                    function chooseIdeas(count, seedKey) {
+                        var rand = mulberry32(hashString(seedKey));
+                        var groups = {};
+                        order.forEach(function (key) { groups[key] = []; });
+                        ideaList().forEach(function (item) {
+                            var key = groups[item.idea_protein] ? item.idea_protein : "other";
+                            groups[key].push(item);
+                        });
+                        order.forEach(function (key) { groups[key] = shuffleWith(groups[key], rand); });
+                        var chosen = [];
+                        var guard = 0;
+                        while (chosen.length < count && guard < 20) {
+                            var added = false;
+                            order.forEach(function (key) {
+                                if (chosen.length >= count || !groups[key].length) return;
+                                chosen.push(groups[key].shift());
+                                added = true;
+                            });
+                            if (!added) break;
+                            guard += 1;
+                        }
+                        return chosen;
+                    }
+                    function paintIdeas(seedKey) {
+                        var lang = document.documentElement.lang === "sv" ? "sv" : "en";
+                        var chosen = chooseIdeas(6, seedKey);
+                        var cards = document.querySelectorAll("section#weekend-ideas .idea-card");
+                        Array.prototype.forEach.call(cards, function (card, index) {
+                            var item = chosen[index];
+                            var nameEl = card.querySelector(".idea-name");
+                            var whatEl = card.querySelector(".idea-what");
+                            var icon = card.querySelector(".dish-ico");
+                            var use = card.querySelector("use");
+                            if (!item) return;
+                            var name = (item.name || {})[lang] || "";
+                            var what = (item.what || {})[lang] || "";
+                            card.setAttribute("data-dish", item.slug);
+                            card.setAttribute("data-protein", item.idea_protein || "other");
+                            if (nameEl) nameEl.textContent = name;
+                            if (whatEl) whatEl.textContent = what;
+                            card.setAttribute("aria-label", name);
+                            if (icon) {
+                                if (item.idea_protein && item.idea_protein !== "other") icon.setAttribute("data-protein", item.idea_protein);
+                                else icon.removeAttribute("data-protein");
+                            }
+                            if (use) use.setAttribute("href", dishHref(item.slug));
+                        });
+                        window.__ideaShown = chosen.map(function (item) { return item.slug; });
+                    }
+                    window.paintWeekendIdeas = paintIdeas;
+                    window.ideaList = ideaList;
+                    var day = window.lunchDayKey ? window.lunchDayKey() : "";
+                    window.__ideaRoll = 0;
+                    paintIdeas(day);
+                })();
+            </script>
 
             <section id="menus" class="restaurant-list" aria-label="Restaurant menus">
                 
@@ -4491,7 +4763,7 @@
                 <p class="dish-disclaimer"><span class="sv" lang="sv">Generell beskrivning av rätten – inte restaurangens recept. Ingredienser kan variera. Fråga restaurangen om allergener.</span><span class="en" lang="en">General description of the dish – not the restaurant's recipe. Ingredients may vary. Ask the restaurant about allergens.</span></p>
                 <a class="text-btn" id="dish-sheet-link" href="#" target="_blank" rel="noopener noreferrer"><span class="sv" lang="sv">Restaurangens sida</span><span class="en" lang="en">Restaurant's site</span></a>
             </dialog>
-            <script type="application/json" id="dish-info">{"bibimbap": {"image": null, "name": {"en": "Bibimbap", "sv": "Bibimbap"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "vegetables", "egg or tofu", "chilli sauce"], "sv": ["ris", "gr\u00f6nsaker", "\u00e4gg eller tofu", "chilis\u00e5s"]}, "what": {"en": "Rice with vegetables, a protein and a spicy sauce, mixed in the bowl.", "sv": "Ris med gr\u00f6nsaker, ett protein och en kryddig s\u00e5s, blandat i sk\u00e5len."}}, "caesar-salad": {"image": null, "name": {"en": "Caesar salad", "sv": "Caesarsallad"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["romaine", "croutons", "cheese", "dressing"], "sv": ["romansallad", "krutonger", "ost", "dressing"]}, "what": {"en": "Romaine lettuce with croutons, cheese and a creamy dressing.", "sv": "Romansallad med krutonger, ost och en kr\u00e4mig dressing."}}, "dumplings": {"image": null, "name": {"en": "Dumplings", "sv": "Dumplings"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["dough", "filling", "soy or a dip"], "sv": ["deg", "fyllning", "soja eller dipp"]}, "what": {"en": "Small filled dough parcels, steamed, boiled or fried.", "sv": "Sm\u00e5 degknyten med fyllning, \u00e5ngade, kokta eller stekta."}}, "fried-fish": {"image": null, "name": {"en": "Fried fish", "sv": "Stekt fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish", "butter or oil", "potato", "lemon"], "sv": ["fisk", "sm\u00f6r eller olja", "potatis", "citron"]}, "what": {"en": "Pan-fried fish, sometimes breaded, with potato or salad.", "sv": "Fisk stekt i panna, ibland panerad, med potatis eller sallad."}}, "korean-bbq": {"image": null, "name": {"en": "Korean barbecue", "sv": "Koreansk grill"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["meat or mushrooms", "marinade", "rice", "sesame"], "sv": ["k\u00f6tt eller svamp", "marinad", "ris", "sesam"]}, "what": {"en": "Marinated meat or mushrooms, grilled and served with rice.", "sv": "Marinerat k\u00f6tt eller svamp, grillat och serverat med ris."}}, "korma": {"image": null, "name": {"en": "Korma", "sv": "Korma"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["meat or vegetables", "nuts or cream", "rice", "onion"], "sv": ["k\u00f6tt eller gr\u00f6nsaker", "n\u00f6tter eller gr\u00e4dde", "ris", "l\u00f6k"]}, "what": {"en": "A mild, nutty or creamy curry.", "sv": "En mild, n\u00f6tig eller kr\u00e4mig curry."}}, "lamb": {"image": null, "name": {"en": "Lamb", "sv": "Lamm"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["lamb", "potato or rice", "sauce"], "sv": ["lamm", "potatis eller ris", "s\u00e5s"]}, "what": {"en": "Lamb, roasted or stewed, often with potato or rice.", "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris."}}, "lasagne": {"image": null, "name": {"en": "Lasagne", "sv": "Lasagne"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "tomato sauce or mince", "cheese", "b\u00e9chamel"], "sv": ["pasta", "tomats\u00e5s eller k\u00f6ttf\u00e4rs", "ost", "bechamel"]}, "what": {"en": "Pasta sheets layered with sauce and cheese, baked.", "sv": "Pastaplattor varvade med s\u00e5s och ost, gr\u00e4ddade i ugn."}}, "naan": {"image": null, "name": {"en": "Naan", "sv": "Naan"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["wheat flour", "yoghurt", "oil"], "sv": ["vetemj\u00f6l", "yoghurt", "olja"]}, "what": {"en": "A soft oven-baked bread, often served with curry.", "sv": "Ett mjukt, ugnsbakat br\u00f6d, ofta till curry."}}, "noodle-soup": {"image": null, "name": {"en": "Noodle soup", "sv": "Nudelsoppa"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["noodles", "broth", "vegetables"], "sv": ["nudlar", "buljong", "gr\u00f6nsaker"]}, "what": {"en": "A broth with noodles and vegetables.", "sv": "En buljong med nudlar och gr\u00f6nsaker."}}, "pasta-cream": {"image": null, "name": {"en": "Pasta in cream sauce", "sv": "Pasta med gr\u00e4dds\u00e5s"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "cream", "cheese or mushrooms", "onion"], "sv": ["pasta", "gr\u00e4dde", "ost eller svamp", "l\u00f6k"]}, "what": {"en": "Pasta in a smooth cream sauce, often with cheese or mushrooms.", "sv": "Pasta i en len gr\u00e4dds\u00e5s, ofta med ost eller svamp."}}, "pasta-pesto": {"image": null, "name": {"en": "Pasta pesto", "sv": "Pasta pesto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "basilika", "cheese", "oil", "nuts or seeds"], "sv": ["pasta", "basilika", "ost", "olja", "n\u00f6tter eller fr\u00f6n"]}, "what": {"en": "Pasta tossed with a green herb sauce of basil and cheese.", "sv": "Pasta v\u00e4nd med en gr\u00f6n \u00f6rts\u00e5s av basilika och ost."}}, "pasta-tomato": {"image": null, "name": {"en": "Pasta in tomato sauce", "sv": "Pasta med tomats\u00e5s"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "tomato", "garlic", "herbs"], "sv": ["pasta", "tomat", "vitl\u00f6k", "\u00f6rter"]}, "what": {"en": "Pasta in a tomato sauce, often with garlic and herbs.", "sv": "Pasta i en tomats\u00e5s, ofta med vitl\u00f6k och \u00f6rter."}}, "raita-chutney": {"image": null, "name": {"en": "Raita or chutney", "sv": "Raita eller chutney"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["yoghurt or fruit", "cucumber or chilli", "herbs"], "sv": ["yoghurt eller frukt", "gurka eller chili", "\u00f6rter"]}, "what": {"en": "A cold side: yoghurt with cucumber, or a fruit and spice sauce.", "sv": "Ett kallt tillbeh\u00f6r: yoghurt med gurka, eller en frukt- och krydds\u00e5s."}}, "risotto": {"image": null, "name": {"en": "Risotto", "sv": "Risotto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "stock", "onion", "cheese or vegetables"], "sv": ["ris", "buljong", "l\u00f6k", "ost eller gr\u00f6nsaker"]}, "what": {"en": "Creamy short-grain rice, stirred with stock until soft.", "sv": "Kr\u00e4migt kortkornigt ris, r\u00f6rt med buljong tills det \u00e4r mjukt."}}, "salad-bowl": {"image": null, "name": {"en": "Salad bowl", "sv": "Salladsbowl"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["leaves", "vegetables", "dressing", "a protein"], "sv": ["bladgr\u00f6nt", "gr\u00f6nsaker", "dressing", "protein efter val"]}, "what": {"en": "A cold bowl of leaves and vegetables, often with a protein.", "sv": "En kall sk\u00e5l med blad, gr\u00f6nsaker och ofta ett protein."}}, "salmon": {"image": null, "name": {"en": "Salmon", "sv": "Lax"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["salmon", "potato or rice", "sauce", "lemon"], "sv": ["lax", "potatis eller ris", "s\u00e5s", "citron"]}, "what": {"en": "A salmon fillet, fried, baked or poached, with a side.", "sv": "En laxfil\u00e9, stekt, ugnsbakad eller kokt, med ett tillbeh\u00f6r."}}, "shrimp": {"image": null, "name": {"en": "Shrimp", "sv": "R\u00e4kor"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["shrimp", "lemon", "garlic or sauce"], "sv": ["r\u00e4kor", "citron", "vitl\u00f6k eller s\u00e5s"]}, "what": {"en": "Shrimp, fried or in a sauce, often with bread, rice or pasta.", "sv": "R\u00e4kor, stekta eller i s\u00e5s, ofta med br\u00f6d, ris eller pasta."}}, "sushi-mix": {"image": null, "name": {"en": "Sushi", "sv": "Sushi"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["sushi rice", "fish or vegetables", "nori", "soy"], "sv": ["sushiris", "fisk eller gr\u00f6nsaker", "nori", "soja"]}, "what": {"en": "Vinegared rice shaped with fish, shellfish or vegetables.", "sv": "Ris med vin\u00e4ger, formad med fisk, skaldjur eller gr\u00f6nsaker."}}, "tandoori": {"image": null, "name": {"en": "Tandoori", "sv": "Tandoori"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "yoghurt", "spices", "bread or rice"], "sv": ["kyckling eller paneer", "yoghurt", "kryddor", "br\u00f6d eller ris"]}, "what": {"en": "Marinated pieces grilled hot, often with bread or rice.", "sv": "Marinerade bitar grillade hett, ofta med br\u00f6d eller ris."}}, "tempura": {"image": null, "name": {"en": "Tempura", "sv": "Tempura"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["batter", "shrimp or vegetables", "a dip"], "sv": ["smet", "r\u00e4kor eller gr\u00f6nsaker", "dipp"]}, "what": {"en": "Lightly fried pieces in a thin, crisp batter.", "sv": "L\u00e4ttfriterade bitar i ett tunt frasigt smet."}}, "thai-curry": {"image": null, "name": {"en": "Thai curry", "sv": "Thaicurry"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["coconut milk", "curry paste", "vegetables or meat", "rice"], "sv": ["kokosmj\u00f6lk", "currypasta", "gr\u00f6nsaker eller k\u00f6tt", "ris"]}, "what": {"en": "An aromatic curry with coconut, chilli and herbs, with rice.", "sv": "En aromatisk curry med kokos, chili och \u00f6rter, med ris."}}, "tikka-masala": {"image": null, "name": {"en": "Tikka masala", "sv": "Tikka masala"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "tomato", "cream", "rice", "spices"], "sv": ["kyckling eller paneer", "tomat", "gr\u00e4dde", "ris", "kryddor"]}, "what": {"en": "Grilled pieces in a creamy, tomato curry, usually with rice.", "sv": "Grillade bitar i en kr\u00e4mig, tomatig curry, oftast med ris."}}, "white-fish": {"image": null, "name": {"en": "White fish", "sv": "Vit fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish fillet", "potato", "sauce", "lemon", "herbs"], "sv": ["fiskfil\u00e9", "potatis", "s\u00e5s", "citron", "\u00f6rter"]}, "what": {"en": "A mild fish fillet, often cod or pollock, served with potato and a sauce.", "sv": "En mild fiskfil\u00e9, ofta torsk eller sej, serverad med potatis och en s\u00e5s."}}, "wok": {"image": null, "name": {"en": "Wok", "sv": "Wok"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["vegetables", "noodles or rice", "sauce", "a protein"], "sv": ["gr\u00f6nsaker", "nudlar eller ris", "s\u00e5s", "protein efter val"]}, "what": {"en": "Vegetables and noodles or rice stir-fried quickly in a hot pan.", "sv": "Snabbstekta gr\u00f6nsaker och nudlar eller ris i en het panna."}}, "yakitori": {"image": null, "name": {"en": "Yakitori", "sv": "Yakitori"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["skewers", "chicken", "soy", "rice"], "sv": ["spett", "kyckling", "soja", "ris"]}, "what": {"en": "Grilled skewers, usually chicken, with a sweet soy sauce.", "sv": "Grillade spett, oftast kyckling, med en s\u00f6t sojas\u00e5s."}}}</script>
+            <script type="application/json" id="dish-info">{"bibimbap": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Bibimbap", "sv": "Bibimbap"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "vegetables", "egg or tofu", "chilli sauce"], "sv": ["ris", "gr\u00f6nsaker", "\u00e4gg eller tofu", "chilis\u00e5s"]}, "what": {"en": "Rice with vegetables, a protein and a spicy sauce, mixed in the bowl.", "sv": "Ris med gr\u00f6nsaker, ett protein och en kryddig s\u00e5s, blandat i sk\u00e5len."}}, "caesar-salad": {"idea": true, "idea_protein": "chicken", "image": null, "name": {"en": "Caesar salad", "sv": "Caesarsallad"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["romaine", "croutons", "cheese", "dressing"], "sv": ["romansallad", "krutonger", "ost", "dressing"]}, "what": {"en": "Romaine lettuce with croutons, cheese and a creamy dressing.", "sv": "Romansallad med krutonger, ost och en kr\u00e4mig dressing."}}, "dumplings": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Dumplings", "sv": "Dumplings"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["dough", "filling", "soy or a dip"], "sv": ["deg", "fyllning", "soja eller dipp"]}, "what": {"en": "Small filled dough parcels, steamed, boiled or fried.", "sv": "Sm\u00e5 degknyten med fyllning, \u00e5ngade, kokta eller stekta."}}, "fried-fish": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Fried fish", "sv": "Stekt fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish", "butter or oil", "potato", "lemon"], "sv": ["fisk", "sm\u00f6r eller olja", "potatis", "citron"]}, "what": {"en": "Pan-fried fish, sometimes breaded, with potato or salad.", "sv": "Fisk stekt i panna, ibland panerad, med potatis eller sallad."}}, "korean-bbq": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Korean barbecue", "sv": "Koreansk grill"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["meat or mushrooms", "marinade", "rice", "sesame"], "sv": ["k\u00f6tt eller svamp", "marinad", "ris", "sesam"]}, "what": {"en": "Marinated meat or mushrooms, grilled and served with rice.", "sv": "Marinerat k\u00f6tt eller svamp, grillat och serverat med ris."}}, "korma": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Korma", "sv": "Korma"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["meat or vegetables", "nuts or cream", "rice", "onion"], "sv": ["k\u00f6tt eller gr\u00f6nsaker", "n\u00f6tter eller gr\u00e4dde", "ris", "l\u00f6k"]}, "what": {"en": "A mild, nutty or creamy curry.", "sv": "En mild, n\u00f6tig eller kr\u00e4mig curry."}}, "lamb": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Lamb", "sv": "Lamm"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["lamb", "potato or rice", "sauce"], "sv": ["lamm", "potatis eller ris", "s\u00e5s"]}, "what": {"en": "Lamb, roasted or stewed, often with potato or rice.", "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris."}}, "lasagne": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Lasagne", "sv": "Lasagne"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "tomato sauce or mince", "cheese", "b\u00e9chamel"], "sv": ["pasta", "tomats\u00e5s eller k\u00f6ttf\u00e4rs", "ost", "bechamel"]}, "what": {"en": "Pasta sheets layered with sauce and cheese, baked.", "sv": "Pastaplattor varvade med s\u00e5s och ost, gr\u00e4ddade i ugn."}}, "naan": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Naan", "sv": "Naan"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["wheat flour", "yoghurt", "oil"], "sv": ["vetemj\u00f6l", "yoghurt", "olja"]}, "what": {"en": "A soft oven-baked bread, often served with curry.", "sv": "Ett mjukt, ugnsbakat br\u00f6d, ofta till curry."}}, "noodle-soup": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Noodle soup", "sv": "Nudelsoppa"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["noodles", "broth", "vegetables"], "sv": ["nudlar", "buljong", "gr\u00f6nsaker"]}, "what": {"en": "A broth with noodles and vegetables.", "sv": "En buljong med nudlar och gr\u00f6nsaker."}}, "pasta-cream": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Pasta in cream sauce", "sv": "Pasta med gr\u00e4dds\u00e5s"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "cream", "cheese or mushrooms", "onion"], "sv": ["pasta", "gr\u00e4dde", "ost eller svamp", "l\u00f6k"]}, "what": {"en": "Pasta in a smooth cream sauce, often with cheese or mushrooms.", "sv": "Pasta i en len gr\u00e4dds\u00e5s, ofta med ost eller svamp."}}, "pasta-pesto": {"idea": true, "idea_protein": "veg", "image": null, "name": {"en": "Pasta pesto", "sv": "Pasta pesto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "basilika", "cheese", "oil", "nuts or seeds"], "sv": ["pasta", "basilika", "ost", "olja", "n\u00f6tter eller fr\u00f6n"]}, "what": {"en": "Pasta tossed with a green herb sauce of basil and cheese.", "sv": "Pasta v\u00e4nd med en gr\u00f6n \u00f6rts\u00e5s av basilika och ost."}}, "pasta-tomato": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Pasta in tomato sauce", "sv": "Pasta med tomats\u00e5s"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "tomato", "garlic", "herbs"], "sv": ["pasta", "tomat", "vitl\u00f6k", "\u00f6rter"]}, "what": {"en": "Pasta in a tomato sauce, often with garlic and herbs.", "sv": "Pasta i en tomats\u00e5s, ofta med vitl\u00f6k och \u00f6rter."}}, "raita-chutney": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Raita or chutney", "sv": "Raita eller chutney"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["yoghurt or fruit", "cucumber or chilli", "herbs"], "sv": ["yoghurt eller frukt", "gurka eller chili", "\u00f6rter"]}, "what": {"en": "A cold side: yoghurt with cucumber, or a fruit and spice sauce.", "sv": "Ett kallt tillbeh\u00f6r: yoghurt med gurka, eller en frukt- och krydds\u00e5s."}}, "risotto": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Risotto", "sv": "Risotto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "stock", "onion", "cheese or vegetables"], "sv": ["ris", "buljong", "l\u00f6k", "ost eller gr\u00f6nsaker"]}, "what": {"en": "Creamy short-grain rice, stirred with stock until soft.", "sv": "Kr\u00e4migt kortkornigt ris, r\u00f6rt med buljong tills det \u00e4r mjukt."}}, "salad-bowl": {"idea": true, "idea_protein": "veg", "image": null, "name": {"en": "Salad bowl", "sv": "Salladsbowl"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["leaves", "vegetables", "dressing", "a protein"], "sv": ["bladgr\u00f6nt", "gr\u00f6nsaker", "dressing", "protein efter val"]}, "what": {"en": "A cold bowl of leaves and vegetables, often with a protein.", "sv": "En kall sk\u00e5l med blad, gr\u00f6nsaker och ofta ett protein."}}, "salmon": {"idea": true, "idea_protein": "fish", "image": null, "name": {"en": "Salmon", "sv": "Lax"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["salmon", "potato or rice", "sauce", "lemon"], "sv": ["lax", "potatis eller ris", "s\u00e5s", "citron"]}, "what": {"en": "A salmon fillet, fried, baked or poached, with a side.", "sv": "En laxfil\u00e9, stekt, ugnsbakad eller kokt, med ett tillbeh\u00f6r."}}, "shrimp": {"idea": true, "idea_protein": "fish", "image": null, "name": {"en": "Shrimp", "sv": "R\u00e4kor"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["shrimp", "lemon", "garlic or sauce"], "sv": ["r\u00e4kor", "citron", "vitl\u00f6k eller s\u00e5s"]}, "what": {"en": "Shrimp, fried or in a sauce, often with bread, rice or pasta.", "sv": "R\u00e4kor, stekta eller i s\u00e5s, ofta med br\u00f6d, ris eller pasta."}}, "sushi-mix": {"idea": true, "idea_protein": "fish", "image": null, "name": {"en": "Sushi", "sv": "Sushi"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["sushi rice", "fish or vegetables", "nori", "soy"], "sv": ["sushiris", "fisk eller gr\u00f6nsaker", "nori", "soja"]}, "what": {"en": "Vinegared rice shaped with fish, shellfish or vegetables.", "sv": "Ris med vin\u00e4ger, formad med fisk, skaldjur eller gr\u00f6nsaker."}}, "tandoori": {"idea": true, "idea_protein": "chicken", "image": null, "name": {"en": "Tandoori", "sv": "Tandoori"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "yoghurt", "spices", "bread or rice"], "sv": ["kyckling eller paneer", "yoghurt", "kryddor", "br\u00f6d eller ris"]}, "what": {"en": "Marinated pieces grilled hot, often with bread or rice.", "sv": "Marinerade bitar grillade hett, ofta med br\u00f6d eller ris."}}, "tempura": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Tempura", "sv": "Tempura"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["batter", "shrimp or vegetables", "a dip"], "sv": ["smet", "r\u00e4kor eller gr\u00f6nsaker", "dipp"]}, "what": {"en": "Lightly fried pieces in a thin, crisp batter.", "sv": "L\u00e4ttfriterade bitar i ett tunt frasigt smet."}}, "thai-curry": {"idea": false, "idea_protein": "other", "image": null, "name": {"en": "Thai curry", "sv": "Thaicurry"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["coconut milk", "curry paste", "vegetables or meat", "rice"], "sv": ["kokosmj\u00f6lk", "currypasta", "gr\u00f6nsaker eller k\u00f6tt", "ris"]}, "what": {"en": "An aromatic curry with coconut, chilli and herbs, with rice.", "sv": "En aromatisk curry med kokos, chili och \u00f6rter, med ris."}}, "tikka-masala": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Tikka masala", "sv": "Tikka masala"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "tomato", "cream", "rice", "spices"], "sv": ["kyckling eller paneer", "tomat", "gr\u00e4dde", "ris", "kryddor"]}, "what": {"en": "Grilled pieces in a creamy, tomato curry, usually with rice.", "sv": "Grillade bitar i en kr\u00e4mig, tomatig curry, oftast med ris."}}, "white-fish": {"idea": true, "idea_protein": "fish", "image": null, "name": {"en": "White fish", "sv": "Vit fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish fillet", "potato", "sauce", "lemon", "herbs"], "sv": ["fiskfil\u00e9", "potatis", "s\u00e5s", "citron", "\u00f6rter"]}, "what": {"en": "A mild fish fillet, often cod or pollock, served with potato and a sauce.", "sv": "En mild fiskfil\u00e9, ofta torsk eller sej, serverad med potatis och en s\u00e5s."}}, "wok": {"idea": true, "idea_protein": "other", "image": null, "name": {"en": "Wok", "sv": "Wok"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["vegetables", "noodles or rice", "sauce", "a protein"], "sv": ["gr\u00f6nsaker", "nudlar eller ris", "s\u00e5s", "protein efter val"]}, "what": {"en": "Vegetables and noodles or rice stir-fried quickly in a hot pan.", "sv": "Snabbstekta gr\u00f6nsaker och nudlar eller ris i en het panna."}}, "yakitori": {"idea": true, "idea_protein": "chicken", "image": null, "name": {"en": "Yakitori", "sv": "Yakitori"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["skewers", "chicken", "soy", "rice"], "sv": ["spett", "kyckling", "soja", "ris"]}, "what": {"en": "Grilled skewers, usually chicken, with a sweet soy sauce.", "sv": "Grillade spett, oftast kyckling, med en s\u00f6t sojas\u00e5s."}}}</script>
 
             
             <details class="missing" id="missing">
@@ -4535,6 +4807,19 @@
                         <span class="pick-kicker"><span class="sv" lang="sv">Ditt val</span><span class="en" lang="en">Your pick</span></span>
                         <button type="button" class="pick-close" id="pick-close" data-label-sv="Stäng" data-label-en="Close" aria-label="Stäng">×</button>
                     </div>
+                    <div class="reel" id="pick-reel" aria-hidden="true">
+                        <div class="reel-window"><div class="reel-strip" id="pick-reel-strip"></div></div>
+                        <span class="reel-notch reel-notch-left"></span>
+                        <span class="reel-notch reel-notch-right"></span>
+                    </div>
+                    <div class="reel-result" id="pick-reel-result">
+                        <p class="reel-name" id="pick-reel-name"></p>
+                        <p class="reel-what" id="pick-reel-what"></p>
+                    </div>
+                    <div class="reel-actions">
+                        <button type="button" class="reel-again" id="pick-spin"><span class="sv" lang="sv">Snurra igen</span><span class="en" lang="en">Spin again</span></button>
+                        <button type="button" class="pick-text" id="pick-idea-more"><span class="sv" lang="sv">Vad är det?</span><span class="en" lang="en">What is it?</span></button>
+                    </div>
                     <div class="pick-card-body" id="pick-card-body">
                         <h2 id="pick-card-title"></h2>
                         <div class="pick-card-dish">
@@ -4557,7 +4842,10 @@
                 <button type="button" class="pick-fab" id="pick-fab" aria-controls="pick-card" aria-expanded="false">
                     <svg class="pick-dice" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="8" r="1.3" fill="currentColor"/><circle cx="16" cy="8" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="8" cy="16" r="1.3" fill="currentColor"/><circle cx="16" cy="16" r="1.3" fill="currentColor"/></svg>
                     <span class="pick-fab-label">
-                        <span class="label-idle"><span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span></span>
+                        <span class="label-idle">
+                            <span class="label-lunch"><span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span></span>
+                            <span class="label-idea"><span class="sv" lang="sv">Föreslå en rätt</span><span class="en" lang="en">Suggest a dish</span></span>
+                        </span>
                         <span class="label-open"><span class="sv" lang="sv">En till</span><span class="en" lang="en">Another</span></span>
                     </span>
                 </button>
@@ -4596,6 +4884,8 @@
             var bagKey = "";
             var lastRestaurantId = "";
             var pickHistory = [];
+            var ideaRecent = [];
+            var reelAnim = null;
             var currentPick = null;
             var rollCount = 0;
             var lastTrigger = null;
@@ -4642,7 +4932,8 @@
                 applyDateState();
                 applyFilters();
                 var card = document.getElementById("pick-card");
-                if (currentPick && card && !card.hidden) renderCard(currentPick);
+                if (currentPick && card && !card.hidden && !inIdeaMode()) renderCard(currentPick);
+                if (window.paintWeekendIdeas) window.paintWeekendIdeas(ideaSeed());
                 if (typeof renderDishSheet === "function") renderDishSheet();
                 if (fromUser) track("lang_switch", { lang: lang });
             }
@@ -4655,7 +4946,7 @@
                 var state = window.lunchDateState
                     ? window.lunchDateState(root.dataset.menuDate || "", now)
                     : null;
-                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open", "is-holiday");
+                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open", "is-holiday", "is-idea");
                 if (state === "weekend") {
                     root.classList.add("is-weekend");
                     if (opened) root.classList.add("is-weekend-open");
@@ -4822,12 +5113,19 @@
                 var root = document.documentElement;
                 return root.classList.contains("is-weekend") && !root.classList.contains("is-weekend-open");
             }
+            function inIdeaMode() {
+                var root = document.documentElement;
+                if (root.classList.contains("is-holiday")) return true;
+                return root.classList.contains("is-weekend") && !root.classList.contains("is-weekend-open");
+            }
             function syncDock() {
+                document.documentElement.classList.toggle("is-idea", inIdeaMode());
                 var dock = document.getElementById("pick-dock");
                 if (!dock) return;
                 var input = document.getElementById("menu-search");
                 var searchFocused = !!(input && document.activeElement === input && window.innerWidth <= 820);
-                dock.hidden = menusCollapsed() || searchFocused;
+                if (inIdeaMode()) dock.hidden = false;
+                else dock.hidden = menusCollapsed() || searchFocused;
             }
             function eligibleDishes(card) {
                 return Array.prototype.filter.call(card.querySelectorAll("li.menu-item"), function (item) {
@@ -4846,7 +5144,7 @@
                 return fresh.length ? fresh : cards;
             }
             function updatePickAvailability() {
-                var empty = buildPool().length === 0;
+                var empty = inIdeaMode() ? !(window.ideaList && window.ideaList().length) : buildPool().length === 0;
                 ["pick-fab", "pick-lg"].forEach(function (id) {
                     var button = document.getElementById(id);
                     if (button) button.setAttribute("aria-disabled", empty ? "true" : "false");
@@ -5050,8 +5348,157 @@
                 if (heading) heading.focus({ preventScroll: true });
                 track("pick_show_in_list", {});
             }
+            function ideaSeed() {
+                var day = window.lunchDayKey ? window.lunchDayKey() : "";
+                var n = window.__ideaRoll || 0;
+                return n ? day + "#" + n : day;
+            }
+            function ideaBySlug(slug) {
+                var list = window.ideaList ? window.ideaList() : [];
+                for (var i = 0; i < list.length; i++) if (list[i].slug === slug) return list[i];
+                return null;
+            }
+            function dishHref(slug) {
+                if (typeof window.dishUseHref === "function") return window.dishUseHref(slug);
+                return "assets/dishes/" + slug + ".svg#art";
+            }
+            function setReelBusy(busy) {
+                var card = document.getElementById("pick-card");
+                if (card) {
+                    if (busy) card.setAttribute("aria-busy", "true");
+                    else card.removeAttribute("aria-busy");
+                }
+                ["pick-fab", "pick-lg", "pick-spin"].forEach(function (id) {
+                    var button = document.getElementById(id);
+                    if (!button) return;
+                    button.disabled = !!busy;
+                    if (id !== "pick-spin") button.setAttribute("aria-disabled", busy ? "true" : "false");
+                });
+            }
+            function finishReel() {
+                if (reelAnim && reelAnim.playState !== "finished") reelAnim.finish();
+            }
+            function spinReel(slugs, target) {
+                var reel = document.getElementById("pick-reel");
+                var strip = document.getElementById("pick-reel-strip");
+                if (!reel || !strip) return Promise.resolve();
+                var h = reel.clientHeight || 128;
+                var cycle = (slugs && slugs.length) ? slugs.slice() : [target];
+                var tiles = [];
+                for (var i = 0; i < 24; i++) tiles.push(i === 23 ? target : cycle[i % cycle.length]);
+                var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                strip.innerHTML = "";
+                var draw = reduced ? [target] : tiles;
+                draw.forEach(function (slug) {
+                    var tile = document.createElement("div");
+                    tile.className = "reel-tile";
+                    tile.style.height = h + "px";
+                    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    svg.setAttribute("class", "dish-ico");
+                    svg.setAttribute("viewBox", "0 0 64 64");
+                    svg.setAttribute("aria-hidden", "true");
+                    var use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+                    use.setAttribute("href", dishHref(slug));
+                    svg.appendChild(use);
+                    tile.appendChild(svg);
+                    strip.appendChild(tile);
+                });
+                var landed = strip.lastElementChild.querySelector(".dish-ico");
+                var item = ideaBySlug(target);
+                var protein = item && item.idea_protein && item.idea_protein !== "other" ? item.idea_protein : "";
+                function colour() {
+                    if (!landed) return;
+                    if (protein) landed.setAttribute("data-protein", protein);
+                    else landed.removeAttribute("data-protein");
+                }
+                if (reduced) {
+                    strip.style.transform = "none";
+                    if (landed) {
+                        landed.style.opacity = "0";
+                        colour();
+                        landed.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150, fill: "forwards" });
+                    }
+                    return Promise.resolve();
+                }
+                strip.style.transform = "translateY(0)";
+                strip.style.willChange = "transform";
+                var end = -(23 * h);
+                reelAnim = strip.animate([
+                    { transform: "translateY(0px)", easing: "cubic-bezier(.15,.7,.2,1)" },
+                    { transform: "translateY(" + (end - 6) + "px)", offset: 0.88, easing: "ease-out" },
+                    { transform: "translateY(" + end + "px)", offset: 1 }
+                ], { duration: 1800, fill: "forwards" });
+                return reelAnim.finished.then(function () {
+                    strip.style.willChange = "";
+                    strip.style.transform = "translateY(" + end + "px)";
+                    colour();
+                    reelAnim = null;
+                });
+            }
+            window.spinReel = spinReel;
+            function showIdeaResult(item) {
+                var lang = document.documentElement.lang === "sv" ? "sv" : "en";
+                var name = (item.name || {})[lang] || "";
+                var what = (item.what || {})[lang] || "";
+                var nameEl = document.getElementById("pick-reel-name");
+                var whatEl = document.getElementById("pick-reel-what");
+                var result = document.getElementById("pick-reel-result");
+                if (nameEl) nameEl.textContent = name;
+                if (whatEl) whatEl.textContent = what;
+                if (result) result.classList.add("is-in");
+                announce((isSv() ? "Förslag: " : "Suggestion: ") + name + (what ? ". " + what : ""));
+                var again = document.getElementById("pick-spin");
+                if (again) again.focus();
+            }
+            function spinIdea(trigger) {
+                var list = window.ideaList ? window.ideaList() : [];
+                if (!list.length) return;
+                if (trigger && trigger.disabled) return;
+                var pool = list.filter(function (item) { return ideaRecent.indexOf(item.slug) === -1; });
+                if (!pool.length) pool = list.slice();
+                var choice = pool[Math.floor(Math.random() * pool.length)];
+                ideaRecent = [choice.slug].concat(ideaRecent.filter(function (slug) { return slug !== choice.slug; })).slice(0, 3);
+                var card = document.getElementById("pick-card");
+                var result = document.getElementById("pick-reel-result");
+                if (result) result.classList.remove("is-in");
+                if (card) {
+                    card.hidden = false;
+                    card.dataset.result = choice.slug;
+                }
+                setExpanded(true);
+                setReelBusy(true);
+                if (trigger) lastTrigger = trigger;
+                var shown = window.__ideaShown && window.__ideaShown.length ? window.__ideaShown : list.map(function (item) { return item.slug; });
+                spinReel(shown, choice.slug).then(function () {
+                    setReelBusy(false);
+                    showIdeaResult(choice);
+                });
+            }
+            function openIdeaSheet(slug, trigger) {
+                var item = ideaBySlug(slug);
+                var dialog = document.getElementById("dish-sheet");
+                if (!item || !dialog || !dialog.showModal) return;
+                dishTrigger = trigger || document.querySelector('section#weekend-ideas .idea-card[data-dish="' + slug + '"]');
+                dialog.dataset.source = "idea";
+                dialog.dataset.slug = slug;
+                dialog.dataset.proteinMenu = "";
+                dialog.dataset.ideaProtein = item.idea_protein || "other";
+                dialog.dataset.protein = item.idea_protein && item.idea_protein !== "other" ? item.idea_protein : "";
+                dialog.dataset.href = dishHref(slug);
+                var link = document.getElementById("dish-sheet-link");
+                if (link) link.hidden = true;
+                dialog.showModal();
+                renderDishSheet();
+                var close = document.getElementById("dish-sheet-close");
+                if (close) close.focus();
+            }
             function pickForMe(event) {
                 var trigger = event && event.currentTarget;
+                if (inIdeaMode()) {
+                    if (trigger && (trigger.disabled || trigger.getAttribute("aria-disabled") === "true")) return;
+                    spinIdea(trigger);
+                    return;
+                }
                 if (trigger && trigger.getAttribute("aria-disabled") === "true") {
                     announce(emptyPoolCopy());
                     return;
@@ -5147,6 +5594,11 @@
             if (pickShow) pickShow.addEventListener("click", showInList);
             document.addEventListener("keydown", function (event) {
                 if (event.key !== "Escape") return;
+                if (reelAnim && reelAnim.playState === "running") {
+                    event.preventDefault();
+                    finishReel();
+                    return;
+                }
                 var card = document.getElementById("pick-card");
                 if (!card || card.hidden) return;
                 if (event.target && event.target.id === "menu-search") return;
@@ -5158,10 +5610,26 @@
                 if (!link) return;
                 track("outbound", { type: link.dataset.outbound, restaurant: link.dataset.restaurant || "" });
             });
+            document.addEventListener("visibilitychange", function () {
+                if (document.hidden) finishReel();
+            });
+            var ideaReroll = document.getElementById("ideas-reroll");
+            if (ideaReroll) ideaReroll.addEventListener("click", function () {
+                window.__ideaRoll = (window.__ideaRoll || 0) + 1;
+                if (window.paintWeekendIdeas) window.paintWeekendIdeas(ideaSeed());
+            });
+            var spinAgain = document.getElementById("pick-spin");
+            if (spinAgain) spinAgain.addEventListener("click", function () { spinIdea(spinAgain); });
+            var ideaMore = document.getElementById("pick-idea-more");
+            if (ideaMore) ideaMore.addEventListener("click", function () {
+                var card = document.getElementById("pick-card");
+                if (card && card.dataset.result) openIdeaSheet(card.dataset.result, ideaMore);
+            });
             var reveal = document.getElementById("weekend-reveal");
             if (reveal) reveal.addEventListener("click", function () {
                 var open = document.documentElement.classList.toggle("is-weekend-open");
                 reveal.setAttribute("aria-expanded", open ? "true" : "false");
+                if (open) closeCard(false);
                 syncDock();
                 updatePickAvailability();
             });
@@ -5182,6 +5650,10 @@
                 var dialog = document.getElementById("dish-sheet");
                 if (!dialog || !dialog.open || !dialog.dataset.slug) return;
                 var entry = dishInfo[dialog.dataset.slug] || {};
+                if (dialog.dataset.source === "idea") {
+                    var ideaEntry = ideaBySlug(dialog.dataset.slug);
+                    if (ideaEntry) entry = { name: ideaEntry.name, what: ideaEntry.what, status: entry.status, review_status: entry.review_status };
+                }
                 var lang = document.documentElement.lang === "sv" ? "sv" : "en";
                 var title = document.getElementById("dish-sheet-title");
                 var what = document.getElementById("dish-sheet-what");
@@ -5216,6 +5688,22 @@
                     veg: ["Vego", "Veggie"]
                 };
                 var protein = dialog.dataset.proteinMenu ? proteinNames[dialog.dataset.protein || ""] : null;
+                if (dialog.dataset.source === "idea") {
+                    var usual = proteinNames[dialog.dataset.ideaProtein || ""];
+                    if (proteinLine) {
+                        if (usual && dialog.dataset.ideaProtein !== "other") {
+                            var usualWord = usual[lang === "sv" ? 0 : 1];
+                            proteinLine.hidden = false;
+                            proteinLine.textContent = lang === "sv" ? "Vanligast: " + usualWord : "Usually: " + usualWord;
+                        } else {
+                            proteinLine.hidden = true;
+                            proteinLine.textContent = "";
+                        }
+                    }
+                    var ideaLink = document.getElementById("dish-sheet-link");
+                    if (ideaLink) ideaLink.hidden = true;
+                    return;
+                }
                 if (proteinLine) {
                     if (protein) {
                         var word = protein[lang === "sv" ? 0 : 1];
@@ -5231,11 +5719,17 @@
             }
             window.renderDishSheet = renderDishSheet;
             document.addEventListener("click", function (event) {
-                var button = event.target.closest ? event.target.closest(".dish-thumb, .dish-ask") : null;
+                var button = event.target.closest ? event.target.closest(".dish-thumb, .dish-ask, .idea-card") : null;
                 if (button) {
                     var dialog = document.getElementById("dish-sheet");
                     if (!dialog || !dialog.showModal) return;
+                    if (button.classList.contains("idea-card")) {
+                        openIdeaSheet(button.getAttribute("data-dish") || "", button);
+                        return;
+                    }
                     dishTrigger = button;
+                    dialog.dataset.source = "";
+                    dialog.dataset.ideaProtein = "";
                     dialog.dataset.slug = button.getAttribute("data-dish") || "";
                     var icon = button.querySelector(".dish-ico");
                     var use = button.querySelector("use");
