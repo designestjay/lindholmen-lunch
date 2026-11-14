@@ -63,12 +63,27 @@ def test_protein_strokes_clear_the_page_background():
 def test_committed_dish_svgs_pass_the_style_check():
     files = sorted(DISHES.glob("*.svg"))
     assert [path.name for path in files] == [
+        "caesar-salad.svg",
+        "dumplings.svg",
         "kottbullar.svg",
+        "lamb.svg",
+        "naan.svg",
+        "noodle-soup.svg",
         "pasta-cream.svg",
+        "pasta-pesto.svg",
         "pho.svg",
+        "raita-chutney.svg",
         "salad-bowl.svg",
+        "salmon.svg",
+        "shrimp.svg",
+        "steak.svg",
         "sushi-mix.svg",
+        "tandoori.svg",
+        "tempura.svg",
         "tikka-masala.svg",
+        "white-fish.svg",
+        "wok.svg",
+        "yakitori.svg",
     ]
     for path in files:
         assert check_dish_svg(path.read_bytes()) == [], path.name
@@ -89,6 +104,10 @@ def test_currentcolor_stroke_passes_and_a_fill_fails():
     assert any("art fill" in problem for problem in check_dish_svg(bare))
     filled = _svg().replace(b"<path ", b'<path fill="#c8ff36" ', 1)
     assert any("fill" in problem for problem in check_dish_svg(filled))
+    styled = _svg().replace(b"<path ", b'<path style="fill: #c8ff36" ', 1)
+    assert any("fill" in problem for problem in check_dish_svg(styled))
+    transparent_root = _svg().replace(b'color="#111" fill="none"', b'color="#111" fill="transparent"', 1)
+    assert any("root fill" in problem for problem in check_dish_svg(transparent_root))
     assert any("stroke-width" in problem for problem in check_dish_svg(_svg(width="1.2")))
     assert any("stroke-width" in problem for problem in check_dish_svg(_svg(width="3.1")))
     odd = _svg().replace(b'vector-effect="non-scaling-stroke"', b'vector-effect="fixed-position"', 1)
@@ -137,7 +156,18 @@ def test_protein_comes_from_the_dish_text():
     assert protein_for("Sallad", category="salad-bowl") == "veg"
     assert protein_for("Sushi", category="sushi-mix") == "fish"
     assert protein_for("Krämig pasta", category="pasta-cream") is None
-    assert protein_for("Pasta pesto", category="pasta-pesto") is None
+    assert protein_for("Pasta pesto", category="pasta-pesto") == "veg"
+    assert protein_for("Halstrad", category="salmon") == "fish"
+    assert protein_for("Dagens", category="shrimp") == "fish"
+    assert protein_for("Dagens", category="white-fish") == "fish"
+    assert protein_for("Spett", category="yakitori") == "chicken"
+    assert protein_for("Grillat", category="tandoori") == "chicken"
+    assert protein_for("Entrecôte", category="steak") == "beef"
+    assert protein_for("Sås", category="raita-chutney") == "veg"
+    assert protein_for("Kyckling", category="steak") == "chicken"
+    assert protein_for("Naan", category="naan") is None
+    assert protein_for("Wok", category="wok") is None
+    assert protein_for("Lamm", category="lamb") is None
     assert protein_for(
         "Pasta pesto getost, bakade tomater, pesto",
         ["fish", "chicken", "beef"],

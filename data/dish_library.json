@@ -1256,6 +1256,125 @@
       "text_source": "model-draft",
       "text_reviewed_by": null,
       "text_reviewed_at": null
+    },
+    "dumplings": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Dumplings", "en": "Dumplings"},
+      "what": {
+        "sv": "Små degknyten med fyllning, ångade, kokta eller stekta.",
+        "en": "Small filled dough parcels, steamed, boiled or fried."
+      },
+      "typical": {
+        "sv": ["deg", "fyllning", "soja eller dipp"],
+        "en": ["dough", "filling", "soy or a dip"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "caesar-salad": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Caesarsallad", "en": "Caesar salad"},
+      "what": {
+        "sv": "Romansallad med krutonger, ost och en krämig dressing.",
+        "en": "Romaine lettuce with croutons, cheese and a creamy dressing."
+      },
+      "typical": {
+        "sv": ["romansallad", "krutonger", "ost", "dressing"],
+        "en": ["romaine", "croutons", "cheese", "dressing"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "yakitori": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Yakitori", "en": "Yakitori"},
+      "what": {
+        "sv": "Grillade spett, oftast kyckling, med en söt sojasås.",
+        "en": "Grilled skewers, usually chicken, with a sweet soy sauce."
+      },
+      "typical": {
+        "sv": ["spett", "kyckling", "soja", "ris"],
+        "en": ["skewers", "chicken", "soy", "rice"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "tempura": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Tempura", "en": "Tempura"},
+      "what": {
+        "sv": "Lättfriterade bitar i ett tunt frasigt smet.",
+        "en": "Lightly fried pieces in a thin, crisp batter."
+      },
+      "typical": {
+        "sv": ["smet", "räkor eller grönsaker", "dipp"],
+        "en": ["batter", "shrimp or vegetables", "a dip"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "lamb": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Lamm", "en": "Lamb"},
+      "what": {
+        "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris.",
+        "en": "Lamb, roasted or stewed, often with potato or rice."
+      },
+      "typical": {
+        "sv": ["lamm", "potatis eller ris", "sås"],
+        "en": ["lamb", "potato or rice", "sauce"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pasta-tomato": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Pasta med tomatsås", "en": "Pasta in tomato sauce"},
+      "what": {
+        "sv": "Pasta i en tomatsås, ofta med vitlök och örter.",
+        "en": "Pasta in a tomato sauce, often with garlic and herbs."
+      },
+      "typical": {
+        "sv": ["pasta", "tomat", "vitlök", "örter"],
+        "en": ["pasta", "tomato", "garlic", "herbs"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "noodle-soup": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Nudelsoppa", "en": "Noodle soup"},
+      "what": {
+        "sv": "En buljong med nudlar och grönsaker.",
+        "en": "A broth with noodles and vegetables."
+      },
+      "typical": {
+        "sv": ["nudlar", "buljong", "grönsaker"],
+        "en": ["noodles", "broth", "vegetables"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
     }
   }
 }

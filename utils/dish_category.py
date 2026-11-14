@@ -148,11 +148,48 @@ def _fuzzy(text: str, taxonomy: dict) -> tuple[str, float] | None:
 def _hint(slug: str, restaurant: str, taxonomy: dict) -> str:
     hints = taxonomy.get("restaurant_hints") or {}
     spec = hints.get(slug) or {}
+    if not isinstance(spec, dict):
+        return slug
     name = (restaurant or "").lower()
     for target, names in spec.items():
+        if not isinstance(names, list):
+            continue
         if any(name == item.lower() or item.lower() in name for item in names):
             return target
     return slug
+
+
+def _alias(dish_name: str, taxonomy: dict) -> str | None:
+    """Exact alias, or the longest alias that starts a word in the dish name."""
+    aliases = {normalise(key): value for key, value in (taxonomy.get("aliases") or {}).items()}
+    if dish_name in aliases:
+        return aliases[dish_name]
+    best = None
+    best_len = 0
+    for alias, slug in aliases.items():
+        if alias and _contains(dish_name, alias) and len(alias) > best_len:
+            best = slug
+            best_len = len(alias)
+    return best
+
+
+def _restaurant_dish(dish_name: str, restaurant: str, taxonomy: dict) -> str | None:
+    """A named dish at one restaurant, when the words alone are not enough."""
+    by_name = (taxonomy.get("restaurant_hints") or {}).get("by_name") or {}
+    if not isinstance(by_name, dict):
+        return None
+    place = (restaurant or "").lower()
+    for fragment, mapping in by_name.items():
+        if not isinstance(mapping, dict) or fragment.lower() not in place:
+            continue
+        for label, slug in mapping.items():
+            if normalise(label) == dish_name:
+                return slug
+    return None
+
+
+def _is_bento(dish_name: str) -> bool:
+    return dish_name == "bento" or dish_name.startswith("bento")
 
 
 def classify(
@@ -174,14 +211,22 @@ def classify(
     if _ignored(dish_name, taxonomy):
         return {"dish_category": None, "category_confidence": 0, "category_rule": "ignore", "ignored": True}
 
-    aliases = {normalise(key): value for key, value in (taxonomy.get("aliases") or {}).items()}
-    if dish_name in aliases:
-        slug = aliases[dish_name]
+    aliased = _alias(dish_name, taxonomy)
+    if aliased:
         return {
-            "dish_category": slug,
+            "dish_category": aliased,
             "category_confidence": 0.99,
             "category_rule": "alias",
         }
+    hinted = _restaurant_dish(dish_name, restaurant, taxonomy)
+    if hinted:
+        return {
+            "dish_category": hinted,
+            "category_confidence": 0.92,
+            "category_rule": "hint",
+        }
+    if _is_bento(dish_name):
+        return {"dish_category": None, "category_confidence": 0, "category_rule": "bento"}
 
     named = _best_keyword(dish_name, categories)
     if named:

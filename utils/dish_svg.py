@@ -51,6 +51,7 @@ FORBIDDEN_TAGS = {
 
 _PRECISION = re.compile(r"\d\.\d{2,}")
 _MOVE = re.compile(r"[Mm]")
+_STYLE_FILL = re.compile(r"fill\s*:\s*([^;]+)", re.IGNORECASE)
 _PROTEIN_PATTERNS = (
     ("beef", re.compile(r"(?<![a-zåäö])(?:nöt|beef)", re.IGNORECASE)),
     ("pork", re.compile(r"(?<![a-zåäö])(?:fläsk|pork)", re.IGNORECASE)),
@@ -88,9 +89,17 @@ def _stroke_width(value: str | None) -> float | None:
 CATEGORY_PROTEIN = {
     "pho": "beef",
     "kottbullar": "beef",
+    "steak": "beef",
     "tikka-masala": "chicken",
+    "yakitori": "chicken",
+    "tandoori": "chicken",
     "salad-bowl": "veg",
+    "raita-chutney": "veg",
+    "pasta-pesto": "veg",
     "sushi-mix": "fish",
+    "salmon": "fish",
+    "shrimp": "fish",
+    "white-fish": "fish",
 }
 PATH_STROKES = STROKE_COLOURS | {"none", "transparent"}
 
@@ -163,7 +172,7 @@ def check_dish_svg(data: bytes) -> list[str]:
         problems.append(f"viewBox must be {VIEWBOX}")
     if _norm(root.get("color")) not in {"#111", "#111111"}:
         problems.append("root color must be #111")
-    if _norm(root.get("fill")) not in {"none", "transparent"}:
+    if _norm(root.get("fill")) != "none":
         problems.append("root fill must be none")
     groups = [element for element in root.iter() if _local(element.tag) == "g"]
     if len(groups) != 1 or groups[0].get("id") != "art":
@@ -189,6 +198,12 @@ def check_dish_svg(data: bytes) -> list[str]:
             problems.append(f"forbidden <{name}>")
         if element.get("transform") is not None:
             problems.append("transform is not allowed")
+        styled = _STYLE_FILL.search(element.get("style") or "")
+        if styled and _norm(styled.group(1)) not in FILL_COLOURS:
+            problems.append(f"fill {styled.group(1).strip()} is outside none or transparent")
+        owned = element.get("fill")
+        if owned is not None and _norm(owned) not in FILL_COLOURS:
+            problems.append(f"fill {owned.strip()} is outside none or transparent")
         for opacity_name in ("opacity", "stroke-opacity", "fill-opacity"):
             opacity = element.get(opacity_name)
             if opacity is not None and opacity not in {"1", "1.0"}:
@@ -209,9 +224,6 @@ def check_dish_svg(data: bytes) -> list[str]:
             stroke = _norm(element.get("stroke") or "")
             if stroke and stroke not in PATH_STROKES:
                 problems.append(f"stroke {stroke} is outside currentColor")
-            fill = _norm(element.get("fill") or "")
-            if fill and fill not in FILL_COLOURS:
-                problems.append(f"fill {fill} is outside none or transparent")
     if moves > MAX_SUBPATHS:
         problems.append(f"{moves} subpaths exceeds {MAX_SUBPATHS}")
     return problems

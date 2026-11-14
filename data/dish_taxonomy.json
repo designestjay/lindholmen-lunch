@@ -7,7 +7,9 @@
         "pho",
         "phở"
       ],
-      "exclude": [],
+      "exclude": [
+        "phoron"
+      ],
       "examples": [
         "beef pho"
       ]
@@ -32,7 +34,8 @@
     "bibimbap": {
       "priority": 90,
       "keywords": [
-        "bibimbap"
+        "bibimbap",
+        "bibibamp"
       ],
       "exclude": [],
       "examples": []
@@ -166,7 +169,8 @@
       "priority": 88,
       "keywords": [
         "bulgogi",
-        "korean bbq"
+        "korean bbq",
+        "yakiniku"
       ],
       "exclude": [],
       "examples": []
@@ -733,7 +737,9 @@
     "caesar-salad": {
       "priority": 90,
       "keywords": [
-        "caesar"
+        "caesar",
+        "ceasar",
+        "ceasarsallad"
       ],
       "exclude": [],
       "examples": []
@@ -863,7 +869,10 @@
   "aliases": {
     "kyckling tikka masala": "tikka-masala",
     "beef pho": "pho",
-    "vegobullar med gräddsås": "kottbullar"
+    "vegobullar med gräddsås": "kottbullar",
+    "bibibamp": "bibimbap",
+    "ceasarsallad": "caesar-salad",
+    "ceasar": "caesar-salad"
   },
   "ignore": [
     "^dryck",
@@ -871,7 +880,13 @@
     "^kaffe",
     "^tillval",
     "^extra ",
-    "ingår$"
+    "ingår$",
+    "^mangolassi$",
+    "^mineralvatten$",
+    "^papadom$",
+    "^myntasås$",
+    "^chili pickles$",
+    "^dressing$"
   ],
   "closed": [
     "stängt",
@@ -887,6 +902,16 @@
         "masala",
         "bombay"
       ]
+    },
+    "by_name": {
+      "benne": {
+        "slow tomato": "pasta-tomato",
+        "smoked pig": "pasta-cream",
+        "swedish cheese": "pasta-cream",
+        "the shrooms": "pasta-cream",
+        "silky bird": "pasta-tomato",
+        "silky salsiccia": "pasta-tomato"
+      }
     }
   }
 }

@@ -15,7 +15,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords, tags_for_text
 from utils.restaurants import DISPLAY_NAMES, display_name, link_key
 from utils.dish_category import classify, coverage_line, load_library, load_taxonomy, normalise, update_image_queue
-from utils.dish_svg import PROTEIN_LABELS, protein_for
+from utils.dish_svg import PROTEIN_LABELS, detect_protein, protein_for
 from utils.holidays import holiday_dates
 from utils.sources import is_inactive, is_link_only, is_rotating, load_sources
 from utils.utils import get_today_english
@@ -247,20 +247,28 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             has_svg = bool(svg_file and svg_file.is_file())
             confidence = float(decision.get("category_confidence") or 0)
             section = (item.get("category") or "").strip()
-            own_text = " ".join(
-                part for part in (display_item_name or name, visible_description or description, section) if part
-            )
-            own_tags = tags_for_text(own_text, tag_data)
-            protein = protein_for(own_text, own_tags, slug)
-            protein_sv, protein_en = PROTEIN_LABELS.get(protein, ("", ""))
-            pills = dish_pills(
-                display_item_name or name,
-                visible_description or description,
-                section,
-                tag_data,
-            )
-            if protein_sv and all(pill["sv"] != protein_sv for pill in pills):
-                pills = pills + [{"key": protein, "en": protein_en, "sv": protein_sv}]
+            if decision.get("ignored"):
+                own_tags = []
+                pills = []
+                protein = None
+                protein_from_menu = False
+                protein_sv, protein_en = "", ""
+            else:
+                own_text = " ".join(
+                    part for part in (display_item_name or name, visible_description or description, section) if part
+                )
+                own_tags = tags_for_text(own_text, tag_data)
+                protein = protein_for(own_text, own_tags, slug)
+                protein_from_menu = bool(detect_protein(own_text, own_tags))
+                protein_sv, protein_en = PROTEIN_LABELS.get(protein, ("", ""))
+                pills = dish_pills(
+                    display_item_name or name,
+                    visible_description or description,
+                    section,
+                    tag_data,
+                )
+                if protein_sv and all(pill["sv"] != protein_sv for pill in pills):
+                    pills = pills + [{"key": protein, "en": protein_en, "sv": protein_sv}]
             items_out.append(
                 {
                     "name": display_item_name,
@@ -271,6 +279,7 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                     "tags": own_tags,
                     "pills": pills,
                     "protein": protein or "",
+                    "protein_menu": protein_from_menu,
                     "protein_sv": protein_sv,
                     "protein_en": protein_en,
                     "filter_tokens": " ".join(dish_filter_tokens(own_tags, price_value)),

@@ -1176,7 +1176,7 @@
                         <li class="menu-item" data-tags="{{ item.filter_tokens }}" data-text="{{ item.search_text }}" data-order="{{ loop.index0 }}" data-category="{{ item.category }}" data-price="{{ item.price }}" data-name="{{ item.name }}">
                             <div class="dish-line">
                                 {% if item.dish_image %}
-                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-menu="{{ '1' if item.protein_menu else '' }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" {% if item.protein %}data-protein="{{ item.protein }}"{% endif %} width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="{{ item.dish_image }}#art"/></svg>
                                 </button>
                                 {% else %}
@@ -1185,7 +1185,7 @@
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         {% if item.dish_sheet and not item.dish_image %}
-                                        <button type="button" class="dish-ask" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">{% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}</button>
+                                        <button type="button" class="dish-ask" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-menu="{{ '1' if item.protein_menu else '' }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">{% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}</button>
                                         {% elif item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}
                                         {% for pill in item.pills %}
                                         <span class="pill"><span class="sv" lang="sv">{{ pill.sv }}</span><span class="en" lang="en">{{ pill.en }}</span></span>
@@ -1962,7 +1962,7 @@
                     fish: ["Fisk", "Fish"],
                     veg: ["Vego", "Veggie"]
                 };
-                var protein = proteinNames[dialog.dataset.protein || ""];
+                var protein = dialog.dataset.proteinMenu ? proteinNames[dialog.dataset.protein || ""] : null;
                 if (proteinLine) {
                     if (protein) {
                         var word = protein[lang === "sv" ? 0 : 1];
@@ -1987,6 +1987,7 @@
                     var icon = button.querySelector(".dish-ico");
                     var use = button.querySelector("use");
                     dialog.dataset.protein = button.getAttribute("data-protein") || (icon ? (icon.getAttribute("data-protein") || "") : "");
+                    dialog.dataset.proteinMenu = button.getAttribute("data-protein-menu") || "";
                     dialog.dataset.href = use ? (use.getAttribute("href") || "") : "";
                     var article = button.closest("article");
                     var link = document.getElementById("dish-sheet-link");
