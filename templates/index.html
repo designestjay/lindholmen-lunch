@@ -591,24 +591,21 @@
             overflow-wrap: anywhere;
         }
         .dish-thumb, .dish-slot {
-            flex: 0 0 44px;
-            width: 44px;
-            height: 44px;
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
         }
         .dish-thumb {
             margin: 0;
-            padding: 4px;
+            padding: 0;
             border: 0;
             background: transparent;
             cursor: pointer;
         }
         .dish-thumb img {
-            width: 36px;
-            height: 36px;
+            width: 48px;
+            height: 48px;
             display: block;
-        }
-        @media (max-width: 399px) {
-            .dish-thumb img { width: 32px; height: 32px; }
         }
         #dish-sheet {
             border: 0;
@@ -1121,7 +1118,7 @@
                             <div class="dish-line">
                                 {% if item.dish_sheet %}
                                 <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <img src="{{ item.dish_image }}" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                    <img src="{{ item.dish_image }}" alt="" width="48" height="48" loading="lazy" decoding="async">
                                 </button>
                                 {% else %}
                                 <span class="dish-slot" aria-hidden="true"></span>

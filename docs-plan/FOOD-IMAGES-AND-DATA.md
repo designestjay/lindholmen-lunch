@@ -334,7 +334,7 @@ The generator renders a thumbnail only when both the SVG exists **and** the stat
 
 | Budget | Limit |
 |---|---|
-| Single SVG | ≤ 6 KB raw and ≤ 2.5 KB gzip after `svgo` |
+| Single SVG | ≤ 7 KB raw and ≤ 2.5 KB gzip after `svgo`. Jay locked the detailed style at about 4–6.5 KB raw on 14 Nov 2026. |
 | Paths per SVG | ≤ 40, with no `<image>`, `<text>`, filters or gradients |
 | Total illustration bytes downloaded for a typical day (about 40 distinct categories on the page) | ≤ 60 KB gzip, lazily loaded |
 | Above-the-fold added weight on a 375 px first view (about 4–6 thumbnails) | ≤ 15 KB gzip |
@@ -403,7 +403,7 @@ Match the line weight, perspective and level of detail of the reference images.
 - `kottbullar`: "a plate of Swedish meatballs with mashed potato, a pool of cream sauce, a spoon of lingonberries and a few pickled cucumber slices"
 - `tikka-masala`: "a shallow bowl of chicken tikka masala curry next to a small mound of rice and a folded piece of naan"
 
-**Lime accent:** none by default. If Jay wants it, allow **one** filled lime (`#c8ff36`) shape per image, e.g. the lime wedge or a herb leaf, added *after* vectorising by hand-colouring one path. The model never generates colour. See the Jay decisions.
+**Fills:** Jay picked the detailed line-art style on 14 Nov 2026. Strokes stay `#111`. A highlight under the lines may be lime `#c8ff36` or the one soft secondary `#fff4cc`. The list thumbnail is 48px. The placeholder stays until the six pilot SVGs arrive: `pho`, `kottbullar`, `tikka-masala`, `pasta-cream`, `salad-bowl`, `sushi-mix`.
 
 **Post-processing tools** (`scripts/dish_art/`, run by the assistant locally or in a Cloud Agent session, never in CI):
 
@@ -414,13 +414,13 @@ Match the line weight, perspective and level of detail of the reference images.
    - Rewrite every path to `fill="none" stroke="#111" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"`.
    - Normalise to `viewBox="0 0 64 64"`, with the artwork fitted to a 56×56 safe box.
    - Run `svgo` with precision 1.
-3. `qa.py`: fails on any of:
-   - fills other than `none` (the optional single lime path is whitelisted by id `accent`);
-   - colours other than `#111`/`#c8ff36`;
-   - `<text>`, `<image>` or `<filter>`;
-   - more than 40 paths;
-   - more than 6 KB raw or 2.5 KB gzip;
-   - a missing viewBox;
+3. `qa.py` (`utils/dish_svg.py`, also run by `tests/test_dish_assets.py`): fails on any of:
+   - a fill other than `none`, lime `#c8ff36`, or the soft secondary `#fff4cc`;
+   - a stroke other than `#111`;
+   - `<text>`, `<image>`, `<filter>`, or a gradient;
+   - more than 120 paths;
+   - more than 7 KB raw or 2.5 KB gzip;
+   - a viewBox other than `0 0 64 64`;
    - a bounding box outside the safe area.
 
    The same checks run in CI as `tests/test_dish_assets.py`. That test only reads committed files, so it is offline.
@@ -430,7 +430,7 @@ Match the line weight, perspective and level of detail of the reference images.
 
 1. The assistant opens a PR titled "Dish art: +N categories" with the SVGs, manifest entries as `draft`, and the contact sheet attached as a screenshot.
 2. Jay or a reviewer checks:
-   - Is it recognisable at 36 px?
+   - Is it recognisable at 48 px?
    - Is the line weight the same as the refs?
    - No text, logos or hands?
    - Is it culturally respectful and accurate (no stereotyped props)?
