@@ -72,14 +72,16 @@ def render_summary(
     fresh = sum(1 for _, status in rows if status == "fresh")
     stale = sum(1 for _, status in rows if status == "stale")
     missing = sum(1 for _, status in rows if status == "missing")
+    reasons = meta.get("missing_reason") or {}
     lines = [
         f"## Scrape health {meta.get('day') or 'unknown'}",
         "",
-        "| Restaurant | Status |",
-        "|---|---|",
+        "| Restaurant | Status | Reason |",
+        "|---|---|---|",
     ]
     for name, status in rows:
-        lines.append(f"| {display_name(name)} | {status} |")
+        reason = reasons.get(name, "") if status == "missing" else ""
+        lines.append(f"| {display_name(name)} | {status} | {reason} |")
     lines.extend(
         [
             "",

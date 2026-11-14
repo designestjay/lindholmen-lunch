@@ -9,6 +9,8 @@ import traceback
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+import requests
+
 from scrapers.kooperativet import KooperativetScraper
 from scrapers.district_one import DistrictOneScraper
 from scrapers.bombay_bistro import BombayBistroScraper
@@ -141,6 +143,19 @@ def _scrape_one(scraper_cls, day: str, cache: dict | None):
     return _menu_payload(menu)
 
 
+def _failure_reason(exc: BaseException) -> str:
+    """Classify a failed scrape as http_<code>, timeout, or error:<Name>."""
+    if isinstance(exc, requests.HTTPError):
+        response = getattr(exc, "response", None)
+        code = getattr(response, "status_code", None) if response is not None else None
+        if isinstance(code, int):
+            return f"http_{code}"
+        return "error:HTTPError"
+    if isinstance(exc, requests.Timeout):
+        return "timeout"
+    return f"error:{type(exc).__name__}"
+
+
 def scrape_for_day(
     day: str,
     refresh: bool = False,
@@ -168,17 +183,21 @@ def scrape_for_day(
     same_day = _same_stockholm_date(previous_meta.get("scraped_at"), now)
     results = {}
     ok, stale_kept, failed = [], [], []
+    missing_reason = {}
 
     for scraper_cls in scrapers:
         name = scraper_cls.__name__
         attempts = 0
         got = None
+        last_reason = None
 
         while attempts <= max_retries:
             try:
                 got = _scrape_one(scraper_cls, day, cache)
+                last_reason = None
                 break
             except Exception as e:
+                last_reason = _failure_reason(e)
                 attempts += 1
                 logging.error("[%s] Error on attempt %s for %s: %s", name, attempts, day, e)
                 traceback.print_exc()
@@ -203,6 +222,7 @@ def scrape_for_day(
             logging.warning("[%s] No fresh menu; keeping same-day data as stale.", name)
         else:
             failed.append(name)
+            missing_reason[name] = last_reason or "empty"
             logging.warning("[%s] No menu for %s. Not carrying older data.", name, day)
 
     logging.info(
@@ -221,6 +241,7 @@ def scrape_for_day(
         "fresh": ok,
         "stale": stale_kept,
         "missing": failed,
+        "missing_reason": missing_reason,
     }
 
     with open(filepath, "w", encoding="utf-8") as f:
