@@ -1,12 +1,67 @@
 # file: lindholmen_lunch/generate_html.py
 
+from __future__ import annotations
+
+import argparse
 import json
 import os
-from jinja2 import Environment, FileSystemLoader
-from datetime import datetime, timedelta, timezone
+import re
+from datetime import datetime
 from pathlib import Path
-from utils.annotate_food_types import annotate_file
+from zoneinfo import ZoneInfo
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
+from utils.restaurants import DISPLAY_NAMES, display_name, link_key
 from utils.utils import get_today_english
+
+STOCKHOLM = ZoneInfo("Europe/Stockholm")
+WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
+SITE = "https://lindholmenlunch.nu"
+
+DAY_LABELS = {
+    "monday": ("Monday", "Måndag"),
+    "tuesday": ("Tuesday", "Tisdag"),
+    "wednesday": ("Wednesday", "Onsdag"),
+    "thursday": ("Thursday", "Torsdag"),
+    "friday": ("Friday", "Fredag"),
+    "saturday": ("Saturday", "Lördag"),
+    "sunday": ("Sunday", "Söndag"),
+}
+
+SV_DAY_SHORT = ["mån", "tis", "ons", "tor", "fre", "lör", "sön"]
+SV_DAY_LONG = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
+EN_DAY_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+EN_DAY_LONG = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+SV_MONTH = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+EN_MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+# Chip order matches the 5-second task. A chip is rendered only when today's
+# dishes actually contain that token.
+FILTERS = [
+    {"key": "vego", "label_en": "Veggie", "label_sv": "Vego"},
+    {"key": "fish", "label_en": "Fish", "label_sv": "Fisk"},
+    {"key": "chicken", "label_en": "Chicken", "label_sv": "Kyckling"},
+    {"key": "under130", "label_en": "Under 130 kr", "label_sv": "Under 130 kr"},
+    {"key": "pasta", "label_en": "Pasta", "label_sv": "Pasta"},
+    {"key": "asian", "label_en": "Asian", "label_sv": "Asiatiskt"},
+    {"key": "indian", "label_en": "Indian", "label_sv": "Indiskt"},
+    {"key": "salad", "label_en": "Salad", "label_sv": "Sallad"},
+    {"key": "sushi", "label_en": "Sushi", "label_sv": "Sushi"},
+]
+
+PILL_SPECS = [
+    ("vego", {"veg", "vegan"}, "Veggie", "Vego"),
+    ("fish", {"fish"}, "Fish", "Fisk"),
+    ("chicken", {"chicken"}, "Chicken", "Kyckling"),
+    ("pasta", {"pasta"}, "Pasta", "Pasta"),
+    ("salad", {"salad"}, "Salad", "Sallad"),
+    ("sushi", {"sushi"}, "Sushi", "Sushi"),
+    ("indian", {"indian"}, "Indian", "Indiskt"),
+    ("asian", {"japanese", "thai", "korean"}, "Asian", "Asiatiskt"),
+]
+
 
 def load_restaurant_links() -> dict:
     try:
@@ -16,978 +71,327 @@ def load_restaurant_links() -> dict:
         print("[WARN] restaurant_links.json missing or malformed, skipping links.")
         return {}
 
-def generate_lunch_summary(day: str):
+
+def load_scrape_meta(day: str) -> dict:
+    path = f"data/scrape_meta_{day}.json"
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _item_search_text(item: dict) -> str:
+    return " ".join(
+        [
+            item.get("name") or "",
+            item.get("description") or "",
+            item.get("category") or "",
+            " ".join(item.get("tags") or []),
+        ]
+    ).lower()
+
+
+def parse_price(value: str) -> int | None:
+    if not value:
+        return None
+    match = re.search(r"\d+", value)
+    if not match:
+        return None
+    return int(match.group(0))
+
+
+def dish_filter_tokens(tags: list[str] | None, price: int | None) -> list[str]:
+    """Tokens the filter chips match. `vego` covers both veg and vegan."""
+    tokens = set(tags or [])
+    if tokens & {"veg", "vegan"}:
+        tokens.add("vego")
+    if tokens & {"japanese", "thai", "korean"}:
+        tokens.add("asian")
+    if price is not None and 0 < price <= 130:
+        tokens.add("under130")
+    return sorted(tokens)
+
+
+def pills_for(tags: list[str] | None) -> list[dict]:
+    tagset = set(tags or [])
+    pills = []
+    for key, keys, label_en, label_sv in PILL_SPECS:
+        if tagset & keys:
+            pills.append({"key": key, "en": label_en, "sv": label_sv})
+    if any(pill["key"] == "sushi" for pill in pills):
+        pills = [pill for pill in pills if pill["key"] != "asian"]
+    return pills
+
+
+def _parse_stamp(value: str | None) -> datetime | None:
+    if not value or not isinstance(value, str):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=STOCKHOLM)
+    return parsed.astimezone(STOCKHOLM)
+
+
+def format_stamp(when: datetime) -> dict:
+    local = when.astimezone(STOCKHOLM)
+    weekday = local.weekday()
+    month = local.month - 1
+    return {
+        "iso": local.date().isoformat(),
+        "hhmm": local.strftime("%H:%M"),
+        "trust_sv": f"{SV_DAY_SHORT[weekday].capitalize()} {local.day} {SV_MONTH[month]}",
+        "trust_en": f"{EN_DAY_SHORT[weekday]} {local.day} {EN_MONTH[month]}",
+        "long_sv": f"{SV_DAY_LONG[weekday]} {local.day} {SV_MONTH[month]}",
+        "long_en": f"{EN_DAY_LONG[weekday]} {local.day} {EN_MONTH[month]}",
+        "short_sv": f"{SV_DAY_SHORT[weekday]} {local.day} {SV_MONTH[month]}",
+        "short_en": f"{EN_DAY_SHORT[weekday]} {local.day} {EN_MONTH[month]}",
+    }
+
+
+def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp: dict | None) -> list[dict]:
+    restaurants = []
+    for scraper_key, payload in lunch_data.items():
+        if not isinstance(payload, dict):
+            continue
+        items_out = []
+        for item in payload.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            name = (item.get("name") or "").strip()
+            description = (item.get("description") or "").strip()
+            price_raw = (item.get("price") or "").strip()
+            price_value = parse_price(price_raw)
+            tags = item.get("tags") or []
+            if name:
+                display_item_name = name
+                visible_description = description
+            elif description:
+                display_item_name = description
+                visible_description = ""
+            else:
+                display_item_name = ""
+                visible_description = ""
+            items_out.append(
+                {
+                    "name": display_item_name,
+                    "description": visible_description,
+                    "category": (item.get("category") or "").strip(),
+                    "price": price_raw if price_value is not None else "",
+                    "tags": tags,
+                    "pills": pills_for(tags),
+                    "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
+                    "search_text": _item_search_text(item),
+                }
+            )
+
+        links = restaurant_links.get(link_key(scraper_key)) or {}
+        search_parts = [display_name(scraper_key).lower()]
+        token_set = set()
+        for item in items_out:
+            search_parts.append(item["search_text"])
+            token_set.update(item["filter_tokens"].split())
+
+        fetched = _parse_stamp(payload.get("fetched_at"))
+        stamp = format_stamp(fetched) if fetched else fallback_stamp
+        restaurants.append(
+            {
+                "id": scraper_key,
+                "name": display_name(scraper_key),
+                "name_lower": display_name(scraper_key).lower(),
+                "dishes": items_out,
+                "tags": payload.get("tags") or [],
+                "filter_tokens": " ".join(sorted(token_set)),
+                "stale": bool(payload.get("stale")),
+                "links": links,
+                "search_text": " ".join(search_parts),
+                "stale_short_sv": stamp["short_sv"] if stamp else "",
+                "stale_short_en": stamp["short_en"] if stamp else "",
+            }
+        )
+
+    restaurants.sort(key=lambda row: (row["stale"], row["name_lower"]))
+    for index, restaurant in enumerate(restaurants, start=1):
+        restaurant["rank"] = f"{index:02d}"
+    return restaurants
+
+
+def available_filters(restaurants: list[dict]) -> list[dict]:
+    present = set()
+    for restaurant in restaurants:
+        present.update((restaurant.get("filter_tokens") or "").split())
+    return [opt for opt in FILTERS if opt["key"] in present]
+
+
+def restaurant_directory(links: dict) -> list[dict]:
+    rows = []
+    for scraper_key in DISPLAY_NAMES:
+        info = links.get(link_key(scraper_key)) or {}
+        rows.append(
+            {
+                "name": display_name(scraper_key),
+                "url": info.get("url") or "",
+                "map": info.get("map") or "",
+            }
+        )
+    rows.sort(key=lambda row: row["name"].lower())
+    return rows
+
+
+def missing_restaurants(meta: dict, links: dict) -> list[dict]:
+    rows = []
+    for scraper_key in meta.get("missing") or []:
+        info = links.get(link_key(scraper_key)) or {}
+        rows.append(
+            {
+                "name": display_name(scraper_key),
+                "url": info.get("url") or "",
+                "map": info.get("map") or "",
+            }
+        )
+    rows.sort(key=lambda row: row["name"].lower())
+    return rows
+
+
+def write_sitemap(lastmod: str) -> None:
+    body = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{SITE}/</loc><lastmod>{lastmod}</lastmod></url>
+  <url><loc>{SITE}/privacy.html</loc><lastmod>{lastmod}</lastmod></url>
+</urlset>
+"""
+    Path("docs/sitemap.xml").write_text(body, encoding="utf-8")
+
+
+def generate_lunch_summary(day: str) -> None:
+    """Legacy per-day page generator (kept for compatibility)."""
     data_path = f"data/lunch_data_{day}.json"
     if not os.path.exists(data_path):
         print(f"[WARN] No data file for {day}: {data_path}")
         return
-    
-    # Annotate food types in the data file
+
     annotate_file(data_path)
 
     with open(data_path, encoding="utf-8") as f:
         lunch_data = json.load(f)
 
     restaurant_links = load_restaurant_links()
-
-    env = Environment(loader=FileSystemLoader("templates"))
+    env = Environment(
+        loader=FileSystemLoader("templates"),
+        autoescape=select_autoescape(["html", "xml"]),
+    )
     template = env.get_template("summary_template.html")
-
-    # CEST / Sweden local time (UTC+2)
-    sweden_tz = timezone(timedelta(hours=2))
+    last_updated = datetime.now(STOCKHOLM).strftime("%Y-%m-%d %H:%M")
 
     output_html = template.render(
         day=day.capitalize(),
         lunch_data=lunch_data,
         restaurant_links=restaurant_links,
-        last_updated=datetime.now(sweden_tz).strftime("%Y-%m-%d %H:%M")
+        last_updated=last_updated,
     )
 
     os.makedirs("docs", exist_ok=True)
     output_path = f"docs/lunch_{day}.html"
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output_html)
-
     print(f"[INFO] Generated HTML summary for {day}: {output_path}")
 
 
-def generate_index_page():
+def generate_index_page(day: str | None = None) -> None:
     output_dir = Path("docs")
     output_dir.mkdir(exist_ok=True)
 
-    # Get today's day and load today's data
-    today = get_today_english().lower()
-    
-    # Load today's lunch data
+    today = (day or get_today_english()).lower()
     today_data_path = f"data/lunch_data_{today}.json"
-    lunch_data = {}
+    lunch_data: dict = {}
+
     if os.path.exists(today_data_path):
+        annotate_file(today_data_path)
         with open(today_data_path, encoding="utf-8") as f:
             lunch_data = json.load(f)
-    
+        annotate_menu_data(lunch_data, load_keywords())
+
     restaurant_links = load_restaurant_links()
-
-    # CEST / Sweden local time (UTC+2)
-    sweden_tz = timezone(timedelta(hours=2))
-    last_updated = datetime.now(sweden_tz).strftime("%Y-%m-%d %H:%M")
-
-    # Create restaurant list for random selection
-    restaurant_names = list(lunch_data.keys()) if lunch_data else []
-
-    html = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LMDT71XZ0C');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
-     crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
-    <title>Today's lunch in Lindholmen</title>
-    <meta name="description" content="Today's lunch from restaurants in Lindholmen – updated daily." />
-    
-    <style>
-        /* CSS Variables matching reference design */
-        :root {
-            --background: #ffffff;
-            --foreground: #0a0a0a;
-            --card: #ffffff;
-            --card-foreground: #0a0a0a;
-            --primary: #030213;
-            --primary-foreground: #ffffff;
-            --secondary: #f3f4f6;
-            --secondary-foreground: #030213;
-            --muted: #f9fafb;
-            --muted-foreground: #6b7280;
-            --accent: #f3f4f6;
-            --accent-foreground: #030213;
-            --border: rgba(0, 0, 0, 0.1);
-            --radius: 0.625rem;
-            --blue-50: #eff6ff;
-            --indigo-100: #e0e7ff;
-            --blue-600: #2563eb;
-            --orange-500: #f97316;
-            --red-500: #ef4444;
-            --green-50: #f0fdf4;
-            --green-700: #15803d;
+    meta = load_scrape_meta(today)
+    stamp = _parse_stamp(meta.get("scraped_at"))
+    formatted = format_stamp(stamp) if stamp else None
+    restaurants = prepare_restaurants(lunch_data, restaurant_links, formatted)
+    filters = available_filters(restaurants)
+    day_en, day_sv = DAY_LABELS.get(today, (today.capitalize(), today.capitalize()))
+    missing = missing_restaurants(meta, restaurant_links)
+    fresh_count = sum(1 for restaurant in restaurants if not restaurant["stale"])
+    total = len(DISPLAY_NAMES)
+    menu_date = formatted["iso"] if formatted else ""
+    hhmm = formatted["hhmm"] if formatted else ""
+    trust_sv = formatted["trust_sv"] if formatted else day_sv
+    trust_en = formatted["trust_en"] if formatted else day_en
+    if formatted:
+        date_copy = {
+            "wrong_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer runt 08:00.",
+            "wrong_en": f"This is {formatted['long_en']}'s menu. Today's menus arrive around 08:00.",
+            "soon_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer snart.",
+            "soon_en": f"This is {formatted['long_en']}'s menu. Today's menus are coming soon.",
+            "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
+            "weekend_en": "It's the weekend. Lunch is back on Monday.",
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            color: var(--foreground);
-            line-height: 1.5;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .header-container {
-            max-width: 1792px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .icon-utensils {
-            width: 2rem;
-            height: 2rem;
-            color: var(--blue-600);
-        }
-
-        .header-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            margin: 0;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-        }
-
-        .header-subtitle {
-            font-size: 0.875rem;
-            color: #6e6e73;
-            margin: 0;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .language-toggle {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 0.5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 0.5rem 0.75rem;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #1d1d1f;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .language-toggle:hover {
-            background: rgba(255, 255, 255, 0.8);
-            border: 0.5px solid rgba(0, 0, 0, 0.15);
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.5rem 0.75rem;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #1d1d1f;
-            border: 0.5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        /* Main Content */
-        .main-container {
-            max-width: 1792px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-section h1 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-section p {
-            font-size: 1.125rem;
-            color: #6e6e73;
-            margin-bottom: 2rem;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Random Selection */
-        .random-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* Floating Random Button */
-        .floating-random-button {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            border: none;
-            border-radius: 2rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
-            white-space: nowrap;
-            min-width: 200px;
-            max-width: 280px;
-            height: 48px;
-        }
-
-        .floating-random-button:hover {
-            transform: translateX(-50%) translateY(-2px);
-            background: linear-gradient(135deg, #ff8a5b 0%, #ffa726 100%);
-            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
-        }
-
-        .floating-random-button:active {
-            transform: translateX(-50%) translateY(0px) scale(0.98);
-            transition: all 0.1s ease;
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 768px) {
-            .floating-random-button {
-                bottom: 1.5rem;
-                font-size: 0.8rem;
-                padding: 0.625rem 1.25rem;
-                min-width: 180px;
-                max-width: 250px;
-                height: 44px;
-            }
-        }
-
-
-
-        .icon-shuffle {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        /* Restaurant Grid - Simple Masonry Layout */
-        .restaurant-grid {
-            column-count: 1;
-            column-gap: 1.5rem;
-            width: 100%;
-        }
-
-        /* Responsive Columns */
-        @media (min-width: 768px) {
-            .restaurant-grid {
-                column-count: 2;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .restaurant-grid {
-                column-count: 3;
-            }
-        }
-
-        .restaurant-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 20px;
-            border: 0.5px solid rgba(255, 255, 255, 0.8);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.08),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
-            width: 100%;
-        }
-
-        .restaurant-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 12px 40px rgba(0, 0, 0, 0.12),
-                0 4px 12px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
-            background: rgba(255, 255, 255, 0.85);
-            border: 0.5px solid rgba(255, 255, 255, 1);
-        }
-
-        .restaurant-card.highlighted {
-            border: 2px solid var(--orange-500);
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .restaurant-header {
-            padding: 1.5rem 1.5rem 0;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            grid-template-rows: auto auto;
-            gap: 1rem 1.5rem;
-            align-items: start;
-        }
-
-        .restaurant-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .restaurant-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0 0 0.25rem 0;
-            color: #1d1d1f;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-        }
-
-        .restaurant-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            font-size: 0.875rem;
-            color: #6e6e73;
-        }
-
-        .restaurant-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cuisine-badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            background: var(--secondary);
-            color: var(--secondary-foreground);
-            border-radius: calc(var(--radius) - 2px);
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-top: 0.5rem;
-        }
-
-        .restaurant-links {
-            display: flex;
-            gap: 0.5rem;
-            align-items: flex-start;
-            flex-shrink: 0;
-        }
-
-        .restaurant-links a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            opacity: 0.8;
-            transition: opacity 0.2s ease;
-        }
-
-        .restaurant-links a:hover {
-            opacity: 1;
-        }
-
-        .restaurant-content {
-            padding: 0 1.5rem 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-section h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-        }
-
-        .menu-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            border: 0.5px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.2s ease;
-            min-height: fit-content;
-        }
-
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.6);
-            border: 0.5px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .menu-item-details {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .menu-item-name {
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 0.25rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            line-height: 1.4;
-        }
-
-        .menu-item-description {
-            font-size: 0.875rem;
-            color: #6e6e73;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            line-height: 1.4;
-        }
-
-        .menu-item-price {
-            font-weight: 600;
-            color: #1d1d1f;
-            align-self: flex-start;
-            flex-shrink: 0;
-            margin-left: 0.5rem;
-            max-width: 180px; /* Set maximum width */
-            text-align: right;
-            line-height: 1.3;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
-
-        .emoji-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.25rem;
-            margin-top: 0.5rem;
-        }
-
-        .emoji-tag {
-            font-size: 1.1rem;
-        }
-
-        /* Separator */
-        .separator {
-            height: 1px;
-            background: var(--border);
-            margin: 1.5rem 0;
-        }
-
-        /* Special Offer */
-        .special-offer {
-            background: var(--green-50);
-            color: var(--green-700);
-            padding: 0.75rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            font-size: 0.875rem;
-            margin-top: auto;
-        }
-
-
-
-        /* Footer */
-        .footer {
-            max-width: 1280px;
-            margin: 3rem auto 0;
-            padding: 2rem 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            text-align: center;
-            color: #6e6e73;
-        }
-
-        .footer p {
-            margin: 0.5rem 0;
-        }
-
-        .footer a {
-            color: #1d1d1f;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Icons using CSS */
-        .icon-utensils::before { content: "🍽️"; }
-        .icon-clock::before { content: "🕐"; }
-        .icon-map::before { content: "📍"; }
-        .icon-menu::before { content: "📋"; }
-        .icon-shuffle::before { content: "🎲"; }
-        .icon-language::before { content: "🌐"; }
-
-        /* No Data Message */
-        .no-data {
-            text-align: center;
-            padding: 3rem;
-            color: var(--muted-foreground);
-        }
-
-        .no-data h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--foreground);
-        }
-
-        /* Hidden class for language switching */
-        .hidden {
-            display: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-            
-            .restaurant-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .restaurant-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-            
-            .restaurant-links {
-                align-self: flex-end;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .restaurant-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .menu-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-                padding: 1rem;
-            }
-            
-            .menu-item-details {
-                width: 100%;
-            }
-            
-            .menu-item-name {
-                font-size: 0.95rem;
-                line-height: 1.3;
-            }
-            
-            .menu-item-description {
-                font-size: 0.8rem;
-                line-height: 1.3;
-            }
-            
-            .menu-item-price {
-                align-self: flex-end;
-                margin-left: 0;
-                margin-top: 0.25rem;
-                max-width: 100%; /* Allow full width on mobile */
-                text-align: left; /* Left align on mobile */
-            }
-
-            .restaurant-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .restaurant-links {
-                align-self: flex-start;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="header-left">
-                <span class="icon-utensils" style="font-size: 2rem; color: var(--primary);"></span>
-                <div>
-                    <h1 class="header-title" onclick="goToTop()">Lindholmen Lunch</h1>
-                    <p class="header-subtitle">
-                        <span class="en">Today's lunch in Lindholmen, Gothenburg</span>
-                        <span class="sv hidden">Dagens lunch i Lindholmen, Göteborg</span>
-                    </p>
-                </div>
-            </div>
-            <div class="header-right">
-                <button class="language-toggle" onclick="toggleLanguage()">
-                    <span class="icon-language"></span>
-                    <span class="en">Svenska</span>
-                    <span class="sv hidden">English</span>
-                </button>
-                <div class="badge">
-                    <span class="icon-clock"></span>
-                    <span class="en">Today: """ + today.capitalize() + """</span>
-                    <span class="sv hidden">Idag: """ + today.replace("monday", "Måndag").replace("tuesday", "Tisdag").replace("wednesday", "Onsdag").replace("thursday", "Torsdag").replace("friday", "Fredag") + """</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-container">
-        <div class="hero-section">
-            <h1>
-                <span class="en">What should you eat today?</span>
-                <span class="sv hidden">Vad ska du äta idag?</span>
-            </h1>
-            <p>
-                <span class="en">Explore today's lunch offers in Lindholmen or let us choose for you!</span>
-                <span class="sv hidden">Upptäck dagens luncherbjudanden i Lindholmen eller låt oss välja åt dig!</span>
-            </p>
-        </div>
-
-
-    """
-
-    if lunch_data:
-        html += '<div class="restaurant-grid">'
-        
-        for restaurant_name, restaurant_data in lunch_data.items():
-            clean_name = restaurant_name.replace('Scraper', '').replace('_', ' ')
-            
-            html += f"""
-            <div class="restaurant-card" id="restaurant-{restaurant_name}">
-                <div class="restaurant-header">
-                    <div class="restaurant-info">
-                        <h2 class="restaurant-name">{clean_name}</h2>
-                        <div class="restaurant-meta">
-                            <div class="restaurant-meta-item">
-                                <span class="icon-map"></span>
-                                <span class="en">Lindholmen</span>
-                                <span class="sv hidden">Lindholmen</span>
-                            </div>
-                            <div class="restaurant-meta-item">
-                                <span class="icon-clock"></span>
-                                <span class="en">11:00 - 14:00</span>
-                                <span class="sv hidden">11:00 - 14:00</span>
-                            </div>
-                        </div>
-                        <div class="cuisine-badge">
-                            <span class="en">Restaurant</span>
-                            <span class="sv hidden">Restaurang</span>
-                        </div>
-                    </div>
-                    <div class="restaurant-links">"""
-            
-            if restaurant_links.get(restaurant_name.replace('Scraper', '')):
-                links = restaurant_links[restaurant_name.replace('Scraper', '')]
-                if links.get('url'):
-                    html += f'<a href="{links["url"]}" target="_blank" title="Website">🔗</a>'
-                if links.get('map'):
-                    html += f'<a href="{links["map"]}" target="_blank" title="Google Maps">🗺️</a>'
-            
-            html += """</div>
-                </div>
-                
-                <div class="restaurant-content">"""
-            
-            if restaurant_data.get("items"):
-                html += """
-                    <div class="menu-section">
-                        <h3>
-                            <span class="icon-menu"></span>
-                            <span class="en">Today's lunch</span>
-                            <span class="sv hidden">Dagens lunch</span>
-                        </h3>
-                        <div class="menu-items">"""
-                
-                for item in restaurant_data["items"]:
-                    html += f"""
-                            <div class="menu-item">
-                                <div class="menu-item-details">"""
-                    
-                    # Handle long menu names (LsKitchen fix)
-                    name = item.get("name", "")
-                    description = item.get("description", "")
-                    
-                    if len(name) > 50 and not description:
-                        html += f"""
-                                    <div class="menu-item-name">
-                                        <span class="en">Today's Special</span>
-                                        <span class="sv hidden">Dagens Special</span>
-                                    </div>
-                                    <div class="menu-item-description">{name}</div>"""
-                    else:
-                        html += f'<div class="menu-item-name">{name}</div>'
-                        if description:
-                            html += f'<div class="menu-item-description">{description}</div>'
-                    
-                    if item.get("category"):
-                        html += f'<div class="emoji-tags"><span class="emoji-tag">{item["category"]}</span></div>'
-                    
-                    html += '</div>'
-                    
-                    if item.get("price"):
-                        html += f'<div class="menu-item-price">{item["price"]}</div>'
-                    
-                    html += '</div>'
-                
-                html += """
-                        </div>
-                    </div>
-                    
-                    <div class="separator"></div>"""
-            else:
-                html += """<div class="menu-section">
-                    <p style="color: var(--muted-foreground); font-style: italic;">
-                        <span class="en">No menu available today</span>
-                        <span class="sv hidden">Ingen meny tillgänglig idag</span>
-                    </p>
-                </div>"""
-            
-            html += f"""
-                    <div class="special-offer">
-                        ✨ <span class="en">Last updated: {last_updated}</span>
-                        <span class="sv hidden">Senast uppdaterad: {last_updated}</span>
-                    </div>
-                </div>
-            </div>"""
-        
-        html += '</div>'
     else:
-        html += f"""
-        <div class="no-data">
-            <h2>
-                <span class="en">No menu data available for today</span>
-                <span class="sv hidden">Ingen menydata tillgänglig för idag</span>
-            </h2>
-            <p>
-                <span class="en">We couldn't find any lunch menus for today. Please try again later.</span>
-                <span class="sv hidden">Vi kunde inte hitta några lunchmenyer för idag. Försök igen senare.</span>
-            </p>
-        </div>"""
+        date_copy = {
+            "wrong_sv": "Det här är inte dagens meny. Dagens menyer kommer runt 08:00.",
+            "wrong_en": "This is not today's menu. Today's menus arrive around 08:00.",
+            "soon_sv": "Det här är inte dagens meny. Dagens menyer kommer snart.",
+            "soon_en": "This is not today's menu. Today's menus are coming soon.",
+            "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
+            "weekend_en": "It's the weekend. Lunch is back on Monday.",
+        }
 
-    html += f"""
-    </main>
-    
-    <!-- Floating Random Button -->
-    <button class="floating-random-button" onclick="selectRandomRestaurant()">
-        <span class="en">I am feeling hungry!</span>
-        <span class="sv hidden">Jag är hungrig!</span>
-    </button>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <p>
-            <span class="icon-map"></span> 
-            <span class="en">Lindholmen, Gothenburg</span>
-            <span class="sv hidden">Lindholmen, Göteborg</span>
-        </p>
-        <p>
-            <span class="en">Discover the best lunch options in the Lindholmen area</span>
-            <span class="sv hidden">Upptäck de bästa lunchalternativen i Lindholmen området</span>
-        </p>
-        <p>
-            <span class="en">Enhanced version with modern UI/UX improvements –</span>
-            <span class="sv hidden">Förbättrad version med modern UI/UX –</span>
-            <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank">GitHub - Lindholmen Lunch</a>
-        </p>
-        <p>
-            <span class="en">Based on original work by</span>
-            <span class="sv hidden">Baserat på ursprungligt arbete av</span>
-            <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank">Fawenah</a>
-            <span class="en">with design overhaul and UX enhancements</span>
-            <span class="sv hidden">med designomarbetning och UX-förbättringar</span>
-        </p>
-        <p>
-            <span class="en">Questions, feedback or suggestions? Feel free to open an issue or contact via GitHub</span>
-            <span class="sv hidden">Frågor, feedback eller förslag? Öppna gärna ett issue eller kontakta via GitHub</span>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.8rem;">
-            <a href="privacy.html">
-                <span class="en">Privacy Policy</span>
-                <span class="sv hidden">Integritetspolicy</span>
-            </a>
-        </p>
-    </footer>
+    env = Environment(
+        loader=FileSystemLoader("templates"),
+        autoescape=select_autoescape(["html", "xml"]),
+    )
+    template = env.get_template("index.html")
+    html = template.render(
+        day=today,
+        day_label_en=day_en,
+        day_label_sv=day_sv,
+        menu_date=menu_date,
+        scraped_at_hhmm=hhmm,
+        trust_sv=trust_sv,
+        trust_en=trust_en,
+        date_copy=date_copy,
+        restaurants=restaurants,
+        restaurant_ids=[restaurant["id"] for restaurant in restaurants],
+        restaurant_count=len(restaurants),
+        fresh_count=fresh_count,
+        total_restaurants=total,
+        stale_count=sum(1 for restaurant in restaurants if restaurant["stale"]),
+        missing_restaurants=missing,
+        missing_count=len(missing),
+        directory=restaurant_directory(restaurant_links),
+        filter_options=filters,
+        scrape_meta=meta,
+    )
 
-    <script>
-        // Language switching
-        function toggleLanguage() {{
-            const enElements = document.querySelectorAll('.en');
-            const svElements = document.querySelectorAll('.sv');
-            
-            enElements.forEach(el => el.classList.toggle('hidden'));
-            svElements.forEach(el => el.classList.toggle('hidden'));
-            
-            // Update page language attribute
-            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
-            document.documentElement.lang = isSwedish ? 'sv' : 'en';
-            
-            // Save language preference
-            localStorage.setItem('language', isSwedish ? 'sv' : 'en');
-        }}
+    (output_dir / "index.html").write_text(html, encoding="utf-8")
+    lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
+    write_sitemap(lastmod)
+    print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
 
 
+def _cli() -> None:
+    parser = argparse.ArgumentParser(description="Render the Lindholmen Lunch page.")
+    parser.add_argument(
+        "--day",
+        choices=WEEKDAYS,
+        help="Weekday to render. Defaults to today in Europe/Stockholm.",
+    )
+    args = parser.parse_args()
+    generate_index_page(day=args.day)
 
-        // Random restaurant selection
-        function selectRandomRestaurant() {{
-            const restaurants = {restaurant_names};
-            if (restaurants.length === 0) return;
-            
-            // Clear previous highlights
-            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {{
-                card.classList.remove('highlighted');
-            }});
-            
-            // Update floating button
-            const floatingButton = document.querySelector('.floating-random-button');
-            
-            const isSwedish = document.querySelector('.sv:not(.hidden)') !== null;
-            const choosingText = isSwedish ? 
-                '<span class="sv">Väljer...</span><span class="en hidden">Choosing...</span>' : 
-                '<span class="en">Choosing...</span><span class="sv hidden">Väljer...</span>';
-            
-            if (floatingButton) {{
-                // Store original dimensions to prevent size changes
-                const originalWidth = floatingButton.offsetWidth;
-                const originalHeight = floatingButton.offsetHeight;
-                floatingButton.style.width = originalWidth + 'px';
-                floatingButton.style.height = originalHeight + 'px';
-                floatingButton.innerHTML = choosingText;
-            }}
-            
-            setTimeout(() => {{
-                const randomRestaurant = restaurants[Math.floor(Math.random() * restaurants.length)];
-                const restaurantCard = document.getElementById('restaurant-' + randomRestaurant);
-                
-                if (restaurantCard) {{
-                    restaurantCard.classList.add('highlighted');
-                    restaurantCard.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
-                }}
-                
-                // Reset button
-                const finalText = isSwedish ? 
-                    '<span class="sv">Jag är hungrig!</span><span class="en hidden">I am feeling hungry!</span>' : 
-                    '<span class="en">I am feeling hungry!</span><span class="sv hidden">Jag är hungrig!</span>';
-                
-                if (floatingButton) {{
-                    floatingButton.innerHTML = finalText;
-                    // Remove fixed dimensions to allow natural sizing again
-                    floatingButton.style.width = '';
-                    floatingButton.style.height = '';
-                }}
-            }}, 1000);
-        }}
-
-        // Go to top and reset random selection
-        function goToTop() {{
-            // Clear any highlighted restaurants
-            document.querySelectorAll('.restaurant-card.highlighted').forEach(card => {{
-                card.classList.remove('highlighted');
-            }});
-            
-            // Scroll to top
-            window.scrollTo({{ top: 0, behavior: 'smooth' }});
-        }}
-
-        // Load saved language preference
-        document.addEventListener('DOMContentLoaded', function() {{
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage === 'sv') {{
-                // Switch to Swedish if saved
-                const enElements = document.querySelectorAll('.en');
-                const svElements = document.querySelectorAll('.sv');
-                
-                enElements.forEach(el => el.classList.add('hidden'));
-                svElements.forEach(el => el.classList.remove('hidden'));
-                
-                document.documentElement.lang = 'sv';
-            }}
-        }});
-    </script>
-</body>
-</html>
-    """
-
-    # Write to docs directory
-    index_path = output_dir / "index.html"
-    index_path.write_text(html, encoding="utf-8")
-    print(f"[INFO] Generated weekly index page: {index_path}")
-    
-    # Also write to root directory for GitHub Pages
-    root_index_path = Path("index.html")
-    root_index_path.write_text(html, encoding="utf-8")
-    print(f"[INFO] Generated root index page: {root_index_path}")
 
 if __name__ == "__main__":
-    generate_index_page()
+    _cli()

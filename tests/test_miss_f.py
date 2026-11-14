@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 from scrapers.miss_f import MissFScraper
 
 def test_miss_f_for_day(day: str):

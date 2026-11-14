@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_mimolett.py
 
 from scrapers.mimolett import MimolettScraper

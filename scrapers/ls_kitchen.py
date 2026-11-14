@@ -6,6 +6,12 @@ from typing import Dict, Optional
 import time
 
 class LsKitchenScraper(LunchScraper):
+    """LS Kitchen menu screen.
+
+    Note: the public week menu is currently image-based (no dish text in the DOM),
+    so this scraper often returns empty until a text/API source is available again.
+    """
+
     URL = "https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1"
     _PRICE = "122 kr, Gästkort 112 kr, Kårkort 68 kr (63kr)"
 

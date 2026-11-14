@@ -33,7 +33,15 @@ Thumbs.db
 
 # Generated files during testing
 output/
+artifacts/
 
 # Sample web pages
 tests/samples/
 .env
+
+# Removed from the site pipeline. The page is generated into docs/.
+node_modules/
+/example/
+/generate.js
+/generate_html.js
+/index.html
