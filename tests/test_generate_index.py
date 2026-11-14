@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from generate_html import generate_index_page
+from generate_html import generate_index_page, sentence_case_dish, split_price
 
 
 def test_friday_page_uses_scrape_time_not_render_time():
@@ -18,3 +18,20 @@ def test_friday_page_uses_scrape_time_not_render_time():
     assert "adsbygoogle" not in html
     lowered = html.lower()
     assert "fawenah@gmail.com" not in lowered
+    assert "Murg methi malai" in html
+    assert "MURG METHI MALAI" not in html
+    assert "119 kr, takeaway" not in html
+    assert "takeaway 114 kr" in html
+    assert 'class="price-note"' in html
+    assert 'src="assets/analytics.js" defer' in html
+    assert "text-underline-offset: 3px" in html
+    assert ".pick { align-items: center; }" in html
+
+
+def test_dish_case_and_price_split():
+    assert sentence_case_dish("MURG METHI MALAI") == "Murg methi malai"
+    assert sentence_case_dish("BBQ WINGS") == "BBQ wings"
+    assert sentence_case_dish("IPA") == "IPA"
+    assert sentence_case_dish("Fish soup") == "Fish soup"
+    assert split_price("119 kr, takeaway 114 kr") == ("119 kr", "takeaway 114 kr")
+    assert split_price("119\u00a0kr") == ("119\u00a0kr", "")

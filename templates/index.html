@@ -355,6 +355,7 @@
         }
         .weekend-reveal { margin-top: var(--gap-3); }
         .pick-lg { display: none; flex: 0 0 auto; }
+        .pick { align-items: center; }
 
         .sentinel { height: 1px; margin: 0; }
         .toolbar {
@@ -573,7 +574,19 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .price { font-size: 14px; white-space: nowrap; }
+        .price {
+            max-width: 38%;
+            font-size: 14px;
+            text-align: right;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+        .price-note {
+            margin: 4px 0 0;
+            color: var(--ink-2);
+            font-size: 13px;
+            line-height: 1.35;
+        }
         .pill {
             display: inline-flex;
             align-items: center;
@@ -686,6 +699,7 @@
         .site-footer p { margin: 0 0 12px; max-width: 62ch; line-height: 1.4; }
         .site-footer a { color: var(--on-dark); text-decoration: none; }
         .footer-credit { color: var(--on-dark-2); }
+        .footer-credit a { text-decoration: underline; text-underline-offset: 3px; }
 
         .pick-dock {
             position: sticky;
@@ -1037,6 +1051,9 @@
                                     {% if item.description %}
                                     <p class="dish-desc">{{ item.description }}</p>
                                     {% endif %}
+                                    {% if item.price_note %}
+                                    <p class="price-note">{{ item.price_note }}</p>
+                                    {% endif %}
                                 </div>
                                 {% if item.price %}<div class="price mono">{{ item.price }}</div>{% endif %}
                             </div>
@@ -1148,7 +1165,7 @@
     <p id="pick-live" class="visually-hidden" aria-live="polite"></p>
     <script type="application/json" id="date-copy">{{ date_copy | tojson }}</script>
     <!-- [CONFIRM: analytics processor] Leave data-endpoint empty until an EU-hosted cookieless collector is chosen. No request is sent before that. -->
-    <script src="assets/analytics.js" data-endpoint="" data-site=""></script>
+    <script src="assets/analytics.js" defer data-endpoint="" data-site=""></script>
     <script>
         (function () {
             window.__lunchBodyStarted = true;

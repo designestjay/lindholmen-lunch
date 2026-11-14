@@ -355,6 +355,7 @@
         }
         .weekend-reveal { margin-top: var(--gap-3); }
         .pick-lg { display: none; flex: 0 0 auto; }
+        .pick { align-items: center; }
 
         .sentinel { height: 1px; margin: 0; }
         .toolbar {
@@ -573,7 +574,19 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .price { font-size: 14px; white-space: nowrap; }
+        .price {
+            max-width: 38%;
+            font-size: 14px;
+            text-align: right;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+        .price-note {
+            margin: 4px 0 0;
+            color: var(--ink-2);
+            font-size: 13px;
+            line-height: 1.35;
+        }
         .pill {
             display: inline-flex;
             align-items: center;
@@ -686,6 +699,7 @@
         .site-footer p { margin: 0 0 12px; max-width: 62ch; line-height: 1.4; }
         .site-footer a { color: var(--on-dark); text-decoration: none; }
         .footer-credit { color: var(--on-dark-2); }
+        .footer-credit a { text-decoration: underline; text-underline-offset: 3px; }
 
         .pick-dock {
             position: sticky;
@@ -1053,11 +1067,11 @@
                     
                     <ul class="menu-list" id="dishes-BennePastabarScraper" lang="sv">
                         
-                        <li class="menu-item" data-tags="pasta under130" data-text="slow tomato naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja. benne pasta pasta" data-order="0" data-category="Benne Pasta" data-price="59 kr" data-name="SLOW TOMATO">
+                        <li class="menu-item" data-tags="pasta under130" data-text="slow tomato naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja. benne pasta pasta" data-order="0" data-category="Benne Pasta" data-price="59 kr" data-name="Slow tomato">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        SLOW TOMATO
+                                        Slow tomato
                                         
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
@@ -1065,17 +1079,18 @@
                                     
                                     <p class="dish-desc">Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">59 kr</div>
                             </div>
                         </li>
                         
                         <li class="menu-item" data-tags="pasta under130" data-text="swedish cheese vår himmelskt krämiga ostsås gjord på
-									västerbottensost®, smaksatt med en generös mängd svartpeppar. toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar. benne pasta pasta" data-order="1" data-category="Benne Pasta" data-price="75 kr" data-name="SWEDISH CHEESE">
+									västerbottensost®, smaksatt med en generös mängd svartpeppar. toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar. benne pasta pasta" data-order="1" data-category="Benne Pasta" data-price="75 kr" data-name="Swedish cheese">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        SWEDISH CHEESE
+                                        Swedish cheese
                                         
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
@@ -1084,22 +1099,24 @@
                                     <p class="dish-desc">Vår himmelskt krämiga ostsås gjord på
 									Västerbottensost®, smaksatt med en generös mängd svartpeppar. Toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">75 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="pasta under130" data-text="smoked pig nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. toppad med lagrad hårdost och hackad persilja. benne pasta pasta" data-order="2" data-category="Benne Pasta" data-price="85 kr" data-name="SMOKED PIG">
+                        <li class="menu-item" data-tags="pasta under130" data-text="smoked pig nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. toppad med lagrad hårdost och hackad persilja. benne pasta pasta" data-order="2" data-category="Benne Pasta" data-price="85 kr" data-name="Smoked pig">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        SMOKED PIG
+                                        Smoked pig
                                         
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
                                     </div>
                                     
                                     <p class="dish-desc">Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">85 kr</div>
@@ -1120,16 +1137,17 @@
                                     
                                     <p class="dish-desc">Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">95 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="pasta under130" data-text="the shrooms vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja. benne pasta pasta" data-order="4" data-category="Benne Pasta" data-price="99 kr" data-name="THE SHROOMS">
+                        <li class="menu-item" data-tags="pasta under130" data-text="the shrooms vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja. benne pasta pasta" data-order="4" data-category="Benne Pasta" data-price="99 kr" data-name="The shrooms">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        THE SHROOMS
+                                        The shrooms
                                         
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
@@ -1137,16 +1155,17 @@
                                     
                                     <p class="dish-desc">Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="fish pasta under130" data-text="chili shrimp vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. toppad med lagrad hårdost, hackad persilja och vår egen chiliolja. benne pasta fish pasta" data-order="5" data-category="Benne Pasta" data-price="105 kr" data-name="CHILI SHRIMP">
+                        <li class="menu-item" data-tags="fish pasta under130" data-text="chili shrimp vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. toppad med lagrad hårdost, hackad persilja och vår egen chiliolja. benne pasta fish pasta" data-order="5" data-category="Benne Pasta" data-price="105 kr" data-name="Chili shrimp">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        CHILI SHRIMP
+                                        Chili shrimp
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -1156,20 +1175,22 @@
                                     
                                     <p class="dish-desc">Vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. Toppad med lagrad hårdost, hackad persilja och vår egen chiliolja.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">105 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="silky salsiccia knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. toppad med lagrad hårdost och hackad persilja. the visitor " data-order="6" data-category="The Visitor" data-price="95 kr" data-name="SILKY SALSICCIA">
+                        <li class="menu-item" data-tags="under130" data-text="silky salsiccia knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. toppad med lagrad hårdost och hackad persilja. the visitor " data-order="6" data-category="The Visitor" data-price="95 kr" data-name="Silky salsiccia">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        SILKY SALSICCIA
+                                        Silky salsiccia
                                         
                                     </div>
                                     
                                     <p class="dish-desc">Knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. Toppad med lagrad hårdost och hackad persilja.</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">95 kr</div>
@@ -1186,20 +1207,22 @@
                                     
                                     <p class="dish-desc">Två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">20 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="cheezy garlic bread två skivor rostat surdegsbröd med vitlök- och persiljesmör, sumak och lagrad hårdost. benne bites " data-order="8" data-category="Benne Bites" data-price="25 kr" data-name="CHEEZY GARLIC BREAD">
+                        <li class="menu-item" data-tags="under130" data-text="cheezy garlic bread två skivor rostat surdegsbröd med vitlök- och persiljesmör, sumak och lagrad hårdost. benne bites " data-order="8" data-category="Benne Bites" data-price="25 kr" data-name="Cheezy garlic bread">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        CHEEZY GARLIC BREAD
+                                        Cheezy garlic bread
                                         
                                     </div>
                                     
                                     <p class="dish-desc">Två skivor rostat surdegsbröd med vitlök- och persiljesmör, sumak och lagrad hårdost.</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">25 kr</div>
@@ -1215,6 +1238,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">35 kr</div>
@@ -1269,6 +1293,7 @@
                                     
                                     <p class="dish-desc">Rotmos – Pepparrotsås – Senap – Persilja</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -1286,6 +1311,7 @@
                                     
                                     <p class="dish-desc">Svampragu – Lingon – Persilja</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -1301,6 +1327,7 @@
                                     
                                     <p class="dish-desc">Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -1315,6 +1342,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Vego</span><span class="en" lang="en">Veggie</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">130 kr</div>
@@ -1335,6 +1363,7 @@
                                     
                                     <p class="dish-desc">Kyckling &amp; Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -1352,6 +1381,7 @@
                                     
                                     <p class="dish-desc">Karamelliserad lök – Krispichilimayo – Pepperjackost – Sallad – Pommes</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -1366,6 +1396,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Kronärtskocka – Tomat – Smör – Citron – Krossad potatis – Rucola</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">130 kr</div>
@@ -1410,11 +1441,11 @@
                     
                     <ul class="menu-list" id="dishes-BombayBistroScraper" lang="sv">
                         
-                        <li class="menu-item" data-tags="chicken indian under130" data-text="pahadi grill chicken grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.  indian chicken" data-order="0" data-category="" data-price="129 kr" data-name="PAHADI GRILL CHICKEN">
+                        <li class="menu-item" data-tags="chicken indian under130" data-text="pahadi grill chicken grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.  indian chicken" data-order="0" data-category="" data-price="129 kr" data-name="Pahadi grill chicken">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        PAHADI GRILL CHICKEN
+                                        Pahadi grill chicken
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -1424,16 +1455,17 @@
                                     
                                     <p class="dish-desc">Grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="dalcha ghost lammgryta med linser, lök, tomat, chili och limejuice. tre dagens vegetariska rätter och raita (kan fås vegansk)  indian" data-order="1" data-category="" data-price="129 kr" data-name="DALCHA GHOST">
+                        <li class="menu-item" data-tags="indian under130" data-text="dalcha ghost lammgryta med linser, lök, tomat, chili och limejuice. tre dagens vegetariska rätter och raita (kan fås vegansk)  indian" data-order="1" data-category="" data-price="129 kr" data-name="Dalcha ghost">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        DALCHA GHOST
+                                        Dalcha ghost
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -1441,16 +1473,17 @@
                                     
                                     <p class="dish-desc">Lammgryta med linser, lök, tomat, chili och limejuice. Tre dagens vegetariska rätter och raita (kan fås vegansk)</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="chicken indian" data-text="tikka masala grillad kycklingfilé med rostad paprika och tomater i en krämig sås. andra alternativ indian chicken" data-order="2" data-category="ANDRA ALTERNATIV" data-price="134 kr" data-name="TIKKA MASALA">
+                        <li class="menu-item" data-tags="chicken indian" data-text="tikka masala grillad kycklingfilé med rostad paprika och tomater i en krämig sås. andra alternativ indian chicken" data-order="2" data-category="ANDRA ALTERNATIV" data-price="134 kr" data-name="Tikka masala">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        TIKKA MASALA
+                                        Tikka masala
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -1460,16 +1493,17 @@
                                     
                                     <p class="dish-desc">Grillad kycklingfilé med rostad paprika och tomater i en krämig sås.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">134 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="chicken indian" data-text="tandoori chicken grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. serveras med tandoori sås. andra alternativ indian chicken" data-order="3" data-category="ANDRA ALTERNATIV" data-price="132 kr" data-name="TANDOORI CHICKEN">
+                        <li class="menu-item" data-tags="chicken indian" data-text="tandoori chicken grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. serveras med tandoori sås. andra alternativ indian chicken" data-order="3" data-category="ANDRA ALTERNATIV" data-price="132 kr" data-name="Tandoori chicken">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        TANDOORI CHICKEN
+                                        Tandoori chicken
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -1479,18 +1513,20 @@
                                     
                                     <p class="dish-desc">Grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. Serveras med tandoori sås.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">132 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="" data-text="jingha hara  andra alternativ " data-order="4" data-category="ANDRA ALTERNATIV" data-price="" data-name="JINGHA HARA">
+                        <li class="menu-item" data-tags="" data-text="jingha hara  andra alternativ " data-order="4" data-category="ANDRA ALTERNATIV" data-price="" data-name="Jingha hara">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        JINGHA HARA
+                                        Jingha hara
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 
@@ -1504,6 +1540,7 @@
                                         Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">145 kr</div>
@@ -1556,6 +1593,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 
                             </div>
@@ -1570,6 +1608,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 
@@ -1586,6 +1625,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 
                             </div>
@@ -1601,6 +1641,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 
                             </div>
@@ -1614,6 +1655,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 
                             </div>
@@ -1626,6 +1668,7 @@
                                         risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">195 kr</div>
@@ -1644,6 +1687,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">215 kr</div>
                             </div>
@@ -1656,6 +1700,7 @@
                                         räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">295 kr</div>
@@ -1671,6 +1716,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">235 kr</div>
@@ -1729,6 +1775,7 @@
                                     
                                     <p class="dish-desc">3 lax, 1 räka, 1 crabfish, 1 omelett &amp; 4 maki</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">95 kr</div>
                             </div>
@@ -1747,6 +1794,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">2 avocado, 2 tofu, 2 omelett &amp; 4 maki</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">95 kr</div>
@@ -1769,6 +1817,7 @@
                                     
                                     <p class="dish-desc">2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett &amp; 4 maki</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">95 kr</div>
                             </div>
@@ -1789,6 +1838,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">105 kr</div>
@@ -1811,6 +1861,7 @@
                                     
                                     <p class="dish-desc">5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">135 kr</div>
                             </div>
@@ -1825,6 +1876,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Sushi</span><span class="en" lang="en">Sushi</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">115 kr</div>
@@ -1847,6 +1899,7 @@
                                     
                                     <p class="dish-desc">5 kycklingspett med ris, teriyakisås och sallad</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">95 kr</div>
                             </div>
@@ -1863,6 +1916,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Skivad entrecote, grönsaker, ris, yakinikusås &amp; sallad</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">99 kr</div>
@@ -1881,6 +1935,7 @@
                                     
                                     <p class="dish-desc">Äggnudlar med kycklingfilé &amp; grönsaker</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">95 kr</div>
                             </div>
@@ -1897,6 +1952,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">8 bitar dumplings, sallad &amp; ris</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">99 kr</div>
@@ -1915,6 +1971,7 @@
                                     
                                     <p class="dish-desc">8 bitar dumplings, sallad &amp; ris</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
@@ -1929,6 +1986,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Asiatiskt</span><span class="en" lang="en">Asian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">119 kr</div>
@@ -1947,6 +2005,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
@@ -1962,6 +2021,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
@@ -1974,6 +2034,7 @@
                                         (Biff)
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">99 kr</div>
@@ -1990,6 +2051,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
@@ -2003,16 +2065,17 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">99 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="asian japanese salad sushi under130" data-text="bentolåda yakiniku, yakitori, sushi, sallad &amp; ris bentolåda japanese salad sushi" data-order="17" data-category="BENTOLÅDA" data-price="105 kr" data-name="BENTOLÅDA">
+                        <li class="menu-item" data-tags="asian japanese salad sushi under130" data-text="bentolåda yakiniku, yakitori, sushi, sallad &amp; ris bentolåda japanese salad sushi" data-order="17" data-category="BENTOLÅDA" data-price="105 kr" data-name="Bentolåda">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        BENTOLÅDA
+                                        Bentolåda
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
@@ -2022,18 +2085,20 @@
                                     
                                     <p class="dish-desc">Yakiniku, yakitori, sushi, sallad &amp; ris</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">105 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="läsk  läsk " data-order="18" data-category="LÄSK" data-price="15 kr" data-name="LÄSK">
+                        <li class="menu-item" data-tags="under130" data-text="läsk  läsk " data-order="18" data-category="LÄSK" data-price="15 kr" data-name="Läsk">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        LÄSK
+                                        Läsk
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">15 kr</div>
@@ -2078,11 +2143,11 @@
                     
                     <ul class="menu-list" id="dishes-MasalaScraper" lang="sv">
                         
-                        <li class="menu-item" data-tags="chicken under130" data-text="murg methi malai kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.  chicken" data-order="0" data-category="" data-price="119 kr, takeaway 114 kr" data-name="MURG METHI MALAI">
+                        <li class="menu-item" data-tags="chicken under130" data-text="murg methi malai kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.  chicken" data-order="0" data-category="" data-price="119 kr" data-name="Murg methi malai">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MURG METHI MALAI
+                                        Murg methi malai
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -2090,16 +2155,19 @@
                                     
                                     <p class="dish-desc">Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.</p>
                                     
+                                    
+                                    <p class="price-note">takeaway 114 kr</p>
+                                    
                                 </div>
-                                <div class="price mono">119 kr, takeaway 114 kr</div>
+                                <div class="price mono">119 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="fish soup under130" data-text="machili bengali laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska &#34;panch phoron&#34; (fem kryddor)  fish soup" data-order="1" data-category="" data-price="119 kr, takeaway 114 kr" data-name="MACHILI BENGALI">
+                        <li class="menu-item" data-tags="fish soup under130" data-text="machili bengali laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska &#34;panch phoron&#34; (fem kryddor)  fish soup" data-order="1" data-category="" data-price="119 kr" data-name="Machili bengali">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MACHILI BENGALI
+                                        Machili bengali
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -2107,16 +2175,19 @@
                                     
                                     <p class="dish-desc">Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska &#34;Panch phoron&#34; (fem kryddor)</p>
                                     
+                                    
+                                    <p class="price-note">takeaway 114 kr</p>
+                                    
                                 </div>
-                                <div class="price mono">119 kr, takeaway 114 kr</div>
+                                <div class="price mono">119 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="aloo ghobi masala potatis- och blomkålsgryta med lök, tomat och färsk ingefära.  indian" data-order="2" data-category="" data-price="119 kr, takeaway 114 kr" data-name="ALOO GHOBI MASALA">
+                        <li class="menu-item" data-tags="indian under130" data-text="aloo ghobi masala potatis- och blomkålsgryta med lök, tomat och färsk ingefära.  indian" data-order="2" data-category="" data-price="119 kr" data-name="Aloo ghobi masala">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        ALOO GHOBI MASALA
+                                        Aloo ghobi masala
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2124,16 +2195,19 @@
                                     
                                     <p class="dish-desc">Potatis- och blomkålsgryta med lök, tomat och färsk ingefära.</p>
                                     
+                                    
+                                    <p class="price-note">takeaway 114 kr</p>
+                                    
                                 </div>
-                                <div class="price mono">119 kr, takeaway 114 kr</div>
+                                <div class="price mono">119 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian soup veg vego" data-text="subzi thali kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. serveras med linsgryta och raita. stående meny indian veg soup" data-order="3" data-category="Stående meny" data-price="134 kr" data-name="SUBZI THALI">
+                        <li class="menu-item" data-tags="indian soup veg vego" data-text="subzi thali kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. serveras med linsgryta och raita. stående meny indian veg soup" data-order="3" data-category="Stående meny" data-price="134 kr" data-name="Subzi thali">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        SUBZI THALI
+                                        Subzi thali
                                         
                                         <span class="pill"><span class="sv" lang="sv">Vego</span><span class="en" lang="en">Veggie</span></span>
                                         
@@ -2143,16 +2217,17 @@
                                     
                                     <p class="dish-desc">Kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. Serveras med linsgryta och raita.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">134 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian" data-text="palak paneer hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök stående meny indian" data-order="4" data-category="Stående meny" data-price="132 kr" data-name="PALAK PANEER">
+                        <li class="menu-item" data-tags="indian" data-text="palak paneer hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök stående meny indian" data-order="4" data-category="Stående meny" data-price="132 kr" data-name="Palak paneer">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        PALAK PANEER
+                                        Palak paneer
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2160,16 +2235,17 @@
                                     
                                     <p class="dish-desc">Hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">132 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="chicken indian" data-text="chicken tandoori grillad kyckling med ben marinerad i serveras i tandoorimasala, llime och yoghurt. serveras i tandorisås. stående meny indian chicken" data-order="5" data-category="Stående meny" data-price="132 kr" data-name="CHICKEN TANDOORI">
+                        <li class="menu-item" data-tags="chicken indian" data-text="chicken tandoori grillad kyckling med ben marinerad i serveras i tandoorimasala, llime och yoghurt. serveras i tandorisås. stående meny indian chicken" data-order="5" data-category="Stående meny" data-price="132 kr" data-name="Chicken tandoori">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        CHICKEN TANDOORI
+                                        Chicken tandoori
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -2179,16 +2255,17 @@
                                     
                                     <p class="dish-desc">Grillad kyckling med ben marinerad i Serveras i tandoorimasala, llime och yoghurt. Serveras i tandorisås.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">132 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="chicken indian" data-text="chicken tikka masala grillad och marinerad kycklingfilé i en mild grädde- och tomatsås. stående meny indian chicken" data-order="6" data-category="Stående meny" data-price="142 kr" data-name="CHICKEN TIKKA MASALA">
+                        <li class="menu-item" data-tags="chicken indian" data-text="chicken tikka masala grillad och marinerad kycklingfilé i en mild grädde- och tomatsås. stående meny indian chicken" data-order="6" data-category="Stående meny" data-price="142 kr" data-name="Chicken tikka masala">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        CHICKEN TIKKA MASALA
+                                        Chicken tikka masala
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -2198,16 +2275,17 @@
                                     
                                     <p class="dish-desc">Grillad och marinerad kycklingfilé i en mild grädde- och tomatsås.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">142 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian" data-text="rogan josh klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel. stående meny indian" data-order="7" data-category="Stående meny" data-price="152 kr" data-name="ROGAN JOSH">
+                        <li class="menu-item" data-tags="indian" data-text="rogan josh klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel. stående meny indian" data-order="7" data-category="Stående meny" data-price="152 kr" data-name="Rogan josh">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        ROGAN JOSH
+                                        Rogan josh
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2215,16 +2293,17 @@
                                     
                                     <p class="dish-desc">Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">152 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian soup" data-text="jhinga korma mild och krämig gryta med tigerräkor, cashewnötter och kardemumma. stående meny indian soup" data-order="8" data-category="Stående meny" data-price="157 kr" data-name="JHINGA KORMA">
+                        <li class="menu-item" data-tags="indian soup" data-text="jhinga korma mild och krämig gryta med tigerräkor, cashewnötter och kardemumma. stående meny indian soup" data-order="8" data-category="Stående meny" data-price="157 kr" data-name="Jhinga korma">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        JHINGA KORMA
+                                        Jhinga korma
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2232,31 +2311,33 @@
                                     
                                     <p class="dish-desc">Mild och krämig gryta med tigerräkor, cashewnötter och kardemumma.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">157 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="salad under130" data-text="extra sallad  tillbehör salad" data-order="9" data-category="Tillbehör" data-price="15 kr" data-name="EXTRA SALLAD">
+                        <li class="menu-item" data-tags="salad under130" data-text="extra sallad  tillbehör salad" data-order="9" data-category="Tillbehör" data-price="15 kr" data-name="Extra sallad">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        EXTRA SALLAD
+                                        Extra sallad
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">15 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="extra lunch naan nybakat indiskt bröd. tillbehör indian" data-order="10" data-category="Tillbehör" data-price="15 kr" data-name="EXTRA LUNCH NAAN">
+                        <li class="menu-item" data-tags="indian under130" data-text="extra lunch naan nybakat indiskt bröd. tillbehör indian" data-order="10" data-category="Tillbehör" data-price="15 kr" data-name="Extra lunch naan">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        EXTRA LUNCH NAAN
+                                        Extra lunch naan
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2264,80 +2345,86 @@
                                     
                                     <p class="dish-desc">Nybakat indiskt bröd.</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">15 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="plain naan (*)  tillbehör indian" data-order="11" data-category="Tillbehör" data-price="29 kr" data-name="PLAIN NAAN (*)">
+                        <li class="menu-item" data-tags="indian under130" data-text="plain naan (*)  tillbehör indian" data-order="11" data-category="Tillbehör" data-price="29 kr" data-name="Plain naan (*)">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        PLAIN NAAN (*)
+                                        Plain naan (*)
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">29 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="butter naan (*)  tillbehör indian" data-order="12" data-category="Tillbehör" data-price="35 kr" data-name="BUTTER NAAN (*)">
+                        <li class="menu-item" data-tags="indian under130" data-text="butter naan (*)  tillbehör indian" data-order="12" data-category="Tillbehör" data-price="35 kr" data-name="Butter naan (*)">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        BUTTER NAAN (*)
+                                        Butter naan (*)
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">35 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian" data-text="vitlök &amp; koriander naan (*)  tillbehör indian" data-order="13" data-category="Tillbehör" data-price="395 kr" data-name="VITLÖK &amp; KORIANDER NAAN (*)">
+                        <li class="menu-item" data-tags="indian" data-text="vitlök &amp; koriander naan (*)  tillbehör indian" data-order="13" data-category="Tillbehör" data-price="395 kr" data-name="Vitlök &amp; koriander naan (*)">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        VITLÖK &amp; KORIANDER NAAN (*)
+                                        Vitlök &amp; koriander naan (*)
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">395 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="ost &amp; koriander naan (*)  tillbehör indian" data-order="14" data-category="Tillbehör" data-price="39 kr" data-name="OST &amp; KORIANDER NAAN (*)">
+                        <li class="menu-item" data-tags="indian under130" data-text="ost &amp; koriander naan (*)  tillbehör indian" data-order="14" data-category="Tillbehör" data-price="39 kr" data-name="Ost &amp; koriander naan (*)">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        OST &amp; KORIANDER NAAN (*)
+                                        Ost &amp; koriander naan (*)
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">39 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="chili naan (*)  tillbehör indian" data-order="15" data-category="Tillbehör" data-price="39 kr" data-name="CHILI NAAN (*)">
+                        <li class="menu-item" data-tags="indian under130" data-text="chili naan (*)  tillbehör indian" data-order="15" data-category="Tillbehör" data-price="39 kr" data-name="Chili naan (*)">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        CHILI NAAN (*)
+                                        Chili naan (*)
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">39 kr</div>
@@ -2354,111 +2441,120 @@
                                     
                                     <p class="dish-desc">GLUTENFRITT ROTI +10 KR</p>
                                     
+                                    
                                 </div>
                                 
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="myntasås  tillbehör " data-order="17" data-category="Tillbehör" data-price="15 kr" data-name="MYNTASÅS">
+                        <li class="menu-item" data-tags="under130" data-text="myntasås  tillbehör " data-order="17" data-category="Tillbehör" data-price="15 kr" data-name="Myntasås">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MYNTASÅS
+                                        Myntasås
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">15 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="indian under130" data-text="mango chutney  tillbehör indian" data-order="18" data-category="Tillbehör" data-price="15 kr" data-name="MANGO CHUTNEY">
+                        <li class="menu-item" data-tags="indian under130" data-text="mango chutney  tillbehör indian" data-order="18" data-category="Tillbehör" data-price="15 kr" data-name="Mango chutney">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MANGO CHUTNEY
+                                        Mango chutney
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
                                     </div>
                                     
-                                </div>
-                                <div class="price mono">15 kr</div>
-                            </div>
-                        </li>
-                        
-                        <li class="menu-item" data-tags="under130" data-text="chili pickles  tillbehör " data-order="19" data-category="Tillbehör" data-price="15 kr" data-name="CHILI PICKLES">
-                            <div class="dish-line">
-                                <div class="dish-main">
-                                    <div class="dish-name">
-                                        CHILI PICKLES
-                                        
-                                    </div>
                                     
                                 </div>
                                 <div class="price mono">15 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="papadom  tillbehör " data-order="20" data-category="Tillbehör" data-price="15 kr" data-name="PAPADOM">
+                        <li class="menu-item" data-tags="under130" data-text="chili pickles  tillbehör " data-order="19" data-category="Tillbehör" data-price="15 kr" data-name="Chili pickles">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        PAPADOM
+                                        Chili pickles
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">15 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="raita  tillbehör " data-order="21" data-category="Tillbehör" data-price="29 kr" data-name="RAITA">
+                        <li class="menu-item" data-tags="under130" data-text="papadom  tillbehör " data-order="20" data-category="Tillbehör" data-price="15 kr" data-name="Papadom">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        RAITA
+                                        Papadom
                                         
                                     </div>
+                                    
+                                    
+                                </div>
+                                <div class="price mono">15 kr</div>
+                            </div>
+                        </li>
+                        
+                        <li class="menu-item" data-tags="under130" data-text="raita  tillbehör " data-order="21" data-category="Tillbehör" data-price="29 kr" data-name="Raita">
+                            <div class="dish-line">
+                                <div class="dish-main">
+                                    <div class="dish-name">
+                                        Raita
+                                        
+                                    </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">29 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="mangolassi  tillbehör " data-order="22" data-category="Tillbehör" data-price="39 kr" data-name="MANGOLASSI">
+                        <li class="menu-item" data-tags="under130" data-text="mangolassi  tillbehör " data-order="22" data-category="Tillbehör" data-price="39 kr" data-name="Mangolassi">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MANGOLASSI
+                                        Mangolassi
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">39 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="läsk / lättöl  tillbehör " data-order="23" data-category="Tillbehör" data-price="25 kr" data-name="LÄSK / LÄTTÖL">
+                        <li class="menu-item" data-tags="under130" data-text="läsk / lättöl  tillbehör " data-order="23" data-category="Tillbehör" data-price="25 kr" data-name="Läsk / lättöl">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        LÄSK / LÄTTÖL
+                                        Läsk / lättöl
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">25 kr</div>
                             </div>
                         </li>
                         
-                        <li class="menu-item" data-tags="under130" data-text="mineralvatten  tillbehör " data-order="24" data-category="Tillbehör" data-price="25 kr" data-name="MINERALVATTEN">
+                        <li class="menu-item" data-tags="under130" data-text="mineralvatten  tillbehör " data-order="24" data-category="Tillbehör" data-price="25 kr" data-name="Mineralvatten">
                             <div class="dish-line">
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        MINERALVATTEN
+                                        Mineralvatten
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">25 kr</div>
@@ -2511,6 +2607,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -2530,6 +2627,7 @@
                                     
                                     <p class="dish-desc">Serveras med pommes &amp; sallad &amp; dressing</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -2542,6 +2640,7 @@
                                         Mindre ciabbatta av ovan
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">105 kr</div>
@@ -2562,6 +2661,7 @@
                                     
                                     <p class="dish-desc">Serveras med pommes &amp; sallad &amp; dressing</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -2579,6 +2679,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">110 kr</div>
                             </div>
@@ -2593,6 +2694,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">110 kr</div>
@@ -2613,6 +2715,7 @@
                                     
                                     <p class="dish-desc">Serveras med sallad &amp; dressing</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">115 kr</div>
                             </div>
@@ -2629,6 +2732,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Rhode Island, chilimango, italiensk, vinäger, vitlök</p>
+                                    
                                     
                                 </div>
                                 
@@ -2647,6 +2751,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">110 kr</div>
                             </div>
@@ -2661,6 +2766,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">120 kr</div>
@@ -2679,6 +2785,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">115 kr</div>
                             </div>
@@ -2693,6 +2800,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">130 kr</div>
@@ -2709,6 +2817,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">125 kr</div>
                             </div>
@@ -2724,6 +2833,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">125 kr</div>
                             </div>
@@ -2738,6 +2848,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">125 kr</div>
@@ -2757,6 +2868,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Bulgur/marinerad pasta/ svartris</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">5 kr</div>
@@ -2779,6 +2891,7 @@
                                     
                                     <p class="dish-desc">sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, srirachamayo, räkor och lax</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -2798,6 +2911,7 @@
                                     
                                     <p class="dish-desc">ris med kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">135 kr</div>
                             </div>
@@ -2812,6 +2926,7 @@
                                         <span class="pill"><span class="sv" lang="sv">Asiatiskt</span><span class="en" lang="en">Asian</span></span>
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">128 kr</div>
@@ -2830,6 +2945,7 @@
                                     
                                     <p class="dish-desc">Friterad räkor/avokado/gurka/krispsallad/rostad lök</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -2847,6 +2963,7 @@
                                     
                                     <p class="dish-desc">Friterad krabbröra, avokado, gurka, krispsallad</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -2863,6 +2980,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Friterade kyckling / gurka / krispsallad / morötter</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">125 kr</div>
@@ -2921,6 +3039,7 @@
                                     
                                     <p class="dish-desc">5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">100 kr</div>
                             </div>
@@ -2939,6 +3058,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">5 Lax, 4 avokado</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">115 kr</div>
@@ -2959,6 +3079,7 @@
                                     
                                     <p class="dish-desc">6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">110 kr</div>
                             </div>
@@ -2977,6 +3098,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">120 kr</div>
@@ -2997,6 +3119,7 @@
                                     
                                     <p class="dish-desc">8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">130 kr</div>
                             </div>
@@ -3015,6 +3138,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">2avokado 1ägg 1sparris 1tofu 6rullar</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">110 kr</div>
@@ -3035,6 +3159,7 @@
                                     
                                     <p class="dish-desc">3avokado 1sparris 1ägg 1tofu 7rullar</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">120 kr</div>
                             </div>
@@ -3051,6 +3176,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Krämiga fläskbuljong,mört chashu,ägg,skogsöron</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">135 kr</div>
@@ -3071,6 +3197,7 @@
                                     
                                     <p class="dish-desc">Kryddigbuljong med smakrik köttfärs.grönsaker,jordnötter,salladslök</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -3087,6 +3214,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">kyckling, grönsaker</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">115 kr</div>
@@ -3107,6 +3235,7 @@
                                     
                                     <p class="dish-desc">3 maki, 2 nigri, 2 kycklingspett</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">115 kr</div>
                             </div>
@@ -3126,6 +3255,7 @@
                                     
                                     <p class="dish-desc">kycklingspett med teriyakisås</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">115 kr</div>
                             </div>
@@ -3141,6 +3271,7 @@
                                     
                                     <p class="dish-desc">strimlad entrecote</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -3154,6 +3285,7 @@
                                         
                                     </div>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -3166,6 +3298,7 @@
                                         Wonton nudlar
                                         
                                     </div>
+                                    
                                     
                                 </div>
                                 <div class="price mono">119 kr</div>
@@ -3182,6 +3315,7 @@
                                     
                                     <p class="dish-desc">fläskkött eller vegetariansk</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">109 kr</div>
                             </div>
@@ -3196,6 +3330,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">fläskkött eller vegetariansk</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">129 kr</div>
@@ -3218,6 +3353,7 @@
                                     
                                     <p class="dish-desc">Marinerad lax med sushiris,,salladsmix,gurka,avokado,edamame,wakame, Mango,morötter,majs,picklad rödlök ,chilimajonös,sesamfrön</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -3236,6 +3372,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Marinerad entrecote med sushiris salladsmix,gurka,avokado,edamame, Wakame,mango,morötter,majs,picklad rödlök , chilimajonös,teriyakisås, Sesamfrön</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">139 kr</div>
@@ -3258,6 +3395,7 @@
                                     
                                     <p class="dish-desc">Friterad kyckling med sushiris,salladsmix,gurka,avokado,edamame,wakame, Mango,morötter,majs,picklad rödlök,chilimajonös,sweetchilisås,sesamfrön</p>
                                     
+                                    
                                 </div>
                                 <div class="price mono">129 kr</div>
                             </div>
@@ -3276,6 +3414,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Tempuraräkor med sushiris salladsmix,gurka,avokado,edamame,wakame Mango,morötter,majs,picklad rödlök, ,chilimajonös,teriyakisås,rostadlök.</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">129 kr</div>
@@ -3297,6 +3436,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">Tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  Morötter,majs,picklad rödlök,chilimajonös,,sesamfrön</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">129 kr</div>
@@ -3356,6 +3496,7 @@
                                     </div>
                                     
                                     <p class="dish-desc">getost, bakade tomater, vitlöksstekta brödsmulor, pesto Water: Halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill Charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll Fire: “Chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) &#34;Chicken dopiaza&#34;, baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option)</p>
+                                    
                                     
                                 </div>
                                 <div class="price mono">132 kr</div>
@@ -3479,7 +3620,7 @@
     <p id="pick-live" class="visually-hidden" aria-live="polite"></p>
     <script type="application/json" id="date-copy">{"h1_lg_today_en": "Lunch today.", "h1_lg_today_sv": "Lunch idag.", "h1_lg_weekend_en": "Friday\u0027s lunch.", "h1_lg_weekend_sv": "Fredagens lunch.", "h1_sm_today_en": "Lunch in Lindholmen today", "h1_sm_today_sv": "Lunch p\u00e5 Lindholmen idag", "h1_sm_weekend_en": "Lunch in Lindholmen last Friday", "h1_sm_weekend_sv": "Lunch p\u00e5 Lindholmen i fredags", "missing_day_en": "No menu found on Friday (6)", "missing_day_sv": "Ingen meny hittad fredag (6)", "missing_today_en": "No menu found today (6)", "missing_today_sv": "Ingen meny hittad idag (6)", "missing_weekend_en": "No menu found on Friday (6)", "missing_weekend_sv": "Ingen meny hittad i fredags (6)", "soon_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus are coming soon.", "soon_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer snart.", "weekend_en": "It\u0027s the weekend. Lunch is back on Monday.", "weekend_sv": "Helg. Lunchen \u00e4r tillbaka p\u00e5 m\u00e5ndag.", "wrong_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus arrive around 08:00.", "wrong_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer runt 08:00."}</script>
     <!-- [CONFIRM: analytics processor] Leave data-endpoint empty until an EU-hosted cookieless collector is chosen. No request is sent before that. -->
-    <script src="assets/analytics.js" data-endpoint="" data-site=""></script>
+    <script src="assets/analytics.js" defer data-endpoint="" data-site=""></script>
     <script>
         (function () {
             window.__lunchBodyStarted = true;

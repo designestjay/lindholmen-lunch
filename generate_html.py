@@ -103,6 +103,42 @@ def parse_price(value: str) -> int | None:
     return int(match.group(0))
 
 
+_PRICE_AMOUNT = re.compile(r"\d+(?:[.,]\d+)?")
+_PRICE_UNIT = re.compile(r"\s*(?:kr|sek)\b", re.IGNORECASE)
+_DISH_ACRONYMS = {"BBQ", "IPA"}
+
+
+def split_price(price_raw: str) -> tuple[str, str]:
+    """Keep the first amount in the price column and return any further amounts as a note."""
+    text = (price_raw or "").strip()
+    amounts = list(_PRICE_AMOUNT.finditer(text))
+    if len(amounts) < 2:
+        return text, ""
+    unit = _PRICE_UNIT.match(text, amounts[0].end())
+    end = unit.end() if unit else amounts[0].end()
+    primary = text[:end].strip(" ,;/")
+    note = text[end:].lstrip(" ,;/-–—").strip()
+    return primary, note
+
+
+def sentence_case_dish(name: str) -> str:
+    """Sentence-case a fully uppercase dish name, keeping BBQ and IPA."""
+    text = (name or "").strip()
+    if len(text) <= 3 or text != text.upper() or not any(ch.isalpha() for ch in text):
+        return text
+    words = []
+    for index, word in enumerate(text.split()):
+        letters = "".join(ch for ch in word if ch.isalpha())
+        if letters in _DISH_ACRONYMS:
+            words.append(word)
+            continue
+        lower = word.lower()
+        if index == 0 and lower:
+            lower = lower[0].upper() + lower[1:]
+        words.append(lower)
+    return " ".join(words)
+
+
 def dish_filter_tokens(tags: list[str] | None, price: int | None) -> list[str]:
     """Tokens the filter chips match. `vego` covers both veg and vegan."""
     tokens = set(tags or [])
@@ -169,20 +205,22 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             price_value = parse_price(price_raw)
             tags = item.get("tags") or []
             if name:
-                display_item_name = name
+                display_item_name = sentence_case_dish(name)
                 visible_description = description
             elif description:
-                display_item_name = description
+                display_item_name = sentence_case_dish(description)
                 visible_description = ""
             else:
                 display_item_name = ""
                 visible_description = ""
+            price_text, price_note = split_price(price_raw) if price_value is not None else ("", "")
             items_out.append(
                 {
                     "name": display_item_name,
                     "description": visible_description,
                     "category": (item.get("category") or "").strip(),
-                    "price": price_raw if price_value is not None else "",
+                    "price": price_text,
+                    "price_note": price_note,
                     "tags": tags,
                     "pills": pills_for(tags),
                     "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
