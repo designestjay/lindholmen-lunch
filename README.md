@@ -17,15 +17,16 @@ Restaurants: Kooperativet, District One, Bombay Bistro, Cuckoo's Nest, Uni3 Worl
 
 ## Schedule
 
-GitHub Actions runs three times each weekday (Monday–Friday). The times below are Europe/Stockholm.
+GitHub Actions runs four times each weekday (Monday–Friday). The times below are Europe/Stockholm. The 10:37 run only retries restaurants that were missing, stale or the wrong week.
 
 | Cron (UTC) | Winter (CET) | Summer (CEST) |
 |---|---|---|
 | `7 5 * * 1-5` | 06:07 | 07:07 |
 | `37 6 * * 1-5` | 07:37 | 08:37 |
 | `7 8 * * 1-5` | 09:07 | 10:07 |
+| `37 9 * * 1-5` | 10:37 | 11:37 |
 
-The workflow is `.github/workflows/update-and-deploy.yml`. It scrapes, renders `docs/`, and pushes the page.
+The workflow is `.github/workflows/update-and-deploy.yml`. It scrapes, renders `docs/`, and pushes the page. Mat & Minnen is hidden. Mimolett is a link to its Kvartersmenyn page.
 
 ## Local setup
 

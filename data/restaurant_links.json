@@ -4,7 +4,7 @@
         "map": "https://maps.google.com/?q=Kooperativet+Lindholmen+Göteborg"
     },
     "DistrictOne": {
-        "url": "https://www.districtone.se/lunch.html",
+        "url": "https://www.districtone.se/",
         "map": "https://maps.google.com/?q=District+One+Lindholmen+Göteborg"
     },
     "BombayBistro": {
@@ -32,7 +32,7 @@
         "map": "https://maps.google.com/?q=Bistrot+Lindholmen+Göteborg"
     },
     "Mimolett": {
-        "url": "https://restaurangmimolett.se/lunch/",
+        "url": "https://mimolett.kvartersmenyn.se/",
         "map": "https://maps.google.com/?q=Mimolett+Lindholmen+Göteborg"
     },
     "Oishii": {

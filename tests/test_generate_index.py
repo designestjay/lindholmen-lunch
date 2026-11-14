@@ -9,8 +9,17 @@ def test_friday_page_uses_scrape_time_not_render_time():
     assert 'data-menu-date="2026-11-13"' in html
     assert "16:13" in html
     assert "Visa alla 25 rätter" in html
-    assert "9" in html and "av" in html and "15" in html
-    assert "6" in html and "saknas" in html
+    assert "9 av" in html or ">9<" in html
+    assert ">13<" in html
+    assert "4 saknas" in html or ">4<" in html
+    assert "Mat &amp; Minnen" not in html and "Mat & Minnen" not in html
+    assert "https://mimolett.kvartersmenyn.se/" in html
+    assert "Menyn finns på restaurangens sida" in html
+    assert "Roterande meny" in html
+    assert "assets/dishes/placeholder.svg" in html
+    assert "Generell beskrivning av rätten" in html
+    assert "Stängt idag." in html
+    assert "Utkast" in html
     assert "Kooperativet" in html
     assert "googletagmanager.com" not in html
     assert "googlesyndication.com" not in html

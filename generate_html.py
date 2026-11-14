@@ -14,6 +14,9 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
 from utils.restaurants import DISPLAY_NAMES, display_name, link_key
+from utils.dish_category import classify, coverage_line, load_library, load_taxonomy, normalise, update_image_queue
+from utils.holidays import holiday_dates
+from utils.sources import is_inactive, is_link_only, is_rotating, load_sources
 from utils.utils import get_today_english
 
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
@@ -192,8 +195,14 @@ def format_stamp(when: datetime) -> dict:
 
 def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp: dict | None) -> list[dict]:
     restaurants = []
+    queue_rows = []
+    taxonomy = load_taxonomy()
+    library = (load_library().get("categories") or {})
+    sources = load_sources()
     for scraper_key, payload in lunch_data.items():
         if not isinstance(payload, dict):
+            continue
+        if is_inactive(scraper_key, sources) or is_link_only(scraper_key, sources):
             continue
         items_out = []
         for item in payload.get("items") or []:
@@ -214,6 +223,18 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                 display_item_name = ""
                 visible_description = ""
             price_text, price_note = split_price(price_raw) if price_value is not None else ("", "")
+            decision = classify(
+                display_item_name or name,
+                visible_description or description,
+                display_name(scraper_key),
+                taxonomy,
+            )
+            slug = decision.get("dish_category") or ""
+            entry = library.get(slug) if slug else None
+            has_text = bool(entry and (entry.get("what") or {}).get("sv"))
+            svg_file = Path(f"docs/assets/dishes/{slug}.svg") if slug else None
+            has_svg = bool(svg_file and svg_file.is_file())
+            confidence = float(decision.get("category_confidence") or 0)
             items_out.append(
                 {
                     "name": display_item_name,
@@ -225,6 +246,26 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                     "pills": pills_for(tags),
                     "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
                     "search_text": _item_search_text(item),
+                    "dish_category": slug,
+                    "dish_confidence": confidence,
+                    "dish_image": (
+                        f"assets/dishes/{slug}.svg" if has_svg
+                        else ("assets/dishes/placeholder.svg" if has_text else "")
+                    ),
+                    "dish_sheet": has_text,
+                    "shown_image": bool(has_svg and entry and entry.get("status") == "approved" and confidence >= 0.8),
+                }
+            )
+            queue_rows.append(
+                {
+                    "key": normalise(display_item_name or name),
+                    "name": display_item_name or name,
+                    "description": visible_description or description,
+                    "restaurant": display_name(scraper_key),
+                    "dish_category": slug or None,
+                    "category_confidence": confidence,
+                    "ignored": bool(decision.get("ignored")),
+                    "closed_dish": bool(decision.get("closed")),
                 }
             )
 
@@ -246,6 +287,9 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                 "tags": payload.get("tags") or [],
                 "filter_tokens": " ".join(sorted(token_set)),
                 "stale": bool(payload.get("stale")),
+                "closed": bool(payload.get("closed")),
+                "rotating": is_rotating(scraper_key, sources),
+                "link_only": False,
                 "links": links,
                 "search_text": " ".join(search_parts),
                 "stale_short_sv": stamp["short_sv"] if stamp else "",
@@ -253,10 +297,42 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             }
         )
 
+    restaurants.extend(link_only_restaurants(restaurant_links, sources))
     restaurants.sort(key=lambda row: (row["stale"], row["name_lower"]))
     for index, restaurant in enumerate(restaurants, start=1):
         restaurant["rank"] = f"{index:02d}"
+    prepare_restaurants.queue_rows = queue_rows
     return restaurants
+
+
+def link_only_restaurants(restaurant_links: dict, sources: dict) -> list[dict]:
+    cards = []
+    for scraper_key, info in sources.items():
+        if not info.get("link_only"):
+            continue
+        links = dict(restaurant_links.get(link_key(scraper_key)) or {})
+        human = info.get("human_link") or links.get("url") or ""
+        links["url"] = human
+        name = info.get("display") or display_name(scraper_key)
+        cards.append(
+            {
+                "id": scraper_key,
+                "name": name,
+                "name_lower": name.lower(),
+                "dishes": [],
+                "tags": [],
+                "filter_tokens": "",
+                "stale": False,
+                "closed": False,
+                "rotating": False,
+                "link_only": True,
+                "links": links,
+                "search_text": name.lower(),
+                "stale_short_sv": "",
+                "stale_short_en": "",
+            }
+        )
+    return cards
 
 
 def available_filters(restaurants: list[dict]) -> list[dict]:
@@ -267,8 +343,11 @@ def available_filters(restaurants: list[dict]) -> list[dict]:
 
 
 def restaurant_directory(links: dict) -> list[dict]:
+    sources = load_sources()
     rows = []
     for scraper_key in DISPLAY_NAMES:
+        if is_inactive(scraper_key, sources):
+            continue
         info = links.get(link_key(scraper_key)) or {}
         rows.append(
             {
@@ -282,8 +361,12 @@ def restaurant_directory(links: dict) -> list[dict]:
 
 
 def missing_restaurants(meta: dict, links: dict) -> list[dict]:
+    sources = load_sources()
     rows = []
-    for scraper_key in meta.get("missing") or []:
+    names = list(meta.get("missing") or []) + list(meta.get("wrong_week") or [])
+    for scraper_key in names:
+        if is_inactive(scraper_key, sources) or is_link_only(scraper_key, sources):
+            continue
         info = links.get(link_key(scraper_key)) or {}
         rows.append(
             {
@@ -384,9 +467,27 @@ def generate_index_page(day: str | None = None) -> None:
     filters = available_filters(restaurants)
     day_en, day_sv = DAY_LABELS.get(today, (today.capitalize(), today.capitalize()))
     missing = missing_restaurants(meta, restaurant_links)
-    fresh_count = sum(1 for restaurant in restaurants if not restaurant["stale"])
-    total = len(DISPLAY_NAMES)
+    sources = load_sources()
+    fresh_count = sum(
+        1 for restaurant in restaurants
+        if not restaurant["stale"] and not restaurant.get("link_only") and not restaurant.get("closed")
+    )
+    total = sum(
+        1 for key in DISPLAY_NAMES
+        if not is_inactive(key, sources) and not is_link_only(key, sources)
+    )
     menu_date = formatted["iso"] if formatted else ""
+    queue_new = update_image_queue(getattr(prepare_restaurants, "queue_rows", []), menu_date or "1970-01-01")
+    print(coverage_line(getattr(prepare_restaurants, "queue_rows", []), queue_new))
+    present = sorted({
+        item["dish_category"]
+        for restaurant in restaurants
+        for item in restaurant["dishes"]
+        if item.get("dish_sheet") and item.get("dish_category")
+    })
+    library = load_library().get("categories") or {}
+    dish_info = {slug: library[slug] for slug in present if slug in library}
+    holidays = ",".join(holiday_dates())
     hhmm = formatted["hhmm"] if formatted else ""
     trust_sv = formatted["trust_sv"] if formatted else day_sv
     trust_en = formatted["trust_en"] if formatted else day_en
@@ -451,6 +552,8 @@ def generate_index_page(day: str | None = None) -> None:
         filter_options=filters,
         scrape_meta=meta,
         site=SITE,
+        dish_info=dish_info,
+        holiday_dates=holidays,
     )
 
     (output_dir / "index.html").write_text(html, encoding="utf-8")

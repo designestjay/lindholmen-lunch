@@ -1,7 +1,7 @@
 # scrapers/bistrot.py
 import unicodedata
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html, find_week
 from typing import Dict, List, Optional
 
 class BistrotScraper(LunchScraper):
@@ -50,6 +50,9 @@ class BistrotScraper(LunchScraper):
 
             if "vecka" in header.lower():
                 current_category = "Veckans"
+                week = find_week(header)
+                if week is not None:
+                    self.source_week = week
                 self._add_to_all_days(shared_items_by_day, groups, category=current_category)
             elif "vegetarisk" in header.lower():
                 current_category = header

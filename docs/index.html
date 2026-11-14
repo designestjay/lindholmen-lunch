@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-menu-date="2026-11-13" data-fresh="9" data-total="15">
+<html lang="en" data-menu-date="2026-11-13" data-fresh="9" data-total="13" data-holidays="2026-01-01,2026-01-02,2026-01-05,2026-01-06,2026-04-03,2026-04-05,2026-04-06,2026-05-01,2026-05-14,2026-05-15,2026-05-24,2026-06-06,2026-06-19,2026-06-20,2026-10-31,2026-12-24,2026-12-25,2026-12-26,2026-12-31,2027-01-01,2027-01-06,2027-03-26,2027-03-28,2027-03-29,2027-05-01,2027-05-06,2027-05-07,2027-05-16,2027-06-06,2027-06-25,2027-06-26,2027-11-06,2027-12-24,2027-12-25,2027-12-26,2027-12-31">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -65,13 +65,19 @@
                 var asof = params.get("asof");
                 return asof ? zonedTime(asof) : new Date();
             }
+            var holidayList = (document.documentElement.dataset.holidays || "").split(",");
+            window.lunchIsHoliday = function (now) {
+                return holidayList.indexOf(ymdStockholm(now)) !== -1;
+            };
             window.lunchDateState = bannerState;
             window.lunchNow = lunchNow;
-            var state = bannerState(document.documentElement.dataset.menuDate || "", lunchNow());
+            var now = lunchNow();
+            var state = bannerState(document.documentElement.dataset.menuDate || "", now);
             var root = document.documentElement;
             if (state === "weekend") root.classList.add("is-weekend");
             else if (state === "soon") root.classList.add("is-soon");
             else if (state === "wrong") root.classList.add("is-wrong-day");
+            if (window.lunchIsHoliday(now)) root.classList.add("is-holiday");
         })();
     </script>
     <meta name="theme-color" content="#f2f2f0">
@@ -489,6 +495,8 @@
             padding: 18px;
             min-width: 0;
             scroll-margin-top: calc(var(--header-block) + var(--toolbar-h) + 8px);
+            content-visibility: auto;
+            contain-intrinsic-size: auto 480px;
         }
         .restaurant.is-pick { outline: 2px solid var(--accent); outline-offset: 0; }
         .card-top { display: flex; gap: var(--gap-2); align-items: flex-start; min-width: 0; }
@@ -581,6 +589,55 @@
             text-align: right;
             white-space: normal;
             overflow-wrap: anywhere;
+        }
+        .dish-thumb, .dish-slot {
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+        }
+        .dish-thumb {
+            margin: 0;
+            padding: 4px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .dish-thumb img {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+        @media (max-width: 399px) {
+            .dish-thumb img { width: 32px; height: 32px; }
+        }
+        #dish-sheet {
+            border: 0;
+            padding: 24px;
+            max-width: 420px;
+            width: calc(100% - 32px);
+            background: var(--bg, #f2f2f0);
+            color: #111;
+            box-shadow: 0 6px 20px rgb(0 0 0 / .18);
+        }
+        #dish-sheet::backdrop { background: rgb(17 17 17 / .28); }
+        #dish-sheet h2 { margin: 12px 0 8px; font-size: 28px; letter-spacing: -0.03em; }
+        #dish-sheet p { margin: 0 0 12px; }
+        .dish-disclaimer { color: #5c5c5c; font-size: 13px; }
+        .dish-draft { font-size: 13px; }
+        .dish-sheet-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        #dish-sheet-image { width: 64px; height: 64px; }
+        @media (max-width: 820px) {
+            #dish-sheet {
+                margin: auto 0 0 0;
+                max-width: none;
+                width: 100%;
+                max-height: 85vh;
+                border-radius: 16px 16px 0 0;
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #dish-sheet { transition: none; animation: none; }
         }
         .price-note {
             margin: 4px 0 0;
@@ -685,10 +742,20 @@
         .day-banner { display: none; }
         html.is-weekend .day-banner,
         html.is-soon .day-banner,
-        html.is-wrong-day .day-banner { display: block; }
+        html.is-wrong-day .day-banner,
+        html.is-holiday .day-banner { display: block; }
+        html.is-holiday .restaurant-list { opacity: 0.85; }
+        html.is-holiday .day-banner .when-weekend,
+        html.is-holiday .day-banner .when-soon,
+        html.is-holiday .day-banner .when-wrong { display: none; }
+        html.is-holiday .day-banner .when-holiday { display: inline; }
         html.is-weekend .day-banner .when-weekend,
         html.is-soon .day-banner .when-soon,
         html.is-wrong-day .day-banner .when-wrong { display: inline; }
+        html.is-holiday .day-banner .when-weekend,
+        html.is-holiday .day-banner .when-soon,
+        html.is-holiday .day-banner .when-wrong { display: none; }
+        html.is-holiday .day-banner .when-holiday { display: inline; }
         .weekend-reveal { display: none; }
         html.is-weekend .weekend-reveal { display: inline-flex; align-items: center; }
 
@@ -950,10 +1017,10 @@
                 </h1>
                 <div class="trust-row">
                     <p class="trust" id="trust-line">
-                        <span class="sv" lang="sv">Fre 13 nov · <span class="mono">9</span> av <span class="mono">15</span> menyer · uppdaterad <span class="mono">16:13</span></span>
-                        <span class="en" lang="en">Fri 13 Nov · <span class="mono">9</span> of <span class="mono">15</span> menus · updated <span class="mono">16:13</span></span>
+                        <span class="sv" lang="sv">Fre 13 nov · <span class="mono">9</span> av <span class="mono">13</span> menyer · uppdaterad <span class="mono">16:13</span></span>
+                        <span class="en" lang="en">Fri 13 Nov · <span class="mono">9</span> of <span class="mono">13</span> menus · updated <span class="mono">16:13</span></span>
                         
-                        <a class="missing-jump" href="#missing"><span class="sv" lang="sv"><span class="mono">6</span> saknas ↓</span><span class="en" lang="en"><span class="mono">6</span> missing ↓</span></a>
+                        <a class="missing-jump" href="#missing"><span class="sv" lang="sv"><span class="mono">4</span> saknas ↓</span><span class="en" lang="en"><span class="mono">4</span> missing ↓</span></a>
                         
                     </p>
                 </div>
@@ -961,6 +1028,7 @@
                     <span class="when-weekend"><span class="sv" lang="sv">Helg. Lunchen är tillbaka på måndag.</span><span class="en" lang="en">It&#39;s the weekend. Lunch is back on Monday.</span></span>
                     <span class="when-soon"><span class="sv" lang="sv">Det här är menyn från fredag 13 nov. Dagens menyer kommer snart.</span><span class="en" lang="en">This is Friday 13 Nov&#39;s menu. Today&#39;s menus are coming soon.</span></span>
                     <span class="when-wrong"><span class="sv" lang="sv">Det här är menyn från fredag 13 nov. Dagens menyer kommer runt 08:00.</span><span class="en" lang="en">This is Friday 13 Nov&#39;s menu. Today&#39;s menus arrive around 08:00.</span></span>
+                    <span class="when-holiday"><span class="sv" lang="sv">Stängt idag.</span><span class="en" lang="en">Closed today.</span></span>
                 </div>
                 <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" aria-expanded="false" aria-controls="menus">
                     <span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span>
@@ -1046,6 +1114,7 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Benne Pastabar</h2>
                             
+                            
                         </div>
                         
                         <div class="card-links">
@@ -1066,10 +1135,15 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-BennePastabarScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="pasta under130" data-text="slow tomato naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja. benne pasta pasta" data-order="0" data-category="Benne Pasta" data-price="59 kr" data-name="Slow tomato">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Slow tomato
@@ -1089,6 +1163,9 @@
                         <li class="menu-item" data-tags="pasta under130" data-text="swedish cheese vår himmelskt krämiga ostsås gjord på
 									västerbottensost®, smaksatt med en generös mängd svartpeppar. toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar. benne pasta pasta" data-order="1" data-category="Benne Pasta" data-price="75 kr" data-name="Swedish cheese">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Swedish cheese
@@ -1108,6 +1185,9 @@
                         
                         <li class="menu-item" data-tags="pasta under130" data-text="smoked pig nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. toppad med lagrad hårdost och hackad persilja. benne pasta pasta" data-order="2" data-category="Benne Pasta" data-price="85 kr" data-name="Smoked pig">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Smoked pig
@@ -1126,6 +1206,9 @@
                         
                         <li class="menu-item" data-tags="chicken pasta under130" data-text="silky bird rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. toppad med lagrad hårdost, hackad persilja och plockad basilika. benne pasta chicken pasta" data-order="3" data-category="Benne Pasta" data-price="95 kr" data-name="Silky Bird">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Silky Bird
@@ -1146,6 +1229,9 @@
                         
                         <li class="menu-item" data-tags="pasta under130" data-text="the shrooms vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja. benne pasta pasta" data-order="4" data-category="Benne Pasta" data-price="99 kr" data-name="The shrooms">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         The shrooms
@@ -1164,6 +1250,11 @@
                         
                         <li class="menu-item" data-tags="fish pasta under130" data-text="chili shrimp vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. toppad med lagrad hårdost, hackad persilja och vår egen chiliolja. benne pasta fish pasta" data-order="5" data-category="Benne Pasta" data-price="105 kr" data-name="Chili shrimp">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="shrimp" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chili shrimp
@@ -1184,6 +1275,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="silky salsiccia knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. toppad med lagrad hårdost och hackad persilja. the visitor " data-order="6" data-category="The Visitor" data-price="95 kr" data-name="Silky salsiccia">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Silky salsiccia
@@ -1200,6 +1294,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="garlic bread två skivor rostat surdegsbröd med vitlök- och persiljesmör och sumak. benne bites " data-order="7" data-category="Benne Bites" data-price="20 kr" data-name="Garlic Bread">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Garlic Bread
@@ -1216,6 +1313,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="cheezy garlic bread två skivor rostat surdegsbröd med vitlök- och persiljesmör, sumak och lagrad hårdost. benne bites " data-order="8" data-category="Benne Bites" data-price="25 kr" data-name="Cheezy garlic bread">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Cheezy garlic bread
@@ -1232,6 +1332,9 @@
                         
                         <li class="menu-item" data-tags="dessert under130" data-text="tiramisu krämig tiramisu från italien, toppad med kakao. (innehåller alkohol) benne bites dessert" data-order="9" data-category="Benne Bites" data-price="35 kr" data-name="Tiramisu">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tiramisu
@@ -1262,6 +1365,7 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Bistrot</h2>
                             
+                            
                         </div>
                         
                         <div class="card-links">
@@ -1282,10 +1386,15 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-BistrotScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="pork under130" data-text="veckans: fläsklägg rotmos – pepparrotsås – senap – persilja veckans pork" data-order="0" data-category="Veckans" data-price="130 kr" data-name="Veckans: Fläsklägg">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Veckans: Fläsklägg
@@ -1302,6 +1411,9 @@
                         
                         <li class="menu-item" data-tags="under130 veg vego" data-text="vegetarisk mån-tis:raggmunk svampragu – lingon – persilja veckans veg" data-order="1" data-category="Veckans" data-price="130 kr" data-name="Vegetarisk Mån-tis:Raggmunk">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Vegetarisk Mån-tis:Raggmunk
@@ -1320,6 +1432,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="ons-tor: bakad rödbeta linser | solroskärnor | getostkräm | blomkålspuré – brynt smör | gräslök veckans " data-order="2" data-category="Veckans" data-price="130 kr" data-name="Ons-Tor: Bakad Rödbeta">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Ons-Tor: Bakad Rödbeta
@@ -1336,6 +1451,9 @@
                         
                         <li class="menu-item" data-tags="under130 veg vego" data-text="vegetarisk: fre: pannoumiburgare  veckans veg" data-order="3" data-category="Veckans" data-price="130 kr" data-name="Vegetarisk: Fre: Pannoumiburgare">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Vegetarisk: Fre: Pannoumiburgare
@@ -1352,6 +1470,9 @@
                         
                         <li class="menu-item" data-tags="chicken salad under130" data-text="caesarsallad kyckling &amp; bacon / räkor – grana padano – tomater – rödlök – krutonger – caesardressing veckans chicken salad" data-order="4" data-category="Veckans" data-price="130 kr" data-name="Caesarsallad">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Caesarsallad
@@ -1372,6 +1493,11 @@
                         
                         <li class="menu-item" data-tags="beef salad under130" data-text="högrevsburgare karamelliserad lök – krispichilimayo – pepperjackost – sallad – pommes lunch beef salad" data-order="5" data-category="Lunch" data-price="130 kr" data-name="Högrevsburgare">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Högrevsburgare
@@ -1390,6 +1516,11 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="smörstekt fångst kronärtskocka – tomat – smör – citron – krossad potatis – rucola lunch " data-order="6" data-category="Lunch" data-price="130 kr" data-name="Smörstekt Fångst">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="fried-fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Smörstekt Fångst
@@ -1420,6 +1551,9 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Bombay Bistro</h2>
                             
+                            
+                            <div><span class="stale-pill"><span class="sv" lang="sv">Roterande meny</span><span class="en" lang="en">Rotating menu</span></span></div>
+                            
                         </div>
                         
                         <div class="card-links">
@@ -1440,10 +1574,17 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-BombayBistroScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="chicken indian under130" data-text="pahadi grill chicken grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.  indian chicken" data-order="0" data-category="" data-price="129 kr" data-name="Pahadi grill chicken">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="tandoori" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Pahadi grill chicken
@@ -1464,6 +1605,9 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="dalcha ghost lammgryta med linser, lök, tomat, chili och limejuice. tre dagens vegetariska rätter och raita (kan fås vegansk)  indian" data-order="1" data-category="" data-price="129 kr" data-name="Dalcha ghost">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dalcha ghost
@@ -1482,6 +1626,11 @@
                         
                         <li class="menu-item" data-tags="chicken indian" data-text="tikka masala grillad kycklingfilé med rostad paprika och tomater i en krämig sås. andra alternativ indian chicken" data-order="2" data-category="ANDRA ALTERNATIV" data-price="134 kr" data-name="Tikka masala">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="tikka-masala" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tikka masala
@@ -1502,6 +1651,11 @@
                         
                         <li class="menu-item" data-tags="chicken indian" data-text="tandoori chicken grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. serveras med tandoori sås. andra alternativ indian chicken" data-order="3" data-category="ANDRA ALTERNATIV" data-price="132 kr" data-name="Tandoori chicken">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="tandoori" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tandoori chicken
@@ -1522,6 +1676,9 @@
                         
                         <li class="menu-item" data-tags="" data-text="jingha hara  andra alternativ " data-order="4" data-category="ANDRA ALTERNATIV" data-price="" data-name="Jingha hara">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Jingha hara
@@ -1536,6 +1693,9 @@
                         
                         <li class="menu-item" data-tags="" data-text=" jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde. andra alternativ " data-order="5" data-category="ANDRA ALTERNATIV" data-price="145 kr" data-name="Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.
@@ -1564,6 +1724,7 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Cuckoo&#39;s Nest</h2>
                             
+                            
                         </div>
                         
                         <div class="card-links">
@@ -1584,10 +1745,15 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-CuckoosNestScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="" data-text=" ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås  " data-order="0" data-category="" data-price="" data-name="Ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås
@@ -1602,6 +1768,11 @@
                         
                         <li class="menu-item" data-tags="fish" data-text=" lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron  fish" data-order="1" data-category="" data-price="" data-name="Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salmon" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron
@@ -1618,6 +1789,9 @@
                         
                         <li class="menu-item" data-tags="chicken" data-text=" kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky  chicken" data-order="2" data-category="" data-price="" data-name="Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky
@@ -1634,6 +1808,11 @@
                         
                         <li class="menu-item" data-tags="fish" data-text=" torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör  fish" data-order="3" data-category="" data-price="" data-name="torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="white-fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör
@@ -1650,6 +1829,9 @@
                         
                         <li class="menu-item" data-tags="beef" data-text=" långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås  beef" data-order="4" data-category="" data-price="" data-name="Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås
@@ -1664,6 +1846,11 @@
                         
                         <li class="menu-item" data-tags="" data-text=" risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao veg " data-order="5" data-category="VEG" data-price="195 kr" data-name="risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="risotto" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao
@@ -1678,6 +1865,9 @@
                         
                         <li class="menu-item" data-tags="chicken salad" data-text=" grillad kyckling med romansallad, bacon, grana padano, caesardressing &amp; krutonger ceasarsallad chicken salad" data-order="6" data-category="CEASARSALLAD" data-price="215 kr" data-name="Grillad kyckling med romansallad, bacon, grana padano, Caesardressing &amp; krutonger">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Grillad kyckling med romansallad, bacon, grana padano, Caesardressing &amp; krutonger
@@ -1696,6 +1886,11 @@
                         
                         <li class="menu-item" data-tags="" data-text=" räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill räkmacka " data-order="7" data-category="RÄKMACKA" data-price="295 kr" data-name="räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="shrimp" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill
@@ -1710,6 +1905,11 @@
                         
                         <li class="menu-item" data-tags="beef burger salad" data-text=" högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites double smashed cheeseburger beef salad burger" data-order="8" data-category="DOUBLE SMASHED CHEESEBURGER" data-price="235 kr" data-name="Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites
@@ -1740,6 +1940,7 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Encounter Asian</h2>
                             
+                            
                         </div>
                         
                         <div class="card-links">
@@ -1760,10 +1961,17 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-EncounterAsianScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="vanlig 10 bitar 3 lax, 1 räka, 1 crabfish, 1 omelett &amp; 4 maki sushi fish sushi" data-order="0" data-category="SUSHI" data-price="95 kr" data-name="vanlig 10 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         vanlig 10 bitar
@@ -1784,6 +1992,11 @@
                         
                         <li class="menu-item" data-tags="sushi under130 veg vego" data-text="vegetarisk 10 bitar 2 avocado, 2 tofu, 2 omelett &amp; 4 maki sushi veg sushi" data-order="1" data-category="SUSHI" data-price="95 kr" data-name="vegetarisk 10 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         vegetarisk 10 bitar
@@ -1804,6 +2017,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130 veg vego" data-text="mammasushi 10 bitar 2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett &amp; 4 maki sushi veg fish sushi" data-order="2" data-category="SUSHI" data-price="95 kr" data-name="Mammasushi 10 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mammasushi 10 bitar
@@ -1826,6 +2044,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130 veg vego" data-text="mix 12 bitar 4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado sushi veg fish sushi" data-order="3" data-category="SUSHI" data-price="105 kr" data-name="Mix 12 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mix 12 bitar
@@ -1848,6 +2071,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi veg vego" data-text="mix 15 bitar 5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado sushi veg fish sushi" data-order="4" data-category="SUSHI" data-price="135 kr" data-name="Mix 15 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mix 15 bitar
@@ -1870,6 +2098,11 @@
                         
                         <li class="menu-item" data-tags="sushi under130" data-text="nigiri mix 10 bitar  sushi sushi" data-order="5" data-category="SUSHI" data-price="115 kr" data-name="Nigiri mix 10 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Nigiri mix 10 bitar
@@ -1886,6 +2119,9 @@
                         
                         <li class="menu-item" data-tags="asian chicken japanese salad under130" data-text="yakitori 5 kycklingspett med ris, teriyakisås och sallad varmrätt japanese chicken salad" data-order="6" data-category="VARMRÄTT" data-price="95 kr" data-name="Yakitori">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Yakitori
@@ -1908,6 +2144,11 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="yakiniku skivad entrecote, grönsaker, ris, yakinikusås &amp; sallad varmrätt salad" data-order="7" data-category="VARMRÄTT" data-price="99 kr" data-name="Yakiniku">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="steak" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Yakiniku
@@ -1926,6 +2167,11 @@
                         
                         <li class="menu-item" data-tags="chicken under130" data-text="wokade äggnudlar äggnudlar med kycklingfilé &amp; grönsaker varmrätt chicken" data-order="8" data-category="VARMRÄTT" data-price="95 kr" data-name="Wokade äggnudlar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="wok" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Wokade äggnudlar
@@ -1944,6 +2190,9 @@
                         
                         <li class="menu-item" data-tags="dumplings salad under130" data-text="dumpling (kött) 8 bitar dumplings, sallad &amp; ris varmrätt salad dumplings" data-order="9" data-category="VARMRÄTT" data-price="99 kr" data-name="Dumpling (kött)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dumpling (kött)
@@ -1962,6 +2211,9 @@
                         
                         <li class="menu-item" data-tags="dumplings salad under130" data-text="dumpling (veg) 8 bitar dumplings, sallad &amp; ris varmrätt salad dumplings" data-order="10" data-category="VARMRÄTT" data-price="99 kr" data-name="Dumpling (Veg)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dumpling (Veg)
@@ -1980,6 +2232,9 @@
                         
                         <li class="menu-item" data-tags="asian beef korean under130" data-text="bibibamp (biff)  koreansk korean beef" data-order="11" data-category="KOREANSK" data-price="119 kr" data-name="Bibibamp (biff)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bibibamp (biff)
@@ -1996,6 +2251,9 @@
                         
                         <li class="menu-item" data-tags="asian chicken korean under130" data-text="bibibamp (kyckling)  koreansk korean chicken" data-order="12" data-category="KOREANSK" data-price="99 kr" data-name="Bibibamp (Kyckling)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bibibamp (Kyckling)
@@ -2014,6 +2272,9 @@
                         
                         <li class="menu-item" data-tags="asian korean under130" data-text="bibibamp (veg)  koreansk korean" data-order="13" data-category="KOREANSK" data-price="99 kr" data-name="Bibibamp (Veg)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bibibamp (Veg)
@@ -2030,6 +2291,9 @@
                         
                         <li class="menu-item" data-tags="beef soup under130" data-text="(biff)  nudelsoppa beef soup" data-order="14" data-category="NUDELSOPPA" data-price="99 kr" data-name="(Biff)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         (Biff)
@@ -2044,6 +2308,9 @@
                         
                         <li class="menu-item" data-tags="chicken soup under130" data-text="(kyckling)  nudelsoppa chicken soup" data-order="15" data-category="NUDELSOPPA" data-price="99 kr" data-name="(Kyckling)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         (Kyckling)
@@ -2060,6 +2327,9 @@
                         
                         <li class="menu-item" data-tags="soup under130" data-text="(veg)  nudelsoppa soup" data-order="16" data-category="NUDELSOPPA" data-price="99 kr" data-name="(Veg)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         (Veg)
@@ -2074,6 +2344,9 @@
                         
                         <li class="menu-item" data-tags="asian japanese salad sushi under130" data-text="bentolåda yakiniku, yakitori, sushi, sallad &amp; ris bentolåda japanese salad sushi" data-order="17" data-category="BENTOLÅDA" data-price="105 kr" data-name="Bentolåda">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bentolåda
@@ -2094,6 +2367,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="läsk  läsk " data-order="18" data-category="LÄSK" data-price="15 kr" data-name="Läsk">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Läsk
@@ -2122,6 +2398,9 @@
                         <div class="title-block">
                             <h2 tabindex="-1">Masala</h2>
                             
+                            
+                            <div><span class="stale-pill"><span class="sv" lang="sv">Roterande meny</span><span class="en" lang="en">Rotating menu</span></span></div>
+                            
                         </div>
                         
                         <div class="card-links">
@@ -2142,10 +2421,15 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-MasalaScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="chicken under130" data-text="murg methi malai kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.  chicken" data-order="0" data-category="" data-price="119 kr" data-name="Murg methi malai">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Murg methi malai
@@ -2166,6 +2450,9 @@
                         
                         <li class="menu-item" data-tags="fish soup under130" data-text="machili bengali laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska &#34;panch phoron&#34; (fem kryddor)  fish soup" data-order="1" data-category="" data-price="119 kr" data-name="Machili bengali">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Machili bengali
@@ -2186,6 +2473,9 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="aloo ghobi masala potatis- och blomkålsgryta med lök, tomat och färsk ingefära.  indian" data-order="2" data-category="" data-price="119 kr" data-name="Aloo ghobi masala">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Aloo ghobi masala
@@ -2206,6 +2496,9 @@
                         
                         <li class="menu-item" data-tags="indian soup veg vego" data-text="subzi thali kockens val av vegetarisk gryta med en paneerrätt och en grönsaksrätt. serveras med linsgryta och raita. stående meny indian veg soup" data-order="3" data-category="Stående meny" data-price="134 kr" data-name="Subzi thali">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Subzi thali
@@ -2226,6 +2519,9 @@
                         
                         <li class="menu-item" data-tags="indian" data-text="palak paneer hemlagad färskost lagad i stuvad spenat, ingefära, chili och vitlök stående meny indian" data-order="4" data-category="Stående meny" data-price="132 kr" data-name="Palak paneer">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Palak paneer
@@ -2244,6 +2540,11 @@
                         
                         <li class="menu-item" data-tags="chicken indian" data-text="chicken tandoori grillad kyckling med ben marinerad i serveras i tandoorimasala, llime och yoghurt. serveras i tandorisås. stående meny indian chicken" data-order="5" data-category="Stående meny" data-price="132 kr" data-name="Chicken tandoori">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="tandoori" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chicken tandoori
@@ -2264,6 +2565,11 @@
                         
                         <li class="menu-item" data-tags="chicken indian" data-text="chicken tikka masala grillad och marinerad kycklingfilé i en mild grädde- och tomatsås. stående meny indian chicken" data-order="6" data-category="Stående meny" data-price="142 kr" data-name="Chicken tikka masala">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="tikka-masala" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chicken tikka masala
@@ -2284,6 +2590,9 @@
                         
                         <li class="menu-item" data-tags="indian" data-text="rogan josh klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel. stående meny indian" data-order="7" data-category="Stående meny" data-price="152 kr" data-name="Rogan josh">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Rogan josh
@@ -2302,6 +2611,11 @@
                         
                         <li class="menu-item" data-tags="indian soup" data-text="jhinga korma mild och krämig gryta med tigerräkor, cashewnötter och kardemumma. stående meny indian soup" data-order="8" data-category="Stående meny" data-price="157 kr" data-name="Jhinga korma">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="korma" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Jhinga korma
@@ -2320,6 +2634,9 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="extra sallad  tillbehör salad" data-order="9" data-category="Tillbehör" data-price="15 kr" data-name="Extra sallad">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Extra sallad
@@ -2336,6 +2653,9 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="extra lunch naan nybakat indiskt bröd. tillbehör indian" data-order="10" data-category="Tillbehör" data-price="15 kr" data-name="Extra lunch naan">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Extra lunch naan
@@ -2354,6 +2674,11 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="plain naan (*)  tillbehör indian" data-order="11" data-category="Tillbehör" data-price="29 kr" data-name="Plain naan (*)">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="naan" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Plain naan (*)
@@ -2370,6 +2695,11 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="butter naan (*)  tillbehör indian" data-order="12" data-category="Tillbehör" data-price="35 kr" data-name="Butter naan (*)">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="naan" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Butter naan (*)
@@ -2386,6 +2716,11 @@
                         
                         <li class="menu-item" data-tags="indian" data-text="vitlök &amp; koriander naan (*)  tillbehör indian" data-order="13" data-category="Tillbehör" data-price="395 kr" data-name="Vitlök &amp; koriander naan (*)">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="naan" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Vitlök &amp; koriander naan (*)
@@ -2402,6 +2737,11 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="ost &amp; koriander naan (*)  tillbehör indian" data-order="14" data-category="Tillbehör" data-price="39 kr" data-name="Ost &amp; koriander naan (*)">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="naan" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Ost &amp; koriander naan (*)
@@ -2418,6 +2758,11 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="chili naan (*)  tillbehör indian" data-order="15" data-category="Tillbehör" data-price="39 kr" data-name="Chili naan (*)">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="naan" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chili naan (*)
@@ -2434,6 +2779,9 @@
                         
                         <li class="menu-item" data-tags="" data-text="(*) glutenfritt roti +10 kr tillbehör " data-order="16" data-category="Tillbehör" data-price="" data-name="(*)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         (*)
@@ -2450,6 +2798,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="myntasås  tillbehör " data-order="17" data-category="Tillbehör" data-price="15 kr" data-name="Myntasås">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Myntasås
@@ -2464,6 +2815,11 @@
                         
                         <li class="menu-item" data-tags="indian under130" data-text="mango chutney  tillbehör indian" data-order="18" data-category="Tillbehör" data-price="15 kr" data-name="Mango chutney">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="raita-chutney" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mango chutney
@@ -2480,6 +2836,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="chili pickles  tillbehör " data-order="19" data-category="Tillbehör" data-price="15 kr" data-name="Chili pickles">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chili pickles
@@ -2494,6 +2853,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="papadom  tillbehör " data-order="20" data-category="Tillbehör" data-price="15 kr" data-name="Papadom">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Papadom
@@ -2508,6 +2870,11 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="raita  tillbehör " data-order="21" data-category="Tillbehör" data-price="29 kr" data-name="Raita">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="raita-chutney" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Raita
@@ -2522,6 +2889,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="mangolassi  tillbehör " data-order="22" data-category="Tillbehör" data-price="39 kr" data-name="Mangolassi">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mangolassi
@@ -2536,6 +2906,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="läsk / lättöl  tillbehör " data-order="23" data-category="Tillbehör" data-price="25 kr" data-name="Läsk / lättöl">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Läsk / lättöl
@@ -2550,6 +2923,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="mineralvatten  tillbehör " data-order="24" data-category="Tillbehör" data-price="25 kr" data-name="Mineralvatten">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mineralvatten
@@ -2572,11 +2948,45 @@
                     
                 </article>
                 
-                <article class="restaurant" id="restaurant-MissFScraper" data-name="miss f" data-label="Miss F" data-stale="false" data-rank="07" data-map="https://maps.google.com/?q=Miss+F+Lindholmen+Göteborg" data-url="https://www.missf.se/">
+                <article class="restaurant" id="restaurant-MimolettScraper" data-name="mimolett" data-label="Mimolett" data-stale="false" data-rank="07" data-map="https://maps.google.com/?q=Mimolett+Lindholmen+Göteborg" data-url="https://mimolett.kvartersmenyn.se/">
                     <div class="card-top">
                         <p class="index mono">07</p>
                         <div class="title-block">
+                            <h2 tabindex="-1">Mimolett</h2>
+                            
+                            
+                        </div>
+                        
+                        <div class="card-links">
+                            
+                            <a class="text-link" href="https://maps.google.com/?q=Mimolett+Lindholmen+Göteborg" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="Mimolett">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="1.6" fill="currentColor"/></svg>
+                                <span class="link-label"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></span>
+                            </a>
+                            
+                            
+                            <a class="text-link" href="https://mimolett.kvartersmenyn.se/" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="Mimolett">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span class="link-label"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></span>
+                            </a>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    <p class="stale-note"><span class="sv" lang="sv">Menyn finns på restaurangens sida</span><span class="en" lang="en">The menu is on the restaurant's site</span></p>
+                    
+                    
+                    
+                </article>
+                
+                <article class="restaurant" id="restaurant-MissFScraper" data-name="miss f" data-label="Miss F" data-stale="false" data-rank="08" data-map="https://maps.google.com/?q=Miss+F+Lindholmen+Göteborg" data-url="https://www.missf.se/">
+                    <div class="card-top">
+                        <p class="index mono">08</p>
+                        <div class="title-block">
                             <h2 tabindex="-1">Miss F</h2>
+                            
                             
                         </div>
                         
@@ -2598,10 +3008,17 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-MissFScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="pork under130" data-text="lufttorkad skinka/mozzarella/pesto  grillad ciabatta pork" data-order="0" data-category="Grillad ciabatta" data-price="130 kr" data-name="Lufttorkad skinka/mozzarella/pesto">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Lufttorkad skinka/mozzarella/pesto
@@ -2616,6 +3033,11 @@
                         
                         <li class="menu-item" data-tags="chicken salad under130" data-text="kyckling/bacon/dijoncreme serveras med pommes &amp; sallad &amp; dressing grillad ciabatta chicken salad" data-order="1" data-category="Grillad ciabatta" data-price="130 kr" data-name="Kyckling/bacon/dijoncreme">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Kyckling/bacon/dijoncreme
@@ -2636,6 +3058,9 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="mindre ciabbatta av ovan  grillad ciabatta " data-order="2" data-category="Grillad ciabatta" data-price="105 kr" data-name="Mindre ciabbatta av ovan">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Mindre ciabbatta av ovan
@@ -2650,6 +3075,11 @@
                         
                         <li class="menu-item" data-tags="chicken mexican salad taco under130" data-text="kyckling/ mozzarella/ ruccola / mangoraja serveras med pommes &amp; sallad &amp; dressing grillad tortilla mexican chicken salad taco" data-order="3" data-category="Grillad tortilla" data-price="130 kr" data-name="kyckling/ mozzarella/ ruccola / mangoraja">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         kyckling/ mozzarella/ ruccola / mangoraja
@@ -2670,6 +3100,11 @@
                         
                         <li class="menu-item" data-tags="dessert fish pasta under130" data-text="lax/spenat  pajer &amp; lasagne fish pasta dessert" data-order="4" data-category="Pajer &amp; Lasagne" data-price="110 kr" data-name="Lax/Spenat">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salmon" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Lax/Spenat
@@ -2688,6 +3123,9 @@
                         
                         <li class="menu-item" data-tags="dessert pasta under130" data-text="fetaost/spenat  pajer &amp; lasagne pasta dessert" data-order="5" data-category="Pajer &amp; Lasagne" data-price="110 kr" data-name="Fetaost/Spenat">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Fetaost/Spenat
@@ -2704,6 +3142,11 @@
                         
                         <li class="menu-item" data-tags="dessert pasta salad under130" data-text="lasagne serveras med sallad &amp; dressing pajer &amp; lasagne salad pasta dessert" data-order="6" data-category="Pajer &amp; Lasagne" data-price="115 kr" data-name="Lasagne">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="lasagne" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Lasagne
@@ -2724,6 +3167,9 @@
                         
                         <li class="menu-item" data-tags="dessert pasta" data-text="dressing rhode island, chilimango, italiensk, vinäger, vitlök pajer &amp; lasagne pasta dessert" data-order="7" data-category="Pajer &amp; Lasagne" data-price="" data-name="Dressing">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dressing
@@ -2742,6 +3188,9 @@
                         
                         <li class="menu-item" data-tags="chicken salad under130" data-text="kyckling  caesarsallad chicken salad" data-order="8" data-category="Caesarsallad" data-price="110 kr" data-name="Kyckling">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Kyckling
@@ -2760,6 +3209,11 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="räkor  caesarsallad salad" data-order="9" data-category="Caesarsallad" data-price="120 kr" data-name="Räkor">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="shrimp" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Räkor
@@ -2776,6 +3230,9 @@
                         
                         <li class="menu-item" data-tags="chicken salad under130" data-text="kyckling  sallader chicken salad" data-order="10" data-category="Sallader" data-price="115 kr" data-name="Kyckling">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Kyckling
@@ -2794,6 +3251,11 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="räkor  sallader salad" data-order="11" data-category="Sallader" data-price="130 kr" data-name="Räkor">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="shrimp" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Räkor
@@ -2810,6 +3272,9 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="grekisk  sallader salad" data-order="12" data-category="Sallader" data-price="125 kr" data-name="Grekisk">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Grekisk
@@ -2826,6 +3291,11 @@
                         
                         <li class="menu-item" data-tags="pork salad under130" data-text="lufttorkad skinka/mozzarella/pesto  sallader pork salad" data-order="13" data-category="Sallader" data-price="125 kr" data-name="Lufttorkad skinka/mozzarella/pesto">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Lufttorkad skinka/mozzarella/pesto
@@ -2842,6 +3312,9 @@
                         
                         <li class="menu-item" data-tags="salad under130" data-text="chévre/rödbetor/honung/valnötter/granatäpple  sallader salad" data-order="14" data-category="Sallader" data-price="125 kr" data-name="Chévre/rödbetor/honung/valnötter/granatäpple">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Chévre/rödbetor/honung/valnötter/granatäpple
@@ -2858,6 +3331,9 @@
                         
                         <li class="menu-item" data-tags="pasta salad under130" data-text="tillval bulgur/marinerad pasta/ svartris sallader salad pasta" data-order="15" data-category="Sallader" data-price="5 kr" data-name="Tillval">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tillval
@@ -2878,6 +3354,9 @@
                         
                         <li class="menu-item" data-tags="fish salad under130 veg vego" data-text="pokebowl sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, srirachamayo, räkor och lax sallader veg fish salad" data-order="16" data-category="Sallader" data-price="129 kr" data-name="Pokebowl">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Pokebowl
@@ -2900,6 +3379,11 @@
                         
                         <li class="menu-item" data-tags="asian korean salad" data-text="bibimbap ris med kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing asiatisk korean salad" data-order="17" data-category="Asiatisk" data-price="135 kr" data-name="Bibimbap">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="bibimbap" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bibimbap
@@ -2920,6 +3404,11 @@
                         
                         <li class="menu-item" data-tags="asian thai under130" data-text="panang curry  asiatisk thai" data-order="18" data-category="Asiatisk" data-price="128 kr" data-name="Panang Curry">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="thai-curry" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Panang Curry
@@ -2936,6 +3425,9 @@
                         
                         <li class="menu-item" data-tags="asian japanese sushi under130" data-text="sushi tempura 10 bit friterad räkor/avokado/gurka/krispsallad/rostad lök asiatisk japanese sushi" data-order="19" data-category="Asiatisk" data-price="129 kr" data-name="Sushi Tempura 10 bit">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Sushi Tempura 10 bit
@@ -2954,6 +3446,11 @@
                         
                         <li class="menu-item" data-tags="sushi under130" data-text="sushi speciell california 10bit friterad krabbröra, avokado, gurka, krispsallad asiatisk sushi" data-order="20" data-category="Asiatisk" data-price="129 kr" data-name="Sushi Speciell California 10bit">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Sushi Speciell California 10bit
@@ -2972,6 +3469,9 @@
                         
                         <li class="menu-item" data-tags="chicken under130" data-text="krispig kyckling friterade kyckling / gurka / krispsallad / morötter asiatisk chicken" data-order="21" data-category="Asiatisk" data-price="125 kr" data-name="Krispig kyckling">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Krispig kyckling
@@ -2998,11 +3498,12 @@
                     
                 </article>
                 
-                <article class="restaurant" id="restaurant-OishiiScraper" data-name="oishii" data-label="Oishii" data-stale="false" data-rank="08" data-map="https://maps.google.com/?q=Oishii+Lindholmen+Göteborg" data-url="https://oishii.se/lunchmeny/">
+                <article class="restaurant" id="restaurant-OishiiScraper" data-name="oishii" data-label="Oishii" data-stale="false" data-rank="09" data-map="https://maps.google.com/?q=Oishii+Lindholmen+Göteborg" data-url="https://oishii.se/lunchmeny/">
                     <div class="card-top">
-                        <p class="index mono">08</p>
+                        <p class="index mono">09</p>
                         <div class="title-block">
                             <h2 tabindex="-1">Oishii</h2>
+                            
                             
                         </div>
                         
@@ -3024,10 +3525,17 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-OishiiScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="9 bitar 5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="0" data-category="Sushi" data-price="100 kr" data-name="9 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         9 bitar
@@ -3048,6 +3556,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="9 bitar nigri 5 lax, 4 avokado sushi fish sushi" data-order="1" data-category="Sushi" data-price="115 kr" data-name="9 bitar nigri">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salmon" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         9 bitar nigri
@@ -3068,6 +3581,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="11 bitar 6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="2" data-category="Sushi" data-price="110 kr" data-name="11 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         11 bitar
@@ -3088,6 +3606,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="13 bitar 7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="3" data-category="Sushi" data-price="120 kr" data-name="13 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         13 bitar
@@ -3108,6 +3631,11 @@
                         
                         <li class="menu-item" data-tags="fish sushi under130" data-text="15 bitar 8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo sushi fish sushi" data-order="4" data-category="Sushi" data-price="130 kr" data-name="15 bitar">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         15 bitar
@@ -3128,6 +3656,9 @@
                         
                         <li class="menu-item" data-tags="sushi under130 veg vego" data-text="11 bitar vegetarisk 2avokado 1ägg 1sparris 1tofu 6rullar sushi veg sushi" data-order="5" data-category="Sushi" data-price="110 kr" data-name="11 bitar vegetarisk">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         11 bitar vegetarisk
@@ -3148,6 +3679,9 @@
                         
                         <li class="menu-item" data-tags="sushi under130 veg vego" data-text="13 bitar vegetarisk 3avokado 1sparris 1ägg 1tofu 7rullar sushi veg sushi" data-order="6" data-category="Sushi" data-price="120 kr" data-name="13 bitar vegetarisk">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         13 bitar vegetarisk
@@ -3168,6 +3702,9 @@
                         
                         <li class="menu-item" data-tags="asian japanese pork" data-text="tonkotsu ramen krämiga fläskbuljong,mört chashu,ägg,skogsöron varmrätter japanese pork" data-order="7" data-category="Varmrätter" data-price="135 kr" data-name="Tonkotsu Ramen">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tonkotsu Ramen
@@ -3186,6 +3723,9 @@
                         
                         <li class="menu-item" data-tags="asian beef japanese salad under130" data-text="tantan ramen (spicy) kryddigbuljong med smakrik köttfärs.grönsaker,jordnötter,salladslök varmrätter japanese beef salad" data-order="8" data-category="Varmrätter" data-price="129 kr" data-name="Tantan Ramen (spicy)">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tantan Ramen (spicy)
@@ -3206,6 +3746,9 @@
                         
                         <li class="menu-item" data-tags="beef chicken under130" data-text="stekt kyckling med grönsaker kyckling, grönsaker varmrätter chicken beef" data-order="9" data-category="Varmrätter" data-price="115 kr" data-name="Stekt kyckling med grönsaker">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Stekt kyckling med grönsaker
@@ -3224,6 +3767,11 @@
                         
                         <li class="menu-item" data-tags="asian chicken japanese sushi under130" data-text="bento 3 maki, 2 nigri, 2 kycklingspett varmrätter japanese chicken sushi" data-order="10" data-category="Varmrätter" data-price="115 kr" data-name="Bento">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Bento
@@ -3244,6 +3792,9 @@
                         
                         <li class="menu-item" data-tags="asian chicken japanese under130" data-text="yakitori kycklingspett med teriyakisås varmrätter japanese chicken" data-order="11" data-category="Varmrätter" data-price="115 kr" data-name="Yakitori">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Yakitori
@@ -3264,6 +3815,11 @@
                         
                         <li class="menu-item" data-tags="under130" data-text="yakiniku strimlad entrecote varmrätter " data-order="12" data-category="Varmrätter" data-price="129 kr" data-name="Yakiniku">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="steak" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Yakiniku
@@ -3280,6 +3836,9 @@
                         
                         <li class="menu-item" data-tags="beef soup under130" data-text="nudelsoppa med biff  varmrätter beef soup" data-order="13" data-category="Varmrätter" data-price="129 kr" data-name="Nudelsoppa med Biff">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Nudelsoppa med Biff
@@ -3294,6 +3853,9 @@
                         
                         <li class="menu-item" data-tags="dumplings under130" data-text="wonton nudlar  varmrätter dumplings" data-order="14" data-category="Varmrätter" data-price="119 kr" data-name="Wonton nudlar">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Wonton nudlar
@@ -3308,6 +3870,9 @@
                         
                         <li class="menu-item" data-tags="dumplings pork under130" data-text="dumplings 9 st fläskkött eller vegetariansk varmrätter pork dumplings" data-order="15" data-category="Varmrätter" data-price="109 kr" data-name="Dumplings 9 st">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dumplings 9 st
@@ -3324,6 +3889,9 @@
                         
                         <li class="menu-item" data-tags="dumplings pork under130" data-text="dumplings 12 st fläskkött eller vegetariansk varmrätter pork dumplings" data-order="16" data-category="Varmrätter" data-price="129 kr" data-name="Dumplings 12 st">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Dumplings 12 st
@@ -3340,6 +3908,11 @@
                         
                         <li class="menu-item" data-tags="fish salad sushi under130" data-text="salmon bowl marinerad lax med sushiris,,salladsmix,gurka,avokado,edamame,wakame, mango,morötter,majs,picklad rödlök ,chilimajonös,sesamfrön poke bowl fish salad sushi" data-order="17" data-category="Poke Bowl" data-price="129 kr" data-name="Salmon Bowl">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="salmon" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Salmon Bowl
@@ -3362,6 +3935,9 @@
                         
                         <li class="menu-item" data-tags="asian japanese salad sushi" data-text="yakiniku bowl marinerad entrecote med sushiris salladsmix,gurka,avokado,edamame, wakame,mango,morötter,majs,picklad rödlök , chilimajonös,teriyakisås, sesamfrön poke bowl japanese salad sushi" data-order="18" data-category="Poke Bowl" data-price="139 kr" data-name="Yakiniku Bowl">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Yakiniku Bowl
@@ -3382,6 +3958,11 @@
                         
                         <li class="menu-item" data-tags="chicken salad sushi under130" data-text="kyckling bowl friterad kyckling med sushiris,salladsmix,gurka,avokado,edamame,wakame, mango,morötter,majs,picklad rödlök,chilimajonös,sweetchilisås,sesamfrön poke bowl chicken salad sushi" data-order="19" data-category="Poke Bowl" data-price="129 kr" data-name="Kyckling Bowl">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Kyckling Bowl
@@ -3404,6 +3985,9 @@
                         
                         <li class="menu-item" data-tags="asian japanese salad sushi under130" data-text="tempura bowl tempuraräkor med sushiris salladsmix,gurka,avokado,edamame,wakame mango,morötter,majs,picklad rödlök, ,chilimajonös,teriyakisås,rostadlök. poke bowl japanese salad sushi" data-order="20" data-category="Poke Bowl" data-price="129 kr" data-name="Tempura Bowl">
                             <div class="dish-line">
+                                
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Tempura Bowl
@@ -3424,6 +4008,11 @@
                         
                         <li class="menu-item" data-tags="salad sushi under130 veg vego" data-text="vegetarisk bowl tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  morötter,majs,picklad rödlök,chilimajonös,,sesamfrön poke bowl veg salad sushi" data-order="21" data-category="Poke Bowl" data-price="129 kr" data-name="Vegetarisk Bowl">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Vegetarisk Bowl
@@ -3454,11 +4043,12 @@
                     
                 </article>
                 
-                <article class="restaurant" id="restaurant-Uni3WorldOfFoodScraper" data-name="uni3 world of food" data-label="Uni3 World of Food" data-stale="false" data-rank="09" data-map="https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen+Göteborg" data-url="https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/">
+                <article class="restaurant" id="restaurant-Uni3WorldOfFoodScraper" data-name="uni3 world of food" data-label="Uni3 World of Food" data-stale="false" data-rank="10" data-map="https://maps.google.com/?q=Uni3+World+of+Food+Lindholmen+Göteborg" data-url="https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/">
                     <div class="card-top">
-                        <p class="index mono">09</p>
+                        <p class="index mono">10</p>
                         <div class="title-block">
                             <h2 tabindex="-1">Uni3 World of Food</h2>
+                            
                             
                         </div>
                         
@@ -3480,10 +4070,17 @@
                     </div>
                     
                     
+                    
+                    
                     <ul class="menu-list" id="dishes-Uni3WorldOfFoodScraper" lang="sv">
                         
                         <li class="menu-item" data-tags="beef chicken fish pasta" data-text="pasta pesto getost, bakade tomater, vitlöksstekta brödsmulor, pesto water: halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll fire: “chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) &#34;chicken dopiaza&#34;, baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option) metal fish chicken beef pasta" data-order="0" data-category="Metal" data-price="132 kr" data-name="Pasta pesto">
                             <div class="dish-line">
+                                
+                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="assets/dishes/placeholder.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         Pasta pesto
@@ -3518,18 +4115,32 @@
                 <button type="button" class="text-btn" id="suggest-chip" hidden></button>
             </div>
 
+            <dialog id="dish-sheet" aria-labelledby="dish-sheet-title">
+                <div class="dish-sheet-top">
+                    <img id="dish-sheet-image" alt="" width="64" height="64">
+                    <button type="button" class="icon-btn" id="dish-sheet-close" aria-label="Stäng">×</button>
+                </div>
+                <p class="dish-draft" id="dish-sheet-draft" hidden><span class="sv" lang="sv">Utkast – Jay granskar texten.</span><span class="en" lang="en">Draft – Jay is reviewing this text.</span></p>
+                <h2 id="dish-sheet-title"></h2>
+                <p id="dish-sheet-what"></p>
+                <p id="dish-sheet-typical"></p>
+                <p class="dish-disclaimer"><span class="sv" lang="sv">Generell beskrivning av rätten – inte restaurangens recept. Ingredienser kan variera. Fråga restaurangen om allergener.</span><span class="en" lang="en">General description of the dish – not the restaurant's recipe. Ingredients may vary. Ask the restaurant about allergens.</span></p>
+                <a class="text-btn" id="dish-sheet-link" href="#" target="_blank" rel="noopener noreferrer"><span class="sv" lang="sv">Restaurangens sida</span><span class="en" lang="en">Restaurant's site</span></a>
+            </dialog>
+            <script type="application/json" id="dish-info">{"bibimbap": {"image": null, "name": {"en": "Bibimbap", "sv": "Bibimbap"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "vegetables", "egg or tofu", "chilli sauce"], "sv": ["ris", "gr\u00f6nsaker", "\u00e4gg eller tofu", "chilis\u00e5s"]}, "what": {"en": "Rice with vegetables, a protein and a spicy sauce, mixed in the bowl.", "sv": "Ris med gr\u00f6nsaker, ett protein och en kryddig s\u00e5s, blandat i sk\u00e5len."}}, "fried-fish": {"image": null, "name": {"en": "Fried fish", "sv": "Stekt fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish", "butter or oil", "potato", "lemon"], "sv": ["fisk", "sm\u00f6r eller olja", "potatis", "citron"]}, "what": {"en": "Pan-fried fish, sometimes breaded, with potato or salad.", "sv": "Fisk stekt i panna, ibland panerad, med potatis eller sallad."}}, "korma": {"image": null, "name": {"en": "Korma", "sv": "Korma"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["meat or vegetables", "nuts or cream", "rice", "onion"], "sv": ["k\u00f6tt eller gr\u00f6nsaker", "n\u00f6tter eller gr\u00e4dde", "ris", "l\u00f6k"]}, "what": {"en": "A mild, nutty or creamy curry.", "sv": "En mild, n\u00f6tig eller kr\u00e4mig curry."}}, "lasagne": {"image": null, "name": {"en": "Lasagne", "sv": "Lasagne"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "tomato sauce or mince", "cheese", "b\u00e9chamel"], "sv": ["pasta", "tomats\u00e5s eller k\u00f6ttf\u00e4rs", "ost", "bechamel"]}, "what": {"en": "Pasta sheets layered with sauce and cheese, baked.", "sv": "Pastaplattor varvade med s\u00e5s och ost, gr\u00e4ddade i ugn."}}, "naan": {"image": null, "name": {"en": "Naan", "sv": "Naan"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["wheat flour", "yoghurt", "oil"], "sv": ["vetemj\u00f6l", "yoghurt", "olja"]}, "what": {"en": "A soft oven-baked bread, often served with curry.", "sv": "Ett mjukt, ugnsbakat br\u00f6d, ofta till curry."}}, "pasta-pesto": {"image": null, "name": {"en": "Pasta pesto", "sv": "Pasta pesto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["pasta", "basilika", "cheese", "oil", "nuts or seeds"], "sv": ["pasta", "basilika", "ost", "olja", "n\u00f6tter eller fr\u00f6n"]}, "what": {"en": "Pasta tossed with a green herb sauce of basil and cheese.", "sv": "Pasta v\u00e4nd med en gr\u00f6n \u00f6rts\u00e5s av basilika och ost."}}, "raita-chutney": {"image": null, "name": {"en": "Raita or chutney", "sv": "Raita eller chutney"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["yoghurt or fruit", "cucumber or chilli", "herbs"], "sv": ["yoghurt eller frukt", "gurka eller chili", "\u00f6rter"]}, "what": {"en": "A cold side: yoghurt with cucumber, or a fruit and spice sauce.", "sv": "Ett kallt tillbeh\u00f6r: yoghurt med gurka, eller en frukt- och krydds\u00e5s."}}, "risotto": {"image": null, "name": {"en": "Risotto", "sv": "Risotto"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["rice", "stock", "onion", "cheese or vegetables"], "sv": ["ris", "buljong", "l\u00f6k", "ost eller gr\u00f6nsaker"]}, "what": {"en": "Creamy short-grain rice, stirred with stock until soft.", "sv": "Kr\u00e4migt kortkornigt ris, r\u00f6rt med buljong tills det \u00e4r mjukt."}}, "salad-bowl": {"image": null, "name": {"en": "Salad bowl", "sv": "Salladsbowl"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["leaves", "vegetables", "dressing", "a protein"], "sv": ["bladgr\u00f6nt", "gr\u00f6nsaker", "dressing", "protein efter val"]}, "what": {"en": "A cold bowl of leaves and vegetables, often with a protein.", "sv": "En kall sk\u00e5l med blad, gr\u00f6nsaker och ofta ett protein."}}, "salmon": {"image": null, "name": {"en": "Salmon", "sv": "Lax"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["salmon", "potato or rice", "sauce", "lemon"], "sv": ["lax", "potatis eller ris", "s\u00e5s", "citron"]}, "what": {"en": "A salmon fillet, fried, baked or poached, with a side.", "sv": "En laxfil\u00e9, stekt, ugnsbakad eller kokt, med ett tillbeh\u00f6r."}}, "shrimp": {"image": null, "name": {"en": "Shrimp", "sv": "R\u00e4kor"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["shrimp", "lemon", "garlic or sauce"], "sv": ["r\u00e4kor", "citron", "vitl\u00f6k eller s\u00e5s"]}, "what": {"en": "Shrimp, fried or in a sauce, often with bread, rice or pasta.", "sv": "R\u00e4kor, stekta eller i s\u00e5s, ofta med br\u00f6d, ris eller pasta."}}, "steak": {"image": null, "name": {"en": "Steak", "sv": "Stek"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["beef", "potato", "sauce", "vegetables"], "sv": ["n\u00f6tk\u00f6tt", "potatis", "s\u00e5s", "gr\u00f6nsaker"]}, "what": {"en": "A whole or sliced cut of meat, fried or grilled, with sides.", "sv": "En skivad eller hel k\u00f6ttbit, stekt eller grillad, med tillbeh\u00f6r."}}, "sushi-mix": {"image": null, "name": {"en": "Sushi", "sv": "Sushi"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["sushi rice", "fish or vegetables", "nori", "soy"], "sv": ["sushiris", "fisk eller gr\u00f6nsaker", "nori", "soja"]}, "what": {"en": "Vinegared rice shaped with fish, shellfish or vegetables.", "sv": "Ris med vin\u00e4ger, formad med fisk, skaldjur eller gr\u00f6nsaker."}}, "tandoori": {"image": null, "name": {"en": "Tandoori", "sv": "Tandoori"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "yoghurt", "spices", "bread or rice"], "sv": ["kyckling eller paneer", "yoghurt", "kryddor", "br\u00f6d eller ris"]}, "what": {"en": "Marinated pieces grilled hot, often with bread or rice.", "sv": "Marinerade bitar grillade hett, ofta med br\u00f6d eller ris."}}, "thai-curry": {"image": null, "name": {"en": "Thai curry", "sv": "Thaicurry"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["coconut milk", "curry paste", "vegetables or meat", "rice"], "sv": ["kokosmj\u00f6lk", "currypasta", "gr\u00f6nsaker eller k\u00f6tt", "ris"]}, "what": {"en": "An aromatic curry with coconut, chilli and herbs, with rice.", "sv": "En aromatisk curry med kokos, chili och \u00f6rter, med ris."}}, "tikka-masala": {"image": null, "name": {"en": "Tikka masala", "sv": "Tikka masala"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["chicken or paneer", "tomato", "cream", "rice", "spices"], "sv": ["kyckling eller paneer", "tomat", "gr\u00e4dde", "ris", "kryddor"]}, "what": {"en": "Grilled pieces in a creamy, tomato curry, usually with rice.", "sv": "Grillade bitar i en kr\u00e4mig, tomatig curry, oftast med ris."}}, "white-fish": {"image": null, "name": {"en": "White fish", "sv": "Vit fisk"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["fish fillet", "potato", "sauce", "lemon", "herbs"], "sv": ["fiskfil\u00e9", "potatis", "s\u00e5s", "citron", "\u00f6rter"]}, "what": {"en": "A mild fish fillet, often cod or pollock, served with potato and a sauce.", "sv": "En mild fiskfil\u00e9, ofta torsk eller sej, serverad med potatis och en s\u00e5s."}}, "wok": {"image": null, "name": {"en": "Wok", "sv": "Wok"}, "review_status": "draft", "status": "draft", "text_reviewed_at": null, "text_reviewed_by": null, "text_source": "model-draft", "typical": {"en": ["vegetables", "noodles or rice", "sauce", "a protein"], "sv": ["gr\u00f6nsaker", "nudlar eller ris", "s\u00e5s", "protein efter val"]}, "what": {"en": "Vegetables and noodles or rice stir-fried quickly in a hot pan.", "sv": "Snabbstekta gr\u00f6nsaker och nudlar eller ris i en het panna."}}}</script>
+
             
             <details class="missing" id="missing">
                 <summary class="missing-copy">
-                    <span class="when-today"><span class="sv" lang="sv">Ingen meny hittad idag (6)</span><span class="en" lang="en">No menu found today (6)</span></span>
-                    <span class="when-weekend"><span class="sv" lang="sv">Ingen meny hittad i fredags (6)</span><span class="en" lang="en">No menu found on Friday (6)</span></span>
-                    <span class="when-otherday"><span class="sv" lang="sv">Ingen meny hittad fredag (6)</span><span class="en" lang="en">No menu found on Friday (6)</span></span>
+                    <span class="when-today"><span class="sv" lang="sv">Ingen meny hittad idag (4)</span><span class="en" lang="en">No menu found today (4)</span></span>
+                    <span class="when-weekend"><span class="sv" lang="sv">Ingen meny hittad i fredags (4)</span><span class="en" lang="en">No menu found on Friday (4)</span></span>
+                    <span class="when-otherday"><span class="sv" lang="sv">Ingen meny hittad fredag (4)</span><span class="en" lang="en">No menu found on Friday (4)</span></span>
                 </summary>
                 <ul>
                     
                     <li>
                         <span>District One</span>
-                        <a href="https://www.districtone.se/lunch.html" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="District One"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>
+                        <a href="https://www.districtone.se/" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="District One"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>
                         <a href="https://maps.google.com/?q=District+One+Lindholmen+Göteborg" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="District One"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>
                     </li>
                     
@@ -3543,18 +4154,6 @@
                         <span>LS Kitchen</span>
                         <a href="https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="LS Kitchen"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>
                         <a href="https://maps.google.com/?q=LS+Kitchen+Lindholmen+Göteborg" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="LS Kitchen"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>
-                    </li>
-                    
-                    <li>
-                        <span>Mat &amp; Minnen</span>
-                        <a href="https://matminnen.se/lunchmeny" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="Mat &amp; Minnen"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>
-                        <a href="https://maps.google.com/?q=Mat+Minnen+Lindholmen+Göteborg" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="Mat &amp; Minnen"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>
-                    </li>
-                    
-                    <li>
-                        <span>Mimolett</span>
-                        <a href="https://restaurangmimolett.se/lunch/" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="Mimolett"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>
-                        <a href="https://maps.google.com/?q=Mimolett+Lindholmen+Göteborg" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="Mimolett"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>
                     </li>
                     
                     <li>
@@ -3619,7 +4218,7 @@
     </footer>
 
     <p id="pick-live" class="visually-hidden" aria-live="polite"></p>
-    <script type="application/json" id="date-copy">{"h1_lg_today_en": "Lunch today.", "h1_lg_today_sv": "Lunch idag.", "h1_lg_weekend_en": "Friday\u0027s lunch.", "h1_lg_weekend_sv": "Fredagens lunch.", "h1_sm_today_en": "Lunch in Lindholmen today", "h1_sm_today_sv": "Lunch p\u00e5 Lindholmen idag", "h1_sm_weekend_en": "Lunch in Lindholmen last Friday", "h1_sm_weekend_sv": "Lunch p\u00e5 Lindholmen i fredags", "missing_day_en": "No menu found on Friday (6)", "missing_day_sv": "Ingen meny hittad fredag (6)", "missing_today_en": "No menu found today (6)", "missing_today_sv": "Ingen meny hittad idag (6)", "missing_weekend_en": "No menu found on Friday (6)", "missing_weekend_sv": "Ingen meny hittad i fredags (6)", "soon_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus are coming soon.", "soon_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer snart.", "weekend_en": "It\u0027s the weekend. Lunch is back on Monday.", "weekend_sv": "Helg. Lunchen \u00e4r tillbaka p\u00e5 m\u00e5ndag.", "wrong_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus arrive around 08:00.", "wrong_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer runt 08:00."}</script>
+    <script type="application/json" id="date-copy">{"h1_lg_today_en": "Lunch today.", "h1_lg_today_sv": "Lunch idag.", "h1_lg_weekend_en": "Friday\u0027s lunch.", "h1_lg_weekend_sv": "Fredagens lunch.", "h1_sm_today_en": "Lunch in Lindholmen today", "h1_sm_today_sv": "Lunch p\u00e5 Lindholmen idag", "h1_sm_weekend_en": "Lunch in Lindholmen last Friday", "h1_sm_weekend_sv": "Lunch p\u00e5 Lindholmen i fredags", "missing_day_en": "No menu found on Friday (4)", "missing_day_sv": "Ingen meny hittad fredag (4)", "missing_today_en": "No menu found today (4)", "missing_today_sv": "Ingen meny hittad idag (4)", "missing_weekend_en": "No menu found on Friday (4)", "missing_weekend_sv": "Ingen meny hittad i fredags (4)", "soon_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus are coming soon.", "soon_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer snart.", "weekend_en": "It\u0027s the weekend. Lunch is back on Monday.", "weekend_sv": "Helg. Lunchen \u00e4r tillbaka p\u00e5 m\u00e5ndag.", "wrong_en": "This is Friday 13 Nov\u0027s menu. Today\u0027s menus arrive around 08:00.", "wrong_sv": "Det h\u00e4r \u00e4r menyn fr\u00e5n fredag 13 nov. Dagens menyer kommer runt 08:00."}</script>
     <!-- [CONFIRM: analytics processor] Leave data-endpoint empty until an EU-hosted cookieless collector is chosen. No request is sent before that. -->
     <script src="assets/analytics.js" defer data-endpoint="" data-site=""></script>
     <script>
@@ -3661,6 +4260,12 @@
                 if (bar) document.documentElement.style.setProperty("--toolbar-h", bar.offsetHeight + "px");
                 var close = document.getElementById("pick-close");
                 if (close) close.setAttribute("aria-label", sv ? close.dataset.labelSv : close.dataset.labelEn);
+                var dishLabel = sv ? "Vad är det?" : "What is it?";
+                document.querySelectorAll(".dish-thumb").forEach(function (button) {
+                    button.setAttribute("aria-label", dishLabel);
+                });
+                var sheetClose = document.getElementById("dish-sheet-close");
+                if (sheetClose) sheetClose.setAttribute("aria-label", sv ? "Stäng" : "Close");
             }
             function setLang(lang, fromUser) {
                 document.documentElement.lang = lang;
@@ -3670,6 +4275,7 @@
                 applyFilters();
                 var card = document.getElementById("pick-card");
                 if (currentPick && card && !card.hidden) renderCard(currentPick);
+                if (typeof renderDishSheet === "function") renderDishSheet();
                 if (fromUser) track("lang_switch", { lang: lang });
             }
 
@@ -3681,7 +4287,7 @@
                 var state = window.lunchDateState
                     ? window.lunchDateState(root.dataset.menuDate || "", now)
                     : null;
-                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open");
+                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open", "is-holiday");
                 if (state === "weekend") {
                     root.classList.add("is-weekend");
                     if (opened) root.classList.add("is-weekend-open");
@@ -3690,6 +4296,7 @@
                 } else if (state === "wrong") {
                     root.classList.add("is-wrong-day");
                 }
+                if (window.lunchIsHoliday && window.lunchIsHoliday(now)) root.classList.add("is-holiday");
                 if (reveal) reveal.setAttribute("aria-expanded", state === "weekend" && opened ? "true" : "false");
                 syncDock();
             }
@@ -4198,6 +4805,60 @@
                 });
                 observer.observe(sentinel);
             }
+            var dishInfo = {};
+            var dishTrigger = null;
+            try {
+                dishInfo = JSON.parse((document.getElementById("dish-info") || {}).textContent || "{}");
+            } catch (e) {}
+            function renderDishSheet() {
+                var dialog = document.getElementById("dish-sheet");
+                if (!dialog || !dialog.open || !dialog.dataset.slug) return;
+                var entry = dishInfo[dialog.dataset.slug] || {};
+                var lang = document.documentElement.lang === "sv" ? "sv" : "en";
+                var title = document.getElementById("dish-sheet-title");
+                var what = document.getElementById("dish-sheet-what");
+                var typical = document.getElementById("dish-sheet-typical");
+                if (title) title.textContent = (entry.name || {})[lang] || "";
+                if (what) what.textContent = (entry.what || {})[lang] || "";
+                var items = (entry.typical || {})[lang] || [];
+                if (typical) typical.textContent = items.length ? (lang === "sv" ? "Typiskt: " : "Typical: ") + items.join(", ") : "";
+                var draft = document.getElementById("dish-sheet-draft");
+                if (draft) draft.hidden = (entry.review_status || entry.status) !== "draft";
+                var image = document.getElementById("dish-sheet-image");
+                if (image && dialog.dataset.image) image.src = dialog.dataset.image;
+            }
+            window.renderDishSheet = renderDishSheet;
+            document.addEventListener("click", function (event) {
+                var button = event.target.closest ? event.target.closest(".dish-thumb") : null;
+                if (button) {
+                    var dialog = document.getElementById("dish-sheet");
+                    if (!dialog || !dialog.showModal) return;
+                    dishTrigger = button;
+                    dialog.dataset.slug = button.getAttribute("data-dish") || "";
+                    var picture = button.querySelector("img");
+                    dialog.dataset.image = picture ? picture.getAttribute("src") : "assets/dishes/placeholder.svg";
+                    var article = button.closest("article");
+                    var link = document.getElementById("dish-sheet-link");
+                    var url = article ? article.getAttribute("data-url") : "";
+                    if (link) {
+                        link.href = url || "#";
+                        link.hidden = !url;
+                    }
+                    dialog.showModal();
+                    renderDishSheet();
+                    var close = document.getElementById("dish-sheet-close");
+                    if (close) close.focus();
+                    return;
+                }
+                if (event.target && event.target.id === "dish-sheet-close") {
+                    var openDialog = document.getElementById("dish-sheet");
+                    if (openDialog && openDialog.open) openDialog.close();
+                }
+            });
+            var dishDialog = document.getElementById("dish-sheet");
+            if (dishDialog) dishDialog.addEventListener("close", function () {
+                if (dishTrigger && dishTrigger.focus) dishTrigger.focus();
+            });
             syncChrome();
             applyDateState();
             applyFilters();

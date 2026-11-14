@@ -27,7 +27,10 @@ from scrapers.encounter_asian import EncounterAsianScraper
 from scrapers.masala import MasalaScraper
 from scrapers.restaurant_pier_11 import RestaurantPier11Scraper
 from utils.utils import get_today_english
+from utils.sources import is_inactive, is_link_only, load_sources, week_marker_required
+from utils.week_guard import accept_menu
 from generate_html import generate_index_page
+from scrapers.base import RobotsDisallowed
 
 logging.basicConfig(level=logging.INFO)
 
@@ -56,8 +59,11 @@ WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
 
 
+_CLOSED_WORDS = ("stängt", "stangt", "closed", "nationaldag", "midsommar")
+
+
 def _menu_payload(menu) -> dict:
-    return {
+    payload = {
         "day": menu.day,
         "items": [
             {
@@ -70,6 +76,29 @@ def _menu_payload(menu) -> dict:
         ],
         "stale": False,
     }
+    source_week = getattr(menu, "source_week", None)
+    if source_week is not None:
+        payload["source_week"] = source_week
+    return payload
+
+
+def _menu_is_closed(payload: dict) -> bool:
+    texts = []
+    for item in payload.get("items") or []:
+        texts.append(f"{item.get('name') or ''} {item.get('description') or ''}".lower())
+    if not texts:
+        return False
+    return all(any(word in text for word in _CLOSED_WORDS) for text in texts)
+
+
+def active_scraper_classes(scrapers=None):
+    sources = load_sources()
+    chosen = scrapers if scrapers is not None else SCRAPERS
+    return [
+        scraper
+        for scraper in chosen
+        if not is_inactive(scraper.__name__, sources) and not is_link_only(scraper.__name__, sources)
+    ]
 
 
 def _load_previous(filepath: str) -> dict:
@@ -130,17 +159,23 @@ def _scrape_one(scraper_cls, day: str, cache: dict | None):
             if all_menus:
                 cache[scraper_cls.__name__] = scraper
 
+    def _with_week(menu):
+        payload = _menu_payload(menu)
+        if payload.get("source_week") is None and getattr(scraper, "source_week", None) is not None:
+            payload["source_week"] = scraper.source_week
+        return payload
+
     all_menus = scraper.get_all_menus() if hasattr(scraper, "get_all_menus") else None
     if all_menus:
         menu = all_menus.get(day.lower())
         if not menu or not getattr(menu, "items", None):
             return None
-        return _menu_payload(menu)
+        return _with_week(menu)
 
     menu = scraper.get_menu_for_day(day)
     if not menu or not getattr(menu, "items", None):
         return None
-    return _menu_payload(menu)
+    return _with_week(menu)
 
 
 def _failure_reason(exc: BaseException) -> str:
@@ -166,24 +201,45 @@ def scrape_for_day(
     now: datetime | None = None,
     max_retries: int = 2,
     sleeper=time.sleep,
+    gaps_only: bool = False,
 ) -> dict:
     logging.info("Scraping lunch menus for %s", day.capitalize())
     now = now or datetime.now(STOCKHOLM)
-    scrapers = scrapers if scrapers is not None else SCRAPERS
+    sources = load_sources()
+    scrapers = active_scraper_classes(scrapers)
+    gaps_only = bool(gaps_only)
 
     os.makedirs(data_dir, exist_ok=True)
     filepath = os.path.join(data_dir, f"lunch_data_{day}.json")
     meta_path = os.path.join(data_dir, f"scrape_meta_{day}.json")
-    if os.path.exists(filepath) and not refresh:
+    if os.path.exists(filepath) and not refresh and not gaps_only:
         logging.info("Skipping scraping for %s (cached file exists).", day)
         return _load_previous(meta_path)
 
     previous = _load_previous(filepath)
     previous_meta = _load_previous(meta_path)
     same_day = _same_stockholm_date(previous_meta.get("scraped_at"), now)
+    if gaps_only and not previous and not previous_meta:
+        logging.info("No earlier scrape to fill. Leaving %s untouched.", day)
+        return {}
+    if gaps_only:
+        retry_names = set(previous_meta.get("missing") or [])
+        retry_names.update(previous_meta.get("stale") or [])
+        retry_names.update(previous_meta.get("wrong_week") or [])
+        scrapers = [scraper for scraper in scrapers if scraper.__name__ in retry_names]
+        logging.info("Gap fill for %s: %s", day, ", ".join(scraper.__name__ for scraper in scrapers) or "nothing")
     results = {}
-    ok, stale_kept, failed = [], [], []
+    ok, stale_kept, failed, wrong, closed_names = [], [], [], [], []
     missing_reason = {}
+    if gaps_only:
+        kept = set(scraper.__name__ for scraper in scrapers)
+        for name, payload in previous.items():
+            if name in kept or not isinstance(payload, dict):
+                continue
+            results[name] = payload
+        for name in previous_meta.get("fresh") or []:
+            if name not in kept:
+                ok.append(name)
 
     for scraper_cls in scrapers:
         name = scraper_cls.__name__
@@ -195,6 +251,10 @@ def scrape_for_day(
             try:
                 got = _scrape_one(scraper_cls, day, cache)
                 last_reason = None
+                break
+            except RobotsDisallowed as e:
+                last_reason = "blocked"
+                logging.warning("[%s] robots.txt disallows %s", name, e)
                 break
             except Exception as e:
                 last_reason = _failure_reason(e)
@@ -209,17 +269,38 @@ def scrape_for_day(
                     sleeper(delay)
 
         if got and got.get("items"):
-            got["stale"] = False
-            got["fetched_at"] = now.isoformat(timespec="minutes")
-            results[name] = got
-            ok.append(name)
-            continue
+            verdict = accept_menu(
+                got.get("source_week"),
+                day=day,
+                now=now,
+                week_marker_required=week_marker_required(name, sources),
+            )
+            if verdict == "wrong_week":
+                got = None
+                last_reason = "wrong_week"
+            elif _menu_is_closed(got):
+                got["stale"] = False
+                got["closed"] = True
+                got["fetched_at"] = now.isoformat(timespec="minutes")
+                results[name] = got
+                closed_names.append(name)
+                continue
+            else:
+                got["stale"] = False
+                got["fetched_at"] = now.isoformat(timespec="minutes")
+                results[name] = got
+                ok.append(name)
+                continue
 
         prev = previous.get(name)
-        if same_day and isinstance(prev, dict) and prev.get("items"):
+        if same_day and isinstance(prev, dict) and prev.get("items") and last_reason != "wrong_week":
             results[name] = _carried_payload(prev, day, previous_meta)
             stale_kept.append(name)
             logging.warning("[%s] No fresh menu; keeping same-day data as stale.", name)
+        elif last_reason == "wrong_week":
+            wrong.append(name)
+            missing_reason[name] = "wrong_week"
+            logging.warning("[%s] Week does not match %s. Not showing it.", name, day)
         else:
             failed.append(name)
             missing_reason[name] = last_reason or "empty"
@@ -241,6 +322,8 @@ def scrape_for_day(
         "fresh": ok,
         "stale": stale_kept,
         "missing": failed,
+        "wrong_week": wrong,
+        "closed": closed_names,
         "missing_reason": missing_reason,
     }
 
@@ -257,6 +340,11 @@ def main() -> str | None:
     parser.add_argument("--day", type=str, help="Weekday to scrape (e.g., monday)", choices=WEEKDAYS)
     parser.add_argument("--all", action="store_true", help="Scrape all weekdays (mon–fri)")
     parser.add_argument("--refresh", action="store_true", help="Force re-scraping even if data exists")
+    parser.add_argument(
+        "--gaps-only",
+        action="store_true",
+        help="Re-scrape only restaurants that are missing, stale or the wrong week",
+    )
 
     args = parser.parse_args()
 
@@ -271,7 +359,7 @@ def main() -> str | None:
     if day not in WEEKDAYS:
         logging.info("No weekday scrape for %s.", day)
         return None
-    scrape_for_day(day, refresh=args.refresh)
+    scrape_for_day(day, refresh=args.refresh or args.gaps_only, gaps_only=args.gaps_only, max_retries=1 if args.gaps_only else 2)
     return day
 
 

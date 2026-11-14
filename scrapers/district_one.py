@@ -9,7 +9,7 @@ from urllib.parse import urljoin
 
 import requests
 
-from scrapers.base import DailyMenu, LunchScraper, MenuItem, fetch_html
+from scrapers.base import DailyMenu, LunchScraper, MenuItem, fetch_html, find_week
 
 logger = logging.getLogger(__name__)
 
@@ -146,6 +146,9 @@ class DistrictOneScraper(LunchScraper):
     def parse(self, html: str) -> None:
         soup = BeautifulSoup(html, "html.parser")
         price = self._price(soup)
+        label = soup.select_one("#lunch .section-label")
+        week_text = label.get_text(" ", strip=True) if label else ""
+        self.source_week = find_week(week_text)
         all_week = self._items(soup.select_one("#lunch-all"), price)
         self._menus = {}
         for key, eng, selector in _DAY_ROWS:
@@ -153,7 +156,7 @@ class DistrictOneScraper(LunchScraper):
                 continue
             items = self._items(soup.select_one(selector), price) + list(all_week)
             if items:
-                self._menus[eng] = DailyMenu(day=eng, items=items)
+                self._menus[eng] = DailyMenu(day=eng, items=items, source_week=self.source_week)
 
     @staticmethod
     def _items(node, price: str) -> list:

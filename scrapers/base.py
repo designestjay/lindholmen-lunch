@@ -1,24 +1,66 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Optional
 import os
+import re
+import time
+from typing import Dict, List, Optional
+from urllib.parse import urlparse
+from urllib.robotparser import RobotFileParser
 
 import requests
 
-_DESKTOP_UA = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/122.0.0.0 Safari/537.36"
-)
+BOT_UA = "LindholmenLunchBot/1.0 (+https://iamjaydesign.com/lindholmen-lunch/)"
 
 _session = requests.Session()
 _session.headers.update({
-    "User-Agent": _DESKTOP_UA,
+    "User-Agent": BOT_UA,
     "Accept-Language": "sv-SE,sv;q=0.9",
 })
 
+_robots_cache: dict[str, RobotFileParser] = {}
+_delayed_hosts: set[str] = set()
+_WEEK_RE = re.compile(r"(?<![a-zåäö])(?:vecka|v)\.?\s*(\d{1,2})\b", re.IGNORECASE)
+
+
+class RobotsDisallowed(Exception):
+    """The site's robots.txt disallows this URL for our bot."""
+
+
+def find_week(text: str) -> int | None:
+    match = _WEEK_RE.search(text or "")
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def _robots_for(url: str) -> RobotFileParser:
+    parsed = urlparse(url)
+    origin = f"{parsed.scheme}://{parsed.netloc}"
+    cached = _robots_cache.get(origin)
+    if cached is not None:
+        return cached
+    parser = RobotFileParser()
+    try:
+        response = _session.get(origin + "/robots.txt", timeout=(3, 8))
+        if response.status_code >= 400:
+            parser.parse([])
+        else:
+            parser.parse(response.text.splitlines())
+    except requests.RequestException:
+        parser.parse([])
+    _robots_cache[origin] = parser
+    return parser
+
 
 def fetch_html(url, *, timeout=(5, 20), headers=None) -> str:
-    """GET a page with a shared session. Raises on timeout and HTTP errors."""
+    """GET a page with a shared session. Raises on timeout, HTTP errors and robots.txt."""
+    parser = _robots_for(url)
+    if not parser.can_fetch(BOT_UA, url):
+        raise RobotsDisallowed(url)
+    delay = parser.crawl_delay(BOT_UA) or parser.crawl_delay("*")
+    host = urlparse(url).netloc
+    if delay and host not in _delayed_hosts:
+        time.sleep(min(float(delay), 30))
+        _delayed_hosts.add(host)
     kwargs = {"timeout": timeout}
     if headers:
         kwargs["headers"] = headers
@@ -123,9 +165,10 @@ class MenuItem:
         }
 
 class DailyMenu:
-    def __init__(self, day: str, items: List[MenuItem]):
+    def __init__(self, day: str, items: List[MenuItem], source_week: int | None = None):
         self.day = day.lower()  # e.g. "monday", "tuesday"
         self.items = items
+        self.source_week = source_week
 
     def __repr__(self):
         return f"DailyMenu(day={self.day!r}, items={self.items!r})"

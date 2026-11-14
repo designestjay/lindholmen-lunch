@@ -8,6 +8,8 @@ on:
     - cron: '7 5 * * 1-5'
     - cron: '37 6 * * 1-5'
     - cron: '7 8 * * 1-5'
+    # Gap fill only: retries restaurants that are still missing, stale or the wrong week.
+    - cron: '37 9 * * 1-5'
   push:
     branches: [ main ]
   workflow_dispatch:
@@ -78,6 +80,10 @@ jobs:
         fi
         echo "skipped=false" >> "$GITHUB_OUTPUT"
         echo "Scraping data for: $DAY"
+        if [ "${{ github.event.schedule }}" = "37 9 * * 1-5" ]; then
+          echo "Gap fill: retry missing, stale and wrong-week restaurants only."
+          python main.py --day "$DAY" --gaps-only
+        else
         for attempt in 1 2 3; do
           echo "Attempt $attempt of 3..."
           if python main.py --day "$DAY" --refresh; then
@@ -99,6 +105,7 @@ jobs:
             fi
           fi
         done
+        fi
 
     - name: Generate fresh HTML page
       run: |
@@ -122,6 +129,61 @@ jobs:
         LUNCH_SCHEDULE: ${{ github.event.schedule }}
         LUNCH_STARTED_AT: ${{ env.LUNCH_STARTED_AT }}
       run: python -m utils.scrape_health
+
+    - name: Plan scraper issues
+      if: steps.scrape.outputs.skipped != 'true'
+      run: python -m utils.scraper_issues --day "${{ steps.get-day.outputs.day }}"
+
+    - name: Apply scraper issues
+      if: steps.scrape.outputs.skipped != 'true'
+      continue-on-error: true
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require("fs");
+          const path = "data/issue_actions.json";
+          if (!fs.existsSync(path)) return;
+          const actions = JSON.parse(fs.readFileSync(path, "utf8"));
+          const { owner, repo } = context.repo;
+          try {
+            await github.rest.issues.createLabel({
+              owner, repo, name: "scraper", color: "111111", description: "A restaurant scraper needs a look",
+            });
+          } catch (error) {
+            if (error.status !== 422) throw error;
+          }
+          const openIssues = await github.paginate(github.rest.issues.listForRepo, {
+            owner, repo, state: "open", per_page: 100,
+          });
+          async function findIssue(title, state) {
+            if (state === "open") return openIssues.find((issue) => issue.title === title);
+            const closed = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: "closed", per_page: 100,
+            });
+            return closed.find((issue) => issue.title === title);
+          }
+          for (const item of actions.open || []) {
+            const existing = await findIssue(item.title, "open");
+            if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: item.body });
+            } else {
+              await github.rest.issues.create({
+                owner, repo, title: item.title, body: item.body, labels: ["scraper"],
+              });
+            }
+          }
+          for (const item of actions.comment || []) {
+            const existing = await findIssue(item.title, "open");
+            if (existing) {
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: item.body });
+            }
+          }
+          for (const item of actions.close || []) {
+            const existing = await findIssue(item.title, "open");
+            if (!existing) continue;
+            await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: item.body });
+            await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: "closed" });
+          }
 
     - name: Open or update health issue
       if: steps.health.outputs.open_issue == 'true'

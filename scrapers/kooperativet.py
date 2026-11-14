@@ -2,7 +2,7 @@
 
 from bs4 import BeautifulSoup
 from typing import Dict, Optional
-from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html, find_week
 
 class KooperativetScraper(LunchScraper):
     URL = "https://www.kooperativet.se/"
@@ -14,6 +14,7 @@ class KooperativetScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
+        self.source_week = find_week(self.soup.get_text(" "))
         for day in ["monday", "tuesday", "wednesday", "thursday", "friday"]:
             section = self.soup.find("div", {"id": day})
             if not section:

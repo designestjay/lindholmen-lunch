@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-menu-date="{{ menu_date }}" data-fresh="{{ fresh_count }}" data-total="{{ total_restaurants }}">
+<html lang="en" data-menu-date="{{ menu_date }}" data-fresh="{{ fresh_count }}" data-total="{{ total_restaurants }}" data-holidays="{{ holiday_dates }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -65,13 +65,19 @@
                 var asof = params.get("asof");
                 return asof ? zonedTime(asof) : new Date();
             }
+            var holidayList = (document.documentElement.dataset.holidays || "").split(",");
+            window.lunchIsHoliday = function (now) {
+                return holidayList.indexOf(ymdStockholm(now)) !== -1;
+            };
             window.lunchDateState = bannerState;
             window.lunchNow = lunchNow;
-            var state = bannerState(document.documentElement.dataset.menuDate || "", lunchNow());
+            var now = lunchNow();
+            var state = bannerState(document.documentElement.dataset.menuDate || "", now);
             var root = document.documentElement;
             if (state === "weekend") root.classList.add("is-weekend");
             else if (state === "soon") root.classList.add("is-soon");
             else if (state === "wrong") root.classList.add("is-wrong-day");
+            if (window.lunchIsHoliday(now)) root.classList.add("is-holiday");
         })();
     </script>
     <meta name="theme-color" content="#f2f2f0">
@@ -489,6 +495,8 @@
             padding: 18px;
             min-width: 0;
             scroll-margin-top: calc(var(--header-block) + var(--toolbar-h) + 8px);
+            content-visibility: auto;
+            contain-intrinsic-size: auto 480px;
         }
         .restaurant.is-pick { outline: 2px solid var(--accent); outline-offset: 0; }
         .card-top { display: flex; gap: var(--gap-2); align-items: flex-start; min-width: 0; }
@@ -581,6 +589,55 @@
             text-align: right;
             white-space: normal;
             overflow-wrap: anywhere;
+        }
+        .dish-thumb, .dish-slot {
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+        }
+        .dish-thumb {
+            margin: 0;
+            padding: 4px;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+        .dish-thumb img {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+        @media (max-width: 399px) {
+            .dish-thumb img { width: 32px; height: 32px; }
+        }
+        #dish-sheet {
+            border: 0;
+            padding: 24px;
+            max-width: 420px;
+            width: calc(100% - 32px);
+            background: var(--bg, #f2f2f0);
+            color: #111;
+            box-shadow: 0 6px 20px rgb(0 0 0 / .18);
+        }
+        #dish-sheet::backdrop { background: rgb(17 17 17 / .28); }
+        #dish-sheet h2 { margin: 12px 0 8px; font-size: 28px; letter-spacing: -0.03em; }
+        #dish-sheet p { margin: 0 0 12px; }
+        .dish-disclaimer { color: #5c5c5c; font-size: 13px; }
+        .dish-draft { font-size: 13px; }
+        .dish-sheet-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        #dish-sheet-image { width: 64px; height: 64px; }
+        @media (max-width: 820px) {
+            #dish-sheet {
+                margin: auto 0 0 0;
+                max-width: none;
+                width: 100%;
+                max-height: 85vh;
+                border-radius: 16px 16px 0 0;
+                padding-bottom: calc(24px + env(safe-area-inset-bottom));
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #dish-sheet { transition: none; animation: none; }
         }
         .price-note {
             margin: 4px 0 0;
@@ -685,10 +742,20 @@
         .day-banner { display: none; }
         html.is-weekend .day-banner,
         html.is-soon .day-banner,
-        html.is-wrong-day .day-banner { display: block; }
+        html.is-wrong-day .day-banner,
+        html.is-holiday .day-banner { display: block; }
+        html.is-holiday .restaurant-list { opacity: 0.85; }
+        html.is-holiday .day-banner .when-weekend,
+        html.is-holiday .day-banner .when-soon,
+        html.is-holiday .day-banner .when-wrong { display: none; }
+        html.is-holiday .day-banner .when-holiday { display: inline; }
         html.is-weekend .day-banner .when-weekend,
         html.is-soon .day-banner .when-soon,
         html.is-wrong-day .day-banner .when-wrong { display: inline; }
+        html.is-holiday .day-banner .when-weekend,
+        html.is-holiday .day-banner .when-soon,
+        html.is-holiday .day-banner .when-wrong { display: none; }
+        html.is-holiday .day-banner .when-holiday { display: inline; }
         .weekend-reveal { display: none; }
         html.is-weekend .weekend-reveal { display: inline-flex; align-items: center; }
 
@@ -961,6 +1028,7 @@
                     <span class="when-weekend"><span class="sv" lang="sv">{{ date_copy.weekend_sv }}</span><span class="en" lang="en">{{ date_copy.weekend_en }}</span></span>
                     <span class="when-soon"><span class="sv" lang="sv">{{ date_copy.soon_sv }}</span><span class="en" lang="en">{{ date_copy.soon_en }}</span></span>
                     <span class="when-wrong"><span class="sv" lang="sv">{{ date_copy.wrong_sv }}</span><span class="en" lang="en">{{ date_copy.wrong_en }}</span></span>
+                    <span class="when-holiday"><span class="sv" lang="sv">Stängt idag.</span><span class="en" lang="en">Closed today.</span></span>
                 </div>
                 <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" aria-expanded="false" aria-controls="menus">
                     <span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span>
@@ -1016,6 +1084,9 @@
                             {% if r.stale and r.stale_short_sv %}
                             <div><span class="stale-pill"><span class="sv" lang="sv">Meny från {{ r.stale_short_sv }}</span><span class="en" lang="en">Menu from {{ r.stale_short_en }}</span></span></div>
                             {% endif %}
+                            {% if r.rotating %}
+                            <div><span class="stale-pill"><span class="sv" lang="sv">Roterande meny</span><span class="en" lang="en">Rotating menu</span></span></div>
+                            {% endif %}
                         </div>
                         {% if r.links.url or r.links.map %}
                         <div class="card-links">
@@ -1037,11 +1108,24 @@
                     {% if r.stale %}
                     <p class="stale-note"><span class="sv" lang="sv">Kunde inte hämta dagens meny. Kolla restaurangens sida.</span><span class="en" lang="en">Couldn't fetch today's menu. Check the restaurant's site.</span></p>
                     {% endif %}
-                    {% if r.dishes %}
+                    {% if r.link_only %}
+                    <p class="stale-note"><span class="sv" lang="sv">Menyn finns på restaurangens sida</span><span class="en" lang="en">The menu is on the restaurant's site</span></p>
+                    {% endif %}
+                    {% if r.closed %}
+                    <p class="stale-note"><span class="sv" lang="sv">Stängt idag</span><span class="en" lang="en">Closed today</span></p>
+                    {% endif %}
+                    {% if r.dishes and not r.closed %}
                     <ul class="menu-list" id="dishes-{{ r.id }}" lang="sv">
                         {% for item in r.dishes %}
                         <li class="menu-item" data-tags="{{ item.filter_tokens }}" data-text="{{ item.search_text }}" data-order="{{ loop.index0 }}" data-category="{{ item.category }}" data-price="{{ item.price }}" data-name="{{ item.name }}">
                             <div class="dish-line">
+                                {% if item.dish_sheet %}
+                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <img src="{{ item.dish_image }}" alt="" width="36" height="36" loading="lazy" decoding="async">
+                                </button>
+                                {% else %}
+                                <span class="dish-slot" aria-hidden="true"></span>
+                                {% endif %}
                                 <div class="dish-main">
                                     <div class="dish-name">
                                         {% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}
@@ -1078,6 +1162,20 @@
                 <button type="button" class="text-btn" id="clear-empty"><span class="sv" lang="sv">Rensa filter</span><span class="en" lang="en">Clear filters</span></button>
                 <button type="button" class="text-btn" id="suggest-chip" hidden></button>
             </div>
+
+            <dialog id="dish-sheet" aria-labelledby="dish-sheet-title">
+                <div class="dish-sheet-top">
+                    <img id="dish-sheet-image" alt="" width="64" height="64">
+                    <button type="button" class="icon-btn" id="dish-sheet-close" aria-label="Stäng">×</button>
+                </div>
+                <p class="dish-draft" id="dish-sheet-draft" hidden><span class="sv" lang="sv">Utkast – Jay granskar texten.</span><span class="en" lang="en">Draft – Jay is reviewing this text.</span></p>
+                <h2 id="dish-sheet-title"></h2>
+                <p id="dish-sheet-what"></p>
+                <p id="dish-sheet-typical"></p>
+                <p class="dish-disclaimer"><span class="sv" lang="sv">Generell beskrivning av rätten – inte restaurangens recept. Ingredienser kan variera. Fråga restaurangen om allergener.</span><span class="en" lang="en">General description of the dish – not the restaurant's recipe. Ingredients may vary. Ask the restaurant about allergens.</span></p>
+                <a class="text-btn" id="dish-sheet-link" href="#" target="_blank" rel="noopener noreferrer"><span class="sv" lang="sv">Restaurangens sida</span><span class="en" lang="en">Restaurant's site</span></a>
+            </dialog>
+            <script type="application/json" id="dish-info">{{ dish_info | tojson }}</script>
 
             {% if missing_restaurants %}
             <details class="missing" id="missing">
@@ -1206,6 +1304,12 @@
                 if (bar) document.documentElement.style.setProperty("--toolbar-h", bar.offsetHeight + "px");
                 var close = document.getElementById("pick-close");
                 if (close) close.setAttribute("aria-label", sv ? close.dataset.labelSv : close.dataset.labelEn);
+                var dishLabel = sv ? "Vad är det?" : "What is it?";
+                document.querySelectorAll(".dish-thumb").forEach(function (button) {
+                    button.setAttribute("aria-label", dishLabel);
+                });
+                var sheetClose = document.getElementById("dish-sheet-close");
+                if (sheetClose) sheetClose.setAttribute("aria-label", sv ? "Stäng" : "Close");
             }
             function setLang(lang, fromUser) {
                 document.documentElement.lang = lang;
@@ -1215,6 +1319,7 @@
                 applyFilters();
                 var card = document.getElementById("pick-card");
                 if (currentPick && card && !card.hidden) renderCard(currentPick);
+                if (typeof renderDishSheet === "function") renderDishSheet();
                 if (fromUser) track("lang_switch", { lang: lang });
             }
 
@@ -1226,7 +1331,7 @@
                 var state = window.lunchDateState
                     ? window.lunchDateState(root.dataset.menuDate || "", now)
                     : null;
-                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open");
+                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open", "is-holiday");
                 if (state === "weekend") {
                     root.classList.add("is-weekend");
                     if (opened) root.classList.add("is-weekend-open");
@@ -1235,6 +1340,7 @@
                 } else if (state === "wrong") {
                     root.classList.add("is-wrong-day");
                 }
+                if (window.lunchIsHoliday && window.lunchIsHoliday(now)) root.classList.add("is-holiday");
                 if (reveal) reveal.setAttribute("aria-expanded", state === "weekend" && opened ? "true" : "false");
                 syncDock();
             }
@@ -1743,6 +1849,60 @@
                 });
                 observer.observe(sentinel);
             }
+            var dishInfo = {};
+            var dishTrigger = null;
+            try {
+                dishInfo = JSON.parse((document.getElementById("dish-info") || {}).textContent || "{}");
+            } catch (e) {}
+            function renderDishSheet() {
+                var dialog = document.getElementById("dish-sheet");
+                if (!dialog || !dialog.open || !dialog.dataset.slug) return;
+                var entry = dishInfo[dialog.dataset.slug] || {};
+                var lang = document.documentElement.lang === "sv" ? "sv" : "en";
+                var title = document.getElementById("dish-sheet-title");
+                var what = document.getElementById("dish-sheet-what");
+                var typical = document.getElementById("dish-sheet-typical");
+                if (title) title.textContent = (entry.name || {})[lang] || "";
+                if (what) what.textContent = (entry.what || {})[lang] || "";
+                var items = (entry.typical || {})[lang] || [];
+                if (typical) typical.textContent = items.length ? (lang === "sv" ? "Typiskt: " : "Typical: ") + items.join(", ") : "";
+                var draft = document.getElementById("dish-sheet-draft");
+                if (draft) draft.hidden = (entry.review_status || entry.status) !== "draft";
+                var image = document.getElementById("dish-sheet-image");
+                if (image && dialog.dataset.image) image.src = dialog.dataset.image;
+            }
+            window.renderDishSheet = renderDishSheet;
+            document.addEventListener("click", function (event) {
+                var button = event.target.closest ? event.target.closest(".dish-thumb") : null;
+                if (button) {
+                    var dialog = document.getElementById("dish-sheet");
+                    if (!dialog || !dialog.showModal) return;
+                    dishTrigger = button;
+                    dialog.dataset.slug = button.getAttribute("data-dish") || "";
+                    var picture = button.querySelector("img");
+                    dialog.dataset.image = picture ? picture.getAttribute("src") : "assets/dishes/placeholder.svg";
+                    var article = button.closest("article");
+                    var link = document.getElementById("dish-sheet-link");
+                    var url = article ? article.getAttribute("data-url") : "";
+                    if (link) {
+                        link.href = url || "#";
+                        link.hidden = !url;
+                    }
+                    dialog.showModal();
+                    renderDishSheet();
+                    var close = document.getElementById("dish-sheet-close");
+                    if (close) close.focus();
+                    return;
+                }
+                if (event.target && event.target.id === "dish-sheet-close") {
+                    var openDialog = document.getElementById("dish-sheet");
+                    if (openDialog && openDialog.open) openDialog.close();
+                }
+            });
+            var dishDialog = document.getElementById("dish-sheet");
+            if (dishDialog) dishDialog.addEventListener("close", function () {
+                if (dishTrigger && dishTrigger.focus) dishTrigger.focus();
+            });
             syncChrome();
             applyDateState();
             applyFilters();

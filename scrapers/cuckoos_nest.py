@@ -2,7 +2,7 @@
 
 from bs4 import BeautifulSoup
 import logging
-from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html, find_week
 from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
@@ -16,6 +16,7 @@ class CuckoosNestScraper(LunchScraper):
 
     def fetch(self):
         soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
+        self.source_week = find_week(soup.get_text(" "))
 
         left_column = soup.select_one("div.content-region")
         if not left_column:
