@@ -1,9 +1,8 @@
 # lindholmen_lunch/scrapers/cuckoos_nest.py
 
 from bs4 import BeautifulSoup
-import requests
 import logging
-from scrapers.base import LunchScraper, DailyMenu, MenuItem
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
 from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
@@ -16,9 +15,7 @@ class CuckoosNestScraper(LunchScraper):
         self.fetch()
 
     def fetch(self):
-        response = requests.get(self.URL)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
 
         left_column = soup.select_one("div.content-region")
         if not left_column:

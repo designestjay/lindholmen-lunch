@@ -2,6 +2,30 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
 import os
 
+import requests
+
+_DESKTOP_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/122.0.0.0 Safari/537.36"
+)
+
+_session = requests.Session()
+_session.headers.update({
+    "User-Agent": _DESKTOP_UA,
+    "Accept-Language": "sv-SE,sv;q=0.9",
+})
+
+
+def fetch_html(url, *, timeout=(5, 20), headers=None) -> str:
+    """GET a page with a shared session. Raises on timeout and HTTP errors."""
+    kwargs = {"timeout": timeout}
+    if headers:
+        kwargs["headers"] = headers
+    response = _session.get(url, **kwargs)
+    response.raise_for_status()
+    return response.text
+
 def get_chrome_options(enable_javascript=True, load_images=False):
     """
     Get optimal Chrome options for CI/headless environments.

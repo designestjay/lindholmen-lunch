@@ -2,10 +2,9 @@
 
 import re
 from typing import Dict, Optional
-import requests
 import logging
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, DailyMenu, MenuItem
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
 
 logger = logging.getLogger(__name__)
 
@@ -14,9 +13,7 @@ class MatMinnenScraper(LunchScraper):
     _PRICE = "125 kr"
 
     def __init__(self):
-        response = requests.get(self.URL)
-        response.raise_for_status()
-        self.soup = BeautifulSoup(response.text, "html.parser")
+        self.soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
         self._menus: Dict[str, DailyMenu] = {}
         self.fetch()
 

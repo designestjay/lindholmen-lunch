@@ -3,9 +3,8 @@
 import logging
 import re
 from typing import Dict, Optional
-import requests
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 
 logger = logging.getLogger(__name__)
 
@@ -18,14 +17,7 @@ class Uni3WorldOfFoodScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        try:
-            response = requests.get(self.RSS_URL)
-            response.raise_for_status()
-        except Exception as e:
-            logger.error("Failed to fetch RSS feed: %s", e)
-            return
-
-        soup = BeautifulSoup(response.content, "xml")
+        soup = BeautifulSoup(fetch_html(self.RSS_URL), "xml")
         weekday_map = {
             "måndag": "monday",
             "tisdag": "tuesday",

@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 from typing import Dict, Optional
-import requests
 from datetime import date
 import re
 
@@ -13,14 +12,8 @@ class BennePastabarScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        try:
-            response = requests.get(self.URL)
-            response.raise_for_status()
-        except Exception as e:
-            print(f"Failed to fetch Benne Pastabar page: {e}")
-            return
-
-        soup = BeautifulSoup(response.text, "html.parser")
+        html = fetch_html(self.URL)
+        soup = BeautifulSoup(html, "html.parser")
 
         categorized_items = {
             "Benne Pasta": [],

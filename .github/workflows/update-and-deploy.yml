@@ -26,6 +26,7 @@ concurrency:
 jobs:
   scrape-and-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
     - name: Checkout repository
@@ -67,6 +68,7 @@ jobs:
 
     - name: Scrape lunch data for current day with error handling
       id: scrape
+      timeout-minutes: 10
       run: |
         DAY="${{ steps.get-day.outputs.day }}"
         if [ "$DAY" = "saturday" ] || [ "$DAY" = "sunday" ]; then

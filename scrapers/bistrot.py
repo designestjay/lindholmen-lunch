@@ -1,9 +1,8 @@
 # scrapers/bistrot.py
 import unicodedata
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 from typing import Dict, List, Optional
-import requests
 
 class BistrotScraper(LunchScraper):
     URL = "https://bistrot.se/"
@@ -22,14 +21,8 @@ class BistrotScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        try:
-            response = requests.get(self.URL)
-            response.raise_for_status()
-        except Exception as e:
-            print(f"Failed to fetch Bistrot page: {e}")
-            return
-
-        soup = BeautifulSoup(response.text, "html.parser")
+        html = fetch_html(self.URL)
+        soup = BeautifulSoup(html, "html.parser")
         menu = soup.select_one("div.fdm-the-menu")
         if not menu:
             print("No menu found on Bistrot page.")

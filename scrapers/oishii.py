@@ -1,15 +1,12 @@
 from bs4 import BeautifulSoup
-import requests
 from typing import Dict, Optional
-from scrapers.base import LunchScraper, DailyMenu, MenuItem
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
 
 class OishiiScraper(LunchScraper):
     URL = "https://oishii.se/lunchmeny/"
 
     def __init__(self):
-        response = requests.get(self.URL)
-        response.raise_for_status()
-        self.soup = BeautifulSoup(response.text, "html.parser")
+        self.soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
         self._menus: Dict[str, DailyMenu] = {}
         self.fetch()
 

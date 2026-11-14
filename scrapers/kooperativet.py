@@ -1,25 +1,15 @@
 # scrapers/kooperativet.py
 
 from bs4 import BeautifulSoup
-import requests
 from typing import Dict, Optional
-from scrapers.base import LunchScraper, DailyMenu, MenuItem
+from scrapers.base import LunchScraper, DailyMenu, MenuItem, fetch_html
 
 class KooperativetScraper(LunchScraper):
     URL = "https://www.kooperativet.se/"
     _PRICE = "130 kr"
 
     def __init__(self):
-        headers = {
-            "User-Agent": (
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/122.0.0.0 Safari/537.36"
-            )
-        }
-        response = requests.get(self.URL, headers=headers)
-        response.raise_for_status()
-        self.soup = BeautifulSoup(response.text, "html.parser")
+        self.soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
         self._menus: Dict[str, DailyMenu] = {}
         self.fetch()
 
