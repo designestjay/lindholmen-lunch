@@ -403,7 +403,7 @@ Match the line weight, perspective and level of detail of the reference images.
 - `kottbullar`: "a plate of Swedish meatballs with mashed potato, a pool of cream sauce, a spoon of lingonberries and a few pickled cucumber slices"
 - `tikka-masala`: "a shallow bowl of chicken tikka masala curry next to a small mound of rice and a folded piece of naan"
 
-**Fills:** Jay picked the detailed line-art style on 14 Nov 2026. Strokes stay `#111`. A highlight under the lines may be lime `#c8ff36` or the one soft secondary `#fff4cc`. The list thumbnail is 48px. The placeholder stays until the six pilot SVGs arrive: `pho`, `kottbullar`, `tikka-masala`, `pasta-cream`, `salad-bowl`, `sushi-mix`.
+**Line colour:** Jay rejected colour fills. Each file is ink-only, with `stroke="currentColor"` inside `<g id="art">`. The page sets the line colour per dish with CSS on the `<use>` host: beef `#b4360f`, pork `#b03a5b`, chicken `#8a5a00`, fish `#1f5f99`, veg `#2f6b1e`, otherwise `#111`. The list thumbnail is 48px and the sheet drawing is 160px. The placeholder stays until the six pilot SVGs arrive: `pho`, `kottbullar`, `tikka-masala`, `pasta-cream`, `salad-bowl`, `sushi-mix`.
 
 **Post-processing tools** (`scripts/dish_art/`, run by the assistant locally or in a Cloud Agent session, never in CI):
 
@@ -415,10 +415,11 @@ Match the line weight, perspective and level of detail of the reference images.
    - Normalise to `viewBox="0 0 64 64"`, with the artwork fitted to a 56×56 safe box.
    - Run `svgo` with precision 1.
 3. `qa.py` (`utils/dish_svg.py`, also run by `tests/test_dish_assets.py`): fails on any of:
-   - a fill other than `none`, lime `#c8ff36`, or the soft secondary `#fff4cc`;
-   - a stroke other than `#111`;
-   - `<text>`, `<image>`, `<filter>`, or a gradient;
-   - more than 120 paths;
+   - a fill other than `none` or `transparent`;
+   - a stroke other than `currentColor`;
+   - `<text>`, `<image>`, `<filter>`, `<mask>`, `<clipPath>`, `<pattern>`, `<symbol>`, `<use>`, or a gradient;
+   - a `transform`, or path data with more than one decimal place;
+   - fewer than 5 or more than 12 paths, or more than 160 subpaths;
    - more than 7 KB raw or 2.5 KB gzip;
    - a viewBox other than `0 0 64 64`;
    - a bounding box outside the safe area.

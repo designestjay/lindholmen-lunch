@@ -602,11 +602,40 @@
             background: transparent;
             cursor: pointer;
         }
-        .dish-thumb img {
+        .dish-ico {
+            display: block;
             width: 48px;
             height: 48px;
-            display: block;
+            color: #111;
         }
+        .dish-ico[data-protein="beef"] { color: #b4360f; }
+        .dish-ico[data-protein="pork"] { color: #b03a5b; }
+        .dish-ico[data-protein="chicken"] { color: #8a5a00; }
+        .dish-ico[data-protein="fish"] { color: #1f5f99; }
+        .dish-ico[data-protein="veg"] { color: #2f6b1e; }
+        .protein-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            margin: 0 0 12px;
+            padding: 0;
+            list-style: none;
+            color: #5c5c5c;
+            font-size: 13px;
+        }
+        .protein-legend li { display: inline-flex; align-items: center; gap: 6px; }
+        .protein-legend i {
+            width: 16px;
+            height: 0;
+            border-top: 2px solid currentColor;
+            color: #111;
+        }
+        .protein-legend i[data-protein="beef"] { color: #b4360f; }
+        .protein-legend i[data-protein="pork"] { color: #b03a5b; }
+        .protein-legend i[data-protein="chicken"] { color: #8a5a00; }
+        .protein-legend i[data-protein="fish"] { color: #1f5f99; }
+        .protein-legend i[data-protein="veg"] { color: #2f6b1e; }
+        #dish-sheet-protein { margin: 0 0 12px; font-size: 14px; }
         #dish-sheet {
             border: 0;
             padding: 24px;
@@ -622,7 +651,7 @@
         .dish-disclaimer { color: #5c5c5c; font-size: 13px; }
         .dish-draft { font-size: 13px; }
         .dish-sheet-top { display: flex; justify-content: space-between; align-items: flex-start; }
-        #dish-sheet-image { width: 64px; height: 64px; }
+        #dish-sheet-ico { width: 160px; height: 160px; }
         @media (max-width: 820px) {
             #dish-sheet {
                 margin: auto 0 0 0;
@@ -1117,8 +1146,8 @@
                         <li class="menu-item" data-tags="{{ item.filter_tokens }}" data-text="{{ item.search_text }}" data-order="{{ loop.index0 }}" data-category="{{ item.category }}" data-price="{{ item.price }}" data-name="{{ item.name }}">
                             <div class="dish-line">
                                 {% if item.dish_sheet %}
-                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <img src="{{ item.dish_image }}" alt="" width="48" height="48" loading="lazy" decoding="async">
+                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <svg class="dish-ico" {% if item.protein %}data-protein="{{ item.protein }}"{% endif %} width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="{{ item.dish_image }}#art"/></svg>
                                 </button>
                                 {% else %}
                                 <span class="dish-slot" aria-hidden="true"></span>
@@ -1162,9 +1191,18 @@
 
             <dialog id="dish-sheet" aria-labelledby="dish-sheet-title">
                 <div class="dish-sheet-top">
-                    <img id="dish-sheet-image" alt="" width="64" height="64">
+                    <svg class="dish-ico" id="dish-sheet-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use id="dish-sheet-use" href="assets/dishes/placeholder.svg#art"/></svg>
                     <button type="button" class="icon-btn" id="dish-sheet-close" aria-label="Stäng">×</button>
                 </div>
+                <p id="dish-sheet-protein" hidden></p>
+                <ul class="protein-legend">
+                    <li><i data-protein="beef"></i><span class="sv" lang="sv">Nöt</span><span class="en" lang="en">Beef</span></li>
+                    <li><i data-protein="pork"></i><span class="sv" lang="sv">Fläsk</span><span class="en" lang="en">Pork</span></li>
+                    <li><i data-protein="chicken"></i><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></li>
+                    <li><i data-protein="fish"></i><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></li>
+                    <li><i data-protein="veg"></i><span class="sv" lang="sv">Vego</span><span class="en" lang="en">Veggie</span></li>
+                    <li><i></i><span class="sv" lang="sv">Övrigt</span><span class="en" lang="en">Other</span></li>
+                </ul>
                 <p class="dish-draft" id="dish-sheet-draft" hidden><span class="sv" lang="sv">Utkast – Jay granskar texten.</span><span class="en" lang="en">Draft – Jay is reviewing this text.</span></p>
                 <h2 id="dish-sheet-title"></h2>
                 <p id="dish-sheet-what"></p>
@@ -1301,9 +1339,13 @@
                 if (bar) document.documentElement.style.setProperty("--toolbar-h", bar.offsetHeight + "px");
                 var close = document.getElementById("pick-close");
                 if (close) close.setAttribute("aria-label", sv ? close.dataset.labelSv : close.dataset.labelEn);
-                var dishLabel = sv ? "Vad är det?" : "What is it?";
                 document.querySelectorAll(".dish-thumb").forEach(function (button) {
-                    button.setAttribute("aria-label", dishLabel);
+                    var label = sv ? "Vad är det?" : "What is it?";
+                    var dishName = button.getAttribute("data-dish-name") || "";
+                    var protein = sv ? button.getAttribute("data-protein-sv") : button.getAttribute("data-protein-en");
+                    if (dishName) label += " " + dishName;
+                    if (protein) label += " · " + protein;
+                    button.setAttribute("aria-label", label);
                 });
                 var sheetClose = document.getElementById("dish-sheet-close");
                 if (sheetClose) sheetClose.setAttribute("aria-label", sv ? "Stäng" : "Close");
@@ -1865,8 +1907,34 @@
                 if (typical) typical.textContent = items.length ? (lang === "sv" ? "Typiskt: " : "Typical: ") + items.join(", ") : "";
                 var draft = document.getElementById("dish-sheet-draft");
                 if (draft) draft.hidden = (entry.review_status || entry.status) !== "draft";
-                var image = document.getElementById("dish-sheet-image");
-                if (image && dialog.dataset.image) image.src = dialog.dataset.image;
+                var icon = document.getElementById("dish-sheet-ico");
+                var use = document.getElementById("dish-sheet-use");
+                if (icon) {
+                    if (dialog.dataset.protein) icon.setAttribute("data-protein", dialog.dataset.protein);
+                    else icon.removeAttribute("data-protein");
+                }
+                if (use && dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                var proteinLine = document.getElementById("dish-sheet-protein");
+                var proteinNames = {
+                    beef: ["Nöt", "Beef"],
+                    pork: ["Fläsk", "Pork"],
+                    chicken: ["Kyckling", "Chicken"],
+                    fish: ["Fisk", "Fish"],
+                    veg: ["Vego", "Veggie"]
+                };
+                var protein = proteinNames[dialog.dataset.protein || ""];
+                if (proteinLine) {
+                    if (protein) {
+                        var word = protein[lang === "sv" ? 0 : 1];
+                        proteinLine.hidden = false;
+                        proteinLine.textContent = lang === "sv"
+                            ? "Huvudingrediens: " + word + " (enligt menytexten)."
+                            : "Main ingredient: " + word + " (from the menu text).";
+                    } else {
+                        proteinLine.hidden = true;
+                        proteinLine.textContent = "";
+                    }
+                }
             }
             window.renderDishSheet = renderDishSheet;
             document.addEventListener("click", function (event) {
@@ -1876,8 +1944,10 @@
                     if (!dialog || !dialog.showModal) return;
                     dishTrigger = button;
                     dialog.dataset.slug = button.getAttribute("data-dish") || "";
-                    var picture = button.querySelector("img");
-                    dialog.dataset.image = picture ? picture.getAttribute("src") : "assets/dishes/placeholder.svg";
+                    var icon = button.querySelector(".dish-ico");
+                    var use = button.querySelector("use");
+                    dialog.dataset.protein = icon ? (icon.getAttribute("data-protein") || "") : "";
+                    dialog.dataset.href = use ? (use.getAttribute("href") || "") : "";
                     var article = button.closest("article");
                     var link = document.getElementById("dish-sheet-link");
                     var url = article ? article.getAttribute("data-url") : "";

@@ -1,9 +1,4 @@
-"""Style check for dish illustrations.
-
-Jay picked detailed line art on 14 Nov 2026: about 4–6.5 KB raw, at most
-2.5 KB gzip, viewBox 0 0 64 64. Strokes stay #111. A highlight fill under
-the lines may be lime #c8ff36 or the one soft secondary, #fff4cc.
-"""
+"""Line art is ink-only: strokes are currentColor and the root colour is #111. The protein colour comes from the page via CSS on the <use> host."""
 
 from __future__ import annotations
 
@@ -14,11 +9,28 @@ from xml.etree import ElementTree
 
 RAW_LIMIT = 7 * 1024
 GZIP_LIMIT = int(2.5 * 1024)
-MAX_PATHS = 120
+MIN_PATHS = 5
+MAX_PATHS = 12
+MAX_SUBPATHS = 160
 VIEWBOX = "0 0 64 64"
 
-STROKE_COLOURS = {"#111", "#111111"}
-FILL_COLOURS = {"none", "transparent", "#c8ff36", "#fff4cc"}
+STROKE_COLOURS = {"currentcolor"}
+FILL_COLOURS = {"none", "transparent"}
+PROTEIN_STROKES = {
+    "beef": "#b4360f",
+    "pork": "#b03a5b",
+    "chicken": "#8a5a00",
+    "fish": "#1f5f99",
+    "veg": "#2f6b1e",
+    "other": "#111",
+}
+PROTEIN_LABELS = {
+    "beef": ("Nöt", "Beef"),
+    "pork": ("Fläsk", "Pork"),
+    "chicken": ("Kyckling", "Chicken"),
+    "fish": ("Fisk", "Fish"),
+    "veg": ("Vego", "Veggie"),
+}
 FORBIDDEN_TAGS = {
     "image",
     "text",
@@ -29,21 +41,74 @@ FORBIDDEN_TAGS = {
     "style",
     "foreignobject",
     "use",
+    "mask",
+    "clippath",
+    "pattern",
+    "symbol",
 }
 
-_HEX = re.compile(r"#[0-9a-fA-F]{3,8}")
-_STYLE_PAIR = re.compile(r"(fill|stroke)\s*:\s*([^;]+)", re.IGNORECASE)
+_PRECISION = re.compile(r"\d\.\d{2,}")
+_MOVE = re.compile(r"[Mm]")
+_PROTEIN_PATTERNS = (
+    ("beef", re.compile(r"(?<![a-zåäö])(?:nöt|beef)", re.IGNORECASE)),
+    ("pork", re.compile(r"(?<![a-zåäö])(?:fläsk|pork)", re.IGNORECASE)),
+    ("chicken", re.compile(r"(?<![a-zåäö])(?:kyckling|chicken)", re.IGNORECASE)),
+    ("fish", re.compile(r"(?<![a-zåäö])(?:fisk|lax|räk|seafood|shrimp)", re.IGNORECASE)),
+    ("veg", re.compile(r"(?<![a-zåäö])(?:vego|vegan|vegetar|veggie)", re.IGNORECASE)),
+)
+_TAG_PROTEIN = {
+    "beef": "beef",
+    "pork": "pork",
+    "chicken": "chicken",
+    "fish": "fish",
+    "veg": "veg",
+    "vegan": "veg",
+}
 
 
 def _local(tag: str) -> str:
     return tag.rsplit("}", 1)[-1].lower()
 
 
-def _norm_colour(value: str) -> str:
-    colour = (value or "").strip().lower()
-    if colour in {"#111111"}:
-        return "#111"
-    return colour
+def _norm(value: str) -> str:
+    return (value or "").strip().lower()
+
+
+def detect_protein(text: str, tags: list[str] | None = None) -> str | None:
+    """Return one protein key, or None when the dish names none or several."""
+    found = set()
+    haystack = text or ""
+    for key, pattern in _PROTEIN_PATTERNS:
+        if pattern.search(haystack):
+            found.add(key)
+    for tag in tags or []:
+        mapped = _TAG_PROTEIN.get((tag or "").lower())
+        if mapped:
+            found.add(mapped)
+    if len(found) == 1:
+        return found.pop()
+    return None
+
+
+def _luminance(hex_colour: str) -> float:
+    raw = hex_colour.lstrip("#")
+    if len(raw) == 3:
+        raw = "".join(ch * 2 for ch in raw)
+    channels = []
+    for index in (0, 2, 4):
+        value = int(raw[index:index + 2], 16) / 255
+        if value <= 0.04045:
+            channels.append(value / 12.92)
+        else:
+            channels.append(((value + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+
+
+def contrast_ratio(foreground: str, background: str) -> float:
+    light = _luminance(foreground)
+    dark = _luminance(background)
+    lighter, darker = max(light, dark), min(light, dark)
+    return (lighter + 0.05) / (darker + 0.05)
 
 
 def check_dish_svg(data: bytes) -> list[str]:
@@ -60,32 +125,50 @@ def check_dish_svg(data: bytes) -> list[str]:
         return problems + [f"not svg: {exc}"]
     if root.get("viewBox") != VIEWBOX:
         problems.append(f"viewBox must be {VIEWBOX}")
-    paths = 0
+    if _norm(root.get("color")) not in {"#111", "#111111"}:
+        problems.append("root color must be #111")
+    if _norm(root.get("fill")) not in FILL_COLOURS:
+        problems.append("root fill must be none")
+    groups = [element for element in root.iter() if _local(element.tag) == "g"]
+    if len(groups) != 1 or groups[0].get("id") != "art":
+        problems.append("exactly one g#art")
+    else:
+        group = groups[0]
+        if _norm(group.get("stroke")) not in STROKE_COLOURS:
+            problems.append("art stroke must be currentColor")
+        if group.get("stroke-width") != "1.25":
+            problems.append("art stroke-width must be 1.25")
+        if group.get("stroke-linecap") != "round" or group.get("stroke-linejoin") != "round":
+            problems.append("art caps and joins must be round")
+    paths = [element for element in root.iter() if _local(element.tag) == "path"]
+    if not MIN_PATHS <= len(paths) <= MAX_PATHS:
+        problems.append(f"{len(paths)} paths is outside {MIN_PATHS}–{MAX_PATHS}")
+    moves = 0
     for element in root.iter():
         name = _local(element.tag)
         if name in FORBIDDEN_TAGS:
             problems.append(f"forbidden <{name}>")
+        if element.get("transform") is not None:
+            problems.append("transform is not allowed")
+        for opacity_name in ("opacity", "stroke-opacity", "fill-opacity"):
+            opacity = element.get(opacity_name)
+            if opacity is not None and opacity not in {"1", "1.0"}:
+                problems.append(f"{opacity_name} must be absent or 1")
         if name == "path":
-            paths += 1
-        paint = {}
-        style = element.get("style") or ""
-        for key, value in _STYLE_PAIR.findall(style):
-            paint[key.lower()] = value.strip()
-        for key in ("fill", "stroke"):
-            if element.get(key) is not None:
-                paint[key] = element.get(key) or ""
-        stroke = _norm_colour(paint.get("stroke", ""))
-        if stroke and stroke not in STROKE_COLOURS:
-            problems.append(f"stroke {stroke} is outside #111")
-        fill = _norm_colour(paint.get("fill", ""))
-        if fill and fill not in FILL_COLOURS:
-            problems.append(f"fill {fill} is outside the approved palette")
-        for colour in _HEX.findall(style):
-            normalised = _norm_colour(colour)
-            if normalised not in STROKE_COLOURS | FILL_COLOURS:
-                problems.append(f"colour {normalised} is outside the approved palette")
-    if paths > MAX_PATHS:
-        problems.append(f"{paths} paths exceeds {MAX_PATHS}")
+            data_attr = element.get("d") or ""
+            moves += len(_MOVE.findall(data_attr))
+            if _PRECISION.search(data_attr):
+                problems.append("path data uses more than one decimal place")
+            if element.get("vector-effect") != "non-scaling-stroke":
+                problems.append("path needs vector-effect non-scaling-stroke")
+            stroke = _norm(element.get("stroke") or "")
+            if stroke and stroke not in STROKE_COLOURS:
+                problems.append(f"stroke {stroke} is outside currentColor")
+            fill = _norm(element.get("fill") or "")
+            if fill and fill not in FILL_COLOURS:
+                problems.append(f"fill {fill} is outside none")
+    if moves > MAX_SUBPATHS:
+        problems.append(f"{moves} subpaths exceeds {MAX_SUBPATHS}")
     return problems
 
 

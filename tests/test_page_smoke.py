@@ -108,6 +108,20 @@ def test_weekend_class_is_set_before_the_body_script(page):
 def test_pick_rolls_without_scrolling_and_respects_vego(page):
     driver, host = page
     driver.get(host + WEEKDAY)
+    assert driver.current_url.startswith("http://")
+    icon = driver.execute_script(
+        """
+        var svg = document.querySelector(".dish-ico");
+        var use = svg ? svg.querySelector("use") : null;
+        var box = svg ? svg.getBoundingClientRect() : null;
+        return {
+            href: use ? (use.getAttribute("href") || "") : "",
+            width: box ? Math.round(box.width) : 0
+        };
+        """
+    )
+    assert icon["href"].endswith("#art")
+    assert icon["width"] == 48
     driver.execute_script("document.documentElement.style.scrollBehavior = 'auto'")
     start = driver.execute_script("return window.scrollY")
     fab = driver.find_element("id", "pick-fab")
