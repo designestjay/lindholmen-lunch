@@ -15,6 +15,16 @@ def test_known_dishes_and_exclusions():
     assert medaljong["dish_category"] != "bean-lentil"
 
 
+def test_pesto_on_a_ham_sandwich_is_not_pasta_pesto():
+    taxonomy = load_taxonomy()
+    sandwich = classify("Lufttorkad skinka/mozzarella/pesto", "", "Miss F", taxonomy)
+    assert sandwich["dish_category"] != "pasta-pesto"
+    assert classify("Pasta pesto", "getost, bakade tomater, pesto", "Uni3", taxonomy)["dish_category"] == "pasta-pesto"
+    assert classify("Penne Pesto", "", "Benne Pastabar", taxonomy)["dish_category"] == "pasta-pesto"
+    assert classify("Swedish Pesto", "", "Benne Pastabar", taxonomy)["dish_category"] == "pasta-pesto"
+    assert classify("Pasta med bacon och pesto", "", "Benne Pastabar", taxonomy)["dish_category"] == "pasta-pesto"
+
+
 def test_fuzzy_neighbour_is_low_confidence():
     taxonomy = load_taxonomy()
     decision = classify("tikkaa masalla", "", "Masala", taxonomy)

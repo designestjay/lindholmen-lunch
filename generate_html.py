@@ -261,10 +261,7 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                     "search_text": _item_search_text(item),
                     "dish_category": slug,
                     "dish_confidence": confidence,
-                    "dish_image": (
-                        f"assets/dishes/{slug}.svg" if has_svg
-                        else ("assets/dishes/placeholder.svg" if has_text else "")
-                    ),
+                    "dish_image": f"assets/dishes/{slug}.svg" if has_svg else "",
                     "dish_sheet": has_text,
                     "shown_image": bool(has_svg and entry and entry.get("status") == "approved" and confidence >= 0.8),
                 }

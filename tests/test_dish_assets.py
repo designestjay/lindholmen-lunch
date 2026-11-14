@@ -66,7 +66,6 @@ def test_committed_dish_svgs_pass_the_style_check():
         "kottbullar.svg",
         "pasta-cream.svg",
         "pho.svg",
-        "placeholder.svg",
         "salad-bowl.svg",
         "sushi-mix.svg",
         "tikka-masala.svg",
@@ -138,4 +137,11 @@ def test_protein_comes_from_the_dish_text():
     assert protein_for("Sallad", category="salad-bowl") == "veg"
     assert protein_for("Sushi", category="sushi-mix") == "fish"
     assert protein_for("Krämig pasta", category="pasta-cream") is None
+    assert protein_for("Pasta pesto", category="pasta-pesto") is None
+    assert protein_for(
+        "Pasta pesto getost, bakade tomater, pesto",
+        ["fish", "chicken", "beef"],
+        "pasta-pesto",
+    ) is None
+    assert protein_for("Lufttorkad skinka/mozzarella/pesto", ["pork"]) == "pork"
     assert protein_for("Fläskpasta", category="pasta-cream") == "pork"

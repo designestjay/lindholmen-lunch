@@ -594,6 +594,21 @@
             flex: 0 0 48px;
             width: 48px;
             height: 48px;
+            background: transparent;
+            border: 0;
+        }
+        .dish-ask {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+            text-align: left;
+            cursor: pointer;
         }
         .dish-thumb {
             margin: 0;
@@ -1046,12 +1061,6 @@
     <path d="m44 27.4-.3 1.7-2.8-1-2.6.5-2.2 1.3-.5-.4v-.8l-.8-2.2-.6-.5-.5-.8-.5-1.5-.4-.3-.3-.7v-1.5L33 19l.2-3.2m1.8 25 .7 1.2-.3.4-5.5-.2-1.8-.2-1.6-.8-.4.3H25l-1.1-.3-1.8-.5-1.8-1m15.6-9.3-.8 1.8-.3 1.3.3.1 2.8-.4 1.1-.4.3-.6-.5-.5-2-.9h-.4zm-9.6 10.7-.6-.9-1.3-.7-1-.9-.3-.9h1.3l3.1 1.2H29m14.9-4.6-.3-1.1-1.2-1.1-3.1.1m10.5-3.7.1-.8.8-1.2"/>
     <path d="m23.8 33.1 1.6.5.9-.1.4-.9 1.6-2 .7-1.8v-1.9l-1.3-3.1-.2-1.1v-2l.8-3.2v-2.2l-2.1-.2M13.1 35.3l.1.6 1.3 1.3.7.1.9-.9 1.5-.7 1-.4 1.3.1-.4 1.9.6 2.2-.9.2-1.6-.7-2-1-.4-.5m39.5-2.9 1.1-.3.7-.7.5-1v-2.1l-.4-.8-.8-.6-.9.8-.7 1-.2.5 1.3.4h1.6M40.4 35l-3.5 1.1-2.5 1.5-2.7 1m9.1 2 1.5-.9 1.8-1.4 2.3-1.1m-21-13.3.5.9.4 1.7"/>
     <path d="m20 35.3 1.2-.4 2.3.3 5.8 2 1.9-.9.5-.9-1.2-.6 2.3-2.7.5-1.5-.1-1.5-.3-.4-.6-.2m10-3.8.7.9.3 1.2.6.5.6-.4.4-1.3-.7-1.8-1.4-1.4-1-.6-.8-.2-1 2.3-3.4-.2h-3.2m2.5 18.4 2.4.1 3.8-.3 3.8-.9 2.5-1.2.9-1.9v-1.6M40 24.2l.1 2.3h-5m13.5 13.3 1.4-.3 2.4-1.1.7-.7.3-.6M40.1 26.5l.5.5.3.9"/>
-  </g></symbol><symbol id="dish-placeholder" viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path vector-effect="non-scaling-stroke" d="M16 40c2-10 8-18 16-18s14 8 16 18"/>
-    <path vector-effect="non-scaling-stroke" d="M12 44h40"/>
-    <path vector-effect="non-scaling-stroke" d="M24 28c0-4 4-8 8-8s8 4 8 8"/>
-    <path vector-effect="non-scaling-stroke" d="M28 32h8"/>
-    <path vector-effect="non-scaling-stroke" d="M32 24v8"/>
   </g></symbol><symbol id="dish-salad-bowl" viewBox="0 0 64 64"><g stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="m26.4 19 2.6-1.2h2l1 .5.6.7.1 1.5-.2.7-1 1.2-.4.7-2.5.8h-1.2l-1-.4-.9-1.3V21zl-1-1.2-.2-1.3.8-1 1.5-.4.3-.2.1-2.1 1.2-1.1 2.3-.4 2.2 1h1l2.3-1.5 1.4-.1.7.2.8.9.5 1.3.5.5 3 .4 1 .8.3 1.2-1.3 1.8v1.3l1.6-.1 4.5-1.2.8.8.5 2.4 2.7-.5.9.2.5.5.2 2.4 1.8.5.7.7.1 1.7-.3 2.1.8.4.4.6v1.8l-1.1 2.5-1.3.4-1.6 1.2-1.2.3-1.4 1-1.4.6-4.6 1.4-1.7.1-.5.4-4.7.7H34"/>
     <path d="m11.1 30.2 1.2 1.1 1.3 2.1 1.2-.2.4-.4 2.2.9 1.5-.8 1.7-.2.2-.3.5.4.9.1 2.3 1.2.5-.4.3-.9 2-1.6.3-2.4-1.2.4-1.9 1.6-.8.4-2.9.4-.4-.3-1.6-.2-1.5-.9-1.5-1.6-.7-2.1-.5-.8.2-1.7.5-.8 1 .2 3.5 1.3h.9l.2-.2 1.4 1.1 4.7 1.1.4.5.2 1.4L29 28l.6-1.4.9-.9 1.3-.7.2-1.1.5-.3.9-1 1.5-.7.7-3.8"/>
@@ -1337,13 +1346,13 @@
                         <li class="menu-item" data-tags="fish pasta under130" data-text="chili shrimp vitlöksfrästa vannameiräkor och färska tomater i en krämig och frisk skaldjurssås, med färsk chili och persilja. toppad med lagrad hårdost, hackad persilja och vår egen chiliolja. benne pasta fish pasta" data-order="5" data-category="Benne Pasta" data-price="105 kr" data-name="Chili shrimp">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="shrimp" data-dish-name="Chili shrimp" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Chili shrimp
+                                        
+                                        <button type="button" class="dish-ask" data-dish="shrimp" data-dish-name="Chili shrimp" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Chili shrimp</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -1582,7 +1591,7 @@
                         <li class="menu-item" data-tags="beef salad under130" data-text="högrevsburgare karamelliserad lök – krispichilimayo – pepperjackost – sallad – pommes lunch beef salad" data-order="5" data-category="Lunch" data-price="130 kr" data-name="Högrevsburgare">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Högrevsburgare" data-protein-sv="Nöt" data-protein-en="Beef" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Högrevsburgare" data-protein="beef" data-protein-sv="Nöt" data-protein-en="Beef" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="beef" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-salad-bowl"/></svg>
                                 </button>
                                 
@@ -1607,13 +1616,13 @@
                         <li class="menu-item" data-tags="under130" data-text="smörstekt fångst kronärtskocka – tomat – smör – citron – krossad potatis – rucola lunch " data-order="6" data-category="Lunch" data-price="130 kr" data-name="Smörstekt Fångst">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="fried-fish" data-dish-name="Smörstekt Fångst" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Smörstekt Fångst
+                                        
+                                        <button type="button" class="dish-ask" data-dish="fried-fish" data-dish-name="Smörstekt Fångst" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Smörstekt Fångst</button>
+                                        
                                         
                                     </div>
                                     
@@ -1671,13 +1680,13 @@
                         <li class="menu-item" data-tags="chicken indian under130" data-text="pahadi grill chicken grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.  indian chicken" data-order="0" data-category="" data-price="129 kr" data-name="Pahadi grill chicken">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="tandoori" data-dish-name="Pahadi grill chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Pahadi grill chicken
+                                        
+                                        <button type="button" class="dish-ask" data-dish="tandoori" data-dish-name="Pahadi grill chicken" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">Pahadi grill chicken</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -1719,7 +1728,7 @@
                         <li class="menu-item" data-tags="chicken indian" data-text="tikka masala grillad kycklingfilé med rostad paprika och tomater i en krämig sås. andra alternativ indian chicken" data-order="2" data-category="ANDRA ALTERNATIV" data-price="134 kr" data-name="Tikka masala">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="tikka-masala" data-dish-name="Tikka masala" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="tikka-masala" data-dish-name="Tikka masala" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-tikka-masala"/></svg>
                                 </button>
                                 
@@ -1744,13 +1753,13 @@
                         <li class="menu-item" data-tags="chicken indian" data-text="tandoori chicken grillad kyckling med ben, marinerad i yoghurt, kryddor och bockhornsklöver. serveras med tandoori sås. andra alternativ indian chicken" data-order="3" data-category="ANDRA ALTERNATIV" data-price="132 kr" data-name="Tandoori chicken">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="tandoori" data-dish-name="Tandoori chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Tandoori chicken
+                                        
+                                        <button type="button" class="dish-ask" data-dish="tandoori" data-dish-name="Tandoori chicken" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">Tandoori chicken</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -1861,13 +1870,13 @@
                         <li class="menu-item" data-tags="fish" data-text=" lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron  fish" data-order="1" data-category="" data-price="" data-name="Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salmon" data-dish-name="Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron
+                                        
+                                        <button type="button" class="dish-ask" data-dish="salmon" data-dish-name="Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -1901,13 +1910,13 @@
                         <li class="menu-item" data-tags="fish" data-text=" torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör  fish" data-order="3" data-category="" data-price="" data-name="torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="white-fish" data-dish-name="torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör
+                                        
+                                        <button type="button" class="dish-ask" data-dish="white-fish" data-dish-name="torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -1941,13 +1950,13 @@
                         <li class="menu-item" data-tags="" data-text=" risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao veg " data-order="5" data-category="VEG" data-price="195 kr" data-name="risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="risotto" data-dish-name="risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao
+                                        
+                                        <button type="button" class="dish-ask" data-dish="risotto" data-dish-name="risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao</button>
+                                        
                                         
                                     </div>
                                     
@@ -1981,13 +1990,13 @@
                         <li class="menu-item" data-tags="" data-text=" räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill räkmacka " data-order="7" data-category="RÄKMACKA" data-price="295 kr" data-name="räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="shrimp" data-dish-name="räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill
+                                        
+                                        <button type="button" class="dish-ask" data-dish="shrimp" data-dish-name="räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">räkor, rågbröd, ägg, citronmajonnäs, gurka, tomat, picklad rödlök, citron &amp; dill</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -2002,7 +2011,7 @@
                         <li class="menu-item" data-tags="beef burger salad" data-text=" högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites double smashed cheeseburger beef salad burger" data-order="8" data-category="DOUBLE SMASHED CHEESEBURGER" data-price="235 kr" data-name="Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites" data-protein-sv="Nöt" data-protein-en="Beef" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Högrevsburgare med brioche, cheddar, hamburgerdressing, sallad, lök &amp; pommes frites" data-protein="beef" data-protein-sv="Nöt" data-protein-en="Beef" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="beef" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-salad-bowl"/></svg>
                                 </button>
                                 
@@ -2066,7 +2075,7 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="vanlig 10 bitar 3 lax, 1 räka, 1 crabfish, 1 omelett &amp; 4 maki sushi fish sushi" data-order="0" data-category="SUSHI" data-price="95 kr" data-name="vanlig 10 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="vanlig 10 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="vanlig 10 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2091,7 +2100,7 @@
                         <li class="menu-item" data-tags="sushi under130 veg vego" data-text="vegetarisk 10 bitar 2 avocado, 2 tofu, 2 omelett &amp; 4 maki sushi veg sushi" data-order="1" data-category="SUSHI" data-price="95 kr" data-name="vegetarisk 10 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="vegetarisk 10 bitar" data-protein-sv="Vego" data-protein-en="Veggie" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="vegetarisk 10 bitar" data-protein="veg" data-protein-sv="Vego" data-protein-en="Veggie" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="veg" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2116,7 +2125,7 @@
                         <li class="menu-item" data-tags="fish sushi under130 veg vego" data-text="mammasushi 10 bitar 2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett &amp; 4 maki sushi veg fish sushi" data-order="2" data-category="SUSHI" data-price="95 kr" data-name="Mammasushi 10 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mammasushi 10 bitar" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mammasushi 10 bitar" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2143,7 +2152,7 @@
                         <li class="menu-item" data-tags="fish sushi under130 veg vego" data-text="mix 12 bitar 4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado sushi veg fish sushi" data-order="3" data-category="SUSHI" data-price="105 kr" data-name="Mix 12 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mix 12 bitar" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mix 12 bitar" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2170,7 +2179,7 @@
                         <li class="menu-item" data-tags="fish sushi veg vego" data-text="mix 15 bitar 5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu &amp; 1 avocado sushi veg fish sushi" data-order="4" data-category="SUSHI" data-price="135 kr" data-name="Mix 15 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mix 15 bitar" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Mix 15 bitar" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2197,7 +2206,7 @@
                         <li class="menu-item" data-tags="sushi under130" data-text="nigiri mix 10 bitar  sushi sushi" data-order="5" data-category="SUSHI" data-price="115 kr" data-name="Nigiri mix 10 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Nigiri mix 10 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Nigiri mix 10 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -2245,13 +2254,13 @@
                         <li class="menu-item" data-tags="salad under130" data-text="yakiniku skivad entrecote, grönsaker, ris, yakinikusås &amp; sallad varmrätt salad" data-order="7" data-category="VARMRÄTT" data-price="99 kr" data-name="Yakiniku">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="steak" data-dish-name="Yakiniku" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Yakiniku
+                                        
+                                        <button type="button" class="dish-ask" data-dish="steak" data-dish-name="Yakiniku" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Yakiniku</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
@@ -2268,13 +2277,13 @@
                         <li class="menu-item" data-tags="chicken under130" data-text="wokade äggnudlar äggnudlar med kycklingfilé &amp; grönsaker varmrätt chicken" data-order="8" data-category="VARMRÄTT" data-price="95 kr" data-name="Wokade äggnudlar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="wok" data-dish-name="Wokade äggnudlar" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Wokade äggnudlar
+                                        
+                                        <button type="button" class="dish-ask" data-dish="wok" data-dish-name="Wokade äggnudlar" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">Wokade äggnudlar</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -2555,7 +2564,9 @@
                         <li class="menu-item" data-tags="fish soup under130" data-text="machili bengali laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska &#34;panch phoron&#34; (fem kryddor)  fish soup" data-order="1" data-category="" data-price="119 kr" data-name="Machili bengali">
                             <div class="dish-line">
                                 
-                                <span class="dish-slot" aria-hidden="true"></span>
+                                <button type="button" class="dish-thumb" data-dish="pho" data-dish-name="Machili bengali" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-pho"/></svg>
+                                </button>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
@@ -2645,13 +2656,13 @@
                         <li class="menu-item" data-tags="chicken indian" data-text="chicken tandoori grillad kyckling med ben marinerad i serveras i tandoorimasala, llime och yoghurt. serveras i tandorisås. stående meny indian chicken" data-order="5" data-category="Stående meny" data-price="132 kr" data-name="Chicken tandoori">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="tandoori" data-dish-name="Chicken tandoori" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Chicken tandoori
+                                        
+                                        <button type="button" class="dish-ask" data-dish="tandoori" data-dish-name="Chicken tandoori" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">Chicken tandoori</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Kyckling</span><span class="en" lang="en">Chicken</span></span>
                                         
@@ -2670,7 +2681,7 @@
                         <li class="menu-item" data-tags="chicken indian" data-text="chicken tikka masala grillad och marinerad kycklingfilé i en mild grädde- och tomatsås. stående meny indian chicken" data-order="6" data-category="Stående meny" data-price="142 kr" data-name="Chicken tikka masala">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="tikka-masala" data-dish-name="Chicken tikka masala" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="tikka-masala" data-dish-name="Chicken tikka masala" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-tikka-masala"/></svg>
                                 </button>
                                 
@@ -2716,13 +2727,13 @@
                         <li class="menu-item" data-tags="indian soup" data-text="jhinga korma mild och krämig gryta med tigerräkor, cashewnötter och kardemumma. stående meny indian soup" data-order="8" data-category="Stående meny" data-price="157 kr" data-name="Jhinga korma">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="korma" data-dish-name="Jhinga korma" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Jhinga korma
+                                        
+                                        <button type="button" class="dish-ask" data-dish="korma" data-dish-name="Jhinga korma" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Jhinga korma</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2779,13 +2790,13 @@
                         <li class="menu-item" data-tags="indian under130" data-text="plain naan (*)  tillbehör indian" data-order="11" data-category="Tillbehör" data-price="29 kr" data-name="Plain naan (*)">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="naan" data-dish-name="Plain naan (*)" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Plain naan (*)
+                                        
+                                        <button type="button" class="dish-ask" data-dish="naan" data-dish-name="Plain naan (*)" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Plain naan (*)</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2800,13 +2811,13 @@
                         <li class="menu-item" data-tags="indian under130" data-text="butter naan (*)  tillbehör indian" data-order="12" data-category="Tillbehör" data-price="35 kr" data-name="Butter naan (*)">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="naan" data-dish-name="Butter naan (*)" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Butter naan (*)
+                                        
+                                        <button type="button" class="dish-ask" data-dish="naan" data-dish-name="Butter naan (*)" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Butter naan (*)</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2821,13 +2832,13 @@
                         <li class="menu-item" data-tags="indian" data-text="vitlök &amp; koriander naan (*)  tillbehör indian" data-order="13" data-category="Tillbehör" data-price="395 kr" data-name="Vitlök &amp; koriander naan (*)">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="naan" data-dish-name="Vitlök &amp; koriander naan (*)" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Vitlök &amp; koriander naan (*)
+                                        
+                                        <button type="button" class="dish-ask" data-dish="naan" data-dish-name="Vitlök &amp; koriander naan (*)" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Vitlök &amp; koriander naan (*)</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2842,13 +2853,13 @@
                         <li class="menu-item" data-tags="indian under130" data-text="ost &amp; koriander naan (*)  tillbehör indian" data-order="14" data-category="Tillbehör" data-price="39 kr" data-name="Ost &amp; koriander naan (*)">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="naan" data-dish-name="Ost &amp; koriander naan (*)" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Ost &amp; koriander naan (*)
+                                        
+                                        <button type="button" class="dish-ask" data-dish="naan" data-dish-name="Ost &amp; koriander naan (*)" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Ost &amp; koriander naan (*)</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2863,13 +2874,13 @@
                         <li class="menu-item" data-tags="indian under130" data-text="chili naan (*)  tillbehör indian" data-order="15" data-category="Tillbehör" data-price="39 kr" data-name="Chili naan (*)">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="naan" data-dish-name="Chili naan (*)" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Chili naan (*)
+                                        
+                                        <button type="button" class="dish-ask" data-dish="naan" data-dish-name="Chili naan (*)" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Chili naan (*)</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2920,13 +2931,13 @@
                         <li class="menu-item" data-tags="indian under130" data-text="mango chutney  tillbehör indian" data-order="18" data-category="Tillbehör" data-price="15 kr" data-name="Mango chutney">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="raita-chutney" data-dish-name="Mango chutney" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Mango chutney
+                                        
+                                        <button type="button" class="dish-ask" data-dish="raita-chutney" data-dish-name="Mango chutney" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Mango chutney</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Indiskt</span><span class="en" lang="en">Indian</span></span>
                                         
@@ -2975,13 +2986,13 @@
                         <li class="menu-item" data-tags="under130" data-text="raita  tillbehör " data-order="21" data-category="Tillbehör" data-price="29 kr" data-name="Raita">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="raita-chutney" data-dish-name="Raita" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Raita
+                                        
+                                        <button type="button" class="dish-ask" data-dish="raita-chutney" data-dish-name="Raita" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Raita</button>
+                                        
                                         
                                     </div>
                                     
@@ -3119,9 +3130,7 @@
                         <li class="menu-item" data-tags="pork under130" data-text="lufttorkad skinka/mozzarella/pesto  grillad ciabatta pork" data-order="0" data-category="Grillad ciabatta" data-price="130 kr" data-name="Lufttorkad skinka/mozzarella/pesto">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" data-dish-name="Lufttorkad skinka/mozzarella/pesto" data-protein-sv="Fläsk" data-protein-en="Pork" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="pork" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
@@ -3140,7 +3149,7 @@
                         <li class="menu-item" data-tags="chicken salad under130" data-text="kyckling/bacon/dijoncreme serveras med pommes &amp; sallad &amp; dressing grillad ciabatta chicken salad" data-order="1" data-category="Grillad ciabatta" data-price="130 kr" data-name="Kyckling/bacon/dijoncreme">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Kyckling/bacon/dijoncreme" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="Kyckling/bacon/dijoncreme" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-salad-bowl"/></svg>
                                 </button>
                                 
@@ -3182,7 +3191,7 @@
                         <li class="menu-item" data-tags="chicken mexican salad taco under130" data-text="kyckling/ mozzarella/ ruccola / mangoraja serveras med pommes &amp; sallad &amp; dressing grillad tortilla mexican chicken salad taco" data-order="3" data-category="Grillad tortilla" data-price="130 kr" data-name="kyckling/ mozzarella/ ruccola / mangoraja">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="kyckling/ mozzarella/ ruccola / mangoraja" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="salad-bowl" data-dish-name="kyckling/ mozzarella/ ruccola / mangoraja" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-salad-bowl"/></svg>
                                 </button>
                                 
@@ -3207,13 +3216,13 @@
                         <li class="menu-item" data-tags="dessert fish pasta under130" data-text="lax/spenat  pajer &amp; lasagne fish pasta dessert" data-order="4" data-category="Pajer &amp; Lasagne" data-price="110 kr" data-name="Lax/Spenat">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salmon" data-dish-name="Lax/Spenat" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Lax/Spenat
+                                        
+                                        <button type="button" class="dish-ask" data-dish="salmon" data-dish-name="Lax/Spenat" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Lax/Spenat</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -3249,13 +3258,13 @@
                         <li class="menu-item" data-tags="dessert pasta salad under130" data-text="lasagne serveras med sallad &amp; dressing pajer &amp; lasagne salad pasta dessert" data-order="6" data-category="Pajer &amp; Lasagne" data-price="115 kr" data-name="Lasagne">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="lasagne" data-dish-name="Lasagne" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Lasagne
+                                        
+                                        <button type="button" class="dish-ask" data-dish="lasagne" data-dish-name="Lasagne" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Lasagne</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Pasta</span><span class="en" lang="en">Pasta</span></span>
                                         
@@ -3316,13 +3325,13 @@
                         <li class="menu-item" data-tags="salad under130" data-text="räkor  caesarsallad salad" data-order="9" data-category="Caesarsallad" data-price="120 kr" data-name="Räkor">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="shrimp" data-dish-name="Räkor" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Räkor
+                                        
+                                        <button type="button" class="dish-ask" data-dish="shrimp" data-dish-name="Räkor" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Räkor</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
@@ -3360,13 +3369,13 @@
                         <li class="menu-item" data-tags="salad under130" data-text="räkor  sallader salad" data-order="11" data-category="Sallader" data-price="130 kr" data-name="Räkor">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="shrimp" data-dish-name="Räkor" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Räkor
+                                        
+                                        <button type="button" class="dish-ask" data-dish="shrimp" data-dish-name="Räkor" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Räkor</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
@@ -3402,9 +3411,7 @@
                         <li class="menu-item" data-tags="pork salad under130" data-text="lufttorkad skinka/mozzarella/pesto  sallader pork salad" data-order="13" data-category="Sallader" data-price="125 kr" data-name="Lufttorkad skinka/mozzarella/pesto">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" data-dish-name="Lufttorkad skinka/mozzarella/pesto" data-protein-sv="Fläsk" data-protein-en="Pork" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="pork" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
@@ -3492,13 +3499,13 @@
                         <li class="menu-item" data-tags="asian korean salad" data-text="bibimbap ris med kimchi/champinjoner/zucchini/ägg/sallad,och gochujang dressing asiatisk korean salad" data-order="17" data-category="Asiatisk" data-price="135 kr" data-name="Bibimbap">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="bibimbap" data-dish-name="Bibimbap" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Bibimbap
+                                        
+                                        <button type="button" class="dish-ask" data-dish="bibimbap" data-dish-name="Bibimbap" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Bibimbap</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Sallad</span><span class="en" lang="en">Salad</span></span>
                                         
@@ -3517,13 +3524,13 @@
                         <li class="menu-item" data-tags="asian thai under130" data-text="panang curry  asiatisk thai" data-order="18" data-category="Asiatisk" data-price="128 kr" data-name="Panang Curry">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="thai-curry" data-dish-name="Panang Curry" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Panang Curry
+                                        
+                                        <button type="button" class="dish-ask" data-dish="thai-curry" data-dish-name="Panang Curry" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Panang Curry</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Asiatiskt</span><span class="en" lang="en">Asian</span></span>
                                         
@@ -3561,7 +3568,7 @@
                         <li class="menu-item" data-tags="sushi under130" data-text="sushi speciell california 10bit friterad krabbröra, avokado, gurka, krispsallad asiatisk sushi" data-order="20" data-category="Asiatisk" data-price="129 kr" data-name="Sushi Speciell California 10bit">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Sushi Speciell California 10bit" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Sushi Speciell California 10bit" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3648,7 +3655,7 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="9 bitar 5 maki, 1 lax, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="0" data-category="Sushi" data-price="100 kr" data-name="9 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="9 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="9 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3673,13 +3680,13 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="9 bitar nigri 5 lax, 4 avokado sushi fish sushi" data-order="1" data-category="Sushi" data-price="115 kr" data-name="9 bitar nigri">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salmon" data-dish-name="9 bitar nigri" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        9 bitar nigri
+                                        
+                                        <button type="button" class="dish-ask" data-dish="salmon" data-dish-name="9 bitar nigri" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">9 bitar nigri</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -3698,7 +3705,7 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="11 bitar 6 maki, 1 lax, 1 vitfisk, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="2" data-category="Sushi" data-price="110 kr" data-name="11 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="11 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="11 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3723,7 +3730,7 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="13 bitar 7 maki, 1 lax, 1 tonfisk, 1 vitfisk, 1 räka, 1 ägg, 1 tofo sushi fish sushi" data-order="3" data-category="Sushi" data-price="120 kr" data-name="13 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="13 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="13 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3748,7 +3755,7 @@
                         <li class="menu-item" data-tags="fish sushi under130" data-text="15 bitar 8 maki, 2 lax, 1 vitfisk, 1 räka, 1 avokado, 1 ägg, 1 tofo sushi fish sushi" data-order="4" data-category="Sushi" data-price="130 kr" data-name="15 bitar">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="15 bitar" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="15 bitar" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3888,7 +3895,7 @@
                         <li class="menu-item" data-tags="asian chicken japanese sushi under130" data-text="bento 3 maki, 2 nigri, 2 kycklingspett varmrätter japanese chicken sushi" data-order="10" data-category="Varmrätter" data-price="115 kr" data-name="Bento">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Bento" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Bento" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -3936,13 +3943,13 @@
                         <li class="menu-item" data-tags="under130" data-text="yakiniku strimlad entrecote varmrätter " data-order="12" data-category="Varmrätter" data-price="129 kr" data-name="Yakiniku">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="steak" data-dish-name="Yakiniku" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Yakiniku
+                                        
+                                        <button type="button" class="dish-ask" data-dish="steak" data-dish-name="Yakiniku" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Yakiniku</button>
+                                        
                                         
                                     </div>
                                     
@@ -4031,13 +4038,13 @@
                         <li class="menu-item" data-tags="fish salad sushi under130" data-text="salmon bowl marinerad lax med sushiris,,salladsmix,gurka,avokado,edamame,wakame, mango,morötter,majs,picklad rödlök ,chilimajonös,sesamfrön poke bowl fish salad sushi" data-order="17" data-category="Poke Bowl" data-price="129 kr" data-name="Salmon Bowl">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="salmon" data-dish-name="Salmon Bowl" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico" data-protein="fish" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Salmon Bowl
+                                        
+                                        <button type="button" class="dish-ask" data-dish="salmon" data-dish-name="Salmon Bowl" data-protein="fish" data-protein-sv="Fisk" data-protein-en="Fish" aria-haspopup="dialog" aria-label="Vad är det?">Salmon Bowl</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -4081,7 +4088,7 @@
                         <li class="menu-item" data-tags="chicken salad sushi under130" data-text="kyckling bowl friterad kyckling med sushiris,salladsmix,gurka,avokado,edamame,wakame, mango,morötter,majs,picklad rödlök,chilimajonös,sweetchilisås,sesamfrön poke bowl chicken salad sushi" data-order="19" data-category="Poke Bowl" data-price="129 kr" data-name="Kyckling Bowl">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Kyckling Bowl" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Kyckling Bowl" data-protein="chicken" data-protein-sv="Kyckling" data-protein-en="Chicken" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="chicken" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -4131,7 +4138,7 @@
                         <li class="menu-item" data-tags="salad sushi under130 veg vego" data-text="vegetarisk bowl tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  morötter,majs,picklad rödlök,chilimajonös,,sesamfrön poke bowl veg salad sushi" data-order="21" data-category="Poke Bowl" data-price="129 kr" data-name="Vegetarisk Bowl">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Vegetarisk Bowl" data-protein-sv="Vego" data-protein-en="Veggie" aria-haspopup="dialog" aria-label="Vad är det?">
+                                <button type="button" class="dish-thumb" data-dish="sushi-mix" data-dish-name="Vegetarisk Bowl" data-protein="veg" data-protein-sv="Vego" data-protein-en="Veggie" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" data-protein="veg" width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-sushi-mix"/></svg>
                                 </button>
                                 
@@ -4199,13 +4206,13 @@
                         <li class="menu-item" data-tags="beef chicken fish pasta" data-text="pasta pesto getost, bakade tomater, vitlöksstekta brödsmulor, pesto water: halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll fire: “chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) &#34;chicken dopiaza&#34;, baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option) metal fish chicken beef pasta" data-order="0" data-category="Metal" data-price="132 kr" data-name="Pasta pesto">
                             <div class="dish-line">
                                 
-                                <button type="button" class="dish-thumb" data-dish="pasta-pesto" data-dish-name="Pasta pesto" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">
-                                    <svg class="dish-ico"  width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="#dish-placeholder"/></svg>
-                                </button>
+                                <span class="dish-slot" aria-hidden="true"></span>
                                 
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        Pasta pesto
+                                        
+                                        <button type="button" class="dish-ask" data-dish="pasta-pesto" data-dish-name="Pasta pesto" data-protein="" data-protein-sv="" data-protein-en="" aria-haspopup="dialog" aria-label="Vad är det?">Pasta pesto</button>
+                                        
                                         
                                         <span class="pill"><span class="sv" lang="sv">Fisk</span><span class="en" lang="en">Fish</span></span>
                                         
@@ -4239,7 +4246,7 @@
 
             <dialog id="dish-sheet" aria-labelledby="dish-sheet-title">
                 <div class="dish-sheet-top">
-                    <svg class="dish-ico" id="dish-sheet-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use id="dish-sheet-use" href="#dish-placeholder"/></svg>
+                    <svg class="dish-ico" id="dish-sheet-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true" hidden><use id="dish-sheet-use" href=""></use></svg>
                     <button type="button" class="icon-btn" id="dish-sheet-close" aria-label="Stäng">×</button>
                 </div>
                 <p id="dish-sheet-protein" hidden></p>
@@ -4964,8 +4971,12 @@
                 if (icon) {
                     if (dialog.dataset.protein) icon.setAttribute("data-protein", dialog.dataset.protein);
                     else icon.removeAttribute("data-protein");
+                    icon.hidden = !dialog.dataset.href;
                 }
-                if (use && dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                if (use) {
+                    if (dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                    else use.removeAttribute("href");
+                }
                 var proteinLine = document.getElementById("dish-sheet-protein");
                 var proteinNames = {
                     beef: ["Nöt", "Beef"],
@@ -4990,7 +5001,7 @@
             }
             window.renderDishSheet = renderDishSheet;
             document.addEventListener("click", function (event) {
-                var button = event.target.closest ? event.target.closest(".dish-thumb") : null;
+                var button = event.target.closest ? event.target.closest(".dish-thumb, .dish-ask") : null;
                 if (button) {
                     var dialog = document.getElementById("dish-sheet");
                     if (!dialog || !dialog.showModal) return;
@@ -4998,7 +5009,7 @@
                     dialog.dataset.slug = button.getAttribute("data-dish") || "";
                     var icon = button.querySelector(".dish-ico");
                     var use = button.querySelector("use");
-                    dialog.dataset.protein = icon ? (icon.getAttribute("data-protein") || "") : "";
+                    dialog.dataset.protein = button.getAttribute("data-protein") || (icon ? (icon.getAttribute("data-protein") || "") : "");
                     dialog.dataset.href = use ? (use.getAttribute("href") || "") : "";
                     var article = button.closest("article");
                     var link = document.getElementById("dish-sheet-link");

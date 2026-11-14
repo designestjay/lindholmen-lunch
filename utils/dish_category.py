@@ -71,6 +71,39 @@ def _closed(text: str, taxonomy: dict) -> bool:
     return False
 
 
+_PASTA_SHAPE = (
+    "pasta",
+    "penne",
+    "spaghetti",
+    "linguine",
+    "fusilli",
+    "rigatoni",
+    "tagliatelle",
+    "farfalle",
+    "makaron",
+)
+_NOT_A_PASTA = (
+    "skinka",
+    "bacon",
+    "salsiccia",
+    "ciabatta",
+    "sallad",
+    "burgare",
+    "smörgås",
+    "baguette",
+    "wrap",
+)
+
+
+def _pesto_names_pasta(text: str) -> bool:
+    """Pesto on a sandwich is not a pasta. A pasta word keeps the pasta category."""
+    if any(_contains(text, word) for word in _PASTA_SHAPE):
+        return True
+    if any(_contains(text, word) for word in _NOT_A_PASTA):
+        return False
+    return True
+
+
 def _best_keyword(text: str, categories: dict) -> tuple[str, str, int] | None:
     best = None
     for slug, spec in categories.items():
@@ -82,6 +115,8 @@ def _best_keyword(text: str, categories: dict) -> tuple[str, str, int] | None:
         priority = int(spec.get("priority") or 0)
         for keyword in spec.get("keywords") or []:
             if _contains(text, keyword):
+                if slug == "pasta-pesto" and not _pesto_names_pasta(text):
+                    continue
                 score = priority + len(keyword) * 2
                 if best is None or score > best[2]:
                     best = (slug, keyword, score)

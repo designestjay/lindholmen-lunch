@@ -594,6 +594,21 @@
             flex: 0 0 48px;
             width: 48px;
             height: 48px;
+            background: transparent;
+            border: 0;
+        }
+        .dish-ask {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+            text-align: left;
+            cursor: pointer;
         }
         .dish-thumb {
             margin: 0;
@@ -1147,8 +1162,8 @@
                         {% for item in r.dishes %}
                         <li class="menu-item" data-tags="{{ item.filter_tokens }}" data-text="{{ item.search_text }}" data-order="{{ loop.index0 }}" data-category="{{ item.category }}" data-price="{{ item.price }}" data-name="{{ item.name }}">
                             <div class="dish-line">
-                                {% if item.dish_sheet %}
-                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">
+                                {% if item.dish_image %}
+                                <button type="button" class="dish-thumb" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">
                                     <svg class="dish-ico" {% if item.protein %}data-protein="{{ item.protein }}"{% endif %} width="48" height="48" viewBox="0 0 64 64" aria-hidden="true"><use href="{{ item.dish_image }}#art"/></svg>
                                 </button>
                                 {% else %}
@@ -1156,7 +1171,9 @@
                                 {% endif %}
                                 <div class="dish-main">
                                     <div class="dish-name">
-                                        {% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}
+                                        {% if item.dish_sheet and not item.dish_image %}
+                                        <button type="button" class="dish-ask" data-dish="{{ item.dish_category }}" data-dish-name="{{ item.name }}" data-protein="{{ item.protein }}" data-protein-sv="{{ item.protein_sv }}" data-protein-en="{{ item.protein_en }}" aria-haspopup="dialog" aria-label="Vad är det?">{% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}</button>
+                                        {% elif item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}
                                         {% for pill in item.pills %}
                                         <span class="pill"><span class="sv" lang="sv">{{ pill.sv }}</span><span class="en" lang="en">{{ pill.en }}</span></span>
                                         {% endfor %}
@@ -1193,7 +1210,7 @@
 
             <dialog id="dish-sheet" aria-labelledby="dish-sheet-title">
                 <div class="dish-sheet-top">
-                    <svg class="dish-ico" id="dish-sheet-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true"><use id="dish-sheet-use" href="assets/dishes/placeholder.svg#art"/></svg>
+                    <svg class="dish-ico" id="dish-sheet-ico" width="160" height="160" viewBox="0 0 64 64" aria-hidden="true" hidden><use id="dish-sheet-use" href=""></use></svg>
                     <button type="button" class="icon-btn" id="dish-sheet-close" aria-label="Stäng">×</button>
                 </div>
                 <p id="dish-sheet-protein" hidden></p>
@@ -1914,8 +1931,12 @@
                 if (icon) {
                     if (dialog.dataset.protein) icon.setAttribute("data-protein", dialog.dataset.protein);
                     else icon.removeAttribute("data-protein");
+                    icon.hidden = !dialog.dataset.href;
                 }
-                if (use && dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                if (use) {
+                    if (dialog.dataset.href) use.setAttribute("href", dialog.dataset.href);
+                    else use.removeAttribute("href");
+                }
                 var proteinLine = document.getElementById("dish-sheet-protein");
                 var proteinNames = {
                     beef: ["Nöt", "Beef"],
@@ -1940,7 +1961,7 @@
             }
             window.renderDishSheet = renderDishSheet;
             document.addEventListener("click", function (event) {
-                var button = event.target.closest ? event.target.closest(".dish-thumb") : null;
+                var button = event.target.closest ? event.target.closest(".dish-thumb, .dish-ask") : null;
                 if (button) {
                     var dialog = document.getElementById("dish-sheet");
                     if (!dialog || !dialog.showModal) return;
@@ -1948,7 +1969,7 @@
                     dialog.dataset.slug = button.getAttribute("data-dish") || "";
                     var icon = button.querySelector(".dish-ico");
                     var use = button.querySelector("use");
-                    dialog.dataset.protein = icon ? (icon.getAttribute("data-protein") || "") : "";
+                    dialog.dataset.protein = button.getAttribute("data-protein") || (icon ? (icon.getAttribute("data-protein") || "") : "");
                     dialog.dataset.href = use ? (use.getAttribute("href") || "") : "";
                     var article = button.closest("article");
                     var link = document.getElementById("dish-sheet-link");

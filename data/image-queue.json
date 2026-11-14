@@ -347,6 +347,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "lufttorkad skinka/mozzarella/pesto",
+      "name": "Lufttorkad skinka/mozzarella/pesto",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
       "name": "Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
       "description": "Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",

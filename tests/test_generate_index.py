@@ -16,7 +16,10 @@ def test_friday_page_uses_scrape_time_not_render_time():
     assert "https://mimolett.kvartersmenyn.se/" in html
     assert "Menyn finns på restaurangens sida" in html
     assert "Roterande meny" in html
-    assert "assets/dishes/placeholder.svg" in html
+    assert "placeholder.svg" not in html
+    assert html.count('class="dish-thumb"') > 0
+    assert html.count('href="assets/dishes/') == html.count('class="dish-thumb"')
+    assert 'class="dish-ask"' in html
     assert "Generell beskrivning av rätten" in html
     assert "Stängt idag." in html
     assert "Utkast" in html
