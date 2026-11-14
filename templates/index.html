@@ -553,11 +553,11 @@
         .menu-item { padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
         .menu-item:first-child { border-top: 0; padding-top: 4px; }
         .dish-line {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
+            display: flex;
+            align-items: flex-start;
             gap: var(--gap-2);
-            align-items: start;
         }
+        .dish-main { flex: 1 1 auto; min-width: 0; }
         .dish-name {
             font-weight: 500;
             font-size: 16px;
@@ -575,6 +575,7 @@
             overflow: hidden;
         }
         .price {
+            flex: 0 0 auto;
             max-width: 38%;
             font-size: 14px;
             text-align: right;
