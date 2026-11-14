@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_ls_kitchen.py
 
 from scrapers.ls_kitchen import LsKitchenScraper

@@ -22,14 +22,10 @@
         "description": "Lammgryta med linser, lök, tomat, chili och limejuice. Tre dagens vegetariska rätter och raita (kan fås vegansk)",
         "price": "129 kr",
         "tags": [
-          "indian",
-          "vegan",
-          "soup"
+          "indian"
         ],
         "emoji_tags": [
-          "🇮🇳",
-          "🌱",
-          "🥣"
+          "🇮🇳"
         ]
       },
       {
@@ -80,15 +76,11 @@
     "stale": false,
     "tags": [
       "indian",
-      "vegan",
-      "chicken",
-      "soup"
+      "chicken"
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🌱",
-      "🐔",
-      "🥣"
+      "🐔"
     ]
   },
   "CuckoosNestScraper": {
@@ -155,12 +147,8 @@
         "category": "VEG",
         "description": "risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao",
         "price": "195 kr",
-        "tags": [
-          "vegan"
-        ],
-        "emoji_tags": [
-          "🌱"
-        ]
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "",
@@ -203,7 +191,6 @@
     ],
     "stale": false,
     "tags": [
-      "vegan",
       "fish",
       "chicken",
       "beef",
@@ -211,7 +198,6 @@
       "burger"
     ],
     "emoji_tags": [
-      "🌱",
       "🐟",
       "🐔",
       "🐄",
@@ -228,38 +214,30 @@
         "description": "getost, bakade tomater, vitlöksstekta brödsmulor, pesto Water: Halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill Charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll Fire: “Chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) \"Chicken dopiaza\", baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option)",
         "price": "132 kr",
         "tags": [
-          "vegan",
           "fish",
           "chicken",
           "beef",
-          "salad",
           "pasta"
         ],
         "emoji_tags": [
-          "🌱",
           "🐟",
           "🐔",
           "🐄",
-          "🥗",
           "🍝"
         ]
       }
     ],
     "stale": false,
     "tags": [
-      "vegan",
       "fish",
       "chicken",
       "beef",
-      "salad",
       "pasta"
     ],
     "emoji_tags": [
-      "🌱",
       "🐟",
       "🐔",
       "🐄",
-      "🥗",
       "🍝"
     ]
   },
@@ -462,11 +440,9 @@
         "description": "",
         "price": "125 kr",
         "tags": [
-          "beef",
           "salad"
         ],
         "emoji_tags": [
-          "🐄",
           "🥗"
         ]
       },
@@ -490,14 +466,12 @@
         "description": "sallad, svartris, glasnudlar, mangosalsa, ärtskott, avokado, sojabönor, srirachamayo, räkor och lax",
         "price": "129 kr",
         "tags": [
-          "mexican",
-          "vegan",
+          "veg",
           "fish",
           "salad"
         ],
         "emoji_tags": [
-          "🇲🇽",
-          "🌱",
+          "🥦",
           "🐟",
           "🥗"
         ]
@@ -535,12 +509,10 @@
         "price": "129 kr",
         "tags": [
           "japanese",
-          "salad",
           "sushi"
         ],
         "emoji_tags": [
           "🇯🇵",
-          "🥗",
           "🍣"
         ]
       },
@@ -550,11 +522,9 @@
         "description": "Friterad krabbröra, avokado, gurka, krispsallad",
         "price": "129 kr",
         "tags": [
-          "salad",
           "sushi"
         ],
         "emoji_tags": [
-          "🥗",
           "🍣"
         ]
       },
@@ -564,26 +534,23 @@
         "description": "Friterade kyckling / gurka / krispsallad / morötter",
         "price": "125 kr",
         "tags": [
-          "chicken",
-          "salad"
+          "chicken"
         ],
         "emoji_tags": [
-          "🐔",
-          "🥗"
+          "🐔"
         ]
       }
     ],
     "stale": false,
     "tags": [
+      "mexican",
       "korean",
       "thai",
       "japanese",
-      "mexican",
-      "vegan",
-      "fish",
-      "chicken",
+      "veg",
       "pork",
-      "beef",
+      "chicken",
+      "fish",
       "salad",
       "sushi",
       "pasta",
@@ -591,15 +558,14 @@
       "dessert"
     ],
     "emoji_tags": [
+      "🇲🇽",
       "🇰🇷",
       "🇹🇭",
       "🇯🇵",
-      "🇲🇽",
-      "🌱",
-      "🐟",
-      "🐔",
+      "🥦",
       "🐖",
-      "🐄",
+      "🐔",
+      "🐟",
       "🥗",
       "🍣",
       "🍝",
@@ -640,11 +606,9 @@
         "description": "Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
         "price": "85 kr",
         "tags": [
-          "beef",
           "pasta"
         ],
         "emoji_tags": [
-          "🐄",
           "🍝"
         ]
       },
@@ -655,12 +619,10 @@
         "price": "95 kr",
         "tags": [
           "chicken",
-          "beef",
           "pasta"
         ],
         "emoji_tags": [
           "🐔",
-          "🐄",
           "🍝"
         ]
       },
@@ -695,12 +657,8 @@
         "category": "The Visitor",
         "description": "Knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. Toppad med lagrad hårdost och hackad persilja.",
         "price": "95 kr",
-        "tags": [
-          "beef"
-        ],
-        "emoji_tags": [
-          "🐄"
-        ]
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Garlic Bread",
@@ -733,16 +691,14 @@
     ],
     "stale": false,
     "tags": [
-      "fish",
       "chicken",
-      "beef",
+      "fish",
       "pasta",
       "dessert"
     ],
     "emoji_tags": [
-      "🐟",
       "🐔",
-      "🐄",
+      "🐟",
       "🍝",
       "🍰"
     ]
@@ -768,10 +724,10 @@
         "description": "Svampragu – Lingon – Persilja",
         "price": "130 kr",
         "tags": [
-          "vegan"
+          "veg"
         ],
         "emoji_tags": [
-          "🌱"
+          "🥦"
         ]
       },
       {
@@ -788,12 +744,10 @@
         "description": "",
         "price": "130 kr",
         "tags": [
-          "vegan",
-          "burger"
+          "veg"
         ],
         "emoji_tags": [
-          "🌱",
-          "🍔"
+          "🥦"
         ]
       },
       {
@@ -817,13 +771,11 @@
         "price": "130 kr",
         "tags": [
           "beef",
-          "salad",
-          "burger"
+          "salad"
         ],
         "emoji_tags": [
           "🐄",
-          "🥗",
-          "🍔"
+          "🥗"
         ]
       },
       {
@@ -831,30 +783,24 @@
         "category": "Lunch",
         "description": "Kronärtskocka – Tomat – Smör – Citron – Krossad potatis – Rucola",
         "price": "130 kr",
-        "tags": [
-          "beef"
-        ],
-        "emoji_tags": [
-          "🐄"
-        ]
+        "tags": [],
+        "emoji_tags": []
       }
     ],
     "stale": false,
     "tags": [
-      "vegan",
-      "chicken",
+      "veg",
       "pork",
+      "chicken",
       "beef",
-      "salad",
-      "burger"
+      "salad"
     ],
     "emoji_tags": [
-      "🌱",
-      "🐔",
+      "🥦",
       "🐖",
+      "🐔",
       "🐄",
-      "🥗",
-      "🍔"
+      "🥗"
     ]
   },
   "OishiiScraper": {
@@ -936,11 +882,11 @@
         "description": "2avokado 1ägg 1sparris 1tofu 6rullar",
         "price": "110 kr",
         "tags": [
-          "vegan",
+          "veg",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🍣"
         ]
       },
@@ -950,11 +896,11 @@
         "description": "3avokado 1sparris 1ägg 1tofu 7rullar",
         "price": "120 kr",
         "tags": [
-          "vegan",
+          "veg",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🍣"
         ]
       },
@@ -965,13 +911,11 @@
         "price": "135 kr",
         "tags": [
           "japanese",
-          "pork",
-          "soup"
+          "pork"
         ],
         "emoji_tags": [
           "🇯🇵",
-          "🐖",
-          "🥣"
+          "🐖"
         ]
       },
       {
@@ -982,14 +926,12 @@
         "tags": [
           "japanese",
           "beef",
-          "salad",
-          "soup"
+          "salad"
         ],
         "emoji_tags": [
           "🇯🇵",
           "🐄",
-          "🥗",
-          "🥣"
+          "🥗"
         ]
       },
       {
@@ -1076,12 +1018,10 @@
         "description": "fläskkött eller vegetariansk",
         "price": "109 kr",
         "tags": [
-          "vegan",
           "pork",
           "dumplings"
         ],
         "emoji_tags": [
-          "🌱",
           "🐖",
           "🥟"
         ]
@@ -1092,12 +1032,10 @@
         "description": "fläskkött eller vegetariansk",
         "price": "129 kr",
         "tags": [
-          "vegan",
           "pork",
           "dumplings"
         ],
         "emoji_tags": [
-          "🌱",
           "🐖",
           "🥟"
         ]
@@ -1172,12 +1110,12 @@
         "description": "Tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  Morötter,majs,picklad rödlök,chilimajonös,,sesamfrön",
         "price": "129 kr",
         "tags": [
-          "vegan",
+          "veg",
           "salad",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🥗",
           "🍣"
         ]
@@ -1186,11 +1124,11 @@
     "stale": false,
     "tags": [
       "japanese",
-      "vegan",
+      "veg",
       "fish",
-      "chicken",
       "pork",
       "beef",
+      "chicken",
       "salad",
       "sushi",
       "dumplings",
@@ -1198,11 +1136,11 @@
     ],
     "emoji_tags": [
       "🇯🇵",
-      "🌱",
+      "🥦",
       "🐟",
-      "🐔",
       "🐖",
       "🐄",
+      "🐔",
       "🥗",
       "🍣",
       "🥟",
@@ -1232,11 +1170,11 @@
         "description": "2 avocado, 2 tofu, 2 omelett & 4 maki",
         "price": "95 kr",
         "tags": [
-          "vegan",
+          "veg",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🍣"
         ]
       },
@@ -1246,12 +1184,12 @@
         "description": "2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki",
         "price": "95 kr",
         "tags": [
-          "vegan",
+          "veg",
           "fish",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🐟",
           "🍣"
         ]
@@ -1262,12 +1200,12 @@
         "description": "4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado",
         "price": "105 kr",
         "tags": [
-          "vegan",
+          "veg",
           "fish",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🐟",
           "🍣"
         ]
@@ -1278,12 +1216,12 @@
         "description": "5 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado",
         "price": "135 kr",
         "tags": [
-          "vegan",
+          "veg",
           "fish",
           "sushi"
         ],
         "emoji_tags": [
-          "🌱",
+          "🥦",
           "🐟",
           "🍣"
         ]
@@ -1360,12 +1298,10 @@
         "description": "8 bitar dumplings, sallad & ris",
         "price": "99 kr",
         "tags": [
-          "vegan",
           "salad",
           "dumplings"
         ],
         "emoji_tags": [
-          "🌱",
           "🥗",
           "🥟"
         ]
@@ -1404,12 +1340,10 @@
         "description": "",
         "price": "99 kr",
         "tags": [
-          "korean",
-          "vegan"
+          "korean"
         ],
         "emoji_tags": [
-          "🇰🇷",
-          "🌱"
+          "🇰🇷"
         ]
       },
       {
@@ -1446,11 +1380,9 @@
         "description": "",
         "price": "99 kr",
         "tags": [
-          "vegan",
           "soup"
         ],
         "emoji_tags": [
-          "🌱",
           "🥣"
         ]
       },
@@ -1481,9 +1413,9 @@
     ],
     "stale": false,
     "tags": [
-      "korean",
       "japanese",
-      "vegan",
+      "korean",
+      "veg",
       "fish",
       "chicken",
       "beef",
@@ -1493,9 +1425,9 @@
       "soup"
     ],
     "emoji_tags": [
-      "🇰🇷",
       "🇯🇵",
-      "🌱",
+      "🇰🇷",
+      "🥦",
       "🐟",
       "🐔",
       "🐄",
@@ -1514,12 +1446,10 @@
         "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.",
         "price": "119 kr, takeaway 114 kr",
         "tags": [
-          "chicken",
-          "beef"
+          "chicken"
         ],
         "emoji_tags": [
-          "🐔",
-          "🐄"
+          "🐔"
         ]
       },
       {
@@ -1542,12 +1472,10 @@
         "description": "Potatis- och blomkålsgryta med lök, tomat och färsk ingefära.",
         "price": "119 kr, takeaway 114 kr",
         "tags": [
-          "indian",
-          "soup"
+          "indian"
         ],
         "emoji_tags": [
-          "🇮🇳",
-          "🥣"
+          "🇮🇳"
         ]
       },
       {
@@ -1557,12 +1485,12 @@
         "price": "134 kr",
         "tags": [
           "indian",
-          "vegan",
+          "veg",
           "soup"
         ],
         "emoji_tags": [
           "🇮🇳",
-          "🌱",
+          "🥦",
           "🥣"
         ]
       },
@@ -1625,12 +1553,10 @@
         "price": "157 kr",
         "tags": [
           "indian",
-          "beef",
           "soup"
         ],
         "emoji_tags": [
           "🇮🇳",
-          "🐄",
           "🥣"
         ]
       },
@@ -1798,19 +1724,17 @@
     "stale": false,
     "tags": [
       "indian",
-      "vegan",
-      "fish",
+      "veg",
       "chicken",
-      "beef",
+      "fish",
       "salad",
       "soup"
     ],
     "emoji_tags": [
       "🇮🇳",
-      "🌱",
-      "🐟",
+      "🥦",
       "🐔",
-      "🐄",
+      "🐟",
       "🥗",
       "🥣"
     ]

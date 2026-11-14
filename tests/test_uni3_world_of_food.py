@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_uni3_world_of_food.py
 
 from scrapers.uni3_world_of_food import Uni3WorldOfFoodScraper

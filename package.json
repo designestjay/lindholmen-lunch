@@ -5,10 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
-    "scrape": "node scrape.js",
-    "generate": "node generate.js",
-    "build": "node generate_html.js"
+    "dev": "node server.js"
   },
   "dependencies": {
     "axios": "^1.6.0",

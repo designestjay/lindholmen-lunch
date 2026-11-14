@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_district_one.py
 
 from scrapers.district_one import DistrictOneScraper

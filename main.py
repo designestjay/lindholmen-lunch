@@ -82,6 +82,41 @@ def _load_previous(filepath: str) -> dict:
         return {}
 
 
+def _same_stockholm_date(scraped_at: str | None, now: datetime) -> bool:
+    """True when a previous scrape happened on the same Stockholm calendar day."""
+    if not scraped_at:
+        return False
+    try:
+        previous = datetime.fromisoformat(scraped_at)
+    except ValueError:
+        return False
+    if previous.tzinfo is None:
+        previous = previous.replace(tzinfo=STOCKHOLM)
+    return previous.astimezone(STOCKHOLM).date() == now.astimezone(STOCKHOLM).date()
+
+
+def _carried_payload(prev: dict, day: str, previous_meta: dict) -> dict:
+    """Copy a same-day menu forward and keep the original fetched_at."""
+    items = []
+    for item in prev.get("items") or []:
+        if not isinstance(item, dict):
+            continue
+        items.append(
+            {
+                "name": item.get("name") or "",
+                "category": item.get("category") or "",
+                "description": item.get("description") or "",
+                "price": item.get("price") or "",
+            }
+        )
+    return {
+        "day": day.lower(),
+        "items": items,
+        "stale": True,
+        "fetched_at": prev.get("fetched_at") or previous_meta.get("scraped_at"),
+    }
+
+
 def _scrape_one(scraper_cls, day: str, cache: dict | None):
     """Return a menu payload dict, or None if this restaurant has no menu today."""
     if cache is not None and scraper_cls.__name__ in cache:
@@ -93,7 +128,7 @@ def _scrape_one(scraper_cls, day: str, cache: dict | None):
             if all_menus:
                 cache[scraper_cls.__name__] = scraper
 
-    all_menus = scraper.get_all_menus()
+    all_menus = scraper.get_all_menus() if hasattr(scraper, "get_all_menus") else None
     if all_menus:
         menu = all_menus.get(day.lower())
         if not menu or not getattr(menu, "items", None):
@@ -106,22 +141,37 @@ def _scrape_one(scraper_cls, day: str, cache: dict | None):
     return _menu_payload(menu)
 
 
-def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
+def scrape_for_day(
+    day: str,
+    refresh: bool = False,
+    cache: dict | None = None,
+    *,
+    data_dir: str = "data",
+    scrapers=None,
+    now: datetime | None = None,
+    max_retries: int = 2,
+    sleeper=time.sleep,
+) -> dict:
     logging.info("Scraping lunch menus for %s", day.capitalize())
+    now = now or datetime.now(STOCKHOLM)
+    scrapers = scrapers if scrapers is not None else SCRAPERS
 
-    filepath = f"data/lunch_data_{day}.json"
+    os.makedirs(data_dir, exist_ok=True)
+    filepath = os.path.join(data_dir, f"lunch_data_{day}.json")
+    meta_path = os.path.join(data_dir, f"scrape_meta_{day}.json")
     if os.path.exists(filepath) and not refresh:
         logging.info("Skipping scraping for %s (cached file exists).", day)
-        return
+        return _load_previous(meta_path)
 
     previous = _load_previous(filepath)
+    previous_meta = _load_previous(meta_path)
+    same_day = _same_stockholm_date(previous_meta.get("scraped_at"), now)
     results = {}
     ok, stale_kept, failed = [], [], []
 
-    for scraper_cls in SCRAPERS:
+    for scraper_cls in scrapers:
         name = scraper_cls.__name__
         attempts = 0
-        max_retries = 2
         got = None
 
         while attempts <= max_retries:
@@ -137,31 +187,23 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
                 else:
                     delay = 2 + attempts
                     logging.info("[%s] Retrying in %s seconds...", name, delay)
-                    time.sleep(delay)
+                    sleeper(delay)
 
         if got and got.get("items"):
+            got["stale"] = False
+            got["fetched_at"] = now.isoformat(timespec="minutes")
             results[name] = got
             ok.append(name)
             continue
 
         prev = previous.get(name)
-        if isinstance(prev, dict) and prev.get("items"):
-            carried = dict(prev)
-            carried["stale"] = True
-            carried["day"] = day.lower()
-            # Drop annotation fields; generate_html will re-annotate.
-            carried.pop("tags", None)
-            carried.pop("emoji_tags", None)
-            for item in carried.get("items") or []:
-                if isinstance(item, dict):
-                    item.pop("tags", None)
-                    item.pop("emoji_tags", None)
-            results[name] = carried
+        if same_day and isinstance(prev, dict) and prev.get("items"):
+            results[name] = _carried_payload(prev, day, previous_meta)
             stale_kept.append(name)
-            logging.warning("[%s] No fresh menu; keeping previous data as stale.", name)
+            logging.warning("[%s] No fresh menu; keeping same-day data as stale.", name)
         else:
             failed.append(name)
-            logging.warning("[%s] No menu for %s (and no previous data to keep).", name, day)
+            logging.warning("[%s] No menu for %s. Not carrying older data.", name, day)
 
     logging.info(
         "Scrape summary for %s: %s fresh, %s stale, %s missing",
@@ -175,24 +217,21 @@ def scrape_for_day(day: str, refresh: bool = False, cache: dict = None):
 
     meta = {
         "day": day,
-        "scraped_at": datetime.now(STOCKHOLM).isoformat(timespec="minutes"),
+        "scraped_at": now.isoformat(timespec="minutes"),
         "fresh": ok,
         "stale": stale_kept,
         "missing": failed,
     }
 
-    if results:
-        os.makedirs("data", exist_ok=True)
-        with open(filepath, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
-        with open(f"data/scrape_meta_{day}.json", "w", encoding="utf-8") as f:
-            json.dump(meta, f, indent=2, ensure_ascii=False)
-        logging.info("Wrote lunch data to %s", filepath)
-    else:
-        logging.warning("No results to write for %s. Leaving existing file untouched.", day)
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2, ensure_ascii=False)
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=2, ensure_ascii=False)
+    logging.info("Wrote lunch data to %s", filepath)
+    return meta
 
 
-def main():
+def main() -> str | None:
     parser = argparse.ArgumentParser(description="Run Lindholmen lunch scrapers.")
     parser.add_argument("--day", type=str, help="Weekday to scrape (e.g., monday)", choices=WEEKDAYS)
     parser.add_argument("--all", action="store_true", help="Scrape all weekdays (mon–fri)")
@@ -204,11 +243,17 @@ def main():
         weekly_scraper_cache = {}
         for day in WEEKDAYS:
             scrape_for_day(day, refresh=args.refresh, cache=weekly_scraper_cache)
-    else:
-        day = args.day or get_today_english()
-        scrape_for_day(day, refresh=args.refresh)
+        today = get_today_english().lower()
+        return today if today in WEEKDAYS else "friday"
+
+    day = (args.day or get_today_english()).lower()
+    if day not in WEEKDAYS:
+        logging.info("No weekday scrape for %s.", day)
+        return None
+    scrape_for_day(day, refresh=args.refresh)
+    return day
 
 
 if __name__ == "__main__":
-    main()
-    generate_index_page()
+    chosen = main()
+    generate_index_page(day=chosen)

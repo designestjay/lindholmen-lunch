@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_restaurant_pier_11.py
 
 from scrapers.restaurant_pier_11 import RestaurantPier11Scraper

@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 from scrapers.benne_pastabar import BennePastabarScraper
 
 def test_benne_pastabar_for_day(day: str):

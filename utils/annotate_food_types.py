@@ -3,12 +3,32 @@
 from __future__ import annotations
 
 import json
+import re
 from typing import Dict, List, Tuple
+
+# Dishes that mention these are not vegetarian, even if the text also says
+# "vegetarisk" (a side note) or "nötter" shares a stem with "nöt".
+_MEAT_STEMS = ("kyckling", "fläsk", "nöt", "fisk", "lamm", "kött")
+_VEG_TAGS = {"veg", "vegan"}
 
 
 def load_keywords() -> dict:
     with open("data/food_tags.json", encoding="utf-8") as f:
         return json.load(f)
+
+
+def _keyword_in_text(keyword: str, text: str) -> bool:
+    """Match at a word boundary so 'veg' cannot hit 'vegetables' or 'grönsaker'."""
+    if not keyword:
+        return False
+    return re.search(r"\b" + re.escape(keyword), text) is not None
+
+
+def _strip_false_veg(tags: List[str], text: str) -> List[str]:
+    low = text.lower()
+    if any(stem in low for stem in _MEAT_STEMS):
+        return [tag for tag in tags if tag not in _VEG_TAGS]
+    return tags
 
 
 def _match_tags(text: str, tag_data: dict) -> Tuple[List[str], List[str]]:
@@ -18,7 +38,7 @@ def _match_tags(text: str, tag_data: dict) -> Tuple[List[str], List[str]]:
 
     for tag, info in tag_data.items():
         keywords = [kw.lower() for kw in info.get("keywords", [])]
-        if any(kw in full_text for kw in keywords):
+        if any(_keyword_in_text(kw, full_text) for kw in keywords):
             matched.append((info.get("priority", 100), tag, info.get("emoji", "")))
 
     matched.sort(key=lambda row: row[0])
@@ -46,7 +66,7 @@ def annotate_menu_data(data: dict, tag_data: dict | None = None) -> dict:
             continue
 
         items = menu.get("items") or []
-        restaurant_parts: List[str] = []
+        item_tag_lists: List[List[str]] = []
 
         for item in items:
             if not isinstance(item, dict):
@@ -58,13 +78,34 @@ def annotate_menu_data(data: dict, tag_data: dict | None = None) -> dict:
                     item.get("category") or "",
                 ]
             )
-            restaurant_parts.append(item_text)
             tags, emojis = _match_tags(item_text, tag_data)
+            tags = _strip_false_veg(tags, item_text)
+            emojis = [
+                tag_data.get(tag, {}).get("emoji", "")
+                for tag in tags
+                if tag_data.get(tag, {}).get("emoji")
+            ]
+            # Keep emoji order stable and unique after veg tags are removed.
+            deduped: List[str] = []
+            for emoji in emojis:
+                if emoji not in deduped:
+                    deduped.append(emoji)
             item["tags"] = tags
-            item["emoji_tags"] = emojis
+            item["emoji_tags"] = deduped
+            item_tag_lists.append(tags)
 
-        tags, emojis = _match_tags(" ".join(restaurant_parts), tag_data)
-        menu["tags"] = tags
+        seen: List[str] = []
+        for tags in item_tag_lists:
+            for tag in tags:
+                if tag not in seen:
+                    seen.append(tag)
+        seen.sort(key=lambda tag: tag_data.get(tag, {}).get("priority", 100))
+        emojis: List[str] = []
+        for tag in seen:
+            emoji = tag_data.get(tag, {}).get("emoji", "")
+            if emoji and emoji not in emojis:
+                emojis.append(emoji)
+        menu["tags"] = seen
         menu["emoji_tags"] = emojis
 
     return data

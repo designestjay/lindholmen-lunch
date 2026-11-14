@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_encounter_asian.py
 
 from scrapers.encounter_asian import EncounterAsianScraper

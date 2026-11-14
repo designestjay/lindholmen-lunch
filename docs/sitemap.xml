@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lindholmenlunch.nu/</loc></url>
-  <url><loc>https://lindholmenlunch.nu/lunch_monday.html</loc></url>
-  <url><loc>https://lindholmenlunch.nu/lunch_tuesday.html</loc></url>
-  <url><loc>https://lindholmenlunch.nu/lunch_wednesday.html</loc></url>
-  <url><loc>https://lindholmenlunch.nu/lunch_thursday.html</loc></url>
-  <url><loc>https://lindholmenlunch.nu/lunch_friday.html</loc></url>
+  <url><loc>https://lindholmenlunch.nu/</loc><lastmod>2026-11-13</lastmod></url>
+  <url><loc>https://lindholmenlunch.nu/privacy.html</loc><lastmod>2026-11-13</lastmod></url>
 </urlset>

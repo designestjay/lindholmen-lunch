@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_kooperativet.py
 
 from scrapers.kooperativet import KooperativetScraper

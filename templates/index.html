@@ -1,931 +1,1271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-menu-date="{{ menu_date }}" data-fresh="{{ fresh_count }}" data-total="{{ total_restaurants }}">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LMDT71XZ0C"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LMDT71XZ0C');
+        (function () {
+            var lang = "en";
+            try {
+                var stored = localStorage.getItem("language");
+                if (stored === "sv" || stored === "en") lang = stored;
+                else if ((navigator.language || "").toLowerCase().indexOf("sv") === 0) lang = "sv";
+            } catch (e) {}
+            document.documentElement.lang = lang;
+            document.documentElement.classList.add("js");
+        })();
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7499028717075061"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA" />
-    <title>Lindholmen Lunch – {{ day_label_en }}</title>
-    <meta name="description" content="Today's lunch menus from restaurants in Lindholmen, Gothenburg – updated daily." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#f2f2f0">
+    <meta name="google-site-verification" content="iUNSsOQ8Uw21911zTxrbq0FNyaY7uwQu6iq8XffofsA">
+    <title>Lindholmen Lunch</title>
+    <meta name="description" content="Lunchmenyer från Lindholmen, uppdateras varje vardag.">
+    <link rel="canonical" href="https://lindholmenlunch.nu/">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="assets/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta property="og:title" content="Lindholmen Lunch">
+    <meta property="og:description" content="Lunchmenyer från Lindholmen, uppdateras varje vardag.">
+    <meta property="og:image" content="https://lindholmenlunch.nu/assets/og.png">
+    <meta property="og:url" content="https://lindholmenlunch.nu/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sv_SE">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preload" href="assets/fonts/onest-latin-500.woff2" as="font" type="font/woff2" crossorigin>
     <style>
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-ext-400.woff2") format("woff2");
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-400.woff2") format("woff2");
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-ext-500.woff2") format("woff2");
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-500.woff2") format("woff2");
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-ext-600.woff2") format("woff2");
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Onest";
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url("assets/fonts/onest-latin-600.woff2") format("woff2");
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "JetBrains Mono";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("assets/fonts/jetbrains-mono-latin-ext-500.woff2") format("woff2");
+            unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "JetBrains Mono";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("assets/fonts/jetbrains-mono-latin-500.woff2") format("woff2");
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
         :root {
-            --ink: #171c22;
-            --muted: #5a6570;
-            --paper: #eef1f3;
-            --paper-deep: #e3e8ec;
+            --bg: #f2f2f0;
+            --bg-raised: #fafaf7;
             --surface: #ffffff;
-            --line: #d5dbe2;
-            --harbour: #1b6b73;
-            --harbour-soft: #d8ebee;
-            --signal: #b85a2a;
-            --signal-soft: #f6e7de;
-            --warn: #8a6d1d;
-            --warn-soft: #f5efd8;
-            --radius: 14px;
-            --shadow: 0 1px 2px rgba(23, 28, 34, 0.04), 0 8px 24px rgba(23, 28, 34, 0.05);
-            --font-brand: "Syne", system-ui, sans-serif;
-            --font-body: "DM Sans", system-ui, sans-serif;
-            --pad: clamp(0.75rem, 2.5vw, 1.25rem);
-            --content-max: 1120px;
+            --ink: #111111;
+            --ink-2: #555555;
+            --line: #dcdcd6;
+            --dark: #171717;
+            --on-dark: #f2f2f0;
+            --on-dark-2: #a6a6a0;
+            --accent: #c8ff36;
+            --on-accent: #111111;
+            --warn-bg: #fff4cc;
+            --warn-ink: #6b5200;
+            --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+            --gutter: clamp(14px, 2.4vw, 38px);
+            --gap-1: 4px;
+            --gap-2: 8px;
+            --gap-3: 12px;
+            --gap-4: 16px;
+            --gap-5: 20px;
+            --gap-6: 36px;
+            --r-pill: 999px;
+            --r-card: 20px;
+            --r-card-lg: 24px;
+            --ease: cubic-bezier(.22, 1, .36, 1);
+            --ease-reveal: cubic-bezier(.16, 1, .3, 1);
+            --t-fast: 200ms;
+            --t-med: 350ms;
+            --t-reveal: 600ms;
             --tap: 44px;
-            --safe-t: env(safe-area-inset-top, 0px);
-            --safe-r: env(safe-area-inset-right, 0px);
-            --safe-b: env(safe-area-inset-bottom, 0px);
-            --safe-l: env(safe-area-inset-left, 0px);
-            --header-offset: calc(var(--safe-t) + 3.75rem);
+            --max: 1280px;
+            --measure: 52ch;
+            --header-block: 0px;
+            --toolbar-h: 60px;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            max-width: 100%;
-            overflow-x: clip;
-        }
-
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        html, body { margin: 0; max-width: 100%; overflow-x: clip; }
         body {
-            font-family: var(--font-body);
-            font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.25;
             color: var(--ink);
-            background:
-                radial-gradient(1200px 500px at 10% -10%, #dce8ea 0%, transparent 55%),
-                radial-gradient(900px 400px at 100% 0%, #e8e4dc 0%, transparent 50%),
-                linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+            background: var(--bg);
             min-height: 100vh;
             min-height: 100dvh;
-            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            padding-left: var(--safe-l);
-            padding-right: var(--safe-r);
         }
-
-        img, svg, video { max-width: 100%; height: auto; }
-
+        img, svg { max-width: 100%; }
+        ::selection { background: var(--accent); color: var(--on-accent); }
+        :focus { outline: none; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        html[lang="sv"] .en, html[lang="en"] .sv { display: none !important; }
+        a { color: inherit; }
+        button, input { font: inherit; color: inherit; }
+        .mono { font-family: var(--mono); font-weight: 500; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
         .skip-link {
             position: absolute;
-            left: -999px;
+            left: var(--gutter);
             top: 0;
+            transform: translateY(-120%);
             background: var(--ink);
-            color: #fff;
-            padding: 0.75rem 1rem;
-            z-index: 1000;
+            color: var(--on-dark);
+            padding: 10px 14px;
+            z-index: 80;
+            border-radius: var(--r-pill);
         }
-        .skip-link:focus { left: max(1rem, var(--safe-l)); top: max(1rem, var(--safe-t)); }
+        .skip-link:focus { transform: none; top: 8px; }
 
-        .hidden { display: none !important; }
-
-        a { color: var(--harbour); }
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible {
-            outline: 2px solid var(--harbour);
-            outline-offset: 2px;
+        .wrap {
+            width: min(var(--max), calc(100% - (var(--gutter) * 2)));
+            margin-inline: auto;
+            min-width: 0;
         }
 
         .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(238, 241, 243, 0.92);
-            border-bottom: 1px solid rgba(23, 28, 34, 0.08);
-            padding-top: var(--safe-t);
+            min-height: 56px;
+            padding-top: env(safe-area-inset-top, 0px);
         }
-
-        .header-inner,
-        .toolbar-inner,
-        .main,
-        .footer-inner {
-            width: min(var(--content-max), calc(100% - (var(--pad) * 2)));
-            max-width: 100%;
-            margin-inline: auto;
-        }
-
         .header-inner {
+            min-height: 56px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
-            min-height: 3.75rem;
-            padding: 0.5rem 0;
+            gap: var(--gap-3);
         }
-
-        .brand {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
-            background: none;
-            border: 0;
-            text-align: left;
-            cursor: pointer;
+        .wordmark {
             color: inherit;
-            font: inherit;
-            min-width: 0;
-            flex: 1 1 auto;
-            padding: 0.25rem 0;
-            min-height: var(--tap);
-            justify-content: center;
-        }
-
-        .brand-name {
-            font-family: var(--font-brand);
-            font-weight: 800;
-            font-size: clamp(1.1rem, 0.95rem + 1.2vw, 1.55rem);
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            overflow-wrap: anywhere;
-        }
-
-        .brand-meta {
-            font-size: clamp(0.72rem, 0.68rem + 0.3vw, 0.82rem);
-            color: var(--muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        .chip-btn {
-            appearance: none;
-            border: 1px solid rgba(23, 28, 34, 0.12);
-            background: var(--surface);
-            color: var(--ink);
-            border-radius: 999px;
-            padding: 0 0.95rem;
-            min-height: var(--tap);
-            font-size: 0.85rem;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-        .chip-btn:hover { background: #f7f8f9; }
-        .chip-btn[aria-pressed="true"] {
-            background: var(--harbour-soft);
-            border-color: rgba(27, 107, 115, 0.35);
-            color: var(--harbour);
-        }
-
-        .hero {
-            padding: clamp(1rem, 2.5vw, 1.75rem) 0 clamp(0.85rem, 2vw, 1.25rem);
-            animation: rise 0.55s ease both;
-            min-width: 0;
-        }
-
-        .hero-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: clamp(0.72rem, 0.68rem + 0.3vw, 0.8rem);
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: var(--harbour);
-            margin-bottom: 0.65rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-brand);
-            font-weight: 800;
-            font-size: clamp(1.75rem, 1.2rem + 3.5vw, 3.1rem);
+            font-size: 18px;
             letter-spacing: -0.04em;
-            line-height: 1.08;
-            max-width: 16ch;
-            margin: 0 0 0.65rem;
-            overflow-wrap: anywhere;
-        }
-
-        .hero p {
-            color: var(--muted);
-            font-size: clamp(0.95rem, 0.9rem + 0.35vw, 1.08rem);
-            max-width: 36rem;
-            margin: 0;
-        }
-
-        .hero-status {
-            margin-top: 0.85rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem 0.65rem;
-            font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.875rem);
-            color: var(--muted);
-        }
-
-        .status-pill {
+            line-height: 1;
+            white-space: nowrap;
+            min-height: var(--tap);
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.3rem 0.65rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.7);
-            border: 1px solid rgba(23, 28, 34, 0.08);
-            max-width: 100%;
-            overflow-wrap: anywhere;
+            gap: 0.35em;
         }
+        .lang {
+            display: flex;
+            border: 1px solid var(--line);
+            border-radius: var(--r-pill);
+            padding: 2px;
+            flex: 0 0 auto;
+        }
+        .lang button {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            min-width: var(--tap);
+            min-height: var(--tap);
+            border-radius: var(--r-pill);
+            font-weight: 500;
+            font-size: 14px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .lang button[aria-pressed="true"] { background: var(--ink); color: var(--on-dark); }
 
+        .hero { padding: var(--gap-3) 0 var(--gap-2); min-width: 0; }
+        .h1-lg { display: none; }
+        .h1-sm {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        h1 { margin: 0; font-weight: 500; }
+        .trust-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gap-3);
+            min-width: 0;
+        }
+        .trust {
+            margin: 0;
+            color: var(--ink-2);
+            font-size: 14px;
+            line-height: 1.35;
+            min-width: 0;
+        }
+        .missing-jump {
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--ink);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .day-banner {
+            margin-top: var(--gap-3);
+            background: var(--warn-bg);
+            color: var(--warn-ink);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 14px;
+            line-height: 1.35;
+        }
+        .text-btn, .clear-btn, .expand, .pick {
+            appearance: none;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .text-btn, .pick {
+            min-height: var(--tap);
+            border-radius: var(--r-pill);
+            border: 1px solid var(--line);
+            padding: 8px 14px;
+            background: var(--surface);
+            white-space: nowrap;
+        }
+        .weekend-reveal { margin-top: var(--gap-3); }
+        .pick-lg { display: none; flex: 0 0 auto; }
+
+        .sentinel { height: 1px; margin: 0; }
         .toolbar {
             position: sticky;
-            top: var(--header-offset);
+            top: var(--header-block);
             z-index: 30;
-            padding: 0.5rem 0 0.65rem;
-            background: linear-gradient(180deg, rgba(238,241,243,0.97) 70%, rgba(238,241,243,0));
+            background: var(--bg);
+            padding: 8px 0;
         }
-
-        .toolbar-panel {
+        .toolbar.is-stuck { border-bottom: 1px solid var(--line); }
+        .toolbar-row {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-2);
+            min-width: 0;
+            max-width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .toolbar-row::-webkit-scrollbar { display: none; }
+        .search { display: flex; align-items: center; flex: 0 0 auto; min-width: 0; }
+        .search.is-open { flex: 1 1 auto; }
+        .icon-btn {
+            appearance: none;
+            border: 1px solid var(--line);
             background: var(--surface);
-            border: 1px solid rgba(23, 28, 34, 0.08);
-            border-radius: calc(var(--radius) + 2px);
-            box-shadow: var(--shadow);
-            padding: 0.65rem;
-            display: grid;
-            gap: 0.55rem;
+            width: var(--tap);
+            height: var(--tap);
+            border-radius: var(--r-pill);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+        .icon-btn svg { width: 18px; height: 18px; }
+        .search-field {
+            display: flex;
+            align-items: center;
+            gap: 4px;
             min-width: 0;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            border: 1px solid transparent;
+            border-radius: var(--r-pill);
+            background: var(--surface);
+            transition: max-width var(--t-med) var(--ease), opacity var(--t-med) var(--ease), border-color var(--t-fast) var(--ease);
+        }
+        .search:not(.is-open) .search-field { visibility: hidden; }
+        .search.is-open .search-toggle { display: none; }
+        .search.is-open .search-field {
             max-width: 100%;
+            opacity: 1;
+            flex: 1 1 auto;
+            border-color: var(--line);
+            padding-right: 4px;
         }
-
-        .search-wrap {
-            position: relative;
-            min-width: 0;
-        }
-
-        .search-wrap svg {
-            position: absolute;
-            left: 0.85rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1rem;
-            height: 1rem;
-            color: var(--muted);
-            pointer-events: none;
-        }
-
+        .toolbar-row:has(.search.is-open) .filters,
+        .toolbar-row:has(.search.is-open) .pick-lg { display: none; }
         #menu-search {
+            flex: 1 1 auto;
+            min-width: 0;
             width: 100%;
-            max-width: 100%;
-            border: 1px solid rgba(23, 28, 34, 0.12);
-            border-radius: 12px;
+            border: 0;
+            background: transparent;
+            font-size: 16px;
+            font-weight: 500;
             min-height: var(--tap);
-            padding: 0.65rem 0.9rem 0.65rem 2.4rem;
-            font: inherit;
-            font-size: 1rem;
-            background: #fafbfc;
-            color: var(--ink);
+            padding: 0 14px;
         }
-
+        #menu-search::placeholder { color: var(--ink-2); }
+        .search-field:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+        #menu-search:focus-visible { outline: none; }
         .filters {
             display: flex;
-            flex-wrap: nowrap;
-            gap: 0.4rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior-x: contain;
-            scrollbar-width: thin;
-            padding-bottom: 0.15rem;
-            max-width: 100%;
+            align-items: center;
+            gap: var(--gap-2);
+            min-width: 0;
         }
-        .filters::-webkit-scrollbar { height: 4px; }
-        .filters::-webkit-scrollbar-thumb {
-            background: rgba(23, 28, 34, 0.2);
-            border-radius: 999px;
-        }
-
-        .filter-chip {
+        .filter-chip, .clear-btn {
             appearance: none;
-            border: 1px solid rgba(23, 28, 34, 0.1);
-            background: #f7f8f9;
+            border: 1px solid var(--line);
+            background: transparent;
             color: var(--ink);
-            border-radius: 999px;
-            padding: 0 0.85rem;
+            border-radius: var(--r-pill);
+            padding: 8px 14px;
             min-height: var(--tap);
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             white-space: nowrap;
             flex: 0 0 auto;
-            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+            transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
         }
-        .filter-chip:hover { border-color: rgba(27, 107, 115, 0.35); }
         .filter-chip[aria-pressed="true"] {
-            background: var(--harbour);
-            border-color: var(--harbour);
-            color: #fff;
+            background: var(--ink);
+            color: var(--on-dark);
+            border-color: var(--ink);
         }
-
+        .clear-btn { background: transparent; }
         .results-meta {
-            font-size: 0.8rem;
-            color: var(--muted);
-            min-height: 1.1em;
+            margin: 8px 0 0;
+            color: var(--ink-2);
+            font-size: 14px;
+            min-height: 0;
+        }
+        .results-meta:empty {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
         }
 
         .restaurant-list {
             display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: 1rem;
-            padding: 0.25rem 0 calc(5.5rem + var(--safe-b));
-            min-width: 0;
-            width: 100%;
+            gap: 12px;
+            align-items: start;
+            padding-bottom: var(--gap-6);
+            animation: list-in var(--t-fast) var(--ease);
         }
-
-        @media (min-width: 768px) {
-            .restaurant-list {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1.1rem;
-            }
-        }
-        @media (min-width: 1100px) {
-            .restaurant-list {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        .restaurant-card {
+        @keyframes list-in { from { opacity: 0; } to { opacity: 1; } }
+        .restaurant {
             background: var(--surface);
-            border: 1px solid rgba(23, 28, 34, 0.08);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: clamp(0.9rem, 2vw, 1.15rem);
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
+            border: 1px solid var(--line);
+            border-radius: var(--r-card);
+            padding: 18px;
             min-width: 0;
-            max-width: 100%;
-            width: 100%;
-            overflow: hidden;
-            animation: rise 0.5s ease both;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            scroll-margin-top: calc(var(--header-block) + var(--toolbar-h) + 8px);
         }
-        .restaurant-card:nth-child(2) { animation-delay: 0.04s; }
-        .restaurant-card:nth-child(3) { animation-delay: 0.08s; }
-        .restaurant-card:nth-child(4) { animation-delay: 0.12s; }
-
-        @media (hover: hover) {
-            .restaurant-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 2px 4px rgba(23,28,34,0.04), 0 14px 28px rgba(23,28,34,0.08);
-            }
-        }
-
-        .restaurant-card.highlighted {
-            border-color: rgba(184, 90, 42, 0.55);
-            box-shadow: 0 0 0 3px rgba(184, 90, 42, 0.15), var(--shadow);
-        }
-
-        .card-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.65rem;
-            align-items: flex-start;
-            min-width: 0;
-        }
-
-        .card-top > div:first-child {
-            min-width: 0;
-            flex: 1 1 auto;
-        }
-
-        .restaurant-name {
-            font-family: var(--font-brand);
-            font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.2rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.25;
-            overflow-wrap: anywhere;
-            word-break: break-word;
+        .restaurant.is-pick { outline: 2px solid var(--accent); outline-offset: 0; }
+        .card-top { display: flex; gap: var(--gap-2); align-items: flex-start; min-width: 0; }
+        .index { margin: 6px 0 0; color: var(--ink-2); font-size: 12px; flex: 0 0 auto; }
+        .title-block { flex: 1 1 auto; min-width: 0; }
+        .restaurant h2 {
+            display: inline;
             margin: 0;
-        }
-
-        .card-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-top: 0.4rem;
-            min-width: 0;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.2rem;
-            font-size: 0.75rem;
+            font-size: 20px;
             font-weight: 600;
-            color: var(--muted);
-            background: #f3f5f7;
-            border-radius: 999px;
-            padding: 0.2rem 0.5rem;
-            max-width: 100%;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
             overflow-wrap: anywhere;
         }
-
-        .tag.stale {
-            color: var(--warn);
-            background: var(--warn-soft);
+        .pick-badge {
+            display: inline-flex;
+            margin-left: 8px;
+            background: var(--accent);
+            color: var(--on-accent);
+            border-radius: var(--r-pill);
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            vertical-align: middle;
         }
-
-        .card-links {
-            display: flex;
-            gap: 0.35rem;
-            flex-shrink: 0;
+        .stale-pill {
+            display: inline-flex;
+            margin-top: 8px;
+            background: var(--warn-bg);
+            color: var(--warn-ink);
+            border-radius: var(--r-pill);
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: 500;
         }
-
-        .icon-link {
-            width: var(--tap);
-            height: var(--tap);
-            border-radius: 999px;
-            border: 1px solid rgba(23, 28, 34, 0.1);
+        .stale-note { color: var(--warn-ink); font-size: 14px; margin: 8px 0 0; }
+        .card-links { display: flex; gap: 4px; flex: 0 0 auto; }
+        .text-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 6px;
+            min-width: var(--tap);
+            min-height: var(--tap);
+            color: inherit;
             text-decoration: none;
-            color: var(--ink);
-            background: #fafbfc;
-            font-size: 0.95rem;
+            border-radius: var(--r-pill);
         }
-        .icon-link:hover { background: var(--harbour-soft); color: var(--harbour); }
-
-        .menu-list {
-            list-style: none;
-            margin: 0;
+        .text-link svg { width: 18px; height: 18px; flex: 0 0 auto; }
+        .link-label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-            min-width: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
-
-        .menu-item {
+        .menu-list { list-style: none; margin: 12px 0 0; padding: 0; min-width: 0; }
+        .menu-item { padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+        .menu-item:first-child { border-top: 0; padding-top: 4px; }
+        .dish-line {
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
-            gap: 0.45rem 0.65rem;
-            padding-top: 0.65rem;
-            border-top: 1px solid rgba(23, 28, 34, 0.06);
+            gap: var(--gap-2);
+            align-items: start;
+        }
+        .dish-name {
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: -0.01em;
+            overflow-wrap: anywhere;
+        }
+        .dish-desc {
+            margin: 4px 0 0;
+            color: var(--ink-2);
+            font-size: 14px;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .price { font-size: 14px; white-space: nowrap; }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 0 0 6px;
+            padding: 2px 8px;
+            border: 1px solid var(--line);
+            border-radius: var(--r-pill);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.4;
+            vertical-align: 1px;
+            white-space: nowrap;
+        }
+        .expand {
+            margin-top: 8px;
+            min-height: var(--tap);
+            padding: 8px 0;
+            color: var(--ink);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        html.js .menu-list:not(.is-open) .menu-item:nth-child(n+4),
+        html.js .menu-list:not(.is-open) .menu-item.is-extra {
+            display: block;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-width: 0;
+            pointer-events: none;
+        }
+        html.js .menu-item.is-extra,
+        html.js .menu-list:not(.is-open) .menu-item:nth-child(n+4) {
+            transition: max-height var(--t-med) var(--ease), opacity var(--t-med) var(--ease);
+        }
+        html.js .menu-list.is-open .menu-item.is-extra,
+        html.js .menu-list.is-open .menu-item:nth-child(n+4) {
+            max-height: 720px;
+            opacity: 1;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+        .expand { display: none; }
+        html.js .restaurant:has(.menu-item:nth-child(4)) .expand,
+        html.js .restaurant.needs-toggle .expand { display: inline-flex; }
+        html.js .restaurant.no-toggle .expand { display: none; }
+        .expand .when-open { display: none; }
+        .expand[aria-expanded="true"] .when-closed { display: none; }
+        .expand[aria-expanded="true"] .when-open { display: inline; }
+
+        .missing, .empty {
+            border: 1px solid var(--line);
+            border-radius: var(--r-card);
+            background: var(--surface);
+            padding: 18px;
+            margin-bottom: var(--gap-6);
             min-width: 0;
         }
-        .menu-item:first-child {
-            padding-top: 0;
-            border-top: 0;
-        }
-
-        .menu-item > div:first-child { min-width: 0; }
-
-        .dish-name {
+        .missing summary {
+            cursor: pointer;
             font-weight: 600;
-            font-size: clamp(0.9rem, 0.86rem + 0.25vw, 0.98rem);
-            line-height: 1.35;
-            overflow-wrap: anywhere;
-            word-break: break-word;
+            min-height: var(--tap);
+            display: flex;
+            align-items: center;
         }
-
-        .dish-desc {
-            margin-top: 0.15rem;
-            font-size: clamp(0.8rem, 0.76rem + 0.25vw, 0.88rem);
-            color: var(--muted);
-            line-height: 1.4;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-
-        .dish-meta {
-            margin-top: 0.35rem;
+        .missing ul, .empty ul { margin: 12px 0 0; padding: 0; list-style: none; }
+        .missing li, .empty li {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.25rem;
+            gap: 8px 12px;
+            align-items: center;
+            padding: 8px 0;
+            border-top: 1px solid var(--line);
             min-width: 0;
         }
-
-        .price {
-            font-weight: 700;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            color: var(--ink);
-            justify-self: end;
-        }
-
-        .empty-card,
-        .empty-state {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            color: var(--muted);
-            background: rgba(255,255,255,0.65);
-            border: 1px dashed rgba(23, 28, 34, 0.15);
-            border-radius: var(--radius);
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
-
-        .empty-state h2 {
-            font-family: var(--font-brand);
-            color: var(--ink);
-            margin-bottom: 0.5rem;
-            font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
-        }
-
-        .surprise {
-            position: fixed;
-            left: 50%;
-            bottom: calc(1rem + var(--safe-b));
-            transform: translateX(-50%);
-            z-index: 50;
-            border: 0;
-            border-radius: 999px;
-            padding: 0 1.35rem;
-            min-height: var(--tap);
-            font: inherit;
-            font-weight: 700;
-            color: #fff;
-            background: var(--signal);
-            box-shadow: 0 10px 28px rgba(184, 90, 42, 0.28);
-            cursor: pointer;
-            transition: transform 0.15s ease, background 0.15s ease;
-            max-width: min(20rem, calc(100% - 2rem - var(--safe-l) - var(--safe-r)));
-            white-space: nowrap;
-        }
-        .surprise:hover { background: #a34e24; transform: translateX(-50%) translateY(-1px); }
-        .surprise:active { transform: translateX(-50%) scale(0.98); }
+        .missing a, .empty a { overflow-wrap: anywhere; }
+        .empty h2 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.03em; }
+        .empty .text-btn { margin: 12px 8px 0 0; }
+        .empty p { margin: 0; color: var(--ink-2); max-width: var(--measure); }
+        body.is-wrong-day .restaurant-list { opacity: 0.85; }
+        body.is-weekend #menus { display: none; }
+        body.is-weekend.is-weekend-open #menus { display: grid; }
 
         .site-footer {
-            border-top: 1px solid rgba(23, 28, 34, 0.08);
-            padding: 2rem 0 calc(5.75rem + var(--safe-b));
-            color: var(--muted);
-            font-size: 0.85rem;
+            background: var(--dark);
+            color: var(--on-dark);
+            padding: clamp(44px, 7vw, 100px) 0 calc(clamp(44px, 7vw, 100px) + env(safe-area-inset-bottom, 0px));
         }
-        .site-footer p + p { margin-top: 0.4rem; }
-        .site-footer a { overflow-wrap: anywhere; }
+        .site-footer p { margin: 0 0 12px; max-width: 62ch; line-height: 1.4; }
+        .site-footer a { color: var(--on-dark); text-decoration: none; }
+        .footer-credit { color: var(--on-dark-2); }
 
-        /* Short landscape / short viewports: keep sticky chrome compact */
-        @media (max-height: 500px) {
-            .toolbar {
-                position: static;
-                background: transparent;
-                padding-bottom: 0.35rem;
+        @media (min-width: 461px) {
+            .wordmark { font-size: 20px; }
+            .restaurant { padding: 22px; }
+        }
+        @media (min-width: 461px) and (max-width: 820px) {
+            .hero, .toolbar-inner, .restaurant-list, .missing, .empty { max-width: 720px; margin-inline: auto; }
+        }
+        @media (min-width: 821px) {
+            :root { --header-block: calc(56px + env(safe-area-inset-top, 0px)); }
+            .site-header {
+                position: sticky;
+                top: 0;
+                z-index: 40;
+                background: #f2f2f0e0;
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
             }
-            .hero { padding-top: 0.75rem; padding-bottom: 0.5rem; }
-            .hero h1 { font-size: clamp(1.45rem, 4vw, 2rem); }
-            .hero p { display: none; }
+            .h1-sm { display: none; }
+            .h1-lg {
+                display: block;
+                position: static;
+                width: auto;
+                height: auto;
+                margin: 0 0 12px;
+                overflow: visible;
+                clip: auto;
+                white-space: normal;
+                font-size: clamp(48px, 7vw, 110px);
+                letter-spacing: -0.05em;
+                line-height: 0.9;
+                font-weight: 500;
+            }
+            .hero { max-height: 40vh; padding-top: var(--gap-5); }
+            .pick-sm { display: none; }
+            .pick-lg { display: inline-flex; }
+            .restaurant-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+            .restaurant h2 { font-size: 22px; }
+            .link-label {
+                position: static;
+                width: auto;
+                height: auto;
+                margin: 0;
+                overflow: visible;
+                clip: auto;
+                white-space: nowrap;
+            }
+            .text-link { padding: 0 12px; }
         }
-
-        @keyframes rise {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (min-width: 1025px) {
+            .restaurant-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
         }
-
+        @media (hover: hover) and (pointer: fine) {
+            .restaurant:hover { border-color: #bcbcbc; }
+            .site-footer a:hover, .missing a:hover, .empty a:hover, .text-link:hover, .missing-jump:hover { text-decoration: underline; }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .restaurant.is-pick { animation: pick-in var(--t-reveal) var(--ease-reveal); }
+        }
+        @keyframes pick-in { from { outline-color: transparent; } to { outline-color: var(--accent); } }
         @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
             *, *::before, *::after {
                 animation: none !important;
                 transition: none !important;
-                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
-    <a class="skip-link" href="#menus">
-        <span class="en">Skip to menus</span>
-        <span class="sv hidden">Hoppa till menyer</span>
-    </a>
-
+    <a class="skip-link" href="#menus"><span class="sv" lang="sv">Hoppa till menyer</span><span class="en" lang="en">Skip to menus</span></a>
     <header class="site-header">
-        <div class="header-inner">
-            <button type="button" class="brand" onclick="goToTop()" aria-label="Lindholmen Lunch">
-                <span class="brand-name">Lindholmen Lunch</span>
-                <span class="brand-meta">
-                    <span class="en">{{ day_label_en }} · Gothenburg</span>
-                    <span class="sv hidden">{{ day_label_sv }} · Göteborg</span>
-                </span>
-            </button>
-            <div class="header-actions">
-                <button type="button" class="chip-btn" id="lang-toggle" onclick="toggleLanguage()" aria-pressed="false">
-                    <span class="en">Svenska</span>
-                    <span class="sv hidden">English</span>
-                </button>
+        <div class="wrap header-inner">
+            <a class="wordmark" href="#top">lindholmen <span aria-hidden="true">◦</span> lunch</a>
+            <div class="lang" role="group" id="lang-toggle" data-label-sv="Språk" data-label-en="Language">
+                <button type="button" data-lang="sv" aria-pressed="false">SV</button>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
             </div>
         </div>
     </header>
 
-    <main class="main" id="top">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-kicker">
-                <span class="en">Today · {{ day_label_en }}</span>
-                <span class="sv hidden">Idag · {{ day_label_sv }}</span>
-            </div>
-            <h1 id="hero-title">
-                <span class="en">Today's menus</span>
-                <span class="sv hidden">Dagens menyer</span>
-            </h1>
-            <p>
-                <span class="en">Search and filter lunch around Lindholmen — or tap Surprise me when you cannot decide.</span>
-                <span class="sv hidden">Sök och filtrera lunch runt Lindholmen — eller tryck Överraska mig när du inte kan bestämma dig.</span>
-            </p>
-            <div class="hero-status">
-                <span class="status-pill">
-                    <span class="en">Updated {{ last_updated }}</span>
-                    <span class="sv hidden">Uppdaterad {{ last_updated }}</span>
-                </span>
-                {% if stale_count %}
-                <span class="status-pill">
-                    <span class="en">{{ stale_count }} using earlier data</span>
-                    <span class="sv hidden">{{ stale_count }} med tidigare data</span>
-                </span>
-                {% endif %}
-            </div>
-        </section>
-
-        {% if restaurants %}
-        <div class="toolbar" role="search">
-            <div class="toolbar-inner">
-                <div class="toolbar-panel">
-                    <div class="search-wrap">
-                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
-                            <path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <label class="hidden" for="menu-search">
-                            <span class="en">Search menus</span>
-                            <span class="sv hidden">Sök menyer</span>
-                        </label>
-                        <input id="menu-search" type="search" autocomplete="off"
-                               placeholder="Search dish or restaurant…"
-                               data-placeholder-en="Search dish or restaurant…"
-                               data-placeholder-sv="Sök rätt eller restaurang…"
-                               oninput="applyFilters()">
-                    </div>
-                    {% if filter_options %}
-                    <div class="filters" id="filter-chips" aria-label="Food filters">
-                        {% for opt in filter_options %}
-                        <button type="button" class="filter-chip" data-tag="{{ opt.key }}" aria-pressed="false" onclick="toggleFilter(this)">
-                            <span aria-hidden="true">{{ opt.emoji }}</span>
-                            <span class="en">{{ opt.label_en }}</span>
-                            <span class="sv hidden">{{ opt.label_sv }}</span>
-                        </button>
-                        {% endfor %}
-                    </div>
+    <main id="top">
+        <div class="wrap">
+            <section class="hero">
+                <h1>
+                    <span class="h1-sm"><span class="sv" lang="sv">Lunch på Lindholmen idag</span><span class="en" lang="en">Lunch in Lindholmen today</span></span>
+                    <span class="h1-lg"><span class="sv" lang="sv">Lunch idag.</span><span class="en" lang="en">Lunch today.</span></span>
+                </h1>
+                <div class="trust-row">
+                    <p class="trust" id="trust-line">
+                        <span class="sv" lang="sv">{{ trust_sv }} · <span class="mono">{{ fresh_count }}</span> av <span class="mono">{{ total_restaurants }}</span> menyer{% if scraped_at_hhmm %} · uppdaterad <span class="mono">{{ scraped_at_hhmm }}</span>{% endif %}</span>
+                        <span class="en" lang="en">{{ trust_en }} · <span class="mono">{{ fresh_count }}</span> of <span class="mono">{{ total_restaurants }}</span> menus{% if scraped_at_hhmm %} · updated <span class="mono">{{ scraped_at_hhmm }}</span>{% endif %}</span>
+                        {% if missing_count %}
+                        <a class="missing-jump" href="#missing"><span class="sv" lang="sv"><span class="mono">{{ missing_count }}</span> saknas ↓</span><span class="en" lang="en"><span class="mono">{{ missing_count }}</span> missing ↓</span></a>
+                        {% endif %}
+                    </p>
+                    {% if restaurants %}
+                    <button type="button" class="pick pick-sm" id="pick-sm">
+                        <span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span>
+                    </button>
                     {% endif %}
-                    <div class="results-meta" id="results-meta" aria-live="polite"></div>
                 </div>
-            </div>
-        </div>
+                <div id="day-banner" class="day-banner" hidden role="status"></div>
+                <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" hidden>
+                    <span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span>
+                </button>
+            </section>
 
-        <section id="menus" class="restaurant-list" aria-label="Restaurant menus">
-            {% for r in restaurants %}
-            <article class="restaurant-card"
-                     id="restaurant-{{ r.id }}"
-                     data-name="{{ r.name | lower }}"
-                     data-tags="{{ r.tags | join(' ') }}"
-                     data-search="{{ r.search_text }}">
-                <div class="card-top">
-                    <div>
-                        <h2 class="restaurant-name">{{ r.name }}</h2>
-                        <div class="card-badges">
-                            {% if r.stale %}
-                            <span class="tag stale">
-                                <span class="en">Earlier data</span>
-                                <span class="sv hidden">Tidigare data</span>
-                            </span>
-                            {% endif %}
-                            {% for emoji in r.emoji_tags[:4] %}
-                            <span class="tag" aria-hidden="true">{{ emoji }}</span>
+            {% if restaurants %}
+            <div id="toolbar-sentinel" class="sentinel" aria-hidden="true"></div>
+            <div class="toolbar" id="toolbar">
+                <div class="toolbar-inner">
+                    <div class="toolbar-row" role="search">
+                        <div class="search" id="search-box">
+                            <button type="button" class="icon-btn search-toggle" id="search-toggle" aria-expanded="false" aria-controls="menu-search">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16.5L20 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                <span class="visually-hidden"><span class="sv" lang="sv">Sök</span><span class="en" lang="en">Search</span></span>
+                            </button>
+                            <div class="search-field" id="search-field">
+                                <label class="visually-hidden" for="menu-search">
+                                    <span class="sv" lang="sv">Sök rätt eller restaurang</span><span class="en" lang="en">Search dish or restaurant</span>
+                                </label>
+                                <input id="menu-search" type="search" enterkeyhint="search" autocomplete="off" placeholder="Sök rätt eller restaurang" data-placeholder-sv="Sök rätt eller restaurang" data-placeholder-en="Search dish or restaurant" tabindex="-1">
+                                <button type="button" class="icon-btn" id="search-dismiss">
+                                    <span aria-hidden="true">×</span>
+                                    <span class="visually-hidden"><span class="sv" lang="sv">Rensa sökning</span><span class="en" lang="en">Clear search</span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="filters" id="filter-chips" role="group" data-label-sv="Filtrera på mat" data-label-en="Filter by food">
+                            {% for opt in filter_options %}
+                            <button type="button" class="filter-chip" data-tag="{{ opt.key }}" aria-pressed="false">
+                                <span class="sv" lang="sv">{{ opt.label_sv }}</span><span class="en" lang="en">{{ opt.label_en }}</span>
+                            </button>
                             {% endfor %}
+                            <button type="button" class="clear-btn" id="clear-filters" hidden>
+                                <span class="sv" lang="sv">Rensa</span><span class="en" lang="en">Clear</span>
+                            </button>
                         </div>
+                        <button type="button" class="pick pick-lg" id="pick-lg">
+                            <span class="sv" lang="sv">Välj åt mig</span><span class="en" lang="en">Pick for me</span>
+                        </button>
                     </div>
-                    {% if r.links %}
-                    <div class="card-links">
-                        {% if r.links.url %}
-                        <a class="icon-link" href="{{ r.links.url }}" target="_blank" rel="noopener noreferrer"
-                           title="Website" aria-label="{{ r.name }} website">↗</a>
-                        {% endif %}
-                        {% if r.links.map %}
-                        <a class="icon-link" href="{{ r.links.map }}" target="_blank" rel="noopener noreferrer"
-                           title="Map" aria-label="{{ r.name }} on map">⌖</a>
-                        {% endif %}
-                    </div>
-                    {% endif %}
+                    <p id="results-meta" class="results-meta" aria-live="polite"></p>
                 </div>
+            </div>
 
-                {% if r.dishes %}
-                <ul class="menu-list">
-                    {% for item in r.dishes %}
-                    <li class="menu-item" data-item-tags="{{ item.tags | join(' ') }}" data-item-text="{{ item.search_text }}">
-                        <div>
-                            {% if item.name %}
-                            <div class="dish-name">{{ item.name }}</div>
-                            {% if item.description %}
-                            <div class="dish-desc">{{ item.description }}</div>
-                            {% endif %}
-                            {% else %}
-                            <div class="dish-name">
-                                <span class="en">Today's special</span>
-                                <span class="sv hidden">Dagens special</span>
-                            </div>
-                            {% if item.description %}
-                            <div class="dish-desc">{{ item.description }}</div>
-                            {% endif %}
-                            {% endif %}
-                            {% if item.category or item.emoji_tags %}
-                            <div class="dish-meta">
-                                {% if item.category %}<span class="tag">{{ item.category }}</span>{% endif %}
-                                {% for emoji in item.emoji_tags[:3] %}
-                                <span class="tag" aria-hidden="true">{{ emoji }}</span>
-                                {% endfor %}
-                            </div>
+            <section id="menus" class="restaurant-list" aria-label="Restaurant menus">
+                {% for r in restaurants %}
+                <article class="restaurant" id="restaurant-{{ r.id }}" data-name="{{ r.name_lower }}" data-label="{{ r.name }}" data-stale="{{ 'true' if r.stale else 'false' }}" data-rank="{{ r.rank }}">
+                    <div class="card-top">
+                        <p class="index mono">{{ r.rank }}</p>
+                        <div class="title-block">
+                            <h2 tabindex="-1">{{ r.name }}</h2>
+                            {% if r.stale and r.stale_short_sv %}
+                            <div><span class="stale-pill"><span class="sv" lang="sv">Meny från {{ r.stale_short_sv }}</span><span class="en" lang="en">Menu from {{ r.stale_short_en }}</span></span></div>
                             {% endif %}
                         </div>
-                        {% if item.price %}<div class="price">{{ item.price }}</div>{% endif %}
+                        {% if r.links.url or r.links.map %}
+                        <div class="card-links">
+                            {% if r.links.map %}
+                            <a class="text-link" href="{{ r.links.map }}" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="{{ r.name }}">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="1.6" fill="currentColor"/></svg>
+                                <span class="link-label"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></span>
+                            </a>
+                            {% endif %}
+                            {% if r.links.url %}
+                            <a class="text-link" href="{{ r.links.url }}" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="{{ r.name }}">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span class="link-label"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></span>
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if r.stale %}
+                    <p class="stale-note"><span class="sv" lang="sv">Kunde inte hämta dagens meny. Kolla restaurangens sida.</span><span class="en" lang="en">Couldn't fetch today's menu. Check the restaurant's site.</span></p>
+                    {% endif %}
+                    {% if r.dishes %}
+                    <ul class="menu-list" id="dishes-{{ r.id }}" lang="sv">
+                        {% for item in r.dishes %}
+                        <li class="menu-item" data-tags="{{ item.filter_tokens }}" data-text="{{ item.search_text }}" data-order="{{ loop.index0 }}">
+                            <div class="dish-line">
+                                <div class="dish-main">
+                                    <div class="dish-name">
+                                        {% if item.name %}{{ item.name }}{% else %}<span class="sv" lang="sv">Dagens rätt</span><span class="en" lang="en">Today's dish</span>{% endif %}
+                                        {% for pill in item.pills %}
+                                        <span class="pill"><span class="sv" lang="sv">{{ pill.sv }}</span><span class="en" lang="en">{{ pill.en }}</span></span>
+                                        {% endfor %}
+                                    </div>
+                                    {% if item.description %}
+                                    <p class="dish-desc">{{ item.description }}</p>
+                                    {% endif %}
+                                </div>
+                                {% if item.price %}<div class="price mono">{{ item.price }}</div>{% endif %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% if r.dishes|length > 3 %}
+                    <button type="button" class="expand" aria-expanded="false" aria-controls="dishes-{{ r.id }}">
+                        <span class="when-closed"><span class="sv" lang="sv">Visa alla {{ r.dishes|length }} rätter</span><span class="en" lang="en">Show all {{ r.dishes|length }} dishes</span></span>
+                        <span class="when-open"><span class="sv" lang="sv">Visa färre</span><span class="en" lang="en">Show fewer</span></span>
+                    </button>
+                    {% endif %}
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </section>
+
+            <div id="no-match" class="empty" hidden>
+                <h2><span class="sv" lang="sv">Inget som matchar.</span><span class="en" lang="en">Nothing matches.</span></h2>
+                <p id="no-match-suggest"></p>
+                <button type="button" class="text-btn" id="clear-empty"><span class="sv" lang="sv">Rensa filter</span><span class="en" lang="en">Clear filters</span></button>
+                <button type="button" class="text-btn" id="suggest-chip" hidden></button>
+            </div>
+
+            {% if missing_restaurants %}
+            <details class="missing" id="missing">
+                <summary><span class="sv" lang="sv">Ingen meny hittad idag ({{ missing_count }})</span><span class="en" lang="en">No menu found today ({{ missing_count }})</span></summary>
+                <ul>
+                    {% for place in missing_restaurants %}
+                    <li>
+                        <span>{{ place.name }}</span>
+                        {% if place.url %}<a href="{{ place.url }}" target="_blank" rel="noopener noreferrer" data-outbound="web" data-restaurant="{{ place.name }}"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>{% endif %}
+                        {% if place.map %}<a href="{{ place.map }}" target="_blank" rel="noopener noreferrer" data-outbound="map" data-restaurant="{{ place.name }}"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>{% endif %}
                     </li>
                     {% endfor %}
                 </ul>
-                {% else %}
-                <div class="empty-card">
-                    <span class="en">No dishes listed for today.</span>
-                    <span class="sv hidden">Inga rätter listade idag.</span>
-                </div>
-                {% endif %}
-            </article>
-            {% endfor %}
-        </section>
-
-        <div id="no-match" class="empty-state hidden" role="status">
-            <h2>
-                <span class="en">No matches</span>
-                <span class="sv hidden">Inga träffar</span>
-            </h2>
-            <p>
-                <span class="en">Try another search or clear the filters.</span>
-                <span class="sv hidden">Prova en annan sökning eller rensa filtren.</span>
-            </p>
+            </details>
+            {% endif %}
+            {% else %}
+            <div class="empty" role="status">
+                <h2><span class="sv" lang="sv">Inga menyer just nu.</span><span class="en" lang="en">No menus right now.</span></h2>
+                <p><span class="sv" lang="sv">Vi hämtar menyerna varje vardagsmorgon. Under tiden:</span><span class="en" lang="en">We fetch menus every weekday morning. Meanwhile:</span></p>
+                <ul>
+                    {% for place in directory %}
+                    <li>
+                        <span>{{ place.name }}</span>
+                        {% if place.url %}<a href="{{ place.url }}" target="_blank" rel="noopener noreferrer"><span class="sv" lang="sv">Webb</span><span class="en" lang="en">Website</span></a>{% endif %}
+                        {% if place.map %}<a href="{{ place.map }}" target="_blank" rel="noopener noreferrer"><span class="sv" lang="sv">Karta</span><span class="en" lang="en">Map</span></a>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
-        {% else %}
-        <div class="empty-state" role="status">
-            <h2>
-                <span class="en">No menus yet for today</span>
-                <span class="sv hidden">Inga menyer ännu för idag</span>
-            </h2>
-            <p>
-                <span class="en">We could not load lunch data. Check back after the next update, or browse a restaurant site directly.</span>
-                <span class="sv hidden">Vi kunde inte ladda lunchdata. Kom tillbaka efter nästa uppdatering, eller besök en restaurang direkt.</span>
-            </p>
-        </div>
-        {% endif %}
     </main>
 
-    {% if restaurants %}
-    <button type="button" class="surprise" id="surprise-btn" onclick="selectRandomRestaurant()">
-        <span class="en">Surprise me</span>
-        <span class="sv hidden">Överraska mig</span>
-    </button>
-    {% endif %}
-
     <footer class="site-footer">
-        <div class="footer-inner">
+        <div class="wrap">
+            <p><span class="sv" lang="sv">Lunchmenyer från Lindholmen, uppdateras varje vardag.</span><span class="en" lang="en">Lunch menus from Lindholmen, updated every weekday.</span></p>
+            <p><a href="mailto:support@jaydigitalstudio.com?subject=Lindholmen%20Lunch%20%E2%80%93%20min%20meny"><span class="sv" lang="sv">Driver du en restaurang här? Skicka din meny →</span><span class="en" lang="en">Run a restaurant here? Send us your menu →</span></a></p>
             <p>
-                <span class="en">Lindholmen, Gothenburg — weekday lunch menus, updated automatically.</span>
-                <span class="sv hidden">Lindholmen, Göteborg — lunchmenyer på vardagar, uppdateras automatiskt.</span>
-            </p>
-            <p>
-                <a href="https://github.com/designestjay/lindholmen-lunch" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="privacy.html"><span class="sv" lang="sv">Integritet</span><span class="en" lang="en">Privacy</span></a>
                 ·
-                <span class="en">Based on work by</span>
-                <span class="sv hidden">Baserat på arbete av</span>
-                <a href="https://github.com/Fawenah/lindholmen_lunch" target="_blank" rel="noopener noreferrer">Fawenah</a>
+                <a href="https://github.com/designestjay/lindholmen-lunch"><span class="sv" lang="sv">Källkod</span><span class="en" lang="en">Source</span></a>
                 ·
-                <a href="privacy.html">
-                    <span class="en">Privacy</span>
-                    <span class="sv hidden">Integritet</span>
-                </a>
+                <a href="https://jaydigitalstudio.com"><span class="sv" lang="sv">Gjord av Jay Digital Studio ↗</span><span class="en" lang="en">Made by Jay Digital Studio ↗</span></a>
             </p>
+            <p class="footer-credit"><span class="sv" lang="sv">Baserat på arbete av</span><span class="en" lang="en">Based on work by</span> <a href="https://github.com/Fawenah/lindholmen_lunch">Fawenah</a></p>
         </div>
     </footer>
 
+    <p id="pick-live" class="visually-hidden" aria-live="polite"></p>
+    <script type="application/json" id="date-copy">{{ date_copy | tojson }}</script>
+    <!-- [CONFIRM: analytics processor] Leave data-endpoint empty until an EU-hosted cookieless collector is chosen. No request is sent before that. -->
+    <script src="assets/analytics.js" data-endpoint="" data-site=""></script>
     <script>
-        const restaurantIds = {{ restaurant_ids | tojson }};
-        let activeFilters = new Set();
+        (function () {
+            var active = new Set();
+            var lastPick = null;
+            var lastTrackedQuery = "";
+            var searchTimer = 0;
+            var dateCopy = {};
+            try { dateCopy = JSON.parse(document.getElementById("date-copy").textContent || "{}"); } catch (e) {}
 
-        function isSwedish() {
-            return document.documentElement.lang === 'sv';
-        }
-
-        function toggleLanguage() {
-            const toSv = !isSwedish();
-            document.querySelectorAll('.en').forEach(el => el.classList.toggle('hidden', toSv));
-            document.querySelectorAll('.sv').forEach(el => el.classList.toggle('hidden', !toSv));
-            document.documentElement.lang = toSv ? 'sv' : 'en';
-            localStorage.setItem('language', toSv ? 'sv' : 'en');
-            const btn = document.getElementById('lang-toggle');
-            if (btn) btn.setAttribute('aria-pressed', toSv ? 'true' : 'false');
-            const search = document.getElementById('menu-search');
-            if (search) {
-                search.placeholder = toSv ? search.dataset.placeholderSv : search.dataset.placeholderEn;
+            function isSv() { return document.documentElement.lang === "sv"; }
+            function track(name, props) {
+                if (typeof window.lunchTrack === "function") window.lunchTrack(name, props || {});
             }
-            applyFilters();
-        }
+            function queryValue() {
+                var input = document.getElementById("menu-search");
+                return (input && input.value || "").trim().toLowerCase();
+            }
+            function syncChrome() {
+                var sv = isSv();
+                document.querySelectorAll("[data-lang]").forEach(function (btn) {
+                    btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === document.documentElement.lang ? "true" : "false");
+                });
+                var group = document.getElementById("lang-toggle");
+                if (group) group.setAttribute("aria-label", sv ? group.dataset.labelSv : group.dataset.labelEn);
+                var chips = document.getElementById("filter-chips");
+                if (chips) chips.setAttribute("aria-label", sv ? chips.dataset.labelSv : chips.dataset.labelEn);
+                var search = document.getElementById("menu-search");
+                if (search) search.placeholder = sv ? search.dataset.placeholderSv : search.dataset.placeholderEn;
+                var bar = document.getElementById("toolbar");
+                if (bar) document.documentElement.style.setProperty("--toolbar-h", bar.offsetHeight + "px");
+            }
+            function setLang(lang, fromUser) {
+                document.documentElement.lang = lang;
+                try { localStorage.setItem("language", lang); } catch (e) {}
+                syncChrome();
+                applyDateState();
+                applyFilters();
+                if (fromUser) track("lang_switch", { lang: lang });
+            }
 
-        function toggleFilter(btn) {
-            const tag = btn.dataset.tag;
-            const pressed = btn.getAttribute('aria-pressed') === 'true';
-            btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
-            if (pressed) activeFilters.delete(tag);
-            else activeFilters.add(tag);
-            applyFilters();
-        }
-
-        function applyFilters() {
-            const query = (document.getElementById('menu-search')?.value || '').trim().toLowerCase();
-            const cards = [...document.querySelectorAll('.restaurant-card')];
-            let visible = 0;
-
-            cards.forEach(card => {
-                const searchBlob = (card.dataset.search || '') + ' ' + (card.dataset.name || '');
-                const cardTags = new Set((card.dataset.tags || '').split(/\s+/).filter(Boolean));
-                const matchesQuery = !query || searchBlob.includes(query);
-                const matchesFilters = !activeFilters.size || [...activeFilters].every(t => cardTags.has(t));
-                const show = matchesQuery && matchesFilters;
-                card.hidden = !show;
-                if (show) visible += 1;
-            });
-
-            const meta = document.getElementById('results-meta');
-            const noMatch = document.getElementById('no-match');
-            if (meta) {
-                if (!query && !activeFilters.size) {
-                    meta.textContent = '';
+            function stockholmParts(date) {
+                var fmt = new Intl.DateTimeFormat("en-GB", {
+                    timeZone: "Europe/Stockholm",
+                    hourCycle: "h23",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    weekday: "short",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+                var parts = {};
+                fmt.formatToParts(date).forEach(function (part) { parts[part.type] = part.value; });
+                return parts;
+            }
+            function ymdStockholm(date) {
+                var parts = stockholmParts(date);
+                return parts.year + "-" + parts.month + "-" + parts.day;
+            }
+            function weekdayIndex(date) {
+                var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+                var name = String(stockholmParts(date).weekday || "").slice(0, 3);
+                return map[name] ?? 0;
+            }
+            function minutesStockholm(date) {
+                var parts = stockholmParts(date);
+                return Number(parts.hour) * 60 + Number(parts.minute);
+            }
+            function zonedTime(isoLocal) {
+                var bits = isoLocal.split("T");
+                var dateBits = bits[0].split("-").map(Number);
+                var timeBits = (bits[1] || "12:00").split(":").map(Number);
+                var utcGuess = new Date(Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0));
+                var parts = stockholmParts(utcGuess);
+                var got = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute);
+                var want = Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0);
+                return new Date(utcGuess.getTime() - (got - want));
+            }
+            function bannerState(menuDate, now) {
+                if (!menuDate) return null;
+                if (ymdStockholm(now) === menuDate) return null;
+                var day = weekdayIndex(now);
+                if (day === 0 || day === 6) return "weekend";
+                if (minutesStockholm(now) < (9 * 60 + 30)) return "soon";
+                return "wrong";
+            }
+            window.lunchDateState = bannerState;
+            function applyDateState() {
+                var banner = document.getElementById("day-banner");
+                var reveal = document.getElementById("weekend-reveal");
+                if (!banner) return;
+                var params = new URLSearchParams(location.search);
+                var asof = params.get("asof");
+                var now = asof ? zonedTime(asof) : new Date();
+                var state = bannerState(document.documentElement.dataset.menuDate || "", now);
+                var opened = document.body.classList.contains("is-weekend-open");
+                document.body.classList.remove("is-wrong-day", "is-weekend", "is-weekend-open");
+                if (!state) {
+                    banner.hidden = true;
+                    banner.textContent = "";
+                    if (reveal) reveal.hidden = true;
+                    return;
+                }
+                var sv = isSv();
+                var key = state === "soon" ? "soon" : state === "weekend" ? "weekend" : "wrong";
+                banner.hidden = false;
+                banner.textContent = sv ? dateCopy[key + "_sv"] : dateCopy[key + "_en"];
+                if (state === "weekend") {
+                    document.body.classList.add("is-weekend");
+                    if (opened) document.body.classList.add("is-weekend-open");
+                    if (reveal) reveal.hidden = false;
                 } else {
-                    meta.textContent = isSwedish()
-                        ? `${visible} av ${cards.length} restauranger`
-                        : `${visible} of ${cards.length} restaurants`;
+                    document.body.classList.add("is-wrong-day");
+                    if (reveal) reveal.hidden = true;
                 }
             }
-            if (noMatch) noMatch.classList.toggle('hidden', visible !== 0 || cards.length === 0);
-        }
 
-        function selectRandomRestaurant() {
-            const visible = restaurantIds
-                .map(id => document.getElementById('restaurant-' + id))
-                .filter(el => el && !el.hidden);
-            if (!visible.length) return;
-
-            document.querySelectorAll('.restaurant-card.highlighted').forEach(c => c.classList.remove('highlighted'));
-            const btn = document.getElementById('surprise-btn');
-            const original = btn ? btn.innerHTML : '';
-            if (btn) {
-                btn.innerHTML = isSwedish()
-                    ? '<span class="sv">Väljer…</span><span class="en hidden">Choosing…</span>'
-                    : '<span class="en">Choosing…</span><span class="sv hidden">Väljer…</span>';
+            function setSearchOpen(open) {
+                var box = document.getElementById("search-box");
+                var toggle = document.getElementById("search-toggle");
+                var input = document.getElementById("menu-search");
+                if (!box || !input) return;
+                box.classList.toggle("is-open", open);
+                if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+                input.tabIndex = open ? 0 : -1;
+                if (open) input.focus();
+            }
+            function clearAll() {
+                active.clear();
+                document.querySelectorAll(".filter-chip").forEach(function (chip) {
+                    chip.setAttribute("aria-pressed", "false");
+                });
+                var input = document.getElementById("menu-search");
+                if (input) input.value = "";
+                lastTrackedQuery = "";
+                setSearchOpen(false);
+                applyFilters();
+            }
+            function chipLabel(chip) {
+                var node = chip.querySelector(isSv() ? ".sv" : ".en");
+                return (node ? node.textContent : chip.textContent).trim();
+            }
+            function bestChip(query) {
+                var best = null;
+                var bestCount = 0;
+                document.querySelectorAll(".filter-chip").forEach(function (chip) {
+                    var key = chip.dataset.tag;
+                    var count = 0;
+                    document.querySelectorAll(".menu-item").forEach(function (item) {
+                        var tags = (item.dataset.tags || "").split(/\s+/);
+                        var text = item.dataset.text || "";
+                        var card = item.closest(".restaurant");
+                        var name = card ? card.dataset.name || "" : "";
+                        var searchOk = !query || name.indexOf(query) !== -1 || text.indexOf(query) !== -1;
+                        if (searchOk && tags.indexOf(key) !== -1) count += 1;
+                    });
+                    if (count > bestCount) {
+                        best = chip;
+                        bestCount = count;
+                    }
+                });
+                return bestCount ? best : null;
+            }
+            function applyFilters() {
+                var query = queryValue();
+                var filtering = active.size > 0 || query.length > 0;
+                var cards = Array.prototype.slice.call(document.querySelectorAll(".restaurant"));
+                var shownRestaurants = 0;
+                var shownDishes = 0;
+                cards.forEach(function (card) {
+                    var name = card.dataset.name || "";
+                    var nameHit = query && name.indexOf(query) !== -1;
+                    var items = Array.prototype.slice.call(card.querySelectorAll(".menu-item"));
+                    items.forEach(function (item) {
+                        var tags = (item.dataset.tags || "").split(/\s+/).filter(Boolean);
+                        var text = item.dataset.text || "";
+                        var searchOk = !query || nameHit || text.indexOf(query) !== -1;
+                        var filterOk = !active.size || Array.from(active).some(function (tag) { return tags.indexOf(tag) !== -1; });
+                        var match = searchOk && filterOk;
+                        item.dataset.match = match ? "true" : "false";
+                    });
+                    var matching = items.filter(function (item) { return item.dataset.match === "true"; });
+                    var rest = items.filter(function (item) { return item.dataset.match !== "true"; });
+                    var ordered = filtering ? matching.concat(rest) : items.slice().sort(function (a, b) {
+                        return Number(a.dataset.order) - Number(b.dataset.order);
+                    });
+                    var list = card.querySelector(".menu-list");
+                    if (list) ordered.forEach(function (item) { list.appendChild(item); });
+                    ordered.forEach(function (item, index) {
+                        var match = item.dataset.match === "true";
+                        var extra = filtering ? (!match || index >= 3) : index >= 3;
+                        item.classList.toggle("is-extra", extra);
+                    });
+                    var visible = filtering ? matching.length > 0 : true;
+                    card.hidden = !visible;
+                    card.dataset.matchCount = String(filtering ? matching.length : items.length);
+                    if (visible) {
+                        shownRestaurants += 1;
+                        shownDishes += filtering ? matching.length : items.length;
+                    }
+                    var button = card.querySelector(".expand");
+                    var hasExtra = ordered.some(function (item) { return item.classList.contains("is-extra"); });
+                    card.classList.toggle("needs-toggle", hasExtra);
+                    card.classList.toggle("no-toggle", !hasExtra);
+                    if (button && !hasExtra) button.setAttribute("aria-expanded", "false");
+                    if (list && !hasExtra) list.classList.remove("is-open");
+                });
+                var host = document.getElementById("menus");
+                if (host) {
+                    var visibleCards = cards.filter(function (card) { return !card.hidden; });
+                    visibleCards.sort(function (a, b) {
+                        var staleA = a.dataset.stale === "true" ? 1 : 0;
+                        var staleB = b.dataset.stale === "true" ? 1 : 0;
+                        if (staleA !== staleB) return staleA - staleB;
+                        if (filtering) {
+                            var diff = Number(b.dataset.matchCount) - Number(a.dataset.matchCount);
+                            if (diff) return diff;
+                        }
+                        return (a.dataset.name || "").localeCompare(b.dataset.name || "", "sv");
+                    });
+                    visibleCards.forEach(function (card, index) {
+                        host.appendChild(card);
+                        var badge = card.querySelector(".index");
+                        if (badge) badge.textContent = String(index + 1).padStart(2, "0");
+                    });
+                    cards.filter(function (card) { return card.hidden; }).forEach(function (card) { host.appendChild(card); });
+                }
+                var meta = document.getElementById("results-meta");
+                if (meta) {
+                    if (!filtering) meta.textContent = "";
+                    else if (isSv()) meta.textContent = shownRestaurants + " restauranger · " + shownDishes + " rätter";
+                    else meta.textContent = shownRestaurants + " restaurants · " + shownDishes + " dishes";
+                }
+                var clear = document.getElementById("clear-filters");
+                if (clear) clear.hidden = !filtering;
+                var empty = document.getElementById("no-match");
+                var suggest = document.getElementById("suggest-chip");
+                var suggestText = document.getElementById("no-match-suggest");
+                if (empty) empty.hidden = !(filtering && shownRestaurants === 0);
+                if (suggest && filtering && shownRestaurants === 0) {
+                    var chip = bestChip(query);
+                    if (chip && !active.has(chip.dataset.tag)) {
+                        var label = chipLabel(chip);
+                        suggest.hidden = false;
+                        suggest.dataset.tag = chip.dataset.tag;
+                        suggest.textContent = isSv() ? "Prova " + label : "Try " + label;
+                        if (suggestText) suggestText.textContent = "";
+                    } else {
+                        suggest.hidden = true;
+                        if (suggestText) suggestText.textContent = "";
+                    }
+                } else if (suggest) {
+                    suggest.hidden = true;
+                }
             }
 
-            setTimeout(() => {
-                const pick = visible[Math.floor(Math.random() * visible.length)];
-                pick.classList.add('highlighted');
-                pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                if (btn) btn.innerHTML = original;
-            }, 450);
-        }
+            function pickForMe() {
+                var query = queryValue();
+                var filtering = active.size > 0 || query.length > 0;
+                var visible = Array.prototype.slice.call(document.querySelectorAll(".restaurant")).filter(function (card) {
+                    return !card.hidden;
+                });
+                if (!visible.length) return;
+                var pool = visible;
+                if (filtering) {
+                    var matched = visible.filter(function (card) { return Number(card.dataset.matchCount) > 0; });
+                    if (matched.length) pool = matched;
+                }
+                var pick = pool[Math.floor(Math.random() * pool.length)];
+                if (pool.length > 1 && pick === lastPick) {
+                    var others = pool.filter(function (card) { return card !== lastPick; });
+                    pick = others[Math.floor(Math.random() * others.length)];
+                }
+                lastPick = pick;
+                document.querySelectorAll(".restaurant.is-pick").forEach(function (card) { card.classList.remove("is-pick"); });
+                document.querySelectorAll(".pick-badge").forEach(function (node) { node.remove(); });
+                pick.classList.add("is-pick");
+                var badge = document.createElement("span");
+                badge.className = "pick-badge";
+                badge.textContent = isSv() ? "Ditt val" : "Your pick";
+                var heading = pick.querySelector("h2");
+                if (heading) heading.after(badge);
+                var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                pick.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+                if (heading) {
+                    heading.setAttribute("tabindex", "-1");
+                    heading.focus({ preventScroll: true });
+                }
+                var live = document.getElementById("pick-live");
+                if (live) {
+                    var name = pick.dataset.label || "";
+                    live.textContent = "";
+                    window.setTimeout(function () {
+                        live.textContent = (isSv() ? "Ditt val: " : "Your pick: ") + name;
+                    }, 30);
+                }
+                track("pick_used", {});
+            }
 
-        function goToTop() {
-            document.querySelectorAll('.restaurant-card.highlighted').forEach(c => c.classList.remove('highlighted'));
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function syncStickyOffset() {
-            const header = document.querySelector('.site-header');
-            if (!header) return;
-            document.documentElement.style.setProperty(
-                '--header-offset',
-                `${Math.ceil(header.getBoundingClientRect().height)}px`
-            );
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.getItem('language') === 'sv') toggleLanguage();
+            document.querySelectorAll("[data-lang]").forEach(function (btn) {
+                btn.addEventListener("click", function () { setLang(btn.getAttribute("data-lang"), true); });
+            });
+            var toggle = document.getElementById("search-toggle");
+            if (toggle) toggle.addEventListener("click", function () { setSearchOpen(true); });
+            var dismiss = document.getElementById("search-dismiss");
+            if (dismiss) dismiss.addEventListener("click", clearAll);
+            var input = document.getElementById("menu-search");
+            if (input) {
+                input.addEventListener("input", function () {
+                    applyFilters();
+                    window.clearTimeout(searchTimer);
+                    searchTimer = window.setTimeout(function () {
+                        var value = input.value.trim();
+                        if (value && value !== lastTrackedQuery) {
+                            lastTrackedQuery = value;
+                            track("search_used", {});
+                        }
+                        if (!value) lastTrackedQuery = "";
+                    }, 400);
+                });
+                input.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        event.preventDefault();
+                        clearAll();
+                    }
+                });
+                input.addEventListener("blur", function () {
+                    window.setTimeout(function () {
+                        if (!input.value.trim() && document.activeElement !== dismiss) setSearchOpen(false);
+                    }, 80);
+                });
+            }
+            document.querySelectorAll(".filter-chip").forEach(function (chip) {
+                chip.addEventListener("click", function () {
+                    var tag = chip.dataset.tag;
+                    var pressed = chip.getAttribute("aria-pressed") === "true";
+                    chip.setAttribute("aria-pressed", pressed ? "false" : "true");
+                    if (pressed) active.delete(tag);
+                    else active.add(tag);
+                    track("filter_toggle", { tag: tag });
+                    applyFilters();
+                });
+            });
+            var clear = document.getElementById("clear-filters");
+            if (clear) clear.addEventListener("click", clearAll);
+            var clearEmpty = document.getElementById("clear-empty");
+            if (clearEmpty) clearEmpty.addEventListener("click", clearAll);
+            var suggest = document.getElementById("suggest-chip");
+            if (suggest) suggest.addEventListener("click", function () {
+                var tag = suggest.dataset.tag;
+                active.clear();
+                document.querySelectorAll(".filter-chip").forEach(function (chip) {
+                    var on = chip.dataset.tag === tag;
+                    chip.setAttribute("aria-pressed", on ? "true" : "false");
+                    if (on) active.add(tag);
+                });
+                applyFilters();
+            });
+            document.querySelectorAll(".expand").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    var open = button.getAttribute("aria-expanded") === "true";
+                    var list = document.getElementById(button.getAttribute("aria-controls"));
+                    button.setAttribute("aria-expanded", open ? "false" : "true");
+                    if (list) list.classList.toggle("is-open", !open);
+                    if (!open) {
+                        var card = button.closest(".restaurant");
+                        track("row_expand", { restaurant: card ? card.dataset.label : "" });
+                    }
+                });
+            });
+            document.querySelectorAll(".pick").forEach(function (button) {
+                button.addEventListener("click", pickForMe);
+            });
+            document.addEventListener("click", function (event) {
+                var link = event.target.closest("a[data-outbound]");
+                if (!link) return;
+                track("outbound", { type: link.dataset.outbound, restaurant: link.dataset.restaurant || "" });
+            });
+            var reveal = document.getElementById("weekend-reveal");
+            if (reveal) reveal.addEventListener("click", function () {
+                document.body.classList.toggle("is-weekend-open");
+            });
+            var sentinel = document.getElementById("toolbar-sentinel");
+            var toolbar = document.getElementById("toolbar");
+            if (sentinel && toolbar && "IntersectionObserver" in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    toolbar.classList.toggle("is-stuck", !entries[0].isIntersecting);
+                });
+                observer.observe(sentinel);
+            }
+            syncChrome();
+            applyDateState();
             applyFilters();
-            syncStickyOffset();
-        });
-        window.addEventListener('resize', syncStickyOffset);
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', syncStickyOffset);
-        }
+            window.addEventListener("resize", syncChrome);
+        })();
     </script>
 </body>
 </html>

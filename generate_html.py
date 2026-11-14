@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -11,10 +13,12 @@ from zoneinfo import ZoneInfo
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
-from utils.restaurants import display_name, link_key
+from utils.restaurants import DISPLAY_NAMES, display_name, link_key
 from utils.utils import get_today_english
 
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
+WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday"]
+SITE = "https://lindholmenlunch.nu"
 
 DAY_LABELS = {
     "monday": ("Monday", "Måndag"),
@@ -26,15 +30,36 @@ DAY_LABELS = {
     "sunday": ("Sunday", "Söndag"),
 }
 
-# Compact filter set — only chips that appear in today's data are rendered.
-FILTER_CATALOG = [
-    {"key": "vegan", "emoji": "🌱", "label_en": "Veggie", "label_sv": "Vego"},
-    {"key": "fish", "emoji": "🐟", "label_en": "Fish", "label_sv": "Fisk"},
-    {"key": "chicken", "emoji": "🐔", "label_en": "Chicken", "label_sv": "Kyckling"},
-    {"key": "pasta", "emoji": "🍝", "label_en": "Pasta", "label_sv": "Pasta"},
-    {"key": "salad", "emoji": "🥗", "label_en": "Salad", "label_sv": "Sallad"},
-    {"key": "sushi", "emoji": "🍣", "label_en": "Sushi", "label_sv": "Sushi"},
-    {"key": "indian", "emoji": "🇮🇳", "label_en": "Indian", "label_sv": "Indiskt"},
+SV_DAY_SHORT = ["mån", "tis", "ons", "tor", "fre", "lör", "sön"]
+SV_DAY_LONG = ["måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag", "söndag"]
+EN_DAY_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+EN_DAY_LONG = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+SV_MONTH = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+EN_MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+# Chip order matches the 5-second task. A chip is rendered only when today's
+# dishes actually contain that token.
+FILTERS = [
+    {"key": "vego", "label_en": "Veggie", "label_sv": "Vego"},
+    {"key": "fish", "label_en": "Fish", "label_sv": "Fisk"},
+    {"key": "chicken", "label_en": "Chicken", "label_sv": "Kyckling"},
+    {"key": "under130", "label_en": "Under 130 kr", "label_sv": "Under 130 kr"},
+    {"key": "pasta", "label_en": "Pasta", "label_sv": "Pasta"},
+    {"key": "asian", "label_en": "Asian", "label_sv": "Asiatiskt"},
+    {"key": "indian", "label_en": "Indian", "label_sv": "Indiskt"},
+    {"key": "salad", "label_en": "Salad", "label_sv": "Sallad"},
+    {"key": "sushi", "label_en": "Sushi", "label_sv": "Sushi"},
+]
+
+PILL_SPECS = [
+    ("vego", {"veg", "vegan"}, "Veggie", "Vego"),
+    ("fish", {"fish"}, "Fish", "Fisk"),
+    ("chicken", {"chicken"}, "Chicken", "Kyckling"),
+    ("pasta", {"pasta"}, "Pasta", "Pasta"),
+    ("salad", {"salad"}, "Salad", "Sallad"),
+    ("sushi", {"sushi"}, "Sushi", "Sushi"),
+    ("indian", {"indian"}, "Indian", "Indiskt"),
+    ("asian", {"japanese", "thai", "korean"}, "Asian", "Asiatiskt"),
 ]
 
 
@@ -69,7 +94,67 @@ def _item_search_text(item: dict) -> str:
     ).lower()
 
 
-def prepare_restaurants(lunch_data: dict, restaurant_links: dict) -> list[dict]:
+def parse_price(value: str) -> int | None:
+    if not value:
+        return None
+    match = re.search(r"\d+", value)
+    if not match:
+        return None
+    return int(match.group(0))
+
+
+def dish_filter_tokens(tags: list[str] | None, price: int | None) -> list[str]:
+    """Tokens the filter chips match. `vego` covers both veg and vegan."""
+    tokens = set(tags or [])
+    if tokens & {"veg", "vegan"}:
+        tokens.add("vego")
+    if tokens & {"japanese", "thai", "korean"}:
+        tokens.add("asian")
+    if price is not None and 0 < price <= 130:
+        tokens.add("under130")
+    return sorted(tokens)
+
+
+def pills_for(tags: list[str] | None) -> list[dict]:
+    tagset = set(tags or [])
+    pills = []
+    for key, keys, label_en, label_sv in PILL_SPECS:
+        if tagset & keys:
+            pills.append({"key": key, "en": label_en, "sv": label_sv})
+    if any(pill["key"] == "sushi" for pill in pills):
+        pills = [pill for pill in pills if pill["key"] != "asian"]
+    return pills
+
+
+def _parse_stamp(value: str | None) -> datetime | None:
+    if not value or not isinstance(value, str):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=STOCKHOLM)
+    return parsed.astimezone(STOCKHOLM)
+
+
+def format_stamp(when: datetime) -> dict:
+    local = when.astimezone(STOCKHOLM)
+    weekday = local.weekday()
+    month = local.month - 1
+    return {
+        "iso": local.date().isoformat(),
+        "hhmm": local.strftime("%H:%M"),
+        "trust_sv": f"{SV_DAY_SHORT[weekday].capitalize()} {local.day} {SV_MONTH[month]}",
+        "trust_en": f"{EN_DAY_SHORT[weekday]} {local.day} {EN_MONTH[month]}",
+        "long_sv": f"{SV_DAY_LONG[weekday]} {local.day} {SV_MONTH[month]}",
+        "long_en": f"{EN_DAY_LONG[weekday]} {local.day} {EN_MONTH[month]}",
+        "short_sv": f"{SV_DAY_SHORT[weekday]} {local.day} {SV_MONTH[month]}",
+        "short_en": f"{EN_DAY_SHORT[weekday]} {local.day} {EN_MONTH[month]}",
+    }
+
+
+def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp: dict | None) -> list[dict]:
     restaurants = []
     for scraper_key, payload in lunch_data.items():
         if not isinstance(payload, dict):
@@ -80,50 +165,107 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict) -> list[dict]:
                 continue
             name = (item.get("name") or "").strip()
             description = (item.get("description") or "").strip()
-            # Some scrapers put the whole dish in description with an empty name.
-            if not name and description:
-                display_item_name = ""
-            else:
+            price_raw = (item.get("price") or "").strip()
+            price_value = parse_price(price_raw)
+            tags = item.get("tags") or []
+            if name:
                 display_item_name = name
+                visible_description = description
+            elif description:
+                display_item_name = description
+                visible_description = ""
+            else:
+                display_item_name = ""
+                visible_description = ""
             items_out.append(
                 {
                     "name": display_item_name,
-                    "description": description,
+                    "description": visible_description,
                     "category": (item.get("category") or "").strip(),
-                    "price": (item.get("price") or "").strip(),
-                    "tags": item.get("tags") or [],
-                    "emoji_tags": item.get("emoji_tags") or [],
+                    "price": price_raw if price_value is not None else "",
+                    "tags": tags,
+                    "pills": pills_for(tags),
+                    "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
                     "search_text": _item_search_text(item),
                 }
             )
 
         links = restaurant_links.get(link_key(scraper_key)) or {}
         search_parts = [display_name(scraper_key).lower()]
+        token_set = set()
         for item in items_out:
             search_parts.append(item["search_text"])
+            token_set.update(item["filter_tokens"].split())
 
+        fetched = _parse_stamp(payload.get("fetched_at"))
+        stamp = format_stamp(fetched) if fetched else fallback_stamp
         restaurants.append(
             {
                 "id": scraper_key,
                 "name": display_name(scraper_key),
+                "name_lower": display_name(scraper_key).lower(),
                 "dishes": items_out,
                 "tags": payload.get("tags") or [],
-                "emoji_tags": payload.get("emoji_tags") or [],
+                "filter_tokens": " ".join(sorted(token_set)),
                 "stale": bool(payload.get("stale")),
                 "links": links,
                 "search_text": " ".join(search_parts),
+                "stale_short_sv": stamp["short_sv"] if stamp else "",
+                "stale_short_en": stamp["short_en"] if stamp else "",
             }
         )
 
-    restaurants.sort(key=lambda r: r["name"].lower())
+    restaurants.sort(key=lambda row: (row["stale"], row["name_lower"]))
+    for index, restaurant in enumerate(restaurants, start=1):
+        restaurant["rank"] = f"{index:02d}"
     return restaurants
 
 
 def available_filters(restaurants: list[dict]) -> list[dict]:
     present = set()
-    for r in restaurants:
-        present.update(r.get("tags") or [])
-    return [opt for opt in FILTER_CATALOG if opt["key"] in present]
+    for restaurant in restaurants:
+        present.update((restaurant.get("filter_tokens") or "").split())
+    return [opt for opt in FILTERS if opt["key"] in present]
+
+
+def restaurant_directory(links: dict) -> list[dict]:
+    rows = []
+    for scraper_key in DISPLAY_NAMES:
+        info = links.get(link_key(scraper_key)) or {}
+        rows.append(
+            {
+                "name": display_name(scraper_key),
+                "url": info.get("url") or "",
+                "map": info.get("map") or "",
+            }
+        )
+    rows.sort(key=lambda row: row["name"].lower())
+    return rows
+
+
+def missing_restaurants(meta: dict, links: dict) -> list[dict]:
+    rows = []
+    for scraper_key in meta.get("missing") or []:
+        info = links.get(link_key(scraper_key)) or {}
+        rows.append(
+            {
+                "name": display_name(scraper_key),
+                "url": info.get("url") or "",
+                "map": info.get("map") or "",
+            }
+        )
+    rows.sort(key=lambda row: row["name"].lower())
+    return rows
+
+
+def write_sitemap(lastmod: str) -> None:
+    body = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{SITE}/</loc><lastmod>{lastmod}</lastmod></url>
+  <url><loc>{SITE}/privacy.html</loc><lastmod>{lastmod}</lastmod></url>
+</urlset>
+"""
+    Path("docs/sitemap.xml").write_text(body, encoding="utf-8")
 
 
 def generate_lunch_summary(day: str) -> None:
@@ -160,11 +302,11 @@ def generate_lunch_summary(day: str) -> None:
     print(f"[INFO] Generated HTML summary for {day}: {output_path}")
 
 
-def generate_index_page() -> None:
+def generate_index_page(day: str | None = None) -> None:
     output_dir = Path("docs")
     output_dir.mkdir(exist_ok=True)
 
-    today = get_today_english().lower()
+    today = (day or get_today_english()).lower()
     today_data_path = f"data/lunch_data_{today}.json"
     lunch_data: dict = {}
 
@@ -172,16 +314,40 @@ def generate_index_page() -> None:
         annotate_file(today_data_path)
         with open(today_data_path, encoding="utf-8") as f:
             lunch_data = json.load(f)
-        # Ensure annotations exist even if file write was skipped somehow.
         annotate_menu_data(lunch_data, load_keywords())
 
     restaurant_links = load_restaurant_links()
-    restaurants = prepare_restaurants(lunch_data, restaurant_links)
+    meta = load_scrape_meta(today)
+    stamp = _parse_stamp(meta.get("scraped_at"))
+    formatted = format_stamp(stamp) if stamp else None
+    restaurants = prepare_restaurants(lunch_data, restaurant_links, formatted)
     filters = available_filters(restaurants)
     day_en, day_sv = DAY_LABELS.get(today, (today.capitalize(), today.capitalize()))
-    last_updated = datetime.now(STOCKHOLM).strftime("%Y-%m-%d %H:%M")
-    meta = load_scrape_meta(today)
-    stale_count = sum(1 for r in restaurants if r["stale"])
+    missing = missing_restaurants(meta, restaurant_links)
+    fresh_count = sum(1 for restaurant in restaurants if not restaurant["stale"])
+    total = len(DISPLAY_NAMES)
+    menu_date = formatted["iso"] if formatted else ""
+    hhmm = formatted["hhmm"] if formatted else ""
+    trust_sv = formatted["trust_sv"] if formatted else day_sv
+    trust_en = formatted["trust_en"] if formatted else day_en
+    if formatted:
+        date_copy = {
+            "wrong_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer runt 08:00.",
+            "wrong_en": f"This is {formatted['long_en']}'s menu. Today's menus arrive around 08:00.",
+            "soon_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer snart.",
+            "soon_en": f"This is {formatted['long_en']}'s menu. Today's menus are coming soon.",
+            "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
+            "weekend_en": "It's the weekend. Lunch is back on Monday.",
+        }
+    else:
+        date_copy = {
+            "wrong_sv": "Det här är inte dagens meny. Dagens menyer kommer runt 08:00.",
+            "wrong_en": "This is not today's menu. Today's menus arrive around 08:00.",
+            "soon_sv": "Det här är inte dagens meny. Dagens menyer kommer snart.",
+            "soon_en": "This is not today's menu. Today's menus are coming soon.",
+            "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
+            "weekend_en": "It's the weekend. Lunch is back on Monday.",
+        }
 
     env = Environment(
         loader=FileSystemLoader("templates"),
@@ -192,20 +358,40 @@ def generate_index_page() -> None:
         day=today,
         day_label_en=day_en,
         day_label_sv=day_sv,
-        last_updated=last_updated,
+        menu_date=menu_date,
+        scraped_at_hhmm=hhmm,
+        trust_sv=trust_sv,
+        trust_en=trust_en,
+        date_copy=date_copy,
         restaurants=restaurants,
-        restaurant_ids=[r["id"] for r in restaurants],
+        restaurant_ids=[restaurant["id"] for restaurant in restaurants],
         restaurant_count=len(restaurants),
-        stale_count=stale_count,
+        fresh_count=fresh_count,
+        total_restaurants=total,
+        stale_count=sum(1 for restaurant in restaurants if restaurant["stale"]),
+        missing_restaurants=missing,
+        missing_count=len(missing),
+        directory=restaurant_directory(restaurant_links),
         filter_options=filters,
         scrape_meta=meta,
     )
 
     (output_dir / "index.html").write_text(html, encoding="utf-8")
-    Path("index.html").write_text(html, encoding="utf-8")
-    print(f"[INFO] Generated weekly index page: {output_dir / 'index.html'}")
-    print("[INFO] Generated root index page: index.html")
+    lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
+    write_sitemap(lastmod)
+    print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
+
+
+def _cli() -> None:
+    parser = argparse.ArgumentParser(description="Render the Lindholmen Lunch page.")
+    parser.add_argument(
+        "--day",
+        choices=WEEKDAYS,
+        help="Weekday to render. Defaults to today in Europe/Stockholm.",
+    )
+    args = parser.parse_args()
+    generate_index_page(day=args.day)
 
 
 if __name__ == "__main__":
-    generate_index_page()
+    _cli()

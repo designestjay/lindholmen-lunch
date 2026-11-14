@@ -1,3 +1,7 @@
+import pytest
+
+pytestmark = pytest.mark.network
+
 # tests/test_bombay_bistro.py
 
 from scrapers.bombay_bistro import BombayBistroScraper
