@@ -109,12 +109,6 @@ jobs:
           python generate_html.py --day "$DAY"
         fi
 
-    - name: Copy CNAME into docs
-      run: |
-        if [ -f CNAME ]; then
-          cp CNAME docs/
-        fi
-
     - name: Health report
       id: health
       if: steps.scrape.outputs.skipped != 'true'

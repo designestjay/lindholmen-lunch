@@ -4,7 +4,7 @@ A modern web application that aggregates and displays daily lunch menus from res
 
 ## 🌐 Live Website
 
-Visit the live application: **[Your GitHub Pages URL will be here]**
+Visit the live application: **https://iamjaydesign.com/lindholmen-lunch/**
 
 ## ✨ Features
 
@@ -154,10 +154,6 @@ The scraper runs automatically via GitHub Actions. To modify the schedule, edit 
 schedule:
   - cron: '0 6 * * 1-5'  # 6 AM UTC, Monday-Friday
 ```
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ## 💬 Contact
 
