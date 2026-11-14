@@ -522,6 +522,7 @@ def generate_index_page(day: str | None = None) -> None:
     })
     library = load_library().get("categories") or {}
     dish_info = {slug: library[slug] for slug in present if slug in library}
+    ideas = weekend_idea_payload(library)
     holidays = ",".join(holiday_dates())
     hhmm = formatted["hhmm"] if formatted else ""
     trust_sv = formatted["trust_sv"] if formatted else day_sv
@@ -588,6 +589,7 @@ def generate_index_page(day: str | None = None) -> None:
         scrape_meta=meta,
         site=SITE,
         dish_info=dish_info,
+        weekend_ideas=ideas,
         holiday_dates=holidays,
     )
 
@@ -597,6 +599,31 @@ def generate_index_page(day: str | None = None) -> None:
     lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
     write_sitemap(lastmod)
     print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
+
+
+def weekend_idea_payload(library: dict) -> list[dict]:
+    """Drawings Jay has not turned off. Draft text is allowed; status is not a gate."""
+    folder = Path("docs/assets/dishes")
+    allowed = {"beef", "pork", "chicken", "fish", "veg", "other"}
+    ideas = []
+    for slug in sorted(library):
+        entry = library.get(slug)
+        if not isinstance(entry, dict) or entry.get("idea") is False:
+            continue
+        if not (folder / f"{slug}.svg").is_file():
+            continue
+        protein = entry.get("idea_protein") or "other"
+        if protein not in allowed:
+            protein = "other"
+        name = entry.get("name") or {}
+        what = entry.get("what") or {}
+        ideas.append({
+            "slug": slug,
+            "name": {"sv": name.get("sv") or "", "en": name.get("en") or ""},
+            "what": {"sv": what.get("sv") or "", "en": what.get("en") or ""},
+            "idea_protein": protein,
+        })
+    return ideas
 
 
 def write_preview(output_dir: Path, html: str) -> None:
@@ -618,7 +645,8 @@ def write_preview(output_dir: Path, html: str) -> None:
         + "".join(symbols)
         + "</svg>"
     )
-    preview = html.replace("<body>", "<body>\n" + sprite, 1)
+    hook = '<script>window.dishUseHref=function(slug){return "#dish-"+slug;};</script>'
+    preview = html.replace("<body>", "<body>\n" + sprite + "\n" + hook, 1)
     preview = re.sub(r'href="assets/dishes/([^"]+)\.svg#art"', r'href="#dish-\1"', preview)
     (output_dir / "preview.html").write_text(preview, encoding="utf-8")
 

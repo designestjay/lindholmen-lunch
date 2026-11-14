@@ -31,7 +31,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "fish"
     },
     "tikka-masala": {
       "status": "draft",
@@ -63,7 +65,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "pasta-cream": {
       "status": "draft",
@@ -93,7 +97,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "sushi-mix": {
       "status": "draft",
@@ -123,7 +129,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "fish"
     },
     "steak": {
       "status": "draft",
@@ -153,7 +161,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "beef"
     },
     "madras-curry": {
       "status": "draft",
@@ -183,7 +193,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "stew-bourguignon": {
       "status": "draft",
@@ -213,7 +225,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "salad-bowl": {
       "status": "draft",
@@ -243,7 +257,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "veg"
     },
     "poached-fish": {
       "status": "draft",
@@ -273,7 +289,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "salmon": {
       "status": "draft",
@@ -303,7 +321,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "fish"
     },
     "indian-curry": {
       "status": "draft",
@@ -333,7 +353,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "fried-fish": {
       "status": "draft",
@@ -363,7 +385,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "pork-roast": {
       "status": "draft",
@@ -393,7 +417,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "schnitzel": {
       "status": "draft",
@@ -423,7 +449,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "thai-curry": {
       "status": "draft",
@@ -453,7 +481,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "burger": {
       "status": "draft",
@@ -483,7 +513,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "yakisoba-fried-noodles": {
       "status": "draft",
@@ -513,7 +545,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "tandoori": {
       "status": "draft",
@@ -543,7 +577,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "chicken"
     },
     "tortellini-gnocchi": {
       "status": "draft",
@@ -573,7 +609,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "korma": {
       "status": "draft",
@@ -603,7 +641,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "taco-burrito": {
       "status": "draft",
@@ -633,7 +673,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "chicken-roast": {
       "status": "draft",
@@ -663,7 +705,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "fiskgratang": {
       "status": "draft",
@@ -693,7 +737,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "naan": {
       "status": "draft",
@@ -721,7 +767,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "kottbullar": {
       "status": "draft",
@@ -751,7 +799,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "wok": {
       "status": "draft",
@@ -781,7 +831,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "pasta-pesto": {
       "status": "draft",
@@ -813,7 +865,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "veg"
     },
     "risotto": {
       "status": "draft",
@@ -843,7 +897,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "roasted-vegetables": {
       "status": "draft",
@@ -871,7 +927,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "korean-fried-chicken": {
       "status": "draft",
@@ -901,7 +959,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "butter-chicken": {
       "status": "draft",
@@ -933,7 +993,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "shrimp": {
       "status": "draft",
@@ -961,7 +1023,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "fish"
     },
     "raita-chutney": {
       "status": "draft",
@@ -989,7 +1053,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "lasagne": {
       "status": "draft",
@@ -1019,7 +1085,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "pannbiff": {
       "status": "draft",
@@ -1049,7 +1117,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "bibimbap": {
       "status": "draft",
@@ -1079,7 +1149,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "bao": {
       "status": "draft",
@@ -1107,7 +1179,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "korean-bbq": {
       "status": "draft",
@@ -1137,7 +1211,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "curry-generic": {
       "status": "draft",
@@ -1167,7 +1243,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "bean-lentil": {
       "status": "draft",
@@ -1197,7 +1275,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "dessert-cake": {
       "status": "draft",
@@ -1225,7 +1305,9 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "pancake-dessert": {
       "status": "draft",
@@ -1255,126 +1337,257 @@
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "dumplings": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Dumplings", "en": "Dumplings"},
+      "name": {
+        "sv": "Dumplings",
+        "en": "Dumplings"
+      },
       "what": {
         "sv": "Små degknyten med fyllning, ångade, kokta eller stekta.",
         "en": "Small filled dough parcels, steamed, boiled or fried."
       },
       "typical": {
-        "sv": ["deg", "fyllning", "soja eller dipp"],
-        "en": ["dough", "filling", "soy or a dip"]
+        "sv": [
+          "deg",
+          "fyllning",
+          "soja eller dipp"
+        ],
+        "en": [
+          "dough",
+          "filling",
+          "soy or a dip"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "caesar-salad": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Caesarsallad", "en": "Caesar salad"},
+      "name": {
+        "sv": "Caesarsallad",
+        "en": "Caesar salad"
+      },
       "what": {
         "sv": "Romansallad med krutonger, ost och en krämig dressing.",
         "en": "Romaine lettuce with croutons, cheese and a creamy dressing."
       },
       "typical": {
-        "sv": ["romansallad", "krutonger", "ost", "dressing"],
-        "en": ["romaine", "croutons", "cheese", "dressing"]
+        "sv": [
+          "romansallad",
+          "krutonger",
+          "ost",
+          "dressing"
+        ],
+        "en": [
+          "romaine",
+          "croutons",
+          "cheese",
+          "dressing"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "chicken"
     },
     "yakitori": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Yakitori", "en": "Yakitori"},
+      "name": {
+        "sv": "Yakitori",
+        "en": "Yakitori"
+      },
       "what": {
         "sv": "Grillade spett, oftast kyckling, med en söt sojasås.",
         "en": "Grilled skewers, usually chicken, with a sweet soy sauce."
       },
       "typical": {
-        "sv": ["spett", "kyckling", "soja", "ris"],
-        "en": ["skewers", "chicken", "soy", "rice"]
+        "sv": [
+          "spett",
+          "kyckling",
+          "soja",
+          "ris"
+        ],
+        "en": [
+          "skewers",
+          "chicken",
+          "soy",
+          "rice"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "chicken"
     },
     "tempura": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Tempura", "en": "Tempura"},
+      "name": {
+        "sv": "Tempura",
+        "en": "Tempura"
+      },
       "what": {
         "sv": "Lättfriterade bitar i ett tunt frasigt smet.",
         "en": "Lightly fried pieces in a thin, crisp batter."
       },
       "typical": {
-        "sv": ["smet", "räkor eller grönsaker", "dipp"],
-        "en": ["batter", "shrimp or vegetables", "a dip"]
+        "sv": [
+          "smet",
+          "räkor eller grönsaker",
+          "dipp"
+        ],
+        "en": [
+          "batter",
+          "shrimp or vegetables",
+          "a dip"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "lamb": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Lamm", "en": "Lamb"},
+      "name": {
+        "sv": "Lamm",
+        "en": "Lamb"
+      },
       "what": {
         "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris.",
         "en": "Lamb, roasted or stewed, often with potato or rice."
       },
       "typical": {
-        "sv": ["lamm", "potatis eller ris", "sås"],
-        "en": ["lamb", "potato or rice", "sauce"]
+        "sv": [
+          "lamm",
+          "potatis eller ris",
+          "sås"
+        ],
+        "en": [
+          "lamb",
+          "potato or rice",
+          "sauce"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     },
     "pasta-tomato": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Pasta med tomatsås", "en": "Pasta in tomato sauce"},
+      "name": {
+        "sv": "Pasta med tomatsås",
+        "en": "Pasta in tomato sauce"
+      },
       "what": {
         "sv": "Pasta i en tomatsås, ofta med vitlök och örter.",
         "en": "Pasta in a tomato sauce, often with garlic and herbs."
       },
       "typical": {
-        "sv": ["pasta", "tomat", "vitlök", "örter"],
-        "en": ["pasta", "tomato", "garlic", "herbs"]
+        "sv": [
+          "pasta",
+          "tomat",
+          "vitlök",
+          "örter"
+        ],
+        "en": [
+          "pasta",
+          "tomato",
+          "garlic",
+          "herbs"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": false,
+      "idea_protein": "other"
     },
     "noodle-soup": {
       "status": "draft",
       "review_status": "draft",
       "image": null,
-      "name": {"sv": "Nudelsoppa", "en": "Noodle soup"},
+      "name": {
+        "sv": "Nudelsoppa",
+        "en": "Noodle soup"
+      },
       "what": {
         "sv": "En buljong med nudlar och grönsaker.",
         "en": "A broth with noodles and vegetables."
       },
       "typical": {
-        "sv": ["nudlar", "buljong", "grönsaker"],
-        "en": ["noodles", "broth", "vegetables"]
+        "sv": [
+          "nudlar",
+          "buljong",
+          "grönsaker"
+        ],
+        "en": [
+          "noodles",
+          "broth",
+          "vegetables"
+        ]
       },
       "text_source": "model-draft",
       "text_reviewed_by": null,
-      "text_reviewed_at": null
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
+    },
+    "pho": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pho",
+        "en": "Pho"
+      },
+      "what": {
+        "sv": "En nudelsoppa på klar buljong, ofta med risnudlar och örter.",
+        "en": "A noodle soup in a clear broth, often with rice noodles and herbs."
+      },
+      "typical": {
+        "sv": [
+          "risnudlar",
+          "buljong",
+          "örter",
+          "lime"
+        ],
+        "en": [
+          "rice noodles",
+          "broth",
+          "herbs",
+          "lime"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null,
+      "idea": true,
+      "idea_protein": "other"
     }
   }
 }
