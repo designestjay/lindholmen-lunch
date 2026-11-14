@@ -12,8 +12,12 @@ from zoneinfo import ZoneInfo
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords
+from utils.annotate_food_types import annotate_file, annotate_menu_data, load_keywords, tags_for_text
 from utils.restaurants import DISPLAY_NAMES, display_name, link_key
+from utils.dish_category import classify, coverage_line, load_library, load_taxonomy, normalise, update_image_queue
+from utils.dish_svg import PROTEIN_LABELS, detect_protein, protein_for
+from utils.holidays import holiday_dates
+from utils.sources import is_inactive, is_link_only, is_rotating, load_sources
 from utils.utils import get_today_english
 
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
@@ -103,6 +107,42 @@ def parse_price(value: str) -> int | None:
     return int(match.group(0))
 
 
+_PRICE_AMOUNT = re.compile(r"\d+(?:[.,]\d+)?")
+_PRICE_UNIT = re.compile(r"\s*(?:kr|sek)\b", re.IGNORECASE)
+_DISH_ACRONYMS = {"BBQ", "IPA"}
+
+
+def split_price(price_raw: str) -> tuple[str, str]:
+    """Keep the first amount in the price column and return any further amounts as a note."""
+    text = (price_raw or "").strip()
+    amounts = list(_PRICE_AMOUNT.finditer(text))
+    if len(amounts) < 2:
+        return text, ""
+    unit = _PRICE_UNIT.match(text, amounts[0].end())
+    end = unit.end() if unit else amounts[0].end()
+    primary = text[:end].strip(" ,;/")
+    note = text[end:].lstrip(" ,;/-–—").strip()
+    return primary, note
+
+
+def sentence_case_dish(name: str) -> str:
+    """Sentence-case a fully uppercase dish name, keeping BBQ and IPA."""
+    text = (name or "").strip()
+    if len(text) <= 3 or text != text.upper() or not any(ch.isalpha() for ch in text):
+        return text
+    words = []
+    for index, word in enumerate(text.split()):
+        letters = "".join(ch for ch in word if ch.isalpha())
+        if letters in _DISH_ACRONYMS:
+            words.append(word)
+            continue
+        lower = word.lower()
+        if index == 0 and lower:
+            lower = lower[0].upper() + lower[1:]
+        words.append(lower)
+    return " ".join(words)
+
+
 def dish_filter_tokens(tags: list[str] | None, price: int | None) -> list[str]:
     """Tokens the filter chips match. `vego` covers both veg and vegan."""
     tokens = set(tags or [])
@@ -124,6 +164,16 @@ def pills_for(tags: list[str] | None) -> list[dict]:
     if any(pill["key"] == "sushi" for pill in pills):
         pills = [pill for pill in pills if pill["key"] != "asian"]
     return pills
+
+
+def dish_pills(name: str, description: str, category: str = "", tag_data: dict | None = None) -> list[dict]:
+    """Pills from this dish's name, description and section. Stored tags are ignored."""
+    text = " ".join(
+        part.strip()
+        for part in (name or "", description or "", category or "")
+        if part and part.strip()
+    )
+    return pills_for(tags_for_text(text, tag_data))
 
 
 def _parse_stamp(value: str | None) -> datetime | None:
@@ -156,8 +206,15 @@ def format_stamp(when: datetime) -> dict:
 
 def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp: dict | None) -> list[dict]:
     restaurants = []
+    queue_rows = []
+    taxonomy = load_taxonomy()
+    library = (load_library().get("categories") or {})
+    sources = load_sources()
+    tag_data = load_keywords()
     for scraper_key, payload in lunch_data.items():
         if not isinstance(payload, dict):
+            continue
+        if is_inactive(scraper_key, sources) or is_link_only(scraper_key, sources):
             continue
         items_out = []
         for item in payload.get("items") or []:
@@ -167,26 +224,83 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             description = (item.get("description") or "").strip()
             price_raw = (item.get("price") or "").strip()
             price_value = parse_price(price_raw)
-            tags = item.get("tags") or []
             if name:
-                display_item_name = name
+                display_item_name = sentence_case_dish(name)
                 visible_description = description
             elif description:
-                display_item_name = description
+                display_item_name = sentence_case_dish(description)
                 visible_description = ""
             else:
                 display_item_name = ""
                 visible_description = ""
+            price_text, price_note = split_price(price_raw) if price_value is not None else ("", "")
+            decision = classify(
+                display_item_name or name,
+                visible_description or description,
+                display_name(scraper_key),
+                taxonomy,
+            )
+            slug = decision.get("dish_category") or ""
+            entry = library.get(slug) if slug else None
+            has_text = bool(entry and (entry.get("what") or {}).get("sv"))
+            svg_file = Path(f"docs/assets/dishes/{slug}.svg") if slug else None
+            has_svg = bool(svg_file and svg_file.is_file())
+            confidence = float(decision.get("category_confidence") or 0)
+            section = (item.get("category") or "").strip()
+            if decision.get("ignored"):
+                own_tags = []
+                pills = []
+                protein = None
+                protein_from_menu = False
+                protein_sv, protein_en = "", ""
+            else:
+                own_text = " ".join(
+                    part for part in (display_item_name or name, visible_description or description, section) if part
+                )
+                own_tags = tags_for_text(own_text, tag_data)
+                protein = protein_for(own_text, own_tags, slug)
+                protein_from_menu = bool(detect_protein(own_text, own_tags))
+                protein_sv, protein_en = PROTEIN_LABELS.get(protein, ("", ""))
+                pills = dish_pills(
+                    display_item_name or name,
+                    visible_description or description,
+                    section,
+                    tag_data,
+                )
+                if protein_sv and all(pill["sv"] != protein_sv for pill in pills):
+                    pills = pills + [{"key": protein, "en": protein_en, "sv": protein_sv}]
             items_out.append(
                 {
                     "name": display_item_name,
                     "description": visible_description,
                     "category": (item.get("category") or "").strip(),
-                    "price": price_raw if price_value is not None else "",
-                    "tags": tags,
-                    "pills": pills_for(tags),
-                    "filter_tokens": " ".join(dish_filter_tokens(tags, price_value)),
-                    "search_text": _item_search_text(item),
+                    "price": price_text,
+                    "price_note": price_note,
+                    "tags": own_tags,
+                    "pills": pills,
+                    "protein": protein or "",
+                    "protein_menu": protein_from_menu,
+                    "protein_sv": protein_sv,
+                    "protein_en": protein_en,
+                    "filter_tokens": " ".join(dish_filter_tokens(own_tags, price_value)),
+                    "search_text": _item_search_text({**item, "tags": own_tags}),
+                    "dish_category": slug,
+                    "dish_confidence": confidence,
+                    "dish_image": f"assets/dishes/{slug}.svg" if has_svg else "",
+                    "dish_sheet": has_text,
+                    "shown_image": bool(has_svg and entry and entry.get("status") == "approved" and confidence >= 0.8),
+                }
+            )
+            queue_rows.append(
+                {
+                    "key": normalise(display_item_name or name),
+                    "name": display_item_name or name,
+                    "description": visible_description or description,
+                    "restaurant": display_name(scraper_key),
+                    "dish_category": slug or None,
+                    "category_confidence": confidence,
+                    "ignored": bool(decision.get("ignored")),
+                    "closed_dish": bool(decision.get("closed")),
                 }
             )
 
@@ -208,6 +322,9 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                 "tags": payload.get("tags") or [],
                 "filter_tokens": " ".join(sorted(token_set)),
                 "stale": bool(payload.get("stale")),
+                "closed": bool(payload.get("closed")),
+                "rotating": is_rotating(scraper_key, sources),
+                "link_only": False,
                 "links": links,
                 "search_text": " ".join(search_parts),
                 "stale_short_sv": stamp["short_sv"] if stamp else "",
@@ -215,10 +332,42 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
             }
         )
 
+    restaurants.extend(link_only_restaurants(restaurant_links, sources))
     restaurants.sort(key=lambda row: (row["stale"], row["name_lower"]))
     for index, restaurant in enumerate(restaurants, start=1):
         restaurant["rank"] = f"{index:02d}"
+    prepare_restaurants.queue_rows = queue_rows
     return restaurants
+
+
+def link_only_restaurants(restaurant_links: dict, sources: dict) -> list[dict]:
+    cards = []
+    for scraper_key, info in sources.items():
+        if not info.get("link_only"):
+            continue
+        links = dict(restaurant_links.get(link_key(scraper_key)) or {})
+        human = info.get("human_link") or links.get("url") or ""
+        links["url"] = human
+        name = info.get("display") or display_name(scraper_key)
+        cards.append(
+            {
+                "id": scraper_key,
+                "name": name,
+                "name_lower": name.lower(),
+                "dishes": [],
+                "tags": [],
+                "filter_tokens": "",
+                "stale": False,
+                "closed": False,
+                "rotating": False,
+                "link_only": True,
+                "links": links,
+                "search_text": name.lower(),
+                "stale_short_sv": "",
+                "stale_short_en": "",
+            }
+        )
+    return cards
 
 
 def available_filters(restaurants: list[dict]) -> list[dict]:
@@ -229,8 +378,11 @@ def available_filters(restaurants: list[dict]) -> list[dict]:
 
 
 def restaurant_directory(links: dict) -> list[dict]:
+    sources = load_sources()
     rows = []
     for scraper_key in DISPLAY_NAMES:
+        if is_inactive(scraper_key, sources):
+            continue
         info = links.get(link_key(scraper_key)) or {}
         rows.append(
             {
@@ -244,8 +396,12 @@ def restaurant_directory(links: dict) -> list[dict]:
 
 
 def missing_restaurants(meta: dict, links: dict) -> list[dict]:
+    sources = load_sources()
     rows = []
-    for scraper_key in meta.get("missing") or []:
+    names = list(meta.get("missing") or []) + list(meta.get("wrong_week") or [])
+    for scraper_key in names:
+        if is_inactive(scraper_key, sources) or is_link_only(scraper_key, sources):
+            continue
         info = links.get(link_key(scraper_key)) or {}
         rows.append(
             {
@@ -346,30 +502,64 @@ def generate_index_page(day: str | None = None) -> None:
     filters = available_filters(restaurants)
     day_en, day_sv = DAY_LABELS.get(today, (today.capitalize(), today.capitalize()))
     missing = missing_restaurants(meta, restaurant_links)
-    fresh_count = sum(1 for restaurant in restaurants if not restaurant["stale"])
-    total = len(DISPLAY_NAMES)
+    sources = load_sources()
+    fresh_count = sum(
+        1 for restaurant in restaurants
+        if not restaurant["stale"] and not restaurant.get("link_only") and not restaurant.get("closed")
+    )
+    total = sum(
+        1 for key in DISPLAY_NAMES
+        if not is_inactive(key, sources) and not is_link_only(key, sources)
+    )
     menu_date = formatted["iso"] if formatted else ""
+    queue_new = update_image_queue(getattr(prepare_restaurants, "queue_rows", []), menu_date or "1970-01-01")
+    print(coverage_line(getattr(prepare_restaurants, "queue_rows", []), queue_new))
+    present = sorted({
+        item["dish_category"]
+        for restaurant in restaurants
+        for item in restaurant["dishes"]
+        if item.get("dish_sheet") and item.get("dish_category")
+    })
+    library = load_library().get("categories") or {}
+    dish_info = {slug: library[slug] for slug in present if slug in library}
+    holidays = ",".join(holiday_dates())
     hhmm = formatted["hhmm"] if formatted else ""
     trust_sv = formatted["trust_sv"] if formatted else day_sv
     trust_en = formatted["trust_en"] if formatted else day_en
+    date_copy = {
+        "h1_sm_today_sv": "Lunch på Lindholmen idag",
+        "h1_sm_today_en": "Lunch in Lindholmen today",
+        "h1_lg_today_sv": "Lunch idag.",
+        "h1_lg_today_en": "Lunch today.",
+        "h1_sm_weekend_sv": "Lunch på Lindholmen i fredags",
+        "h1_sm_weekend_en": "Lunch in Lindholmen last Friday",
+        "h1_lg_weekend_sv": "Fredagens lunch.",
+        "h1_lg_weekend_en": "Friday's lunch.",
+        "missing_today_sv": f"Ingen meny hittad idag ({len(missing)})",
+        "missing_today_en": f"No menu found today ({len(missing)})",
+        "missing_weekend_sv": f"Ingen meny hittad i fredags ({len(missing)})",
+        "missing_weekend_en": f"No menu found on Friday ({len(missing)})",
+        "missing_day_sv": f"Ingen meny hittad {day_sv.lower()} ({len(missing)})",
+        "missing_day_en": f"No menu found on {day_en} ({len(missing)})",
+    }
     if formatted:
-        date_copy = {
+        date_copy.update({
             "wrong_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer runt 08:00.",
             "wrong_en": f"This is {formatted['long_en']}'s menu. Today's menus arrive around 08:00.",
             "soon_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer snart.",
             "soon_en": f"This is {formatted['long_en']}'s menu. Today's menus are coming soon.",
             "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
             "weekend_en": "It's the weekend. Lunch is back on Monday.",
-        }
+        })
     else:
-        date_copy = {
+        date_copy.update({
             "wrong_sv": "Det här är inte dagens meny. Dagens menyer kommer runt 08:00.",
             "wrong_en": "This is not today's menu. Today's menus arrive around 08:00.",
             "soon_sv": "Det här är inte dagens meny. Dagens menyer kommer snart.",
             "soon_en": "This is not today's menu. Today's menus are coming soon.",
             "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
             "weekend_en": "It's the weekend. Lunch is back on Monday.",
-        }
+        })
 
     env = Environment(
         loader=FileSystemLoader("templates"),
@@ -397,13 +587,40 @@ def generate_index_page(day: str | None = None) -> None:
         filter_options=filters,
         scrape_meta=meta,
         site=SITE,
+        dish_info=dish_info,
+        holiday_dates=holidays,
     )
 
     (output_dir / "index.html").write_text(html, encoding="utf-8")
+    write_preview(output_dir, html)
     write_privacy()
     lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
     write_sitemap(lastmod)
     print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
+
+
+def write_preview(output_dir: Path, html: str) -> None:
+    """Same-document symbols, so a preview host can show the drawings without external <use>."""
+    symbols = []
+    for path in sorted((output_dir / "assets" / "dishes").glob("*.svg")):
+        text = path.read_text(encoding="utf-8")
+        start = text.find('<g id="art"')
+        end = text.rfind("</g>")
+        if start < 0 or end < 0:
+            continue
+        group = text[start:end + 4].replace(' id="art"', "", 1)
+        opening, _, rest = group.partition(">")
+        if "fill=" not in opening:
+            group = opening.replace("<g ", '<g fill="none" ', 1) + ">" + rest
+        symbols.append(f'<symbol id="dish-{path.stem}" viewBox="0 0 64 64">{group}</symbol>')
+    sprite = (
+        '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true">'
+        + "".join(symbols)
+        + "</svg>"
+    )
+    preview = html.replace("<body>", "<body>\n" + sprite, 1)
+    preview = re.sub(r'href="assets/dishes/([^"]+)\.svg#art"', r'href="#dish-\1"', preview)
+    (output_dir / "preview.html").write_text(preview, encoding="utf-8")
 
 
 def _cli() -> None:

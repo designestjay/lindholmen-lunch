@@ -2,10 +2,9 @@ from bs4 import BeautifulSoup
 from datetime import date
 import re
 import logging
-import requests
 import unicodedata
 
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 from typing import Dict, Optional
 
 logger = logging.getLogger(__name__)
@@ -18,9 +17,7 @@ class BombayBistroScraper(LunchScraper):
         self.fetch()
 
     def fetch(self):
-        response = requests.get(self.URL)
-        response.raise_for_status()
-        html = response.text
+        html = fetch_html(self.URL)
         soup = BeautifulSoup(html, "html.parser")
 
         current_week = date.today().isocalendar().week

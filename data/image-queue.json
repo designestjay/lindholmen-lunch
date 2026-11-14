@@ -1,0 +1,817 @@
+{
+  "generated_at": "2026-11-13",
+  "items": [
+    {
+      "key": "(*)",
+      "name": "(*)",
+      "description": "GLUTENFRITT ROTI +10 KR",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "(biff)",
+      "name": "(Biff)",
+      "description": "",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "(kyckling)",
+      "name": "(Kyckling)",
+      "description": "",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "bento",
+      "name": "Bento",
+      "description": "3 maki, 2 nigri, 2 kycklingspett",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "bentolåda",
+      "name": "Bentolåda",
+      "description": "Yakiniku, yakitori, sushi, sallad & ris",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "yakitori",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "bibibamp",
+      "name": "Bibibamp (Veg)",
+      "description": "",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "bibibamp (biff)",
+      "name": "Bibibamp (biff)",
+      "description": "",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "bibibamp (kyckling)",
+      "name": "Bibibamp (Kyckling)",
+      "description": "",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "chili pickles",
+      "name": "Chili pickles",
+      "description": "",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "chévre/rödbetor/honung/valnötter/granatäpple",
+      "name": "Chévre/rödbetor/honung/valnötter/granatäpple",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "dressing",
+      "name": "Dressing",
+      "description": "Rhode Island, chilimango, italiensk, vinäger, vitlök",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "fetaost/spenat",
+      "name": "Fetaost/Spenat",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "fre: pannoumiburgare",
+      "name": "Vegetarisk: Fre: Pannoumiburgare",
+      "description": "",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "grekisk",
+      "name": "Grekisk",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "högrevsburgare",
+      "name": "Högrevsburgare",
+      "description": "Karamelliserad lök – Krispichilimayo – Pepperjackost – Sallad – Pommes",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "salad-bowl",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "jingha hara",
+      "name": "Jingha hara",
+      "description": "",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde",
+      "name": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
+      "description": "Jätteräkor lagat med färsk basilika, champinjoner och koriander i en het kokossås och grädde.",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "krispig kyckling",
+      "name": "Krispig kyckling",
+      "description": "Friterade kyckling / gurka / krispsallad / morötter",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "kyckling",
+      "name": "Kyckling",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "kyckling bowl",
+      "name": "Kyckling Bowl",
+      "description": "Friterad kyckling med sushiris,salladsmix,gurka,avokado,edamame,wakame, Mango,morötter,majs,picklad rödlök,chilimajonös,sweetchilisås,sesamfrön",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky",
+      "name": "Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky",
+      "description": "Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "kyckling/ mozzarella/ ruccola / mangoraja",
+      "name": "kyckling/ mozzarella/ ruccola / mangoraja",
+      "description": "Serveras med pommes & sallad & dressing",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "salad-bowl",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "kyckling/bacon/dijoncreme",
+      "name": "Kyckling/bacon/dijoncreme",
+      "description": "Serveras med pommes & sallad & dressing",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "salad-bowl",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "lufttorkad skinka/mozzarella/pesto",
+      "name": "Lufttorkad skinka/mozzarella/pesto",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
+      "name": "Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
+      "description": "Långbakad nötbog serveras med klyftpotatis, brysselkål och senapssås",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "machili bengali",
+      "name": "Machili bengali",
+      "description": "Laxfilé med grön chili och tamarind, tillagad i kryddad med färsk koriander och indiska \"Panch phoron\" (fem kryddor)",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "pho",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "mammasushi",
+      "name": "Mammasushi 10 bitar",
+      "description": "2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "mangolassi",
+      "name": "Mangolassi",
+      "description": "",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "mindre ciabbatta av ovan",
+      "name": "Mindre ciabbatta av ovan",
+      "description": "",
+      "restaurants": [
+        "Miss F"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "mineralvatten",
+      "name": "Mineralvatten",
+      "description": "",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "mix",
+      "name": "Mix 12 bitar",
+      "description": "4 lax, 1 räka, 1 crabfish, 6 maki, 1 tofu & 1 avocado",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "murg methi malai",
+      "name": "Murg methi malai",
+      "description": "Kycklingfilé med bockhornsklöver, lök, ingefära, finmald cashewnötter, vitpeppar och tomatgräddsås.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "myntasås",
+      "name": "Myntasås",
+      "description": "",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "nigri",
+      "name": "9 bitar nigri",
+      "description": "5 Lax, 4 avokado",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "salmon",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "ons-tor: bakad rödbeta",
+      "name": "Ons-Tor: Bakad Rödbeta",
+      "description": "Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "roasted-cauliflower",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "pahadi grill chicken",
+      "name": "Pahadi grill chicken",
+      "description": "Grillad kycklingfilé marinerad i yoghurt och örter, serveras med tandoori sås.",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "tandoori",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "papadom",
+      "name": "Papadom",
+      "description": "",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "rogan josh",
+      "name": "Rogan josh",
+      "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "lamb",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "silky bird",
+      "name": "Silky Bird",
+      "description": "Rostad och skivad kycklinglårfilé i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök och färsk basilika. Toppad med lagrad hårdost, hackad persilja och plockad basilika.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "silky salsiccia",
+      "name": "Silky salsiccia",
+      "description": "Knaperstekt salsiccia smaksatt med vitlök och örter. i en gräddig tomatsås gjord på karamelliserad rödlök, gyllenstekt vitlök, färsk rosmarin och basilika. Toppad med lagrad hårdost och hackad persilja.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "slow tomato",
+      "name": "Slow tomato",
+      "description": "Naturligt söt och varsamt kokt tomatsås gjord på karamelliserad rödlök, rostad vitlök och färsk basilika. Toppad med lagrad hårdost, baby leaves, basilika och extra virgin olivolja.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "smoked pig",
+      "name": "Smoked pig",
+      "description": "Nystekt bacon i en krämig vit sås som är smaksatt med svartpeppar. Toppad med lagrad hårdost och hackad persilja.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "stekt kyckling med grönsaker",
+      "name": "Stekt kyckling med grönsaker",
+      "description": "kyckling, grönsaker",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "swedish cheese",
+      "name": "Swedish cheese",
+      "description": "Vår himmelskt krämiga ostsås gjord på\n\t\t\t\t\t\t\t\t\tVästerbottensost®, smaksatt med en generös mängd svartpeppar. Toppad med ett crunchy ostkrisp, lagrad hårdost, hackad persilja och nymalen svartpeppar.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "the shrooms",
+      "name": "The shrooms",
+      "description": "Vitlöksfrästa champinjoner i en ljuvligt krämig svampsås som är smaksatt med färsk timjan och rostad vitlök. Toppad med lagrad hårdost, hackad persilja, rostade pumpakärnor och svart tryffelolja.",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "tiramisu",
+      "name": "Tiramisu",
+      "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
+      "restaurants": [
+        "Benne Pastabar"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås",
+      "name": "Ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås",
+      "description": "Ugnsbakat kalkonbröst serveras med rotfrukter, haricot verts, grönkål och rödvinssås",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "vanlig",
+      "name": "vanlig 10 bitar",
+      "description": "3 lax, 1 räka, 1 crabfish, 1 omelett & 4 maki",
+      "restaurants": [
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "vegetarisk",
+      "name": "11 bitar vegetarisk",
+      "description": "2avokado 1ägg 1sparris 1tofu 6rullar",
+      "restaurants": [
+        "Oishii",
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "vegetarisk bowl",
+      "name": "Vegetarisk Bowl",
+      "description": "Tofu med sushiris,salladsmix,gurka,avokado,edamame,wakame,mango  Morötter,majs,picklad rödlök,chilimajonös,,sesamfrön",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "wonton nudlar",
+      "name": "Wonton nudlar",
+      "description": "",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "yakiniku",
+      "name": "Yakiniku",
+      "description": "strimlad entrecote",
+      "restaurants": [
+        "Oishii",
+        "Encounter Asian"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "steak",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "yakiniku bowl",
+      "name": "Yakiniku Bowl",
+      "description": "Marinerad entrecote med sushiris salladsmix,gurka,avokado,edamame, Wakame,mango,morötter,majs,picklad rödlök , chilimajonös,teriyakisås, Sesamfrön",
+      "restaurants": [
+        "Oishii"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": "teriyaki",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "“chicken dopiaza”",
+      "name": "“Chicken dopiaza”",
+      "description": "bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ)",
+      "restaurants": [
+        "Uni3 World of Food"
+      ],
+      "first_seen": "2026-11-13",
+      "last_seen": "2026-11-13",
+      "seen_count": 1,
+      "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    }
+  ]
+}

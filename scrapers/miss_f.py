@@ -1,8 +1,7 @@
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 from typing import Dict, Optional
 from datetime import date
-import requests
 import os
 
 class MissFScraper(LunchScraper):
@@ -18,9 +17,7 @@ class MissFScraper(LunchScraper):
             with open(self.LOCAL_FILE, "r", encoding="utf-8") as f:
                 soup = BeautifulSoup(f, "html.parser")
         else:
-            response = requests.get(self.URL)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, "html.parser")
+            soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
 
         menu_items = []
 

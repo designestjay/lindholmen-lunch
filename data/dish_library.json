@@ -1,0 +1,1380 @@
+{
+  "version": 1,
+  "categories": {
+    "white-fish": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Vit fisk",
+        "en": "White fish"
+      },
+      "what": {
+        "sv": "En mild fiskfilé, ofta torsk eller sej, serverad med potatis och en sås.",
+        "en": "A mild fish fillet, often cod or pollock, served with potato and a sauce."
+      },
+      "typical": {
+        "sv": [
+          "fiskfilé",
+          "potatis",
+          "sås",
+          "citron",
+          "örter"
+        ],
+        "en": [
+          "fish fillet",
+          "potato",
+          "sauce",
+          "lemon",
+          "herbs"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "tikka-masala": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Tikka masala",
+        "en": "Tikka masala"
+      },
+      "what": {
+        "sv": "Grillade bitar i en krämig, tomatig curry, oftast med ris.",
+        "en": "Grilled pieces in a creamy, tomato curry, usually with rice."
+      },
+      "typical": {
+        "sv": [
+          "kyckling eller paneer",
+          "tomat",
+          "grädde",
+          "ris",
+          "kryddor"
+        ],
+        "en": [
+          "chicken or paneer",
+          "tomato",
+          "cream",
+          "rice",
+          "spices"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pasta-cream": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pasta med gräddsås",
+        "en": "Pasta in cream sauce"
+      },
+      "what": {
+        "sv": "Pasta i en len gräddsås, ofta med ost eller svamp.",
+        "en": "Pasta in a smooth cream sauce, often with cheese or mushrooms."
+      },
+      "typical": {
+        "sv": [
+          "pasta",
+          "grädde",
+          "ost eller svamp",
+          "lök"
+        ],
+        "en": [
+          "pasta",
+          "cream",
+          "cheese or mushrooms",
+          "onion"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "sushi-mix": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Sushi",
+        "en": "Sushi"
+      },
+      "what": {
+        "sv": "Ris med vinäger, formad med fisk, skaldjur eller grönsaker.",
+        "en": "Vinegared rice shaped with fish, shellfish or vegetables."
+      },
+      "typical": {
+        "sv": [
+          "sushiris",
+          "fisk eller grönsaker",
+          "nori",
+          "soja"
+        ],
+        "en": [
+          "sushi rice",
+          "fish or vegetables",
+          "nori",
+          "soy"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "steak": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Stek",
+        "en": "Steak"
+      },
+      "what": {
+        "sv": "En skivad eller hel köttbit, stekt eller grillad, med tillbehör.",
+        "en": "A whole or sliced cut of meat, fried or grilled, with sides."
+      },
+      "typical": {
+        "sv": [
+          "nötkött",
+          "potatis",
+          "sås",
+          "grönsaker"
+        ],
+        "en": [
+          "beef",
+          "potato",
+          "sauce",
+          "vegetables"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "madras-curry": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Madrascurry",
+        "en": "Madras curry"
+      },
+      "what": {
+        "sv": "En starkare sydindisk curry med tomat och torkade kryddor.",
+        "en": "A hotter southern Indian curry with tomato and dried spices."
+      },
+      "typical": {
+        "sv": [
+          "kött eller grönsaker",
+          "tomat",
+          "chili",
+          "ris"
+        ],
+        "en": [
+          "meat or vegetables",
+          "tomato",
+          "chilli",
+          "rice"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "stew-bourguignon": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Gryta",
+        "en": "Stew"
+      },
+      "what": {
+        "sv": "Kött eller grönsaker långkokta i buljong eller vin, med rotfrukter.",
+        "en": "Meat or vegetables simmered in stock or wine, with root vegetables."
+      },
+      "typical": {
+        "sv": [
+          "kött eller svamp",
+          "lök",
+          "morot",
+          "buljong"
+        ],
+        "en": [
+          "meat or mushrooms",
+          "onion",
+          "carrot",
+          "stock"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "salad-bowl": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Salladsbowl",
+        "en": "Salad bowl"
+      },
+      "what": {
+        "sv": "En kall skål med blad, grönsaker och ofta ett protein.",
+        "en": "A cold bowl of leaves and vegetables, often with a protein."
+      },
+      "typical": {
+        "sv": [
+          "bladgrönt",
+          "grönsaker",
+          "dressing",
+          "protein efter val"
+        ],
+        "en": [
+          "leaves",
+          "vegetables",
+          "dressing",
+          "a protein"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "poached-fish": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pocherad fisk",
+        "en": "Poached fish"
+      },
+      "what": {
+        "sv": "Fisk tillagad varsamt i vätska, så att den hålls mör.",
+        "en": "Fish cooked gently in liquid so it stays tender."
+      },
+      "typical": {
+        "sv": [
+          "fisk",
+          "buljong eller vatten",
+          "örter",
+          "potatis"
+        ],
+        "en": [
+          "fish",
+          "stock or water",
+          "herbs",
+          "potato"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "salmon": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Lax",
+        "en": "Salmon"
+      },
+      "what": {
+        "sv": "En laxfilé, stekt, ugnsbakad eller kokt, med ett tillbehör.",
+        "en": "A salmon fillet, fried, baked or poached, with a side."
+      },
+      "typical": {
+        "sv": [
+          "lax",
+          "potatis eller ris",
+          "sås",
+          "citron"
+        ],
+        "en": [
+          "salmon",
+          "potato or rice",
+          "sauce",
+          "lemon"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "indian-curry": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Indisk curry",
+        "en": "Indian curry"
+      },
+      "what": {
+        "sv": "En gryta med indiska kryddor, serverad med ris eller bröd.",
+        "en": "A stew seasoned with Indian spices, served with rice or bread."
+      },
+      "typical": {
+        "sv": [
+          "grönsaker eller kött",
+          "lök",
+          "kryddor",
+          "ris eller bröd"
+        ],
+        "en": [
+          "vegetables or meat",
+          "onion",
+          "spices",
+          "rice or bread"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "fried-fish": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Stekt fisk",
+        "en": "Fried fish"
+      },
+      "what": {
+        "sv": "Fisk stekt i panna, ibland panerad, med potatis eller sallad.",
+        "en": "Pan-fried fish, sometimes breaded, with potato or salad."
+      },
+      "typical": {
+        "sv": [
+          "fisk",
+          "smör eller olja",
+          "potatis",
+          "citron"
+        ],
+        "en": [
+          "fish",
+          "butter or oil",
+          "potato",
+          "lemon"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pork-roast": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Fläskstek",
+        "en": "Pork roast"
+      },
+      "what": {
+        "sv": "Ugnsbakat fläsk, skivat, ofta med sås och potatis.",
+        "en": "Oven-roasted pork, sliced, often with sauce and potato."
+      },
+      "typical": {
+        "sv": [
+          "fläsk",
+          "potatis",
+          "sås",
+          "lök"
+        ],
+        "en": [
+          "pork",
+          "potato",
+          "sauce",
+          "onion"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "schnitzel": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Schnitzel",
+        "en": "Schnitzel"
+      },
+      "what": {
+        "sv": "En tunn, panerad köttskiva, stekt gyllene.",
+        "en": "A thin breaded cutlet, fried until golden."
+      },
+      "typical": {
+        "sv": [
+          "kött",
+          "ströbröd",
+          "potatis",
+          "citron"
+        ],
+        "en": [
+          "meat",
+          "breadcrumbs",
+          "potato",
+          "lemon"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "thai-curry": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Thaicurry",
+        "en": "Thai curry"
+      },
+      "what": {
+        "sv": "En aromatisk curry med kokos, chili och örter, med ris.",
+        "en": "An aromatic curry with coconut, chilli and herbs, with rice."
+      },
+      "typical": {
+        "sv": [
+          "kokosmjölk",
+          "currypasta",
+          "grönsaker eller kött",
+          "ris"
+        ],
+        "en": [
+          "coconut milk",
+          "curry paste",
+          "vegetables or meat",
+          "rice"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "burger": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Burgare",
+        "en": "Burger"
+      },
+      "what": {
+        "sv": "Ett bröd med en stekt färsbiff eller vegetarisk biff, sallad och sås.",
+        "en": "A bun with a fried patty, salad and sauce."
+      },
+      "typical": {
+        "sv": [
+          "bröd",
+          "färs eller böna",
+          "sallad",
+          "sås"
+        ],
+        "en": [
+          "bun",
+          "mince or bean",
+          "salad",
+          "sauce"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "yakisoba-fried-noodles": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Yakisoba",
+        "en": "Yakisoba"
+      },
+      "what": {
+        "sv": "Stekta nudlar med grönsaker och en söt-salt sås.",
+        "en": "Fried noodles with vegetables and a sweet-savoury sauce."
+      },
+      "typical": {
+        "sv": [
+          "nudlar",
+          "grönsaker",
+          "sås",
+          "protein efter val"
+        ],
+        "en": [
+          "noodles",
+          "vegetables",
+          "sauce",
+          "a protein"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "tandoori": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Tandoori",
+        "en": "Tandoori"
+      },
+      "what": {
+        "sv": "Marinerade bitar grillade hett, ofta med bröd eller ris.",
+        "en": "Marinated pieces grilled hot, often with bread or rice."
+      },
+      "typical": {
+        "sv": [
+          "kyckling eller paneer",
+          "yoghurt",
+          "kryddor",
+          "bröd eller ris"
+        ],
+        "en": [
+          "chicken or paneer",
+          "yoghurt",
+          "spices",
+          "bread or rice"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "tortellini-gnocchi": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Tortellini eller gnocchi",
+        "en": "Tortellini or gnocchi"
+      },
+      "what": {
+        "sv": "Fylld pasta eller potatisgnocchi i en sås.",
+        "en": "Filled pasta or potato gnocchi in a sauce."
+      },
+      "typical": {
+        "sv": [
+          "pasta eller potatis",
+          "fyllning",
+          "sås",
+          "ost"
+        ],
+        "en": [
+          "pasta or potato",
+          "filling",
+          "sauce",
+          "cheese"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "korma": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Korma",
+        "en": "Korma"
+      },
+      "what": {
+        "sv": "En mild, nötig eller krämig curry.",
+        "en": "A mild, nutty or creamy curry."
+      },
+      "typical": {
+        "sv": [
+          "kött eller grönsaker",
+          "nötter eller grädde",
+          "ris",
+          "lök"
+        ],
+        "en": [
+          "meat or vegetables",
+          "nuts or cream",
+          "rice",
+          "onion"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "taco-burrito": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Taco eller burrito",
+        "en": "Taco or burrito"
+      },
+      "what": {
+        "sv": "Ett tunnbröd fyllt med bönor eller kött, salsa och sallad.",
+        "en": "A flatbread filled with beans or meat, salsa and salad."
+      },
+      "typical": {
+        "sv": [
+          "tortilla",
+          "bönor eller kött",
+          "salsa",
+          "sallad"
+        ],
+        "en": [
+          "tortilla",
+          "beans or meat",
+          "salsa",
+          "salad"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "chicken-roast": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Ugnskyckling",
+        "en": "Roast chicken"
+      },
+      "what": {
+        "sv": "Kyckling tillagad i ugn, med skinn eller utan, och ett tillbehör.",
+        "en": "Chicken cooked in the oven, with or without skin, and a side."
+      },
+      "typical": {
+        "sv": [
+          "kyckling",
+          "potatis",
+          "sås",
+          "örter"
+        ],
+        "en": [
+          "chicken",
+          "potato",
+          "sauce",
+          "herbs"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "fiskgratang": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Fiskgratäng",
+        "en": "Fish gratin"
+      },
+      "what": {
+        "sv": "Fisk i en sås, gräddad med en yta av ost eller ströbröd.",
+        "en": "Fish in a sauce, baked under cheese or breadcrumbs."
+      },
+      "typical": {
+        "sv": [
+          "fisk",
+          "sås",
+          "potatis",
+          "ost eller ströbröd"
+        ],
+        "en": [
+          "fish",
+          "sauce",
+          "potato",
+          "cheese or breadcrumbs"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "naan": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Naan",
+        "en": "Naan"
+      },
+      "what": {
+        "sv": "Ett mjukt, ugnsbakat bröd, ofta till curry.",
+        "en": "A soft oven-baked bread, often served with curry."
+      },
+      "typical": {
+        "sv": [
+          "vetemjöl",
+          "yoghurt",
+          "olja"
+        ],
+        "en": [
+          "wheat flour",
+          "yoghurt",
+          "oil"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "kottbullar": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Köttbullar",
+        "en": "Meatballs"
+      },
+      "what": {
+        "sv": "Stekta bullar av färs i sås, klassiskt med potatismos och lingon.",
+        "en": "Fried mince balls in sauce, classically with mashed potato and lingonberries."
+      },
+      "typical": {
+        "sv": [
+          "färs",
+          "gräddsås",
+          "potatis",
+          "lingon"
+        ],
+        "en": [
+          "mince",
+          "cream sauce",
+          "potato",
+          "lingonberries"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "wok": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Wok",
+        "en": "Wok"
+      },
+      "what": {
+        "sv": "Snabbstekta grönsaker och nudlar eller ris i en het panna.",
+        "en": "Vegetables and noodles or rice stir-fried quickly in a hot pan."
+      },
+      "typical": {
+        "sv": [
+          "grönsaker",
+          "nudlar eller ris",
+          "sås",
+          "protein efter val"
+        ],
+        "en": [
+          "vegetables",
+          "noodles or rice",
+          "sauce",
+          "a protein"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pasta-pesto": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pasta pesto",
+        "en": "Pasta pesto"
+      },
+      "what": {
+        "sv": "Pasta vänd med en grön örtsås av basilika och ost.",
+        "en": "Pasta tossed with a green herb sauce of basil and cheese."
+      },
+      "typical": {
+        "sv": [
+          "pasta",
+          "basilika",
+          "ost",
+          "olja",
+          "nötter eller frön"
+        ],
+        "en": [
+          "pasta",
+          "basilika",
+          "cheese",
+          "oil",
+          "nuts or seeds"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "risotto": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Risotto",
+        "en": "Risotto"
+      },
+      "what": {
+        "sv": "Krämigt kortkornigt ris, rört med buljong tills det är mjukt.",
+        "en": "Creamy short-grain rice, stirred with stock until soft."
+      },
+      "typical": {
+        "sv": [
+          "ris",
+          "buljong",
+          "lök",
+          "ost eller grönsaker"
+        ],
+        "en": [
+          "rice",
+          "stock",
+          "onion",
+          "cheese or vegetables"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "roasted-vegetables": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Rostade grönsaker",
+        "en": "Roasted vegetables"
+      },
+      "what": {
+        "sv": "Grönsaker bakade i ugn tills de är mjuka och får yta.",
+        "en": "Vegetables baked until soft and browned at the edges."
+      },
+      "typical": {
+        "sv": [
+          "rotfrukter eller kål",
+          "olja",
+          "örter"
+        ],
+        "en": [
+          "roots or cabbage",
+          "oil",
+          "herbs"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "korean-fried-chicken": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Koreansk friterad kyckling",
+        "en": "Korean fried chicken"
+      },
+      "what": {
+        "sv": "Friterad kyckling med en blank, söt eller stark sås.",
+        "en": "Fried chicken with a glossy, sweet or hot sauce."
+      },
+      "typical": {
+        "sv": [
+          "kyckling",
+          "fritering",
+          "sås",
+          "sesam"
+        ],
+        "en": [
+          "chicken",
+          "batter",
+          "sauce",
+          "sesame"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "butter-chicken": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Butter chicken",
+        "en": "Butter chicken"
+      },
+      "what": {
+        "sv": "En mild kycklingcurry med tomat, smör och grädde.",
+        "en": "A mild chicken curry with tomato, butter and cream."
+      },
+      "typical": {
+        "sv": [
+          "kyckling",
+          "tomat",
+          "smör",
+          "grädde",
+          "ris"
+        ],
+        "en": [
+          "chicken",
+          "tomato",
+          "butter",
+          "cream",
+          "rice"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "shrimp": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Räkor",
+        "en": "Shrimp"
+      },
+      "what": {
+        "sv": "Räkor, stekta eller i sås, ofta med bröd, ris eller pasta.",
+        "en": "Shrimp, fried or in a sauce, often with bread, rice or pasta."
+      },
+      "typical": {
+        "sv": [
+          "räkor",
+          "citron",
+          "vitlök eller sås"
+        ],
+        "en": [
+          "shrimp",
+          "lemon",
+          "garlic or sauce"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "raita-chutney": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Raita eller chutney",
+        "en": "Raita or chutney"
+      },
+      "what": {
+        "sv": "Ett kallt tillbehör: yoghurt med gurka, eller en frukt- och kryddsås.",
+        "en": "A cold side: yoghurt with cucumber, or a fruit and spice sauce."
+      },
+      "typical": {
+        "sv": [
+          "yoghurt eller frukt",
+          "gurka eller chili",
+          "örter"
+        ],
+        "en": [
+          "yoghurt or fruit",
+          "cucumber or chilli",
+          "herbs"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "lasagne": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Lasagne",
+        "en": "Lasagne"
+      },
+      "what": {
+        "sv": "Pastaplattor varvade med sås och ost, gräddade i ugn.",
+        "en": "Pasta sheets layered with sauce and cheese, baked."
+      },
+      "typical": {
+        "sv": [
+          "pasta",
+          "tomatsås eller köttfärs",
+          "ost",
+          "bechamel"
+        ],
+        "en": [
+          "pasta",
+          "tomato sauce or mince",
+          "cheese",
+          "béchamel"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pannbiff": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pannbiff",
+        "en": "Pan-fried beef patty"
+      },
+      "what": {
+        "sv": "En stekt biff av nötfärs med lök och sås.",
+        "en": "A fried beef-mince patty with onion and sauce."
+      },
+      "typical": {
+        "sv": [
+          "nötfärs",
+          "lök",
+          "sås",
+          "potatis"
+        ],
+        "en": [
+          "beef mince",
+          "onion",
+          "sauce",
+          "potato"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "bibimbap": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Bibimbap",
+        "en": "Bibimbap"
+      },
+      "what": {
+        "sv": "Ris med grönsaker, ett protein och en kryddig sås, blandat i skålen.",
+        "en": "Rice with vegetables, a protein and a spicy sauce, mixed in the bowl."
+      },
+      "typical": {
+        "sv": [
+          "ris",
+          "grönsaker",
+          "ägg eller tofu",
+          "chilisås"
+        ],
+        "en": [
+          "rice",
+          "vegetables",
+          "egg or tofu",
+          "chilli sauce"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "bao": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Bao",
+        "en": "Bao"
+      },
+      "what": {
+        "sv": "Ett mjukt ångat bröd, ofta fyllt.",
+        "en": "A soft steamed bun, often filled."
+      },
+      "typical": {
+        "sv": [
+          "vetedeg",
+          "fyllning",
+          "sås"
+        ],
+        "en": [
+          "wheat dough",
+          "filling",
+          "sauce"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "korean-bbq": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Koreansk grill",
+        "en": "Korean barbecue"
+      },
+      "what": {
+        "sv": "Marinerat kött eller svamp, grillat och serverat med ris.",
+        "en": "Marinated meat or mushrooms, grilled and served with rice."
+      },
+      "typical": {
+        "sv": [
+          "kött eller svamp",
+          "marinad",
+          "ris",
+          "sesam"
+        ],
+        "en": [
+          "meat or mushrooms",
+          "marinade",
+          "rice",
+          "sesame"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "curry-generic": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Curry",
+        "en": "Curry"
+      },
+      "what": {
+        "sv": "En kryddad gryta. Vilken tradition det är syns i namnet på menyn.",
+        "en": "A spiced stew. The menu name shows which tradition it belongs to."
+      },
+      "typical": {
+        "sv": [
+          "grönsaker eller kött",
+          "kryddor",
+          "sås",
+          "ris eller bröd"
+        ],
+        "en": [
+          "vegetables or meat",
+          "spices",
+          "sauce",
+          "rice or bread"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "bean-lentil": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Bönor eller linser",
+        "en": "Beans or lentils"
+      },
+      "what": {
+        "sv": "En gryta eller sallad på bönor eller linser.",
+        "en": "A stew or salad of beans or lentils."
+      },
+      "typical": {
+        "sv": [
+          "bönor eller linser",
+          "lök",
+          "kryddor",
+          "buljong"
+        ],
+        "en": [
+          "beans or lentils",
+          "onion",
+          "spices",
+          "stock"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "dessert-cake": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Efterrätt",
+        "en": "Dessert"
+      },
+      "what": {
+        "sv": "En söt bakelse eller kaka, serverad efter lunchen.",
+        "en": "A sweet cake or pastry served after lunch."
+      },
+      "typical": {
+        "sv": [
+          "mjöl eller choklad",
+          "socker",
+          "grädde eller bär"
+        ],
+        "en": [
+          "flour or chocolate",
+          "sugar",
+          "cream or berries"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pancake-dessert": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {
+        "sv": "Pannkaka",
+        "en": "Pancake"
+      },
+      "what": {
+        "sv": "Tunna pannkakor, ofta med sylt och grädde.",
+        "en": "Thin pancakes, often with jam and cream."
+      },
+      "typical": {
+        "sv": [
+          "mjölk",
+          "ägg",
+          "mjöl",
+          "sylt"
+        ],
+        "en": [
+          "milk",
+          "egg",
+          "flour",
+          "jam"
+        ]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "dumplings": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Dumplings", "en": "Dumplings"},
+      "what": {
+        "sv": "Små degknyten med fyllning, ångade, kokta eller stekta.",
+        "en": "Small filled dough parcels, steamed, boiled or fried."
+      },
+      "typical": {
+        "sv": ["deg", "fyllning", "soja eller dipp"],
+        "en": ["dough", "filling", "soy or a dip"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "caesar-salad": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Caesarsallad", "en": "Caesar salad"},
+      "what": {
+        "sv": "Romansallad med krutonger, ost och en krämig dressing.",
+        "en": "Romaine lettuce with croutons, cheese and a creamy dressing."
+      },
+      "typical": {
+        "sv": ["romansallad", "krutonger", "ost", "dressing"],
+        "en": ["romaine", "croutons", "cheese", "dressing"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "yakitori": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Yakitori", "en": "Yakitori"},
+      "what": {
+        "sv": "Grillade spett, oftast kyckling, med en söt sojasås.",
+        "en": "Grilled skewers, usually chicken, with a sweet soy sauce."
+      },
+      "typical": {
+        "sv": ["spett", "kyckling", "soja", "ris"],
+        "en": ["skewers", "chicken", "soy", "rice"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "tempura": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Tempura", "en": "Tempura"},
+      "what": {
+        "sv": "Lättfriterade bitar i ett tunt frasigt smet.",
+        "en": "Lightly fried pieces in a thin, crisp batter."
+      },
+      "typical": {
+        "sv": ["smet", "räkor eller grönsaker", "dipp"],
+        "en": ["batter", "shrimp or vegetables", "a dip"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "lamb": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Lamm", "en": "Lamb"},
+      "what": {
+        "sv": "Lamm, stekt eller i gryta, ofta med potatis eller ris.",
+        "en": "Lamb, roasted or stewed, often with potato or rice."
+      },
+      "typical": {
+        "sv": ["lamm", "potatis eller ris", "sås"],
+        "en": ["lamb", "potato or rice", "sauce"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "pasta-tomato": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Pasta med tomatsås", "en": "Pasta in tomato sauce"},
+      "what": {
+        "sv": "Pasta i en tomatsås, ofta med vitlök och örter.",
+        "en": "Pasta in a tomato sauce, often with garlic and herbs."
+      },
+      "typical": {
+        "sv": ["pasta", "tomat", "vitlök", "örter"],
+        "en": ["pasta", "tomato", "garlic", "herbs"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    },
+    "noodle-soup": {
+      "status": "draft",
+      "review_status": "draft",
+      "image": null,
+      "name": {"sv": "Nudelsoppa", "en": "Noodle soup"},
+      "what": {
+        "sv": "En buljong med nudlar och grönsaker.",
+        "en": "A broth with noodles and vegetables."
+      },
+      "typical": {
+        "sv": ["nudlar", "buljong", "grönsaker"],
+        "en": ["noodles", "broth", "vegetables"]
+      },
+      "text_source": "model-draft",
+      "text_reviewed_by": null,
+      "text_reviewed_at": null
+    }
+  }
+}

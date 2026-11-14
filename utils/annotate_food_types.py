@@ -56,6 +56,18 @@ def _match_tags(text: str, tag_data: dict) -> Tuple[List[str], List[str]]:
     return tags, emojis
 
 
+def tags_for_text(text: str, tag_data: dict | None = None) -> List[str]:
+    """Tags that the dish's own name and description support.
+
+    Stored tags are not an input. A scraper that glued the rest of the day
+    onto one description used to leave Fish and Chicken on a pesto.
+    """
+    if tag_data is None:
+        tag_data = load_keywords()
+    tags, _emojis = _match_tags(text or "", tag_data)
+    return _strip_false_veg(tags, text or "")
+
+
 def annotate_menu_data(data: dict, tag_data: dict | None = None) -> dict:
     """Annotate an in-memory lunch_data dict; returns the same dict mutated."""
     if tag_data is None:

@@ -211,19 +211,39 @@
       {
         "name": "Pasta pesto",
         "category": "Metal",
-        "description": "getost, bakade tomater, vitlöksstekta brödsmulor, pesto Water: Halstrad lax, kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill Charred salmon, boiled potatoes, caviar sauce, roasted fennel salad with blood orange and dilll Fire: “Chicken dopiaza”, bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ) \"Chicken dopiaza\", baked chicken thigh, dopiaza sauce, fried onion, crispy onion, yoghurt, coriander (veg option)",
+        "description": "getost, bakade tomater, vitlöksstekta brödsmulor, pesto",
         "price": "132 kr",
         "tags": [
-          "fish",
-          "chicken",
-          "beef",
           "pasta"
         ],
         "emoji_tags": [
-          "🐟",
-          "🐔",
-          "🐄",
           "🍝"
+        ]
+      },
+      {
+        "name": "Halstrad lax",
+        "category": "Water",
+        "description": "kokt potatis, romsås, rostad fänkålssallad med blodapelsin och dill",
+        "price": "132 kr",
+        "tags": [
+          "fish"
+        ],
+        "emoji_tags": [
+          "🐟"
+        ]
+      },
+      {
+        "name": "“Chicken dopiaza”",
+        "category": "Fire",
+        "description": "bakat kycklinglår, dopiazasås, stekt lök, friterad lök, yoghurt, koriander (veg alternativ)",
+        "price": "132 kr",
+        "tags": [
+          "chicken",
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🐄"
         ]
       }
     ],

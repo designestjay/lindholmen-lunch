@@ -1,0 +1,917 @@
+{
+  "version": 1,
+  "categories": {
+    "pho": {
+      "priority": 90,
+      "keywords": [
+        "pho",
+        "phở"
+      ],
+      "exclude": [
+        "phoron"
+      ],
+      "examples": [
+        "beef pho"
+      ]
+    },
+    "ramen": {
+      "priority": 90,
+      "keywords": [
+        "ramen"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "noodle-soup": {
+      "priority": 70,
+      "keywords": [
+        "nudelsoppa",
+        "noodle soup"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "bibimbap": {
+      "priority": 90,
+      "keywords": [
+        "bibimbap",
+        "bibibamp"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "poke-bowl": {
+      "priority": 90,
+      "keywords": [
+        "poke"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "fried-rice": {
+      "priority": 80,
+      "keywords": [
+        "fried rice",
+        "stekt ris"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "sushi-mix": {
+      "priority": 85,
+      "keywords": [
+        "sushi",
+        "maki",
+        "nigiri"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "tempura": {
+      "priority": 90,
+      "keywords": [
+        "tempura"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "teriyaki": {
+      "priority": 90,
+      "keywords": [
+        "teriyaki"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "yakitori": {
+      "priority": 90,
+      "keywords": [
+        "yakitori"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "dumplings": {
+      "priority": 85,
+      "keywords": [
+        "dumpling",
+        "gyoza"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "bao": {
+      "priority": 90,
+      "keywords": [
+        "bao"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "yakisoba-fried-noodles": {
+      "priority": 90,
+      "keywords": [
+        "yakisoba"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "wok": {
+      "priority": 70,
+      "keywords": [
+        "wok"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "thai-curry": {
+      "priority": 88,
+      "keywords": [
+        "panang",
+        "massaman",
+        "grön curry",
+        "röd curry",
+        "green curry",
+        "red curry",
+        "thai curry"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pad-kra-pao": {
+      "priority": 90,
+      "keywords": [
+        "pad kra pao",
+        "kra pao",
+        "gaprao"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "larb": {
+      "priority": 90,
+      "keywords": [
+        "larb"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "korean-fried-chicken": {
+      "priority": 90,
+      "keywords": [
+        "korean fried",
+        "koreansk friterad kyckling"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "korean-bbq": {
+      "priority": 88,
+      "keywords": [
+        "bulgogi",
+        "korean bbq",
+        "yakiniku"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "spring-rolls": {
+      "priority": 85,
+      "keywords": [
+        "vårrulle",
+        "spring roll"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "satay": {
+      "priority": 90,
+      "keywords": [
+        "satay",
+        "saté"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "curry-generic": {
+      "priority": 24,
+      "keywords": [
+        "curry"
+      ],
+      "exclude": [
+        "tikka",
+        "korma",
+        "madras",
+        "vindaloo",
+        "panang",
+        "massaman"
+      ],
+      "examples": []
+    },
+    "tofu-dish": {
+      "priority": 60,
+      "keywords": [
+        "tofu"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "tikka-masala": {
+      "priority": 86,
+      "keywords": [
+        "tikka masala",
+        "tikka"
+      ],
+      "exclude": [
+        "paneer"
+      ],
+      "examples": []
+    },
+    "butter-chicken": {
+      "priority": 92,
+      "keywords": [
+        "butter chicken",
+        "smörkyckling"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "korma": {
+      "priority": 88,
+      "keywords": [
+        "korma"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "vindaloo": {
+      "priority": 88,
+      "keywords": [
+        "vindaloo"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "madras-curry": {
+      "priority": 88,
+      "keywords": [
+        "madras"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "saag-palak": {
+      "priority": 84,
+      "keywords": [
+        "palak",
+        "saag"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "paneer-curry": {
+      "priority": 86,
+      "keywords": [
+        "paneer"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "chana-masala": {
+      "priority": 84,
+      "keywords": [
+        "chana",
+        "chickpea masala"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "indian-curry": {
+      "priority": 22,
+      "keywords": [
+        "indisk curry"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "dal": {
+      "priority": 80,
+      "keywords": [
+        "dal",
+        "daal"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "aloo-gobi": {
+      "priority": 88,
+      "keywords": [
+        "aloo",
+        "gobi"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "tandoori": {
+      "priority": 86,
+      "keywords": [
+        "tandoori"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "biryani": {
+      "priority": 90,
+      "keywords": [
+        "biryani"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "kofta": {
+      "priority": 86,
+      "keywords": [
+        "kofta"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "thali": {
+      "priority": 90,
+      "keywords": [
+        "thali"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "naan": {
+      "priority": 80,
+      "keywords": [
+        "naan"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "raita-chutney": {
+      "priority": 70,
+      "keywords": [
+        "raita",
+        "chutney"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "samosa-pakora": {
+      "priority": 84,
+      "keywords": [
+        "samosa",
+        "pakora"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "lamb-curry": {
+      "priority": 90,
+      "keywords": [
+        "lamb curry",
+        "lammcurry"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "lasagne": {
+      "priority": 90,
+      "keywords": [
+        "lasagne",
+        "lasagna"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "carbonara": {
+      "priority": 92,
+      "keywords": [
+        "carbonara"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "bolognese": {
+      "priority": 90,
+      "keywords": [
+        "bolognese"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pasta-pesto": {
+      "priority": 88,
+      "keywords": [
+        "pesto"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pasta-tomato": {
+      "priority": 86,
+      "keywords": [
+        "tomatpasta",
+        "pasta pomodoro"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pasta-cream": {
+      "priority": 40,
+      "keywords": [
+        "pasta",
+        "gräddsås"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "tortellini-gnocchi": {
+      "priority": 88,
+      "keywords": [
+        "tortellini",
+        "gnocchi"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "risotto": {
+      "priority": 90,
+      "keywords": [
+        "risotto"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pizza": {
+      "priority": 90,
+      "keywords": [
+        "pizza"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "garlic-bread": {
+      "priority": 80,
+      "keywords": [
+        "vitlöksbröd",
+        "garlic bread"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "burger": {
+      "priority": 86,
+      "keywords": [
+        "burgare",
+        "burger"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "taco-burrito": {
+      "priority": 86,
+      "keywords": [
+        "taco",
+        "burrito"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "kebab": {
+      "priority": 86,
+      "keywords": [
+        "kebab"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "falafel": {
+      "priority": 88,
+      "keywords": [
+        "falafel"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "halloumi-dish": {
+      "priority": 80,
+      "keywords": [
+        "halloumi"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "bbq-pulled": {
+      "priority": 86,
+      "keywords": [
+        "pulled pork",
+        "pulled beef"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "schnitzel": {
+      "priority": 88,
+      "keywords": [
+        "schnitzel",
+        "wienerschnitzel"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "fish-and-chips": {
+      "priority": 90,
+      "keywords": [
+        "fish and chips",
+        "fish & chips"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "ciabatta-sandwich": {
+      "priority": 80,
+      "keywords": [
+        "ciabatta"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "stew-bourguignon": {
+      "priority": 70,
+      "keywords": [
+        "bourguignon",
+        "gryta"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "chili-con-carne": {
+      "priority": 90,
+      "keywords": [
+        "chili con carne"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "steak": {
+      "priority": 80,
+      "keywords": [
+        "entrecôte",
+        "entrecote",
+        "oxfilé",
+        "steak"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "chicken-roast": {
+      "priority": 78,
+      "keywords": [
+        "rostad kyckling",
+        "roast chicken",
+        "helstekt kyckling",
+        "ugnskyckling"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pork-roast": {
+      "priority": 78,
+      "keywords": [
+        "fläskkarré",
+        "fläskkarre"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "lamb": {
+      "priority": 60,
+      "keywords": [
+        "lamm",
+        "lamb"
+      ],
+      "exclude": [
+        "lamb curry",
+        "lammcurry"
+      ],
+      "examples": []
+    },
+    "kottbullar": {
+      "priority": 88,
+      "keywords": [
+        "köttbulle",
+        "kottbulle",
+        "meatball"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pannbiff": {
+      "priority": 90,
+      "keywords": [
+        "pannbiff"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "kaldolmar": {
+      "priority": 90,
+      "keywords": [
+        "kåldolme",
+        "kaldolme"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "flasklagg": {
+      "priority": 90,
+      "keywords": [
+        "fläsklägg",
+        "flasklagg"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "raggmunk": {
+      "priority": 90,
+      "keywords": [
+        "raggmunk"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pytt-i-panna": {
+      "priority": 90,
+      "keywords": [
+        "pytt"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "korv-stroganoff": {
+      "priority": 90,
+      "keywords": [
+        "korv stroganoff"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "fiskgratang": {
+      "priority": 90,
+      "keywords": [
+        "fiskgratäng",
+        "fiskgratang"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "fried-fish": {
+      "priority": 76,
+      "keywords": [
+        "smörstekt",
+        "panerad fisk",
+        "stekt fisk",
+        "fried fish"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "poached-fish": {
+      "priority": 84,
+      "keywords": [
+        "pocherad",
+        "poached"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "salmon": {
+      "priority": 82,
+      "keywords": [
+        "lax",
+        "salmon"
+      ],
+      "exclude": [
+        "gravad lax",
+        "gravlax"
+      ],
+      "examples": []
+    },
+    "white-fish": {
+      "priority": 36,
+      "keywords": [
+        "torsk",
+        "kolja",
+        "sej",
+        "fisk",
+        "fish"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "shrimp": {
+      "priority": 80,
+      "keywords": [
+        "räka",
+        "räkor",
+        "shrimp",
+        "prawn"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "gravlax": {
+      "priority": 92,
+      "keywords": [
+        "gravad lax",
+        "gravlax"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "caesar-salad": {
+      "priority": 90,
+      "keywords": [
+        "caesar",
+        "ceasar",
+        "ceasarsallad"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "chevre-salad": {
+      "priority": 86,
+      "keywords": [
+        "chèvre",
+        "chevre",
+        "getostsallad"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "grain-salad": {
+      "priority": 84,
+      "keywords": [
+        "quinoa"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "salad-bowl": {
+      "priority": 28,
+      "keywords": [
+        "sallad",
+        "salad"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "tomato-soup": {
+      "priority": 86,
+      "keywords": [
+        "tomatsoppa",
+        "tomato soup"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "fish-soup": {
+      "priority": 86,
+      "keywords": [
+        "fisksoppa",
+        "fish soup"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "soup": {
+      "priority": 30,
+      "keywords": [
+        "soppa",
+        "soup"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "quorn-soy": {
+      "priority": 70,
+      "keywords": [
+        "quorn",
+        "sojafärs"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "roasted-cauliflower": {
+      "priority": 80,
+      "keywords": [
+        "blomkål",
+        "cauliflower"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "roasted-vegetables": {
+      "priority": 60,
+      "keywords": [
+        "rostade grönsaker",
+        "roasted vegetables"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "bean-lentil": {
+      "priority": 70,
+      "keywords": [
+        "lins",
+        "lentil"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "omelette-egg": {
+      "priority": 70,
+      "keywords": [
+        "omelett",
+        "äggröra"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "dessert-cake": {
+      "priority": 74,
+      "keywords": [
+        "kladdkaka",
+        "cheesecake",
+        "tårta",
+        "brownie",
+        "efterrätt",
+        "dessert"
+      ],
+      "exclude": [],
+      "examples": []
+    },
+    "pancake-dessert": {
+      "priority": 88,
+      "keywords": [
+        "pannkaka",
+        "pannkakor"
+      ],
+      "exclude": [],
+      "examples": []
+    }
+  },
+  "aliases": {
+    "kyckling tikka masala": "tikka-masala",
+    "beef pho": "pho",
+    "vegobullar med gräddsås": "kottbullar",
+    "bibibamp": "bibimbap",
+    "ceasarsallad": "caesar-salad",
+    "ceasar": "caesar-salad"
+  },
+  "ignore": [
+    "^dryck",
+    "^läsk",
+    "^kaffe",
+    "^tillval",
+    "^extra ",
+    "ingår$",
+    "^mangolassi$",
+    "^mineralvatten$",
+    "^papadom$",
+    "^myntasås$",
+    "^chili pickles$",
+    "^dressing$"
+  ],
+  "closed": [
+    "stängt",
+    "stangt",
+    "closed today",
+    "nationaldag",
+    "midsommar",
+    "glad midsommar"
+  ],
+  "restaurant_hints": {
+    "curry-generic": {
+      "indian-curry": [
+        "masala",
+        "bombay"
+      ]
+    },
+    "by_name": {
+      "benne": {
+        "slow tomato": "pasta-tomato",
+        "smoked pig": "pasta-cream",
+        "swedish cheese": "pasta-cream",
+        "the shrooms": "pasta-cream",
+        "silky bird": "pasta-tomato",
+        "silky salsiccia": "pasta-tomato"
+      }
+    }
+  }
+}

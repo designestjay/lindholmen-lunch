@@ -11,12 +11,17 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
+from utils.holidays import is_holiday
 from utils.restaurants import DISPLAY_NAMES, display_name
+from utils.sources import is_inactive, is_link_only, load_sources
 
 # Off-peak weekday crons in .github/workflows/update-and-deploy.yml.
-# The last one is the run that is allowed to fail the job.
+# The 08:07 UTC run is the full scrape that is allowed to fail the job.
+# 09:37 UTC only retries gaps and must not fail the job on its own.
 SCHEDULES = ("7 5 * * 1-5", "37 6 * * 1-5", "7 8 * * 1-5")
+GAP_SCHEDULE = "37 9 * * 1-5"
 LAST_SCHEDULE = SCHEDULES[-1]
 
 
@@ -56,6 +61,10 @@ def cron_delay_minutes(schedule: str, started_at: datetime) -> int | None:
 def _status_for(name: str, meta: dict) -> str:
     if name in set(meta.get("fresh") or []):
         return "fresh"
+    if name in set(meta.get("closed") or []):
+        return "closed"
+    if name in set(meta.get("wrong_week") or []):
+        return "wrong_week"
     if name in set(meta.get("stale") or []):
         return "stale"
     return "missing"
@@ -72,14 +81,16 @@ def render_summary(
     fresh = sum(1 for _, status in rows if status == "fresh")
     stale = sum(1 for _, status in rows if status == "stale")
     missing = sum(1 for _, status in rows if status == "missing")
+    reasons = meta.get("missing_reason") or {}
     lines = [
         f"## Scrape health {meta.get('day') or 'unknown'}",
         "",
-        "| Restaurant | Status |",
-        "|---|---|",
+        "| Restaurant | Status | Reason |",
+        "|---|---|---|",
     ]
     for name, status in rows:
-        lines.append(f"| {display_name(name)} | {status} |")
+        reason = reasons.get(name, "") if status in {"missing", "wrong_week"} else ""
+        lines.append(f"| {display_name(name)} | {status} | {reason} |")
     lines.extend(
         [
             "",
@@ -132,12 +143,20 @@ def run(
     github_output: str = "",
     names: list[str] | None = None,
 ) -> int:
-    names = names if names is not None else list(DISPLAY_NAMES)
+    if names is None:
+        sources = load_sources()
+        names = [
+            name for name in DISPLAY_NAMES
+            if not is_inactive(name, sources) and not is_link_only(name, sources)
+        ]
     schedule = (schedule or "").strip()
     day = (day or "").strip().lower()
     meta = load_meta(data_dir, day) if day else {}
     started = _parse_started(started_at)
     summary = render_summary(meta, names, schedule, started)
+    holiday = is_holiday(datetime.now(ZoneInfo("Europe/Stockholm")).date())
+    if holiday:
+        summary += "\nHoliday. Health alerts are paused.\n"
     print(summary)
     if summary_path:
         with open(summary_path, "a", encoding="utf-8") as handle:
@@ -145,7 +164,7 @@ def run(
             if not summary.endswith("\n"):
                 handle.write("\n")
     fresh = sum(1 for name in names if _status_for(name, meta) == "fresh")
-    should_fail = coverage_should_fail(fresh, len(names), schedule)
+    should_fail = coverage_should_fail(fresh, len(names), schedule) and not holiday
     report_date = ""
     scraped_at = meta.get("scraped_at") or ""
     if isinstance(scraped_at, str) and len(scraped_at) >= 10:

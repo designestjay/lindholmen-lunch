@@ -1,9 +1,8 @@
 # scrapers/mimolett.py
 
 from bs4 import BeautifulSoup
-from scrapers.base import LunchScraper, MenuItem, DailyMenu
+from scrapers.base import LunchScraper, MenuItem, DailyMenu, fetch_html
 from typing import Dict, List, Optional
-import requests
 
 class MimolettScraper(LunchScraper):
     URL = "https://restaurangmimolett.se/lunch/"
@@ -14,14 +13,7 @@ class MimolettScraper(LunchScraper):
         self.fetch()
 
     def fetch(self) -> None:
-        try:
-            response = requests.get(self.URL)
-            response.raise_for_status()
-        except Exception as e:
-            print(f"Failed to fetch Mimolett page: {e}")
-            return
-
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(fetch_html(self.URL), "html.parser")
         containers = soup.select("div.menu-list")
 
         items: List[MenuItem] = []

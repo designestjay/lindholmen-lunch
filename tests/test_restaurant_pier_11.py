@@ -1,32 +1,20 @@
-import pytest
-
-pytestmark = pytest.mark.network
-
-# tests/test_restaurant_pier_11.py
+from pathlib import Path
 
 from scrapers.restaurant_pier_11 import RestaurantPier11Scraper
-import logging
-logging.basicConfig(level=logging.INFO)
 
-def test_pier11_for_day(day: str):
-    scraper = RestaurantPier11Scraper()
-    menu = scraper.get_menu_for_day(day)
+FIXTURE = Path(__file__).parent / "fixtures" / "pier11.html"
 
-    if not menu:
-        print(f"No menu found for {day}.")
-        return
 
-    print(f"Menu for {day.capitalize()}:")
-    last_category = None
-    for item in menu.items:
-        if item.category != last_category:
-            print(f"\n== {item.category.upper() if item.category else 'DAGENS'} ==")
-            last_category = item.category
-        print(f"• {item}")
+def test_pier11_parses_swedish_weekdays_offline():
+    scraper = RestaurantPier11Scraper(html=FIXTURE.read_text(encoding="utf-8"))
+    monday = scraper.get_menu_for_day("monday")
 
-if __name__ == "__main__":
-    test_pier11_for_day("monday")
-    test_pier11_for_day("tuesday")
-    test_pier11_for_day("wednesday")
-    test_pier11_for_day("thursday")
-    test_pier11_for_day("friday")
+    assert monday is not None
+    assert len(monday.items) >= 3
+    assert all(item.name.strip() for item in monday.items)
+    assert monday.items[0].name == "Kebab spiced soy strips"
+    assert monday.items[0].price == "124 kr"
+    assert RestaurantPier11Scraper.WEEKDAY_FROM_SV["måndag"] == "monday"
+    assert RestaurantPier11Scraper.WEEKDAY_FROM_SV["fredag"] == "friday"
+    assert set(scraper.get_all_menus()) >= {"monday", "tuesday", "wednesday", "thursday", "friday"}
+    assert scraper.get_menu_for_day("måndag") is None

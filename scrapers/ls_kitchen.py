@@ -39,6 +39,7 @@ class LsKitchenScraper(LunchScraper):
             from selenium import webdriver
 
             with webdriver.Chrome(options=options) as driver:
+                driver.set_page_load_timeout(15)
                 driver.get(self.URL)
                 time.sleep(5)  # Allow time for JS to load content
 
