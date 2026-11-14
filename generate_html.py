@@ -352,24 +352,40 @@ def generate_index_page(day: str | None = None) -> None:
     hhmm = formatted["hhmm"] if formatted else ""
     trust_sv = formatted["trust_sv"] if formatted else day_sv
     trust_en = formatted["trust_en"] if formatted else day_en
+    date_copy = {
+        "h1_sm_today_sv": "Lunch på Lindholmen idag",
+        "h1_sm_today_en": "Lunch in Lindholmen today",
+        "h1_lg_today_sv": "Lunch idag.",
+        "h1_lg_today_en": "Lunch today.",
+        "h1_sm_weekend_sv": "Lunch på Lindholmen i fredags",
+        "h1_sm_weekend_en": "Lunch in Lindholmen last Friday",
+        "h1_lg_weekend_sv": "Fredagens lunch.",
+        "h1_lg_weekend_en": "Friday's lunch.",
+        "missing_today_sv": f"Ingen meny hittad idag ({len(missing)})",
+        "missing_today_en": f"No menu found today ({len(missing)})",
+        "missing_weekend_sv": f"Ingen meny hittad i fredags ({len(missing)})",
+        "missing_weekend_en": f"No menu found on Friday ({len(missing)})",
+        "missing_day_sv": f"Ingen meny hittad {day_sv.lower()} ({len(missing)})",
+        "missing_day_en": f"No menu found on {day_en} ({len(missing)})",
+    }
     if formatted:
-        date_copy = {
+        date_copy.update({
             "wrong_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer runt 08:00.",
             "wrong_en": f"This is {formatted['long_en']}'s menu. Today's menus arrive around 08:00.",
             "soon_sv": f"Det här är menyn från {formatted['long_sv']}. Dagens menyer kommer snart.",
             "soon_en": f"This is {formatted['long_en']}'s menu. Today's menus are coming soon.",
             "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
             "weekend_en": "It's the weekend. Lunch is back on Monday.",
-        }
+        })
     else:
-        date_copy = {
+        date_copy.update({
             "wrong_sv": "Det här är inte dagens meny. Dagens menyer kommer runt 08:00.",
             "wrong_en": "This is not today's menu. Today's menus arrive around 08:00.",
             "soon_sv": "Det här är inte dagens meny. Dagens menyer kommer snart.",
             "soon_en": "This is not today's menu. Today's menus are coming soon.",
             "weekend_sv": "Helg. Lunchen är tillbaka på måndag.",
             "weekend_en": "It's the weekend. Lunch is back on Monday.",
-        }
+        })
 
     env = Environment(
         loader=FileSystemLoader("templates"),

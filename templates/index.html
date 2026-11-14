@@ -11,6 +11,65 @@
             } catch (e) {}
             document.documentElement.lang = lang;
             document.documentElement.classList.add("js");
+
+            function stockholmParts(date) {
+                var fmt = new Intl.DateTimeFormat("en-GB", {
+                    timeZone: "Europe/Stockholm",
+                    hourCycle: "h23",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    weekday: "short",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                });
+                var parts = {};
+                fmt.formatToParts(date).forEach(function (part) { parts[part.type] = part.value; });
+                return parts;
+            }
+            function ymdStockholm(date) {
+                var parts = stockholmParts(date);
+                return parts.year + "-" + parts.month + "-" + parts.day;
+            }
+            function weekdayIndex(date) {
+                var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+                var name = String(stockholmParts(date).weekday || "").slice(0, 3);
+                return map[name] == null ? 0 : map[name];
+            }
+            function minutesStockholm(date) {
+                var parts = stockholmParts(date);
+                return Number(parts.hour) * 60 + Number(parts.minute);
+            }
+            function zonedTime(isoLocal) {
+                var bits = isoLocal.split("T");
+                var dateBits = bits[0].split("-").map(Number);
+                var timeBits = (bits[1] || "12:00").split(":").map(Number);
+                var utcGuess = new Date(Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0));
+                var parts = stockholmParts(utcGuess);
+                var got = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute);
+                var want = Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0);
+                return new Date(utcGuess.getTime() - (got - want));
+            }
+            function bannerState(menuDate, now) {
+                if (!menuDate) return null;
+                if (ymdStockholm(now) === menuDate) return null;
+                var day = weekdayIndex(now);
+                if (day === 0 || day === 6) return "weekend";
+                if (minutesStockholm(now) < (9 * 60 + 30)) return "soon";
+                return "wrong";
+            }
+            function lunchNow() {
+                var params = new URLSearchParams(location.search);
+                var asof = params.get("asof");
+                return asof ? zonedTime(asof) : new Date();
+            }
+            window.lunchDateState = bannerState;
+            window.lunchNow = lunchNow;
+            var state = bannerState(document.documentElement.dataset.menuDate || "", lunchNow());
+            var root = document.documentElement;
+            if (state === "weekend") root.classList.add("is-weekend");
+            else if (state === "soon") root.classList.add("is-soon");
+            else if (state === "wrong") root.classList.add("is-wrong-day");
         })();
     </script>
     <meta charset="UTF-8">
@@ -590,9 +649,28 @@
         .empty h2 { margin: 0 0 8px; font-size: 22px; letter-spacing: -0.03em; }
         .empty .text-btn { margin: 12px 8px 0 0; }
         .empty p { margin: 0; color: var(--ink-2); max-width: var(--measure); }
-        body.is-wrong-day .restaurant-list { opacity: 0.85; }
-        body.is-weekend #menus { display: none; }
-        body.is-weekend.is-weekend-open #menus { display: grid; }
+        html.is-wrong-day .restaurant-list,
+        html.is-soon .restaurant-list { opacity: 0.85; }
+        html.is-weekend #menus { display: none; }
+        html.is-weekend.is-weekend-open #menus { display: grid; }
+        html.is-weekend:not(.is-weekend-open) #toolbar,
+        html.is-weekend:not(.is-weekend-open) #pick-dock { display: none; }
+        .when-weekend, .when-otherday, .when-soon, .when-wrong { display: none; }
+        html.is-weekend .when-today { display: none; }
+        html.is-weekend .when-weekend { display: inline; }
+        html.is-wrong-day .missing .when-today,
+        html.is-soon .missing .when-today { display: none; }
+        html.is-wrong-day .missing .when-otherday,
+        html.is-soon .missing .when-otherday { display: inline; }
+        .day-banner { display: none; }
+        html.is-weekend .day-banner,
+        html.is-soon .day-banner,
+        html.is-wrong-day .day-banner { display: block; }
+        html.is-weekend .day-banner .when-weekend,
+        html.is-soon .day-banner .when-soon,
+        html.is-wrong-day .day-banner .when-wrong { display: inline; }
+        .weekend-reveal { display: none; }
+        html.is-weekend .weekend-reveal { display: inline-flex; align-items: center; }
 
         .site-footer {
             background: var(--dark);
@@ -687,8 +765,14 @@
         <div class="wrap">
             <section class="hero">
                 <h1>
-                    <span class="h1-sm"><span class="sv" lang="sv">Lunch på Lindholmen idag</span><span class="en" lang="en">Lunch in Lindholmen today</span></span>
-                    <span class="h1-lg"><span class="sv" lang="sv">Lunch idag.</span><span class="en" lang="en">Lunch today.</span></span>
+                    <span class="h1-sm">
+                        <span class="when-today"><span class="sv" lang="sv">{{ date_copy.h1_sm_today_sv }}</span><span class="en" lang="en">{{ date_copy.h1_sm_today_en }}</span></span>
+                        <span class="when-weekend"><span class="sv" lang="sv">{{ date_copy.h1_sm_weekend_sv }}</span><span class="en" lang="en">{{ date_copy.h1_sm_weekend_en }}</span></span>
+                    </span>
+                    <span class="h1-lg">
+                        <span class="when-today"><span class="sv" lang="sv">{{ date_copy.h1_lg_today_sv }}</span><span class="en" lang="en">{{ date_copy.h1_lg_today_en }}</span></span>
+                        <span class="when-weekend"><span class="sv" lang="sv">{{ date_copy.h1_lg_weekend_sv }}</span><span class="en" lang="en">{{ date_copy.h1_lg_weekend_en }}</span></span>
+                    </span>
                 </h1>
                 <div class="trust-row">
                     <p class="trust" id="trust-line">
@@ -704,8 +788,12 @@
                     </button>
                     {% endif %}
                 </div>
-                <div id="day-banner" class="day-banner" hidden role="status"></div>
-                <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" hidden>
+                <div id="day-banner" class="day-banner" role="status">
+                    <span class="when-weekend"><span class="sv" lang="sv">{{ date_copy.weekend_sv }}</span><span class="en" lang="en">{{ date_copy.weekend_en }}</span></span>
+                    <span class="when-soon"><span class="sv" lang="sv">{{ date_copy.soon_sv }}</span><span class="en" lang="en">{{ date_copy.soon_en }}</span></span>
+                    <span class="when-wrong"><span class="sv" lang="sv">{{ date_copy.wrong_sv }}</span><span class="en" lang="en">{{ date_copy.wrong_en }}</span></span>
+                </div>
+                <button type="button" class="text-btn weekend-reveal" id="weekend-reveal" aria-expanded="false" aria-controls="menus">
                     <span class="sv" lang="sv">Visa fredagens menyer</span><span class="en" lang="en">Show Friday's menus</span>
                 </button>
             </section>
@@ -821,7 +909,11 @@
 
             {% if missing_restaurants %}
             <details class="missing" id="missing">
-                <summary><span class="sv" lang="sv">Ingen meny hittad idag ({{ missing_count }})</span><span class="en" lang="en">No menu found today ({{ missing_count }})</span></summary>
+                <summary class="missing-copy">
+                    <span class="when-today"><span class="sv" lang="sv">{{ date_copy.missing_today_sv }}</span><span class="en" lang="en">{{ date_copy.missing_today_en }}</span></span>
+                    <span class="when-weekend"><span class="sv" lang="sv">{{ date_copy.missing_weekend_sv }}</span><span class="en" lang="en">{{ date_copy.missing_weekend_en }}</span></span>
+                    <span class="when-otherday"><span class="sv" lang="sv">{{ date_copy.missing_day_sv }}</span><span class="en" lang="en">{{ date_copy.missing_day_en }}</span></span>
+                </summary>
                 <ul>
                     {% for place in missing_restaurants %}
                     <li>
@@ -872,12 +964,11 @@
     <script src="assets/analytics.js" data-endpoint="" data-site=""></script>
     <script>
         (function () {
+            window.__lunchBodyStarted = true;
             var active = new Set();
             var lastPick = null;
             var lastTrackedQuery = "";
             var searchTimer = 0;
-            var dateCopy = {};
-            try { dateCopy = JSON.parse(document.getElementById("date-copy").textContent || "{}"); } catch (e) {}
 
             function isSv() { return document.documentElement.lang === "sv"; }
             function track(name, props) {
@@ -910,81 +1001,24 @@
                 if (fromUser) track("lang_switch", { lang: lang });
             }
 
-            function stockholmParts(date) {
-                var fmt = new Intl.DateTimeFormat("en-GB", {
-                    timeZone: "Europe/Stockholm",
-                    hourCycle: "h23",
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                    weekday: "short",
-                    hour: "2-digit",
-                    minute: "2-digit"
-                });
-                var parts = {};
-                fmt.formatToParts(date).forEach(function (part) { parts[part.type] = part.value; });
-                return parts;
-            }
-            function ymdStockholm(date) {
-                var parts = stockholmParts(date);
-                return parts.year + "-" + parts.month + "-" + parts.day;
-            }
-            function weekdayIndex(date) {
-                var map = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-                var name = String(stockholmParts(date).weekday || "").slice(0, 3);
-                return map[name] ?? 0;
-            }
-            function minutesStockholm(date) {
-                var parts = stockholmParts(date);
-                return Number(parts.hour) * 60 + Number(parts.minute);
-            }
-            function zonedTime(isoLocal) {
-                var bits = isoLocal.split("T");
-                var dateBits = bits[0].split("-").map(Number);
-                var timeBits = (bits[1] || "12:00").split(":").map(Number);
-                var utcGuess = new Date(Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0));
-                var parts = stockholmParts(utcGuess);
-                var got = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute);
-                var want = Date.UTC(dateBits[0], dateBits[1] - 1, dateBits[2], timeBits[0] || 0, timeBits[1] || 0);
-                return new Date(utcGuess.getTime() - (got - want));
-            }
-            function bannerState(menuDate, now) {
-                if (!menuDate) return null;
-                if (ymdStockholm(now) === menuDate) return null;
-                var day = weekdayIndex(now);
-                if (day === 0 || day === 6) return "weekend";
-                if (minutesStockholm(now) < (9 * 60 + 30)) return "soon";
-                return "wrong";
-            }
-            window.lunchDateState = bannerState;
             function applyDateState() {
-                var banner = document.getElementById("day-banner");
+                var root = document.documentElement;
                 var reveal = document.getElementById("weekend-reveal");
-                if (!banner) return;
-                var params = new URLSearchParams(location.search);
-                var asof = params.get("asof");
-                var now = asof ? zonedTime(asof) : new Date();
-                var state = bannerState(document.documentElement.dataset.menuDate || "", now);
-                var opened = document.body.classList.contains("is-weekend-open");
-                document.body.classList.remove("is-wrong-day", "is-weekend", "is-weekend-open");
-                if (!state) {
-                    banner.hidden = true;
-                    banner.textContent = "";
-                    if (reveal) reveal.hidden = true;
-                    return;
-                }
-                var sv = isSv();
-                var key = state === "soon" ? "soon" : state === "weekend" ? "weekend" : "wrong";
-                banner.hidden = false;
-                banner.textContent = sv ? dateCopy[key + "_sv"] : dateCopy[key + "_en"];
+                var opened = root.classList.contains("is-weekend-open");
+                var now = window.lunchNow ? window.lunchNow() : new Date();
+                var state = window.lunchDateState
+                    ? window.lunchDateState(root.dataset.menuDate || "", now)
+                    : null;
+                root.classList.remove("is-wrong-day", "is-weekend", "is-soon", "is-weekend-open");
                 if (state === "weekend") {
-                    document.body.classList.add("is-weekend");
-                    if (opened) document.body.classList.add("is-weekend-open");
-                    if (reveal) reveal.hidden = false;
-                } else {
-                    document.body.classList.add("is-wrong-day");
-                    if (reveal) reveal.hidden = true;
+                    root.classList.add("is-weekend");
+                    if (opened) root.classList.add("is-weekend-open");
+                } else if (state === "soon") {
+                    root.classList.add("is-soon");
+                } else if (state === "wrong") {
+                    root.classList.add("is-wrong-day");
                 }
+                if (reveal) reveal.setAttribute("aria-expanded", state === "weekend" && opened ? "true" : "false");
             }
 
             function setSearchOpen(open) {
@@ -1250,7 +1284,8 @@
             });
             var reveal = document.getElementById("weekend-reveal");
             if (reveal) reveal.addEventListener("click", function () {
-                document.body.classList.toggle("is-weekend-open");
+                var open = document.documentElement.classList.toggle("is-weekend-open");
+                reveal.setAttribute("aria-expanded", open ? "true" : "false");
             });
             var sentinel = document.getElementById("toolbar-sentinel");
             var toolbar = document.getElementById("toolbar");
