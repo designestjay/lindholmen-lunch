@@ -570,10 +570,32 @@ def generate_index_page(day: str | None = None) -> None:
     )
 
     (output_dir / "index.html").write_text(html, encoding="utf-8")
+    write_preview(output_dir, html)
     write_privacy()
     lastmod = menu_date or datetime.now(STOCKHOLM).date().isoformat()
     write_sitemap(lastmod)
     print(f"[INFO] Generated index page: {output_dir / 'index.html'}")
+
+
+def write_preview(output_dir: Path, html: str) -> None:
+    """Same-document symbols, so a preview host can show the drawings without external <use>."""
+    symbols = []
+    for path in sorted((output_dir / "assets" / "dishes").glob("*.svg")):
+        text = path.read_text(encoding="utf-8")
+        start = text.find('<g id="art"')
+        end = text.rfind("</g>")
+        if start < 0 or end < 0:
+            continue
+        group = text[start:end + 4].replace(' id="art"', "", 1)
+        symbols.append(f'<symbol id="dish-{path.stem}" viewBox="0 0 64 64">{group}</symbol>')
+    sprite = (
+        '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true">'
+        + "".join(symbols)
+        + "</svg>"
+    )
+    preview = html.replace("<body>", "<body>\n" + sprite, 1)
+    preview = re.sub(r'href="assets/dishes/([^"]+)\.svg#art"', r'href="#dish-\1"', preview)
+    (output_dir / "preview.html").write_text(preview, encoding="utf-8")
 
 
 def _cli() -> None:
