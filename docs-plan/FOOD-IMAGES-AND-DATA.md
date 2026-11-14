@@ -403,7 +403,7 @@ Match the line weight, perspective and level of detail of the reference images.
 - `kottbullar`: "a plate of Swedish meatballs with mashed potato, a pool of cream sauce, a spoon of lingonberries and a few pickled cucumber slices"
 - `tikka-masala`: "a shallow bowl of chicken tikka masala curry next to a small mound of rice and a folded piece of naan"
 
-**Line colour:** Jay rejected colour fills, then chose a bolder monoline. Each file uses `stroke="currentColor"` inside `<g id="art">`, with a stroke width from 1.25 to 3 in the 64 grid. `vector-effect="non-scaling-stroke"` is allowed and not required. A path may use `fill="currentColor"` for a small solid band such as nori. The page sets the line colour per dish with CSS on the `<use>` host: beef `#b4360f`, pork `#b03a5b`, chicken `#8a5a00`, fish `#1f5f99`, veg `#2f6b1e`, otherwise `#111`. The list thumbnail is 48px and the sheet drawing is 160px. The six pilot files are in `docs/assets/dishes/`: `pho`, `kottbullar`, `tikka-masala`, `pasta-cream`, `salad-bowl`, `sushi-mix`. Other categories keep the placeholder.
+**Line colour:** Jay rejected colour fills, then chose a bolder monoline, and later asked for lines only. Each file uses `stroke="currentColor"` and `fill="none"` on `<g id="art">`, with a stroke width from 1.25 to 3 in the 64 grid. `vector-effect="non-scaling-stroke"` is allowed and not required. No path is filled. The page sets the line colour per dish with CSS on the `<use>` host: beef `#b4360f`, pork `#b03a5b`, chicken `#8a5a00`, fish `#1f5f99`, veg `#2f6b1e`, otherwise `#111`. `.dish-ico, .dish-ico * { fill: none; }` keeps a missing attribute from painting a solid shape. The list thumbnail is 48px and the sheet drawing is 160px. The six pilot files are in `docs/assets/dishes/`: `pho`, `kottbullar`, `tikka-masala`, `pasta-cream`, `salad-bowl`, `sushi-mix`. Other categories keep the placeholder.
 
 **Post-processing tools** (`scripts/dish_art/`, run by the assistant locally or in a Cloud Agent session, never in CI):
 
@@ -415,7 +415,7 @@ Match the line weight, perspective and level of detail of the reference images.
    - Normalise to `viewBox="0 0 64 64"`, with the artwork fitted to a 56×56 safe box.
    - Run `svgo` with precision 1.
 3. `qa.py` (`utils/dish_svg.py`, also run by `tests/test_dish_assets.py`): fails on any of:
-   - a fill other than `none`, `transparent`, or `currentColor`;
+   - a fill other than `none` or `transparent`, or a `<g id="art">` without `fill="none"`;
    - a stroke other than `currentColor`;
    - a stroke width outside 1.25–3;
    - `<text>`, `<image>`, `<filter>`, `<mask>`, `<clipPath>`, `<pattern>`, `<symbol>`, `<use>`, or a gradient;

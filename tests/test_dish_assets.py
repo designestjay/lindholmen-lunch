@@ -35,7 +35,7 @@ def _svg(
     )
     return (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" color="#111" fill="none">'
-        f'<g id="art" stroke="{group_stroke}" stroke-width="{width}" stroke-linecap="round" stroke-linejoin="round">'
+        f'<g id="art" stroke="{group_stroke}" stroke-width="{width}" fill="none" stroke-linecap="round" stroke-linejoin="round">'
         f"{body}</g></svg>"
     ).encode()
 
@@ -47,7 +47,7 @@ def test_module_contract():
         "The protein colour comes from the page via CSS on the <use> host."
     )
     assert STROKE_COLOURS == {"currentcolor"}
-    assert FILL_COLOURS == {"none", "transparent", "currentcolor"}
+    assert FILL_COLOURS == {"none", "transparent"}
     assert MAX_PATHS == 12
     assert MAX_SUBPATHS == 160
     assert RAW_LIMIT == 7 * 1024
@@ -73,8 +73,10 @@ def test_committed_dish_svgs_pass_the_style_check():
     ]
     for path in files:
         assert check_dish_svg(path.read_bytes()) == [], path.name
-    sushi = (DISHES / "sushi-mix.svg").read_text(encoding="utf-8")
-    assert sushi.count('fill="currentColor"') == 2
+    for path in files:
+        text = path.read_text(encoding="utf-8")
+        assert '<g id="art"' in text and 'fill="none"' in text.split("<g id=\"art\"", 1)[1].split(">", 1)[0]
+        assert 'fill="currentColor"' not in text
     for name in ("kottbullar", "pasta-cream", "pho", "salad-bowl", "sushi-mix", "tikka-masala"):
         assert 'stroke-width="1.75"' in (DISHES / f"{name}.svg").read_text(encoding="utf-8")
 
@@ -83,7 +85,9 @@ def test_currentcolor_stroke_passes_and_a_fill_fails():
     assert check_dish_svg(_svg()) == []
     assert check_dish_svg(_svg(vector=False)) == []
     assert check_dish_svg(_svg(width="3")) == []
-    assert check_dish_svg(_svg(path_attrs='fill="currentColor"')) == []
+    assert any("fill" in problem for problem in check_dish_svg(_svg(path_attrs='fill="currentColor"')))
+    bare = _svg().replace(b'stroke-width="1.25" fill="none"', b'stroke-width="1.25"', 1)
+    assert any("art fill" in problem for problem in check_dish_svg(bare))
     filled = _svg().replace(b"<path ", b'<path fill="#c8ff36" ', 1)
     assert any("fill" in problem for problem in check_dish_svg(filled))
     assert any("stroke-width" in problem for problem in check_dish_svg(_svg(width="1.2")))

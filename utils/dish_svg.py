@@ -15,7 +15,7 @@ MAX_SUBPATHS = 160
 VIEWBOX = "0 0 64 64"
 
 STROKE_COLOURS = {"currentcolor"}
-FILL_COLOURS = {"none", "transparent", "currentcolor"}
+FILL_COLOURS = {"none", "transparent"}
 MIN_STROKE = 1.25
 MAX_STROKE = 3.0
 PROTEIN_STROKES = {
@@ -177,6 +177,8 @@ def check_dish_svg(data: bytes) -> list[str]:
             problems.append(f"art stroke-width must be between {MIN_STROKE} and {MAX_STROKE}")
         if group.get("stroke-linecap") != "round" or group.get("stroke-linejoin") != "round":
             problems.append("art caps and joins must be round")
+        if _norm(group.get("fill")) != "none":
+            problems.append("art fill must be none")
     paths = [element for element in root.iter() if _local(element.tag) == "path"]
     if not MIN_PATHS <= len(paths) <= MAX_PATHS:
         problems.append(f"{len(paths)} paths is outside {MIN_PATHS}–{MAX_PATHS}")
@@ -209,7 +211,7 @@ def check_dish_svg(data: bytes) -> list[str]:
                 problems.append(f"stroke {stroke} is outside currentColor")
             fill = _norm(element.get("fill") or "")
             if fill and fill not in FILL_COLOURS:
-                problems.append(f"fill {fill} is outside currentColor, none or transparent")
+                problems.append(f"fill {fill} is outside none or transparent")
     if moves > MAX_SUBPATHS:
         problems.append(f"{moves} subpaths exceeds {MAX_SUBPATHS}")
     return problems

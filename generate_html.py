@@ -587,6 +587,9 @@ def write_preview(output_dir: Path, html: str) -> None:
         if start < 0 or end < 0:
             continue
         group = text[start:end + 4].replace(' id="art"', "", 1)
+        opening, _, rest = group.partition(">")
+        if "fill=" not in opening:
+            group = opening.replace("<g ", '<g fill="none" ', 1) + ">" + rest
         symbols.append(f'<symbol id="dish-{path.stem}" viewBox="0 0 64 64">{group}</symbol>')
     sprite = (
         '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0" aria-hidden="true">'
