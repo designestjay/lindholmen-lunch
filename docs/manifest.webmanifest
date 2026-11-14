@@ -2,12 +2,14 @@
   "name": "Lindholmen Lunch",
   "short_name": "Lunch",
   "description": "Lunchmenyer från Lindholmen, uppdateras varje vardag.",
-  "start_url": "/",
-  "scope": "/",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f2f2f0",
   "theme_color": "#f2f2f0",
   "lang": "sv",
+  "dir": "ltr",
   "icons": [
     {
       "src": "assets/icon-192.png",
@@ -20,6 +22,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
