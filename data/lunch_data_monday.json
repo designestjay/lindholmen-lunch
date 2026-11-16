@@ -123,139 +123,6 @@
       "🥣"
     ]
   },
-  "DistrictOneScraper": {
-    "day": "monday",
-    "items": [
-      {
-        "name": "Pocherad torskfile med brynt smör och äpple, serveras med potatismos samt nyriven pepparrot.",
-        "category": "Fisk",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "fish"
-        ],
-        "emoji_tags": [
-          "🐟"
-        ]
-      },
-      {
-        "name": "Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
-        "category": "Kött",
-        "description": "",
-        "price": "135 kr",
-        "tags": [],
-        "emoji_tags": []
-      },
-      {
-        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
-        "category": "Sallad",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "chicken",
-          "salad"
-        ],
-        "emoji_tags": [
-          "🐔",
-          "🥗"
-        ]
-      },
-      {
-        "name": "Friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris.",
-        "category": "Fried chicken",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "chicken"
-        ],
-        "emoji_tags": [
-          "🐔"
-        ]
-      },
-      {
-        "name": "Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
-        "category": "Vegetarisk",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "dumplings"
-        ],
-        "emoji_tags": [
-          "🥟"
-        ]
-      },
-      {
-        "name": "Ponzu marinerad lax eller räkor med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "category": "Poke bowl",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "veg",
-          "fish",
-          "sushi"
-        ],
-        "emoji_tags": [
-          "🥦",
-          "🐟",
-          "🍣"
-        ]
-      },
-      {
-        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "category": "Veg poke bowl",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "veg",
-          "sushi"
-        ],
-        "emoji_tags": [
-          "🥦",
-          "🍣"
-        ]
-      },
-      {
-        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
-        "category": "Phở",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "thai",
-          "beef",
-          "soup"
-        ],
-        "emoji_tags": [
-          "🇹🇭",
-          "🐄",
-          "🥣"
-        ]
-      }
-    ],
-    "stale": true,
-    "fetched_at": "2026-11-16T10:09+01:00",
-    "tags": [
-      "thai",
-      "veg",
-      "fish",
-      "chicken",
-      "beef",
-      "salad",
-      "sushi",
-      "dumplings",
-      "soup"
-    ],
-    "emoji_tags": [
-      "🇹🇭",
-      "🥦",
-      "🐟",
-      "🐔",
-      "🐄",
-      "🥗",
-      "🍣",
-      "🥟",
-      "🥣"
-    ]
-  },
   "BombayBistroScraper": {
     "day": "monday",
     "items": [
@@ -2046,6 +1913,139 @@
     ],
     "emoji_tags": [
       "🇲🇽"
+    ]
+  },
+  "DistrictOneScraper": {
+    "day": "monday",
+    "items": [
+      {
+        "name": "Pocherad torskfile med brynt smör och äpple, serveras med potatismos samt nyriven pepparrot.",
+        "category": "Fisk",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "fish"
+        ],
+        "emoji_tags": [
+          "🐟"
+        ]
+      },
+      {
+        "name": "Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
+        "category": "Kött",
+        "description": "",
+        "price": "135 kr",
+        "tags": [],
+        "emoji_tags": []
+      },
+      {
+        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
+        "category": "Sallad",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
+      },
+      {
+        "name": "Friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris.",
+        "category": "Fried chicken",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
+      },
+      {
+        "name": "Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
+        "category": "Vegetarisk",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "dumplings"
+        ],
+        "emoji_tags": [
+          "🥟"
+        ]
+      },
+      {
+        "name": "Ponzu marinerad lax eller räkor med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+        "category": "Poke bowl",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "veg",
+          "fish",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🥦",
+          "🐟",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+        "category": "Veg poke bowl",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "veg",
+          "sushi"
+        ],
+        "emoji_tags": [
+          "🥦",
+          "🍣"
+        ]
+      },
+      {
+        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
+        "category": "Phở",
+        "description": "",
+        "price": "135 kr",
+        "tags": [
+          "thai",
+          "beef",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇹🇭",
+          "🐄",
+          "🥣"
+        ]
+      }
+    ],
+    "stale": true,
+    "fetched_at": "2026-11-16T10:09+01:00",
+    "tags": [
+      "thai",
+      "veg",
+      "fish",
+      "chicken",
+      "beef",
+      "salad",
+      "sushi",
+      "dumplings",
+      "soup"
+    ],
+    "emoji_tags": [
+      "🇹🇭",
+      "🥦",
+      "🐟",
+      "🐔",
+      "🐄",
+      "🥗",
+      "🍣",
+      "🥟",
+      "🥣"
     ]
   }
 }
