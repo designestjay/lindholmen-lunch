@@ -105,7 +105,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "thai",
       "indian",
@@ -231,8 +231,7 @@
         ]
       }
     ],
-    "stale": false,
-    "source_week": 47,
+    "stale": true,
     "fetched_at": "2026-11-16T10:09+01:00",
     "tags": [
       "thai",
@@ -326,7 +325,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -436,7 +435,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -505,7 +504,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "thai",
       "fish",
@@ -820,7 +819,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -969,7 +968,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -987,16 +986,12 @@
     "day": "monday",
     "items": [
       {
-        "name": "Veckans: Fläsklägg",
+        "name": "Veckans: Kålpudding",
         "category": "Veckans",
-        "description": "Rotmos – Pepparrotsås – Senap – Persilja",
+        "description": "Gräddsås – Lingon – Kokt potatis – Persilja",
         "price": "130 kr",
-        "tags": [
-          "pork"
-        ],
-        "emoji_tags": [
-          "🐖"
-        ]
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Vegetarisk Mån-tis:Raggmunk",
@@ -1063,16 +1058,14 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "veg",
-      "pork",
       "chicken",
       "salad"
     ],
     "emoji_tags": [
       "🥦",
-      "🐖",
       "🐔",
       "🥗"
     ]
@@ -1396,7 +1389,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1687,7 +1680,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1998,7 +1991,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "indian",
       "veg",
@@ -2047,7 +2040,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T10:09+01:00",
+    "fetched_at": "2026-11-16T14:33+01:00",
     "tags": [
       "mexican"
     ],
