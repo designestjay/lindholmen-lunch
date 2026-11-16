@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13",
+  "generated_at": "2026-11-16",
   "items": [
     {
       "key": "(*)",
@@ -9,9 +9,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -24,9 +24,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -39,9 +39,54 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "asiatisk glasnudelsallad",
+      "name": "Asiatisk Glasnudelsallad",
+      "description": "med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
       "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "counted_on": "2026-11-16",
+      "suggestion": "shrimp",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "baked haddock",
+      "name": "Baked haddock",
+      "description": "fresh beetroot salsa, Greek style roasted vegetables, green butter sauce",
+      "restaurants": [
+        "Pier 11"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": "roasted-vegetables",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "basilikamarinerad kyckling serveras med rostad potatis, tomatsås och friterad aubergine",
+      "name": "basilikamarinerad kyckling serveras med rostad potatis, tomatsås och friterad aubergine",
+      "description": "basilikamarinerad kyckling serveras med rostad potatis, tomatsås och friterad aubergine",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -54,9 +99,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -69,9 +114,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "yakitori",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -122,6 +167,51 @@
       "reason": "no_rule"
     },
     {
+      "key": "brasilianskt kryddad kyckling med vitlöksris, svarta bönor, rostad paprika, lime",
+      "name": "Brasilianskt kryddad kyckling med vitlöksris, svarta bönor, rostad paprika, lime",
+      "description": "och kålsallad samt krämig koriander- och chilidressing.",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "chicken cashew",
+      "name": "Chicken cashew",
+      "description": "wokad gårdsgris med grönsaker i ostronsås med cashewnötter serveras med jasminris & koriander",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": "wok",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "chicken patiala",
+      "name": "Chicken patiala",
+      "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": "tandoori",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
       "key": "chili pickles",
       "name": "Chili pickles",
       "description": "",
@@ -144,9 +234,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -174,9 +264,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -189,9 +279,24 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris",
+      "name": "Friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris.",
+      "description": "",
+      "restaurants": [
+        "District One"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
       "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -204,9 +309,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -234,9 +339,9 @@
         "Bombay Bistro"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -249,9 +354,9 @@
         "Bombay Bistro"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -264,9 +369,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -279,9 +384,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -294,9 +399,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -324,9 +429,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -339,9 +444,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -354,9 +459,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -399,9 +504,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -429,9 +534,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -459,9 +564,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -477,6 +582,21 @@
       "last_seen": "2026-11-13",
       "seen_count": 1,
       "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "murgh papadom",
+      "name": "Murgh papadom",
+      "description": "Kycklingfilé tillagad i en mild och krämig så som består av papadom lök, tomat, vitlök och bockhornsklöver.",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -504,9 +624,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "salmon",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -519,12 +639,27 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "roasted-cauliflower",
       "confidence": 0.72,
       "reason": "low_confidence"
+    },
+    {
+      "key": "ostbakad kyckling serveras med sötpotatispuré, chili- & honungsqrosad brysseklkål och svampsky",
+      "name": "ostbakad kyckling serveras med sötpotatispuré, chili- & honungsqrosad brysseklkål och svampsky",
+      "description": "ostbakad kyckling serveras med sötpotatispuré, chili- & honungsqrosad brysseklkål och svampsky",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
     },
     {
       "key": "pahadi grill chicken",
@@ -542,6 +677,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "panerad kummel serveras med kokt potatis, gröna ärtor, räkröra och citron",
+      "name": "panerad kummel serveras med kokt potatis, gröna ärtor, räkröra och citron",
+      "description": "panerad kummel serveras med kokt potatis, gröna ärtor, räkröra och citron",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "papadom",
       "name": "Papadom",
       "description": "",
@@ -557,6 +707,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "potatisgratäng",
+      "name": "Potatisgratäng",
+      "description": "rosastekt fläskkotlett, pepparsås, broccoli, körvel & dragon Potato gratin, pink seared pork chop, pepper sauce, broccoli, chervil & tarragon",
+      "restaurants": [
+        "Uni3 World of Food"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "rogan josh",
       "name": "Rogan josh",
       "description": "Klassisk nordindisk lammrätt med smak av saffran och kardemumma, garnerad med mandel.",
@@ -564,9 +729,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "lamb",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -639,9 +804,39 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "stekt rimmat fläsk serveras med kokt potatis, haricot verts och löksås",
+      "name": "stekt rimmat fläsk serveras med kokt potatis, haricot verts och löksås",
+      "description": "stekt rimmat fläsk serveras med kokt potatis, haricot verts och löksås",
+      "restaurants": [
+        "Cuckoo's Nest"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
       "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "sticky millow mince bowl",
+      "name": "Sticky Millow mince bowl",
+      "description": "jasminris, hoisin, gröna bönor, sesamfrön, koriander (veg option) Sticky Millow mince bowl, jasmine rice, hoisin, green beans, sesame seeds, coriander (veg option)",
+      "restaurants": [
+        "Uni3 World of Food"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -684,9 +879,9 @@
         "Benne Pastabar"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -714,12 +909,42 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
+    },
+    {
+      "key": "veg asiatisk glasnudelsallad",
+      "name": "VEG Asiatisk Glasnudelsallad",
+      "description": "med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": "tofu-dish",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "veg kadhai",
+      "name": "Veg kadhai",
+      "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
     },
     {
       "key": "vegetarisk",
@@ -730,9 +955,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -745,10 +970,25 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": "sushi-mix",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "wallenbergare",
+      "name": "Wallenbergare",
+      "description": "Gräddsås – Lingon – Ärtor – Potatispuré",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-16",
+      "last_seen": "2026-11-16",
+      "seen_count": 1,
+      "counted_on": "2026-11-16",
+      "suggestion": "pasta-cream",
       "confidence": 0.72,
       "reason": "low_confidence"
     },
@@ -760,9 +1000,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-13",
-      "seen_count": 1,
-      "counted_on": "2026-11-13",
+      "last_seen": "2026-11-16",
+      "seen_count": 2,
+      "counted_on": "2026-11-16",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
