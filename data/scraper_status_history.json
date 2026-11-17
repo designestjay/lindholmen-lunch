@@ -4,11 +4,21 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "BistrotScraper": [
     {
       "date": "2026-11-16",
+      "status": "fresh",
+      "reason": ""
+    },
+    {
+      "date": "2026-11-17",
       "status": "fresh",
       "reason": ""
     }
@@ -18,11 +28,21 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "CuckoosNestScraper": [
     {
       "date": "2026-11-16",
+      "status": "fresh",
+      "reason": ""
+    },
+    {
+      "date": "2026-11-17",
       "status": "fresh",
       "reason": ""
     }
@@ -32,11 +52,21 @@
       "date": "2026-11-16",
       "status": "static_old",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "missing",
+      "reason": "http_404"
     }
   ],
   "EncounterAsianScraper": [
     {
       "date": "2026-11-16",
+      "status": "fresh",
+      "reason": ""
+    },
+    {
+      "date": "2026-11-17",
       "status": "fresh",
       "reason": ""
     }
@@ -46,11 +76,21 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "LsKitchenScraper": [
     {
       "date": "2026-11-16",
+      "status": "missing",
+      "reason": "empty"
+    },
+    {
+      "date": "2026-11-17",
       "status": "missing",
       "reason": "empty"
     }
@@ -60,11 +100,21 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "MissFScraper": [
     {
       "date": "2026-11-16",
+      "status": "fresh",
+      "reason": ""
+    },
+    {
+      "date": "2026-11-17",
       "status": "fresh",
       "reason": ""
     }
@@ -74,6 +124,11 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "RestaurantPier11Scraper": [
@@ -81,11 +136,21 @@
       "date": "2026-11-16",
       "status": "fresh",
       "reason": ""
+    },
+    {
+      "date": "2026-11-17",
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "Uni3WorldOfFoodScraper": [
     {
       "date": "2026-11-16",
+      "status": "fresh",
+      "reason": ""
+    },
+    {
+      "date": "2026-11-17",
       "status": "fresh",
       "reason": ""
     }
