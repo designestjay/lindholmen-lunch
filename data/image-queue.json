@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17",
+  "generated_at": "2026-11-18",
   "items": [
     {
       "key": "(*)",
@@ -9,9 +9,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -24,9 +24,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -39,9 +39,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -54,9 +54,9 @@
         "Kooperativet"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": "shrimp",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -84,9 +84,9 @@
         "Cuckoo's Nest"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -99,9 +99,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -114,9 +114,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "yakitori",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -182,6 +182,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "chicken balti",
+      "name": "Chicken balti",
+      "description": "Kycklingfilé marinerad i vitlök och grön chili tillagad med lök, paprika och champinjoner i en rödvinssås.",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "chicken cashew",
       "name": "Chicken cashew",
       "description": "wokad gårdsgris med grönsaker i ostronsås med cashewnötter serveras med jasminris & koriander",
@@ -234,9 +249,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -264,9 +279,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -279,9 +294,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -309,9 +324,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -332,6 +347,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "halstrad fångst",
+      "name": "Halstrad fångst",
+      "description": "Sparrisrisotto – Vitvinssås – Rucola",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "högrevsburgare",
       "name": "Högrevsburgare",
       "description": "Karamelliserad lök – Krispichilimayo – Pepperjackost – Sallad – Pommes",
@@ -347,6 +377,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "indien dirty fries",
+      "name": "Indien dirty fries",
+      "description": "friterad kyckling på frasiga pommes kryddade med tandoori, kachumbersallad, chilipickles majonnäs, krossade papadum samt koriander",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": "tandoori",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
       "key": "jingha hara",
       "name": "Jingha hara",
       "description": "",
@@ -354,9 +399,9 @@
         "Bombay Bistro"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -369,9 +414,9 @@
         "Bombay Bistro"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -392,6 +437,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "korean momofuku bossam",
+      "name": "Korean Momofuku Bossam",
+      "description": "Nattbakad griskind uppvänd med soyaglace & krossade jordnötter serveras med picklad rättika, jasminris & hjärtblad",
+      "restaurants": [
+        "Kooperativet"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "krispig kyckling",
       "name": "Krispig kyckling",
       "description": "Friterade kyckling / gurka / krispsallad / morötter",
@@ -399,9 +459,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -414,9 +474,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -429,9 +489,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -459,9 +519,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -474,9 +534,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -489,10 +549,25 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": "pasta-cream",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
+      "key": "lahsuni machili nimbu",
+      "name": "Lahsuni machili nimbu",
+      "description": "Laxfilé, tillagad i en krämig masalasås med smak öv lime.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": "salmon",
       "confidence": 0.72,
       "reason": "low_confidence"
     },
@@ -504,9 +579,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -549,9 +624,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -594,9 +669,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -624,9 +699,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -642,6 +717,21 @@
       "last_seen": "2026-11-13",
       "seen_count": 1,
       "counted_on": "2026-11-13",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "murg zaffrani",
+      "name": "Murg zaffrani",
+      "description": "Saffransmarinerad grillad kycking, garam masala i en krämig cashewnötsås.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -684,9 +774,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "salmon",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -699,9 +789,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "roasted-cauliflower",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -714,9 +804,9 @@
         "Cuckoo's Nest"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -744,9 +834,9 @@
         "Cuckoo's Nest"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -789,9 +879,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "lamb",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -857,6 +947,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "spiced broccoli",
+      "name": "Spiced broccoli",
+      "description": "paneer, peas, garam masala cashews, basmati rice",
+      "restaurants": [
+        "Pier 11"
+      ],
+      "first_seen": "2026-11-18",
+      "last_seen": "2026-11-18",
+      "seen_count": 1,
+      "counted_on": "2026-11-18",
+      "suggestion": "paneer-curry",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
       "key": "stekt fläsk",
       "name": "Stekt fläsk",
       "description": "Raggmunk & Lingon eller Kokt potatis & Löksås – Persilja",
@@ -879,9 +984,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -894,9 +999,9 @@
         "Cuckoo's Nest"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -954,9 +1059,9 @@
         "Benne Pastabar"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -984,9 +1089,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -999,9 +1104,9 @@
         "Kooperativet"
       ],
       "first_seen": "2026-11-16",
-      "last_seen": "2026-11-17",
-      "seen_count": 2,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 3,
+      "counted_on": "2026-11-18",
       "suggestion": "tofu-dish",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1030,9 +1135,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1045,9 +1150,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1075,9 +1180,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-17",
-      "seen_count": 12,
-      "counted_on": "2026-11-17",
+      "last_seen": "2026-11-18",
+      "seen_count": 14,
+      "counted_on": "2026-11-18",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
