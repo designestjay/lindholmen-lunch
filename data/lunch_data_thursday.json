@@ -107,7 +107,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "thai",
       "veg",
@@ -198,7 +198,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -308,7 +308,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -371,7 +371,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "thai",
       "chicken",
@@ -684,7 +684,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -820,10 +820,10 @@
         "emoji_tags": []
       },
       {
-        "name": "Hazelroll",
+        "name": "Tiramisu",
         "category": "Benne Bites",
-        "description": "Choklad cannoli fylld med en nutella och mascarpone kräm.",
-        "price": "20 kr",
+        "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
+        "price": "35 kr",
         "tags": [
           "dessert"
         ],
@@ -833,7 +833,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -949,7 +949,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -1284,7 +1284,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1575,7 +1575,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1882,7 +1882,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1933,7 +1933,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-19T10:34+01:00",
+    "fetched_at": "2026-11-19T17:00+01:00",
     "tags": [
       "indian",
       "chicken"
