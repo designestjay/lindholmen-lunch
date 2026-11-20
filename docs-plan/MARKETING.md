@@ -11,6 +11,7 @@ Conventions:
 - **[VERIFY]** marks a name, channel or contact route that probably exists but must be confirmed on the organisation's own public page before use.
 - No real people or contact details are named in this document. All contacts are found later, from public pages, by the process in Part 4.
 - Costs are in SEK and are estimates **[ASSUMPTION]**.
+- **Links and QR codes** use the current live URL `https://iamjaydesign.com/lindholmen-lunch/`; they must switch to the umbrella domain (BUSINESS-PLAN D2) once it is chosen, before anything is printed.
 
 ---
 
@@ -55,7 +56,7 @@ Three proof points to repeat everywhere:
 
 ### 1.2 Name
 
-Keep **Lindholmen Lunch** and the domain **lindholmenlunch.nu**. The name is literal and searchable, and the domain already has history. Changing it would throw away SEO and printed QR codes. Use the PLAN 2.4 C1 wordmark `lindholmen ◦ lunch` everywhere.
+Keep **Lindholmen Lunch** and use the live URL **https://iamjaydesign.com/lindholmen-lunch/**. The name is literal and searchable. Use the PLAN 2.4 C1 wordmark `lindholmen ◦ lunch` everywhere.
 
 Social handles to check and reserve in Days 1–14 (pick the first one available on all of Instagram, TikTok and LinkedIn, then use it everywhere):
 
@@ -142,8 +143,8 @@ The ordering principle: **physical presence where the decision happens** (tables
 
 - **Where:** restaurant tables and counters (with owner OK), office lunch rooms and kitchens (via office managers), lift lobbies and notice boards (via building reception or LSP), campus notice boards (via student union or campus service desk). **[VERIFY each building's posting rules.]**
 - **What:** A4/A3 poster, A6 folded table tent, 50 mm round sticker for coffee machines and microwaves (where the microwave queue happens, students and matlåda people are captive for 2 minutes).
-- **Copy:** `Var äter vi idag?` / `Where are we eating today?` + `lindholmenlunch.nu` + QR + one line: `Alla lunchmenyer på Lindholmen. Uppdateras varje vardag.`
-- **Tracking:** a unique QR per location: `https://lindholmenlunch.nu/?src=qr-<place>` (6.2). Keep a placement log (sheet tab `Placements`: location, permission given by, date up, date checked, scans per week).
+- **Copy:** `Var äter vi idag?` / `Where are we eating today?` + `iamjaydesign.com/lindholmen-lunch/` + QR + one line: `Alla lunchmenyer på Lindholmen. Uppdateras varje vardag.`
+- **Tracking:** a unique QR per location: `https://iamjaydesign.com/lindholmen-lunch/?src=qr-<place>` (6.2). Keep a placement log (sheet tab `Placements`: location, permission given by, date up, date checked, scans per week).
 - **Rule:** never put a poster up without permission, never cover others' notices, re-check every 4 weeks and remove damaged ones.
 - **Generate QR codes locally** (e.g. the `qrcode` Python package or Figma plugin), not via a third-party QR shortener that may expire or track. The current `flyer.html` uses `api.qrserver.com` at render time; for print, generate static vector QR files once.
 
@@ -151,7 +152,7 @@ The ordering principle: **physical presence where the decision happens** (tables
 
 The pitch is "You're already listed, free. Let's make it more useful for you."
 
-1. **Walk in** Mon–Thu after 14:00 with a printed one-pager (asset A12) and the table tent. Ask: (a) permission to show the menu (PLAN 3.6), (b) a better menu source (a URL, a Google Sheet, or the self-serve form when R1 ships), (c) table tents on tables, (d) a "Vi finns på lindholmenlunch.nu" window sticker, (e) a mention or story share when we feature them.
+1. **Walk in** Mon–Thu after 14:00 with a printed one-pager (asset A12) and the table tent. Ask: (a) permission to show the menu (PLAN 3.6), (b) a better menu source (a URL, a Google Sheet, or the self-serve form when R1 ships), (c) table tents on tables, (d) a "Vi finns på iamjaydesign.com/lindholmen-lunch/" window sticker, (e) a mention or story share when we feature them.
 2. **Give first:** each partner gets a feature post in the content calendar (Part 3), and once analytics is live, a monthly email with their outbound clicks ("23 personer klickade vidare till er i oktober" **— example format, not data**). That report is the seed of the paid R1 tier.
 3. **Ask restaurants to fix their own Google Business Profile** with a "Meny" link (see T-GBP). It helps them and strengthens the local web around the site.
 4. **Never** imply endorsement they didn't give, use their logo or photos without permission, or rank them by quality.
@@ -186,18 +187,18 @@ Actions (most are product asks for the implementer; marked with PLAN IDs where t
 2. **On-page**: `<title>` like `Lunch Lindholmen idag – alla menyer | Lindholmen Lunch`, a meta description using T2, a visible H1 for crawlers (PLAN U-4 keeps a visually hidden H1), canonical and OG tags (PLAN U-12).
 3. **Restaurant name pages**: people search "`{restaurant} lunch`". A small per-restaurant page or anchor (`/r/bistrot/`) with today's menu and a link to the restaurant is a strong long-tail win. This is a product ask (6.4), and it only makes sense with restaurant permission (PLAN 3.6).
 4. **Structured data**: `WebSite` and `ItemList` of restaurants linking to their sites. Don't mark the aggregator up as a `Restaurant` or `LocalBusiness`; it isn't one.
-5. **Backlinks that are earned and local**: LSP pages, student union pages, restaurant sites ("Se dagens meny på lindholmenlunch.nu"), office intranets (not indexed but drive traffic), event pages, jaydigitalstudio.com case study (R8), the open-source GitHub README. No link buying, no link exchanges with unrelated sites.
+5. **Backlinks that are earned and local**: LSP pages, student union pages, restaurant sites ("Se dagens meny på iamjaydesign.com/lindholmen-lunch/"), office intranets (not indexed but drive traffic), event pages, jaydigitalstudio.com case study (R8), the open-source GitHub README. No link buying, no link exchanges with unrelated sites.
 6. **Freshness**: `lastmod` in the sitemap from the generator (PLAN U-12).
 
 #### T-GBP · Google Business Profile (Rank 14), eligibility warning
 
-**lindholmenlunch.nu is probably not eligible for its own Google Business Profile.** Google's guidelines require a business to make in-person contact with customers at a physical location or within a service area; online-only services are not eligible. Creating a listing with a made-up or virtual address, or for a business that doesn't meet customers in person, breaks the guidelines and risks suspension. **Excluded.** **[VERIFY current guidelines before deciding.]**
+**iamjaydesign.com/lindholmen-lunch/ is probably not eligible for its own Google Business Profile.** Google's guidelines require a business to make in-person contact with customers at a physical location or within a service area; online-only services are not eligible. Creating a listing with a made-up or virtual address, or for a business that doesn't meet customers in person, breaks the guidelines and risks suspension. **Excluded.** **[VERIFY current guidelines before deciding.]**
 
 What to do instead:
 
 - If **Jay Digital Studio AB** already has (or qualifies for) a profile, keep it accurate and mention Lindholmen Lunch as a project in its posts or description. That supports R8.
 - Help **restaurants** keep *their* profiles accurate (hours, website, a menu link, lunch photos). The assistant can audit public profile info and draft a friendly note to each restaurant (Part 4, B7). Jay edits a restaurant's profile **only** if the owner grants manager access and asks for help.
-- Don't use "Suggest an edit" on other businesses' profiles to insert links to lindholmenlunch.nu.
+- Don't use "Suggest an edit" on other businesses' profiles to insert links to iamjaydesign.com/lindholmen-lunch/.
 
 #### T-LSP · Lindholmen Science Park and office community channels (Rank 7)
 
@@ -223,9 +224,9 @@ What to do instead:
 
 These need small product changes (6.4), so they come after the core UX tasks.
 
-1. **Share to the lunch thread:** a share button using the Web Share API (fallback: copy link) with text `Var äter vi idag? lindholmenlunch.nu` and `?src=share`. The person sharing is the referral.
+1. **Share to the lunch thread:** a share button using the Web Share API (fallback: copy link) with text `Var äter vi idag? iamjaydesign.com/lindholmen-lunch/` and `?src=share`. The person sharing is the referral.
 2. **Share a pick:** after "Välj åt mig", a "Skicka till teamet" button shares a link that opens with that restaurant highlighted (`?pick=bistrot&src=share-pick`). A group lunch decision is a natural, non-spammy viral moment.
-3. **Slack install by a champion:** the daily post itself (R4) footers `Lägg till i din kanal → lindholmenlunch.nu/slack`. Every install exposes a whole team every day.
+3. **Slack install by a champion:** the daily post itself (R4) footers `Lägg till i din kanal → iamjaydesign.com/lindholmen-lunch/slack`. Every install exposes a whole team every day.
 4. **Restaurant loop:** partners share their feature post and keep the window sticker. Their customers become our users.
 5. **No incentivised referrals** in the first 90 days (no "invite 3 friends to win"). They attract low-quality use and add legal overhead (see 4.3 on competitions).
 
@@ -312,13 +313,13 @@ Placeholders in `{braces}` are filled from that day's real data. Never invent a 
 >
 > Den frågan ställs i hundratals lunchtrådar på Lindholmen varje förmiddag. Svaret ligger utspritt på femton restaurangsajter och Instagramkonton.
 >
-> Så jag har byggt om lindholmenlunch.nu: alla lunchmenyer på Lindholmen på en sida, uppdaterad varje vardagsmorgon. Filtrera på vego, fisk eller kyckling. Tryck "Välj åt mig" om teamet inte kan bestämma sig.
+> Så jag har byggt om iamjaydesign.com/lindholmen-lunch/: alla lunchmenyer på Lindholmen på en sida, uppdaterad varje vardagsmorgon. Filtrera på vego, fisk eller kyckling. Tryck "Välj åt mig" om teamet inte kan bestämma sig.
 >
 > Gratis. Ingen app. Inga spårningscookies.
 >
 > Saknar du en restaurang? Säg till, så lägger jag till den.
 >
-> lindholmenlunch.nu
+> iamjaydesign.com/lindholmen-lunch/
 
 #### LinkedIn — W1 launch (English)
 
@@ -326,7 +327,7 @@ Placeholders in `{braces}` are filled from that day's real data. Never invent a 
 >
 > That question gets asked in a lot of lunch threads at Lindholmen every morning, and the answer is spread across fifteen restaurant websites and Instagram accounts.
 >
-> So I rebuilt lindholmenlunch.nu: every lunch menu at Lindholmen on one page, updated every weekday morning. Filter by veggie, fish or chicken. Tap "Pick for me" when the team can't decide.
+> So I rebuilt iamjaydesign.com/lindholmen-lunch/: every lunch menu at Lindholmen on one page, updated every weekday morning. Filter by veggie, fish or chicken. Tap "Pick for me" when the team can't decide.
 >
 > Free. No app. No tracking cookies.
 >
@@ -335,12 +336,12 @@ Placeholders in `{braces}` are filled from that day's real data. Never invent a 
 #### Instagram story — Dagens tips (template A7)
 
 - SV on screen: `Dagens tips.` / `{dish}` / `{price} · {restaurant}` / `Tisdag = under 120 kr` / link sticker `Alla menyer →`
-- EN caption line: `Today's pick: {dish}, {price} at {restaurant}. Every menu at lindholmenlunch.nu`
+- EN caption line: `Today's pick: {dish}, {price} at {restaurant}. Every menu at iamjaydesign.com/lindholmen-lunch/`
 
 #### Instagram carousel — Mondays, "Veckans lunchkarta" (template A5)
 
 - Slide 1: `Veckans lunch.` / `v.{week} · {n} restauranger`
-- Slide 2: `Så funkar det: 1. Öppna lindholmenlunch.nu  2. Filtrera  3. Gå och ät.`
+- Slide 2: `Så funkar det: 1. Öppna iamjaydesign.com/lindholmen-lunch/  2. Filtrera  3. Gå och ät.`
 - Slides 3–5: one restaurant per slide with this week's highlight (partners only).
 - Caption (SV): `Alla lunchmenyer på Lindholmen, varje vardag. Spara den här och skicka till lunchgänget.`
 - Caption (EN): `Every Lindholmen lunch menu, every weekday. Save this and send it to your lunch crew.`
@@ -349,13 +350,13 @@ Placeholders in `{braces}` are filled from that day's real data. Never invent a 
 
 - Shot list: hand opens phone at a desk (0–1 s) → site loads (1–3 s) → tap `Vego` (3–5 s) → tap `Välj åt mig` (5–7 s) → cut to walking out the door (7–8 s).
 - On-screen text (SV): `11:24. Ingen har bestämt något.` → `8 sekunder senare.`
-- Caption (SV): `Var äter vi idag? lindholmenlunch.nu` · (EN): `Where are we eating today? Every Lindholmen lunch in one place.`
+- Caption (SV): `Var äter vi idag? iamjaydesign.com/lindholmen-lunch/` · (EN): `Where are we eating today? Every Lindholmen lunch in one place.`
 - Only claim "8 seconds" if the recording is real and unedited in speed.
 
 #### Restaurant feature — Reel caption (W2, with permission)
 
-- SV: `Möt {restaurant}. {one real fact from the owner, e.g. "Samma familj sedan 2009"}. Dagens: {dish}. Alla menyer på lindholmenlunch.nu`
-- EN: `Meet {restaurant}. {fact}. Today: {dish}. Every menu at lindholmenlunch.nu`
+- SV: `Möt {restaurant}. {one real fact from the owner, e.g. "Samma familj sedan 2009"}. Dagens: {dish}. Alla menyer på iamjaydesign.com/lindholmen-lunch/`
+- EN: `Meet {restaurant}. {fact}. Today: {dish}. Every menu at iamjaydesign.com/lindholmen-lunch/`
 
 #### Slack daily post (R4 pilot), 10:45
 
@@ -363,7 +364,7 @@ Placeholders in `{braces}` are filled from that day's real data. Never invent a 
 Lunch idag · {Ons 20 jan} · {12} av {15} menyer
 Dagens tips: {dish} – {restaurant}, {price}
 Vego: {restaurant A}, {restaurant B} · Fisk: {restaurant C}
-Alla menyer → lindholmenlunch.nu/?src=slack-{workspace}
+Alla menyer → iamjaydesign.com/lindholmen-lunch/?src=slack-{workspace}
 ```
 
 #### Office manager email (W3, individually written; Jay sends)
@@ -372,7 +373,7 @@ Alla menyer → lindholmenlunch.nu/?src=slack-{workspace}
 >
 > Hej {förnamn eller "hej"},
 >
-> Jag heter Jay och driver lindholmenlunch.nu, en gratis sida med alla lunchmenyer på Lindholmen, uppdaterad varje vardagsmorgon.
+> Jag heter Jay och driver iamjaydesign.com/lindholmen-lunch/, en gratis sida med alla lunchmenyer på Lindholmen, uppdaterad varje vardagsmorgon.
 >
 > Jag kör just nu ett gratis pilotprojekt där några kontor får dagens menyer postade i en Slack-kanal kl 10:45, eller på en skärm i lunchrummet. Ingen installation hos er IT, bara en kanal-länk.
 >
@@ -388,9 +389,9 @@ Alla menyer → lindholmenlunch.nu/?src=slack-{workspace}
 
 > Hej {restaurang},
 >
-> Er lunchmeny visas redan på lindholmenlunch.nu, där folk på Lindholmen kollar var de ska äta. Jag vill gärna fråga att det är okej för er, och om ni vill att vi visar menyn på något annat sätt (till exempel från en länk eller ett formulär ni fyller i).
+> Er lunchmeny visas redan på iamjaydesign.com/lindholmen-lunch/, där folk på Lindholmen kollar var de ska äta. Jag vill gärna fråga att det är okej för er, och om ni vill att vi visar menyn på något annat sätt (till exempel från en länk eller ett formulär ni fyller i).
 >
-> Jag har också bordsställ och en dekal "Vi finns på lindholmenlunch.nu" om ni vill ha. Gratis.
+> Jag har också bordsställ och en dekal "Vi finns på iamjaydesign.com/lindholmen-lunch/" om ni vill ha. Gratis.
 >
 > Vill ni inte vara med tar jag bort er inom ett dygn.
 
@@ -398,7 +399,7 @@ Alla menyer → lindholmenlunch.nu/?src=slack-{workspace}
 
 > Ämne: Lunchindex Lindholmen: {real headline fact from archive, e.g. "medianpriset i januari"}
 >
-> Hej, jag driver lindholmenlunch.nu, en gratis sajt som samlar alla lunchmenyer på Lindholmen varje vardag. Efter en månad har jag data på {n} restauranger och {m} rätter. Några saker som stack ut: {3 verified facts}. Jag delar gärna hela underlaget. Bilder och kort beskrivning: {press kit link}.
+> Hej, jag driver iamjaydesign.com/lindholmen-lunch/, en gratis sajt som samlar alla lunchmenyer på Lindholmen varje vardag. Efter en månad har jag data på {n} restauranger och {m} rätter. Några saker som stack ut: {3 verified facts}. Jag delar gärna hela underlaget. Bilder och kort beskrivning: {press kit link}.
 
 ### 3.3 December soft-launch swaps (if launching before Christmas)
 
@@ -430,7 +431,7 @@ Jay's AI assistant drives a real browser signed in to Jay's accounts. These rule
 | **B4** | **Draft social posts and Dagens tips** | Weekly batch (Fri) + daily tips draft by 09:30 | This calendar, the day's `docs/index.html` or `today.json`, Krea assets exported by Jay, partner permissions | A `Content` tab row per post: platform, time, final copy SV/EN, alt text, asset file, `src` link. For IG/FB, optionally a filled draft in Meta Business Suite left unpublished. | Jay approves each post. Jay clicks Publish/Schedule, or explicitly approves the assistant clicking Schedule for that post in Meta Business Suite. **LinkedIn and TikTok: the assistant only prepares text and files; Jay posts manually** (4.3). |
 | **B5** | **Competitor and alternatives check** | Monthly | List of known alternatives (restaurant sites, national lunch directories, any Lindholmen lunch pages found via search) **[VERIFY which exist]** | `Competitors` tab: for each, restaurants covered vs ours, update time, features, ads/tracking, mobile speed (PageSpeed Insights). A 5-line memo: gaps to close, restaurants we're missing. | Jay reads the memo; product changes go to the implementer as PLAN tasks. No action is taken on competitors' sites. |
 | **B6** | **Directory and listing submissions** | Monthly, max 3 submissions | Approved directory list (T-DIR), standard description SV/EN, screenshots | Filled submission forms left **unsubmitted**, plus a `Directories` tab row (site, URL, status, terms checked) | Jay reviews each filled form and clicks Submit (or approves the assistant clicking it). Paid listings and reciprocal-link requests are rejected automatically. |
-| **B7** | **Google Business support** | Once, then quarterly | JDS AB profile (if it exists), partner restaurants' public Maps listings | (a) A checklist for JDS AB's profile accuracy; (b) a per-restaurant audit of *public* info (hours, website, menu link present?) and a drafted friendly note to each restaurant | Jay approves each note before B9 sends it via email. The assistant never creates a profile for lindholmenlunch.nu, never uses "Suggest an edit" on others' listings, and edits a restaurant profile only with the owner's manager access and request. |
+| **B7** | **Google Business support** | Once, then quarterly | JDS AB profile (if it exists), partner restaurants' public Maps listings | (a) A checklist for JDS AB's profile accuracy; (b) a per-restaurant audit of *public* info (hours, website, menu link present?) and a drafted friendly note to each restaurant | Jay approves each note before B9 sends it via email. The assistant never creates a profile for iamjaydesign.com/lindholmen-lunch/, never uses "Suggest an edit" on others' listings, and edits a restaurant profile only with the owner's manager access and request. |
 | **B8** | **Weekly SEO and performance check** | Weekly (Mon) | Google Search Console, Bing Webmaster Tools, PageSpeed Insights for the live URL | `SEO` tab row: clicks, impressions, average position for the target queries (2.2 T-SEO), indexed pages, Core Web Vitals, errors. 3 suggested actions. | Jay reviews; on-site changes become implementer tasks. **Rankings come from Search Console only; no automated Google result scraping** (4.3). One manual check of 3–5 queries in a logged-out window is fine. |
 | **B9** | **Draft outreach emails** | Weekly batch, max 10 | Approved contacts (B2, B3, B7), templates from 3.2, the `Do-not-contact` tab | Individually personalised drafts saved in Jay's Gmail **Drafts** (never sent), each with the source note and opt-out line. A summary list for Jay. | Jay reads, edits and sends each one himself. Replies are logged; "no" or "stop" adds the address to `Do-not-contact` immediately. |
 | **B10** | **Monitor mentions** | Weekly (Fri) | Google Alerts for `"lindholmenlunch"` and `"lindholmen lunch"` delivered to Gmail; Instagram tags and mentions on the brand account; manual search on Reddit (e.g. r/goteborg) and other public forums | `Mentions` tab: link, sentiment, whether a reply is useful, suggested reply in the right language | Jay approves and posts any reply himself. No replies from the assistant, no sockpuppets. |
@@ -467,7 +468,7 @@ These are **not** done, even if asked casually. If Jay wants one of them, he mus
 | **Sockpuppet accounts or astroturfing** (posting in student groups or forums as a "random user" recommending the site) | Deceptive; platform terms; marknadsföringslagen (hidden advertising). |
 | **Buying followers, likes or engagement; engagement pods** | Platform terms; meaningless metrics. |
 | **Automated Google result scraping for rank tracking** | Google's terms prohibit automated queries. Use Search Console (B8). |
-| **Creating a Google Business Profile for lindholmenlunch.nu with a virtual or invented address**, or editing others' listings to add our link | Google Business Profile guidelines (online-only businesses aren't eligible; misrepresentation leads to suspension). |
+| **Creating a Google Business Profile for iamjaydesign.com/lindholmen-lunch/ with a virtual or invented address**, or editing others' listings to add our link | Google Business Profile guidelines (online-only businesses aren't eligible; misrepresentation leads to suspension). |
 | **Posting in Slack/Discord/Facebook groups Jay isn't a genuine member of, or against a group's self-promotion rules** | Community rules; reputation. |
 | **Using restaurant logos, photos or menu text in promotion without permission** | Copyright and trademark; PLAN 3.6 permission principle. |
 | **Giveaways or competitions** in the first 90 days | Prize promotions in Sweden can fall under spellagen (lotteries need a licence unless skill-based or otherwise exempt) and each platform's promotion rules. Not worth the overhead now. Revisit with proper checks. |
@@ -521,7 +522,7 @@ These are **not** done, even if asked casually. If Jay wants one of them, he mus
 | A16 | **Slack app / webhook avatar** | 512×512 px | R4 daily post identity | `same mark as the app icon: near-black ring with lime centre dot on off-white, extra bold for small sizes` |
 | A17 | **Launch week poster variant** | A3 + 1080×1920 px | Launch week 11–15 Jan | `celebratory but minimal, five small near-black plates in a row each slightly different, one plate filled with a lime circle, off-white background, top half empty for "Ny vecka, ny lunch."` |
 
-Type and layout for every asset: Onest 500/600, tight tracking (`-0.04em` to `-0.05em`) for headings, JetBrains Mono for numbers and prices, wordmark `lindholmen ◦ lunch`, headline T1 and URL `lindholmenlunch.nu`.
+Type and layout for every asset: Onest 500/600, tight tracking (`-0.04em` to `-0.05em`) for headings, JetBrains Mono for numbers and prices, wordmark `lindholmen ◦ lunch`, headline T1 and URL `iamjaydesign.com/lindholmen-lunch/`.
 
 ---
 
