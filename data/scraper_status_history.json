@@ -49,8 +49,8 @@
     },
     {
       "date": "2026-11-20",
-      "status": "fresh",
-      "reason": ""
+      "status": "wrong_week",
+      "reason": "wrong_week"
     }
   ],
   "BombayBistroScraper": [

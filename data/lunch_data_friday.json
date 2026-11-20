@@ -70,7 +70,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -180,7 +180,7 @@
     ],
     "stale": false,
     "source_week": 47,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -202,18 +202,16 @@
     "day": "friday",
     "items": [
       {
-        "name": "Larb på kycklingfärs",
+        "name": "Vegetarian larb on Millow mince",
         "category": "Fire",
-        "description": "jasminris, inlagd chili, syrad gurka, jordnöt, lime, sallad, koriander (vegan option available)",
+        "description": "jasmine rice, pickled chilli, pickled cucumber, peanuts, lime, salad, coriander Vegetarisk larb på Millowfärs, jasminris, inlagd chili, syrad gurka, jordnöt, lime, sallad, koriander (veg option available)",
         "price": "132 kr",
         "tags": [
           "thai",
-          "chicken",
           "salad"
         ],
         "emoji_tags": [
           "🇹🇭",
-          "🐔",
           "🥗"
         ]
       },
@@ -247,15 +245,13 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "thai",
-      "chicken",
       "salad"
     ],
     "emoji_tags": [
       "🇹🇭",
-      "🐔",
       "🥗"
     ]
   },
@@ -560,7 +556,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -709,7 +705,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -721,102 +717,6 @@
       "🐟",
       "🍝",
       "🍰"
-    ]
-  },
-  "BistrotScraper": {
-    "day": "friday",
-    "items": [
-      {
-        "name": "Veckans: Kålpudding",
-        "category": "Veckans",
-        "description": "Gräddsås – Lingon – Kokt potatis – Persilja",
-        "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
-      },
-      {
-        "name": "Vegetarisk Mån-tis:Raggmunk",
-        "category": "Veckans",
-        "description": "Svampragu – Lingon – Persilja",
-        "price": "130 kr",
-        "tags": [
-          "veg"
-        ],
-        "emoji_tags": [
-          "🥦"
-        ]
-      },
-      {
-        "name": "Ons-Tor: Bakad Rödbeta",
-        "category": "Veckans",
-        "description": "Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök",
-        "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
-      },
-      {
-        "name": "Vegetarisk: Fre: Pannoumiburgare",
-        "category": "Veckans",
-        "description": "",
-        "price": "130 kr",
-        "tags": [
-          "veg"
-        ],
-        "emoji_tags": [
-          "🥦"
-        ]
-      },
-      {
-        "name": "Caesarsallad",
-        "category": "Veckans",
-        "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing",
-        "price": "130 kr",
-        "tags": [
-          "chicken",
-          "salad"
-        ],
-        "emoji_tags": [
-          "🐔",
-          "🥗"
-        ]
-      },
-      {
-        "name": "Högrevsburgare",
-        "category": "Lunch",
-        "description": "Karamelliserad lök – Krispichilimayo – Pepperjackost – Sallad – Pommes",
-        "price": "130 kr",
-        "tags": [
-          "beef",
-          "salad"
-        ],
-        "emoji_tags": [
-          "🐄",
-          "🥗"
-        ]
-      },
-      {
-        "name": "Smörstekt Fångst",
-        "category": "Lunch",
-        "description": "Kronärtskocka – Tomat – Smör – Citron – Krossad potatis – Rucola",
-        "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
-      }
-    ],
-    "stale": false,
-    "source_week": 47,
-    "fetched_at": "2026-11-20T09:06+01:00",
-    "tags": [
-      "veg",
-      "chicken",
-      "beef",
-      "salad"
-    ],
-    "emoji_tags": [
-      "🥦",
-      "🐔",
-      "🐄",
-      "🥗"
     ]
   },
   "OishiiScraper": {
@@ -1138,7 +1038,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1429,7 +1329,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1734,7 +1634,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1779,7 +1679,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-20T09:06+01:00",
+    "fetched_at": "2026-11-20T18:08+01:00",
     "tags": [],
     "emoji_tags": []
   }
