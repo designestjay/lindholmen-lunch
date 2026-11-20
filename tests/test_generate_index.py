@@ -1,13 +1,74 @@
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
+import pytest
+
+import generate_html
 from generate_html import dish_pills, generate_index_page, sentence_case_dish, split_price
 
+FIXTURES = Path(__file__).parent / "fixtures"
+STOCKHOLM = ZoneInfo("Europe/Stockholm")
+PINNED_MENU_DATE = "2026-11-13"
+PINNED_SCRAPE_HHMM = "16:13"
 
-def test_friday_page_uses_scrape_time_not_render_time():
+# generate_index_page reads these data files and may rewrite these outputs.
+_RESTORE = (
+    Path("data/lunch_data_friday.json"),
+    Path("data/scrape_meta_friday.json"),
+    Path("data/image-queue.json"),
+    Path("docs/index.html"),
+    Path("docs/preview.html"),
+    Path("docs/privacy.html"),
+    Path("docs/sitemap.xml"),
+    Path("privacy.html"),
+)
+
+
+@pytest.fixture
+def pinned_friday_menu():
+    """Render against a pinned Friday scrape, then put live repo files back."""
+    backups = {path: path.read_bytes() for path in _RESTORE if path.exists()}
+    Path("data/lunch_data_friday.json").write_bytes(
+        (FIXTURES / "friday_page_lunch_data.json").read_bytes()
+    )
+    Path("data/scrape_meta_friday.json").write_bytes(
+        (FIXTURES / "friday_page_scrape_meta.json").read_bytes()
+    )
+    try:
+        yield
+    finally:
+        for path, payload in backups.items():
+            path.write_bytes(payload)
+
+
+def _freeze_now(monkeypatch, when: datetime) -> None:
+    class FrozenDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return when.astimezone(tz) if tz is not None else when.replace(tzinfo=None)
+
+    monkeypatch.setattr(generate_html, "datetime", FrozenDateTime)
+
+
+@pytest.mark.parametrize(
+    "render_at",
+    [
+        datetime(2026, 11, 27, 3, 17, tzinfo=STOCKHOLM),
+        datetime(2026, 11, 18, 18, 40, tzinfo=STOCKHOLM),
+    ],
+    ids=["later-friday", "wednesday"],
+)
+def test_friday_page_uses_scrape_time_not_render_time(
+    pinned_friday_menu, monkeypatch, render_at
+):
+    """data-menu-date comes from scrape_meta.scraped_at, not the clock at render time."""
+    _freeze_now(monkeypatch, render_at)
     generate_index_page(day="friday")
     html = Path("docs/index.html").read_text(encoding="utf-8")
-    assert 'data-menu-date="2026-11-13"' in html
-    assert "16:13" in html
+    assert f'data-menu-date="{PINNED_MENU_DATE}"' in html
+    assert PINNED_SCRAPE_HHMM in html
+    assert f'data-menu-date="{render_at.date().isoformat()}"' not in html
     assert "Visa alla 25 rätter" in html
     assert "9 av" in html or ">9<" in html
     assert ">13<" in html
