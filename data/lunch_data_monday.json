@@ -17,9 +17,9 @@
         ]
       },
       {
-        "name": "Fraiche Style Caramelized Onion and Chile Ramen",
+        "name": "French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Odennudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak soi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -31,9 +31,9 @@
         ]
       },
       {
-        "name": "Fraiche Style Caramelized Onion and Chile Ramen",
+        "name": "VEG French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Odennudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak soi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -69,7 +69,7 @@
       {
         "name": "Stir Fried Garlic and Pepper Chicken",
         "category": "THAI",
-        "description": "Wokad kyckling i sötsyrlig soyasås med rostad vitlök & peppar med rostad paprika & brynt lök serveras med jasminris rostad lök, sesam  & koriander",
+        "description": "Wokad kyckling i sötsyrlig sojasås med rostad vitlök, peppar, rostad paprika & brynt lök serveras med jasminris, rostad lök, sesam  & koriander",
         "price": "130 kr",
         "tags": [
           "thai",
@@ -83,19 +83,17 @@
       {
         "name": "Chicken Alomonds and coriander",
         "category": "INDISK",
-        "description": "Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5",
+        "description": "Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & papadum CHILI 3/5",
         "price": "130 kr",
         "tags": [
-          "indian",
           "chicken"
         ],
         "emoji_tags": [
-          "🇮🇳",
           "🐔"
         ]
       },
       {
-        "name": "Smörstekt Gnocchi med krämig tryffel & svampveloute toppad med vitlöksgrillad kycklingfile toppad med ruccola & parmesan",
+        "name": "Smörstekt Gnocchi med krämig tryffel & svampveloute toppad med vitlöks grillad kycklingfile, rucola & parmesan",
         "category": "VÄRLDEN",
         "description": "",
         "price": "130 kr",
@@ -109,7 +107,7 @@
       {
         "name": "Stir Fried Garlic and Pepper Tofu",
         "category": "VEGETARISK",
-        "description": "Wokad tofu i sötsyrlig soyasås med rostad vitlök & peppar med rostad paprika & brynt lök serveras med jasminris rostad lök, sesam  & koriander",
+        "description": "Wokad tofu i sötsyrlig soyasås med rostad vitlök & peppar, rostad paprika & brynt lök serveras med jasminris, rostad lök, sesam  & koriander",
         "price": "130 kr",
         "tags": [
           "veg"
@@ -121,11 +119,10 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "japanese",
       "thai",
-      "indian",
       "veg",
       "chicken",
       "fish",
@@ -135,7 +132,6 @@
     "emoji_tags": [
       "🇯🇵",
       "🇹🇭",
-      "🇮🇳",
       "🥦",
       "🐔",
       "🐟",
@@ -216,7 +212,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -344,7 +340,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -406,7 +402,7 @@
       {
         "name": "Paneer- & kikärtscurry",
         "category": "Earth",
-        "description": "basmatiris, rostad kokoscrisp, myntayoghurt, gurksallad",
+        "description": "basmatiris, myntayoghurt, gurksallad",
         "price": "132 kr",
         "tags": [
           "indian"
@@ -417,7 +413,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "korean",
       "indian",
@@ -734,7 +730,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -882,7 +878,7 @@
         ]
       }
     ],
-    "stale": false,
+    "stale": true,
     "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "chicken",
@@ -981,7 +977,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -1314,7 +1310,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1605,7 +1601,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1910,7 +1906,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1961,7 +1957,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "fetched_at": "2026-11-23T09:14+01:00",
     "tags": [
       "mexican",
       "taco"
