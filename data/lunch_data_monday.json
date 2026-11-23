@@ -19,7 +19,7 @@
       {
         "name": "French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja samt nattbakad gårdsgris",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -33,7 +33,7 @@
       {
         "name": "VEG French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja samt friterad tofu",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -119,7 +119,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "japanese",
       "thai",
@@ -212,7 +212,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -340,7 +340,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -413,7 +413,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "korean",
       "indian",
@@ -730,7 +730,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -878,8 +878,8 @@
         ]
       }
     ],
-    "stale": true,
-    "fetched_at": "2026-11-23T08:20+01:00",
+    "stale": false,
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -977,7 +977,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -1310,7 +1310,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1601,7 +1601,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1906,7 +1906,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1957,7 +1957,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-23T09:14+01:00",
+    "fetched_at": "2026-11-23T16:50+01:00",
     "tags": [
       "mexican",
       "taco"
