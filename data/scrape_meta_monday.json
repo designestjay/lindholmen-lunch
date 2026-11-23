@@ -1,6 +1,6 @@
 {
   "day": "monday",
-  "scraped_at": "2026-11-16T20:50+01:00",
+  "scraped_at": "2026-11-23T08:20+01:00",
   "fresh": [
     "KooperativetScraper",
     "BombayBistroScraper",
@@ -14,15 +14,15 @@
     "MasalaScraper",
     "RestaurantPier11Scraper"
   ],
-  "stale": [
-    "DistrictOneScraper"
-  ],
+  "stale": [],
   "missing": [
+    "DistrictOneScraper",
     "LsKitchenScraper"
   ],
   "wrong_week": [],
   "closed": [],
   "missing_reason": {
+    "DistrictOneScraper": "http_404",
     "LsKitchenScraper": "empty"
   }
 }

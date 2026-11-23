@@ -17,23 +17,37 @@
         ]
       },
       {
-        "name": "Asiatisk Glasnudelsallad",
+        "name": "Fraiche Style Caramelized Onion and Chile Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+        "description": "Odennudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak soi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris",
         "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "japanese",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥣"
+        ]
       },
       {
-        "name": "VEG Asiatisk Glasnudelsallad",
+        "name": "Fraiche Style Caramelized Onion and Chile Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "med friterade tofu, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter",
+        "description": "Odennudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak soi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
         "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "japanese",
+          "veg",
+          "soup"
+        ],
+        "emoji_tags": [
+          "🇯🇵",
+          "🥦",
+          "🥣"
+        ]
       },
       {
-        "name": "Kooperativets klassiska Köttbullemåndag på kalvfärs med potatispuré, pepparsås, rårörda lingon & pressgurka",
+        "name": "Kooperativets klassiska Köttbullemåndag på vildsvinsfärs med potatispuré, peppargräddsås, rårörda lingon & saltgurka",
         "category": "KÖTT",
         "description": "",
         "price": "130 kr",
@@ -41,7 +55,7 @@
         "emoji_tags": []
       },
       {
-        "name": "Pocherad torsk serveras med potatis& rotselleripure, svampsås samt citron och örter",
+        "name": "Lättrimmad torsk serveras med potatispuré, fänkålssky samt citron och örter",
         "category": "FISK",
         "description": "",
         "price": "130 kr",
@@ -53,9 +67,9 @@
         ]
       },
       {
-        "name": "Chicken cashew",
+        "name": "Stir Fried Garlic and Pepper Chicken",
         "category": "THAI",
-        "description": "wokad gårdsgris med grönsaker i ostronsås med cashewnötter serveras med jasminris & koriander",
+        "description": "Wokad kyckling i sötsyrlig soyasås med rostad vitlök & peppar med rostad paprika & brynt lök serveras med jasminris rostad lök, sesam  & koriander",
         "price": "130 kr",
         "tags": [
           "thai",
@@ -67,25 +81,23 @@
         ]
       },
       {
-        "name": "Murgh Masala indisk gryta med kyckling serveras med basmatiris, mangochutney, papadum och koriander",
+        "name": "Chicken Alomonds and coriander",
         "category": "INDISK",
-        "description": "",
+        "description": "Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5",
         "price": "130 kr",
         "tags": [
           "indian",
-          "chicken",
-          "soup"
+          "chicken"
         ],
         "emoji_tags": [
           "🇮🇳",
-          "🐔",
-          "🥣"
+          "🐔"
         ]
       },
       {
-        "name": "Brasilianskt kryddad kyckling med vitlöksris, svarta bönor, rostad paprika, lime",
+        "name": "Smörstekt Gnocchi med krämig tryffel & svampveloute toppad med vitlöksgrillad kycklingfile toppad med ruccola & parmesan",
         "category": "VÄRLDEN",
-        "description": "och kålsallad samt krämig koriander- och chilidressing.",
+        "description": "",
         "price": "130 kr",
         "tags": [
           "chicken"
@@ -95,28 +107,36 @@
         ]
       },
       {
-        "name": "Vegetarisk Quorn cashew",
+        "name": "Stir Fried Garlic and Pepper Tofu",
         "category": "VEGETARISK",
-        "description": "wokad quorn med grönsaker i soyasås med cashewnötter serveras med jasminris & koriander",
+        "description": "Wokad tofu i sötsyrlig soyasås med rostad vitlök & peppar med rostad paprika & brynt lök serveras med jasminris rostad lök, sesam  & koriander",
         "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "veg"
+        ],
+        "emoji_tags": [
+          "🥦"
+        ]
       }
     ],
     "stale": false,
-    "source_week": 47,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "source_week": 48,
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
+      "japanese",
       "thai",
       "indian",
+      "veg",
       "chicken",
       "fish",
       "salad",
       "soup"
     ],
     "emoji_tags": [
+      "🇯🇵",
       "🇹🇭",
       "🇮🇳",
+      "🥦",
       "🐔",
       "🐟",
       "🥗",
@@ -127,9 +147,9 @@
     "day": "monday",
     "items": [
       {
-        "name": "MURGH PAPADOM",
+        "name": "METHI MALAI",
         "category": "",
-        "description": "Kycklingfilé tillagad i en mild och krämig så som består av papadom lök, tomat, vitlök och bockhornsklöver.",
+        "description": "Kycklinggryta tillagad med bockhornsklöver, fänkålsfrön, korianderfrön, tomat och grädde.",
         "price": "129 kr",
         "tags": [
           "chicken"
@@ -139,12 +159,16 @@
         ]
       },
       {
-        "name": "LAMM PUNJABI",
+        "name": "LAMM VINDALOO",
         "category": "",
-        "description": "Lammköttgryta med smakrik sås med tomat, koriander och grönsaker.",
+        "description": "Lammköttgryta gjord av ingefära, kanel, röd chili, brun socker, curryblad och rödvin.",
         "price": "129 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       },
       {
         "name": "TIKKA MASALA",
@@ -192,7 +216,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -208,7 +232,7 @@
       {
         "name": "",
         "category": "",
-        "description": "ostbakad kyckling serveras med sötpotatispuré, chili- & honungsqrosad brysseklkål och svampsky",
+        "description": "Kycklinggryta med ingefära och rosmarin serveras med ris, broccoli och lingon",
         "price": "",
         "tags": [
           "chicken"
@@ -220,46 +244,64 @@
       {
         "name": "",
         "category": "",
-        "description": "panerad kummel serveras med kokt potatis, gröna ärtor, räkröra och citron",
+        "description": "Kolja serveras med potatispuré, sidfläsk, grönkål, och brynt smör",
         "price": "",
-        "tags": [],
-        "emoji_tags": []
-      },
-      {
-        "name": "",
-        "category": "",
-        "description": "basilikamarinerad kyckling serveras med rostad potatis, tomatsås och friterad aubergine",
-        "price": "",
-        "tags": [
-          "chicken"
-        ],
-        "emoji_tags": [
-          "🐔"
-        ]
-      },
-      {
-        "name": "",
-        "category": "FISK",
-        "description": "stekt rimmat fläsk serveras med kokt potatis, haricot verts och löksås",
-        "price": "195 kr",
         "tags": [
           "fish",
-          "pork",
-          "beef"
+          "pork"
         ],
         "emoji_tags": [
           "🐟",
-          "🐖",
+          "🐖"
+        ]
+      },
+      {
+        "name": "",
+        "category": "",
+        "description": "Kyckling serveras med pommes rustik, stuvad grönkål och rödvinsås smaksatt med apelsin",
+        "price": "",
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
+      },
+      {
+        "name": "",
+        "category": "",
+        "description": "Saffransmarinerad sej serveras med rotselleripuré, bakad purjolök, pepparrot och hummersås",
+        "price": "",
+        "tags": [
+          "fish"
+        ],
+        "emoji_tags": [
+          "🐟"
+        ]
+      },
+      {
+        "name": "",
+        "category": "",
+        "description": "biffgryta serveras med svamp, kanelrostade morötter och saffranskräm",
+        "price": "",
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
           "🐄"
         ]
       },
       {
         "name": "",
         "category": "VEG",
-        "description": "gnocchi serveras med tomatsås, zucchini, mozzarella, ricottakräm och grana padano",
+        "description": "tofuwok serveras med ris, rostade mandelflakes och srirachadressing",
         "price": "195 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "veg"
+        ],
+        "emoji_tags": [
+          "🥦"
+        ]
       },
       {
         "name": "",
@@ -301,9 +343,10 @@
       }
     ],
     "stale": false,
-    "source_week": 47,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "source_week": 48,
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
+      "veg",
       "chicken",
       "fish",
       "pork",
@@ -312,6 +355,7 @@
       "burger"
     ],
     "emoji_tags": [
+      "🥦",
       "🐔",
       "🐟",
       "🐖",
@@ -324,35 +368,33 @@
     "day": "monday",
     "items": [
       {
-        "name": "Bakad fisk",
+        "name": "Bakad uer",
         "category": "Water",
-        "description": "inlagd morot, rostad morot, cruditéer, skaldjurssås, dillfrön, potatispuré med västerbottensost Baked fish, pickled carrot, roasted carrot, cruditées, shellfish sauce, dill seeds, potato puré with västerbotten cheese",
+        "description": "gubbröra, brynt smör, kokt potatis, ångad blomkål, inlagd blomkål, citron",
         "price": "132 kr",
-        "tags": [
-          "fish"
-        ],
-        "emoji_tags": [
-          "🐟"
-        ]
+        "tags": [],
+        "emoji_tags": []
       },
       {
-        "name": "Spicy red thai curry",
+        "name": "Bibimbap",
         "category": "Fire",
-        "description": "jasminris, bakad ingefärsskyckling, thaigrönt, koriander Spicy red thai curry, jasmine rice, baked ginger chicken, thai greens, coriander",
+        "description": "koreanskt sesamris, gochujangglaserad kycklingfärs, böngroddar, husets kimchi, stekt ägg, spenat (vegan option millow bibimbap)",
         "price": "132 kr",
         "tags": [
-          "thai",
-          "chicken"
+          "korean",
+          "chicken",
+          "beef"
         ],
         "emoji_tags": [
-          "🇹🇭",
-          "🐔"
+          "🇰🇷",
+          "🐔",
+          "🐄"
         ]
       },
       {
-        "name": "Potatisgratäng",
+        "name": "Grillad fläskkarré",
         "category": "Metal",
-        "description": "rosastekt fläskkotlett, pepparsås, broccoli, körvel & dragon Potato gratin, pink seared pork chop, pepper sauce, broccoli, chervil & tarragon",
+        "description": "citronrostad potatis, tirokafteri, syrad lök, grillad paprikasallad, persilja",
         "price": "132 kr",
         "tags": [
           "pork"
@@ -362,26 +404,32 @@
         ]
       },
       {
-        "name": "Sticky Millow mince bowl",
+        "name": "Paneer- & kikärtscurry",
         "category": "Earth",
-        "description": "jasminris, hoisin, gröna bönor, sesamfrön, koriander (veg option) Sticky Millow mince bowl, jasmine rice, hoisin, green beans, sesame seeds, coriander (veg option)",
+        "description": "basmatiris, rostad kokoscrisp, myntayoghurt, gurksallad",
         "price": "132 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "indian"
+        ],
+        "emoji_tags": [
+          "🇮🇳"
+        ]
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
-      "thai",
-      "fish",
+      "korean",
+      "indian",
       "chicken",
+      "beef",
       "pork"
     ],
     "emoji_tags": [
-      "🇹🇭",
-      "🐟",
+      "🇰🇷",
+      "🇮🇳",
       "🐔",
+      "🐄",
       "🐖"
     ]
   },
@@ -686,7 +734,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -835,7 +883,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -853,17 +901,21 @@
     "day": "monday",
     "items": [
       {
-        "name": "Veckans: Kålpudding",
+        "name": "Veckans: kycklingpasta",
         "category": "Veckans",
-        "description": "Gräddsås – Lingon – Kokt potatis – Persilja",
+        "description": "Dragonsås – Portabello – Champinjoner – Grana padano – Rucola",
         "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
       },
       {
-        "name": "Vegetarisk Mån-tis:Raggmunk",
+        "name": "Vegetarisk Mån-tis:Panerad fetaost",
         "category": "Veckans",
-        "description": "Svampragu – Lingon – Persilja",
+        "description": "Tzatziki – Ratatouille – Rostad potatis – Rucola",
         "price": "130 kr",
         "tags": [
           "veg"
@@ -873,9 +925,9 @@
         ]
       },
       {
-        "name": "Ons-Tor: Bakad Rödbeta",
+        "name": "Ons-Tor: Pannoumistroganoff",
         "category": "Veckans",
-        "description": "Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök",
+        "description": "Paprika – Persilja – Jasminris",
         "price": "130 kr",
         "tags": [],
         "emoji_tags": []
@@ -907,33 +959,39 @@
         ]
       },
       {
-        "name": "Wallenbergare",
+        "name": "Pannbiff",
         "category": "Lunch",
-        "description": "Gräddsås – Lingon – Ärtor – Potatispuré",
+        "description": "Stekt lök – Saltgurka – Gräddsås – Koktpotatis – Persilja",
         "price": "130 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐄"
+        ]
       },
       {
         "name": "Pocherad fångst",
         "category": "Lunch",
-        "description": "Räkor – Gurka – Brynt smör – Dillkokt potatis",
+        "description": "Syrad krondillsås – Potatisstomp – Smörslungade morötter",
         "price": "130 kr",
         "tags": [],
         "emoji_tags": []
       }
     ],
     "stale": false,
-    "source_week": 47,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "source_week": 48,
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "veg",
       "chicken",
+      "beef",
       "salad"
     ],
     "emoji_tags": [
       "🥦",
       "🐔",
+      "🐄",
       "🥗"
     ]
   },
@@ -1256,7 +1314,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1547,7 +1605,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1577,41 +1635,35 @@
     "day": "monday",
     "items": [
       {
-        "name": "CHICKEN PATIALA",
+        "name": "CHICKEN MURG MANGO",
         "category": "",
-        "description": "Tandoorigrilad kycklingfilé med lök, tomat, ingefära och mandeloch cashewnötsås.",
+        "description": "Kycklingfilé med färsk koriander, mynta, grön Chil, kokosmjölk och mangopuré.",
         "price": "119 kr, takeaway 114 kr",
         "tags": [
-          "indian",
           "chicken"
         ],
         "emoji_tags": [
-          "🇮🇳",
           "🐔"
         ]
       },
       {
-        "name": "LAMB VINDALOO",
+        "name": "LAMB PUNJABI CURRY",
         "category": "",
-        "description": "Eldig lammrätt från Goa med palmviniger, nejlikor och piri-piri masala.",
+        "description": "En populär lammrätt i en sås av lök, tomat, paprika, ingefära, koriander och grön chili.",
+        "price": "119 kr, takeaway 114 kr",
+        "tags": [],
+        "emoji_tags": []
+      },
+      {
+        "name": "BAINGAN MIRCH MASALA",
+        "category": "",
+        "description": "En traditionell maträtt med aubergine, paprika, tomat, kryddor, örter och koriander.",
         "price": "119 kr, takeaway 114 kr",
         "tags": [
           "indian"
         ],
         "emoji_tags": [
           "🇮🇳"
-        ]
-      },
-      {
-        "name": "VEG KADHAI",
-        "category": "",
-        "description": "Nordindisk vegetarisk rätt med zucchini, potatis, lök, ingefära, peppar, chili och koriander.",
-        "price": "119 kr, takeaway 114 kr",
-        "tags": [
-          "veg"
-        ],
-        "emoji_tags": [
-          "🥦"
         ]
       },
       {
@@ -1858,7 +1910,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1878,174 +1930,45 @@
     "day": "monday",
     "items": [
       {
-        "name": "Aloo gobi",
+        "name": "Chili sin carne",
         "category": "Dagens",
-        "description": "chickpeas, cauliflower, spinach, aromatic rice, chili",
+        "description": "guacamole, salsa fresca, steamed rice, tortilla chips",
+        "price": "124 kr",
+        "tags": [
+          "mexican",
+          "taco"
+        ],
+        "emoji_tags": [
+          "🇲🇽",
+          "🌮"
+        ]
+      },
+      {
+        "name": "Beef stroganoff",
+        "category": "Dagens",
+        "description": "gherkins, crispy onion, pickled chili, rice",
         "price": "124 kr",
         "tags": [],
         "emoji_tags": []
       },
       {
-        "name": "Baked haddock",
+        "name": "Baked Haddock",
         "category": "Dagens",
-        "description": "fresh beetroot salsa, Greek style roasted vegetables, green butter sauce",
-        "price": "124 kr",
-        "tags": [
-          "mexican"
-        ],
-        "emoji_tags": [
-          "🇲🇽"
-        ]
-      },
-      {
-        "name": "Boeuf bourguignon",
-        "category": "Dagens",
-        "description": "creamy mashed potaoes, roasted carrots, crispy parsnip",
+        "description": "Dill tossed potatoes, Sandefjord sauce, Seaweed caviar, Asparagus",
         "price": "124 kr",
         "tags": [],
         "emoji_tags": []
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-16T19:23+01:00",
+    "fetched_at": "2026-11-23T08:20+01:00",
     "tags": [
-      "mexican"
+      "mexican",
+      "taco"
     ],
     "emoji_tags": [
-      "🇲🇽"
-    ]
-  },
-  "DistrictOneScraper": {
-    "day": "monday",
-    "items": [
-      {
-        "name": "Pocherad torskfile med brynt smör och äpple, serveras med potatismos samt nyriven pepparrot.",
-        "category": "Fisk",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "fish"
-        ],
-        "emoji_tags": [
-          "🐟"
-        ]
-      },
-      {
-        "name": "Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos.",
-        "category": "Kött",
-        "description": "",
-        "price": "135 kr",
-        "tags": [],
-        "emoji_tags": []
-      },
-      {
-        "name": "Ceasarsallad med grillad kyckling, grana padano, romansallad, bacon, brödkrutonger samt husets ceasardressing.",
-        "category": "Sallad",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "chicken",
-          "salad"
-        ],
-        "emoji_tags": [
-          "🐔",
-          "🥗"
-        ]
-      },
-      {
-        "name": "Friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris.",
-        "category": "Fried chicken",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "chicken"
-        ],
-        "emoji_tags": [
-          "🐔"
-        ]
-      },
-      {
-        "name": "Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
-        "category": "Vegetarisk",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "dumplings"
-        ],
-        "emoji_tags": [
-          "🥟"
-        ]
-      },
-      {
-        "name": "Ponzu marinerad lax eller räkor med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "category": "Poke bowl",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "veg",
-          "fish",
-          "sushi"
-        ],
-        "emoji_tags": [
-          "🥦",
-          "🐟",
-          "🍣"
-        ]
-      },
-      {
-        "name": "Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
-        "category": "Veg poke bowl",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "veg",
-          "sushi"
-        ],
-        "emoji_tags": [
-          "🥦",
-          "🍣"
-        ]
-      },
-      {
-        "name": "Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås.",
-        "category": "Phở",
-        "description": "",
-        "price": "135 kr",
-        "tags": [
-          "thai",
-          "beef",
-          "soup"
-        ],
-        "emoji_tags": [
-          "🇹🇭",
-          "🐄",
-          "🥣"
-        ]
-      }
-    ],
-    "stale": true,
-    "fetched_at": "2026-11-16T10:09+01:00",
-    "tags": [
-      "thai",
-      "veg",
-      "fish",
-      "chicken",
-      "beef",
-      "salad",
-      "sushi",
-      "dumplings",
-      "soup"
-    ],
-    "emoji_tags": [
-      "🇹🇭",
-      "🥦",
-      "🐟",
-      "🐔",
-      "🐄",
-      "🥗",
-      "🍣",
-      "🥟",
-      "🥣"
+      "🇲🇽",
+      "🌮"
     ]
   }
 }
