@@ -60,3 +60,35 @@ def test_fuzzy_neighbour_is_low_confidence():
     taxonomy = load_taxonomy()
     decision = classify("tikkaa masalla", "", "Masala", taxonomy)
     assert decision["category_confidence"] <= 0.6 or decision["dish_category"] == "tikka-masala"
+
+
+def test_new_keywords_reach_drawn_categories():
+    taxonomy = load_taxonomy()
+    assert classify("Bakad uer", "blomkål", "Uni3", taxonomy)["dish_category"] == "white-fish"
+    assert classify("Baked Haddock", "", "Pier 11", taxonomy)["dish_category"] == "white-fish"
+    assert classify("tofuwok serveras med ris", "", "Cuckoo's Nest", taxonomy)["dish_category"] == "wok"
+    assert classify("Stir Fried Garlic and Pepper Tofu", "", "Kooperativet", taxonomy)["dish_category"] == "wok"
+    assert classify("Högrevsburgare med brioche, sallad", "", "Cuckoo's Nest", taxonomy)["dish_category"] == "burger"
+    assert classify("Tiramisu", "", "Benne Pastabar", taxonomy)["dish_category"] == "dessert-cake"
+    assert classify("Kycklinggryta med ingefära", "", "Cuckoo's Nest", taxonomy)["dish_category"] == "stew-bourguignon"
+    assert classify("Methi malai", "", "Bombay Bistro", taxonomy)["dish_category"] == "indian-curry"
+
+
+def test_drawing_fallback_only_for_confident_rows_and_existing_files():
+    from pathlib import Path
+
+    from generate_html import drawing_slug
+
+    taxonomy = load_taxonomy()
+    dishes = Path("docs/assets/dishes")
+    fallbacks = {key: value for key, value in taxonomy["drawing_fallback"].items() if not key.startswith("_")}
+    for category, borrowed in fallbacks.items():
+        assert category in taxonomy["categories"], category
+        assert not (dishes / f"{category}.svg").exists(), category
+        assert (dishes / f"{borrowed}.svg").is_file(), borrowed
+    assert drawing_slug("ramen", 0.92, taxonomy) == "noodle-soup"
+    assert drawing_slug("vindaloo", 0.92, taxonomy) == "indian-curry"
+    assert drawing_slug("roasted-cauliflower", 0.72, taxonomy) == "roasted-cauliflower"
+    assert drawing_slug("sushi-mix", 0.6, taxonomy) == "sushi-mix"
+    assert drawing_slug("garlic-bread", 0.92, taxonomy) == "garlic-bread"
+    assert drawing_slug("", 0.92, taxonomy) == ""

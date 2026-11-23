@@ -204,6 +204,25 @@ def format_stamp(when: datetime) -> dict:
     }
 
 
+FALLBACK_MIN_CONFIDENCE = 0.8
+
+
+def drawing_slug(slug: str, confidence: float, taxonomy: dict) -> str:
+    """The category whose drawing and dish sheet a row shows.
+
+    A category with no drawing of its own borrows the broader one named in
+    `drawing_fallback` in data/dish_taxonomy.json, but only for a confident match.
+    """
+    if not slug or Path(f"docs/assets/dishes/{slug}.svg").is_file():
+        return slug
+    if confidence < FALLBACK_MIN_CONFIDENCE:
+        return slug
+    fallback = (taxonomy.get("drawing_fallback") or {}).get(slug)
+    if isinstance(fallback, str) and Path(f"docs/assets/dishes/{fallback}.svg").is_file():
+        return fallback
+    return slug
+
+
 def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp: dict | None) -> list[dict]:
     restaurants = []
     queue_rows = []
@@ -240,12 +259,13 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                 display_name(scraper_key),
                 taxonomy,
             )
-            slug = decision.get("dish_category") or ""
+            own_slug = decision.get("dish_category") or ""
+            confidence = float(decision.get("category_confidence") or 0)
+            slug = drawing_slug(own_slug, confidence, taxonomy)
             entry = library.get(slug) if slug else None
             has_text = bool(entry and (entry.get("what") or {}).get("sv"))
             svg_file = Path(f"docs/assets/dishes/{slug}.svg") if slug else None
             has_svg = bool(svg_file and svg_file.is_file())
-            confidence = float(decision.get("category_confidence") or 0)
             section = (item.get("category") or "").strip()
             if decision.get("ignored"):
                 own_tags = []
@@ -297,7 +317,7 @@ def prepare_restaurants(lunch_data: dict, restaurant_links: dict, fallback_stamp
                     "name": display_item_name or name,
                     "description": visible_description or description,
                     "restaurant": display_name(scraper_key),
-                    "dish_category": slug or None,
+                    "dish_category": own_slug or None,
                     "category_confidence": confidence,
                     "ignored": bool(decision.get("ignored")),
                     "closed_dish": bool(decision.get("closed")),
