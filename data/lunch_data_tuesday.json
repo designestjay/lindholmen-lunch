@@ -19,7 +19,7 @@
       {
         "name": "French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja, nattbakad gårdsgris & koriander",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -33,7 +33,7 @@
       {
         "name": "VEG French Style Caramelized Onion and Chili Ramen",
         "category": "VECKANS SPECIAL",
-        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
+        "description": "Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja,  friterad tofu & koriander",
         "price": "130 kr",
         "tags": [
           "japanese",
@@ -47,7 +47,7 @@
         ]
       },
       {
-        "name": "Kooperativets ”Jägar” Schnitzel på gårdsgris med krämig svampstuvning på kantareller & champinjoner toppad med lingon & grönkål samt rostade färskpotatis",
+        "name": "Kooperativets ”Jägar” Schnitzel på gårdsgris med krämig svampstuvning, lingon & grönkål samt rostade färskpotatis",
         "category": "KÖTT",
         "description": "",
         "price": "130 kr",
@@ -81,7 +81,7 @@
         ]
       },
       {
-        "name": "Fried rice ”Biryani” på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan",
+        "name": "Fried rice ”Biryani” på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & papadum",
         "category": "INDISK",
         "description": "",
         "price": "130 kr",
@@ -109,7 +109,7 @@
         ]
       },
       {
-        "name": "Fried rice ”Biryani” på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & garlic Naan",
+        "name": "Fried rice ”Biryani” på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & papadum",
         "category": "VEGETARISKT",
         "description": "",
         "price": "130 kr",
@@ -127,7 +127,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "japanese",
       "thai",
@@ -220,7 +220,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -348,7 +348,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -421,7 +421,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "korean",
       "indian",
@@ -738,7 +738,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -887,7 +887,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -989,7 +989,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -1322,7 +1322,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1613,7 +1613,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1918,7 +1918,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1969,7 +1969,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-24T08:19+01:00",
+    "fetched_at": "2026-11-24T16:41+01:00",
     "tags": [
       "chicken",
       "pasta"
