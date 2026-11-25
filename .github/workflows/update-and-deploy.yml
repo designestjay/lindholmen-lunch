@@ -12,6 +12,8 @@ on:
     - cron: '37 9 * * 1-5'
   push:
     branches: [ main ]
+    paths-ignore:
+      - data/chat_post_state.json
   workflow_dispatch:
 
 permissions:

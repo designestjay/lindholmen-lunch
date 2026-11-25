@@ -28,6 +28,10 @@ GitHub Actions runs four times each weekday (Monday–Friday). The times below a
 
 The workflow is `.github/workflows/update-and-deploy.yml`. It scrapes, renders `docs/`, and pushes the page. Mat & Minnen is hidden. Mimolett is a link to its Kvartersmenyn page.
 
+### Chat posts
+
+After a successful deploy, `.github/workflows/post-chat.yml` (`Post lunch to chat`) may post that day's menus. It does not post at or after 13:00 Europe/Stockholm. Targets live in the `CHAT_WEBHOOKS` Actions secret. Setup is described in `docs/plans/daily-chat-posting.md`.
+
 ## Local setup
 
 Python 3.12 and Chrome (the two JavaScript menus use Selenium).
