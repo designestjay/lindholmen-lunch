@@ -1,0 +1,55 @@
+name: Post lunch to chat
+
+on:
+  workflow_run:
+    workflows: ["Update Lunch Data and Deploy"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the payload and send nothing"
+        type: boolean
+        default: false
+      only:
+        description: "Post to this target name only. Empty means every target."
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lindholmen-lunch-chat
+  cancel-in-progress: false
+
+jobs:
+  post:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Pull main
+        run: git pull --ff-only origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Post lunch to chat
+        env:
+          CHAT_DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          CHAT_ONLY: ${{ github.event.inputs.only || '' }}
+          CHAT_WEBHOOKS: ${{ secrets.CHAT_WEBHOOKS }}
+        run: python -m utils.chat_post
