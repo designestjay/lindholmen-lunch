@@ -1,10 +1,11 @@
 {
   "day": "wednesday",
-  "scraped_at": "2026-11-18T19:23+01:00",
+  "scraped_at": "2026-11-25T08:16+01:00",
   "fresh": [
     "KooperativetScraper",
     "BombayBistroScraper",
     "CuckoosNestScraper",
+    "Uni3WorldOfFoodScraper",
     "MissFScraper",
     "BennePastabarScraper",
     "BistrotScraper",
@@ -16,14 +17,12 @@
   "stale": [],
   "missing": [
     "DistrictOneScraper",
-    "Uni3WorldOfFoodScraper",
     "LsKitchenScraper"
   ],
   "wrong_week": [],
   "closed": [],
   "missing_reason": {
     "DistrictOneScraper": "http_404",
-    "Uni3WorldOfFoodScraper": "empty",
     "LsKitchenScraper": "empty"
   }
 }
