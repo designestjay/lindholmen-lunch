@@ -1,6 +1,6 @@
 {
   "day": "wednesday",
-  "scraped_at": "2026-11-25T16:26+01:00",
+  "scraped_at": "2026-11-25T18:33+01:00",
   "fresh": [
     "KooperativetScraper",
     "BombayBistroScraper",
@@ -10,11 +10,12 @@
     "BennePastabarScraper",
     "BistrotScraper",
     "OishiiScraper",
-    "EncounterAsianScraper",
     "MasalaScraper",
     "RestaurantPier11Scraper"
   ],
-  "stale": [],
+  "stale": [
+    "EncounterAsianScraper"
+  ],
   "missing": [
     "DistrictOneScraper",
     "LsKitchenScraper"
