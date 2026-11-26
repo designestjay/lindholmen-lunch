@@ -3,11 +3,11 @@
   "comment": [
     {
       "title": "Scraper: District One failing",
-      "body": "Restaurant: District One\nStatus: missing\nReason: http_404\nSource: https://www.districtone.se/\nLast fresh date: -\n\nRecent runs:\n- 2026-11-19: missing http_404\n- 2026-11-20: missing http_404\n- 2026-11-23: missing http_404\n- 2026-11-24: missing http_404\n- 2026-11-25: missing http_404"
+      "body": "Restaurant: District One\nStatus: missing\nReason: http_404\nSource: https://www.districtone.se/\nLast fresh date: -\n\nRecent runs:\n- 2026-11-20: missing http_404\n- 2026-11-23: missing http_404\n- 2026-11-24: missing http_404\n- 2026-11-25: missing http_404\n- 2026-11-26: missing http_404"
     },
     {
       "title": "Scraper: LS Kitchen failing",
-      "body": "Restaurant: LS Kitchen\nStatus: missing\nReason: empty\nSource: https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1\nLast fresh date: -\n\nRecent runs:\n- 2026-11-19: missing empty\n- 2026-11-20: missing empty\n- 2026-11-23: missing empty\n- 2026-11-24: missing empty\n- 2026-11-25: missing empty"
+      "body": "Restaurant: LS Kitchen\nStatus: missing\nReason: empty\nSource: https://plateimpact-screen.azurewebsites.net/menu/week/ls-kitchen/c74da2cf-aa1a-4d3a-9ba6-08d5569587a1\nLast fresh date: -\n\nRecent runs:\n- 2026-11-20: missing empty\n- 2026-11-23: missing empty\n- 2026-11-24: missing empty\n- 2026-11-25: missing empty\n- 2026-11-26: missing empty"
     }
   ],
   "close": []
