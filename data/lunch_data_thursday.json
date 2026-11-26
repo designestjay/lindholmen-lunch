@@ -47,16 +47,12 @@
         ]
       },
       {
-        "name": "Nattbakad högrev ”Boeuf Bourguignon” med ragu på brynt svamp, brässerad lök & bacon serveras med potatispuré",
+        "name": "Nattbakad kalvhögrev ”Boeuf Bourguignon” med ragu på brynt svamp, brässerad lök & bacon serveras med potatispuré",
         "category": "KÖTT",
         "description": "",
         "price": "130 kr",
-        "tags": [
-          "beef"
-        ],
-        "emoji_tags": [
-          "🐄"
-        ]
+        "tags": [],
+        "emoji_tags": []
       },
       {
         "name": "Bakad kolja serveras med västerbottendushess, skaldjurssås och gröna ärtor",
@@ -71,17 +67,19 @@
         ]
       },
       {
-        "name": "Bulgogi på wokad gårdsgris med svamp & brynt lök i den klassiska koreanska soyasåsen smaksatt med päron och ingefära serveras med jasminris & hjärtsallad",
+        "name": "Bulgogi på wokad kyckling med svamp & brynt lök i den klassiska koreanska soyasåsen smaksatt med päron och ingefära serveras med jasminris & hjärtsallad",
         "category": "THAI",
         "description": "",
         "price": "130 kr",
         "tags": [
           "korean",
-          "thai"
+          "thai",
+          "chicken"
         ],
         "emoji_tags": [
           "🇰🇷",
-          "🇹🇭"
+          "🇹🇭",
+          "🐔"
         ]
       },
       {
@@ -133,7 +131,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -141,8 +139,8 @@
       "indian",
       "veg",
       "chicken",
-      "beef",
       "fish",
+      "beef",
       "salad",
       "burger",
       "soup"
@@ -154,8 +152,8 @@
       "🇮🇳",
       "🥦",
       "🐔",
-      "🐄",
       "🐟",
+      "🐄",
       "🥗",
       "🍔",
       "🥣"
@@ -236,7 +234,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -364,7 +362,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -433,7 +431,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -746,7 +744,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -882,10 +880,10 @@
         "emoji_tags": []
       },
       {
-        "name": "Tiramisu",
+        "name": "Hazelroll",
         "category": "Benne Bites",
-        "description": "Krämig tiramisu från Italien, toppad med kakao. (Innehåller alkohol)",
-        "price": "35 kr",
+        "description": "Choklad cannoli fylld med en nutella och mascarpone kräm.",
+        "price": "20 kr",
         "tags": [
           "dessert"
         ],
@@ -895,7 +893,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -1005,7 +1003,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -1338,7 +1336,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1629,7 +1627,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1936,7 +1934,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1977,7 +1975,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-26T08:23+01:00",
+    "fetched_at": "2026-11-26T15:57+01:00",
     "tags": [
       "thai"
     ],
