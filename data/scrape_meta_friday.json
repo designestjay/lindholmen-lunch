@@ -1,6 +1,6 @@
 {
   "day": "friday",
-  "scraped_at": "2026-11-20T20:43+01:00",
+  "scraped_at": "2026-11-27T08:23+01:00",
   "fresh": [
     "BombayBistroScraper",
     "CuckoosNestScraper",
@@ -16,16 +16,15 @@
   "missing": [
     "KooperativetScraper",
     "DistrictOneScraper",
-    "LsKitchenScraper"
-  ],
-  "wrong_week": [
+    "LsKitchenScraper",
     "BistrotScraper"
   ],
+  "wrong_week": [],
   "closed": [],
   "missing_reason": {
     "KooperativetScraper": "empty",
     "DistrictOneScraper": "http_404",
     "LsKitchenScraper": "empty",
-    "BistrotScraper": "wrong_week"
+    "BistrotScraper": "empty"
   }
 }

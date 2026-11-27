@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26",
+  "generated_at": "2026-11-27",
   "items": [
     {
       "key": "(*)",
@@ -9,9 +9,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -24,9 +24,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -39,9 +39,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -159,9 +159,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -174,9 +174,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "yakitori",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -444,9 +444,24 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "coq au vin chicken fillet",
+      "name": "Coq au vin chicken fillet",
+      "description": "potato puree, butter tossed haricots verts",
+      "restaurants": [
+        "Pier 11"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -474,9 +489,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -512,6 +527,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "garlic chicken",
+      "name": "Garlic chicken",
+      "description": "Kycklingfilé marinerad i vitlök, grönchili, spiskummin serveras med tandoori sås.",
+      "restaurants": [
+        "Bombay Bistro"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
+      "suggestion": "tandoori",
+      "confidence": 0.72,
+      "reason": "low_confidence"
+    },
+    {
       "key": "grekisk",
       "name": "Grekisk",
       "description": "",
@@ -519,9 +549,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -557,6 +587,21 @@
       "reason": "no_rule"
     },
     {
+      "key": "gräddig räkpasta",
+      "name": "Gräddig räkpasta",
+      "description": "vitlöksstekta vannameiräkor, citronzest, chili, persilja, pangratatto",
+      "restaurants": [
+        "Uni3 World of Food"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "halstrad fångst",
       "name": "Halstrad fångst",
       "description": "Sparrisrisotto – Vitvinssås – Rucola",
@@ -579,9 +624,9 @@
         "Benne Pastabar"
       ],
       "first_seen": "2026-11-19",
-      "last_seen": "2026-11-26",
-      "seen_count": 2,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 3,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -744,9 +789,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -759,9 +804,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -774,9 +819,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -804,9 +849,9 @@
         "Cuckoo's Nest"
       ],
       "first_seen": "2026-11-23",
-      "last_seen": "2026-11-26",
-      "seen_count": 4,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 5,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -819,9 +864,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -834,9 +879,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "salad-bowl",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -954,9 +999,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -992,6 +1037,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "malvani chicken",
+      "name": "Malvani chicken",
+      "description": "Kycklingfilé i en sås av kokoskräm, röd chili och Malvani masala.",
+      "restaurants": [
+        "Masala"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "mammasushi",
       "name": "Mammasushi 10 bitar",
       "description": "2 räka, 1 crabfish, 1 tofu, 1 avocado, 1 omelett & 4 maki",
@@ -999,9 +1059,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1044,9 +1104,9 @@
         "Uni3 World of Food"
       ],
       "first_seen": "2026-11-26",
-      "last_seen": "2026-11-26",
-      "seen_count": 1,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 2,
+      "counted_on": "2026-11-27",
       "suggestion": "halloumi-dish",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1074,9 +1134,9 @@
         "Miss F"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1104,9 +1164,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1194,9 +1254,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "salmon",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1389,9 +1449,9 @@
         "Masala"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "lamb",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1509,9 +1569,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1629,9 +1689,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1675,9 +1735,9 @@
         "Encounter Asian"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1690,9 +1750,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": "sushi-mix",
       "confidence": 0.72,
       "reason": "low_confidence"
@@ -1735,9 +1795,9 @@
         "Oishii"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 73,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 75,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
