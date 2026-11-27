@@ -79,8 +79,8 @@
     },
     {
       "date": "2026-11-27",
-      "status": "missing",
-      "reason": "empty"
+      "status": "fresh",
+      "reason": ""
     }
   ],
   "BombayBistroScraper": [

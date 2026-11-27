@@ -1,11 +1,6 @@
 {
   "open": [
     {
-      "title": "Scraper: Bistrot failing",
-      "body": "Restaurant: Bistrot\nStatus: missing\nReason: empty\nSource: https://bistrot.se/\nLast fresh date: 2026-11-26\n\nRecent runs:\n- 2026-11-23: fresh\n- 2026-11-24: fresh\n- 2026-11-25: fresh\n- 2026-11-26: fresh\n- 2026-11-27: missing empty",
-      "label": "scraper"
-    },
-    {
       "title": "Scraper: Kooperativet failing",
       "body": "Restaurant: Kooperativet\nStatus: missing\nReason: empty\nSource: https://www.kooperativet.se/\nLast fresh date: 2026-11-26\n\nRecent runs:\n- 2026-11-23: fresh\n- 2026-11-24: fresh\n- 2026-11-25: fresh\n- 2026-11-26: fresh\n- 2026-11-27: missing empty",
       "label": "scraper"

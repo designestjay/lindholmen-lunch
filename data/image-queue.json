@@ -504,9 +504,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-13",
-      "last_seen": "2026-11-26",
-      "seen_count": 34,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 35,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -612,6 +612,21 @@
       "last_seen": "2026-11-18",
       "seen_count": 1,
       "counted_on": "2026-11-18",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
+      "key": "havets wallenbergare",
+      "name": "Havets Wallenbergare",
+      "description": "Brynt smör – Pepparrot – Ärtor – Potatispuré",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -924,9 +939,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-23",
-      "last_seen": "2026-11-26",
-      "seen_count": 4,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 5,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1262,6 +1277,21 @@
       "reason": "low_confidence"
     },
     {
+      "key": "nötfärsbiff",
+      "name": "Nötfärsbiff",
+      "description": "Café de parissås – Potatisgratäng – Bakad tomat",
+      "restaurants": [
+        "Bistrot"
+      ],
+      "first_seen": "2026-11-27",
+      "last_seen": "2026-11-27",
+      "seen_count": 1,
+      "counted_on": "2026-11-27",
+      "suggestion": null,
+      "confidence": 0.0,
+      "reason": "no_rule"
+    },
+    {
       "key": "ons-tor: bakad rödbeta",
       "name": "Ons-Tor: Bakad Rödbeta",
       "description": "Linser | Solroskärnor | Getostkräm | Blomkålspuré – Brynt smör | Gräslök",
@@ -1284,9 +1314,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-23",
-      "last_seen": "2026-11-26",
-      "seen_count": 4,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 5,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"
@@ -1359,9 +1389,9 @@
         "Bistrot"
       ],
       "first_seen": "2026-11-23",
-      "last_seen": "2026-11-26",
-      "seen_count": 4,
-      "counted_on": "2026-11-26",
+      "last_seen": "2026-11-27",
+      "seen_count": 5,
+      "counted_on": "2026-11-27",
       "suggestion": null,
       "confidence": 0.0,
       "reason": "no_rule"

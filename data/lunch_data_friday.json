@@ -74,7 +74,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "indian",
       "chicken"
@@ -202,7 +202,7 @@
     ],
     "stale": false,
     "source_week": 48,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "veg",
       "chicken",
@@ -252,7 +252,7 @@
         "emoji_tags": []
       },
       {
-        "name": "Husmanstorsdag: Bouef bourguignon på högrev",
+        "name": "Bouef bourguignon på högrev",
         "category": "Metal",
         "description": "potatispure, rödvinssås, bacon, syltlök, champinjoner, pommes alumettes",
         "price": "132 kr",
@@ -266,16 +266,21 @@
       {
         "name": "Matvete \"taboulleh\"",
         "category": "Earth",
-        "description": "grillad halloumi, kikärtscréme, fetaost, granatäpple, babyspenat",
+        "description": "grillad halloumi, kikärtscréme, fetaost, granatäpple, babyspenat (veganskt alternativ finns här)",
         "price": "132 kr",
-        "tags": [],
-        "emoji_tags": []
+        "tags": [
+          "vegan"
+        ],
+        "emoji_tags": [
+          "🌱"
+        ]
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "mexican",
+      "vegan",
       "chicken",
       "beef",
       "salad",
@@ -283,6 +288,7 @@
     ],
     "emoji_tags": [
       "🇲🇽",
+      "🌱",
       "🐔",
       "🐄",
       "🥗",
@@ -590,7 +596,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "mexican",
       "korean",
@@ -739,7 +745,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "chicken",
       "fish",
@@ -751,6 +757,104 @@
       "🐟",
       "🍝",
       "🍰"
+    ]
+  },
+  "BistrotScraper": {
+    "day": "friday",
+    "items": [
+      {
+        "name": "Veckans: kycklingpasta",
+        "category": "Veckans",
+        "description": "Dragonsås – Portabello – Champinjoner – Grana padano – Rucola",
+        "price": "130 kr",
+        "tags": [
+          "chicken"
+        ],
+        "emoji_tags": [
+          "🐔"
+        ]
+      },
+      {
+        "name": "Vegetarisk Mån-tis:Panerad fetaost",
+        "category": "Veckans",
+        "description": "Tzatziki – Ratatouille – Rostad potatis – Rucola",
+        "price": "130 kr",
+        "tags": [
+          "veg"
+        ],
+        "emoji_tags": [
+          "🥦"
+        ]
+      },
+      {
+        "name": "Ons-Tor: Pannoumistroganoff",
+        "category": "Veckans",
+        "description": "Paprika – Persilja – Jasminris",
+        "price": "130 kr",
+        "tags": [],
+        "emoji_tags": []
+      },
+      {
+        "name": "Vegetarisk: Fre: Pannoumiburgare",
+        "category": "Veckans",
+        "description": "",
+        "price": "130 kr",
+        "tags": [
+          "veg"
+        ],
+        "emoji_tags": [
+          "🥦"
+        ]
+      },
+      {
+        "name": "Caesarsallad",
+        "category": "Veckans",
+        "description": "Kyckling & Bacon / Räkor – Grana padano – Tomater – Rödlök – Krutonger – Caesardressing",
+        "price": "130 kr",
+        "tags": [
+          "chicken",
+          "salad"
+        ],
+        "emoji_tags": [
+          "🐔",
+          "🥗"
+        ]
+      },
+      {
+        "name": "Nötfärsbiff",
+        "category": "Lunch",
+        "description": "Café de parissås – Potatisgratäng – Bakad tomat",
+        "price": "130 kr",
+        "tags": [
+          "beef"
+        ],
+        "emoji_tags": [
+          "🐄"
+        ]
+      },
+      {
+        "name": "Havets Wallenbergare",
+        "category": "Lunch",
+        "description": "Brynt smör – Pepparrot – Ärtor – Potatispuré",
+        "price": "130 kr",
+        "tags": [],
+        "emoji_tags": []
+      }
+    ],
+    "stale": false,
+    "source_week": 48,
+    "fetched_at": "2026-11-27T15:53+01:00",
+    "tags": [
+      "veg",
+      "chicken",
+      "beef",
+      "salad"
+    ],
+    "emoji_tags": [
+      "🥦",
+      "🐔",
+      "🐄",
+      "🥗"
     ]
   },
   "OishiiScraper": {
@@ -1072,7 +1176,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "japanese",
       "veg",
@@ -1363,7 +1467,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "japanese",
       "korean",
@@ -1672,7 +1776,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "indian",
       "veg",
@@ -1731,7 +1835,7 @@
       }
     ],
     "stale": false,
-    "fetched_at": "2026-11-27T08:23+01:00",
+    "fetched_at": "2026-11-27T15:53+01:00",
     "tags": [
       "japanese",
       "veg",
